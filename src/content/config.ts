@@ -1,0 +1,46 @@
+import { defineCollection, z } from 'astro:content';
+
+const courses = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    publishDate: z.coerce.date(),
+    courseType: z.string(),
+    targetAudience: z.string(),
+    duration: z.string(),
+    tags: z.array(z.string()),
+  }),
+});
+
+const newsCollection = defineCollection({
+  type: 'content',
+  schema: ({ image }) => z.object({
+    title: z.string(),
+    excerpt: z.string().optional(),
+    publishDate: z.coerce.date(),
+    featuredImage: image().optional(),
+    category: z.enum([
+      '過往活動',
+      '文章',
+      '最新消息',
+      '資助申請',
+      '比賽',
+      '課程',
+      'AI人工智能課程',
+      '其他'
+    ]).default('過往活動'),
+    tags: z.array(z.string()).optional(),
+    author: z.string().default('admin'),
+    isFeatured: z.boolean().default(false),
+    externalLink: z.string().url().optional(),
+    wpSlug: z.string().optional(),
+    wpDate: z.string().optional(),
+    readingTime: z.number().optional(),
+  }),
+});
+
+export const collections = {
+  'courses': courses,
+  'news': newsCollection,
+}; 

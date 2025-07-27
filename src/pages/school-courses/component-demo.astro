@@ -1,0 +1,159 @@
+---
+import CourseLayout from '../../components/course/CourseLayout.astro';
+
+// COMPREHENSIVE DEMO - Shows ALL component capabilities
+const demoData = {
+  // ===== COURSE HERO DEMO =====
+  // Shows: Title, subtitle, tags, video embed, description
+  title: "完整組件展示課程",
+  subtitle: "展示所有課程組件的功能和靈活性",
+  description: "這是一個演示頁面，展示了我們開發的所有通用課程組件。每個組件都具有高度的靈活性，可以適應不同類型的課程內容，從人工智能到機器人技術，從生物科學到創意藝術。本頁面展示了組件的各種配置選項和視覺效果。",
+  tags: [
+    "演示頁面", 
+    "組件展示", 
+    "UI/UX設計", 
+    "響應式設計", 
+    "Astro框架", 
+    "TailwindCSS", 
+    "通用組件",
+    "課程系統"
+  ],
+  
+  // ===== MEDIA DEMO =====
+  // Shows: YouTube video embed capabilities
+  videoId: "sYg36jF-PTA", // Scratch AI programming video as example
+  
+  // ===== FEATURE GRID DEMO =====
+  // Shows: 4-column grid with images and descriptions
+  featureGrid: {
+    title: "🧩 組件系統特色",
+    features: [
+      {
+        image: "/media/cospaces-share-project-1-1.png",
+        title: "完全通用化",
+        description: "所有組件都經過精心設計，可以適用於任何類型的課程，從技術類到藝術類。"
+      },
+      {
+        image: "/media/cospaces-code-1-1.jpg", 
+        title: "響應式設計",
+        description: "採用現代響應式設計原則，在桌面和移動設備上都有完美的顯示效果。"
+      },
+      {
+        image: "/media/cospaces-ar-1-1.png",
+        title: "互動體驗",
+        description: "包含摺疊式手風琴、視頻嵌入等互動元素，提升用戶參與度。"
+      },
+      {
+        image: "/media/cospaces-3d-1-1.png",
+        title: "模塊化架構",
+        description: "每個組件都是獨立的模塊，可以靈活組合和配置，滿足不同需求。"
+      }
+    ]
+  },
+  
+  // ===== HIGHLIGHTS DEMO =====
+  // Shows: Different icon types and comprehensive feature list
+  highlights: {
+    title: "✨ 系統優勢與特色",
+    icon: "star", // Available: "star", "check", "arrow", "dot"
+    items: [
+      "🎨 像素級完美復刻原始WordPress設計",
+      "🔧 完全通用化，適用於所有課程類型",
+      "📱 100%響應式設計，支持所有設備",
+      "⚡ 基於現代Web技術棧（Astro + TailwindCSS）",
+      "🧩 模塊化組件架構，易於維護和擴展",
+      "🎯 可選區塊設計，靈活配置頁面結構",
+      "🌐 支持中英文內容，完整國際化支持",
+      "🔍 SEO友好，結構化數據完整",
+      "♿ 無障礙設計，符合Web可訪問性標準",
+      "🚀 高性能，快速加載和渲染"
+    ]
+  },
+  
+  // ===== CURRICULUM DEMO =====
+  // Shows: Complex accordion structure with images and detailed content
+  curriculum: {
+    title: "📚 組件使用指南",
+    duration: "完整功能展示",
+    note: "* 以下展示所有組件的配置選項和使用方法",
+    images: [
+      "/media/Screenshot-2023-08-15-104602.png",
+      "/media/Screenshot-2023-08-15-105114.png"
+    ],
+    items: [
+      {
+        title: "🎯 CourseHero 組件 [核心組件]",
+        content: [
+          "✅ 顯示課程標題和副標題",
+          "🏷️ 支持多標籤系統，自動生成連結",
+          "🎥 支持YouTube視頻嵌入（使用videoId）",
+          "🖼️ 支持特色圖片顯示（使用featuredImage）",
+          "🧭 自動生成麵包屑導航",
+          "📝 課程描述文字排版",
+          "🎨 遵循原始設計的顏色方案（青色強調）"
+        ]
+      },
+      {
+        title: "🧩 CourseFeatureGrid 組件 [可選]",
+        content: [
+          "📐 4列響應式網格佈局",
+          "🖼️ 支持圖片 + 標題 + 描述結構",
+          "📱 移動設備自動調整為1-2列",
+          "🎨 圖片自動等比例縮放和居中",
+          "📄 適用於'什麼是X？'類型的說明區塊",
+          "🔧 完全可選 - 不提供數據時不顯示"
+        ]
+      },
+      {
+        title: "⭐ CourseHighlights 組件 [靈活配置]",
+        content: [
+          "🎯 支持多種圖標類型：⭐ 星星、✅ 勾號、➤ 箭頭、• 圓點",
+          "📋 無限制的特色列表項目",
+          "📐 自動2列網格佈局",
+          "🎨 與原始設計完全一致的樣式",
+          "📱 響應式設計，移動端自動調整",
+          "🔧 圖標類型可配置，預設為星星"
+        ]
+      },
+      {
+        title: "📚 CourseContent 組件 [互動手風琴]",
+        content: [
+          "🎵 完整的手風琴（Accordion）功能",
+          "🖼️ 支持課程圖片展示（可選）",
+          "⏱️ 顯示課程時長和備註",
+          "🔧 JavaScript互動功能，點擊展開/收合",
+          "📱 響應式佈局，圖片和內容自動調整",
+          "🎨 與原始WordPress設計完全一致",
+          "🔄 預設展開第一個項目"
+        ]
+      },
+      {
+        title: "🏗️ CourseLayout 組件 [頁面編排]",
+        content: [
+          "🎯 統一的頁面佈局和結構",
+          "🧭 自動包含Header和Footer",
+          "📝 SEO優化的meta標籤",
+          "🔧 條件渲染 - 只顯示提供的區塊",
+          "📞 自動包含聯絡表單區塊",
+          "🎨 一致的間距和視覺層次",
+          "♿ 完整的語意化HTML結構"
+        ]
+      },
+      {
+        title: "🚀 使用方法和最佳實踐",
+        content: [
+          "📋 使用courseData物件配置所有內容",
+          "🔧 所有區塊都是可選的（除了基本資訊）",
+          "🎯 遵循TypeScript介面定義確保類型安全",
+          "📱 無需額外配置即可獲得響應式設計",
+          "🔍 自動生成SEO友好的頁面結構",
+          "🎨 保持與原始設計100%一致的視覺效果",
+          "⚡ 高性能渲染，無額外JavaScript負擔"
+        ]
+      }
+    ]
+  }
+};
+---
+
+<CourseLayout courseData={demoData} /> 

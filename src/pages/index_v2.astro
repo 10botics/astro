@@ -1,0 +1,298 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroWithStats from '../components/homepage/HeroWithStats.astro';
+import FeatureWithLargeIcons from '../components/homepage/FeatureWithLargeIcons.astro';
+import FeatureCentered2x2 from '../components/homepage/FeatureCentered2x2.astro';
+import StatsWithBackground from '../components/homepage/StatsWithBackground.astro';
+import TestimonialsGrid from '../components/homepage/TestimonialsGrid.astro';
+import BlogGrid from '../components/homepage/BlogGrid.astro';
+import PartnersSection from '../components/homepage/PartnersSection.astro';
+import CTAWithImage from '../components/homepage/CTAWithImage.astro';
+import FAQAccordion from '../components/homepage/FAQAccordion.astro';
+
+// Hero section data
+const heroData = {
+  title: "專注 STEM 課程研發及教學",
+  subtitle: "STEM 到校課程",
+  description: "教材及課程是由我們專業 STEM 團隊開發，提供創新及完整的 STEM 到校課程，旨在使孩子和老師通過現實生活中的例子學習困難的概念。",
+  primaryCTA: {
+    text: "STEM 課程概覽",
+    link: "/courses"
+  },
+  secondaryCTA: {
+    text: "聯絡我們",
+    link: "/contact"
+  },
+  stats: [
+    { label: "學員數目", number: "3000+" },
+    { label: "課程數目", number: "50+" },
+    { label: "累計時間", number: "10000+" },
+    { label: "合作學校", number: "50+" }
+  ]
+};
+
+// Featured courses data
+const featuredCourses = [
+  {
+    title: "Donkey Car 無人車入門課程",
+    description: "通過實作無人駕駛與自動駕駛，培養學生對AI和資訊科技的興趣。課程包括深度學習、卷積神經網路，使用Python和Tensorflow控制無人車。",
+    image: "/images/donkey-car.jpg"
+  },
+  {
+    title: "Kerbal Space Program 太空任務設計證書課程",
+    description: "學生將進入迷人的太空科學世界，建構火箭、掌握推力、軌道、重力等核心概念。他們將學習如何計劃和執行成功的發射任務。",
+    image: "/images/ksp.jpg"
+  },
+  {
+    title: "Raspberry Pi 入門課程",
+    description: "課程旨在幫助學生掌握 Raspberry Pi 及 Python 編程的基礎知識，以致配合機器學習和人工智慧，進行人體姿態檢測等。",
+    image: "/images/raspberry-pi.jpg"
+  },
+  {
+    title: "Minecraft 校園創建課程",
+    description: "課程讓學生運用地理、數學、藝術等知識，學習Minecraft編程，完成校園及社區建築。融入遊戲提升學習興趣，達致自主學習。",
+    image: "/images/minecraft.jpg"
+  }
+];
+
+// Services data with icons
+const servicesData = [
+  {
+    title: "到校課程",
+    description: "針對學校的需要特別設計課程及方案，開設新穎有趣的STEM課程，讓每位學生發揮創意，實現所想。",
+    iconColor: "blue-600",
+    iconPath: "M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+  },
+  {
+    title: "STEM Day",
+    description: "全力支援學校籌辦STEM day，讓學生對STEM有更加深入的認識，曠闊視野。",
+    iconColor: "green-600", 
+    iconPath: "M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+  },
+  {
+    title: "人工智能課程",
+    description: "為不同學生提供一系列AI智能課程選擇，把現實生活的例子中帶進複雜的課程中，令學習變得輕鬆及有趣。",
+    iconColor: "purple-600",
+    iconPath: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+  }
+];
+
+// Statistics data
+const statsData = {
+  title: "我們的成就",
+  subtitle: "數據證明我們的實力",
+  backgroundImage: "/images/stem-classroom.jpg",
+  stats: [
+    { label: "學員數目", value: "3000+", description: "累積培訓學生" },
+    { label: "課程數目", value: "50+", description: "專業開發課程" },
+    { label: "累計時間", value: "10000+", description: "教學時數" },
+    { label: "合作學校", value: "50+", description: "合作伙伴學校" }
+  ]
+};
+
+// Testimonials data
+const testimonialsData = [
+  {
+    content: "很好的體驗活動，操作亦簡單易明，本校中學生都很喜歡這個AI體驗活動，而當天到校參觀的小學生玩得很開心，氣氛熱鬧。",
+    author: "中華基督教會方潤華中學",
+    role: "學校代表",
+    avatar: "/images/testimonial-1.jpg"
+  },
+  {
+    content: "同學們在比賽日中更奪得「校園創建一等獎」及「積極投入獎」。其中，本校鍾嘉俊同學更獲得「傑出學生獎」，實在可喜可賀！",
+    author: "天保民學校陳校長",
+    role: "校長",
+    avatar: "/images/testimonial-2.jpg"
+  },
+  {
+    content: "參與 Minecraft 校園創建計劃，是一次難得的體驗。我校學生與聖安多尼學校的同學攜手，在比賽中展現出極佳的合作精神。",
+    author: "香港紅十字會甘迺迪中心",
+    role: "馮耀宗老師",
+    avatar: "/images/testimonial-3.jpg"
+  }
+];
+
+// News/Blog data
+const newsData = [
+  {
+    title: "【匯豐香港社區夥伴計劃】社區創新科技大賽 Hackathon 2024",
+    excerpt: "今年，10教育有幸可以成為「匯豐香港社區夥伴計劃」之其中一個項目 – 社區創新科技大賽 Hackathon 2024 之宣傳夥伴🎊 本次比賽支持學校",
+    image: "/images/hackathon-2024.jpg",
+    date: "2024年9月10日",
+    category: "比賽",
+    slug: "hackathon-2024"
+  },
+  {
+    title: "Minecraft校園創建計劃2024 共融大世界－天保民學校陳校長的話",
+    excerpt: "本校同學於本學年參加了由「10教育」舉辦的「Minecraft校園創建計劃2024 —— 共融大世界」活動。經過了三個月的學習和實踐，同學們終於在群策群力之下，創建了第一所「Minecraft校園」。",
+    image: "/images/minecraft-school.jpg",
+    date: "2024年9月4日",
+    category: "活動",
+    slug: "minecraft-2024-school"
+  },
+  {
+    title: "香港紅十字會甘迺迪中心 馮耀宗老師的話",
+    excerpt: "參與 Minecraft 校園創建計劃，是一次難得的體驗，我校學生與聖安多尼學校的同學攜手，在比賽中展現出極佳的合作精神。",
+    image: "/images/minecraft-collaboration.jpg",
+    date: "2024年9月4日", 
+    category: "合作",
+    slug: "minecraft-collaboration"
+  }
+];
+
+// Partners data
+const partnersData = [
+  {
+    name: "保良局蔡繼有學校",
+    logo: "/images/partners/pui-ling-school.png",
+    url: "#"
+  },
+  {
+    name: "聖類斯中學",
+    logo: "/images/partners/st-louis-school.png",
+    url: "#"
+  },
+  {
+    name: "九龍華仁書院",
+    logo: "/images/partners/wah-yan-college.png",
+    url: "#"
+  },
+  {
+    name: "英皇書院",
+    logo: "/images/partners/kings-college.png",
+    url: "#"
+  },
+  {
+    name: "香港中文大學",
+    logo: "/images/partners/cuhk.png",
+    url: "#"
+  },
+  {
+    name: "香港資優教育學苑",
+    logo: "/images/partners/hkage.png", 
+    url: "#"
+  },
+  {
+    name: "中大賽馬會智為未來計劃",
+    logo: "/images/partners/cuhk-jockey-club.png",
+    url: "#"
+  },
+  {
+    name: "香港教育城",
+    logo: "/images/partners/hkedcity.png",
+    url: "#"
+  }
+];
+
+// CTA data
+const ctaData = {
+  title: "準備好開始您的 STEM 之旅了嗎？",
+  description: "立即聯絡我們，了解更多關於我們的創新 STEM 課程如何為您的學生帶來改變。",
+  primaryButton: {
+    text: "索取課程總覽",
+    link: "/courses"
+  },
+  secondaryButton: {
+    text: "預約諮詢",
+    link: "/contact"
+  },
+  image: "/images/stem-students.jpg"
+};
+
+// FAQ data
+const faqData = [
+  {
+    question: "10教育提供什麼類型的 STEM 課程？",
+    answer: "我們提供多元化的 STEM 課程，包括人工智能、機器人技術、編程、Minecraft 創建、無人車製作等。所有課程都由我們的專業團隊開發，適合不同年齡層的學生。"
+  },
+  {
+    question: "如何為我們學校安排到校課程？",
+    answer: "您可以通過我們的網站聯絡表格或致電我們的辦公室。我們的團隊會與您討論學校的具體需求，為您度身定制最適合的課程方案。"
+  },
+  {
+    question: "課程是否包括所需的硬件設備？",
+    answer: "是的，我們的課程包括所有必需的硬件設備和學習材料。我們也提供硬件外借服務，協助學校解決大量硬件需求。"
+  },
+  {
+    question: "你們如何支援教師培訓？",
+    answer: "我們定期舉辦教師工作坊，為教師提供 STEM 培訓，包括實踐 STEM 教學應用及教案編寫。我們相信教師培訓是成功實施 STEM 教育的關鍵。"
+  },
+  {
+    question: "是否協助學校申請教育撥款？",
+    answer: "是的，我們設有「奇趣it識多啲」計劃、「中學IT 創新實驗室」等 STEM 教育資助項目，協助學校申請相關的教育撥款。"
+  }
+];
+---
+
+<Layout title="10教育 - 香港領先的 STEM 教育專家 | 創新科技課程">
+  <main>
+    <!-- Hero Section with Stats -->
+    <HeroWithStats 
+      title={heroData.title}
+      subtitle={heroData.subtitle}
+      description={heroData.description}
+      primaryCta={heroData.primaryCTA}
+      secondaryCta={heroData.secondaryCTA}
+      stats={heroData.stats}
+    />
+
+    <!-- Featured Courses Section -->
+    <FeatureCentered2x2 
+      sectionTitle="精選課程"
+      sectionSubtitle="我們為學生精心設計的專業 STEM 課程"
+      features={featuredCourses}
+    />
+
+    <!-- Services Section -->
+    <FeatureWithLargeIcons 
+      sectionTitle="我們的服務"
+      sectionSubtitle="提供一系列STEM教育資源和方案"
+      features={servicesData}
+    />
+
+    <!-- Statistics Section -->
+    <StatsWithBackground 
+      title={statsData.title}
+      subtitle={statsData.subtitle}
+      backgroundImage={statsData.backgroundImage}
+      stats={statsData.stats}
+    />
+
+    <!-- Testimonials Section -->
+    <TestimonialsGrid 
+      sectionTitle="客戶評價"
+      sectionSubtitle="來自我們合作學校的真實回饋"
+      testimonials={testimonialsData}
+    />
+
+    <!-- News Section -->
+    <BlogGrid 
+      sectionTitle="最新消息"
+      sectionSubtitle="關注我們的最新活動和成就"
+      posts={newsData}
+    />
+
+    <!-- Partners Section -->
+    <PartnersSection 
+      sectionTitle="客戶及合作機構"
+      sectionSubtitle="感謝所有信任我們的學校和機構"
+      partners={partnersData}
+    />
+
+    <!-- FAQ Section -->
+    <FAQAccordion 
+      sectionTitle="常見問題"
+      sectionSubtitle="解答您對我們 STEM 課程的疑問"
+      faqs={faqData}
+    />
+
+    <!-- Call to Action -->
+    <CTAWithImage 
+      title={ctaData.title}
+      description={ctaData.description}
+      primaryButton={ctaData.primaryButton}
+      secondaryButton={ctaData.secondaryButton}
+      image={ctaData.image}
+    />
+  </main>
+</Layout> 

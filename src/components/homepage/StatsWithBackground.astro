@@ -1,0 +1,45 @@
+---
+// Stats section with background - Tailwind UI pattern
+export interface Props {
+  title: string;
+  description: string;
+  backgroundImage?: string;
+  stats: Array<{
+    number: string;
+    label: string;
+    description?: string;
+  }>;
+}
+
+const { title, description, backgroundImage, stats } = Astro.props;
+---
+
+<section class="relative bg-gray-900 py-24 sm:py-32">
+  {backgroundImage && (
+    <div class="absolute inset-0">
+      <img src={backgroundImage} alt="" class="h-full w-full object-cover opacity-20" />
+      <div class="absolute inset-0 bg-gray-900/75"></div>
+    </div>
+  )}
+  
+  <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl lg:mx-0">
+      <h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">{title}</h2>
+      <p class="mt-6 text-lg leading-8 text-gray-300">{description}</p>
+    </div>
+    
+    <div class="mx-auto mt-16 flex max-w-2xl flex-col gap-8 lg:mx-0 lg:mt-20 lg:max-w-none lg:flex-row lg:items-end">
+      {stats.map((stat) => (
+        <div class="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-gray-50 p-8 sm:w-3/4 sm:max-w-md sm:flex-row-reverse sm:items-end lg:w-72 lg:max-w-none lg:flex-none lg:flex-col lg:items-start">
+          <p class="flex-none text-3xl font-bold tracking-tight text-gray-900">{stat.number}</p>
+          <div class="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
+            <p class="text-lg font-semibold leading-6 text-gray-900">{stat.label}</p>
+            {stat.description && (
+              <p class="mt-2 text-base leading-7 text-gray-600">{stat.description}</p>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section> 

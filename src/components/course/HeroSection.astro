@@ -1,0 +1,90 @@
+---
+export interface Props {
+  title: string;
+  subtitle: string;
+  tags: string[];
+  videoId: string;
+  description: string;
+  featuredImage?: string;
+}
+
+const { title, subtitle, tags, videoId, description, featuredImage } = Astro.props;
+---
+
+<!-- Clean white background to match original -->
+<section class="bg-white py-8">
+  <div class="container mx-auto px-4 max-w-6xl">
+    <!-- Breadcrumbs - exact match to original style -->
+    <nav class="text-sm mb-6 text-gray-600">
+      <a href="/" class="text-cyan-400 hover:text-cyan-600">首頁</a>
+      <span class="mx-2">»</span>
+      <a href="/school-courses/" class="text-cyan-400 hover:text-cyan-600">到校課程</a>
+      <span class="mx-2">»</span>
+      <span class="text-gray-800">{title}</span>
+    </nav>
+
+    <!-- Title Section - match original typography -->
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold text-gray-900 mb-4" style="color: #1e293b;">{title}</h1>
+      <p class="text-xl text-gray-700 mb-6">{subtitle}</p>
+      
+      <!-- Tags - match original style with cyan links -->
+      <div class="flex flex-wrap gap-1 items-center mb-8">
+        <i class="fas fa-tags text-cyan-400 mr-2"></i>
+        {tags.map((tag, index) => (
+          <span class="text-sm">
+            <a href={`/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`} 
+               class="text-cyan-400 hover:text-cyan-600 transition-colors">
+              {tag}
+            </a>
+            {index < tags.length - 1 && <span class="text-gray-400 mx-1">,</span>}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Video and Description Section - match original layout -->
+<section class="bg-white py-8">
+  <div class="container mx-auto px-4 max-w-6xl">
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+      <!-- Video Section - exact positioning as original -->
+      <div class="order-1">
+        <div class="aspect-video bg-black rounded-lg overflow-hidden shadow-lg">
+          <iframe 
+            src={`https://www.youtube.com/embed/${videoId}?controls=1&rel=0`}
+            class="w-full h-full"
+            frameborder="0"
+            allowfullscreen
+            title="課程簡介影片">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Description Section - match original styling -->
+      <div class="order-2">
+        <div class="bg-white">
+          <p class="text-base text-gray-700 leading-relaxed">
+            {description}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Image Section -->
+{featuredImage && (
+  <section class="bg-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <img 
+          src={featuredImage} 
+          alt={title}
+          class="w-full h-auto rounded-lg shadow-md"
+        />
+      </div>
+    </div>
+  </section>
+)} 

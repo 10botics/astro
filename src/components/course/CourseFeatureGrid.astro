@@ -1,0 +1,40 @@
+---
+export interface FeatureItem {
+  image: string;
+  title: string;
+  description: string;
+}
+
+export interface Props {
+  sectionTitle: string;     // e.g., "什麼是 CoSpaces？", "什麼是 Scratch？"
+  features: FeatureItem[];  // 4 feature items
+}
+
+const { sectionTitle, features } = Astro.props;
+---
+
+{features.length > 0 && (
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center" style="color: #1e293b;">{sectionTitle}</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {features.map((feature) => (
+          <div class="text-center">
+            <!-- Feature Image -->
+            <div class="mb-4 flex justify-center">
+              <img 
+                src={feature.image} 
+                alt={feature.title}
+                class="w-64 h-64 object-contain rounded-lg"
+              />
+            </div>
+            
+            <!-- Feature Description -->
+            <p class="text-gray-700 text-base leading-relaxed">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)} 

@@ -1,0 +1,273 @@
+---
+// Navigation items matching 10botics.com structure exactly
+const navItems = [
+  { 
+    name: '首頁', 
+    href: '/',
+    children: null
+  },
+  { 
+    name: '最新消息', 
+    href: '/news',
+    children: null
+  },
+  { 
+    name: '到校服務', 
+    href: '#',
+    children: [
+      { name: '到校課程總覽', href: '/school-courses' },
+      { name: 'AI人工智能課程', href: '/school-courses/ai-courses' },
+      { name: 'STEM Day', href: '/stemday' },
+      { name: '教師發展日', href: '/staff-development-day' }
+    ]
+  },
+  { 
+    name: '比賽', 
+    href: '#',
+    children: [
+      { name: '第三屆 校際AI藝術創作大賽', href: '/ai-art-competition-2025' },
+      { name: '學界無人機救援挑戰賽', href: '/competition-drone2024' },
+      { name: 'Minecraft 校園創建計劃2024', href: '/competition-minecraft2024' },
+      { name: '香港校際 AI 方程式', href: 'https://formula-ai.racing' },
+      { name: '香港航天電競大賽 2022', href: '/competition-ksp2022' },
+      { 
+        name: '過往比賽', 
+        href: '#',
+        children: [
+          { name: '校際AI藝術創作大賽2024', href: '/ai-art-competition-2024' },
+          { name: 'Minecraft 校園創建計劃2023', href: '/competition-minecraft2023' },
+          { name: '校際AI藝術創作大賽2023', href: 'https://art.10botics.com' },
+          { name: 'Minecraft 校園創建計劃2022', href: '/competition-minecraft2022' },
+          { name: 'Minecraft 校園創建計劃2021', href: '/competition-minecraft2021' }
+        ]
+      }
+    ]
+  },
+  { 
+    name: '資助申請', 
+    href: '#',
+    children: [
+      { name: '「IT創新實驗室」', href: '/funding-application/it-innovation-lab' },
+      { name: '「奇趣it識多啲」', href: '/funding-application/knowing-more-about-it' }
+    ]
+  },
+  { 
+    name: '關於我們', 
+    href: '#',
+    children: [
+      { name: '關於我們', href: '/about' },
+      { name: '聯絡我們', href: '/contact-us' },
+      { name: '加入我們', href: '/join-us' }
+    ]
+  },
+  { 
+    name: '線上STEM SHOWROOM', 
+    href: '/stem-showroom',
+    children: null
+  },
+  { 
+    name: '索取課程總覽', 
+    href: 'https://or0uzdua.paperform.co',
+    children: null
+  }
+];
+---
+
+<header class="bg-white shadow-sm border-b border-gray-200 relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="/" class="flex items-center">
+          <img 
+            src="/images/logo_website_700x200-300x86.png" 
+            alt="10教育" 
+            class="h-8 w-auto"
+          />
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex space-x-8">
+        {navItems.map((item) => (
+          <div class="relative group">
+            <a
+              href={item.href}
+              class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200 flex items-center"
+            >
+              {item.name}
+              {item.children && (
+                <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              )}
+            </a>
+            
+            {/* Dropdown Menu */}
+            {item.children && (
+              <div class="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-200">
+                <div class="py-2">
+                  {item.children.map((child) => (
+                    <div class="relative group/sub">
+                      <a
+                        href={child.href}
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150 flex items-center justify-between"
+                      >
+                        {child.name}
+                        {child.children && (
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                          </svg>
+                        )}
+                      </a>
+                      
+                      {/* Sub-dropdown for 過往比賽 */}
+                      {child.children && (
+                        <div class="absolute left-full top-0 w-64 bg-white rounded-md shadow-lg opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 z-50 border border-gray-200">
+                          <div class="py-2">
+                            {child.children.map((subChild) => (
+                              <a
+                                href={subChild.href}
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150"
+                              >
+                                {subChild.name}
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+      </nav>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button
+          type="button"
+          class="text-gray-700 hover:text-blue-600 focus:outline-none focus:text-blue-600"
+          id="mobile-menu-button"
+        >
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="md:hidden hidden" id="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        {navItems.map((item) => (
+          <div class="mobile-menu-item">
+            <a
+              href={item.href}
+              class="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium transition-colors duration-200 flex items-center justify-between"
+              data-has-children={item.children ? 'true' : 'false'}
+            >
+              {item.name}
+              {item.children && (
+                <svg class="w-4 h-4 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              )}
+            </a>
+            
+            {/* Mobile Submenu */}
+            {item.children && (
+              <div class="mobile-submenu hidden pl-4">
+                {item.children.map((child) => (
+                  <div class="mobile-sub-item">
+                    <a
+                      href={child.href}
+                      class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200 flex items-center justify-between"
+                      data-has-children={child.children ? 'true' : 'false'}
+                    >
+                      {child.name}
+                      {child.children && (
+                        <svg class="w-4 h-4 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      )}
+                    </a>
+                    
+                    {/* Mobile Sub-submenu */}
+                    {child.children && (
+                      <div class="mobile-sub-submenu hidden pl-4">
+                        {child.children.map((subChild) => (
+                          <a
+                            href={subChild.href}
+                            class="block px-3 py-2 text-xs text-gray-500 hover:text-blue-600 transition-colors duration-200"
+                          >
+                            {subChild.name}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+
+  // Mobile submenu toggle (level 1)
+  const mobileMenuItems = document.querySelectorAll('.mobile-menu-item');
+  
+  mobileMenuItems.forEach(item => {
+    const link = item.querySelector('a[data-has-children="true"]');
+    const submenu = item.querySelector('.mobile-submenu');
+    const arrow = link?.querySelector('svg');
+    
+    if (link && submenu) {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        submenu.classList.toggle('hidden');
+        arrow?.classList.toggle('rotate-180');
+      });
+    }
+  });
+
+  // Mobile sub-submenu toggle (level 2 - for 過往比賽)
+  const mobileSubItems = document.querySelectorAll('.mobile-sub-item');
+  
+  mobileSubItems.forEach(item => {
+    const link = item.querySelector('a[data-has-children="true"]');
+    const subSubmenu = item.querySelector('.mobile-sub-submenu');
+    const arrow = link?.querySelector('svg');
+    
+    if (link && subSubmenu) {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        subSubmenu.classList.toggle('hidden');
+        arrow?.classList.toggle('rotate-180');
+      });
+    }
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!mobileMenu?.contains(e.target) && !mobileMenuButton?.contains(e.target)) {
+      mobileMenu?.classList.add('hidden');
+    }
+  });
+</script> 

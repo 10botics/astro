@@ -1,0 +1,135 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+// SEO optimized homepage data
+const pageTitle = "10教育 - 香港專業STEM及人工智能課程教育機構";
+const pageDescription = "香港領先的STEM教育機構，提供AI人工智能、Scratch編程、機器人技術、Arduino硬件編程等專業到校課程服務。專業導師團隊，創新教學方法，培養未來科技人才。";
+const pageKeywords = "STEM教育, AI課程, 人工智能, Scratch編程, 機器人課程, Arduino, 編程教育, 到校服務, 香港, 10教育, 10Botics";
+---
+
+<Layout 
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  ogImage="/images/og/homepage.jpg"
+>
+  <div class="min-h-screen bg-gray-50">
+    <main>
+      <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
+        <div class="container mx-auto px-4">
+          <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-6xl font-bold mb-6">10教育</h1>
+            <h2 class="text-2xl mb-8 opacity-90">專業STEM及人工智能課程教育機構</h2>
+            <p class="text-xl mb-12 opacity-80">
+              提供創新的STEM教育課程，包括AI人工智能、Scratch編程、機器人技術等專業到校服務
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="/school-courses" 
+                 class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                瀏覽課程
+              </a>
+              <a href="/contact" 
+                 class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+                聯絡我們
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16">
+        <div class="container mx-auto px-4">
+          <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">我們的STEM課程</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+              <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+                <div class="text-4xl mb-4">🤖</div>
+                <h3 class="text-xl font-bold mb-4">AI人工智能</h3>
+                <p class="text-gray-600 mb-6">學習機器學習、深度學習及AI應用開發，培養未來科技領袖</p>
+                <a href="/school-courses" class="text-blue-600 hover:text-blue-800 font-semibold">了解更多 →</a>
+              </div>
+              
+              <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+                <div class="text-4xl mb-4">💻</div>
+                <h3 class="text-xl font-bold mb-4">Scratch編程</h3>
+                <p class="text-gray-600 mb-6">透過視覺化編程語言，讓學生輕鬆學習程式設計基礎</p>
+                <a href="/school-courses" class="text-blue-600 hover:text-blue-800 font-semibold">了解更多 →</a>
+              </div>
+              
+              <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+                <div class="text-4xl mb-4">🔧</div>
+                <h3 class="text-xl font-bold mb-4">硬件編程</h3>
+                <p class="text-gray-600 mb-6">Arduino、Raspberry Pi等硬件編程，結合軟硬件學習</p>
+                <a href="/school-courses" class="text-blue-600 hover:text-blue-800 font-semibold">了解更多 →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-blue-50 py-16">
+        <div class="container mx-auto px-4">
+          <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-8 text-gray-800">為什麼選擇10教育？</h2>
+            <div class="grid md:grid-cols-2 gap-8 text-left">
+              <div class="flex items-start space-x-4">
+                <div class="text-2xl">✅</div>
+                <div>
+                  <h3 class="text-lg font-bold mb-2">專業導師團隊</h3>
+                  <p class="text-gray-600">擁有豐富STEM教育經驗的專業導師，提供高質量教學服務</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start space-x-4">
+                <div class="text-2xl">🎯</div>
+                <div>
+                  <h3 class="text-lg font-bold mb-2">客製化課程</h3>
+                  <p class="text-gray-600">根據學校需求和學生程度，量身定制適合的STEM課程內容</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start space-x-4">
+                <div class="text-2xl">🏆</div>
+                <div>
+                  <h3 class="text-lg font-bold mb-2">實作導向</h3>
+                  <p class="text-gray-600">注重動手實作，讓學生在做中學，培養解決問題的能力</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start space-x-4">
+                <div class="text-2xl">📈</div>
+                <div>
+                  <h3 class="text-lg font-bold mb-2">跟上時代</h3>
+                  <p class="text-gray-600">課程內容與時俱進，涵蓋最新的科技趨勢和應用</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16">
+        <div class="container mx-auto px-4">
+          <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-8 text-gray-800">開始您的STEM教育之旅</h2>
+            <p class="text-xl text-gray-600 mb-8">
+              立即聯絡我們，為您的學校量身打造最適合的STEM課程
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="/school-courses" 
+                 class="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                瀏覽所有課程
+              </a>
+              <a href="/contact" 
+                 class="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors">
+                聯絡我們
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</Layout> 

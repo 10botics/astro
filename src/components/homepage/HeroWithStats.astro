@@ -1,0 +1,61 @@
+---
+// Hero section with stats - Tailwind UI pattern
+export interface Props {
+  title: string;
+  subtitle: string;
+  description: string;
+  primaryCta: {
+    text: string;
+    link: string;
+  };
+  secondaryCta: {
+    text: string;
+    link: string;
+  };
+  backgroundImage?: string;
+  stats: Array<{
+    number: string;
+    label: string;
+  }>;
+}
+
+const { title, subtitle, description, primaryCta, secondaryCta, backgroundImage, stats } = Astro.props;
+---
+
+<section class="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+  {backgroundImage && (
+    <div class="absolute inset-0">
+      <img src={backgroundImage} alt="" class="w-full h-full object-cover opacity-20" />
+      <div class="absolute inset-0 bg-gradient-to-r from-blue-600/90 to-blue-800/90"></div>
+    </div>
+  )}
+  
+  <div class="relative mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-base font-semibold leading-7 text-blue-200">{subtitle}</h2>
+      <p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">{title}</p>
+      <p class="mt-6 text-lg leading-8 text-blue-100">{description}</p>
+      
+      <div class="mt-10 flex items-center justify-center gap-x-6">
+        <a href={primaryCta.link} class="rounded-md bg-white px-6 py-3 text-base font-semibold text-blue-600 shadow-sm hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors">
+          {primaryCta.text}
+        </a>
+        <a href={secondaryCta.link} class="text-base font-semibold leading-6 text-white hover:text-blue-200 transition-colors">
+          {secondaryCta.text} <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Stats -->
+    <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
+      <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-4 lg:gap-y-16">
+        {stats.map((stat) => (
+          <div class="flex flex-col gap-y-3 text-center">
+            <dt class="text-base leading-7 text-blue-200">{stat.label}</dt>
+            <dd class="order-first text-3xl font-semibold tracking-tight text-white">{stat.number}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </div>
+</section> 

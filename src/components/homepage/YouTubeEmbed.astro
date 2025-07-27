@@ -1,0 +1,36 @@
+---
+// YouTube Embed Component for STEM Showroom
+export interface Props {
+  videoId: string;
+  title: string;
+  description?: string;
+  autoplay?: boolean;
+}
+
+const { videoId, title, description, autoplay = false } = Astro.props;
+---
+
+<section class="py-16 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Video Container -->
+    <div class="relative w-full max-w-4xl mx-auto">
+      <div class="relative w-full" style="padding-bottom: 56.25%; /* 16:9 aspect ratio */">
+        <iframe
+          class="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
+          src={`https://www.youtube.com/embed/${videoId}${autoplay ? '?autoplay=1' : ''}`}
+          title={title}
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+    
+    <!-- Optional Description -->
+    {description && (
+      <div class="mt-8 text-center max-w-3xl mx-auto">
+        <p class="text-lg text-gray-600">{description}</p>
+      </div>
+    )}
+  </div>
+</section> 

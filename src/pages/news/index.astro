@@ -1,0 +1,251 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+// Get all news articles
+const allNews = await getCollection('news');
+
+// Sort by publication date (newest first)
+const sortedNews = allNews.sort((a, b) => 
+  new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
+);
+
+// Get unique categories
+const categories = [...new Set(allNews.map(article => article.data.category))];
+
+// SEO optimized page data
+const pageTitle = "最新消息 - 10教育活動回顧與教育資訊";
+const pageDescription = `瀏覽10教育的最新消息和活動回顧，包括STEM教師培訓、AI教育講座、學校合作等專業教育服務。共${allNews.length}篇文章，持續更新教育資訊。`;
+const pageKeywords = "10教育最新消息, STEM教育活動, AI教師培訓, 學校合作, 教育講座, 過往活動回顧";
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  ogImage="/images/og/news-overview.jpg"
+>
+  <main class="news-listing">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-5xl font-bold mb-6">最新消息</h1>
+          <p class="text-xl opacity-90 mb-8">
+            瀏覽10教育的最新活動回顧、教育資訊與專業服務
+          </p>
+          <div class="text-sm opacity-80">
+            共 {allNews.length} 篇文章
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Category Filter -->
+    <section class="py-8 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="flex flex-wrap justify-center gap-4">
+            <button 
+              class="category-filter active bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors"
+              data-category="all"
+            >
+              所有文章
+            </button>
+            {categories.map((category) => (
+              <button 
+                class="category-filter bg-white text-gray-700 px-6 py-2 rounded-full border border-gray-300 hover:bg-blue-50 hover:border-blue-300 transition-colors"
+                data-category={category}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- News Articles Grid -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="news-grid">
+            {sortedNews.map((article) => (
+              <article 
+                class="news-card bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
+                data-category={article.data.category}
+              >
+                <!-- Featured Image -->
+                {article.data.featuredImage && (
+                  <div class="aspect-video bg-gray-200 overflow-hidden">
+                    <Image 
+                      src={article.data.featuredImage} 
+                      alt={article.data.title}
+                      class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                      width={400}
+                      height={225}
+                    />
+                  </div>
+                )}
+
+                <div class="p-6">
+                  <!-- Category Badge -->
+                  <div class="mb-3">
+                    <span class="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded-full">
+                      {article.data.category}
+                    </span>
+                  </div>
+
+                  <!-- Title -->
+                  <h3 class="text-xl font-bold mb-3 text-gray-800 line-clamp-2">
+                    <a 
+                      href={`/news/${article.slug}`}
+                      class="hover:text-blue-600 transition-colors"
+                    >
+                      {article.data.title}
+                    </a>
+                  </h3>
+
+                  <!-- Excerpt -->
+                  <p class="text-gray-600 text-sm line-clamp-3 mb-4">
+                    {article.data.excerpt}
+                  </p>
+
+                  <!-- Meta Information -->
+                  <div class="flex items-center justify-between text-xs text-gray-500 mb-4">
+                    <div class="flex items-center space-x-4">
+                      <span>
+                        📅 {new Date(article.data.publishDate).toLocaleDateString('zh-HK')}
+                      </span>
+                      {article.data.school && (
+                        <span>
+                          🏫 {article.data.school}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <!-- Tags -->
+                  <div class="flex flex-wrap gap-1 mb-4">
+                    {article.data.tags.slice(0, 2).map((tag) => (
+                      <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">
+                        {tag}
+                      </span>
+                    ))}
+                    {article.data.tags.length > 2 && (
+                      <span class="text-gray-500 text-xs px-2 py-1">
+                        +{article.data.tags.length - 2}
+                      </span>
+                    )}
+                  </div>
+
+                  <!-- Read More Button -->
+                  <a 
+                    href={`/news/${article.slug}`}
+                    class="inline-block w-full text-center bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors text-sm font-medium"
+                  >
+                    閱讀全文 →
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+          
+          <!-- No results message (hidden by default) -->
+          <div id="no-results" class="hidden text-center py-12">
+            <div class="text-gray-500 text-lg">
+              沒有找到符合條件的文章
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-blue-50 py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-3xl font-bold mb-6 text-gray-800">了解更多10教育服務</h2>
+          <p class="text-lg text-gray-600 mb-8">
+            想為您的學校帶來創新的STEM教育體驗？立即聯絡我們了解更多服務詳情。
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a 
+              href="/school-courses" 
+              class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+            >
+              瀏覽課程服務
+            </a>
+            <a 
+              href="/contact-us" 
+              class="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors"
+            >
+              聯絡我們
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script>
+  // Category filtering functionality
+  const categoryFilters = document.querySelectorAll('.category-filter');
+  const newsCards = document.querySelectorAll('.news-card');
+  const noResults = document.getElementById('no-results');
+
+  categoryFilters.forEach(filter => {
+    filter.addEventListener('click', () => {
+      const category = filter.dataset.category;
+      
+      // Update active state
+      categoryFilters.forEach(f => f.classList.remove('active', 'bg-blue-600', 'text-white'));
+      categoryFilters.forEach(f => f.classList.add('bg-white', 'text-gray-700'));
+      
+      filter.classList.add('active', 'bg-blue-600', 'text-white');
+      filter.classList.remove('bg-white', 'text-gray-700');
+      
+      // Filter articles
+      let visibleCount = 0;
+      
+      newsCards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'block';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      
+      // Show/hide no results message
+      if (visibleCount === 0) {
+        noResults.classList.remove('hidden');
+      } else {
+        noResults.classList.add('hidden');
+      }
+    });
+  });
+</script>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .aspect-video {
+    aspect-ratio: 16 / 9;
+  }
+</style> 

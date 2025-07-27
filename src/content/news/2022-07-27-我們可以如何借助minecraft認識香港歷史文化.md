@@ -1,0 +1,44 @@
+---
+title: "我們可以如何借助Minecraft認識香港歷史文化？"
+excerpt: "![](https://staging.10botics.com/wp-content/uploads/2022/07/Fire-Dragon-Master-Fai-Gor-shares-his-tale-of-being-a-Tai-Hang-boy-Hong-Kong-Free-Press-HKFP.jpeg)
+
+##..."
+publishDate: 2022-07-27
+featuredImage: "../../assets/images/news/2022-07-27-我們可以如何借助minecraft認識香港歷史文化/image1.png"
+category: "文章"
+tags: []
+author: "jacksonchan"
+isFeatured: false
+externalLink: "https://10botics.com/blog/2022/07/27/intangible-cultural-heritage/"
+wpSlug: "我們可以如何借助minecraft認識香港歷史文化"
+wpDate: "2022/07/27"
+readingTime: 1
+---
+
+![](https://staging.10botics.com/wp-content/uploads/2022/07/Fire-Dragon-Master-Fai-Gor-shares-his-tale-of-being-a-Tai-Hang-boy-Hong-Kong-Free-Press-HKFP.jpeg)
+
+## 認識香港歷史文化之必要性
+
+香港的歷史文化，尤其是非物質文化遺產，看似與同學毫不相干。而同學學習這些範疇時，往往因覺得課程與他日常生活無關，十分沉悶，因而沒有動機去認真地學習。事實上，香港的歷史文化變遷對香港的整體發展影響深遠，不同獨有的文化特色，都是香港的核心價值，前人的努力和經驗都不能夠忘記和忽略。
+
+因此作為新一代年青人，是有責任去了解香港的不同歷史文化的，尤其是即將消失失傳的非物質文化遺產。生活在這個世代，年青人必須擴闊視野，認識自己一直居住的城市的文化。
+
+## Minecraft 如何讓我們認識香港的歷史文化？
+
+![](https://staging.10botics.com/wp-content/uploads/2023/08/fe23e0df604c5527c745fc21aa084aad.png)
+
+同學可在遊戲中親自一手一腳地重製不同現實生活中已經消逝的歷史文化建築和人事，在遊戲中重現這些回憶和光景。現今有許多歷史非物質文化遺產已經瀕臨絕滅，全香港可能只剩數位師傅有相關製作技藝的獨有技能，例如製作廣彩磁器和手工麻雀雕刻，而有部份的歷史文化都是節日性的，例如盂蘭盛會只會在農曆七月出現。因此這印證了為何需要一個自由空間，讓同學不會受時地空間限制下，有效地接觸和了解這些文化。
+
+同學不只是從講座和網絡中了解非物質文化遺產，更重要的是他們能夠親力親為地在Minecraft世界中，建設不同建築和特色工具。這種具互動性的學習方式能提高同學的學習動機，從而增強其學習效率。
+
+## 用Minecraft 呈現盂蘭勝會
+
+![](https://staging.10botics.com/wp-content/uploads/2023/08/6b59ac93287d2d65721c19d8d6c08af8-1024x640.png)
+
+盂蘭勝會（潮州傳統）的多元中華文化，包括但不限於歷史、宗教，甚至是飲食文化，都一定能在Minecraft中以不同的形式再次重現。盂蘭勝會會場內設有不同戲棚和供奉台等。此外，各種潮州工藝和表演藝術，例如潮式紙紮、花牌、粿品餅食及烹調技藝、潮劇表演等，都透過盂蘭勝會這個場域得到充分的展示。
+
+在Minecraft中，同學可以更了解中國傳統潮州祭祀鬼神文化傳承的可行方式，包括以足球場作為場地，搭建不同盂蘭勝會相關的建築，當中包含不同戲棚（神功戲）和「神枱」，以不同物料和方塊重現這些特色文化，更可展現不同潮式紙紮、花牌等等，而同學都可以在活動中發揮自己的創意，設計不同花牌等。
+
+## 結語
+
+同學若能參加這些活動，相信他們就能高效地以有趣的形式認識不同香港的本土文化，更能讓同學反思香港的非物質文化遺產背後的價值，最終可培養同學作為香港人的身份認同感。

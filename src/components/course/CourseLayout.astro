@@ -1,0 +1,110 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CourseHero from './CourseHero.astro';
+import CourseFeatureGrid from './CourseFeatureGrid.astro';
+import CourseHighlights from './CourseHighlights.astro';
+import CourseContent from './CourseContent.astro';
+
+export interface CourseData {
+  // Basic info
+  title: string;
+  subtitle?: string;
+  description: string;
+  tags: string[];
+  
+  // Media
+  videoId?: string;
+  featuredImage?: string;
+  
+  // Optional sections
+  featureGrid?: {
+    title: string;
+    features: Array<{
+      image: string;
+      title: string;
+      description: string;
+    }>;
+  };
+  
+  highlights?: {
+    title: string;
+    items: string[];
+    icon?: string;
+  };
+  
+  curriculum?: {
+    title: string;
+    duration?: string;
+    note?: string;
+    items: Array<{
+      title: string;
+      content: string[];
+    }>;
+    images?: string[];
+  };
+}
+
+export interface Props {
+  courseData: CourseData;
+}
+
+const { courseData } = Astro.props;
+---
+
+<Layout title={courseData.title} description={courseData.description}>
+  <!-- Hero Section - Always present -->
+  <CourseHero
+    title={courseData.title}
+    subtitle={courseData.subtitle}
+    tags={courseData.tags}
+    videoId={courseData.videoId}
+    description={courseData.description}
+    featuredImage={courseData.featuredImage}
+  />
+
+  <!-- Feature Grid Section - Optional -->
+  {courseData.featureGrid && (
+    <CourseFeatureGrid
+      sectionTitle={courseData.featureGrid.title}
+      features={courseData.featureGrid.features}
+    />
+  )}
+
+  <!-- Highlights Section - Optional -->
+  {courseData.highlights && (
+    <CourseHighlights
+      title={courseData.highlights.title}
+      highlights={courseData.highlights.items}
+      icon={courseData.highlights.icon}
+    />
+  )}
+
+  <!-- Curriculum Section - Optional -->
+  {courseData.curriculum && (
+    <CourseContent
+      title={courseData.curriculum.title}
+      duration={courseData.curriculum.duration}
+      note={courseData.curriculum.note}
+      curriculum={courseData.curriculum.items}
+      images={courseData.curriculum.images}
+    />
+  )}
+
+  <!-- Contact Form Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">聯絡我們</h2>
+      
+      <div class="max-w-4xl mx-auto">
+        <iframe 
+          src="https://paperform.co/c/qhmoqcvc" 
+          width="100%" 
+          height="600" 
+          frameborder="0" 
+          class="rounded-lg"
+        >
+        </iframe>
+      </div>
+    </div>
+  </section>
+</Layout> 

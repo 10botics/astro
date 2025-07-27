@@ -1,0 +1,118 @@
+---
+export interface CurriculumItem {
+  title: string;
+  content: string[];
+}
+
+export interface Props {
+  title: string;              // e.g., "課程內容"
+  duration?: string;          // e.g., "共 10 小時"
+  note?: string;              // e.g., "* 可根據學校需要調整"
+  curriculum: CurriculumItem[];
+  images?: string[];          // Optional curriculum images
+}
+
+const { title, duration, note, curriculum, images } = Astro.props;
+---
+
+{curriculum.length > 0 && (
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center" style="color: #1e293b;">{title}</h2>
+      
+      {duration && <p class="text-center text-lg mb-2">{duration}</p>}
+      {note && <p class="text-center text-gray-600 mb-8">{note}</p>}
+      
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <!-- Images Section (if provided) -->
+        {images && images.length > 0 && (
+          <div class="space-y-4">
+            {images.map((image) => (
+              <img 
+                src={image} 
+                alt="課程示例"
+                class="w-full h-auto rounded-lg"
+              />
+            ))}
+          </div>
+        )}
+        
+        <!-- Curriculum Accordion -->
+        <div class="space-y-4">
+          {curriculum.map((item, index) => (
+            <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden">
+              <button 
+                class="accordion-header w-full text-left p-4 bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center"
+                data-target={`accordion-${index}`}
+              >
+                <span class="font-medium text-gray-900">{item.title}</span>
+                <svg 
+                  class="accordion-icon w-5 h-5 text-gray-500 transform transition-transform duration-200"
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              
+              <div 
+                id={`accordion-${index}`}
+                class="accordion-content hidden bg-white"
+              >
+                <div class="p-4 border-t border-gray-200">
+                  <ul class="space-y-2">
+                    {item.content.map((contentItem) => (
+                      <li class="text-gray-700 text-sm">• {contentItem}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+<script>
+  // Accordion functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    
+    accordionHeaders.forEach(header => {
+      header.addEventListener('click', function() {
+        const target = this.getAttribute('data-target');
+        const content = document.getElementById(target);
+        const icon = this.querySelector('.accordion-icon');
+        
+        if (content) {
+          const isHidden = content.classList.contains('hidden');
+          
+          // Close all other accordions
+          document.querySelectorAll('.accordion-content').forEach(item => {
+            item.classList.add('hidden');
+          });
+          document.querySelectorAll('.accordion-icon').forEach(item => {
+            item.classList.remove('rotate-180');
+          });
+          
+          // Toggle current accordion
+          if (isHidden) {
+            content.classList.remove('hidden');
+            icon?.classList.add('rotate-180');
+          }
+        }
+      });
+    });
+    
+    // Open first accordion by default
+    const firstAccordion = document.querySelector('.accordion-content');
+    const firstIcon = document.querySelector('.accordion-icon');
+    if (firstAccordion) {
+      firstAccordion.classList.remove('hidden');
+      firstIcon?.classList.add('rotate-180');
+    }
+  });
+</script> 

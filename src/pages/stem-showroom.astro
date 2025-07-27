@@ -1,0 +1,107 @@
+---
+import Layout from '../layouts/Layout.astro';
+import YouTubeEmbed from '../components/homepage/YouTubeEmbed.astro';
+import FeatureList from '../components/homepage/FeatureList.astro';
+import CTAWithImage from '../components/homepage/CTAWithImage.astro';
+
+// YouTube video data from the original page
+const videoData = {
+  videoId: "PnF4Baw0Syg", // Extracted from: https://www.youtube.com/watch?v=PnF4Baw0Syg
+  title: "探索我們的線上STEM SHOWROOM 課程成果大展示！",
+  description: "線上STEM SHOWROOM是一個虛擬空間，您可以隨時隨地到訪，探索我們的STEM課程所帶來的精彩成果。這裡匯聚了各個人工智能、科學、技術、工程領域的創新項目，把所有課程學習成果具像化。"
+};
+
+// Features from the original page
+const showroomFeatures = [
+  {
+    text: "互動式體驗：與作品互動，深入了解每個項目的背景與創意",
+    icon: "🎯"
+  },
+  {
+    text: "最新課程資訊：了解我們即將開設的STEM課程，讓大家掌握第一手資訊",
+    icon: "📚"
+  },
+  {
+    text: "示範STEMROOM：為學校STEMROOM作示範展示，把各位想像中的STEMROOM呈現出來",
+    icon: "🏫"
+  }
+];
+
+// CTA data
+const ctaData = {
+  title: "準備好探索我們的線上STEM SHOWROOM了嗎？",
+  description: "立即進入我們的虛擬STEM空間，體驗創新科技教育的魅力，看看學生們的精彩作品和學習成果。",
+  primaryButton: {
+    text: "立即探索",
+    link: "#showroom-link" // This would link to the actual VR/3D showroom
+  },
+  secondaryButton: {
+    text: "聯絡我們",
+    link: "/contact"
+  },
+  image: "/images/stem-showroom-virtual.jpg"
+};
+---
+
+<Layout title="線上STEM SHOWROOM - 10教育 | 課程成果大展示">
+  <main>
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-br from-blue-600 to-purple-700">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+          線上STEM SHOWROOM
+        </h1>
+        <h2 class="text-2xl md:text-3xl font-semibold text-blue-100 mb-8">
+          課程成果大展示
+        </h2>
+        <p class="text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
+          {videoData.description}
+        </p>
+      </div>
+    </section>
+
+    <!-- YouTube Video Section -->
+    <YouTubeEmbed 
+      videoId={videoData.videoId}
+      title={videoData.title}
+    />
+
+    <!-- Explore Now Section -->
+    <section class="py-16 bg-blue-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+          立即探索！
+        </h2>
+        <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
+          點擊以下連結進入我們的線上STEM ROOM，開始您的探索之旅：
+        </p>
+        
+        <a 
+          href="#showroom-link" 
+          class="inline-flex items-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
+        >
+          <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-3.586l4.293-4.293A6 6 0 0119 9z"></path>
+          </svg>
+          線上STEM SHOWROOM
+        </a>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <FeatureList 
+      title="SHOWROOM 特色"
+      features={showroomFeatures}
+      backgroundColor="bg-white"
+    />
+
+    <!-- Call to Action -->
+    <CTAWithImage 
+      title={ctaData.title}
+      description={ctaData.description}
+      primaryButton={ctaData.primaryButton}
+      secondaryButton={ctaData.secondaryButton}
+      image={ctaData.image}
+    />
+  </main>
+</Layout> 

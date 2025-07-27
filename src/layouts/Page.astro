@@ -1,0 +1,197 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+  date?: string;
+  updated?: string;
+  author?: string;
+  featuredImage?: string;
+  media?: Array<{
+    type: string;
+    src: string;
+    alt?: string;
+    title?: string;
+    width?: number;
+    height?: number;
+  }>;
+  originalUrl?: string;
+  type?: string;
+}
+
+const { 
+  title, 
+  description, 
+  date, 
+  updated, 
+  author, 
+  featuredImage, 
+  media, 
+  originalUrl, 
+  type 
+} = Astro.props;
+
+const formattedDate = date ? new Date(date).toLocaleDateString('zh-HK') : '';
+const formattedUpdated = updated ? new Date(updated).toLocaleDateString('zh-HK') : '';
+---
+
+<html lang="zh-HK">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    {featuredImage && <meta property="og:image" content={featuredImage} />}
+    {originalUrl && <link rel="canonical" href={originalUrl} />}
+  </head>
+  <body>
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+      <!-- Header -->
+      <header class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">{title}</h1>
+        
+        <div class="flex flex-wrap gap-4 text-sm text-gray-600 mb-4">
+          {formattedDate && (
+            <span>📅 發布日期: {formattedDate}</span>
+          )}
+          {formattedUpdated && (
+            <span>🔄 更新日期: {formattedUpdated}</span>
+          )}
+          {author && (
+            <span>👤 作者: {author}</span>
+          )}
+          {type && (
+            <span>📄 類型: {type}</span>
+          )}
+        </div>
+
+        {featuredImage && (
+          <div class="mb-6">
+            <img 
+              src={featuredImage} 
+              alt={title}
+              class="w-full h-auto rounded-lg shadow-lg"
+            />
+          </div>
+        )}
+
+        {description && (
+          <p class="text-lg text-gray-700 mb-6">{description}</p>
+        )}
+      </header>
+
+      <!-- Main Content -->
+      <main class="prose prose-lg max-w-none">
+        <slot />
+      </main>
+
+      <!-- Media Gallery -->
+      {media && media.length > 0 && (
+        <section class="mt-12">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">📸 相關媒體</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {media.map((item) => (
+              <div class="border rounded-lg overflow-hidden shadow-sm">
+                {item.type === 'image' ? (
+                  <img 
+                    src={item.src} 
+                    alt={item.alt || item.title || ''}
+                    title={item.title || ''}
+                    class="w-full h-48 object-cover"
+                    loading="lazy"
+                  />
+                ) : item.type === 'video' ? (
+                  <div class="aspect-video">
+                    <iframe
+                      src={item.src}
+                      title={item.title || ''}
+                      class="w-full h-full"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen
+                    ></iframe>
+                  </div>
+                ) : null}
+                {(item.alt || item.title) && (
+                  <div class="p-3">
+                    <p class="text-sm text-gray-700">{item.alt || item.title}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- Footer -->
+      <footer class="mt-12 pt-8 border-t border-gray-200">
+        <div class="text-sm text-gray-600">
+          {originalUrl && (
+            <p>🔗 原始網址: <a href={originalUrl} class="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">{originalUrl}</a></p>
+          )}
+          <p class="mt-2">📝 此頁面由 WordPress 內容自動轉換而來</p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
+
+<style>
+  .prose {
+    color: #374151;
+  }
+  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+    color: #111827;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  .prose p {
+    margin-bottom: 1rem;
+    line-height: 1.75;
+  }
+  .prose img {
+    border-radius: 0.5rem;
+    margin: 1.5rem 0;
+  }
+  .prose a {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+  .prose a:hover {
+    color: #1d4ed8;
+  }
+  .prose ul, .prose ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+  .prose li {
+    margin: 0.5rem 0;
+  }
+  .prose blockquote {
+    border-left: 4px solid #e5e7eb;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #6b7280;
+  }
+  .prose code {
+    background-color: #f3f4f6;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+  }
+  .prose pre {
+    background-color: #1f2937;
+    color: #f9fafb;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+  .prose pre code {
+    background-color: transparent;
+    padding: 0;
+    color: inherit;
+  }
+</style> 

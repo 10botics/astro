@@ -1,0 +1,68 @@
+---
+// Feature section with testimonial - Tailwind UI pattern
+export interface Props {
+  title: string;
+  subtitle: string;
+  description: string;
+  features: Array<{
+    name: string;
+    description: string;
+    iconPath: string; // SVG path
+  }>;
+  testimonial: {
+    quote: string;
+    author: string;
+    role: string;
+    company: string;
+    avatar?: string;
+  };
+}
+
+const { title, subtitle, description, features, testimonial } = Astro.props;
+---
+
+<section class="bg-white py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl lg:text-center">
+      <h2 class="text-base font-semibold leading-7 text-blue-600">{subtitle}</h2>
+      <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{title}</p>
+      <p class="mt-6 text-lg leading-8 text-gray-600">{description}</p>
+    </div>
+    
+    <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
+      <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
+        {features.map((feature) => (
+          <div class="relative pl-16">
+            <dt class="text-base font-semibold leading-7 text-gray-900">
+              <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
+                <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={feature.iconPath} />
+                </svg>
+              </div>
+              {feature.name}
+            </dt>
+            <dd class="mt-2 text-base leading-7 text-gray-600">{feature.description}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+    
+    <!-- Testimonial Section -->
+    <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24">
+      <figure class="bg-gray-50 rounded-2xl p-8 text-center">
+        <blockquote class="text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
+          <p>"{testimonial.quote}"</p>
+        </blockquote>
+        <figcaption class="mt-6 flex items-center justify-center space-x-3">
+          {testimonial.avatar && (
+            <img class="h-10 w-10 rounded-full" src={testimonial.avatar} alt={testimonial.author} />
+          )}
+          <div class="text-sm leading-6">
+            <div class="font-semibold text-gray-900">{testimonial.author}</div>
+            <div class="text-gray-600">{testimonial.role}, {testimonial.company}</div>
+          </div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section> 

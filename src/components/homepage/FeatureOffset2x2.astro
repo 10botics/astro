@@ -1,0 +1,43 @@
+---
+// Offset 2x2 grid feature section - Tailwind UI pattern
+export interface Props {
+  title: string;
+  subtitle: string;
+  description: string;
+  features: Array<{
+    name: string;
+    description: string;
+    iconPath: string; // SVG path
+  }>;
+}
+
+const { title, subtitle, description, features } = Astro.props;
+---
+
+<section class="bg-gray-50 py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl lg:text-center">
+      <h2 class="text-base font-semibold leading-7 text-blue-600">{subtitle}</h2>
+      <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{title}</p>
+      <p class="mt-6 text-lg leading-8 text-gray-600">{description}</p>
+    </div>
+    
+    <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-7xl">
+      <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
+        {features.map((feature, index) => (
+          <div class={`relative ${index % 2 === 1 ? 'lg:pl-8' : ''}`}>
+            <dt class="text-base font-semibold leading-7 text-gray-900">
+              <div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
+                <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={feature.iconPath} />
+                </svg>
+              </div>
+              {feature.name}
+            </dt>
+            <dd class="mt-2 text-base leading-7 text-gray-600">{feature.description}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </div>
+</section> 

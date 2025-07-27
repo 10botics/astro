@@ -1,0 +1,2 @@
+# Allow access to migration data (override .gitignore for Cursor)
+!xml-guided-migration-data
