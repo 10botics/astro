@@ -82,7 +82,7 @@ dist
 
 # Gatsby files
 .cache/
-public
+public/images_old
 
 # Vuepress build output
 .vuepress/dist
@@ -224,7 +224,6 @@ dist
 
 # Gatsby files
 .cache/
-public
 
 # Vuepress build output
 .vuepress/dist
