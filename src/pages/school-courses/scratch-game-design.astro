@@ -1,0 +1,318 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import CourseFeatures from '../../components/course/CourseFeatures.astro';
+import AccordionSection from '../../components/course/AccordionSection.astro';
+import FAQAccordion from '../../components/homepage/FAQAccordion.astro';
+
+// Course data (static)
+const courseData = {
+  title: "Scratch 遊戲設計課程",
+  subtitle: "掌握 Scratch 遊戲設計的藝術 - 釋放你的創造力",
+  tags: ["Block Coding 方塊編程", "Programming 編程", "Scratch", "初中", "遊戲開發", "高中", "高小"],
+  videoId: "_qE5v6RRDOI",
+  description: "透過 Scratch 編程引導學生進入遊戲開發領域的有趣且適合初學者的課程。與學生一同製作簡單的遊戲及程式，讓學生能從零開始認識 Scratch 的基本操作和介面，並設計及開發和分享自己的獨特遊戲作品，啟蒙創造力及邏輯思維。",
+  detailedDescription: "學習如何在 Scratch 設計和編碼自己的互動遊戲，探索角色控制、遊戲機制、關卡設計、得分系統和視覺效果等關鍵概念。學生將在創造沉浸式遊戲體驗的過程中培養解決問題和計算思維能力，激發他們在遊戲開發領域繼續探索的熱情。",
+};
+
+// Course features
+const courseFeatures = [
+  {
+    icon: "fas fa-lightbulb",
+    title: "培養創新思維",
+    description: "鼓勵學生利用課堂所學，自主製作屬於自己的遊戲作品。"
+  },
+  {
+    icon: "fas fa-brain",
+    title: "邏輯思維",
+    description: "學生需要思考遊戲的運作方式，找到解決問題的方法，並嘗試不同的遊戲設計策略。"
+  },
+  {
+    icon: "fas fa-pencil-alt",
+    title: "內容由淺至深",
+    description: "透過課程逐步深入認識 Scratch 程式方塊，學習更進階的應用方法，製作更複雜的遊戲。"
+  },
+  {
+    icon: "fas fa-gamepad",
+    title: "寓學習於娛樂",
+    description: "讓學生親身體驗遊戲製作過程，學生可以創建自己獨特的角色、背景和遊戲機制，實現他們的遊戲想法。"
+  }
+];
+
+// Beginner course curriculum
+const beginnerCurriculum = [
+  {
+    title: "製作你的專屬名牌 [1 節]",
+    content: [
+      "了解編程區、角色區及舞台區",
+      "了解座標系統",
+      "學習積木的作用及用途"
+    ]
+  },
+  {
+    title: "迷宮遊戲 [1 節]",
+    content: [
+      "使用控制、偵測及動作積木控制角色移動",
+      "使用網絡資源製作角色",
+      "使用造型改變角色結構",
+      "設計遊戲難度，學習關卡設計"
+    ]
+  },
+  {
+    title: "青蛙過馬路遊戲 [1 節]",
+    content: [
+      "使用循環積木檢測遊戲事件",
+      "在遊戲加入音效",
+      "自行設計及繪製角色造型"
+    ]
+  },
+  {
+    title: "打地鼠遊戲 [1 節]",
+    content: [
+      "認識變數積木及製作計分器",
+      "使用分身複製角色",
+      "使用隨機變數控制角色行動",
+      "使用偵測積木使滑鼠與角色互動"
+    ]
+  },
+  {
+    title: "射擊遊戲 [1 節]",
+    content: [
+      "使用變數積木製作計分器及計時器",
+      "學習更有效應用分身",
+      "認識函數積木"
+    ]
+  }
+];
+
+// Advanced course curriculum
+const advancedCurriculum = [
+  {
+    title: "進階射擊遊戲 [3 節]",
+    content: [
+      "學習獨立變數及條件分支程式，令分身個體能執行個別行動",
+      "構思遊戲流程及關卡難度"
+    ]
+  },
+  {
+    title: "Clicker遊戲 [4 節]",
+    content: [
+      "學習清單變數",
+      "製作戰鬥、點擊、抽蛋及升級系統"
+    ]
+  },
+  {
+    title: "音樂遊戲 [3 節]",
+    content: [
+      "利用獨立變數及字串偵測的功能，製作更美觀的數字顯示",
+      "製作譜面、時機偵測以及分數計算"
+    ]
+  },
+  {
+    title: "策略遊戲 - Plant vs Zombie [6 節]",
+    content: [
+      "製作卡片拖拽及網格座標等系統",
+      "編寫各角色的行為"
+    ]
+  }
+];
+
+// Course arrangements
+const courseArrangements = [
+  {
+    icon: "fas fa-star",
+    title: "STEM Day 活動 (1 至 2 小時)",
+    description: "選擇初階課程內的其中一款遊戲作為 STEM Day 活動。"
+  },
+  {
+    icon: "fas fa-star",
+    title: "初階課程 (10 至 12 小時)",
+    description: "建議一個學期完成 5 節課堂，每節 2 小時。\n*可根據學校需要調整課堂數及時數"
+  },
+  {
+    icon: "fas fa-star",
+    title: "進階課程 (16 至 24 小時)",
+    description: "建議兩個學期共完成 16 節課堂，每節 1.5 小時。\n*可根據學校需要調整課堂數及時數"
+  },
+  {
+    icon: "fas fa-star",
+    title: "組合課程 (36 小時)",
+    description: "初階課程 (上學期) + 進階課程 (下學期)\n建議兩個學期共完成 24 節課堂，每節 1.5 小時。\n*可根據學校需要調整課堂數及時數"
+  }
+];
+
+// FAQ items
+const faqItems = [
+  {
+    question: "學生需要有編程背景嗎?",
+    answer: "初階課程：無需，一般適合任何高小至初中學生。\n進階課程：建議有編程背景 或 已完成初階課程。"
+  },
+  {
+    question: "學校需要甚麼設備？",
+    answer: "學校需準備以下項目\n1） 平板電腦 或 手提電腦 或 桌上型電腦\n2）安裝 Scratch 網頁版以及註冊帳戶\n建議先致電+852 6554-1506 或電郵至 info@10botics.com向同事溝通學校期望的教學內容，同事將就教學所需設備提供建議。"
+  }
+];
+
+// Student work examples (images from the original site)
+const studentWorkExamples = [
+  {
+    title: "Scratch 火箭遊戲",
+    image: "/images/school-courses/scratch/scratch-rocket-game.png",
+    videoUrl: "https://www.youtube.com/embed/hvhG7mImCAg"
+  },
+  {
+    title: "青蛙過馬路遊戲",
+    image: "/images/school-courses/scratch/scratch-frog-game.png"
+  },
+  {
+    title: "音樂遊戲",
+    image: "/images/school-courses/scratch/scratch-music-game.png",
+    videoUrl: "https://www.youtube.com/embed/RwUI27b2a9A"
+  },
+  {
+    title: "植物大戰殭屍遊戲",
+    image: "/images/school-courses/scratch/scratch-plant-vs-zombie.png"
+  }
+];
+---
+
+<Layout title={courseData.title}>
+  <HeroSection 
+    title={courseData.title}
+    subtitle={courseData.subtitle}
+    tags={courseData.tags}
+    videoId={courseData.videoId}
+    description={courseData.description}
+  />
+
+  <!-- Course Features Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程特色</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {courseFeatures.map((feature) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center mb-4">
+              <i class={`${feature.icon} text-3xl text-cyan-500 mr-4`}></i>
+              <h3 class="text-xl font-semibold text-gray-900">{feature.title}</h3>
+            </div>
+            <p class="text-gray-700 leading-relaxed">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Content Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">課程內容</h2>
+      <div class="text-center mb-8">
+        <p class="text-lg text-gray-700">* 可根據學校需要調整</p>
+      </div>
+      
+      <!-- Course images -->
+      <div class="grid md:grid-cols-2 gap-8 mb-12">
+        <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+          <img src="/images/school-courses/scratch/scratch-rocket-game.png" alt="Scratch rocket game" class="w-full h-64 object-cover" />
+        </div>
+        <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+          <img src="/images/school-courses/scratch/scratch-frog-game.png" alt="Scratch frog cross road game" class="w-full h-64 object-cover" />
+        </div>
+      </div>
+
+      <!-- Beginner Course -->
+      <div class="mb-12">
+        <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">初階課程 (共 10 小時)</h3>
+        <AccordionSection title="課程大綱" items={beginnerCurriculum} />
+      </div>
+
+      <!-- Advanced Course -->
+      <div class="mb-12">
+        <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">進階課程 (共 16 小時)</h3>
+        <AccordionSection title="課程大綱" items={advancedCurriculum} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Arrangement Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程安排</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        {courseArrangements.map((arrangement) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center mb-4">
+              <i class={`${arrangement.icon} text-3xl text-cyan-500 mr-4`}></i>
+              <h3 class="text-xl font-semibold text-gray-900">{arrangement.title}</h3>
+            </div>
+            <p class="text-gray-700 leading-relaxed whitespace-pre-line">{arrangement.description}</p>
+          </div>
+        ))}
+      </div>
+      
+      <div class="text-center mt-8">
+        <p class="text-lg text-gray-700">歡迎填妥下方表格讓同事為你提供咨詢。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Student Work Examples Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">精選照片</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        {studentWorkExamples.map((work) => (
+          <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+            {work.videoUrl ? (
+              <div class="relative">
+                <img src={work.image} alt={work.title} class="w-full h-64 object-cover" />
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <a href={work.videoUrl} target="_blank" class="bg-red-600 text-white p-4 rounded-full hover:bg-red-700 transition-colors">
+                    <i class="fas fa-play text-2xl"></i>
+                  </a>
+                </div>
+              </div>
+            ) : (
+              <img src={work.image} alt={work.title} class="w-full h-64 object-cover" />
+            )}
+            <div class="p-4">
+              <h3 class="text-lg font-semibold text-gray-900">{work.title}</h3>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">常見問題</h2>
+      <FAQAccordion 
+        title="常見問題" 
+        subtitle="FAQ" 
+        description="關於Scratch遊戲設計課程的常見問題"
+        faqs={faqItems}
+      />
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">聯絡我們</h2>
+      <div class="bg-white rounded-lg p-8 shadow-lg">
+        <div class="text-center">
+          <p class="text-lg text-gray-700 mb-6">歡迎填妥下方表格讓同事為你提供咨詢。</p>
+          <a href="https://or0uzdua.paperform.co" target="_blank" class="inline-block bg-cyan-500 text-white px-8 py-3 rounded-lg hover:bg-cyan-600 transition-colors">
+            索取課程總覽
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout> 
