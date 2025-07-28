@@ -2,6 +2,8 @@
 
 Welcome to the 10Botics Astro project! This is a complete website migration from WordPress to Astro, featuring modern components and clean design.
 
+> **🧪 Test PR Deployment**: This change is to test if Vercel automatically deploys PR previews.
+
 ## 📚 Quick Links
 
 - **[Styling Guidelines](./STYLING_GUIDELINES.md)** - Complete design standards and component usage guidelines
