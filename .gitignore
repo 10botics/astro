@@ -127,13 +127,18 @@ dist/
 # WordPress migration data (large files, keep local only)
 xml-guided-migration-data/
 
-# Images (to be reorganized later)
+# Large media files (keep local only)
+public/media_old/
 public/images/
 public/media/
 
 # Temporary files
-temp_converted_news
-media_old
+temp_converted_news/
+media_old/
+
+# Build outputs
+dist/
+.astro/
 
 # Logs
 logs
@@ -406,3 +411,4 @@ venv.bak/
 .mypy_cache/
 .dmypy.json
 dmypy.json
+.vercel

@@ -1,24 +1,17 @@
 ---
-import { getEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import WhatIsScratch from '../../components/course/WhatIsScratch.astro';
 import CourseFeatures from '../../components/course/CourseFeatures.astro';
 import AccordionSection from '../../components/course/AccordionSection.astro';
 
-// Get course data from markdown file
-const course = await getEntry('courses', 'scratch-ai-programming');
-if (!course) {
-  throw new Error('Course not found');
-}
-
-// Course data from content collection
+// Course data (static)
 const courseData = {
-  title: course.data.title,
-  subtitle: course.data.excerpt || "成為小小AI工程師，用Scratch探索人工智能世界",
-  tags: course.data.tags,
-  videoId: "sYg36jF-PTA", // Extract from content if needed
-  description: course.data.description
+  title: "Scratch AI 編程課程",
+  subtitle: "成為小小AI工程師，用Scratch探索人工智能世界",
+  tags: ["AI 人工智能", "Scratch", "編程", "小學", "初中"],
+  videoId: "sYg36jF-PTA",
+  description: "透過Scratch學習人工智能概念，結合Teachable Machine進行實際AI項目開發。"
 };
 
 // Course curriculum

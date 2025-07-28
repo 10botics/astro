@@ -6,7 +6,8 @@ import path from 'path';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://10botics.com',
+  site: 'https://staging.10botics.com',
+  output: 'static',
   vite: {
     resolve: {
       alias: {

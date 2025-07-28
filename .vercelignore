@@ -1,0 +1,41 @@
+# Large migration data (not needed for deployment)
+xml-guided-migration-data/
+
+# Large media files (not needed for deployment)
+public/media_old/
+
+# Build outputs (regenerated during deployment)
+dist/
+.astro/
+
+# Temporary files
+temp_converted_news/
+media_old/
+
+# Development files
+*.log
+.env.local
+.env.development.local
+
+# Documentation files
+*.md
+!README.md
+
+# Migration analysis files
+MIGRATION_ANALYSIS.md
+NEWS_MIGRATION_PROGRESS.md
+NEWS_MIGRATION_STRATEGY.md
+FEATURED_IMAGE_EXTRACTION_SUMMARY.md
+SCHEMA_UPDATE_SUMMARY.md
+conversion_summary.md
+category_analysis_results.json
+
+# Python files (not needed for deployment)
+*.py
+extract_categories.py
+copy_selected_news.py
+unified_news_converter.py
+json_to_markdown_converter.py
+
+# Test files
+test_conversion/ 
