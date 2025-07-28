@@ -129,8 +129,8 @@ xml-guided-migration-data/
 
 # Large media files (keep local only)
 public/media_old/
-public/images/
-public/media/
+
+# public/media/
 
 # Temporary files
 temp_converted_news/

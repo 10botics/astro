@@ -1,18 +1,5 @@
 import { defineCollection, z } from 'astro:content';
 
-const schoolCourses = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    publishDate: z.coerce.date(),
-    courseType: z.string(),
-    targetAudience: z.string(),
-    duration: z.string(),
-    tags: z.array(z.string()),
-  }),
-});
-
 const newsCollection = defineCollection({
   type: 'content',
   schema: ({ image }) => z.object({
@@ -41,6 +28,5 @@ const newsCollection = defineCollection({
 });
 
 export const collections = {
-  'schoolCourses': schoolCourses,
   'news': newsCollection,
 }; 

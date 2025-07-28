@@ -1,9 +1,8 @@
 ---
-import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
-// Get content collection schoolCourses (if any)
-const contentCourses = await getCollection('schoolCourses').catch(() => []);
+// No content collection courses for now
+const contentCourses = [];
 
 // Auto-discover .astro course files
 const courseFiles = await import.meta.glob('./*.astro', { eager: true });
