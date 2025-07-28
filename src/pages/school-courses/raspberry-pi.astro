@@ -1,0 +1,593 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import OtherCourses from '../../components/OtherCourses.astro';
+---
+
+<Layout title="Raspberry Pi 編程課程">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+           <!-- Hero Section -->
+         <section class="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-20">
+           <div class="container mx-auto px-4">
+             <div class="max-w-6xl mx-auto">
+               <div class="grid lg:grid-cols-2 gap-12 items-center">
+                 <!-- Left Content -->
+                 <div class="text-center lg:text-left">
+                   <h1 class="text-5xl font-bold mb-6">Raspberry Pi 編程課程</h1>
+                   <p class="text-xl mb-8">玩轉 Raspberry Pi，探索無盡可能​</p>
+                   <div class="flex flex-wrap justify-center lg:justify-start gap-2 mb-8">
+                     <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">AI 人工智能</span>
+                     <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">Coral</span>
+                     <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">Python</span>
+                     <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">Raspberry Pi</span>
+                     <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">Tensorflow</span>
+                     <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">初中</span>
+                     <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">高中</span>
+                   </div>
+                   <p class="text-lg leading-relaxed">
+                     Raspberry Pi 是一個廣泛應用於各種領域的單板電腦，其獨特的特點和功能使其成為學習和開發嵌入式系統和物聯網應用的理想工具。課程旨在幫助學生掌握Raspberry Pi及Python編程的基礎知識，理解Raspberry Pi的基本應用，以致配合機器學習和人工智慧，進行人體姿態檢測，為進一步學習機器學習和人工智慧理論打下堅實基礎。
+                   </p>
+                 </div>
+                 
+                 <!-- Right Video -->
+                 <div class="flex justify-center lg:justify-end">
+                   <div class="w-full max-w-md">
+                     <div class="relative aspect-video rounded-lg overflow-hidden shadow-2xl">
+                       <iframe 
+                         src="https://www.youtube.com/embed/XaLH2D_9ZYk" 
+                         title="Raspberry Pi 編程課程介紹"
+                         class="w-full h-full"
+                         frameborder="0" 
+                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                         allowfullscreen>
+                       </iframe>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </section>
+
+  <!-- Course Features Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程特色</h2>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Feature 1 -->
+          <div class="text-center">
+            <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-laptop-code text-2xl text-blue-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">開拓實用技能</h3>
+            <p class="text-gray-600">
+              學習Raspberry Pi應用和 Python 程式設計，為學生打開無限可能的大門，培養實用技能，為 STEM 學習打下堅實基礎。
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="text-center">
+            <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-rocket text-2xl text-green-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">緊貼科技發展</h3>
+            <p class="text-gray-600">
+              課程旨在幫助學生建立嵌入式系統和物聯網領域的基礎知識，並通過親身應用Raspberry Pi微電腦，讓學生跟上科技發展的的最新趨勢。
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="text-center">
+            <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-book text-2xl text-purple-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">最適合學習編程的筆記</h3>
+            <p class="text-gray-600">
+              使用 Jupyter Notebook 為主要教材，內建執行程式碼的功能，讓學生可以即時測試自己的程式碼，並作出相應的調整，互動性十足，有助提升同學學習編程的效率。
+            </p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="text-center">
+            <div class="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-cogs text-2xl text-orange-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">活用所學知識</h3>
+            <p class="text-gray-600">
+              透過結合Python和Raspberry Pi，開發 AI 深蹲計數器，將所學知識應用到實際場景中。幫助學生更深入理解程式設計原則和應用。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Showcase Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">專題式學習</h2>
+          <p class="text-lg text-gray-600">透過不同專題學習 Raspberry Pi 的基礎知識</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Project 1: Camera -->
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="aspect-w-16 aspect-h-9">
+              <img src="/src/assets/images/school-courses/raspberry-pi/camera-project.gif" alt="縮時攝影機" class="w-full h-48 object-cover" />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <i class="fas fa-camera text-2xl text-blue-600 mr-3"></i>
+                <h3 class="text-xl font-semibold text-gray-900">縮時攝影機</h3>
+              </div>
+              <p class="text-gray-600">認識如何從 GitHub 中複製一個項目下來</p>
+            </div>
+          </div>
+
+          <!-- Project 2: Distance Sensor -->
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="aspect-w-16 aspect-h-9">
+              <img src="/src/assets/images/school-courses/raspberry-pi/distance-sensor.gif" alt="測距器" class="w-full h-48 object-cover" />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <i class="fas fa-ruler text-2xl text-green-600 mr-3"></i>
+                <h3 class="text-xl font-semibold text-gray-900">測距器</h3>
+              </div>
+              <p class="text-gray-600">認識數位輸入和輸出</p>
+            </div>
+          </div>
+
+          <!-- Project 3: RetroPie -->
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="aspect-w-16 aspect-h-9">
+              <img src="/src/assets/images/school-courses/raspberry-pi/retropie-gaming.gif" alt="復古遊戲機 RetroPie" class="w-full h-48 object-cover" />
+            </div>
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <i class="fas fa-gamepad text-2xl text-purple-600 mr-3"></i>
+                <h3 class="text-xl font-semibold text-gray-900">復古遊戲機 RetroPie</h3>
+              </div>
+              <p class="text-gray-600">認識如何燒錄 OS 到 SD 卡</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Course Content Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center" style="color: #1e293b;">課程內容</h2>
+        
+        <div class="grid lg:grid-cols-2 gap-12">
+          <!-- 入門課程 -->
+          <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-lg">
+            <div class="flex items-center mb-6">
+              <div class="bg-blue-600 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                <i class="fas fa-graduation-cap text-white text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-blue-900">入門課程</h3>
+                <p class="text-blue-700 font-medium">共 15 小時</p>
+              </div>
+            </div>
+            
+            <div class="space-y-4">
+              <!-- Individual Topic Dropdowns -->
+              <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden">
+                <button class="accordion-header w-full text-left p-4 bg-white hover:bg-gray-50 transition-colors flex justify-between items-center" data-target="topic-1">
+                  <span class="font-medium text-gray-900">Raspberry Pi 基礎認識 [2 節]</span>
+                  <svg class="accordion-icon w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div id="topic-1" class="accordion-content hidden bg-white">
+                  <div class="p-4 border-t border-gray-200">
+                    <ul class="text-sm text-gray-700 space-y-1">
+                      <li>• Raspberry Pi 硬件介紹和組裝</li>
+                      <li>• Linux 系統操作和基本命令</li>
+                      <li>• Python 編程環境設置</li>
+                      <li>• GPIO 控制基礎</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden">
+                <button class="accordion-header w-full text-left p-4 bg-white hover:bg-gray-50 transition-colors flex justify-between items-center" data-target="topic-2">
+                  <span class="font-medium text-gray-900">復古遊戲機 RetroPie [2 節]</span>
+                  <svg class="accordion-icon w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div id="topic-2" class="accordion-content hidden bg-white">
+                  <div class="p-4 border-t border-gray-200">
+                    <ul class="text-sm text-gray-700 space-y-1">
+                      <li>• 認識如何燒錄 OS 到 SD 卡</li>
+                      <li>• RetroPie 系統安裝和配置</li>
+                      <li>• 遊戲 ROM 管理和控制器設置</li>
+                      <li>• 自定義遊戲界面和主題</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden">
+                <button class="accordion-header w-full text-left p-4 bg-white hover:bg-gray-50 transition-colors flex justify-between items-center" data-target="topic-3">
+                  <span class="font-medium text-gray-900">製作儀表板 [1 節]</span>
+                  <svg class="accordion-icon w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div id="topic-3" class="accordion-content hidden bg-white">
+                  <div class="p-4 border-t border-gray-200">
+                    <ul class="text-sm text-gray-700 space-y-1">
+                      <li>• 認識開源項目及 GitHub </li>
+                      <li>• 從源代碼構建Raspberry Pi儀表板 </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden">
+                <button class="accordion-header w-full text-left p-4 bg-white hover:bg-gray-50 transition-colors flex justify-between items-center" data-target="topic-4">
+                  <span class="font-medium text-gray-900">縮時攝影機專題 [1 節]</span>
+                  <svg class="accordion-icon w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div id="topic-4" class="accordion-content hidden bg-white">
+                  <div class="p-4 border-t border-gray-200">
+                    <ul class="text-sm text-gray-700 space-y-1">
+                      <li>• 認識如何從 GitHub 中複製項目</li>
+                      <li>• 設置 Raspberry Pi Camera Module</li>
+                      <li>• 編寫 Python 腳本控制相機</li>
+                      <li>• 製作縮時攝影作品</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden">
+                <button class="accordion-header w-full text-left p-4 bg-white hover:bg-gray-50 transition-colors flex justify-between items-center" data-target="topic-5">
+                  <span class="font-medium text-gray-900">測距器專題 [2 節]</span>
+                  <svg class="accordion-icon w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div id="topic-5" class="accordion-content hidden bg-white">
+                  <div class="p-4 border-t border-gray-200">
+                    <ul class="text-sm text-gray-700 space-y-1">
+                      <li>• 認識數位輸入和輸出</li>
+                      <li>• 超聲波感應器原理和應用</li>
+                      <li>• GPIO 連接和程式控制</li>
+                      <li>• 距離測量和數據顯示</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- AI 深蹲計數器 -->
+          <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-lg">
+            <div class="flex items-center mb-6">
+              <div class="bg-purple-600 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                <i class="fas fa-robot text-white text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-purple-900">AI 深蹲計數器</h3>
+                <p class="text-purple-700 font-medium">共 15 小時</p>
+              </div>
+            </div>
+            
+            <div class="space-y-4">
+              <!-- Individual Topic Dropdowns -->
+              <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden">
+                <button class="accordion-header w-full text-left p-4 bg-white hover:bg-gray-50 transition-colors flex justify-between items-center" data-target="ai-topic-1">
+                  <span class="font-medium text-gray-900">Python 與 Jupyter Lab 簡介 [2 節]</span>
+                  <svg class="accordion-icon w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div id="ai-topic-1" class="accordion-content hidden bg-white">
+                  <div class="p-4 border-t border-gray-200">
+                    <ul class="text-sm text-gray-700 space-y-1">
+                      <li>• 學習 Python 基礎知識</li>
+                      <li>• 學習應用互動式筆記本 – Jupyter Lab</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden">
+                <button class="accordion-header w-full text-left p-4 bg-white hover:bg-gray-50 transition-colors flex justify-between items-center" data-target="ai-topic-2">
+                  <span class="font-medium text-gray-900">數據科學與機器學習 [2 節]</span>
+                  <svg class="accordion-icon w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div id="ai-topic-2" class="accordion-content hidden bg-white">
+                  <div class="p-4 border-t border-gray-200">
+                    <ul class="text-sm text-gray-700 space-y-1">
+                      <li>• 了解機器學習的方法</li>
+                      <li>• 透過 Google Teachable Machine 創建圖像識別模型</li>
+                      <li>• 參與小型 Kaggle 比賽</li>
+                      <li>• 認識不同姿勢偵測模型學習 Python 基礎知識</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden">
+                <button class="accordion-header w-full text-left p-4 bg-white hover:bg-gray-50 transition-colors flex justify-between items-center" data-target="ai-topic-3">
+                  <span class="font-medium text-gray-900">設計及製作深蹲計數器 [3 節]</span>
+                  <svg class="accordion-icon w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div id="ai-topic-3" class="accordion-content hidden bg-white">
+                  <div class="p-4 border-t border-gray-200">
+                    <ul class="text-sm text-gray-700 space-y-1">
+                      <li>• 思考並實踐深蹲計數器的運作方式</li>
+                      <li>• 應用 Movenet 模型進行姿勢偵測</li>
+                      <li>• 通過 OpenCV 獲取並處理輸入影像</li>
+                      <li>• 實施深蹲計數演算法</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden">
+                <button class="accordion-header w-full text-left p-4 bg-white hover:bg-gray-50 transition-colors flex justify-between items-center" data-target="ai-topic-4">
+                  <span class="font-medium text-gray-900">改良深蹲計數器 [1 節]</span>
+                  <svg class="accordion-icon w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div id="ai-topic-4" class="accordion-content hidden bg-white">
+                  <div class="p-4 border-t border-gray-200">
+                    <ul class="text-sm text-gray-700 space-y-1">
+                      <li>• 認識並應用 Google Coral 加速器</li>
+                      <li>• 了解如何將模型預測誤差的影響最小化</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Course Info Cards -->
+        <div class="grid md:grid-cols-3 gap-6 mt-12">
+          <div class="bg-blue-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-blue-900 mb-4">課程目標</h3>
+            <ul class="space-y-2 text-blue-800">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>
+                <span>掌握 Python 編程基礎</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>
+                <span>理解 Raspberry Pi 硬件控制</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>
+                <span>學習物聯網應用開發</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>
+                <span>掌握基本的機器學習概念</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-green-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-green-900 mb-4">適合對象</h3>
+            <ul class="space-y-2 text-green-800">
+              <li class="flex items-start">
+                <i class="fas fa-user-graduate text-green-600 mt-1 mr-2"></i>
+                <span>初中學生</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-user-graduate text-green-600 mt-1 mr-2"></i>
+                <span>高中學生</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-user-graduate text-green-600 mt-1 mr-2"></i>
+                <span>對編程有興趣的學生</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-orange-50 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-orange-900 mb-4">課程特色</h3>
+            <ul class="space-y-2 text-orange-800">
+              <li class="flex items-start">
+                <i class="fas fa-clock text-orange-600 mt-1 mr-2"></i>
+                <span>總時數：30 小時</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-users text-orange-600 mt-1 mr-2"></i>
+                <span>小班教學</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-laptop text-orange-600 mt-1 mr-2"></i>
+                <span>實作導向</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-certificate text-orange-600 mt-1 mr-2"></i>
+                <span>完成證書</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">常見問題</h2>
+        <div class="space-y-4">
+          <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden">
+            <button class="accordion-header w-full text-left p-6 bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center" data-target="faq-0">
+              <span class="font-semibold text-gray-900">需要什麼先備知識？</span>
+              <div class="accordion-icon transition-transform duration-200">
+                <i class="fas fa-plus text-gray-600"></i>
+              </div>
+            </button>
+            <div id="faq-0" class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="p-6 bg-white border-t border-gray-200">
+                <ul class="space-y-3">
+                  <li class="flex items-start space-x-3">
+                    <div class="text-blue-600 mt-1">
+                      <i class="fas fa-chevron-right text-sm"></i>
+                    </div>
+                    <span class="text-gray-700">課程適合初學者，不需要任何編程經驗。我們會從基礎開始教授 Python 編程和 Raspberry Pi 操作。</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden">
+            <button class="accordion-header w-full text-left p-6 bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center" data-target="faq-1">
+              <span class="font-semibold text-gray-900">需要自備 Raspberry Pi 嗎？</span>
+              <div class="accordion-icon transition-transform duration-200">
+                <i class="fas fa-plus text-gray-600"></i>
+              </div>
+            </button>
+            <div id="faq-1" class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="p-6 bg-white border-t border-gray-200">
+                <ul class="space-y-3">
+                  <li class="flex items-start space-x-3">
+                    <div class="text-blue-600 mt-1">
+                      <i class="fas fa-chevron-right text-sm"></i>
+                    </div>
+                    <span class="text-gray-700">課程會提供 Raspberry Pi 設備供學生使用，但建議學生可以考慮購買自己的設備以便課後練習。</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden">
+            <button class="accordion-header w-full text-left p-6 bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center" data-target="faq-2">
+              <span class="font-semibold text-gray-900">課程適合什麼年齡的學生？</span>
+              <div class="accordion-icon transition-transform duration-200">
+                <i class="fas fa-plus text-gray-600"></i>
+              </div>
+            </button>
+            <div id="faq-2" class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="p-6 bg-white border-t border-gray-200">
+                <ul class="space-y-3">
+                  <li class="flex items-start space-x-3">
+                    <div class="text-blue-600 mt-1">
+                      <i class="fas fa-chevron-right text-sm"></i>
+                    </div>
+                    <span class="text-gray-700">課程主要針對初中和高中學生設計，但對編程有興趣的學生都可以參加。</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden">
+            <button class="accordion-header w-full text-left p-6 bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center" data-target="faq-3">
+              <span class="font-semibold text-gray-900">完成課程後能學到什麼？</span>
+              <div class="accordion-icon transition-transform duration-200">
+                <i class="fas fa-plus text-gray-600"></i>
+              </div>
+            </button>
+            <div id="faq-3" class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <div class="p-6 bg-white border-t border-gray-200">
+                <ul class="space-y-3">
+                  <li class="flex items-start space-x-3">
+                    <div class="text-blue-600 mt-1">
+                      <i class="fas fa-chevron-right text-sm"></i>
+                    </div>
+                    <span class="text-gray-700">學生將掌握 Python 編程基礎、Raspberry Pi 硬件控制、物聯網應用開發，以及基本的機器學習概念。</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Accordion functionality for course content
+    document.addEventListener('DOMContentLoaded', function() {
+      const accordionHeaders = document.querySelectorAll('.accordion-header');
+      accordionHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+          const target = this.getAttribute('data-target');
+          const content = document.getElementById(target);
+          const icon = this.querySelector('.accordion-icon');
+          if (content) {
+            const isHidden = content.classList.contains('hidden');
+            // Close all other accordions
+            document.querySelectorAll('.accordion-content').forEach(item => {
+              item.classList.add('hidden');
+            });
+            document.querySelectorAll('.accordion-icon').forEach(item => {
+              item.classList.remove('rotate-180');
+            });
+            // Toggle current accordion
+            if (isHidden) {
+              content.classList.remove('hidden');
+              icon?.classList.add('rotate-180');
+            }
+          }
+        });
+      });
+      // Open first accordion by default
+      const firstAccordion = document.querySelector('.accordion-content');
+      const firstIcon = document.querySelector('.accordion-icon');
+      if (firstAccordion) {
+        firstAccordion.classList.remove('hidden');
+        firstIcon?.classList.add('rotate-180');
+      }
+    });
+
+    // Accordion functionality for FAQ
+    document.addEventListener('DOMContentLoaded', function() {
+      const headers = document.querySelectorAll('[data-target^="faq-"]');
+      headers.forEach(header => {
+        header.addEventListener('click', function() {
+          const target = this.getAttribute('data-target');
+          const content = document.getElementById(target);
+          const icon = this.querySelector('.accordion-icon i');
+          // Toggle current accordion
+          if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+            content.style.maxHeight = '0px';
+            icon.className = 'fas fa-plus text-gray-600';
+          } else {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            icon.className = 'fas fa-minus text-gray-600';
+          }
+        });
+      });
+    });
+  </script>
+
+  <!-- Other Courses Section -->
+  <OtherCourses 
+    currentCourseSlug="raspberry-pi"
+    title="其他相關課程"
+    subtitle="探索更多 STEM 及人工智能課程"
+    maxCourses={3}
+  />
+</Layout> 
