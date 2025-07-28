@@ -1,6 +1,6 @@
-- copy the exact wording from the original website
-- copy the exact element from the original website
-- copy the exact layout from the original website
+- copy the EXACT wording from the original website
+- copy the EXACT element from the original website
+- copy the EXACT layout from the original website
 - Use the components avaialble in src/components/homepage
 - When user give a url to migrate, you should adhere to the exact url and exact title. 
 - Pay attention to existing page structure and divide into the exact section of the original page have
@@ -8,6 +8,8 @@
 - Rename the download image into their appropriate name and make them related to the content.
 - Do not edit other files
 - Do not add extra things other than the current website url given
+- DO NOT MIMIC OTHER SECTIONS OF THIS PROJECT
+- ONLY MIMIC THE WEBSITE THAT IS GIVEN
 
 
 
