@@ -1,10 +1,5 @@
 ---
 title: "【AI科技與創意融合】中華基督教青年會中學 STEM Day"
-excerpt: "![](https://10botics.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-07-05-at-9.37.00-AM.jpeg)
-
-中華基督教青年會中學中一及中二共約350名的學生，在7月5日的STEM Day活動中有機會接觸到AI最新技術，包括時下熱話Donkey Car無人車及AI數碼動畫展。
-
-在Donkey..."
 publishDate: 2024-07-05
 featuredImage: "../../assets/images/news/2024-07-05-ai科技與創意融合中華基督教青年會中學-stem-day/image1.jpeg"
 category: "過往活動"

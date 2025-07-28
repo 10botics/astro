@@ -1,8 +1,5 @@
 ---
 title: "Minecraft Java Edition 和 Education Edition 該如何選擇？"
-excerpt: "![](https://staging.10botics.com/wp-content/uploads/2023/08/Minecraft-en-image.-Photo-prise-via-Internet-1.webp)
-
-##..."
 publishDate: 2022-07-04
 featuredImage: "../../assets/images/news/2022-07-04-minecraft-java-edition-和-education-edition-該如何選擇/image1.png"
 category: "文章"

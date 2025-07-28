@@ -1,6 +1,5 @@
 ---
 title: "J.P. Morgan AI藝術創作親子工作坊"
-excerpt: "![J.P. Morgan AI Generative Art..."
 publishDate: 2023-08-25
 featuredImage: "../../assets/images/news/2023-08-25-jp-morgan-ai藝術創作親子工作坊/image1.jpeg"
 category: "過往活動"

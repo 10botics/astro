@@ -1,19 +1,5 @@
 ---
 title: "同 Teachable Machine 猜包剪揼"
-excerpt: "## 玩法
-
-https://youtu.be/lF95T47pKuA
-
-1. 按啟動鏡頭
-2. 按 玩一回合
-3. AI 會首先出示包/剪/揼
-4. 系統給你5秒去思考，請向鏡頭出包/剪/揼
-5. 勝出者有 10 分
-6. 再按玩一回合
-
-[立即試玩](https://play.10botics.com)
-
-在猜拳遊戲中，當我們展示不同的手勢給 Teachable Machine..."
 publishDate: 2023-08-18
 featuredImage: "../../assets/images/news/2023-08-18-同-teachable-machine-猜包剪揼/image1.png"
 category: "文章"

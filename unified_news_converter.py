@@ -239,13 +239,23 @@ def generate_slug(title: str) -> str:
 
 def extract_excerpt(content: str, max_length: int = 200) -> str:
     """
-    Extract excerpt from content
+    Extract excerpt from content, skipping all images
     """
     if not content:
         return ""
     
-    # Clean HTML and get plain text
-    clean_text = clean_html_content(content, {})
+    # Parse HTML and remove all img tags before processing
+    soup = BeautifulSoup(content, 'html.parser')
+    
+    # Remove all image elements
+    for img in soup.find_all('img'):
+        img.decompose()
+    
+    # Convert the cleaned HTML to string
+    clean_html = str(soup)
+    
+    # Clean HTML and get plain text (without images)
+    clean_text = clean_html_content(clean_html, {})
     
     # Truncate to max_length
     if len(clean_text) > max_length:
@@ -291,8 +301,8 @@ def convert_json_to_markdown(json_file_path: str, output_dir: str, skip_existing
     filename = f"{publish_date}-{generate_slug(title)}.md"
     slug = generate_slug(title)
     
-    # Extract excerpt
-    excerpt = extract_excerpt(content)
+    # Extract excerpt (disabled - Astro will auto-generate)
+    # excerpt = extract_excerpt(content)  # Commented out - Astro handles this automatically
     
     # Create image folder using the full filename (without .md extension)
     folder_name = filename.replace('.md', '')
@@ -339,7 +349,6 @@ def convert_json_to_markdown(json_file_path: str, output_dir: str, skip_existing
     
     frontmatter = f"""---
 title: "{title}"
-excerpt: "{excerpt}"
 publishDate: {publish_date}
 featuredImage: "{featured_image_path}"
 category: "{categories[0] if categories else '過往活動'}"

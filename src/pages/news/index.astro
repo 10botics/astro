@@ -2,14 +2,23 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import { generateExcerpt } from '../../utils/excerpt';
 
 // Get all news articles
 const allNews = await getCollection('news');
 
-// Sort by publication date (newest first)
-const sortedNews = allNews.sort((a, b) => 
-  new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
-);
+// Sort by publication date (newest first) and generate excerpts
+const sortedNews = allNews
+  .map(article => ({
+    ...article,
+    data: {
+      ...article.data,
+      excerpt: article.data.excerpt || generateExcerpt(article.body, 200)
+    }
+  }))
+  .sort((a, b) => 
+    new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
+  );
 
 // Get unique categories
 const categories = [...new Set(allNews.map(article => article.data.category))];

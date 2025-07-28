@@ -1,8 +1,5 @@
 ---
 title: "【深度探索Cospaces VR&amp;AR】浸信會天虹小學 STEM Day"
-excerpt: "![](https://10botics.com/wp-content/uploads/2024/08/Screenshot-2024-08-02-121944.png)
-
-浸信會天虹小學 小四及小五共約200名學生在數次STEM Day中近距離接觸科技創新，參與了Cospaces..."
 publishDate: 2024-07-10
 featuredImage: "../../assets/images/news/2024-07-10-深度探索cospaces-vrampar浸信會天虹小學-stem-day/image1.png"
 category: "過往活動"

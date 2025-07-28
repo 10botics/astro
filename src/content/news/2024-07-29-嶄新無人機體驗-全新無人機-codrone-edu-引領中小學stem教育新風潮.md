@@ -1,8 +1,5 @@
 ---
 title: "嶄新無人機體驗 - 全新無人機 CoDrone EDU 引領中小學STEM教育新風潮"
-excerpt: "![](https://10botics.com/wp-content/uploads/2024/08/Screenshot-2024-08-02-123735.png)
-
-近日，由美國公司 Robolink 耗時6年研發的一款全新的無人機 CoDrone EDU..."
 publishDate: 2024-07-29
 featuredImage: "../../assets/images/news/2024-07-29-嶄新無人機體驗-全新無人機-codrone-edu-引領中小學stem教育新風潮/image1.png"
 category: "過往活動"

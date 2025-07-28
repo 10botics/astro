@@ -1,8 +1,5 @@
 ---
 title: "點樣用Raspberry Pi 係校內教授 Python？"
-excerpt: "![](https://staging.10botics.com/wp-content/uploads/2023/08/bee141c4423da838d988f1472d1f558e-1024x768.jpeg)
-
-我哋同 15 位老師分享如何利用 Raspberry Pi 在校內教授 Python。每位老師都親身嘗試係 Jupyter Lab 打 command 同寫 Python..."
 publishDate: 2021-11-13
 featuredImage: "../../assets/images/news/2021-11-13-點樣用raspberry-pi-係校內教授-python/image1.jpeg"
 category: "文章"

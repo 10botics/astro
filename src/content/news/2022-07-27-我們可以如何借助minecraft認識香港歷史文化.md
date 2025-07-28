@@ -1,8 +1,5 @@
 ---
 title: "我們可以如何借助Minecraft認識香港歷史文化？"
-excerpt: "![](https://staging.10botics.com/wp-content/uploads/2022/07/Fire-Dragon-Master-Fai-Gor-shares-his-tale-of-being-a-Tai-Hang-boy-Hong-Kong-Free-Press-HKFP.jpeg)
-
-##..."
 publishDate: 2022-07-27
 featuredImage: "../../assets/images/news/2022-07-27-我們可以如何借助minecraft認識香港歷史文化/image1.png"
 category: "文章"
