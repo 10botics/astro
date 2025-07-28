@@ -17,8 +17,8 @@ media_old/
 .env.local
 .env.development.local
 
-# Documentation files
-*.md
+# Documentation files (exclude only root level .md files)
+/*.md
 !README.md
 
 # Migration analysis files
