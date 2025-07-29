@@ -3,6 +3,20 @@ import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import CourseFeatures from '../../components/course/CourseFeatures.astro';
 import AccordionSection from '../../components/course/AccordionSection.astro';
+import { Image } from 'astro:assets';
+
+// Import images
+import featuredImage from '../../assets/images/school-courses/minecraft/featured-image.png';
+import courseStructure from '../../assets/images/school-courses/minecraft/course-structure.png';
+import minecraftWorking from '../../assets/images/school-courses/minecraft/minecraft-working.jpg';
+import school1 from '../../assets/images/school-courses/minecraft/school-1.png';
+import school2 from '../../assets/images/school-courses/minecraft/school-2.jpg';
+import school3 from '../../assets/images/school-courses/minecraft/school-3.png';
+import school4 from '../../assets/images/school-courses/minecraft/school-4.png';
+import landmark1 from '../../assets/images/school-courses/minecraft/landmark-1.jpg';
+import landmark2 from '../../assets/images/school-courses/minecraft/landmark-2.jpg';
+import landmark3 from '../../assets/images/school-courses/minecraft/landmark-3.png';
+import landmark4 from '../../assets/images/school-courses/minecraft/landmark-4.png';
 
 // Course data (static)
 const courseData = {
@@ -11,7 +25,7 @@ const courseData = {
   tags: ["Arts 藝術", "Programming 編程", "初中", "遊戲開發", "高中", "高小"],
   videoId: "_djE2lvcrXI",
   description: "本課程讓學生能夠運用到不同跨學科知識，如地理、數學及藝術等學科，並學習 Minecraft 的編程技巧，完成校園及社區的建築工程。課程更希望把學習教材融入到遊戲中，從而提升學生的學習興趣，達致自主學習。",
-  featuredImage: "/src/assets/images/school-courses/minecraft/featured-image.png"
+  featuredImage: featuredImage
 };
 
 // Course curriculum
@@ -202,8 +216,8 @@ const faqItems = [
       <p class="text-center text-gray-600 mb-12">* 可根據學校需要調整</p>
       
       <div class="max-w-4xl mx-auto">
-        <img 
-          src="/src/assets/images/school-courses/minecraft/course-structure.png"
+        <Image 
+          src={courseStructure}
           alt="Minecraft Course Structure"
           class="w-full h-auto rounded-lg shadow-lg mb-12"
         />
@@ -246,8 +260,8 @@ const faqItems = [
       
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <img 
-            src="/src/assets/images/school-courses/minecraft/minecraft-working.jpg"
+          <Image 
+            src={minecraftWorking}
             alt="Minecraft working"
             class="w-full h-auto rounded-lg shadow-lg"
           />
@@ -288,13 +302,13 @@ const faqItems = [
         <div>
           <h3 class="text-xl font-semibold text-gray-900 mb-6">校園建設</h3>
           <div class="grid grid-cols-2 gap-4">
-            <img src="/src/assets/images/school-courses/minecraft/school-1.png" 
+            <Image src={school1} 
                  alt="天主教領島學校" class="w-full h-auto rounded-lg" />
-            <img src="/src/assets/images/school-courses/minecraft/school-2.jpg" 
+            <Image src={school2} 
                  alt="中華基督教基華小學" class="w-full h-auto rounded-lg" />
-            <img src="/src/assets/images/school-courses/minecraft/school-3.png" 
+            <Image src={school3} 
                  alt="勵志會梁李秀娛紀念小學" class="w-full h-auto rounded-lg" />
-            <img src="/src/assets/images/school-courses/minecraft/school-4.png" 
+            <Image src={school4} 
                  alt="賽馬會萬鈞毅智書院" class="w-full h-auto rounded-lg" />
           </div>
         </div>
@@ -302,13 +316,13 @@ const faqItems = [
         <div>
           <h3 class="text-xl font-semibold text-gray-900 mb-6">著名景點建設</h3>
           <div class="grid grid-cols-2 gap-4">
-            <img src="/src/assets/images/school-courses/minecraft/landmark-1.jpg" 
+            <Image src={landmark1} 
                  alt="香港中央圖書館" class="w-full h-auto rounded-lg" />
-            <img src="/src/assets/images/school-courses/minecraft/landmark-2.jpg" 
+            <Image src={landmark2} 
                  alt="青馬大橋" class="w-full h-auto rounded-lg" />
-            <img src="/src/assets/images/school-courses/minecraft/landmark-3.png" 
+            <Image src={landmark3} 
                  alt="西港城" class="w-full h-auto rounded-lg" />
-            <img src="/src/assets/images/school-courses/minecraft/landmark-4.png" 
+            <Image src={landmark4} 
                  alt="中環海濱摩天輪" class="w-full h-auto rounded-lg" />
           </div>
         </div>
