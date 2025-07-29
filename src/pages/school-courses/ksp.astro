@@ -1,6 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { Image } from 'astro:assets';
 
@@ -23,7 +22,6 @@ const ogImage = kspMain.src;
 ---
 
 <Layout title={title} description={description} ogImage={ogImage}>
-  <Header />
   
   <!-- Hero Section -->
   <section class="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white py-20">

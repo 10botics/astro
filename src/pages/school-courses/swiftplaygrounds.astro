@@ -1,6 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { Image } from 'astro:assets';
 
@@ -22,7 +21,6 @@ const ogImage = swiftPlaygroundsHero.src;
 ---
 
 <Layout title={title} description={description} ogImage={ogImage}>
-  <Header />
   
   <!-- Hero Section -->
   <section class="bg-gradient-to-br from-orange-900 via-orange-800 to-red-900 text-white py-20">
