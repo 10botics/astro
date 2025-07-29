@@ -2,14 +2,27 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import { Image } from 'astro:assets';
+
+// Import images
+import kspMain from '../../assets/images/school-courses/ksp/ksp-main.png';
+import kspRocket from '../../assets/images/school-courses/ksp/ksp-rocket.png';
+import kspTravel from '../../assets/images/school-courses/ksp/ksp-travel.png';
+import kspSpace from '../../assets/images/school-courses/ksp/ksp-space.png';
+import kspCarousel1 from '../../assets/images/school-courses/ksp/ksp-carousel-1.png';
+import kspCarousel2 from '../../assets/images/school-courses/ksp/ksp-carousel-2.png';
+import kspCarousel3 from '../../assets/images/school-courses/ksp/ksp-carousel-3.png';
+import kspCarousel4 from '../../assets/images/school-courses/ksp/ksp-carousel-4.png';
+import kspCarousel5 from '../../assets/images/school-courses/ksp/ksp-carousel-5.png';
+import kspCarousel6 from '../../assets/images/school-courses/ksp/ksp-carousel-6.png';
 
 // SEO metadata
 const title = "Kerbal Space Program (KSP) 太空任務設計課程 - 10教育";
 const description = "通過 KSP 模擬太空任務和探索宇宙，學生將進入迷人的太空科學世界，學習如何建構火箭，並掌握引力、推進力和運動力學等重要概念。透過模擬真實的太空環境和挑戰，他們將學習如何計劃和執行成功的發射任務，激發學員的創造力和探索精神，培養解決問題和團隊合作的能力。";
-const image = "/images/ksp/ksp-main.png";
+const ogImage = kspMain.src;
 ---
 
-<Layout title={title} description={description} image={image}>
+<Layout title={title} description={description} ogImage={ogImage}>
   <Header />
   
   <!-- Hero Section -->
@@ -82,7 +95,7 @@ const image = "/images/ksp/ksp-main.png";
       <div class="grid md:grid-cols-3 gap-8">
         <!-- Highlight 1 -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="/images/ksp/ksp-rocket.png" alt="KSP rocket" class="w-full h-48 object-cover" />
+          <Image src={kspRocket} alt="KSP rocket" class="w-full h-48 object-cover" />
           <div class="p-6">
             <h3 class="text-xl font-bold text-gray-900 mb-3">基本 KSP 知識與火箭設計</h3>
             <p class="text-gray-600">
@@ -93,7 +106,7 @@ const image = "/images/ksp/ksp-main.png";
 
         <!-- Highlight 2 -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="/images/ksp/ksp-travel.png" alt="KSP travel" class="w-full h-48 object-cover" />
+          <Image src={kspTravel} alt="KSP travel" class="w-full h-48 object-cover" />
           <div class="p-6">
             <h3 class="text-xl font-bold text-gray-900 mb-3">解決火箭升空後問題的技巧</h3>
             <p class="text-gray-600">
@@ -104,7 +117,7 @@ const image = "/images/ksp/ksp-main.png";
 
         <!-- Highlight 3 -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="/images/ksp/ksp-space.png" alt="KSP space" class="w-full h-48 object-cover" />
+          <Image src={kspSpace} alt="KSP space" class="w-full h-48 object-cover" />
           <div class="p-6">
             <h3 class="text-xl font-bold text-gray-900 mb-3">軌道飛行與太空探索</h3>
             <p class="text-gray-600">
@@ -383,12 +396,12 @@ const image = "/images/ksp/ksp-main.png";
       </div>
       
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-        <img src="/images/ksp/ksp-carousel-1.png" alt="KSP gaming" class="w-full h-32 object-cover rounded-lg shadow-md" />
-        <img src="/images/ksp/ksp-carousel-2.png" alt="KSP learn" class="w-full h-32 object-cover rounded-lg shadow-md" />
-        <img src="/images/ksp/ksp-carousel-3.png" alt="KSP try" class="w-full h-32 object-cover rounded-lg shadow-md" />
-        <img src="/images/ksp/ksp-carousel-4.png" alt="KSP game" class="w-full h-32 object-cover rounded-lg shadow-md" />
-        <img src="/images/ksp/ksp-carousel-5.png" alt="KSP focus" class="w-full h-32 object-cover rounded-lg shadow-md" />
-        <img src="/images/ksp/ksp-carousel-6.png" alt="KSP attention" class="w-full h-32 object-cover rounded-lg shadow-md" />
+        <Image src={kspCarousel1} alt="KSP gaming" class="w-full h-32 object-cover rounded-lg shadow-md" />
+        <Image src={kspCarousel2} alt="KSP learn" class="w-full h-32 object-cover rounded-lg shadow-md" />
+        <Image src={kspCarousel3} alt="KSP try" class="w-full h-32 object-cover rounded-lg shadow-md" />
+        <Image src={kspCarousel4} alt="KSP game" class="w-full h-32 object-cover rounded-lg shadow-md" />
+        <Image src={kspCarousel5} alt="KSP focus" class="w-full h-32 object-cover rounded-lg shadow-md" />
+        <Image src={kspCarousel6} alt="KSP attention" class="w-full h-32 object-cover rounded-lg shadow-md" />
       </div>
     </section>
 
