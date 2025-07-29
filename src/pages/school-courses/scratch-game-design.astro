@@ -157,21 +157,21 @@ const faqItems = [
 const studentWorkExamples = [
   {
     title: "Scratch 火箭遊戲",
-    image: "/images/school-courses/scratch/scratch-rocket-game.png",
+    image: "/src/assets/images/school-courses/scratch/scratch-rocket-game.png",
     videoUrl: "https://www.youtube.com/embed/hvhG7mImCAg"
   },
   {
     title: "青蛙過馬路遊戲",
-    image: "/images/school-courses/scratch/scratch-frog-game.png"
+    image: "/src/assets/images/school-courses/scratch/scratch-frog-game.png"
   },
   {
     title: "音樂遊戲",
-    image: "/images/school-courses/scratch/scratch-music-game.png",
+    image: "/src/assets/images/school-courses/scratch/scratch-music-game.png",
     videoUrl: "https://www.youtube.com/embed/RwUI27b2a9A"
   },
   {
     title: "植物大戰殭屍遊戲",
-    image: "/images/school-courses/scratch/scratch-plant-vs-zombie.png"
+    image: "/src/assets/images/school-courses/scratch/scratch-plant-vs-zombie.png"
   }
 ];
 ---
@@ -210,16 +210,6 @@ const studentWorkExamples = [
       <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">課程內容</h2>
       <div class="text-center mb-8">
         <p class="text-lg text-gray-700">* 可根據學校需要調整</p>
-      </div>
-      
-      <!-- Course images -->
-      <div class="grid md:grid-cols-2 gap-8 mb-12">
-        <div class="bg-white rounded-lg overflow-hidden shadow-lg">
-          <img src="/images/school-courses/scratch/scratch-rocket-game.png" alt="Scratch rocket game" class="w-full h-64 object-cover" />
-        </div>
-        <div class="bg-white rounded-lg overflow-hidden shadow-lg">
-          <img src="/images/school-courses/scratch/scratch-frog-game.png" alt="Scratch frog cross road game" class="w-full h-64 object-cover" />
-        </div>
       </div>
 
       <!-- Beginner Course -->
@@ -291,7 +281,6 @@ const studentWorkExamples = [
   <!-- FAQ Section -->
   <section class="bg-white py-16">
     <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">常見問題</h2>
       <FAQAccordion 
         title="常見問題" 
         subtitle="FAQ" 
