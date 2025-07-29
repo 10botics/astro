@@ -1,0 +1,321 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import courseHero from '../../assets/images/school-courses/人工智能編程課程/course-hero.jpg';
+import studentWork1 from '../../assets/images/school-courses/人工智能編程課程/student-work-1.jpg';
+import studentWork2 from '../../assets/images/school-courses/人工智能編程課程/student-work-2.jpg';
+import studentWork3 from '../../assets/images/school-courses/人工智能編程課程/student-work-3.jpg';
+import studentWork4 from '../../assets/images/school-courses/人工智能編程課程/student-work-4.jpg';
+import studentWork5 from '../../assets/images/school-courses/人工智能編程課程/student-work-5.jpg';
+
+// Course data (static)
+const courseData = {
+  title: "人工智能編程課程",
+  subtitle: "零基礎 3 小時製作 2 個遊戲",
+  tags: ["AI 人工智能", "Programming 編程", "高中", "初中", "Replit"],
+  description: "零基礎也能學會AI編程！本課程將帶領學員在短短三小時內，從零開始打造專屬遊戲。學員首先透過AI生成獨特風格的井字棋設計，再運用repl.it平台將設計轉化為不同風格的井字棋遊戲。更特別的是，課程最後還能讓每位學員自由選擇並製作一款喜愛的遊戲。這門AI編程課程，讓零基礎學員也能在三小時內完成兩款屬於自己的遊戲，快速體驗AI與編程的樂趣與成就感!"
+};
+
+// Course highlights
+const courseHighlights = [
+  {
+    title: "課程適合中學生",
+    description: "專為中學生設計的課程內容，由淺入深引導學習",
+    icon: "fas fa-users"
+  },
+  {
+    title: "人工智能 + 編程",
+    description: "結合AI技術與編程實作，體驗前沿科技",
+    icon: "fas fa-robot"
+  },
+  {
+    title: "專案式學習",
+    description: "透過實際製作遊戲項目，學習人工智能編程概念與技能",
+    icon: "fas fa-tasks"
+  }
+];
+
+// Course curriculum
+const curriculumItems = [
+  {
+    title: "簡介遊戲開發及人工智能編程平台體驗 [1節]",
+    content: [
+      "簡述不同的客戶端執行環境",
+      "詳解迭代開發流程 (設計 - 實作 - 評估)",
+      "Poe 平台協作式井字棋原型設計",
+      "Repl.it 環境建構井字棋核心功能",
+      "初步成品的系統測試與除錯",
+      "部署至網際網路"
+    ]
+  },
+  {
+    title: "增加遊戲功能 [1節]",
+    content: [
+      "井字棋遊戲擴展：導入 4x4 棋盤模式",
+      "遊戲功能擴展後的系統測試與除錯"
+    ]
+  },
+  {
+    title: "專案式學習 [1節]",
+    content: [
+      "使用repl.it製作自選遊戲成品",
+      "成品的系統測試與除錯"
+    ]
+  }
+];
+
+// FAQ data
+const faqItems = [
+  {
+    question: "學校需要甚麼設備？",
+    answer: "手提電腦 / 電腦"
+  },
+  {
+    question: "誰適合這個課程？",
+    answer: "初中至高中學生"
+  }
+];
+---
+
+<Layout title={courseData.title}>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Hero Section -->
+  <section class="bg-white py-8">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <!-- Breadcrumbs -->
+      <nav class="text-sm mb-6 text-gray-600">
+        <a href="/" class="text-cyan-400 hover:text-cyan-600">首頁</a>
+        <span class="mx-2">»</span>
+        <a href="/school-courses/" class="text-cyan-400 hover:text-cyan-600">到校課程</a>
+        <span class="mx-2">»</span>
+        <span class="text-gray-800">{courseData.title}</span>
+      </nav>
+
+      <!-- Title Section -->
+      <div class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4" style="color: #1e293b;">{courseData.title}</h1>
+        <p class="text-xl text-gray-700 mb-6">{courseData.subtitle}</p>
+        
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-1 items-center mb-8">
+          <i class="fas fa-tags text-cyan-400 mr-2"></i>
+          {courseData.tags.map((tag, index) => (
+            <span class="text-sm">
+              <a href={`/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`} 
+                 class="text-cyan-400 hover:text-cyan-600 transition-colors">
+                {tag}
+              </a>
+              {index < courseData.tags.length - 1 && <span class="text-gray-400 mx-1">,</span>}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero Image and Description Section -->
+  <section class="bg-white py-8">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <!-- Hero Image Section -->
+        <div class="order-1">
+          <div class="aspect-video bg-black rounded-lg overflow-hidden shadow-lg">
+            <Image 
+              src={courseHero}
+              alt="人工智能編程課程"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+        <!-- Description Section -->
+        <div class="order-2">
+          <div class="bg-white">
+            <p class="text-base text-gray-700 leading-relaxed">
+              {courseData.description}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Highlights Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center" style="color: #1e293b;">課程特色</h2>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        {courseHighlights.map((highlight) => (
+          <div class="bg-white p-8 rounded-lg shadow-md text-center">
+            <div class="mb-4">
+              <i class={`${highlight.icon} text-4xl text-cyan-400`}></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">{highlight.title}</h3>
+            <p class="text-gray-600">{highlight.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Content Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h1 class="text-4xl font-bold text-gray-900 mb-8 text-center" style="color: #1e293b;">課程內容</h1>
+      <div class="text-center mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-2">AI編程課程</h2>
+        <p class="text-gray-600 text-lg mb-2">3小時</p>
+      </div>
+      
+      <!-- Course Modules Accordion -->
+      <div class="max-w-4xl mx-auto">
+        <div class="space-y-4">
+          {curriculumItems.map((item, index) => (
+            <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden">
+              <button 
+                class="accordion-header w-full text-left p-6 bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center"
+                data-target={`accordion-${index}`}
+              >
+                <span class="font-semibold text-gray-900">{item.title}</span>
+                <div class="accordion-icon transition-transform duration-200">
+                  <i class="fas fa-plus text-gray-600"></i>
+                </div>
+              </button>
+              <div 
+                id={`accordion-${index}`}
+                class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+              >
+                <div class="p-6 bg-white border-t border-gray-200">
+                  <ul class="space-y-3">
+                    {item.content.map((point) => (
+                      <li class="flex items-start space-x-3">
+                        <div class="text-blue-600 mt-1">
+                          <i class="fas fa-chevron-right text-sm"></i>
+                        </div>
+                        <span class="text-gray-700">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Student Work Gallery -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center" style="color: #1e293b;">學生作品</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+          <Image 
+            src={studentWork1}
+            alt="學生作品 1"
+            class="w-full h-48 object-cover"
+          />
+        </div>
+        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+          <Image 
+            src={studentWork2}
+            alt="學生作品 2"
+            class="w-full h-48 object-cover"
+          />
+        </div>
+        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+          <Image 
+            src={studentWork3}
+            alt="學生作品 3"
+            class="w-full h-48 object-cover"
+          />
+        </div>
+        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+          <Image 
+            src={studentWork4}
+            alt="學生作品 4"
+            class="w-full h-48 object-cover"
+          />
+        </div>
+        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+          <Image 
+            src={studentWork5}
+            alt="學生作品 5"
+            class="w-full h-48 object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center" style="color: #1e293b;">常見問題</h2>
+      
+      <div class="space-y-6 max-w-4xl mx-auto">
+        {faqItems.map((faq) => (
+          <details class="border border-gray-200 rounded-lg p-6 group">
+            <summary class="font-semibold text-gray-900 cursor-pointer flex justify-between items-center">
+              <span>{faq.question}</span>
+              <i class="fas fa-plus transition-transform group-open:rotate-45"></i>
+            </summary>
+            <div class="mt-4 text-gray-600">
+              <strong>答</strong>: {faq.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8 text-center" style="color: #1e293b;">聯絡我們</h2>
+      <div class="text-center">
+        <div class="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto mb-8">
+          <div class="flex items-center justify-center space-x-3">
+            <i class="fas fa-phone text-cyan-400 text-xl"></i>
+            <span class="text-lg text-gray-700">+852 6554-1506</span>
+          </div>
+          <div class="flex items-center justify-center space-x-3">
+            <i class="fas fa-envelope text-cyan-400 text-xl"></i>
+            <span class="text-lg text-gray-700">sales@10botics.com</span>
+          </div>
+        </div>
+        <p class="text-gray-600">課程由 10教育 提供，專業導師親自編寫教材，確保教學質量。</p>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    // Accordion functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const headers = document.querySelectorAll('.accordion-header');
+      
+      headers.forEach(function(header) {
+        header.addEventListener('click', function() {
+          const target = this.getAttribute('data-target');
+          const content = document.getElementById(target);
+          const icon = this.querySelector('.accordion-icon i');
+          
+          if (content && icon) {
+            if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+              content.style.maxHeight = '0px';
+              icon.className = 'fas fa-plus text-gray-600';
+            } else {
+              content.style.maxHeight = content.scrollHeight + 'px';
+              icon.className = 'fas fa-minus text-gray-600';
+            }
+          }
+        });
+      });
+    });
+  </script>
+</Layout>
