@@ -1,6 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { Image } from 'astro:assets';
 
@@ -18,7 +17,6 @@ const ogImage = procreateThumbnail.src;
 ---
 
 <Layout title={title} description={description} ogImage={ogImage}>
-  <Header />
   
   <!-- Hero Section -->
   <section class="bg-gradient-to-br from-purple-900 via-purple-800 to-pink-900 text-white py-20">
