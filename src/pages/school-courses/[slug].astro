@@ -5,16 +5,172 @@ export async function getStaticPaths() {
     {
       params: { slug: 'ai-game-coding' },
       props: { 
-        title: "人工智能遊戲編程課程"
+        title: "人工智能遊戲編程課程",
+        componentName: 'ai-game-coding'
+      }
+    },
+    {
+      params: { slug: 'ai-digital-animation-exhibition' },
+      props: { 
+        title: "AI數位動畫展覽課程",
+        componentName: 'ai-digital-animation-exhibition'
+      }
+    },
+    {
+      params: { slug: 'component-demo' },
+      props: { 
+        title: "組件演示課程",
+        componentName: 'component-demo'
+      }
+    },
+    {
+      params: { slug: 'coral-generalized-example' },
+      props: { 
+        title: "Coral通用示例課程",
+        componentName: 'coral-generalized-example'
+      }
+    },
+    {
+      params: { slug: 'cospaces' },
+      props: { 
+        title: "CoSpaces虛擬實境課程",
+        componentName: 'cospaces'
+      }
+    },
+    {
+      params: { slug: 'generalized-example' },
+      props: { 
+        title: "通用示例課程",
+        componentName: 'generalized-example'
+      }
+    },
+    {
+      params: { slug: 'ksp' },
+      props: { 
+        title: "坎巴拉太空計劃課程",
+        componentName: 'ksp'
+      }
+    },
+    {
+      params: { slug: 'minecraft' },
+      props: { 
+        title: "Minecraft編程課程",
+        componentName: 'minecraft'
+      }
+    },
+    {
+      params: { slug: 'procreate' },
+      props: { 
+        title: "Procreate數位藝術課程",
+        componentName: 'procreate'
+      }
+    },
+    {
+      params: { slug: 'raspberry-pi' },
+      props: { 
+        title: "樹莓派編程課程",
+        componentName: 'raspberry-pi'
+      }
+    },
+    {
+      params: { slug: 'scratch-ai-programming' },
+      props: { 
+        title: "ScratchAI編程課程",
+        componentName: 'scratch-ai-programming'
+      }
+    },
+    {
+      params: { slug: 'scratch-game-design' },
+      props: { 
+        title: "Scratch遊戲設計課程",
+        componentName: 'scratch-game-design'
+      }
+    },
+    {
+      params: { slug: 'swiftplaygrounds' },
+      props: { 
+        title: "SwiftPlaygrounds編程課程",
+        componentName: 'swiftplaygrounds'
+      }
+    },
+    {
+      params: { slug: 'tello' },
+      props: { 
+        title: "Tello無人機編程課程",
+        componentName: 'tello'
       }
     }
   ];
 }
 
-const { title } = Astro.props;
+const { title, componentName } = Astro.props;
 
-// Import the Chinese-named component using a more reliable method
-const ChineseComponent = await import('./人工智能遊戲編程課程.astro');
+// Map component names to Chinese filenames
+const componentMapping = {
+  'ai-game-coding': '人工智能遊戲編程課程',
+  'ai-digital-animation-exhibition': 'AI數位動畫展覽課程',
+  'component-demo': '組件演示課程',
+  'coral-generalized-example': 'Coral通用示例課程',
+  'cospaces': 'CoSpaces虛擬實境課程',
+  'generalized-example': '通用示例課程',
+  'ksp': '坎巴拉太空計劃課程',
+  'minecraft': 'Minecraft編程課程',
+  'procreate': 'Procreate數位藝術課程',
+  'raspberry-pi': '樹莓派編程課程',
+  'scratch-ai-programming': 'ScratchAI編程課程',
+  'scratch-game-design': 'Scratch遊戲設計課程',
+  'swiftplaygrounds': 'SwiftPlaygrounds編程課程',
+  'tello': 'Tello無人機編程課程'
+};
+
+// Import the Chinese-named component using a switch statement
+let ChineseComponent;
+switch (componentName) {
+  case 'ai-game-coding':
+    ChineseComponent = await import('./人工智能遊戲編程課程.astro');
+    break;
+  case 'ai-digital-animation-exhibition':
+    ChineseComponent = await import('./AI數位動畫展覽課程.astro');
+    break;
+  case 'component-demo':
+    ChineseComponent = await import('./組件演示課程.astro');
+    break;
+  case 'coral-generalized-example':
+    ChineseComponent = await import('./Coral通用示例課程.astro');
+    break;
+  case 'cospaces':
+    ChineseComponent = await import('./CoSpaces虛擬實境課程.astro');
+    break;
+  case 'generalized-example':
+    ChineseComponent = await import('./通用示例課程.astro');
+    break;
+  case 'ksp':
+    ChineseComponent = await import('./坎巴拉太空計劃課程.astro');
+    break;
+  case 'minecraft':
+    ChineseComponent = await import('./Minecraft編程課程.astro');
+    break;
+  case 'procreate':
+    ChineseComponent = await import('./Procreate數位藝術課程.astro');
+    break;
+  case 'raspberry-pi':
+    ChineseComponent = await import('./樹莓派編程課程.astro');
+    break;
+  case 'scratch-ai-programming':
+    ChineseComponent = await import('./ScratchAI編程課程.astro');
+    break;
+  case 'scratch-game-design':
+    ChineseComponent = await import('./Scratch遊戲設計課程.astro');
+    break;
+  case 'swiftplaygrounds':
+    ChineseComponent = await import('./SwiftPlaygrounds編程課程.astro');
+    break;
+  case 'tello':
+    ChineseComponent = await import('./Tello無人機編程課程.astro');
+    break;
+  default:
+    throw new Error(`Unknown component: ${componentName}`);
+}
 ---
 
 <ChineseComponent.default /> 
