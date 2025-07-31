@@ -1,0 +1,20 @@
+---
+// Dynamic route to handle English URLs while using Chinese-named components
+export async function getStaticPaths() {
+  return [
+    {
+      params: { slug: 'ai-game-coding' },
+      props: { 
+        title: "人工智能遊戲編程課程"
+      }
+    }
+  ];
+}
+
+const { title } = Astro.props;
+
+// Import the Chinese-named component using a more reliable method
+const ChineseComponent = await import('./人工智能遊戲編程課程.astro');
+---
+
+<ChineseComponent.default /> 

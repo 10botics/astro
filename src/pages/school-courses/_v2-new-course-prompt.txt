@@ -1,6 +1,21 @@
 Create the website in astro file under src/pages/school-courses/ and the name of the file should be "course name in traditional chinese.astro"
 Use the image component in astro
 
+**IMPORTANT: IMAGE ORGANIZATION**
+- All course images must be organized in course-specific directories
+- Download and save all images to: `src/assets/images/school-courses/[course-name]/`
+- Example: For course "人工智能遊戲編程課程", images go to `src/assets/images/school-courses/人工智能遊戲編程課程/`
+- Use descriptive filenames for easy identification
+- **EXAMPLE STRUCTURE:**
+  ```
+  src/assets/images/school-courses/人工智能遊戲編程課程/
+  ├── hero-image.jpg
+  ├── curriculum-overview.png
+  ├── student-work-1.jpg
+  ├── student-work-2.jpg
+  └── technology-diagram.png
+  ```
+
 Structure the page with these sections in order:
 1. Hero section with title, subtitle, tags, and breadcrumbs
 2. Hero image and description section (2-column layout)
@@ -49,10 +64,13 @@ For the "Course content/curriculum" section:
 - NEVER use regular HTML `<img>` tags
 - Import the Image component at the top: `import { Image } from 'astro:assets';`
 - Always provide width and height attributes to the Image component
-- For external URLs, use the Image component with the src attribute directly
-- Example: `<Image src="https://example.com/image.jpg" alt="Description" width={640} height={480} class="..." />`
-- For local images, import them first: `import myImage from '../../assets/images/my-image.jpg';`
+- **IMAGE DOWNLOAD LOCATION**: All course images must be downloaded to `src/assets/images/school-courses/[course-name]/` directory
+  - Create the directory structure if it doesn't exist
+  - Use descriptive filenames (e.g., `hero-image.jpg`, `curriculum-overview.png`, `student-work-1.jpg`)
+  - Example path: `src/assets/images/school-courses/人工智能遊戲編程課程/hero-image.jpg`
+- For local images, import them first: `import myImage from '../../../assets/images/school-courses/[course-name]/my-image.jpg';`
 - Then use: `<Image src={myImage} alt="Description" class="..." />`
+- For external URLs that need to be downloaded, save them to the course-specific directory first
 - This is MANDATORY - never use `<img>` tags in Astro components
 
 **ICON REQUIREMENTS - CRITICAL:**
