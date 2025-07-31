@@ -3,12 +3,13 @@ export interface Props {
   title: string;
   subtitle: string;
   tags: string[];
-  videoId: string;
+  videoId?: string;
   description: string;
   featuredImage?: string;
+  heroImage?: string;
 }
 
-const { title, subtitle, tags, videoId, description, featuredImage } = Astro.props;
+const { title, subtitle, tags, videoId, description, featuredImage, heroImage } = Astro.props;
 ---
 
 <!-- Clean white background to match original -->
@@ -49,17 +50,27 @@ const { title, subtitle, tags, videoId, description, featuredImage } = Astro.pro
 <section class="bg-white py-8">
   <div class="container mx-auto px-4 max-w-6xl">
     <div class="grid lg:grid-cols-2 gap-12 items-start">
-      <!-- Video Section - exact positioning as original -->
+      <!-- Video/Image Section - exact positioning as original -->
       <div class="order-1">
-        <div class="aspect-video bg-black rounded-lg overflow-hidden shadow-lg">
-          <iframe 
-            src={`https://www.youtube.com/embed/${videoId}?controls=1&rel=0`}
-            class="w-full h-full"
-            frameborder="0"
-            allowfullscreen
-            title="課程簡介影片">
-          </iframe>
-        </div>
+        {heroImage ? (
+          <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg">
+            <img 
+              src={heroImage} 
+              alt={title}
+              class="w-full h-full object-cover"
+            />
+          </div>
+        ) : videoId ? (
+          <div class="aspect-video bg-black rounded-lg overflow-hidden shadow-lg">
+            <iframe 
+              src={`https://www.youtube.com/embed/${videoId}?controls=1&rel=0`}
+              class="w-full h-full"
+              frameborder="0"
+              allowfullscreen
+              title="課程簡介影片">
+            </iframe>
+          </div>
+        ) : null}
       </div>
 
       <!-- Description Section - match original styling -->

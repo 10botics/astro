@@ -7,7 +7,7 @@ import { Image } from 'astro:assets';
 
 // Course data (static)
 const courseData = {
-  title: "人工智能編程課程",
+  title: "人工智能遊戲編程課程",
   subtitle: "使用AI工具製作遊戲，從零基礎到專業開發者",
   tags: ["Programming 編程", "AI 人工智能", "初中", "高中", "遊戲開發"],
   videoId: "dQw4w9WgXcQ", // Placeholder video ID
@@ -146,14 +146,14 @@ const contactInfo = {
 };
 ---
 
-<Layout title={courseData.title}>
+<Layout title="人工智能遊戲編程課程">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
   <HeroSection 
     title={courseData.title}
     subtitle={courseData.subtitle}
     tags={courseData.tags}
-    videoId={courseData.videoId}
+    heroImage="/images/school-courses/人工智能遊戲編程課程/ai-game-coding-hero.jpg"
     description={courseData.description}
   />
 
