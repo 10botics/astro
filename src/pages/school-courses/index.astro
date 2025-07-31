@@ -7,9 +7,9 @@ const contentCourses = [];
 // Auto-discover .astro course files
 const courseFiles = await import.meta.glob('./*.astro', { eager: true });
 
-// Convert .astro files to course data (excluding index)
+// Convert .astro files to course data (excluding index and dynamic routes)
 const astroCourses = Object.entries(courseFiles)
-  .filter(([path]) => !path.includes('./index.astro'))
+  .filter(([path]) => !path.includes('./index.astro') && !path.includes('./[slug].astro'))
   .map(([path, module]) => {
     const filename = path.replace('./', '').replace('.astro', '');
     
