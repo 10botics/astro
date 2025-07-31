@@ -1,17 +1,66 @@
-Create the website in astro file under src/pages/school-courses/
+Create the website in astro file under src/pages/school-courses/ and the name of the file should be "course name in traditional chinese.astro"
 Use the image component in astro
 
 Structure the page with these sections in order:
 1. Hero section with title, subtitle, tags, and breadcrumbs
 2. Hero image and description section (2-column layout)
-3. Course requirements section (separate section with heading)
-4. Course highlights section
-5. Course content/curriculum section
-6. FAQ section
-7. Contact section
+3. Why the technology is important section (explain the significance of the technologies/tools used in the course, e.g., Poe, Repl.it, etc.)
+4. Course requirements section (separate section with heading)
+5. Course highlights section
+6. Course content/curriculum section (ONLY ONE "課程內容" heading with duration info and accordion)
+7. FAQ section
+8. Contact section
 
 For the course requirements section, create a separate section with:
 - Proper heading "課程資訊" or "課程要求"
 - Duration, equipment needed, and student requirements
 - Use icons and proper styling
 - Make it a full-width section, not part of the description column
+
+For the "Why the technology is important" section:
+- Add a clear heading, e.g., "為什麼選用這些技術？" or "技術重要性"
+- Briefly explain the significance and benefits of the main technologies/tools used in the course (e.g., Poe, Repl.it)
+- Use icons or visuals if possible
+- Make it a separate, full-width section
+
+For the "Course content/curriculum" section:
+- Use ONLY ONE heading "課程內容" 
+- Include duration information (e.g., "共 X 小時") and adjustment note
+- Follow immediately with the accordion section for curriculum details
+- DO NOT create separate sections for course content - combine everything under one "課程內容" heading
+- IMPORTANT: When using the AccordionSection component, either pass an empty title or create a custom accordion section to avoid duplicate headings like "課程大綱" appearing after "課程內容"
+
+**Layout Constraints:**
+- Use container classes with maximum width limits:
+  - Main content sections: `max-w-6xl` (1152px maximum)
+  - Course content accordions: `max-w-4xl` (896px maximum)
+  - Contact forms: `max-w-2xl` (672px maximum)
+- Always center content with `mx-auto` class
+- Use responsive padding: `px-4 sm:px-6 lg:px-8`
+- Grid layouts should be responsive: `grid md:grid-cols-2 lg:grid-cols-3`
+- Text content should not exceed readable line lengths (avoid very wide text blocks)
+- Images should be constrained with `max-w-lg` or `max-w-xl` for larger images
+- Student work galleries should use `max-w-6xl` container with responsive grid
+
+**CRITICAL IMAGE HANDLING REQUIREMENTS:**
+- ALWAYS use Astro's `<Image>` component from 'astro:assets' for ALL images
+- NEVER use regular HTML `<img>` tags
+- Import the Image component at the top: `import { Image } from 'astro:assets';`
+- Always provide width and height attributes to the Image component
+- For external URLs, use the Image component with the src attribute directly
+- Example: `<Image src="https://example.com/image.jpg" alt="Description" width={640} height={480} class="..." />`
+- For local images, import them first: `import myImage from '../../assets/images/my-image.jpg';`
+- Then use: `<Image src={myImage} alt="Description" class="..." />`
+- This is MANDATORY - never use `<img>` tags in Astro components
+
+**ICON REQUIREMENTS - CRITICAL:**
+- When creating course pages that use FontAwesome icons, ALWAYS include the FontAwesome CDN link:
+    ```html
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    ```
+  - Add this line immediately after the `<Layout>` component opening tag
+- Use ONLY simple, proven SVG icons that work reliably
+- For checkmarks: use the simple checkmark SVG path
+- For all other icons: use basic, widely-supported SVG paths
+- NEVER use complex or experimental SVG paths
+- Test all icons to ensure they render properly
