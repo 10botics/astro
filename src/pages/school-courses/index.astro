@@ -14,8 +14,21 @@ const astroCourses = Object.entries(courseFiles)
     const filename = path.replace('./', '').replace('.astro', '');
     
     // Map Chinese filenames to English URLs
-    const slugMapping = {
-      '人工智能遊戲編程課程': 'ai-game-coding'
+    const slugMapping: Record<string, string> = {
+      '人工智能遊戲編程課程': 'ai-game-coding',
+      'AI數位動畫展覽課程': 'ai-digital-animation-exhibition',
+      '組件演示課程': 'component-demo',
+      'Coral通用示例課程': 'coral-generalized-example',
+      'CoSpaces虛擬實境課程': 'cospaces',
+      '通用示例課程': 'generalized-example',
+      '坎巴拉太空計劃課程': 'ksp',
+      'Minecraft編程課程': 'minecraft',
+      'Procreate數位藝術課程': 'procreate',
+      '樹莓派編程課程': 'raspberry-pi',
+      'ScratchAI編程課程': 'scratch-ai-programming',
+      'Scratch遊戲設計課程': 'scratch-game-design',
+      'SwiftPlaygrounds編程課程': 'swiftplaygrounds',
+      'Tello無人機編程課程': 'tello'
     };
     
     return {
