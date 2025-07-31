@@ -26,16 +26,16 @@ const { title, subtitle, description, faqs } = Astro.props;
         {faqs.map((faq, index) => (
           <div class="pt-6">
             <dt>
-              <button type="button" class="flex w-full items-start justify-between text-left text-gray-900 faq-button" aria-controls={`faq-${index}`} aria-expanded="false">
+              <button type="button" class="flex w-full items-start justify-between text-left text-gray-900 faq-button" aria-controls={`faq-${index}`} aria-expanded="true">
                 <span class="text-base font-semibold leading-7">{faq.question}</span>
                 <span class="ml-6 flex h-7 items-center">
                   <svg class="h-6 w-6 faq-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
                   </svg>
                 </span>
               </button>
             </dt>
-            <dd class="mt-2 pr-12 hidden faq-answer" id={`faq-${index}`}>
+            <dd class="mt-2 pr-12 faq-answer" id={`faq-${index}`}>
               <p class="text-base leading-7 text-gray-600">{faq.answer}</p>
             </dd>
           </div>
@@ -51,36 +51,53 @@ const { title, subtitle, description, faqs } = Astro.props;
     const buttons = document.querySelectorAll('.faq-button');
     
     buttons.forEach(button => {
-      button.addEventListener('click', function() {
-        const expanded = this.getAttribute('aria-expanded') === 'true';
-        const targetId = this.getAttribute('aria-controls');
+      button.addEventListener('click', () => {
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        const targetId = button.getAttribute('aria-controls');
+        if (!targetId) return;
+        
         const answer = document.getElementById(targetId);
-        const icon = this.querySelector('.faq-icon');
+        const icon = button.querySelector('.faq-icon');
         
         // Close all other FAQs
         buttons.forEach(otherButton => {
-          if (otherButton !== this) {
+          if (otherButton !== button) {
             otherButton.setAttribute('aria-expanded', 'false');
             const otherId = otherButton.getAttribute('aria-controls');
+            if (!otherId) return;
+            
             const otherAnswer = document.getElementById(otherId);
             const otherIcon = otherButton.querySelector('.faq-icon');
             
-            otherAnswer.classList.add('hidden');
-            otherIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />';
+            if (otherAnswer) otherAnswer.classList.add('hidden');
+            if (otherIcon) otherIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />';
           }
         });
         
         // Toggle current FAQ
         if (!expanded) {
-          this.setAttribute('aria-expanded', 'true');
-          answer.classList.remove('hidden');
-          icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />';
+          button.setAttribute('aria-expanded', 'true');
+          if (answer) answer.classList.remove('hidden');
+          if (icon) icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />';
         } else {
-          this.setAttribute('aria-expanded', 'false');
-          answer.classList.add('hidden');
-          icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />';
+          button.setAttribute('aria-expanded', 'false');
+          if (answer) answer.classList.add('hidden');
+          if (icon) icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />';
         }
       });
+    });
+    
+    // Open all FAQs by default
+    buttons.forEach(button => {
+      button.setAttribute('aria-expanded', 'true');
+      const targetId = button.getAttribute('aria-controls');
+      if (!targetId) return;
+      
+      const answer = document.getElementById(targetId);
+      const icon = button.querySelector('.faq-icon');
+      
+      if (answer) answer.classList.remove('hidden');
+      if (icon) icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />';
     });
   });
 </script> 

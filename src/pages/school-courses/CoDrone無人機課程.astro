@@ -1,0 +1,383 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import CourseFeatures from '../../components/course/CourseFeatures.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import { Image } from 'astro:assets';
+
+// Import images
+import heroImage from '../../assets/images/school-courses/CoDrone無人機課程/hero-image.png';
+import droneExperience from '../../assets/images/school-courses/CoDrone無人機課程/drone-experience.png';
+import programmingControl from '../../assets/images/school-courses/CoDrone無人機課程/programming-control.png';
+import threeDrones from '../../assets/images/school-courses/CoDrone無人機課程/three-drones.webp';
+import relatedInfoBg from '../../assets/images/school-courses/CoDrone無人機課程/related-info-bg.png';
+
+// Course data
+export const courseData = {
+  title: "CoDrone無人機課程",
+  subtitle: "讓學生飛向STEM的新高度",
+  tags: ["Programming 編程", "Scratch", "初中", "無人機", "高中", "高小"],
+  videoId: "your-video-id-here",
+  description: "本課程旨在引導中學生探索無人機技術與Blockly/Python編程的結合，讓學員通過不同練習完成各種任務，並應用於日常生活中。",
+  detailedDescription: "本課程旨在引導中學生探索無人機技術與Blockly/Python編程的結合，讓學員通過不同練習完成各種任務，並應用於日常生活中。學習過程中，學生將掌握程式編寫、飛行路線和空中花色動作等技能。從基礎的飛行控制到高級編程挑戰，課程將逐步提升學生的無人機技能，並培養解決問題的能力、邏輯思維和創新靈感。準備好與Codrone無人機一起展翅高飛，開啟這段充滿挑戰的學習之旅吧！",
+  heroImage: heroImage,
+  featuredImage: droneExperience
+};
+
+// Course curriculum
+const curriculumItems = [
+  {
+    title: "簡介無人機及無人機體驗 [1 節]",
+    content: [
+      "介绍無人機的基本组成和功能",
+      "學習如何使用遙控器控制無人機"
+    ]
+  },
+  {
+    title: "編程飛行方向控制[1 節]",
+    content: [
+      "學習如何連接遙控器和電腦，進行編程模式",
+      "學習如何進行編程，使無人機能夠起飛、停留在空中、向上、向下、向前、向後和左右移動然後降落"
+    ]
+  },
+  {
+    title: "編程中的變數應用 [1 節]",
+    content: [
+      "學習變數的使用方式、原因以及運作方式",
+      "使用Blockly創建並運行涉及變數的程式，並且可以進行操縱的程度"
+    ]
+  },
+  {
+    title: "條件控制與邏輯及循環結構與控制 [1節]",
+    content: [
+      "解釋條件語句的使用方式和原因",
+      "使用Blockly創建並運行包含條件語句的程式",
+      "解釋循環（loop）的使用方式和原因",
+      "使用Blockly創建並運行包含循環的程式，使無人機以階梯模式飛行"
+    ]
+  },
+  {
+    title: "遠程與按鍵控制 [1 節]",
+    content: [
+      "遠端控制",
+      "對電腦按鍵進行編程，以便在無人機升空後對其進行控制"
+    ]
+  },
+  {
+    title: "LED燈光與信號編程 [1 節]",
+    content: [
+      "學習更改無人機不同部分的LED燈顏色",
+      "編程無人機的LED燈以密碼進行通信",
+      "與同學合作，編排無人機燈光表"
+    ]
+  },
+  {
+    title: "列表操作與程序決策 [1 節]",
+    content: [
+      "解釋清單的價值以及它們如何在程式中使用",
+      "解釋如何從清單中選擇項目",
+      "建立一個使用清單做出決策的程序",
+      "透過無人機的蜂鳴器播放音符"
+    ]
+  },
+  {
+    title: "函數程式設計與應用 [1 節]",
+    content: [
+      "解釋 return 和 void 函數之間的差異",
+      "解釋何時應在程式中使用 return 函數",
+      "解釋何時應在程式中使用 void 函數",
+      "編寫函數來幫助無人機飛行"
+    ]
+  },
+  {
+    title: "利用隨機性增強飛行體驗 [1 節]",
+    content: [
+      "解釋如何產生隨機數",
+      "解釋如何將隨機數轉換為程式中可用的值範圍",
+      "編寫一個使用隨機數影響無人機飛行的程序"
+    ]
+  },
+  {
+    title: "時間控制與計時器的應用 [1 節]",
+    content: [
+      "描述什麼是UTC時間以及它如何影響時間計算",
+      "使用變數儲存時間並報告無人機起降和動作持續時間",
+      "使用計時器限製程式時間"
+    ]
+  }
+];
+
+// Course features
+const courseFeatures = {
+  title: "課程特色",
+  features: [
+    {
+      text: "課程適合高小及中學生",
+      icon: "fas fa-graduation-cap"
+    },
+    {
+      text: "助學生成為Codrone高手",
+      icon: "fas fa-drone"
+    },
+    {
+      text: "創作自己的花式表演",
+      icon: "fas fa-magic"
+    },
+    {
+      text: "有趣的障礙物挑戰",
+      icon: "fas fa-flag-checkered"
+    }
+  ]
+};
+
+// Course objectives
+const courseObjectives = [
+  {
+    title: "無人機認識",
+    description: "認識無人機的運作和飛行原理，講解使用無人機時的安全守則及探討無人機在社會上的應用。"
+  },
+  {
+    title: "Codrone 無人機飛行操作",
+    description: "學習Codrone變數、條件語句和循環的使用。操控Codrone無人機進行各種飛行動作及感測。"
+  },
+  {
+    title: "Blockly/Python程式編寫",
+    description: "學習 Blockly/Python 編寫程式界面，進行趣味十足的表演，並在課程中提升編程技能。學習變數、條件語句和循環的使用。"
+  },
+  {
+    title: "精準編程",
+    description: "學習編寫程序讓Codrone無人機做出想要的動作。"
+  },
+  {
+    title: "強化團隊合作與問題解決技能",
+    description: "學生們可在學習利用編程設計期間，透過溝通和團體協作強化團隊合作精神，同共同尋找可行的解決方法。"
+  }
+];
+
+// Course arrangements
+const courseArrangements = [
+  {
+    title: "STEM Day 活動 (1 至 2 小時)",
+    description: "通過簡單的操作和飛行，學生將了解無人機的基本原理。學生將親自操作Codrone無人機進行簡單的飛行。他們會學習如何起飛、降落、懸停以及基本的飛行控制。學生將進行一些簡單的飛行挑戰，如穿越障礙物、畫出特定圖形等，鍛煉他們的控制技能。"
+  },
+  {
+    title: "課程 (10 小時)",
+    description: "建議一個學期完成 10 節課堂，每節 1 小時。*可根據學校需要調整課堂數及時數"
+  }
+];
+
+// FAQ items
+const faqItems = [
+  {
+    question: "上課場地是室內課室或室外操場?",
+    answer: "需要在室內上課，建議能提供活動室或禮堂等空間較大的地方作為上課地點。"
+  },
+  {
+    question: "學生需要有編程背景嗎？",
+    answer: "無需。課程一般適合任何高小至高中學生。"
+  },
+  {
+    question: "課程開班的最少人數是多少？",
+    answer: "課程開班的最少人數是10人。"
+  },
+  {
+    question: "每堂課程提供的無人機上限是多少？",
+    answer: "課程本身不包含任何無人機，如有需要學校可以向我們購買。我們亦有提供租借無人機的服務，會視乎上堂人數決定租借數量。"
+  },
+  {
+    question: "每堂到校的公司職員人數?",
+    answer: "一般課程都會是一位導師到校教授。如果學生人數超過20人，導師人數會作調整。"
+  },
+  {
+    question: "學校需要否提供任何協助?如充電器或其他器材?",
+    answer: "上課地點需要有投影設備，包括投影機, 屏幕, HDMI線及咪。另外需要確保課室有 WiFi 供學生和導師使用。每次上課前需要為iPad和電池進行充電。"
+  },
+  {
+    question: "可否接收政府採購卡(P-card) 付款?",
+    answer: "我們暫不按受政府採購卡(P-card) 付款。"
+  }
+];
+
+// Related courses
+const relatedCourses = [
+  {
+    title: "AI啟蒙與藝術創作課程",
+    description: "課程將引導學生深入探索人工智能（AI）在視覺藝術領",
+    image: "https://10botics.com/wp-content/uploads/2023/09/mj100_a_captivating_web_featured_image_that_delves_deep_into_th_83bb5e4a-9e38-49e9-9b65-1f5d9851d71b-768x578.png",
+    link: "/school-courses/ai-enrichment-course/"
+  },
+  {
+    title: "AI數碼動畫展",
+    description: "AI數碼動畫展是一個簡單有趣的 STEM Day 活動，學生可按主題設計喜歡的圖案/角色，通過人工智能把圖案轉換成栩栩如生的動畫，呈現在學校LED Wall或螢幕上面跳舞，讓學生能以輕鬆有趣的方式體驗生成式AI技術。",
+    image: "https://10botics.com/wp-content/uploads/2024/01/background-05-1.jpg",
+    link: "/stem-day/ai-digital-animation-exhibition/"
+  },
+  {
+    title: "Blockchain 區塊鏈課程",
+    description: "本課程旨在引領學生進入Web3.0的世界，瞭解在w",
+    image: "https://10botics.com/wp-content/uploads/2023/09/112-768x577.png",
+    link: "/school-courses/blockchain/"
+  }
+];
+---
+
+<Layout title={courseData.title} description={courseData.description}>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Hero Section -->
+  <HeroSection 
+    title={courseData.title}
+    subtitle={courseData.subtitle}
+    description={courseData.detailedDescription}
+    heroImage={courseData.heroImage}
+    tags={courseData.tags}
+  />
+
+  <!-- Course Highlights Section -->
+  <section class="py-16 bg-gradient-to-r from-blue-50 to-indigo-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程重點</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <!-- Drone Experience -->
+        <div class="space-y-4">
+          <Image 
+            src={droneExperience} 
+            alt="無人機體驗" 
+            class="w-full h-64 object-cover rounded-lg shadow-lg"
+          />
+          <h3 class="text-2xl font-semibold text-gray-800">無人機體驗</h3>
+          <p class="text-gray-600">介紹無人機的技術和飛行原理，學生可以掌握如何操控Codrone無人機，以無人機進行感測及各種飛行動作。</p>
+        </div>
+
+        <!-- Programming Control -->
+        <div class="space-y-4">
+          <Image 
+            src={programmingControl} 
+            alt="編程控制" 
+            class="w-full h-64 object-cover rounded-lg shadow-lg"
+          />
+          <h3 class="text-2xl font-semibold text-gray-800">編程控制</h3>
+          <p class="text-gray-600">利用<span class="font-medium">Blockly/Python</span>編程工具操控無人機，從而進行不同的任務和挑戰。學生亦可以自行探索，創作自己的花式表演，從而訓練他們的創意和解難能力。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Features -->
+  <CourseFeatures features={courseFeatures} />
+
+  <!-- Course Objectives -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程目標</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {courseObjectives.map((objective) => (
+          <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+            <div class="flex items-center mb-4">
+              <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-3">
+                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800">{objective.title}</h3>
+            </div>
+            <p class="text-gray-600">{objective.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Content -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <p class="text-center text-gray-600 mb-8">* 可根據學校需要調整</p>
+        <SingleCourseContent 
+          items={curriculumItems}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Arrangements -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程安排</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        {courseArrangements.map((arrangement) => (
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex items-center mb-4">
+              <div class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center mr-3">
+                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800">{arrangement.title}</h3>
+            </div>
+            <p class="text-gray-600 whitespace-pre-line">{arrangement.description}</p>
+          </div>
+        ))}
+      </div>
+      
+      <div class="text-center mt-8">
+        <p class="text-gray-600">歡迎填妥下方表格讓同事為你提供咨詢。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Information -->
+  <section class="py-16 bg-cover bg-center" style={`background-image: url(${relatedInfoBg.src})`}>
+    <div class="container mx-auto px-4">
+      <div class="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg max-w-2xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-4 text-gray-800">相關資料</h2>
+        <p class="text-gray-600 mb-6">嶄新無人機體驗 – 全新無人機 CoDrone EDU 引領中小學STEM教育新風潮</p>
+        <a href="https://10botics.com/past-activities/2024/07/29/brand-new-drone-experience/" 
+           class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+          查看更多
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <QnASection faqs={faqItems} />
+
+  <!-- Contact Form -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">聯絡我們</h2>
+      <PaperformEmbed formId="qhmoqcvc" />
+    </div>
+  </section>
+
+  <!-- Related Courses -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">其他課程</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {relatedCourses.map((course) => (
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <a href={course.link} class="block">
+              <img src={course.image} alt={course.title} class="w-full h-48 object-cover" />
+              <div class="p-6">
+                <h4 class="text-xl font-semibold mb-2 text-gray-800 hover:text-blue-600">
+                  {course.title}
+                </h4>
+                <p class="text-gray-600 mb-4">{course.description}</p>
+                <span class="text-blue-600 hover:text-blue-700 font-medium">Read More »</span>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout> 

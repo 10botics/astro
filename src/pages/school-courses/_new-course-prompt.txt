@@ -1,0 +1,189 @@
+Create the website in astro file under src/pages/school-courses/ and the name of the file should be "course name in traditional chinese.astro"
+
+**CRITICAL URL REQUIREMENTS:**
+- The filename MUST be in traditional Chinese 
+- The URL slug MUST be in English 
+- Add the Chinese filename to English slug mapping in both:
+  - `src/pages/school-courses/index.astro` (in the slugMapping object)
+  - `src/pages/school-courses/[slug].astro` (in the slugMapping object)
+- This ensures the course is accessible via English URLs while maintaining Chinese filenames
+
+**CRITICAL CONTENT ORGANIZATION REQUIREMENT:**
+- ALL text content must be defined as objects at the top of the file
+- Create separate objects for each section's content
+- Use descriptive object names like `heroContent`, `focusContent`, etc.
+- Reference these objects in the JSX/HTML sections
+- This makes content maintenance and updates much easier
+- ONLY create content objects for sections that are actually included in the page
+
+**CRITICAL COURSE CURRICULUM SEPARATION REQUIREMENT:**
+- When a course has more than one levels, ALWAYS create separate curriculum arrays
+
+**CRITICAL COURSE ARRANGEMENTS SECTION REQUIREMENT:**
+- When the markdown content includes course arrangement information (different levels, durations, scheduling), ALWAYS include a Course Arrangements section
+- Create a courseArrangements array with objects containing:
+  - icon: FontAwesome icon class
+  - title: Course level/duration title
+  - description: Detailed description with line breaks using \n
+- Use grid layout: `grid md:grid-cols-2 gap-8` for responsive design
+- Include a note about contacting for consultation at the end of the section
+- Example structure:
+  ```javascript
+  const courseArrangements = [
+    {
+      icon: "fas fa-star",
+      title: "STEM Day 體驗課程 (3 小時)",
+      description: "適合初次接觸機器人的學生\n包含機器人組裝體驗、基礎編程操作\n讓學生快速了解WRO競賽的魅力"
+    },
+    {
+      icon: "fas fa-star",
+      title: "入門課程 (24 小時)",
+      description: "建議一個學期完成 12 堂課，每節 2 小時\n從零開始學習機器人組裝與基礎編程\n為WRO競賽打下堅實基礎"
+    }
+  ];
+  ```
+
+**CRITICAL VISUAL ELEMENTS REQUIREMENT:**
+- ALL course sections MUST include visual elements (icons or images)
+- For course focus, course features, and course objectives sections:
+  - Each item MUST have an `icon` property with FontAwesome class (e.g., "fas fa-robot")
+  - OR include an `image` property with imported image asset
+  - Use consistent icon styling: `text-3xl text-cyan-500 mr-4` for icons
+  - For images, use proper sizing: `w-16 h-16 object-cover rounded-lg` or similar
+- Import necessary images at the top of the file using `import { Image } from 'astro:assets';`
+- Follow the visual pattern from existing pages like 人工智能遊戲編程課程.astro
+
+**CRITICAL NO INLINE CSS REQUIREMENT:**
+- NEVER use inline `style=""` attributes in any HTML/JSX elements
+- Use Tailwind CSS classes for all styling needs
+- For dynamic styling that requires JavaScript:
+  - Use CSS classes and toggle them with JavaScript instead of inline styles
+  - Create CSS classes in a `<style>` block at the bottom of the file if needed
+  - Use `classList.add()`, `classList.remove()`, and `classList.toggle()` methods
+  - Example: Instead of `style="max-height: 0px"`, use `class="accordion-closed"` and define `.accordion-closed { max-height: 0; }`
+- For aspect ratios: Use Tailwind's aspect ratio utilities like `aspect-video` (16:9) or `aspect-square` (1:1)
+- For background patterns: Use Tailwind's background utilities or create reusable CSS classes
+- For color overrides: Use Tailwind's color utilities instead of inline color styles
+
+Structure the page with these sections in order:
+1. Hero section with title, subtitle, tags, and breadcrumbs
+2. Hero description section
+3. Course highlights section
+4. Course features section (if included)
+5. Course objectives section (if included)
+6. Course content section (ONLY ONE "課程內容" heading with duration info and accordion)
+7. Course arrangements section (if markdown includes course arrangement info)
+8. FAQ section (MUST use QnASection component)
+9. Contact section
+
+**SECTION POSITIONING:**
+- Unknown sections (heading 1 in markdown) should be inserted in their relative position within this structure
+- Maintain the logical flow and readability of the page
+- If an unknown section appears between known sections in the markdown, position it accordingly in the HTML/JSX
+- Use alternating background colors (white/gray-50) for visual separation
+
+**OPTIONAL SECTIONS:**
+- Course requirements section: ONLY include if specifically requested by the user
+- Course objectives section: ONLY include if specifically requested by the user
+- Course features section: ONLY include if specifically requested by the user
+- Course arrangements section: ONLY include if the markdown content includes course arrangement information (like different course levels, durations, or scheduling options)
+- Student work showcase section: ONLY include if specifically requested by the user
+
+**UNKNOWN SECTIONS HANDLING:**
+- If the markdown contains heading 1 (#) sections that don't match any known section types, include them in their relative position within the page structure
+- Create content objects for these unknown sections following the same pattern as other sections
+- Position these sections in the HTML/JSX in the same order they appear in the markdown relative to other sections
+- Apply consistent styling and layout patterns:
+  - Use standard section structure: `<section class="py-16 bg-gray-50">` (alternate with white background)
+  - Include proper container classes: `container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8`
+  - Add visual elements (icons) if the content suggests them
+  - Use appropriate heading levels and spacing
+  
+**CRITICAL QnA COMPONENT REQUIREMENT:**
+- ALL new course pages MUST use the QnASection component for FAQ sections
+- Import the component: `import QnASection from '../../components/course/QnASection.astro';`
+- Create a faqItems array with question/answer pairs
+- Use the component: `<QnASection faqs={faqItems} />`
+- Choose appropriate variant: 'accordion', 'details', or 'simple'
+- NEVER create custom FAQ sections - always use the standardized QnASection component
+
+For the "Course content/curriculum" section:
+- Use ONLY ONE heading "課程內容" 
+- Include duration information (e.g., "共 X 小時") and adjustment note
+- Use the component SingleCourseContent component or DualCourseContent component
+- CRITICAL SPACING: The accordion content should follow immediately after the duration info with minimal spacing (use `mb-8` for duration info, not `mb-12` or separate sections)
+- The entire course content section should be ONE unified section, not split into separate sections
+
+**Layout Constraints:**
+- Use container classes with maximum width limits:
+  - Main content sections: `max-w-6xl` (1152px maximum)
+  - Course content accordions: `max-w-4xl` (896px maximum)
+  - Contact forms: `max-w-2xl` (672px maximum)
+- Always center content with `mx-auto` class
+- Use responsive padding: `px-4 sm:px-6 lg:px-8`
+- Grid layouts should be responsive: `grid md:grid-cols-2 lg:grid-cols-3`
+- Text content should not exceed readable line lengths (avoid very wide text blocks)
+
+**ICON REQUIREMENTS - CRITICAL:**
+- When creating course pages that use FontAwesome icons, ALWAYS include the FontAwesome CDN link:
+    ```html
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    ```
+  - Add this line immediately after the `<Layout>` component opening tag
+- Use ONLY simple, proven SVG icons that work reliably
+- For checkmarks: use the simple checkmark SVG path
+- For all other icons: use basic, widely-supported SVG paths
+- NEVER use complex or experimental SVG paths
+- Test all icons to ensure they render properly
+
+**VISUAL SECTION REQUIREMENTS:**
+- Course focus, features, and objectives sections (when included) MUST use card-based layouts with icons/images
+- Follow this structure for each item:
+  ```javascript
+  {
+    icon: "fas fa-robot", // FontAwesome class
+    title: "Section Title",
+    description: "Section description"
+  }
+  ```
+- Use consistent card styling: `bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow`
+- Icon styling: `text-3xl text-cyan-500 mr-4` for FontAwesome icons
+- Grid layout: `grid md:grid-cols-2 lg:grid-cols-3 gap-8` for responsive design
+
+**JAVASCRIPT STYLING REQUIREMENTS:**
+- When JavaScript needs to modify element styles, use CSS classes instead of inline styles
+- Create CSS classes in a `<style>` block at the bottom of the file for dynamic styling
+- Use `classList` methods to toggle classes:
+  ```javascript
+  // Instead of: element.style.maxHeight = '0px';
+  // Use: element.classList.add('accordion-closed');
+  
+  // Instead of: element.style.maxHeight = element.scrollHeight + 'px';
+  // Use: element.classList.remove('accordion-closed');
+  ```
+- Example CSS classes for accordion functionality:
+  ```css
+  <style>
+    .accordion-closed {
+      max-height: 0 !important;
+    }
+    .accordion-open {
+      max-height: none !important;
+    }
+    .aspect-video {
+      aspect-ratio: 16 / 9;
+    }
+  </style>
+  ```
+
+**STYLE CONSISTENCY REQUIREMENTS:**
+- Follow structure of other existing pages like 人工智能遊戲編程課程.astro, Delightex 遊戲設計課程.astro
+- Use same components, colors, spacing, and typography
+- Match grid layouts, card styling, and responsive design
+- Use identical container widths and padding
+
+**COMPONENT USAGE:**
+- Use `HeroSection` component for hero section
+- Follow same frontmatter structure with `courseData` export
+- Use identical data structures for all sections
+- Match exact section ordering and naming

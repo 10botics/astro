@@ -1,0 +1,429 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import CourseFeatures from '../../components/course/CourseFeatures.astro';
+import AccordionSection from '../../components/course/AccordionSection.astro';
+import DualCourseContent from '../../components/course/DualCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import { Image } from 'astro:assets';
+
+// Import images
+import donkeyCarMain from '../../assets/images/school-courses/Donkey Car 無人車課程/donkey-car-main.png';
+import donkeyCarIntro from '../../assets/images/school-courses/Donkey Car 無人車課程/donkey-car-intro.jpeg';
+import pythonControl from '../../assets/images/school-courses/Donkey Car 無人車課程/python-control.gif';
+import coralDetection from '../../assets/images/school-courses/Donkey Car 無人車課程/coral-detection.gif';
+import colabTraining from '../../assets/images/school-courses/Donkey Car 無人車課程/colab-training.gif';
+import lapTimer from '../../assets/images/school-courses/Donkey Car 無人車課程/lap-timer.gif';
+import donkeyCarHardware from '../../assets/images/school-courses/Donkey Car 無人車課程/donkey-car-hardware.png';
+import coralAccelerator from '../../assets/images/school-courses/Donkey Car 無人車課程/coral-accelerator.png';
+import googleColab from '../../assets/images/school-courses/Donkey Car 無人車課程/google-colab.png';
+import pythonLogo from '../../assets/images/school-courses/Donkey Car 無人車課程/python-logo.png';
+import jupyterLogo from '../../assets/images/school-courses/Donkey Car 無人車課程/jupyter-logo.png';
+import gallery1 from '../../assets/images/school-courses/Donkey Car 無人車課程/gallery-1.jpg';
+import gallery2 from '../../assets/images/school-courses/Donkey Car 無人車課程/gallery-2.jpg';
+import gallery3 from '../../assets/images/school-courses/Donkey Car 無人車課程/gallery-3.jpg';
+
+// Course data
+export const courseData = {
+  title: "Donkey Car 無人車課程",
+  subtitle: "驅動未來，探索Donkey Car智能學習的樂趣與創新",
+  tags: ["AI 人工智能", "Donkey Car", "Programming 編程", "Python", "Raspberry Pi", "Tensorflow", "初中", "高中"],
+  videoId: "gUhsp-Yq7co",
+  description: "通過 Donkey Car 實作無人駕駛與自動駕駛，培養學生對 AI 和資訊科技的興趣。課程包括深度學習、卷積神經網路，使用 Python 和 Tensorflow 控制無人車，培訓自駕模組並測試。課程末段學生將組建可應對多種路況的智能小車。",
+  detailedDescription: "課程由專業導師編寫，學習內容針對中學生的學習需求。課程透過 Donkey Car 無人車認識人工智能（AI）。課程涵蓋基本圖像處理技術，不同的機器學習原理，例如神經網絡（Neural Network）的基礎。學生可以運用課程所學到的知識和原理來訓練具個人駕駛風格的無人車。",
+  heroImage: donkeyCarMain,
+};
+
+// Course features
+const courseFeatures = [
+  {
+    icon: "fas fa-code",
+    title: "編寫 Python 控制 Donkey Car",
+    description: "學習使用 Python 編程語言控制無人車的基本操作和功能"
+  },
+  {
+    icon: "fas fa-microchip",
+    title: "借助 Google Coral 加速器進行路牌辨識",
+    description: "使用 Google Coral 加速器實現實時路牌識別功能"
+  },
+  {
+    icon: "fas fa-brain",
+    title: "Google Colab 訓練自動駕駛的AI 模型",
+    description: "在雲端環境中訓練和優化自動駕駛AI模型"
+  },
+  {
+    icon: "fas fa-stopwatch",
+    title: "開發 Donkey Car 新功能：偵測終點線及記錄圈速",
+    description: "編程實現終點線檢測和圈速記錄功能"
+  }
+];
+
+// 初階課程 (共 16 小時)
+const beginnerCurriculum = [
+  {
+    title: "簡介人工智能和無人車的發展 [2 節]",
+    content: [
+      "人工智能的定義和應用領域",
+      "無人車技術的發展和應用場景"
+    ]
+  },
+  {
+    title: "Donkey Car的硬件配置 [2 節]",
+    content: [
+      "感測器和感知技術",
+      "控制系統"
+    ]
+  },
+  {
+    title: "軟件配置、運作原理及安裝 [2 節]",
+    content: [
+      "系統軟件結構和功能模塊",
+      "Donkey Car的安裝"
+    ]
+  },
+  {
+    title: "透過模擬器訓練無人車 [2 節]",
+    content: [
+      "Donkey Car APP的介紹和使用方法",
+      "模擬環境的建立和設定",
+      "無人車訓練的基本步驟和方法"
+    ]
+  },
+  {
+    title: "落場實戰 (1) - 收集數據 [2 節]",
+    content: [
+      "數據收集的重要性和方法",
+      "Donkey Car數據收集的技術和工具"
+    ]
+  },
+  {
+    title: "落場實戰 (2) - 訓練模型 [2 節]",
+    content: [
+      "深度學習模型的構建和訓練流程",
+      "數據預處理和特徵提取",
+      "模型訓練和優化技巧"
+    ]
+  },
+  {
+    title: "落場實戰 (3) - 測試模型 [2 節]",
+    content: [
+      "模型測試的方法和指標",
+      "模型性能評估和分析",
+      "模型改進和迭代的策略"
+    ]
+  },
+  {
+    title: "基本命令，參數調整和代碼演練 [2 節]",
+    content: [
+      "基本Donkey Car控制指令和操作",
+      "參數調整和優化技巧",
+      "代碼演練和實際應用案例"
+    ]
+  }
+];
+
+// 進階課程 (共 16 小時)
+const advancedCurriculum = [
+  {
+    title: "圖像特徵的視覺化 [2 節]",
+    content: [
+      "學習如何使用視覺化工具來突出顯示重要的圖像特徵，以幫助理解和分析無人車相關數據"
+    ]
+  },
+  {
+    title: "使用 Google Colab 訓練模型 [2 節]",
+    content: [
+      "學習如何設置環境、上傳數據、編寫訓練代碼",
+      "評估和優化訓練結果"
+    ]
+  },
+  {
+    title: "使用 Google Coral - 路牌識別 [2 節]",
+    content: [
+      "學習如何配置硬體、安裝相應的軟體和庫",
+      "編寫代碼來實現Donkey Car的停止標誌檢測"
+    ]
+  },
+  {
+    title: "編程 -移除無意義數據 [2 節]",
+    content: [
+      "排除無效數據，以改善模型的訓練和測試結果"
+    ]
+  },
+  {
+    title: "編程 -FPS counter [2 節]",
+    content: [
+      "測量和顯示Donkey Car系統的幀率，以評估系統的運行效率"
+    ]
+  },
+  {
+    title: "編程 -Lap timer [2 節]",
+    content: [
+      "編寫代碼來實現圈速計時器",
+      "進一步優化駕駛策略"
+    ]
+  },
+  {
+    title: "編程 -LED 尾燈 [2 節]",
+    content: [
+      "學習如何連接和配置LED尾燈硬體"
+    ]
+  },
+  {
+    title: "編程 -最佳圈速 [2 節]",
+    content: [
+      "編寫一個程式來提取最佳圈速，以用於訓練Donkey Car 模型"
+    ]
+  }
+];
+
+// FAQ data
+const faqData = [
+  {
+    question: "課程價錢是否包括Donkey Car 無人車？",
+    answer: "課程並不包括Donkey Car 無人車，但我們可以協助提供所需清單和購買，歡迎向我們查詢瞭解更多。"
+  },
+  {
+    question: "學校需要甚麼設備？",
+    answer: "學校需準備以下項目：1） Donkey Car 無人車，2）Donkey Car 無人車賽道，3）電腦。另外學生需要自備智能電話。"
+  },
+  {
+    question: "適合哪些年級的學生？",
+    answer: "初階課程適合初中年級學生。進階課程適合高中年級學生，或已完成初階課程及對Donkey Car無人車有基本認識的同學。"
+  },
+  {
+    question: "學生需要有編程背景嗎？",
+    answer: "課程內容由淺入深，編程背景並非必須。"
+  }
+];
+
+// Course arrangement
+const courseArrangement = [
+  {
+    title: "STEM Day 活動 (1 至 3 小時)",
+    description: "根據時數選擇一至兩節課堂，建議組合：透過模擬器訓練無人車 + 落場實戰"
+  },
+  {
+    title: "完整課程 (16小時)",
+    description: "建議一個學期完成 16 節課堂，每節 1 小時。*可根據學校需要調整課堂數及時數"
+  }
+];
+---
+
+<Layout title={courseData.title} description={courseData.description}>
+  <!-- Hero Section -->
+  <HeroSection 
+    title={courseData.title}
+    subtitle={courseData.subtitle}
+    description={courseData.description}
+    videoId={courseData.videoId}
+    heroImage={courseData.heroImage}
+    tags={courseData.tags}
+  />
+
+  <!-- Course Introduction -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <Image 
+              src={donkeyCarIntro} 
+              alt="Donkey Car Introduction" 
+              class="rounded-lg shadow-lg"
+            />
+          </div>
+          <div>
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">什麼是Donkey Car？</h2>
+            <p class="text-lg text-gray-600 leading-relaxed">
+              Donkey Car 是其中一個最受歡迎的無人駕駛車的開源項目，它利用機械學習 (Machine Learning) 將學生的行駛數據訓練出一個模型進行無人駕駛。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Features -->
+  <CourseFeatures features={{
+    title: "課程特色",
+    features: courseFeatures.map(feature => ({
+      text: feature.title,
+      icon: feature.icon
+    }))
+  }} />
+
+  <!-- Course Features with GIFs -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程特色</h2>
+        
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+          <div class="flex items-center space-x-4">
+            <div class="flex-shrink-0">
+              <Image src={pythonControl} alt="Python Control" class="w-32 h-32 rounded-lg" />
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-2">編寫 Python 控制 Donkey Car</h3>
+            </div>
+          </div>
+          
+          <div class="flex items-center space-x-4">
+            <div class="flex-shrink-0">
+              <Image src={coralDetection} alt="Coral Detection" class="w-32 h-32 rounded-lg" />
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-2">借助 Google Coral 加速器進行路牌辨識</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+          <div class="flex items-center space-x-4">
+            <div class="flex-shrink-0">
+              <h3 class="text-xl font-semibold mb-2">Google Colab 訓練自動駕駛的AI 模型</h3>
+            </div>
+            <div>
+              <Image src={colabTraining} alt="Colab Training" class="w-32 h-32 rounded-lg" />
+            </div>
+          </div>
+          
+          <div class="flex items-center space-x-4">
+            <div class="flex-shrink-0">
+              <h3 class="text-xl font-semibold mb-2">開發 Donkey Car 新功能：偵測終點線及記錄圈速</h3>
+            </div>
+            <div>
+              <Image src={lapTimer} alt="Lap Timer" class="w-32 h-32 rounded-lg" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Technology Stack -->
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-6 mt-12">
+          <div class="text-center">
+            <Image src={donkeyCarHardware} alt="Donkey Car Hardware" class="w-20 h-20 mx-auto mb-2" />
+            <p class="text-sm text-gray-600">Donkey Car</p>
+          </div>
+          <div class="text-center">
+            <Image src={coralAccelerator} alt="Coral Accelerator" class="w-20 h-20 mx-auto mb-2" />
+            <p class="text-sm text-gray-600">Google Coral</p>
+          </div>
+          <div class="text-center">
+            <Image src={googleColab} alt="Google Colab" class="w-20 h-20 mx-auto mb-2" />
+            <p class="text-sm text-gray-600">Google Colab</p>
+          </div>
+          <div class="text-center">
+            <Image src={pythonLogo} alt="Python Logo" class="w-20 h-20 mx-auto mb-2" />
+            <p class="text-sm text-gray-600">Python</p>
+          </div>
+          <div class="text-center">
+            <Image src={jupyterLogo} alt="Jupyter Logo" class="w-20 h-20 mx-auto mb-2" />
+            <p class="text-sm text-gray-600">Jupyter</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Content -->
+  <DualCourseContent 
+    beginnerTitle="初階課程"
+    advancedTitle="進階課程"
+    beginnerItems={beginnerCurriculum}
+    advancedItems={advancedCurriculum}
+    beginnerHours="16 小時"
+    advancedHours="16 小時"
+  />
+
+  <!-- Course Arrangement -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程安排</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          {courseArrangement.map((arrangement) => (
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <div class="flex items-center mb-4">
+                <i class="fas fa-star text-yellow-500 text-xl mr-3"></i>
+                <h3 class="text-xl font-semibold">{arrangement.title}</h3>
+              </div>
+              <p class="text-gray-600">{arrangement.description}</p>
+            </div>
+          ))}
+        </div>
+        <div class="text-center mt-8">
+          <p class="text-gray-600">歡迎填妥下方表格讓同事為你提供咨詢。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hong Kong AI Formula Racing -->
+  <section class="py-16 bg-blue-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-8 text-gray-800">「香港校際AI方程式」比賽</h2>
+        <div class="aspect-video mb-8">
+          <iframe 
+            class="w-full h-full rounded-lg"
+            src="https://www.youtube.com/embed/pwka-FoAqyw" 
+            title="Hong Kong AI Formula Racing"
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        <h4 class="text-xl font-semibold mb-6 text-gray-800">
+          在課程中，同學可透過編程和人工智能的學習，調整屬於自己的賽車，更可參加不同分站的比賽，和其他隊伍一較高下！
+        </h4>
+        <a 
+          href="https://formula-ai.racing/" 
+          target="_blank" 
+          class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+        >
+          香港校際 AI 方程式 2024
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Gallery -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">精選照片</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="group cursor-pointer">
+            <Image 
+              src={gallery1} 
+              alt="Donkey Car Gallery 1" 
+              class="w-full h-64 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+            />
+          </div>
+          <div class="group cursor-pointer">
+            <Image 
+              src={gallery2} 
+              alt="Donkey Car Gallery 2" 
+              class="w-full h-64 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+            />
+          </div>
+          <div class="group cursor-pointer">
+            <Image 
+              src={gallery3} 
+              alt="Donkey Car Gallery 3" 
+              class="w-full h-64 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <QnASection faqs={faqData} />
+
+  <!-- Contact Form -->
+  <PaperformEmbed formId="qhmoqcvc" title="聯絡我們" />
+</Layout> 

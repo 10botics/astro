@@ -1,0 +1,194 @@
+---
+// QnA Section Component for school courses
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  faqs: Array<{
+    question: string;
+    answer: string;
+  }>;
+  variant?: 'accordion' | 'details' | 'simple';
+  className?: string;
+}
+
+const { 
+  title = "常見問題", 
+  subtitle = "FAQ", 
+  description = "關於課程的常見問題",
+  faqs, 
+  variant = 'accordion',
+  className = ""
+} = Astro.props;
+---
+
+<section class={`bg-gray-50 py-16 ${className}`}>
+  <div class="container mx-auto px-4 max-w-4xl">
+    <div class="text-center mb-12">
+      {subtitle && <h3 class="text-base font-semibold leading-7 text-blue-600">{subtitle}</h3>}
+      <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">{title}</h2>
+      {description && <p class="mt-6 text-lg leading-8 text-gray-600">{description}</p>}
+    </div>
+    
+    {variant === 'accordion' && (
+      <div class="space-y-4">
+        {faqs.map((faq, index) => (
+          <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
+            <button 
+              class="faq-header w-full text-left p-6 bg-white hover:bg-gray-50 transition-colors flex justify-between items-center"
+              data-target={`faq-${index}`}
+            >
+              <span class="font-semibold text-gray-900">{faq.question}</span>
+              <div class="faq-icon transition-transform duration-200">
+                <i class="fas fa-minus text-gray-600"></i>
+              </div>
+            </button>
+            <div 
+              id={`faq-${index}`}
+              class="faq-content overflow-hidden transition-all duration-300 ease-in-out"
+              style="max-height: none;"
+            >
+              <div class="p-6 bg-gray-50 border-t border-gray-200">
+                <p class="text-gray-700 whitespace-pre-line">{faq.answer}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+
+    {variant === 'details' && (
+      <div class="space-y-4">
+        {faqs.map((faq, index) => (
+          <div class="mb-4">
+            <details class="bg-white rounded-lg shadow-md" open>
+              <summary class="p-6 cursor-pointer font-semibold text-lg hover:bg-gray-50">
+                {faq.question}
+              </summary>
+              <div class="p-6 pt-0 text-gray-600">
+                <p class="whitespace-pre-line">{faq.answer}</p>
+              </div>
+            </details>
+          </div>
+        ))}
+      </div>
+    )}
+
+    {variant === 'simple' && (
+      <div class="space-y-6 divide-y divide-gray-900/10">
+        {faqs.map((faq, index) => (
+          <div class="pt-6">
+            <dt>
+              <button type="button" class="flex w-full items-start justify-between text-left text-gray-900 faq-button" aria-controls={`faq-${index}`} aria-expanded="true">
+                <span class="text-base font-semibold leading-7">{faq.question}</span>
+                <span class="ml-6 flex h-7 items-center">
+                  <svg class="h-6 w-6 faq-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
+                  </svg>
+                </span>
+              </button>
+            </dt>
+            <dd class="mt-2 pr-12 faq-answer" id={`faq-${index}`}>
+              <p class="text-base leading-7 text-gray-600 whitespace-pre-line">{faq.answer}</p>
+            </dd>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+</section>
+
+<script>
+  // FAQ functionality for accordion variant
+  document.addEventListener('DOMContentLoaded', function() {
+    const faqHeaders = document.querySelectorAll('.faq-header');
+    
+    faqHeaders.forEach(header => {
+      header.addEventListener('click', function(this: HTMLElement) {
+        const target = this.getAttribute('data-target');
+        if (!target) return;
+        
+        const content = document.getElementById(target);
+        const icon = this.querySelector('.faq-icon i') as HTMLElement;
+        
+        if (content && icon) {
+          // Toggle current FAQ
+          if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+            content.style.maxHeight = '0px';
+            icon.className = 'fas fa-plus text-gray-600';
+          } else {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            icon.className = 'fas fa-minus text-gray-600';
+          }
+        }
+      });
+    });
+    
+    // Open all FAQs by default for accordion variant
+    faqHeaders.forEach(header => {
+      const target = header.getAttribute('data-target');
+      if (!target) return;
+      
+      const content = document.getElementById(target);
+      const icon = header.querySelector('.faq-icon i') as HTMLElement;
+      
+      if (content && icon) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        icon.className = 'fas fa-minus text-gray-600';
+      }
+    });
+
+    // FAQ functionality for simple variant
+    const faqButtons = document.querySelectorAll('.faq-button');
+    
+    faqButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        const targetId = button.getAttribute('aria-controls');
+        if (!targetId) return;
+        
+        const answer = document.getElementById(targetId);
+        const icon = button.querySelector('.faq-icon');
+        
+        // Close all other FAQs
+        faqButtons.forEach(otherButton => {
+          if (otherButton !== button) {
+            otherButton.setAttribute('aria-expanded', 'false');
+            const otherId = otherButton.getAttribute('aria-controls');
+            if (!otherId) return;
+            
+            const otherAnswer = document.getElementById(otherId);
+            const otherIcon = otherButton.querySelector('.faq-icon');
+            
+            if (otherAnswer) otherAnswer.classList.add('hidden');
+            if (otherIcon) otherIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />';
+          }
+        });
+        
+        // Toggle current FAQ
+        if (!expanded) {
+          button.setAttribute('aria-expanded', 'true');
+          if (answer) answer.classList.remove('hidden');
+          if (icon) icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />';
+        } else {
+          button.setAttribute('aria-expanded', 'false');
+          if (answer) answer.classList.add('hidden');
+          if (icon) icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />';
+        }
+      });
+    });
+    
+    // Open all FAQs by default for simple variant
+    faqButtons.forEach(button => {
+      button.setAttribute('aria-expanded', 'true');
+      const targetId = button.getAttribute('aria-controls');
+      if (!targetId) return;
+      
+      const answer = document.getElementById(targetId);
+      const icon = button.querySelector('.faq-icon');
+      
+      if (answer) answer.classList.remove('hidden');
+      if (icon) icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />';
+    });
+  });
+</script> 

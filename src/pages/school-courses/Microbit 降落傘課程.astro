@@ -1,0 +1,286 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import { Image } from 'astro:assets';
+
+// Import course images
+import heroImage from '../../assets/images/school-courses/Microbit降落傘課程/hero-image.png';
+import learningJourneyImage from '../../assets/images/school-courses/Microbit降落傘課程/learning-journey.png';
+import parachuteMakingImage from '../../assets/images/school-courses/Microbit降落傘課程/parachute-making.png';
+import blocklyProgrammingImage from '../../assets/images/school-courses/Microbit降落傘課程/blockly-programming.png';
+import scienceKnowledgeImage from '../../assets/images/school-courses/Microbit降落傘課程/science-knowledge.png';
+import teamworkImage from '../../assets/images/school-courses/Microbit降落傘課程/teamwork.png';
+import scientificRecordingImage from '../../assets/images/school-courses/Microbit降落傘課程/scientific-recording.png';
+
+// Course data
+export const courseData = {
+  title: "Micro:bit 降落傘課程",
+  subtitle: "讓STEM為你安全降落",
+  tags: ["Microbit", "Programming 編程", "手作", "高小"],
+  videoId: "your-video-id-here",
+  description: "在本課程中，學生將會用物理學的角度去理解降落傘的原理，並會以通過設計和製作降落傘的方式，學習降落傘是如何能在空中穩定下降。",
+  detailedDescription: "在本課程中，學生將會用物理學的角度去理解降落傘的原理，並會以通過設計和製作降落傘的方式，學習降落傘是如何能在空中穩定下降。完成製作後，學生將進行多次測試及比賽，使用Microbit的傳感器去測試及記錄每次降落的數據，分析降落速度與降落傘設計間的關係。",
+  heroImage: heroImage
+};
+
+// Course highlights
+const courseHighlights = [
+  {
+    icon: "fas fa-parachute-box",
+    title: "降落傘手作",
+    description: "同學會學會如何手作及測試不同類型的降落傘的效果，並會運用在課程中學到的科學知識，去自行改裝降落傘，最後在比賽中取得佳績",
+    image: parachuteMakingImage
+  },
+  {
+    icon: "fas fa-microchip",
+    title: "測試編程",
+    description: "通過理解Microbit傳感器的運作原理，了解到Microbit是如何能夠感應降落傘的穩定程度，並通過編程的方式使所有東西能運作",
+    image: null
+  }
+];
+
+// Course objectives
+const courseObjectives = [
+  {
+    icon: "fas fa-code",
+    title: "Blockly編寫",
+    description: "學會通過拖放指令塊來編寫簡單的程式，理解程式邏輯的基礎結構。",
+    image: blocklyProgrammingImage
+  },
+  {
+    icon: "fas fa-flask",
+    title: "學習科學知識",
+    description: "運用科學知識來解釋日常生活中的現象，例如空氣阻力和重力。",
+    image: scienceKnowledgeImage
+  },
+  {
+    icon: "fas fa-users",
+    title: "團隊合作",
+    description: "在手工製作過程中與他人合作，了解協作和溝通的重要性。",
+    image: teamworkImage
+  },
+  {
+    icon: "fas fa-clipboard-list",
+    title: "記錄科學",
+    description: "學生將學習科學記錄的方法，把記錄的數據進行分析和解釋，並得出科學結論。",
+    image: scientificRecordingImage
+  }
+];
+
+// Course curriculum
+const courseCurriculum = [
+  {
+    title: "降落傘原理及組裝［1節］",
+    content: [
+      "⁠  ⁠了解降落傘的運作原理",
+      "⁠  ⁠學習不同的物理知識",
+      "⁠  ⁠與組員分工合作完成降落傘的不同結構"
+    ]
+  },
+  {
+    title: "Microbit感應器［1節］",
+    content: [
+      "⁠  ⁠學習加速度感應器的應用",
+      "⁠  ⁠通過編程去使用傳感器"
+    ]
+  },
+  {
+    title: "改裝及比賽［1節］",
+    content: [
+      "⁠  利用學到的物理知識改裝降落傘",
+      "⁠  ⁠測試不同類型和特徵的降落傘",
+      "⁠  與同學進行降落傘穩定性比賽"
+    ]
+  }
+];
+
+// Course arrangement
+const courseArrangement = [
+  {
+    icon: "fas fa-star",
+    title: "STEM Day 活動 (1 至 2 小時)",
+    description: "- 通過了解不同降落傘的構造，學生將會學習不同的物理學知識\n- 學生以團隊合作的方式去完成一個自製降落傘\n- 學生將以在課堂上學到的知識改良降落傘，實踐P-I-E (規劃 - 實施 - 評估)"
+  },
+  {
+    icon: "fas fa-star",
+    title: "常規課程 (3小時)",
+    description: "建議一個月內完成3節課堂，每節1小時\n*可根據學校需要調整課堂數及時數"
+  }
+];
+
+// FAQ section
+const faqItems = [
+  {
+    question: "什麽年級的學生適合？",
+    answer: [
+      "該課程一般適合高小學生。",
+      "學生需要具備基本的電腦操作能力。"
+    ]
+  },
+  {
+    question: "學校需要甚麽設備？",
+    answer: [
+      "學校需準備以下項目：",
+      "1） Micro:bit 開發板",
+      "2） 電腦或平板電腦",
+      "3） 降落傘製作材料",
+      "建議先致電+852 6554-1506 或電郵至 info@10botics.com向同事溝通學校期望的教學內容，同事將就教學所需設備提供建議。"
+    ]
+  }
+];
+---
+
+<Layout title={courseData.title} description={courseData.description}>
+  <main>
+    <!-- Hero Section -->
+    <HeroSection 
+      title={courseData.title}
+      subtitle={courseData.subtitle}
+      description={courseData.detailedDescription}
+      heroImage={courseData.heroImage}
+      tags={courseData.tags}
+    />
+
+    <!-- Learning Journey Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-8">
+            <Image 
+              src={learningJourneyImage} 
+              alt="學習歷程冊" 
+              class="mx-auto mb-6 rounded-lg shadow-lg"
+              width={400}
+              height={300}
+            />
+            <p class="text-lg text-gray-700">
+              本課程配備一份<strong>學習歷程冊</strong>，而學習歷程冊將引導學生循序漸進地學習知識，從簡單的概念過渡到實踐應用，並通過記錄來證明實驗的成果。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Highlights Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">課程重點</h2>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {courseHighlights.map((item) => (
+            <div class="bg-white p-8 rounded-lg shadow-md">
+              {item.image && (
+                <div class="mb-6">
+                  <Image 
+                    src={item.image} 
+                    alt={item.title}
+                    class="w-full rounded-lg"
+                    width={600}
+                    height={400}
+                  />
+                </div>
+              )}
+              <div class="flex items-start">
+                <div class="text-4xl text-blue-600 mr-4 mt-2">
+                  <i class={item.icon}></i>
+                </div>
+                <div>
+                  <h3 class="text-2xl font-semibold text-gray-900 mb-3">{item.title}</h3>
+                  <p class="text-gray-600 leading-relaxed">{item.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Objectives Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">課程目標</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {courseObjectives.map((item) => (
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              {item.image && (
+                <div class="mb-4">
+                  <Image 
+                    src={item.image} 
+                    alt={item.title}
+                    class="w-full rounded-lg"
+                    width={400}
+                    height={300}
+                  />
+                </div>
+              )}
+              <div class="flex items-start">
+                <div class="text-3xl text-blue-600 mr-4 mt-2">
+                  <i class={item.icon}></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
+                  <p class="text-gray-600">{item.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Content Section -->
+    <SingleCourseContent 
+      items={courseCurriculum} 
+      hours="3 小時"
+    />
+
+    <!-- Course Arrangement Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">課程安排</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {courseArrangement.map((item) => (
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <div class="flex items-start">
+                <div class="text-3xl text-blue-600 mr-4">
+                  <i class={item.icon}></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
+                  <p class="text-gray-600 whitespace-pre-line">{item.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="text-center mt-8">
+          <p class="text-gray-600">歡迎填妥下方表格讓同事為你提供咨詢。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <QnASection faqs={faqItems.map(item => ({
+      question: item.question,
+      answer: item.answer.join('\n')
+    }))} />
+
+    <!-- Contact Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">聯絡我們</h2>
+        </div>
+        <PaperformEmbed formId="qhmoqcvc" />
+      </div>
+    </section>
+  </main>
+</Layout> 

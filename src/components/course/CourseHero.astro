@@ -6,9 +6,10 @@ export interface Props {
   videoId?: string;           // YouTube video ID
   description: string;
   featuredImage?: string;
+  heroImage?: string;         // Hero image for the course
 }
 
-const { title, subtitle, tags, videoId, description, featuredImage } = Astro.props;
+const { title, subtitle, tags, videoId, description, featuredImage, heroImage } = Astro.props;
 ---
 
 <section class="bg-white py-8">
@@ -52,6 +53,14 @@ const { title, subtitle, tags, videoId, description, featuredImage } = Astro.pro
               class="w-full h-full rounded-lg"
               allowfullscreen>
             </iframe>
+          </div>
+        ) : heroImage ? (
+          <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg mb-4">
+            <img 
+              src={heroImage} 
+              alt={title}
+              class="w-full h-full object-cover"
+            />
           </div>
         ) : featuredImage && (
           <img src={featuredImage} alt={title} class="w-full h-auto rounded-lg mb-4" />
