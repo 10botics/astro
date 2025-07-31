@@ -13,8 +13,13 @@ const astroCourses = Object.entries(courseFiles)
   .map(([path, module]) => {
     const filename = path.replace('./', '').replace('.astro', '');
     
+    // Map Chinese filenames to English URLs
+    const slugMapping = {
+      '人工智能遊戲編程課程': 'ai-game-coding'
+    };
+    
     return {
-      slug: filename,
+      slug: slugMapping[filename] || filename,
       filename: `${filename}.astro`,
       title: filename.split('-').map(word => 
         word.charAt(0).toUpperCase() + word.slice(1)
