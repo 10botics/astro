@@ -8,10 +8,10 @@ import { Image } from 'astro:assets';
 // Course data (static)
 const courseData = {
   title: "人工智能遊戲編程課程",
-  subtitle: "工小時製作兩個遊戲"
-  tags: ["Programming 編程", "AI 人工智能", "初中", "高中", "遊戲開發"],
+  subtitle: "三小時製作兩個遊戲",
+  tags: ["Programming 編程", "AI 人工智能", "初中", "高中", "遊戲開發", "網頁遊戲"],
   videoId: "dQw4w9WgXcQ", // Placeholder video ID
-  description: "本課程將教授學生如何使用人工智能編程。學生將了解不同的客戶端執行環境，設計流程，使用 Poe 和 Repl.it agent 製作不同風格的井字棋遊戲，製作屬於自己的遊戲 (踩地雷，食鬼，數獨)。就算是零基礎的學生，只要想做，就可以製作遊戲！"
+  description: "本課程將教授學生如何使用人工智能輔助開發網頁遊戲。學生將學習使用 HTML、CSS 和 JavaScript 製作網頁遊戲，並透過 Poe 和 Repl.it 等 AI 工具簡化開發流程。網頁遊戲相比其他平台遊戲更容易開發，無需複雜的安裝程序，學生可以快速看到成果並分享給朋友。就算是零基礎的學生，只要想做，就可以製作屬於自己的遊戲！"
 };
 
 // Course curriculum
@@ -69,13 +69,13 @@ const courseHighlights = [
   },
   {
     icon: "fas fa-gamepad",
-    title: "遊戲開發實戰",
-    description: "從井字棋開始，逐步製作踩地雷、食鬼、數獨等經典遊戲"
+    title: "網頁遊戲開發實戰",
+    description: "使用 HTML、CSS、JavaScript 從井字棋開始，逐步製作踩地雷、食鬼、數獨等經典網頁遊戲"
   },
   {
     icon: "fas fa-code",
-    title: "跨平台開發",
-    description: "了解手機遊戲、電腦遊戲、網頁遊戲的不同執行環境和開發流程"
+    title: "網頁遊戲優勢",
+    description: "網頁遊戲無需安裝，可在任何設備上運行，開發簡單且易於分享"
   },
   {
     icon: "fas fa-users",
@@ -125,7 +125,7 @@ const faqItems = [
   },
   {
     question: "會學到什麼編程語言？",
-    answer: "主要使用 Python 和 JavaScript，但重點是學習如何使用 AI 工具輔助編程。"
+    answer: "主要使用 HTML、CSS 和 JavaScript 開發網頁遊戲，並學習如何使用 AI 工具輔助編程。"
   },
   {
     question: "課程結束後能做出什麼作品？",
@@ -161,7 +161,7 @@ const contactInfo = {
           <div class="bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-lg p-8 text-white">
             <h3 class="text-2xl font-bold mb-4">AI 編程新時代</h3>
             <p class="text-lg mb-6">
-              透過人工智能工具，讓編程變得前所未有的簡單。學生將學習如何使用 AI 助手設計遊戲邏輯，並在實際開發環境中實現創意。
+              透過人工智能工具，讓網頁遊戲開發變得前所未有的簡單。學生將學習如何使用 AI 助手設計遊戲邏輯，並使用 HTML、CSS、JavaScript 在實際開發環境中實現創意。
             </p>
             <div class="flex items-center space-x-4">
               <div class="flex items-center">
@@ -178,7 +178,7 @@ const contactInfo = {
         <div>
           <h2 class="text-3xl font-bold text-gray-900 mb-6">為什麼選擇 AI 編程？</h2>
           <p class="text-lg text-gray-700 leading-relaxed mb-6">
-            在人工智能快速發展的時代，學會與 AI 協作進行編程是未來的重要技能。本課程讓學生體驗 AI 輔助開發的樂趣，同時建立紮實的編程思維。
+            在人工智能快速發展的時代，學會與 AI 協作進行網頁遊戲開發是未來的重要技能。本課程讓學生體驗 AI 輔助開發的樂趣，同時建立紮實的網頁編程思維。網頁遊戲開發相比其他平台更簡單，學生可以快速看到成果並分享給朋友。
           </p>
           <div class="space-y-4">
             <div class="flex items-start space-x-3">
@@ -228,10 +228,10 @@ const contactInfo = {
         <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
           <div class="flex items-center mb-4">
             <i class="fas fa-gamepad text-3xl text-cyan-500 mr-4"></i>
-            <h3 class="text-xl font-semibold text-gray-900">遊戲開發</h3>
+            <h3 class="text-xl font-semibold text-gray-900">網頁遊戲開發</h3>
           </div>
           <p class="text-gray-700">
-            通過遊戲開發學習編程，讓抽象的編程概念變得具體有趣，提高學習動機和成就感。
+            網頁遊戲相比其他平台遊戲更容易開發，無需複雜的安裝程序，學生可以快速看到成果並分享給朋友。通過遊戲開發學習編程，讓抽象的編程概念變得具體有趣。
           </p>
         </div>
       </div>
@@ -353,7 +353,7 @@ const contactInfo = {
   <!-- Contact section -->
   <ContactForm 
     title="聯絡我們"
-    description="想了解更多關於人工智能編程工作坊的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。"
+    description="想了解更多關於人工智能網頁遊戲編程工作坊的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。"
     contactInfo={contactInfo}
   />
 </Layout>
