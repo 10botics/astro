@@ -1,0 +1,17 @@
+Create the website in astro file under src/pages/school-courses/
+Use the image component in astro
+
+Structure the page with these sections in order:
+1. Hero section with title, subtitle, tags, and breadcrumbs
+2. Hero image and description section (2-column layout)
+3. Course requirements section (separate section with heading)
+4. Course highlights section
+5. Course content/curriculum section
+6. FAQ section
+7. Contact section
+
+For the course requirements section, create a separate section with:
+- Proper heading "課程資訊" or "課程要求"
+- Duration, equipment needed, and student requirements
+- Use icons and proper styling
+- Make it a full-width section, not part of the description column
