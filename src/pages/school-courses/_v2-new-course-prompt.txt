@@ -29,6 +29,8 @@ For the "Course content/curriculum" section:
 - Follow immediately with the accordion section for curriculum details
 - DO NOT create separate sections for course content - combine everything under one "課程內容" heading
 - IMPORTANT: When using the AccordionSection component, either pass an empty title or create a custom accordion section to avoid duplicate headings like "課程大綱" appearing after "課程內容"
+- CRITICAL SPACING: The accordion content should follow immediately after the duration info with minimal spacing (use `mb-8` for duration info, not `mb-12` or separate sections)
+- The entire course content section should be ONE unified section, not split into separate sections
 
 **Layout Constraints:**
 - Use container classes with maximum width limits:
