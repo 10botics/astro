@@ -47,7 +47,7 @@ export async function getStaticPaths() {
     {
       params: { slug: 'ksp' },
       props: { 
-        title: "坎巴拉太空計劃課程",
+        title: "KSP 太空計劃課程",
         componentName: 'ksp'
       }
     },
@@ -68,7 +68,7 @@ export async function getStaticPaths() {
     {
       params: { slug: 'raspberry-pi' },
       props: { 
-        title: "樹莓派編程課程",
+        title: "Raspberry Pi 編程課程",
         componentName: 'raspberry-pi'
       }
     },
@@ -113,10 +113,10 @@ const componentMapping = {
   'coral-generalized-example': 'Coral通用示例課程',
   'cospaces': 'CoSpaces虛擬實境課程',
   'generalized-example': '通用示例課程',
-  'ksp': '坎巴拉太空計劃課程',
+  'ksp': 'ksp太空計劃課程',
   'minecraft': 'Minecraft編程課程',
   'procreate': 'Procreate數位藝術課程',
-  'raspberry-pi': '樹莓派編程課程',
+  'raspberry-pi': 'raspberry-pi編程課程',
   'scratch-ai-programming': 'ScratchAI編程課程',
   'scratch-game-design': 'Scratch遊戲設計課程',
   'swiftplaygrounds': 'SwiftPlaygrounds編程課程',
@@ -145,7 +145,7 @@ switch (componentName) {
     ChineseComponent = await import('./通用示例課程.astro');
     break;
   case 'ksp':
-    ChineseComponent = await import('./坎巴拉太空計劃課程.astro');
+    ChineseComponent = await import('./ksp太空計劃課程.astro');
     break;
   case 'minecraft':
     ChineseComponent = await import('./Minecraft編程課程.astro');
@@ -154,7 +154,7 @@ switch (componentName) {
     ChineseComponent = await import('./Procreate數位藝術課程.astro');
     break;
   case 'raspberry-pi':
-    ChineseComponent = await import('./樹莓派編程課程.astro');
+    ChineseComponent = await import('./raspberry-pi編程課程.astro');
     break;
   case 'scratch-ai-programming':
     ChineseComponent = await import('./ScratchAI編程課程.astro');
