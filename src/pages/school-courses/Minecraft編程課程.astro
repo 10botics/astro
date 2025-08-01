@@ -343,11 +343,12 @@ const faqItems = [
               data-target={`faq-${index}`}
             >
               <span class="font-semibold text-gray-900">{faq.question}</span>
-              <i class="fas fa-plus text-gray-600"></i>
+              <i class="fas fa-minus text-gray-600"></i>
             </button>
             <div 
               id={`faq-${index}`}
-              class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+              class="overflow-hidden transition-all duration-300 ease-in-out"
+              style="max-height: none;"
             >
               <div class="p-6 bg-white border-t border-gray-200">
                 <p class="text-gray-700 whitespace-pre-line">{faq.answer}</p>
@@ -394,6 +395,20 @@ const faqItems = [
           if (icon) icon.className = 'fas fa-minus text-gray-600';
         }
       });
+    });
+    
+    // Open all FAQs by default
+    faqButtons.forEach((button: Element) => {
+      const target = button.getAttribute('data-target');
+      if (!target) return;
+      
+      const content = document.getElementById(target);
+      const icon = button.querySelector('i');
+      
+      if (content && icon) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        icon.className = 'fas fa-minus text-gray-600';
+      }
     });
   });
 </script> 

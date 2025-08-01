@@ -47,7 +47,7 @@ const { title, duration, note, curriculum, images } = Astro.props;
               >
                 <span class="font-medium text-gray-900">{item.title}</span>
                 <svg 
-                  class="accordion-icon w-5 h-5 text-gray-500 transform transition-transform duration-200"
+                  class="accordion-icon w-5 h-5 text-gray-500 transform transition-transform duration-200 rotate-180"
                   fill="none" 
                   stroke="currentColor" 
                   viewBox="0 0 24 24"
@@ -58,7 +58,7 @@ const { title, duration, note, curriculum, images } = Astro.props;
               
               <div 
                 id={`accordion-${index}`}
-                class="accordion-content hidden bg-white"
+                class="accordion-content bg-white"
               >
                 <div class="p-4 border-t border-gray-200">
                   <ul class="space-y-2">
@@ -82,8 +82,10 @@ const { title, duration, note, curriculum, images } = Astro.props;
     const accordionHeaders = document.querySelectorAll('.accordion-header');
     
     accordionHeaders.forEach(header => {
-      header.addEventListener('click', function() {
+      header.addEventListener('click', function(this: HTMLElement) {
         const target = this.getAttribute('data-target');
+        if (!target) return;
+        
         const content = document.getElementById(target);
         const icon = this.querySelector('.accordion-icon');
         
@@ -107,12 +109,16 @@ const { title, duration, note, curriculum, images } = Astro.props;
       });
     });
     
-    // Open first accordion by default
-    const firstAccordion = document.querySelector('.accordion-content');
-    const firstIcon = document.querySelector('.accordion-icon');
-    if (firstAccordion) {
-      firstAccordion.classList.remove('hidden');
-      firstIcon?.classList.add('rotate-180');
-    }
+    // Open all accordions by default
+    const allAccordions = document.querySelectorAll('.accordion-content');
+    const allIcons = document.querySelectorAll('.accordion-icon');
+    
+    allAccordions.forEach(accordion => {
+      accordion.classList.remove('hidden');
+    });
+    
+    allIcons.forEach(icon => {
+      icon.classList.add('rotate-180');
+    });
   });
 </script> 
