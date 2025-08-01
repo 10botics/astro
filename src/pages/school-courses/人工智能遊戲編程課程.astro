@@ -12,6 +12,7 @@ import pacman from '../../assets/images/school-courses/人工智能遊戲編程�
 import sudoku from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/student-work-4.jpg';
 import minesweeper from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/student-work-5.jpg';
 import chinesePuzzleDemo from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/chinese-puzzle-demo.png';
+import aiGeneratedCodeImage from '../../assets/images/school-courses/人工智能遊戲編程課程/ai_generated_code1_Main.jpg';
 
 // Course data (static)
 const courseData = {
@@ -157,7 +158,7 @@ const contactInfo = {
     title={courseData.title}
     subtitle={courseData.subtitle}
     tags={courseData.tags}
-          heroImage="/images/school-courses/人工智能遊戲編程課程/ai_generated_code1_Main.jpg"
+    heroImage="/images/school-courses/人工智能遊戲編程課程/ai-game-coding-hero.jpg"
     description={courseData.description}
   />
 
@@ -166,21 +167,14 @@ const contactInfo = {
     <div class="container mx-auto px-4 max-w-6xl">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <div class="bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-lg p-8 text-white">
-            <h3 class="text-2xl font-bold mb-4">AI 編程新時代</h3>
-            <p class="text-lg mb-6">
-              透過人工智能工具，讓網頁遊戲開發變得前所未有的簡單。學生將學習如何使用 AI 助手設計遊戲邏輯，並使用 HTML、CSS、JavaScript 在實際開發環境中實現創意。
-            </p>
-            <div class="flex items-center space-x-4">
-              <div class="flex items-center">
-                <i class="fas fa-robot text-2xl mr-2"></i>
-                <span>AI 輔助設計</span>
-              </div>
-              <div class="flex items-center">
-                <i class="fas fa-code text-2xl mr-2"></i>
-                <span>實戰編程</span>
-              </div>
-            </div>
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <Image 
+              src={aiGeneratedCodeImage} 
+              alt="AI 編程新時代" 
+              width={600}
+              height={400}
+              class="w-full h-auto"
+            />
           </div>
         </div>
         <div>
