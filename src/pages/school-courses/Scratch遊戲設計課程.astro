@@ -5,6 +5,13 @@ import CourseFeatures from '../../components/course/CourseFeatures.astro';
 import AccordionSection from '../../components/course/AccordionSection.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import { Image } from 'astro:assets';
+
+// Import images
+import scratchRocketGame from '../../assets/images/school-courses/Scratch遊戲設計課程/scratch-rocket-game.png';
+import scratchFrogGame from '../../assets/images/school-courses/Scratch遊戲設計課程/scratch-frog-game.png';
+import scratchMusicGame from '../../assets/images/school-courses/Scratch遊戲設計課程/scratch-music-game.png';
+import scratchPlantVsZombie from '../../assets/images/school-courses/Scratch遊戲設計課程/scratch-plant-vs-zombie.png';
 
 // Course data (static)
 const courseData = {
@@ -158,21 +165,21 @@ const faqItems = [
 const studentWorkExamples = [
   {
     title: "Scratch 火箭遊戲",
-    image: "/src/assets/images/school-courses/Scratch遊戲設計課程/scratch-rocket-game.png",
+    image: scratchRocketGame,
     videoUrl: "https://www.youtube.com/embed/hvhG7mImCAg"
   },
   {
     title: "青蛙過馬路遊戲",
-    image: "/src/assets/images/school-courses/Scratch遊戲設計課程/scratch-frog-game.png"
+    image: scratchFrogGame
   },
   {
     title: "音樂遊戲",
-    image: "/src/assets/images/school-courses/Scratch遊戲設計課程/scratch-music-game.png",
+    image: scratchMusicGame,
     videoUrl: "https://www.youtube.com/embed/RwUI27b2a9A"
   },
   {
     title: "植物大戰殭屍遊戲",
-    image: "/src/assets/images/school-courses/Scratch遊戲設計課程/scratch-plant-vs-zombie.png"
+    image: scratchPlantVsZombie
   }
 ];
 ---
@@ -260,7 +267,7 @@ const studentWorkExamples = [
           <div class="bg-white rounded-lg overflow-hidden shadow-lg">
             {work.videoUrl ? (
               <div class="relative">
-                <img src={work.image} alt={work.title} class="w-full h-64 object-cover" />
+                <Image src={work.image} alt={work.title} class="w-full h-64 object-cover" />
                 <div class="absolute inset-0 flex items-center justify-center">
                   <a href={work.videoUrl} target="_blank" class="bg-red-600 text-white p-4 rounded-full hover:bg-red-700 transition-colors">
                     <i class="fas fa-play text-2xl"></i>
@@ -268,7 +275,7 @@ const studentWorkExamples = [
                 </div>
               </div>
             ) : (
-              <img src={work.image} alt={work.title} class="w-full h-64 object-cover" />
+              <Image src={work.image} alt={work.title} class="w-full h-64 object-cover" />
             )}
             <div class="p-4">
               <h3 class="text-lg font-semibold text-gray-900">{work.title}</h3>

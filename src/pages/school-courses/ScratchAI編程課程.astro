@@ -6,6 +6,11 @@ import CourseFeatures from '../../components/course/CourseFeatures.astro';
 import AccordionSection from '../../components/course/AccordionSection.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import { Image } from 'astro:assets';
+
+// Import images
+import machineLearningTraining from '../../assets/images/school-courses/ScratchAI編程課程/machine-learning-training.gif';
+import faceRecognition from '../../assets/images/school-courses/ScratchAI編程課程/face-recognition.gif';
 
 // FAQ items
 const faqItems = [
@@ -172,7 +177,7 @@ const curriculumItems = [
         <!-- Machine Learning Training -->
         <div class="text-center">
           <div class="mb-6">
-            <img src="/src/assets/images/school-courses/ScratchAI編程課程/machine-learning-training.gif" alt="機器學習訓練" class="w-full h-48 object-cover rounded-lg">
+            <Image src={machineLearningTraining} alt="機器學習訓練" class="w-full h-48 object-cover rounded-lg" />
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-3">訓練機器學習模型</h3>
           <p class="text-gray-600">透過 Teachable Machine 訓練不同類型的人工智能模型</p>
@@ -181,7 +186,7 @@ const curriculumItems = [
         <!-- Face Recognition -->
         <div class="text-center">
           <div class="mb-6">
-            <img src="https://lwfiles.mycourse.app/10botics-public/bf6bae32bf18a9afffdf2ef18615f8f9.gif" alt="人面識別" class="w-full h-48 object-cover rounded-lg">
+            <Image src={faceRecognition} alt="人面識別" class="w-full h-48 object-cover rounded-lg" />
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-3">人面識別</h3>
           <p class="text-gray-600">透過預先訓練的人面識別模型為人面增加不同裝飾</p>
