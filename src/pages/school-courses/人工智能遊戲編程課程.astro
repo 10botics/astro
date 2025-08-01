@@ -5,6 +5,13 @@ import AccordionSection from '../../components/course/AccordionSection.astro';
 import ContactForm from '../../components/homepage/ContactForm.astro';
 import { Image } from 'astro:assets';
 
+// Import student work images
+import ticTacToe1 from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/student-work-1.jpg';
+import ticTacToe2 from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/student-work-2.jpg';
+import pacman from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/student-work-3.jpg';
+import sudoku from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/student-work-4.jpg';
+import minesweeper from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/student-work-5.jpg';
+
 // Course data (static)
 const courseData = {
   title: "人工智能遊戲編程課程",
@@ -272,6 +279,128 @@ const contactInfo = {
             <p class="text-gray-700">{highlight.description}</p>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Student Work Showcase section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">學生作品展示</h2>
+      <p class="text-lg text-gray-700 text-center mb-12 max-w-3xl mx-auto">
+        看看我們的學生在 AI 遊戲編程課程中創作的精彩作品！從經典的井字棋到創新的自製遊戲，每個作品都展現了學生們的創意和編程技能。
+      </p>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Game Programming Overview -->
+        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+          <div class="aspect-w-16 aspect-h-9 bg-gray-100">
+            <Image 
+              src={sudoku} 
+              alt="遊戲編程作品展示" 
+              width={400}
+              height={300}
+              class="w-full h-48 object-cover"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">遊戲編程作品集</h3>
+            <p class="text-gray-700 text-sm">學生們使用 AI 輔助工具創作的各種網頁遊戲作品</p>
+          </div>
+        </div>
+
+        <!-- Tic-tac-toe Game -->
+        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+          <div class="aspect-w-16 aspect-h-9 bg-gray-100">
+            <Image 
+              src={ticTacToe1} 
+              alt="井字棋遊戲作品" 
+              width={400}
+              height={300}
+              class="w-full h-48 object-cover"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">井字棋遊戲</h3>
+            <p class="text-gray-700 text-sm">經典井字棋遊戲的現代化實現，包含 AI 對手和難度選擇</p>
+          </div>
+        </div>
+
+        <!-- Tic-tac-toe Game 2 -->
+        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+          <div class="aspect-w-16 aspect-h-9 bg-gray-100">
+            <Image 
+              src={ticTacToe2} 
+              alt="井字棋遊戲作品變體" 
+              width={400}
+              height={300}
+              class="w-full h-48 object-cover"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">井字棋變體</h3>
+            <p class="text-gray-700 text-sm">學生們為井字棋添加了獨特的視覺設計和遊戲機制</p>
+          </div>
+        </div>
+
+        <!-- Minesweeper Game -->
+        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+          <div class="aspect-w-16 aspect-h-9 bg-gray-100">
+            <Image 
+              src={minesweeper} 
+              alt="踩地雷遊戲作品" 
+              width={400}
+              height={300}
+              class="w-full h-48 object-cover"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">踩地雷遊戲</h3>
+            <p class="text-gray-700 text-sm">經典踩地雷遊戲的網頁版本，考驗邏輯思維能力</p>
+          </div>
+        </div>
+
+        <!-- Pac-Man Game -->
+        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+          <div class="aspect-w-16 aspect-h-9 bg-gray-100">
+            <Image 
+              src={pacman} 
+              alt="食鬼遊戲作品" 
+              width={400}
+              height={300}
+              class="w-full h-48 object-cover"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">食鬼遊戲</h3>
+            <p class="text-gray-700 text-sm">經典食鬼遊戲的重新詮釋，展現動畫和遊戲邏輯的結合</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Student Testimonials -->
+      <div class="mt-16 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-lg p-8">
+        <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">學生心得分享</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white rounded-lg p-6 shadow-sm">
+            <div class="flex items-center mb-4">
+              <i class="fas fa-quote-left text-2xl text-cyan-500 mr-3"></i>
+              <h4 class="text-lg font-semibold text-gray-900">AI 編程初體驗</h4>
+            </div>
+            <p class="text-gray-700 italic">
+              "沒想到編程可以這麼有趣！使用 AI 工具幫助我設計遊戲邏輯，讓我能專注在創意上。完成第一個井字棋遊戲時，那種成就感真的很棒！"
+            </p>
+          </div>
+          <div class="bg-white rounded-lg p-6 shadow-sm">
+            <div class="flex items-center mb-4">
+              <i class="fas fa-quote-left text-2xl text-cyan-500 mr-3"></i>
+              <h4 class="text-lg font-semibold text-gray-900">從零到一的突破</h4>
+            </div>
+            <p class="text-gray-700 italic">
+              "作為編程新手，這個課程讓我學會了如何與 AI 協作開發。現在我不僅能製作遊戲，還能將作品分享給朋友們玩，真的很興奮！"
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
