@@ -1,6 +1,16 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+
+// Import images
+import aiAnimationScreenshot1 from '../../assets/images/school-courses/AI數位動畫展覽課程/ai-animation-screenshot-1.png';
+import aiAnimationScreenshot2 from '../../assets/images/school-courses/AI數位動畫展覽課程/ai-animation-screenshot-2.png';
+import aiAnimationScreenshot3 from '../../assets/images/school-courses/AI數位動畫展覽課程/ai-animation-screenshot-3.png';
+import aiMusicGeneration from '../../assets/images/school-courses/AI數位動畫展覽課程/ai-music-generation.png';
+import aiBackgroundTheme from '../../assets/images/school-courses/AI數位動畫展覽課程/ai-background-theme.jpg';
+import aiDrawingPatterns from '../../assets/images/school-courses/AI數位動畫展覽課程/ai-drawing-patterns.png';
+import aiCourseArrangement from '../../assets/images/school-courses/AI數位動畫展覽課程/ai-course-arrangement.png';
+
 // Import homepage components
 import HeroWithStats from '../../components/homepage/HeroWithStats.astro';
 import FeatureWithScreenshot from '../../components/homepage/FeatureWithScreenshot.astro';
@@ -124,8 +134,8 @@ const ctaData = {
               <p class="text-gray-600 leading-relaxed mb-6">{feature.description}</p>
               {index < 3 && (
                 <div class="mt-4">
-                  <img 
-                    src={`/src/assets/images/school-courses/AI數位動畫展覽課程/ai-animation-screenshot-${index + 1}.png`}
+                  <Image 
+                    src={index === 0 ? aiAnimationScreenshot1 : index === 1 ? aiAnimationScreenshot2 : aiAnimationScreenshot3}
                     alt={`${feature.name} 截圖`}
                     class="w-full h-48 object-cover rounded-lg shadow-md"
                   />
@@ -148,10 +158,10 @@ const ctaData = {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {completeCourseData.features.map((feature, index) => {
             const imageMap = [
-              '/src/assets/images/school-courses/AI數位動畫展覽課程/ai-music-generation.png',
-'/src/assets/images/school-courses/AI數位動畫展覽課程/ai-background-theme.jpg',
-'/src/assets/images/school-courses/AI數位動畫展覽課程/ai-drawing-patterns.png',
-'/src/assets/images/school-courses/AI數位動畫展覽課程/ai-course-arrangement.png'
+              aiMusicGeneration,
+              aiBackgroundTheme,
+              aiDrawingPatterns,
+              aiCourseArrangement
             ];
             return (
               <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6">
@@ -161,7 +171,7 @@ const ctaData = {
                 </div>
                 <p class="text-gray-600 text-sm leading-relaxed mb-4">{feature.description}</p>
                 <div class="mt-4">
-                  <img 
+                  <Image 
                     src={imageMap[index]}
                     alt={`${feature.name} 示範圖片`}
                     class="w-full h-32 object-cover rounded-lg shadow-sm"

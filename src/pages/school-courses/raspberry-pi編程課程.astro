@@ -5,6 +5,14 @@ import CourseFeatures from '../../components/course/CourseFeatures.astro';
 import AccordionSection from '../../components/course/AccordionSection.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import { Image } from 'astro:assets';
+
+// Import images
+import raspberryPiComputer from '../../assets/images/school-courses/raspberry-pi編程課程/raspberry-pi-computer.jpg';
+import raspberryPiKit from '../../assets/images/school-courses/raspberry-pi編程課程/raspberry-pi-kit.jpg';
+import raspberryPiCoding from '../../assets/images/school-courses/raspberry-pi編程課程/raspberry-pi-coding.jpg';
+import raspberryPiScreen from '../../assets/images/school-courses/raspberry-pi編程課程/raspberry-pi-screen.jpg';
+import raspberryPiWiring from '../../assets/images/school-courses/raspberry-pi編程課程/raspberry-pi-wiring.jpg';
 
 // FAQ items
 const faqItems = [
@@ -332,19 +340,19 @@ const advancedCurriculumItems = [
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
-          <img src="/src/assets/images/school-courses/raspberry-pi編程課程/raspberry-pi-computer.jpg" alt="Raspberry Pi computer" class="w-full h-full object-cover">
+          <Image src={raspberryPiComputer} alt="Raspberry Pi computer" class="w-full h-full object-cover" />
         </div>
         <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
-          <img src="/src/assets/images/school-courses/raspberry-pi編程課程/raspberry-pi-kit.jpg" alt="Raspberry Pi kit" class="w-full h-full object-cover">
+          <Image src={raspberryPiKit} alt="Raspberry Pi kit" class="w-full h-full object-cover" />
         </div>
         <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
-          <img src="/src/assets/images/school-courses/raspberry-pi編程課程/raspberry-pi-coding.jpg" alt="Raspberry Pi coding" class="w-full h-full object-cover">
+          <Image src={raspberryPiCoding} alt="Raspberry Pi coding" class="w-full h-full object-cover" />
         </div>
         <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
-          <img src="/src/assets/images/school-courses/raspberry-pi編程課程/raspberry-pi-screen.jpg" alt="Raspberry Pi screen" class="w-full h-full object-cover">
+          <Image src={raspberryPiScreen} alt="Raspberry Pi screen" class="w-full h-full object-cover" />
         </div>
         <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
-          <img src="/src/assets/images/school-courses/raspberry-pi編程課程/raspberry-pi-wiring.jpg" alt="Raspberry Pi wiring" class="w-full h-full object-cover">
+          <Image src={raspberryPiWiring} alt="Raspberry Pi wiring" class="w-full h-full object-cover" />
         </div>
       </div>
     </div>

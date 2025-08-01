@@ -5,6 +5,13 @@ import CourseFeatures from '../../components/course/CourseFeatures.astro';
 import AccordionSection from '../../components/course/AccordionSection.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import { Image } from 'astro:assets';
+
+// Import images
+import shareProject from '../../assets/images/school-courses/CoSpaces虛擬實境課程/share-project.png';
+import codeBlocks from '../../assets/images/school-courses/CoSpaces虛擬實境課程/code-blocks.jpg';
+import arVr from '../../assets/images/school-courses/CoSpaces虛擬實境課程/ar-vr.png';
+import threeDThinking from '../../assets/images/school-courses/CoSpaces虛擬實境課程/3d-thinking.png';
 
 // Course data (static)
 const courseData = {
@@ -18,22 +25,22 @@ const courseData = {
 // What is CoSpaces features
 const whatIsCoSpaces = [
   {
-    image: "/src/assets/images/school-courses/CoSpaces虛擬實境課程/share-project.png",
+    image: shareProject,
     title: "可以創建、分享和體驗互動的虛擬現實平台",
     description: "可以創建、分享和體驗互動的虛擬現實平台"
   },
   {
-    image: "/src/assets/images/school-courses/CoSpaces虛擬實境課程/code-blocks.jpg",
+    image: codeBlocks,
     title: "簡易方塊編程",
     description: "簡易方塊編程"
   },
   {
-    image: "/src/assets/images/school-courses/CoSpaces虛擬實境課程/ar-vr.png",
+    image: arVr,
     title: "能應用虛擬現實(VR)和擴增現實(AR)",
     description: "能應用虛擬現實(VR)和擴增現實(AR)"
   },
   {
-    image: "/src/assets/images/school-courses/CoSpaces虛擬實境課程/3d-thinking.png",
+    image: threeDThinking,
     title: "培養三維空間思維",
     description: "培養三維空間思維"
   }
@@ -193,7 +200,7 @@ const studentWorkExamples = [
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {whatIsCoSpaces.map((feature) => (
           <div class="bg-white border border-gray-200 rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
-            <img src={feature.image} alt={feature.title} class="w-32 h-32 mx-auto mb-4 object-cover rounded-lg" />
+            <Image src={feature.image} alt={feature.title} class="w-32 h-32 mx-auto mb-4 object-cover rounded-lg" />
             <p class="text-gray-700 leading-relaxed">{feature.description}</p>
           </div>
         ))}
