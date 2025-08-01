@@ -492,7 +492,7 @@ const faqItems = [
       <div class="max-w-4xl mx-auto">
         {faqItems.map((faq, index) => (
           <div class="mb-4">
-            <details class="bg-white rounded-lg shadow-md">
+            <details class="bg-white rounded-lg shadow-md" open>
               <summary class="p-6 cursor-pointer font-semibold text-lg hover:bg-gray-50">
                 {faq.question}
               </summary>
@@ -568,6 +568,21 @@ const faqItems = [
           icon.className = 'fas fa-minus text-gray-600';
         }
       });
+    });
+    
+    // Open all Tello accordions by default
+    headers.forEach((header: Element) => {
+      const target = header.getAttribute('data-target');
+      if (!target) return;
+      
+      const content = document.getElementById(target);
+      if (!content) return;
+      
+      const icon = header.querySelector('.tello-accordion-icon i') as HTMLElement;
+      if (!icon) return;
+      
+      content.style.maxHeight = content.scrollHeight + 'px';
+      icon.className = 'fas fa-minus text-gray-600';
     });
   });
 </script> 
