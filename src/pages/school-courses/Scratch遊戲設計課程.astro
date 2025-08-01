@@ -3,7 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import CourseFeatures from '../../components/course/CourseFeatures.astro';
 import AccordionSection from '../../components/course/AccordionSection.astro';
-import FAQAccordion from '../../components/homepage/FAQAccordion.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import PaperformEmbed from '../../components/PaperformEmbed.astro';
 
 // Course data (static)
 const courseData = {
@@ -157,21 +158,21 @@ const faqItems = [
 const studentWorkExamples = [
   {
     title: "Scratch 火箭遊戲",
-    image: "/src/assets/images/school-courses/scratch/scratch-rocket-game.png",
+    image: "/src/assets/images/school-courses/Scratch遊戲設計課程/scratch-rocket-game.png",
     videoUrl: "https://www.youtube.com/embed/hvhG7mImCAg"
   },
   {
     title: "青蛙過馬路遊戲",
-    image: "/src/assets/images/school-courses/scratch/scratch-frog-game.png"
+    image: "/src/assets/images/school-courses/Scratch遊戲設計課程/scratch-frog-game.png"
   },
   {
     title: "音樂遊戲",
-    image: "/src/assets/images/school-courses/scratch/scratch-music-game.png",
+    image: "/src/assets/images/school-courses/Scratch遊戲設計課程/scratch-music-game.png",
     videoUrl: "https://www.youtube.com/embed/RwUI27b2a9A"
   },
   {
     title: "植物大戰殭屍遊戲",
-    image: "/src/assets/images/school-courses/scratch/scratch-plant-vs-zombie.png"
+    image: "/src/assets/images/school-courses/Scratch遊戲設計課程/scratch-plant-vs-zombie.png"
   }
 ];
 ---
@@ -278,17 +279,7 @@ const studentWorkExamples = [
     </div>
   </section>
 
-  <!-- FAQ Section -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <FAQAccordion 
-        title="常見問題" 
-        subtitle="FAQ" 
-        description="關於Scratch遊戲設計課程的常見問題"
-        faqs={faqItems}
-      />
-    </div>
-  </section>
+  <QnASection faqs={faqItems} />
 
   <!-- Contact Section -->
   <section class="bg-gray-50 py-16">
@@ -296,10 +287,8 @@ const studentWorkExamples = [
       <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">聯絡我們</h2>
       <div class="bg-white rounded-lg p-8 shadow-lg">
         <div class="text-center">
-          <p class="text-lg text-gray-700 mb-6">歡迎填妥下方表格讓同事為你提供咨詢。</p>
-          <a href="https://or0uzdua.paperform.co" target="_blank" class="inline-block bg-cyan-500 text-white px-8 py-3 rounded-lg hover:bg-cyan-600 transition-colors">
-            索取課程總覽
-          </a>
+          <p class="text-lg text-gray-700 mb-6">想了解更多關於 Scratch 遊戲設計課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。</p>
+          <PaperformEmbed />
         </div>
       </div>
     </div>

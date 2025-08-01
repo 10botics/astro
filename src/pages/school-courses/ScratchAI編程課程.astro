@@ -4,6 +4,24 @@ import HeroSection from '../../components/course/HeroSection.astro';
 import WhatIsScratch from '../../components/course/WhatIsScratch.astro';
 import CourseFeatures from '../../components/course/CourseFeatures.astro';
 import AccordionSection from '../../components/course/AccordionSection.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import PaperformEmbed from '../../components/PaperformEmbed.astro';
+
+// FAQ items
+const faqItems = [
+  {
+    question: "只有 iPad 的學生能否參加課程？",
+    answer: "不可以。因課程中使用的 Teachable Machine 不能在 iPad 運行。"
+  },
+  {
+    question: "學校需要甚麼設備？",
+    answer: "學校需準備以下項目\n1. 手提電腦 / 電腦（配備鏡頭）\n\n建議先致電 +852 6554-1506 或電郵至 sales@10botics.com 向同事溝通學校期望的教學內容，同事將就教學所需設備提供幫助和建議。"
+  },
+  {
+    question: "誰適合這個課程？",
+    answer: "• 小四至初中學生\n• 初學者，無需任何經驗"
+  }
+];
 
 // Course data (static)
 const courseData = {
@@ -102,7 +120,7 @@ const curriculumItems = [
       <!-- Featured Image -->
       <div class="flex justify-center mb-12">
         <img 
-          src="/media/WhatsApp-Image-2023-09-08-at-6.59.41-PM-1024x768.jpeg" 
+          src="/src/assets/images/school-courses/ScratchAI編程課程/course-activity.jpg" 
           alt="課程實況"
           class="max-w-lg w-full h-auto rounded-lg shadow-md"
         />
@@ -154,7 +172,7 @@ const curriculumItems = [
         <!-- Machine Learning Training -->
         <div class="text-center">
           <div class="mb-6">
-            <img src="/media/91aac978bc6d8b314540401e4142516f.gif" alt="機器學習訓練" class="w-full h-48 object-cover rounded-lg">
+            <img src="/src/assets/images/school-courses/ScratchAI編程課程/machine-learning-training.gif" alt="機器學習訓練" class="w-full h-48 object-cover rounded-lg">
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-3">訓練機器學習模型</h3>
           <p class="text-gray-600">透過 Teachable Machine 訓練不同類型的人工智能模型</p>
@@ -163,7 +181,7 @@ const curriculumItems = [
         <!-- Face Recognition -->
         <div class="text-center">
           <div class="mb-6">
-            <img src="/media/90ae829ac93992338ce9ba24447774f1.gif" alt="人面識別" class="w-full h-48 object-cover rounded-lg">
+            <img src="https://lwfiles.mycourse.app/10botics-public/bf6bae32bf18a9afffdf2ef18615f8f9.gif" alt="人面識別" class="w-full h-48 object-cover rounded-lg">
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-3">人面識別</h3>
           <p class="text-gray-600">透過預先訓練的人面識別模型為人面增加不同裝飾</p>
@@ -189,65 +207,17 @@ const curriculumItems = [
     </div>
   </section>
 
-  <!-- FAQ Section -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center" style="color: #1e293b;">常見問題</h2>
-      
-      <div class="space-y-6 max-w-4xl mx-auto">
-        <details class="border border-gray-200 rounded-lg p-6 group">
-          <summary class="font-semibold text-gray-900 cursor-pointer flex justify-between items-center">
-            <span>只有 iPad 的學生能否參加課程？</span>
-            <i class="fas fa-plus transition-transform group-open:rotate-45"></i>
-          </summary>
-          <div class="mt-4 text-gray-600">
-            <strong>答</strong>: 不可以。因課程中使用的 Teachable Machine 不能在 iPad 運行。
-          </div>
-        </details>
-
-        <details class="border border-gray-200 rounded-lg p-6 group">
-          <summary class="font-semibold text-gray-900 cursor-pointer flex justify-between items-center">
-            <span>學校需要甚麼設備？</span>
-            <i class="fas fa-plus transition-transform group-open:rotate-45"></i>
-          </summary>
-          <div class="mt-4 text-gray-600">
-            <strong>答</strong>: 學校需準備以下項目<br>
-            1. 手提電腦 / 電腦（配備鏡頭）<br><br>
-            建議先致電 +852 6554-1506 或電郵至 sales@10botics.com 向同事溝通學校期望的教學內容，同事將就教學所需設備提供幫助和建議。
-          </div>
-        </details>
-
-        <details class="border border-gray-200 rounded-lg p-6 group">
-          <summary class="font-semibold text-gray-900 cursor-pointer flex justify-between items-center">
-            <span>誰適合這個課程？</span>
-            <i class="fas fa-plus transition-transform group-open:rotate-45"></i>
-          </summary>
-          <div class="mt-4 text-gray-600">
-            <strong>答</strong>: <br>
-            • 小四至初中學生<br>
-            • 初學者，無需任何經驗
-          </div>
-        </details>
-      </div>
-    </div>
-  </section>
+  <QnASection faqs={faqItems} variant="details" />
 
   <!-- Contact Section -->
   <section class="bg-white py-16">
     <div class="container mx-auto px-4 max-w-6xl">
       <h2 class="text-4xl font-bold text-gray-900 mb-8 text-center" style="color: #1e293b;">聯絡我們</h2>
-      <div class="text-center">
-        <div class="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto mb-8">
-          <div class="flex items-center justify-center space-x-3">
-            <i class="fas fa-phone text-cyan-400 text-xl"></i>
-            <span class="text-lg text-gray-700">+852 6554-1506</span>
-          </div>
-          <div class="flex items-center justify-center space-x-3">
-            <i class="fas fa-envelope text-cyan-400 text-xl"></i>
-            <span class="text-lg text-gray-700">sales@10botics.com</span>
-          </div>
-        </div>
-        <p class="text-gray-600">課程由 10教育 提供，專業導師親自編寫教材，確保教學質量。</p>
+      <div class="text-center mb-8">
+        <p class="text-lg text-gray-600">想了解更多關於 Scratch AI 編程課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。</p>
+      </div>
+      <div class="max-w-4xl mx-auto">
+        <PaperformEmbed />
       </div>
     </div>
   </section>

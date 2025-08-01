@@ -7,6 +7,7 @@ import FeatureWithScreenshot from '../../components/homepage/FeatureWithScreensh
 import FeatureCentered2x2 from '../../components/homepage/FeatureCentered2x2.astro';
 import CTAWithImage from '../../components/homepage/CTAWithImage.astro';
 import StatsWithBackground from '../../components/homepage/StatsWithBackground.astro';
+import PaperformEmbed from '../../components/PaperformEmbed.astro';
 
 // Hero data
 const heroData = {
@@ -95,7 +96,7 @@ const ctaData = {
   ctaLink: "/contact-us",
   secondaryCtaText: "查看更多課程",
   secondaryCtaLink: "/school-courses",
-  image: "/src/assets/images/school-courses/ai-digital-animation-exhibition/ai-background-theme.jpg",
+  image: "/src/assets/images/school-courses/AI數位動畫展覽課程/ai-background-theme.jpg",
   imageAlt: "AI數碼動畫展背景主題"
 };
 ---
@@ -124,7 +125,7 @@ const ctaData = {
               {index < 3 && (
                 <div class="mt-4">
                   <img 
-                    src={`/src/assets/images/school-courses/ai-digital-animation-exhibition/ai-animation-screenshot-${index + 1}.png`}
+                    src={`/src/assets/images/school-courses/AI數位動畫展覽課程/ai-animation-screenshot-${index + 1}.png`}
                     alt={`${feature.name} 截圖`}
                     class="w-full h-48 object-cover rounded-lg shadow-md"
                   />
@@ -147,10 +148,10 @@ const ctaData = {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {completeCourseData.features.map((feature, index) => {
             const imageMap = [
-              '/src/assets/images/school-courses/ai-digital-animation-exhibition/ai-music-generation.png',
-              '/src/assets/images/school-courses/ai-digital-animation-exhibition/ai-background-theme.jpg',
-              '/src/assets/images/school-courses/ai-digital-animation-exhibition/ai-drawing-patterns.png',
-              '/src/assets/images/school-courses/ai-digital-animation-exhibition/ai-course-arrangement.png'
+              '/src/assets/images/school-courses/AI數位動畫展覽課程/ai-music-generation.png',
+'/src/assets/images/school-courses/AI數位動畫展覽課程/ai-background-theme.jpg',
+'/src/assets/images/school-courses/AI數位動畫展覽課程/ai-drawing-patterns.png',
+'/src/assets/images/school-courses/AI數位動畫展覽課程/ai-course-arrangement.png'
             ];
             return (
               <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6">
@@ -176,7 +177,19 @@ const ctaData = {
     <!-- Stats Section -->
     <StatsWithBackground {...statsData} />
 
-    <!-- CTA Section -->
-    <CTAWithImage {...ctaData} />
+    <!-- Contact Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            聯絡我們
+          </h2>
+          <p class="text-lg text-gray-600">
+            想了解更多關於 AI 數碼動畫展覽課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。
+          </p>
+        </div>
+        <PaperformEmbed />
+      </div>
+    </section>
   </main>
 </Layout> 

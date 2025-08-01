@@ -3,20 +3,22 @@ import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import CourseFeatures from '../../components/course/CourseFeatures.astro';
 import AccordionSection from '../../components/course/AccordionSection.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import { Image } from 'astro:assets';
 
 // Import images
-import featuredImage from '../../assets/images/school-courses/minecraft/featured-image.png';
-import courseStructure from '../../assets/images/school-courses/minecraft/course-structure.png';
-import minecraftWorking from '../../assets/images/school-courses/minecraft/minecraft-working.jpg';
-import school1 from '../../assets/images/school-courses/minecraft/school-1.png';
-import school2 from '../../assets/images/school-courses/minecraft/school-2.jpg';
-import school3 from '../../assets/images/school-courses/minecraft/school-3.png';
-import school4 from '../../assets/images/school-courses/minecraft/school-4.png';
-import landmark1 from '../../assets/images/school-courses/minecraft/landmark-1.jpg';
-import landmark2 from '../../assets/images/school-courses/minecraft/landmark-2.jpg';
-import landmark3 from '../../assets/images/school-courses/minecraft/landmark-3.png';
-import landmark4 from '../../assets/images/school-courses/minecraft/landmark-4.png';
+import featuredImage from '../../assets/images/school-courses/Minecraft編程課程/featured-image.png';
+import courseStructure from '../../assets/images/school-courses/Minecraft編程課程/course-structure.png';
+import minecraftWorking from '../../assets/images/school-courses/Minecraft編程課程/minecraft-working.jpg';
+import school1 from '../../assets/images/school-courses/Minecraft編程課程/school-1.png';
+import school2 from '../../assets/images/school-courses/Minecraft編程課程/school-2.jpg';
+import school3 from '../../assets/images/school-courses/Minecraft編程課程/school-3.png';
+import school4 from '../../assets/images/school-courses/Minecraft編程課程/school-4.png';
+import landmark1 from '../../assets/images/school-courses/Minecraft編程課程/landmark-1.jpg';
+import landmark2 from '../../assets/images/school-courses/Minecraft編程課程/landmark-2.jpg';
+import landmark3 from '../../assets/images/school-courses/Minecraft編程課程/landmark-3.png';
+import landmark4 from '../../assets/images/school-courses/Minecraft編程課程/landmark-4.png';
 
 // Course data (static)
 const courseData = {
@@ -330,85 +332,22 @@ const faqItems = [
     </div>
   </section>
 
-  <!-- FAQ Section -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-4xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">常見問題</h2>
-      
-      <div class="space-y-4">
-        {faqItems.map((faq, index) => (
-          <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
-            <button 
-              class="w-full text-left p-6 bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center"
-              data-target={`faq-${index}`}
-            >
-              <span class="font-semibold text-gray-900">{faq.question}</span>
-              <i class="fas fa-minus text-gray-600"></i>
-            </button>
-            <div 
-              id={`faq-${index}`}
-              class="overflow-hidden transition-all duration-300 ease-in-out"
-              style="max-height: none;"
-            >
-              <div class="p-6 bg-white border-t border-gray-200">
-                <p class="text-gray-700 whitespace-pre-line">{faq.answer}</p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+  <QnASection faqs={faqItems} />
 
   <!-- Contact Section -->
   <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-4xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">聯絡我們</h2>
-      <div class="text-center">
-        <p class="text-gray-700 mb-8">歡迎填妥下方表格讓同事為你提供咨詢。</p>
-        <a href="mailto:info@10botics.com" 
-           class="inline-block bg-cyan-500 text-white px-8 py-4 rounded-lg hover:bg-cyan-600 transition-colors text-lg">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
           聯絡我們
-        </a>
+        </h2>
+        <p class="text-lg text-gray-600">
+          想了解更多關於 Minecraft 校園創建課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。
+        </p>
       </div>
+      <PaperformEmbed />
     </div>
   </section>
 </Layout>
 
-<script>
-  // FAQ functionality
-  document.addEventListener('DOMContentLoaded', function() {
-    const faqButtons = document.querySelectorAll('[data-target^="faq-"]');
-    
-    faqButtons.forEach((button: Element) => {
-      button.addEventListener('click', function(this: Element) {
-        const target = this.getAttribute('data-target');
-        const content = document.getElementById(target!);
-        const icon = this.querySelector('i');
-        
-        // Toggle current FAQ
-        if (content && content.style.maxHeight && content.style.maxHeight !== '0px') {
-          content.style.maxHeight = '0px';
-          if (icon) icon.className = 'fas fa-plus text-gray-600';
-        } else if (content) {
-          content.style.maxHeight = content.scrollHeight + 'px';
-          if (icon) icon.className = 'fas fa-minus text-gray-600';
-        }
-      });
-    });
-    
-    // Open all FAQs by default
-    faqButtons.forEach((button: Element) => {
-      const target = button.getAttribute('data-target');
-      if (!target) return;
-      
-      const content = document.getElementById(target);
-      const icon = button.querySelector('i');
-      
-      if (content && icon) {
-        content.style.maxHeight = content.scrollHeight + 'px';
-        icon.className = 'fas fa-minus text-gray-600';
-      }
-    });
-  });
-</script> 
+ 
