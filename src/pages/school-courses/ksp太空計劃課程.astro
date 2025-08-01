@@ -1,19 +1,53 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Footer from '../../components/Footer.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import { Image } from 'astro:assets';
 
 // Import images
-import kspMain from '../../assets/images/school-courses/ksp/ksp-main.png';
-import kspRocket from '../../assets/images/school-courses/ksp/ksp-rocket.png';
-import kspTravel from '../../assets/images/school-courses/ksp/ksp-travel.png';
-import kspSpace from '../../assets/images/school-courses/ksp/ksp-space.png';
-import kspCarousel1 from '../../assets/images/school-courses/ksp/ksp-carousel-1.png';
-import kspCarousel2 from '../../assets/images/school-courses/ksp/ksp-carousel-2.png';
-import kspCarousel3 from '../../assets/images/school-courses/ksp/ksp-carousel-3.png';
-import kspCarousel4 from '../../assets/images/school-courses/ksp/ksp-carousel-4.png';
-import kspCarousel5 from '../../assets/images/school-courses/ksp/ksp-carousel-5.png';
-import kspCarousel6 from '../../assets/images/school-courses/ksp/ksp-carousel-6.png';
+import kspMain from '../../assets/images/school-courses/ksp太空計劃課程/ksp-main.png';
+import kspRocket from '../../assets/images/school-courses/ksp太空計劃課程/ksp-rocket.png';
+import kspTravel from '../../assets/images/school-courses/ksp太空計劃課程/ksp-travel.png';
+import kspSpace from '../../assets/images/school-courses/ksp太空計劃課程/ksp-space.png';
+import kspCarousel1 from '../../assets/images/school-courses/ksp太空計劃課程/ksp-carousel-1.png';
+import kspCarousel2 from '../../assets/images/school-courses/ksp太空計劃課程/ksp-carousel-2.png';
+import kspCarousel3 from '../../assets/images/school-courses/ksp太空計劃課程/ksp-carousel-3.png';
+import kspCarousel4 from '../../assets/images/school-courses/ksp太空計劃課程/ksp-carousel-4.png';
+import kspCarousel5 from '../../assets/images/school-courses/ksp太空計劃課程/ksp-carousel-5.png';
+import kspCarousel6 from '../../assets/images/school-courses/ksp太空計劃課程/ksp-carousel-6.png';
+
+// FAQ items
+const faqItems = [
+  {
+    question: "甚麼是「Kerbal Space Program」？",
+    answer: "Kerbal Space Program 是一款太空探索模擬遊戲，玩家可以建立和管理自己的太空計劃，設計、建造和發射太空船，進行太空任務和科學研究。"
+  },
+  {
+    question: "同學需要有任何先備知識或技能才能參加KSP課程嗎？",
+    answer: "不需要。課程設計為適合初學者，並且會從基礎概念開始進行教學。"
+  },
+  {
+    question: "課程開班的最少人數是多少？",
+    answer: "課程開班的最少人數是15人。"
+  },
+  {
+    question: "每堂到校的公司職員人數?",
+    answer: "一般課程都會是一位導師到校教授。如果學生人數超過25人，導師人數會作調整。"
+  },
+  {
+    question: "學校需要否提供任何協助?如充電器或其他器材?",
+    answer: "上課地點需要有投影設備，包括投影機, 屏幕, HDMI線及咪。另外需要確保課室有 WiFi 供學生和導師使用。\n\nKSP軟件需要在電腦上運行，不能使用平板電腦。"
+  },
+  {
+    question: "需要甚麼樣的電腦才能玩「Kerbal Space Program」？",
+    answer: "需要一台具有以下最低配置的電腦：\n\n操作系統：Windows 7 64-bit\n處理器：雙核心 2.0 GHz\n記憶體：4 GB RAM\n圖形：512 MB顯示記憶體、DirectX 9.0c相容\n顯示卡：支援Shader Model 3.0的顯示卡\n存儲空間：至少3 GB可用空間。\n\n我們亦有提供手提電腦租借服務，如果學校有需要可以向我們查詢報價。"
+  },
+  {
+    question: "可否接收政府採購卡(P-card) 付款?",
+    answer: "我們暫不按受政府採購卡(P-card) 付款。"
+  }
+];
 
 // SEO metadata
 const title = "Kerbal Space Program (KSP) 太空任務設計課程 - 10教育";
@@ -403,98 +437,7 @@ const ogImage = kspMain.src;
       </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="mb-16">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">常見問題</h2>
-      </div>
-      
-      <div class="max-w-4xl mx-auto space-y-4">
-        <details class="group bg-white rounded-lg shadow-lg">
-          <summary class="flex justify-between items-center cursor-pointer p-6 hover:bg-gray-50">
-            <span class="font-semibold text-lg">甚麼是「Kerbal Space Program」？</span>
-            <span class="text-blue-600 group-open:rotate-180 transition-transform">▼</span>
-          </summary>
-          <div class="p-6 pt-0">
-            <p class="text-gray-700">
-              <a href="https://www.kerbalspaceprogram.com/" class="text-blue-600 hover:underline">Kerbal Space Program</a> 是一款太空探索模擬遊戲，玩家可以建立和管理自己的太空計劃，設計、建造和發射太空船，進行太空任務和科學研究。
-            </p>
-          </div>
-        </details>
-
-        <details class="group bg-white rounded-lg shadow-lg">
-          <summary class="flex justify-between items-center cursor-pointer p-6 hover:bg-gray-50">
-            <span class="font-semibold text-lg">同學需要有任何先備知識或技能才能參加KSP課程嗎？</span>
-            <span class="text-blue-600 group-open:rotate-180 transition-transform">▼</span>
-          </summary>
-          <div class="p-6 pt-0">
-            <p class="text-gray-700">不需要。課程設計為適合初學者，並且會從基礎概念開始進行教學。</p>
-          </div>
-        </details>
-
-        <details class="group bg-white rounded-lg shadow-lg">
-          <summary class="flex justify-between items-center cursor-pointer p-6 hover:bg-gray-50">
-            <span class="font-semibold text-lg">課程開班的最少人數是多少？</span>
-            <span class="text-blue-600 group-open:rotate-180 transition-transform">▼</span>
-          </summary>
-          <div class="p-6 pt-0">
-            <p class="text-gray-700">課程開班的最少人數是15人。</p>
-          </div>
-        </details>
-
-        <details class="group bg-white rounded-lg shadow-lg">
-          <summary class="flex justify-between items-center cursor-pointer p-6 hover:bg-gray-50">
-            <span class="font-semibold text-lg">每堂到校的公司職員人數?</span>
-            <span class="text-blue-600 group-open:rotate-180 transition-transform">▼</span>
-          </summary>
-          <div class="p-6 pt-0">
-            <p class="text-gray-700">一般課程都會是一位導師到校教授。如果學生人數超過25人，導師人數會作調整。</p>
-          </div>
-        </details>
-
-        <details class="group bg-white rounded-lg shadow-lg">
-          <summary class="flex justify-between items-center cursor-pointer p-6 hover:bg-gray-50">
-            <span class="font-semibold text-lg">學校需要否提供任何協助?如充電器或其他器材?</span>
-            <span class="text-blue-600 group-open:rotate-180 transition-transform">▼</span>
-          </summary>
-          <div class="p-6 pt-0">
-            <p class="text-gray-700">
-              上課地點需要有投影設備，包括投影機, 屏幕, HDMI線及咪。另外需要確保課室有 WiFi 供學生和導師使用。<br><br>
-              KSP軟件需要在電腦上運行，不能使用平板電腦。
-            </p>
-          </div>
-        </details>
-
-        <details class="group bg-white rounded-lg shadow-lg">
-          <summary class="flex justify-between items-center cursor-pointer p-6 hover:bg-gray-50">
-            <span class="font-semibold text-lg">需要甚麼樣的電腦才能玩「Kerbal Space Program」？</span>
-            <span class="text-blue-600 group-open:rotate-180 transition-transform">▼</span>
-          </summary>
-          <div class="p-6 pt-0">
-            <p class="text-gray-700">
-              需要一台具有以下最低配置的電腦：<br><br>
-              操作系統：Windows 7 64-bit<br>
-              處理器：雙核心 2.0 GHz<br>
-              記憶體：4 GB RAM<br>
-              圖形：512 MB顯示記憶體、DirectX 9.0c相容<br>
-              顯示卡：支援Shader Model 3.0的顯示卡<br>
-              存儲空間：至少3 GB可用空間。<br><br>
-              我們亦有提供手提電腦租借服務，如果學校有需要可以向我們查詢報價。
-            </p>
-          </div>
-        </details>
-
-        <details class="group bg-white rounded-lg shadow-lg">
-          <summary class="flex justify-between items-center cursor-pointer p-6 hover:bg-gray-50">
-            <span class="font-semibold text-lg">可否接收政府採購卡(P-card) 付款?</span>
-            <span class="text-blue-600 group-open:rotate-180 transition-transform">▼</span>
-          </summary>
-          <div class="p-6 pt-0">
-            <p class="text-gray-700">我們暫不按受政府採購卡(P-card) 付款。</p>
-          </div>
-        </details>
-      </div>
-    </section>
+    <QnASection faqs={faqItems} variant="details" />
 
     <!-- Contact Form -->
     <section class="mb-16">
@@ -502,15 +445,10 @@ const ogImage = kspMain.src;
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">聯絡我們</h2>
       </div>
       
-      <div class="max-w-2xl mx-auto">
+      <div class="max-w-4xl mx-auto">
         <div class="bg-white rounded-lg shadow-lg p-8">
-          <iframe 
-            src="https://or0uzdua.paperform.co" 
-            width="100%" 
-            height="600" 
-            frameborder="0" 
-            scrolling="no">
-          </iframe>
+          <p class="text-center text-gray-700 mb-6">想了解更多關於 KSP 太空任務設計課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。</p>
+          <PaperformEmbed />
         </div>
       </div>
     </section>

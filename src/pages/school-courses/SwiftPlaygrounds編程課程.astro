@@ -1,18 +1,48 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Footer from '../../components/Footer.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import { Image } from 'astro:assets';
 
 // Import images
-import swiftPlaygroundsHero from '../../assets/images/school-courses/swiftplaygrounds/swift-playgrounds-hero.png';
-import swiftPlaygroundsCoding from '../../assets/images/school-courses/swiftplaygrounds/swift-playgrounds-coding.jpg';
-import swiftPlaygroundsTesting from '../../assets/images/school-courses/swiftplaygrounds/swift-playgrounds-testing.jpg';
-import swiftPlaygroundsPlaying from '../../assets/images/school-courses/swiftplaygrounds/swift-playgrounds-playing.png';
-import swiftPlaygroundsLearning from '../../assets/images/school-courses/swiftplaygrounds/swift-playgrounds-learning.jpg';
-import swiftPlaygroundsThinking from '../../assets/images/school-courses/swiftplaygrounds/swift-playgrounds-thinking.jpg';
-import swiftPlaygroundsTrying from '../../assets/images/school-courses/swiftplaygrounds/swift-playgrounds-trying.jpg';
-import swiftPlaygroundsDoing from '../../assets/images/school-courses/swiftplaygrounds/swift-playgrounds-doing.jpg';
-import swiftPlaygroundsCoding2 from '../../assets/images/school-courses/swiftplaygrounds/swift-playgrounds-coding-2.jpg';
+import swiftPlaygroundsHero from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-hero.png';
+import swiftPlaygroundsCoding from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-coding.jpg';
+import swiftPlaygroundsTesting from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-testing.jpg';
+import swiftPlaygroundsPlaying from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-playing.png';
+import swiftPlaygroundsLearning from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-learning.jpg';
+import swiftPlaygroundsThinking from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-thinking.jpg';
+import swiftPlaygroundsTrying from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-trying.jpg';
+import swiftPlaygroundsDoing from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-doing.jpg';
+import swiftPlaygroundsCoding2 from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-coding-2.jpg';
+
+// FAQ items
+const faqItems = [
+  {
+    question: "學生需要有編程背景嗎？",
+    answer: "無需。課程一般適合任何初中至高中學生。"
+  },
+  {
+    question: "課程開班的最少人數是多少？",
+    answer: "課程開班的最少人數是15人。"
+  },
+  {
+    question: "每堂到校的公司職員人數?",
+    answer: "一般課程都會是一位導師到校教授。如果學生人數超過25人，導師人數會作調整。"
+  },
+  {
+    question: "學校需要否提供任何協助?如充電器或其他器材?",
+    answer: "上課地點需要有投影設備，包括投影機, 屏幕, HDMI線及咪。另外需要確保課室有 WiFi 供學生和導師使用。\n\nSwift Playgorund軟件需要在MacOS 或 iPad上運行，不能使用windows電腦或Android平板電腦。"
+  },
+  {
+    question: "需要甚麼樣的電腦 / iPad才能使用swift playgrounds？",
+    answer: "iPad：\n• iPadOS 10.0或更高版本\n• 支援Apple Pencil的iPad型號（第一代或更新）或支援觸控筆的iPad型號\n\nMac：\n• macOS 10.15.4 Catalina或更高版本\n• 具有4 GB RAM的Mac（8 GB或更高建議）\n• 具有Metal支援的Mac型號\n\n[ 下載連結 ](https://www.apple.com/hk/en/swift/playgrounds/)"
+  },
+  {
+    question: "可否接收政府採購卡(P-card) 付款?",
+    answer: "我們暫不按受政府採購卡(P-card) 付款。"
+  }
+];
 
 // SEO metadata
 const title = "Swift Playgrounds 初階編程 - 10教育";
@@ -255,68 +285,7 @@ const ogImage = swiftPlaygroundsHero.src;
       </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="mb-16">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">常見問題</h2>
-      </div>
-
-      <div class="bg-white rounded-lg shadow-lg p-8">
-        <div class="space-y-6">
-          <!-- FAQ Item 1 -->
-          <div class="border-b border-gray-200 pb-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-3">學生需要有編程背景嗎？</h3>
-            <p class="text-gray-600">無需。課程一般適合任何初中至高中學生。</p>
-          </div>
-
-          <!-- FAQ Item 2 -->
-          <div class="border-b border-gray-200 pb-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-3">課程開班的最少人數是多少？</h3>
-            <p class="text-gray-600">課程開班的最少人數是15人。</p>
-          </div>
-
-          <!-- FAQ Item 3 -->
-          <div class="border-b border-gray-200 pb-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-3">每堂到校的公司職員人數?</h3>
-            <p class="text-gray-600">一般課程都會是一位導師到校教授。如果學生人數超過25人，導師人數會作調整。</p>
-          </div>
-
-          <!-- FAQ Item 4 -->
-          <div class="border-b border-gray-200 pb-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-3">學校需要否提供任何協助?如充電器或其他器材?</h3>
-            <p class="text-gray-600">
-              上課地點需要有投影設備，包括投影機, 屏幕, HDMI線及咪。另外需要確保課室有 WiFi 供學生和導師使用。<br><br>
-              Swift Playgorund軟件需要在MacOS 或 iPad上運行，不能使用windows電腦或Android平板電腦。
-            </p>
-          </div>
-
-          <!-- FAQ Item 5 -->
-          <div class="border-b border-gray-200 pb-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-3">需要甚麼樣的電腦 / iPad才能使用swift playgrounds？</h3>
-            <div class="text-gray-600">
-              <p class="font-semibold">iPad：</p>
-              <ul class="list-disc list-inside ml-4 mb-3">
-                <li>iPadOS 10.0或更高版本</li>
-                <li>支援Apple Pencil的iPad型號（第一代或更新）或支援觸控筆的iPad型號</li>
-              </ul>
-              <p class="font-semibold">Mac：</p>
-              <ul class="list-disc list-inside ml-4 mb-3">
-                <li>macOS 10.15.4 Catalina或更高版本</li>
-                <li>具有4 GB RAM的Mac（8 GB或更高建議）</li>
-                <li>具有Metal支援的Mac型號</li>
-              </ul>
-              <p><a href="https://www.apple.com/hk/en/swift/playgrounds/" class="text-orange-600 hover:text-orange-800 underline">[ 下載連結 ]</a></p>
-            </div>
-          </div>
-
-          <!-- FAQ Item 6 -->
-          <div class="pb-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-3">可否接收政府採購卡(P-card) 付款?</h3>
-            <p class="text-gray-600">我們暫不按受政府採購卡(P-card) 付款。</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <QnASection faqs={faqItems} />
 
     <!-- Contact Section -->
     <section class="mb-16">
@@ -325,16 +294,11 @@ const ogImage = swiftPlaygroundsHero.src;
       </div>
 
       <div class="bg-gradient-to-r from-orange-50 to-red-50 rounded-lg p-8">
-        <div class="max-w-2xl mx-auto">
+        <div class="max-w-4xl mx-auto">
           <p class="text-center text-gray-700 mb-6">
-            歡迎填妥下方表格讓同事為你提供咨詢。
+            想了解更多關於 Swift Playgrounds 初階編程課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。
           </p>
-          <!-- Contact form would go here -->
-          <div class="text-center">
-            <a href="/contact" class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
-              聯絡我們
-            </a>
-          </div>
+          <PaperformEmbed />
         </div>
       </div>
     </section>

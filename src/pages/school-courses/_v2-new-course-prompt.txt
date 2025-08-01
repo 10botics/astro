@@ -23,8 +23,16 @@ Structure the page with these sections in order:
 4. Course requirements section (separate section with heading)
 5. Course highlights section
 6. Course content/curriculum section (ONLY ONE "課程內容" heading with duration info and accordion)
-7. FAQ section
+ ,b007. FAQ section (MUST use QnASection component)
 8. Contact section
+
+**CRITICAL QnA COMPONENT REQUIREMENT:**
+- ALL new course pages MUST use the QnASection component for FAQ sections
+- Import the component: `import QnASection from '../../components/course/QnASection.astro';`
+- Create a faqItems array with question/answer pairs
+- Use the component: `<QnASection faqs={faqItems} />`
+- Choose appropriate variant: 'accordion', 'details', or 'simple'
+- NEVER create custom FAQ sections - always use the standardized QnASection component
 
 For the course requirements section, create a separate section with:
 - Proper heading "課程資訊" or "課程要求"

@@ -3,6 +3,24 @@ import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import CourseFeatures from '../../components/course/CourseFeatures.astro';
 import AccordionSection from '../../components/course/AccordionSection.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import PaperformEmbed from '../../components/PaperformEmbed.astro';
+
+// FAQ items
+const faqItems = [
+  {
+    question: "學生需要有編程背景嗎？",
+    answer: "初階課程：無需。課程一般適合任何初中至高中學生。\n\n進階課程：學生應已參與初階課程 / 對 Raspberry Pi 及編程 (不限於 Python) 有一定認識。"
+  },
+  {
+    question: "學校需要甚麼設備？",
+    answer: "學校需準備以下項目：\n\n1） 可運行 Python 3.9 或更新版本的電腦\n2）網路攝影機 （電腦內置或外接均可） ※僅適用於進階課程\n\n建議先致電 +852 6554-1506 或電郵至 sales@10botics.com 向同事溝通學校期望的教學內容，同事將就教學所需設備提供建議。"
+  },
+  {
+    question: "課程價錢包括哪些教材？",
+    answer: "課程包括Raspberry Pi 課程學習套裝\n\n• Raspberry Pi 4B\n• 讀卡器\n• 超聲波傳感器\n• 火牛\n• 16GB SD 卡\n• OLED 顯示屏\n• MicroHDMI 轉 HDMI 線\n• Pi 廣角鏡頭\n• 遊戲機手制\n\n我們可以協助提供所需清單和購買，歡迎向我們查詢瞭解更多。"
+  }
+];
 
 // Course data (static)
 const courseData = {
@@ -314,93 +332,35 @@ const advancedCurriculumItems = [
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
-          <img src="/src/assets/images/school-courses/raspberry-pi/raspberry-pi-computer.jpg" alt="Raspberry Pi computer" class="w-full h-full object-cover">
+          <img src="/src/assets/images/school-courses/raspberry-pi編程課程/raspberry-pi-computer.jpg" alt="Raspberry Pi computer" class="w-full h-full object-cover">
         </div>
         <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
-          <img src="/src/assets/images/school-courses/raspberry-pi/raspberry-pi-kit.jpg" alt="Raspberry Pi kit" class="w-full h-full object-cover">
+          <img src="/src/assets/images/school-courses/raspberry-pi編程課程/raspberry-pi-kit.jpg" alt="Raspberry Pi kit" class="w-full h-full object-cover">
         </div>
         <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
-          <img src="/src/assets/images/school-courses/raspberry-pi/raspberry-pi-coding.jpg" alt="Raspberry Pi coding" class="w-full h-full object-cover">
+          <img src="/src/assets/images/school-courses/raspberry-pi編程課程/raspberry-pi-coding.jpg" alt="Raspberry Pi coding" class="w-full h-full object-cover">
         </div>
         <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
-          <img src="/src/assets/images/school-courses/raspberry-pi/raspberry-pi-screen.jpg" alt="Raspberry Pi screen" class="w-full h-full object-cover">
+          <img src="/src/assets/images/school-courses/raspberry-pi編程課程/raspberry-pi-screen.jpg" alt="Raspberry Pi screen" class="w-full h-full object-cover">
         </div>
         <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
-          <img src="/src/assets/images/school-courses/raspberry-pi/raspberry-pi-wiring.jpg" alt="Raspberry Pi wiring" class="w-full h-full object-cover">
+          <img src="/src/assets/images/school-courses/raspberry-pi編程課程/raspberry-pi-wiring.jpg" alt="Raspberry Pi wiring" class="w-full h-full object-cover">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ Section -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center" style="color: #1e293b;">常見問題</h2>
-      
-      <div class="space-y-6 max-w-4xl mx-auto">
-        <details class="border border-gray-200 rounded-lg p-6 group bg-white">
-          <summary class="font-semibold text-gray-900 cursor-pointer flex justify-between items-center">
-            <span>學生需要有編程背景嗎？</span>
-            <i class="fas fa-plus transition-transform group-open:rotate-45"></i>
-          </summary>
-          <div class="mt-4 text-gray-600">
-            <strong>初階課程</strong>：無需。課程一般適合任何初中至高中學生。<br><br>
-            <strong>進階課程</strong>：學生應已參與初階課程 / 對 Raspberry Pi 及編程 (不限於 Python) 有一定認識。
-          </div>
-        </details>
-
-        <details class="border border-gray-200 rounded-lg p-6 group bg-white">
-          <summary class="font-semibold text-gray-900 cursor-pointer flex justify-between items-center">
-            <span>學校需要甚麼設備？</span>
-            <i class="fas fa-plus transition-transform group-open:rotate-45"></i>
-          </summary>
-          <div class="mt-4 text-gray-600">
-            <strong>學校需準備以下項目：</strong><br><br>
-            1） 可運行 Python 3.9 或更新版本的電腦<br>
-            2）網路攝影機 （電腦內置或外接均可） ※僅適用於進階課程<br><br>
-            建議先致電 +852 6554-1506 或電郵至 sales@10botics.com 向同事溝通學校期望的教學內容，同事將就教學所需設備提供建議。
-          </div>
-        </details>
-
-        <details class="border border-gray-200 rounded-lg p-6 group bg-white">
-          <summary class="font-semibold text-gray-900 cursor-pointer flex justify-between items-center">
-            <span>課程價錢包括哪些教材？</span>
-            <i class="fas fa-plus transition-transform group-open:rotate-45"></i>
-          </summary>
-          <div class="mt-4 text-gray-600">
-            <strong>課程包括Raspberry Pi 課程學習套裝</strong><br><br>
-            • Raspberry Pi 4B<br>
-            • 讀卡器<br>
-            • 超聲波傳感器<br>
-            • 火牛<br>
-            • 16GB SD 卡<br>
-            • OLED 顯示屏<br>
-            • MicroHDMI 轉 HDMI 線<br>
-            • Pi 廣角鏡頭<br>
-            • 遊戲機手制<br><br>
-            我們可以協助提供所需清單和購買，歡迎向我們查詢瞭解更多。
-          </div>
-        </details>
-      </div>
-    </div>
-  </section>
+  <QnASection faqs={faqItems} variant="details" />
 
   <!-- Contact Section -->
   <section class="bg-white py-16">
     <div class="container mx-auto px-4 max-w-6xl">
       <h2 class="text-4xl font-bold text-gray-900 mb-8 text-center" style="color: #1e293b;">聯絡我們</h2>
-      <div class="text-center">
-        <div class="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto mb-8">
-          <div class="flex items-center justify-center space-x-3">
-            <i class="fas fa-phone text-cyan-400 text-xl"></i>
-            <span class="text-lg text-gray-700">+852 6554-1506</span>
-          </div>
-          <div class="flex items-center justify-center space-x-3">
-            <i class="fas fa-envelope text-cyan-400 text-xl"></i>
-            <span class="text-lg text-gray-700">sales@10botics.com</span>
-          </div>
-        </div>
-        <p class="text-gray-600">課程由 10教育 提供，專業導師親自編寫教材，確保教學質量。</p>
+      <div class="text-center mb-8">
+        <p class="text-lg text-gray-600">想了解更多關於 Raspberry Pi 編程課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。</p>
+      </div>
+      <div class="max-w-4xl mx-auto">
+        <PaperformEmbed />
       </div>
     </div>
   </section>

@@ -2,7 +2,8 @@
 import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import AccordionSection from '../../components/course/AccordionSection.astro';
-import ContactForm from '../../components/homepage/ContactForm.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import { Image } from 'astro:assets';
 
 // Import student work images
@@ -142,13 +143,7 @@ const faqItems = [
   }
 ];
 
-// Contact information
-const contactInfo = {
-  address: "香港九龍灣宏光道1號",
-  phone: "+852 1234 5678",
-  email: "info@10botics.com",
-  hours: "週一至週五 9:00-18:00"
-};
+
 ---
 
 <Layout title="人工智能遊戲編程課程">
@@ -462,44 +457,22 @@ const contactInfo = {
     </div>
   </section>
 
-  <!-- FAQ section -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-4xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">常見問題</h2>
-      
-      <div class="space-y-6">
-        {faqItems.map((faq, index) => (
-          <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
-            <button 
-              class="faq-header w-full text-left p-6 bg-white hover:bg-gray-50 transition-colors flex justify-between items-center"
-              data-target={`faq-${index}`}
-            >
-              <span class="font-semibold text-gray-900">{faq.question}</span>
-              <div class="faq-icon transition-transform duration-200">
-                <i class="fas fa-minus text-gray-600"></i>
-              </div>
-            </button>
-            <div 
-              id={`faq-${index}`}
-              class="faq-content overflow-hidden transition-all duration-300 ease-in-out"
-              style="max-height: none;"
-            >
-              <div class="p-6 bg-gray-50 border-t border-gray-200">
-                <p class="text-gray-700">{faq.answer}</p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+  <QnASection faqs={faqItems} />
 
   <!-- Contact section -->
-  <ContactForm 
-    title="聯絡我們"
-    description="想了解更多關於人工智能網頁遊戲編程工作坊的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。"
-    contactInfo={contactInfo}
-  />
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          聯絡我們
+        </h2>
+        <p class="text-lg text-gray-600">
+          想了解更多關於人工智能網頁遊戲編程工作坊的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。
+        </p>
+      </div>
+      <PaperformEmbed />
+    </div>
+  </section>
 </Layout>
 
 <script>
@@ -528,30 +501,6 @@ const contactInfo = {
       });
     });
 
-    // FAQ functionality
-    const faqHeaders = document.querySelectorAll('.faq-header');
-    
-    faqHeaders.forEach(header => {
-      header.addEventListener('click', function(this: HTMLElement) {
-        const target = this.getAttribute('data-target');
-        if (!target) return;
-        
-        const content = document.getElementById(target);
-        const icon = this.querySelector('.faq-icon i') as HTMLElement;
-        
-        if (content && icon) {
-          // Toggle current FAQ
-          if (content.style.maxHeight && content.style.maxHeight !== '0px') {
-            content.style.maxHeight = '0px';
-            icon.className = 'fas fa-plus text-gray-600';
-          } else {
-            content.style.maxHeight = content.scrollHeight + 'px';
-            icon.className = 'fas fa-minus text-gray-600';
-          }
-        }
-      });
-    });
-    
     // Open all accordions by default
     headers.forEach(header => {
       const target = header.getAttribute('data-target');
@@ -559,20 +508,6 @@ const contactInfo = {
       
       const content = document.getElementById(target);
       const icon = header.querySelector('.accordion-icon i') as HTMLElement | null;
-      
-      if (content && icon) {
-        content.style.maxHeight = content.scrollHeight + 'px';
-        icon.className = 'fas fa-minus text-gray-600';
-      }
-    });
-    
-    // Open all FAQs by default
-    faqHeaders.forEach(header => {
-      const target = header.getAttribute('data-target');
-      if (!target) return;
-      
-      const content = document.getElementById(target);
-      const icon = header.querySelector('.faq-icon i') as HTMLElement | null;
       
       if (content && icon) {
         content.style.maxHeight = content.scrollHeight + 'px';

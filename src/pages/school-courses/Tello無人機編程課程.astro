@@ -3,16 +3,18 @@ import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import CourseFeatures from '../../components/course/CourseFeatures.astro';
 import AccordionSection from '../../components/course/AccordionSection.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import { Image } from 'astro:assets';
 
 // Import images
-import featuredImage from '../../assets/images/school-courses/tello/hero-image.jpg';
-import droneExperience from '../../assets/images/school-courses/tello/drone-experience.gif';
-import programmingControl from '../../assets/images/school-courses/tello/programming-control.gif';
-import swarmPerformance from '../../assets/images/school-courses/tello/swarm-performance.gif';
-import gallery1 from '../../assets/images/school-courses/tello/gallery-1.png';
-import gallery2 from '../../assets/images/school-courses/tello/gallery-2.png';
-import gallery3 from '../../assets/images/school-courses/tello/gallery-3.png';
+import featuredImage from '../../assets/images/school-courses/Tello無人機編程課程/hero-image.jpg';
+import droneExperience from '../../assets/images/school-courses/Tello無人機編程課程/drone-experience.gif';
+import programmingControl from '../../assets/images/school-courses/Tello無人機編程課程/programming-control.gif';
+import swarmPerformance from '../../assets/images/school-courses/Tello無人機編程課程/swarm-performance.gif';
+import gallery1 from '../../assets/images/school-courses/Tello無人機編程課程/gallery-1.png';
+import gallery2 from '../../assets/images/school-courses/Tello無人機編程課程/gallery-2.png';
+import gallery3 from '../../assets/images/school-courses/Tello無人機編程課程/gallery-3.png';
 
 // Course data (static)
 const courseData = {
@@ -485,60 +487,20 @@ const faqItems = [
     </div>
   </section>
 
-  <!-- FAQ Section -->
-  <section class="py-16">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">常見問題</h2>
-      <div class="max-w-4xl mx-auto">
-        {faqItems.map((faq, index) => (
-          <div class="mb-4">
-            <details class="bg-white rounded-lg shadow-md" open>
-              <summary class="p-6 cursor-pointer font-semibold text-lg hover:bg-gray-50">
-                {faq.question}
-              </summary>
-              <div class="p-6 pt-0 text-gray-600">
-                <p>{faq.answer}</p>
-              </div>
-            </details>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+  <QnASection faqs={faqItems} variant="details" />
 
   <!-- Contact Form -->
   <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">聯絡我們</h2>
-      <div class="max-w-2xl mx-auto">
-        <div class="bg-white p-8 rounded-lg shadow-md">
-          <form class="space-y-6">
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">學校名稱</label>
-              <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">聯絡人姓名</label>
-              <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">聯絡電話</label>
-              <input type="tel" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">電郵地址</label>
-              <input type="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">課程查詢</label>
-              <textarea rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="請詳細描述您的課程需求..."></textarea>
-            </div>
-            <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 transition-colors">
-              提交查詢
-            </button>
-          </form>
-        </div>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          聯絡我們
+        </h2>
+        <p class="text-lg text-gray-600">
+          想了解更多關於 Tello 無人機編程課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。
+        </p>
       </div>
+      <PaperformEmbed />
     </div>
   </section>
 </Layout>

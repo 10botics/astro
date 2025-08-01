@@ -1,14 +1,32 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Footer from '../../components/Footer.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import { Image } from 'astro:assets';
 
 // Import images
-import procreateHero from '../../assets/images/school-courses/procreate/procreate-hero.png';
-import procreateThumbnail from '../../assets/images/school-courses/procreate/procreate-thumbnail.webp';
-import procreateCurriculum from '../../assets/images/school-courses/procreate/procreate-curriculum.png';
-import procreateGallery1 from '../../assets/images/school-courses/procreate/procreate-gallery-1.png';
-import procreateGallery2 from '../../assets/images/school-courses/procreate/procreate-gallery-2.jpeg';
+import procreateHero from '../../assets/images/school-courses/Procreate數位藝術課程/procreate-hero.png';
+import procreateThumbnail from '../../assets/images/school-courses/Procreate數位藝術課程/procreate-thumbnail.webp';
+import procreateCurriculum from '../../assets/images/school-courses/Procreate數位藝術課程/procreate-curriculum.png';
+import procreateGallery1 from '../../assets/images/school-courses/Procreate數位藝術課程/procreate-gallery-1.png';
+import procreateGallery2 from '../../assets/images/school-courses/Procreate數位藝術課程/procreate-gallery-2.jpeg';
+
+// FAQ items
+const faqItems = [
+  {
+    question: "課程會提供 ipad 及程式嗎？",
+    answer: "不會，學生上課需要自備ipad 及電容筆，亦需要事先安裝Procreate。"
+  },
+  {
+    question: "只能使用 Apple Pencil 嗎？",
+    answer: "不是，只要是帶按壓感應的電容筆均可。"
+  },
+  {
+    question: "對 ipad 型號有要求嗎？",
+    answer: "只要能支援 Procreate 及電容筆均可。"
+  }
+];
 
 // SEO metadata
 const title = "Procreate電繪課程 - 10教育";
@@ -247,56 +265,7 @@ const ogImage = procreateThumbnail.src;
       </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="mb-16">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">常見問題</h2>
-      </div>
-      
-      <div class="max-w-4xl mx-auto space-y-6">
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <button class="w-full px-6 py-4 text-left bg-gray-50 hover:bg-gray-100 transition-colors">
-            <div class="flex justify-between items-center">
-              <h3 class="text-lg font-semibold text-gray-900">課程會提供 ipad 及程式嗎？</h3>
-              <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </div>
-          </button>
-          <div class="px-6 py-4 bg-white">
-            <p class="text-gray-600">不會，學生上課需要自備ipad 及電容筆，亦需要事先安裝Procreate。</p>
-          </div>
-        </div>
-        
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <button class="w-full px-6 py-4 text-left bg-gray-50 hover:bg-gray-100 transition-colors">
-            <div class="flex justify-between items-center">
-              <h3 class="text-lg font-semibold text-gray-900">只能使用 Apple Pencil 嗎？</h3>
-              <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </div>
-          </button>
-          <div class="px-6 py-4 bg-white">
-            <p class="text-gray-600">不是，只要是帶按壓感應的電容筆均可。</p>
-          </div>
-        </div>
-        
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <button class="w-full px-6 py-4 text-left bg-gray-50 hover:bg-gray-100 transition-colors">
-            <div class="flex justify-between items-center">
-              <h3 class="text-lg font-semibold text-gray-900">對 ipad 型號有要求嗎？</h3>
-              <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </div>
-          </button>
-          <div class="px-6 py-4 bg-white">
-            <p class="text-gray-600">只要能支援 Procreate 及電容筆均可。</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <QnASection faqs={faqItems} />
 
     <!-- Contact Section -->
     <section class="mb-16">
@@ -304,12 +273,10 @@ const ogImage = procreateThumbnail.src;
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">聯絡我們</h2>
       </div>
       
-      <div class="bg-white rounded-lg shadow-lg p-8 max-w-2xl mx-auto">
+      <div class="bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
         <div class="text-center">
-          <p class="text-lg text-gray-700 mb-6">歡迎填妥下方表格讓同事為你提供咨詢。</p>
-          <a href="/contact" class="inline-block bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700 transition-colors">
-            聯絡我們
-          </a>
+          <p class="text-lg text-gray-700 mb-6">想了解更多關於 Procreate 電繪課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。</p>
+          <PaperformEmbed />
         </div>
       </div>
     </section>
@@ -360,26 +327,4 @@ const ogImage = procreateThumbnail.src;
   <Footer />
 </Layout>
 
-<script>
-  // FAQ Accordion functionality
-  document.addEventListener('DOMContentLoaded', function() {
-    const faqButtons = document.querySelectorAll('[class*="bg-gray-50"]');
-    
-    faqButtons.forEach(button => {
-      button.addEventListener('click', (event) => {
-        const target = event.currentTarget as HTMLElement;
-        const content = target.nextElementSibling as HTMLElement;
-        const icon = target.querySelector('svg') as SVGElement;
-        
-        // Toggle content visibility
-        if (content.style.display === 'none' || content.style.display === '') {
-          content.style.display = 'block';
-          icon.style.transform = 'rotate(180deg)';
-        } else {
-          content.style.display = 'none';
-          icon.style.transform = 'rotate(0deg)';
-        }
-      });
-    });
-  });
-</script> 
+ 

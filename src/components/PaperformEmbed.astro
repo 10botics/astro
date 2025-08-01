@@ -1,0 +1,23 @@
+---
+// PaperformEmbed.astro
+// Component for embedding Paperform forms
+---
+
+<div class="paperform-container">
+  <div data-paperform-id="qhmoqcvc"></div>
+</div>
+
+<script>
+  (function() {
+    var script = document.createElement('script');
+    script.src = "https://paperform.co/__embed.min.js";
+    document.body.appendChild(script);
+  })();
+</script>
+
+<style>
+  .paperform-container {
+    width: 100%;
+    min-height: 500px;
+  }
+</style> 
