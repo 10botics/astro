@@ -11,6 +11,7 @@ import ticTacToe2 from '../../assets/images/school-courses/人工智能遊戲編
 import pacman from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/student-work-3.jpg';
 import sudoku from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/student-work-4.jpg';
 import minesweeper from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/student-work-5.jpg';
+import chinesePuzzleDemo from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/chinese-puzzle-demo.png';
 
 // Course data (static)
 const courseData = {
@@ -380,12 +381,13 @@ const contactInfo = {
             <!-- Chinese Puzzle Game -->
             <a href="/games/ai-game-coding/ChinesePuzzle/index.html" target="_blank" class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
               <div class="aspect-w-16 aspect-h-9 bg-gray-100">
-                <div class="flex items-center justify-center h-48 bg-gradient-to-br from-purple-100 to-indigo-100">
-                  <div class="text-center">
-                    <i class="fas fa-puzzle-piece text-4xl text-purple-500 mb-4"></i>
-                    <p class="text-gray-600">中國拼圖遊戲</p>
-                  </div>
-                </div>
+                <Image 
+                  src={chinesePuzzleDemo} 
+                  alt="中國拼圖遊戲作品" 
+                  width={400}
+                  height={300}
+                  class="w-full h-48 object-cover"
+                />
               </div>
               <div class="p-6">
                 <h3 class="text-lg font-semibold text-gray-900 mb-2">中國拼圖遊戲</h3>
