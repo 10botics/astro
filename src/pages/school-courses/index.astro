@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 
 // No content collection courses for now
-const contentCourses = [];
+const contentCourses: any[] = [];
 
 // Auto-discover .astro course files
 const courseFiles = await import.meta.glob('./*.astro', { eager: true });
@@ -10,7 +10,7 @@ const courseFiles = await import.meta.glob('./*.astro', { eager: true });
 // Convert .astro files to course data (excluding index and dynamic routes)
 const astroCourses = Object.entries(courseFiles)
   .filter(([path]) => !path.includes('./index.astro') && !path.includes('./[slug].astro'))
-  .map(([path, module]) => {
+  .map(([path, module]: [string, any]) => {
     const filename = path.replace('./', '').replace('.astro', '');
     
     // Map Chinese filenames to English URLs
@@ -31,17 +31,102 @@ const astroCourses = Object.entries(courseFiles)
       'Tello無人機編程課程': 'tello'
     };
     
+    // Map filenames to actual course titles and descriptions
+    const courseDataMapping: Record<string, { title: string; description: string; tags: string[] }> = {
+      '人工智能遊戲編程課程': {
+        title: '人工智能遊戲編程課程',
+        description: '本課程將教授學生如何使用人工智能輔助開發網頁遊戲。學生將學習使用 HTML、CSS 和 JavaScript 製作網頁遊戲，並透過 Poe 和 Repl.it 等 AI 工具簡化開發流程。',
+        tags: ['Programming 編程', 'AI 人工智能', '初中', '高中', '遊戲開發', '網頁遊戲']
+      },
+      '樹莓派編程課程': {
+        title: 'Raspberry Pi 編程課程',
+        description: 'Raspberry Pi 是一個廣泛應用於各種領域的單板電腦。課程旨在幫助學生掌握 Raspberry Pi 及 Python 編程的基礎知識，以致配合機器學習和人工智慧，進行人體姿態檢測。',
+        tags: ['AI 人工智能', 'Coral', 'Python', 'Raspberry Pi', 'Tensorflow', '初中', '高中']
+      },
+      'AI數位動畫展覽課程': {
+        title: 'AI數位動畫展覽課程',
+        description: 'AI數位動畫展覽課程描述',
+        tags: ['AI 人工智能', '動畫', '創意']
+      },
+      '組件演示課程': {
+        title: '組件演示課程',
+        description: '組件演示課程描述',
+        tags: ['演示', '組件']
+      },
+      'Coral通用示例課程': {
+        title: 'Coral通用示例課程',
+        description: 'Coral通用示例課程描述',
+        tags: ['Coral', 'AI 人工智能']
+      },
+      'CoSpaces虛擬實境課程': {
+        title: 'CoSpaces虛擬實境課程',
+        description: 'CoSpaces虛擬實境課程描述',
+        tags: ['VR', '虛擬實境', '創意']
+      },
+      '通用示例課程': {
+        title: '通用示例課程',
+        description: '通用示例課程描述',
+        tags: ['示例', '通用']
+      },
+      '坎巴拉太空計劃課程': {
+        title: '坎巴拉太空計劃課程',
+        description: '坎巴拉太空計劃課程描述',
+        tags: ['太空', '遊戲', '科學']
+      },
+      'Minecraft編程課程': {
+        title: 'Minecraft編程課程',
+        description: 'Minecraft編程課程描述',
+        tags: ['Minecraft', '遊戲', '編程']
+      },
+      'Procreate數位藝術課程': {
+        title: 'Procreate數位藝術課程',
+        description: 'Procreate數位藝術課程描述',
+        tags: ['藝術', '數位', '創意']
+      },
+      'ScratchAI編程課程': {
+        title: 'ScratchAI編程課程',
+        description: 'ScratchAI編程課程描述',
+        tags: ['Scratch', 'AI 人工智能', '編程']
+      },
+      'Scratch遊戲設計課程': {
+        title: 'Scratch遊戲設計課程',
+        description: 'Scratch遊戲設計課程描述',
+        tags: ['Scratch', '遊戲設計', '編程']
+      },
+      'SwiftPlaygrounds編程課程': {
+        title: 'SwiftPlaygrounds編程課程',
+        description: 'SwiftPlaygrounds編程課程描述',
+        tags: ['Swift', 'iOS', '編程']
+      },
+      'Tello無人機編程課程': {
+        title: 'Tello無人機編程課程',
+        description: 'Tello無人機編程課程描述',
+        tags: ['無人機', 'Tello', '編程']
+      }
+    };
+    
+    // Get course data from mapping or use defaults
+    const courseData = courseDataMapping[filename] || {
+      title: filename,
+      description: `${filename} 課程頁面`,
+      tags: [filename.replace('-', ' ')]
+    };
+    
+    const courseTitle = courseData.title;
+    const courseDescription = courseData.description;
+    const courseTags = courseData.tags;
+    const courseTargetAudience = '待定';
+    const courseDuration = '待定';
+    
     return {
       slug: slugMapping[filename] || filename,
       filename: `${filename}.astro`,
-      title: filename.split('-').map(word => 
-        word.charAt(0).toUpperCase() + word.slice(1)
-      ).join(' '),
-      description: `${filename} 課程頁面`,
+      title: courseTitle,
+      description: courseDescription,
       courseType: extractCourseTypeFromFilename(filename),
-      targetAudience: '待定',
-      duration: '待定',
-      tags: [filename.replace('-', ' ')],
+      targetAudience: courseTargetAudience,
+      duration: courseDuration,
+      tags: courseTags,
       publishDate: new Date().toISOString().split('T')[0],
       source: 'astro'
     };
@@ -67,8 +152,8 @@ const courses = allCourses.filter((course, index, self) =>
   index === self.findIndex(c => c.slug === course.slug)
 );
 
-function extractCourseTypeFromFilename(filename) {
-  const typeMapping = {
+function extractCourseTypeFromFilename(filename: string): string {
+  const typeMapping: Record<string, string> = {
     'ai': 'AI', 'scratch': 'AI', 'arduino': 'Hardware',
     'raspberry': 'Hardware', 'donkey-car': 'Robotics',
     'coral': 'Hardware', 'demo': 'Demo', 'example': 'Demo',
@@ -172,7 +257,7 @@ const pageKeywords = "STEM課程總覽, AI課程列表, 編程課程, 機器人�
                   
                   <!-- Tags -->
                   <div class="flex flex-wrap gap-1 mb-4">
-                    {course.tags.slice(0, 3).map((tag) => (
+                    {course.tags.slice(0, 3).map((tag: string) => (
                       <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">
                         {tag}
                       </span>
