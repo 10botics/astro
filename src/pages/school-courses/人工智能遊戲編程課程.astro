@@ -283,99 +283,118 @@ const contactInfo = {
     </div>
   </section>
 
-  <!-- Student Work Showcase section -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">學生作品展示</h2>
-      <p class="text-lg text-gray-700 text-center mb-12 max-w-3xl mx-auto">
-        看看我們的學生在 AI 遊戲編程課程中創作的精彩作品！從經典的井字棋到創新的自製遊戲，每個作品都展現了學生們的創意和編程技能。
-      </p>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Tic-tac-toe Game -->
-        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-          <div class="aspect-w-16 aspect-h-9 bg-gray-100">
-            <Image 
-              src={ticTacToe1} 
-              alt="井字棋遊戲作品" 
-              width={400}
-              height={300}
-              class="w-full h-48 object-cover"
-            />
-          </div>
-          <div class="p-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">井字棋遊戲</h3>
-            <p class="text-gray-700 text-sm">經典井字棋遊戲的現代化實現，包含 AI 對手和難度選擇</p>
-          </div>
-        </div>
+        <!-- Student Work Showcase section -->
+      <section class="bg-white py-16">
+        <div class="container mx-auto px-4 max-w-6xl">
+          <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">學生作品展示</h2>
+          <p class="text-lg text-gray-700 text-center mb-12 max-w-3xl mx-auto">
+            點擊下方作品直接試玩學生們在 AI 遊戲編程課程中創作的精彩遊戲！從經典的井字棋到創新的自製遊戲，每個作品都展現了學生們的創意和編程技能。
+          </p>
+          
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Wooden Tic-tac-toe Game -->
+            <a href="/games/ai-game-coding/WoodenTicTac/WoodenTicTac/index.html" target="_blank" class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+              <div class="aspect-w-16 aspect-h-9 bg-gray-100">
+                <Image 
+                  src={ticTacToe1} 
+                  alt="木製井字棋遊戲作品" 
+                  width={400}
+                  height={300}
+                  class="w-full h-48 object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">木製井字棋遊戲</h3>
+                <p class="text-gray-700 text-sm">具有木製質感的經典井字棋遊戲，結合傳統與現代設計</p>
+              </div>
+            </a>
 
-        <!-- Tic-tac-toe Game 2 -->
-        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-          <div class="aspect-w-16 aspect-h-9 bg-gray-100">
-            <Image 
-              src={ticTacToe2} 
-              alt="井字棋遊戲作品變體" 
-              width={400}
-              height={300}
-              class="w-full h-48 object-cover"
-            />
-          </div>
-          <div class="p-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">井字棋變體</h3>
-            <p class="text-gray-700 text-sm">學生們為井字棋添加了獨特的視覺設計和遊戲機制</p>
-          </div>
-        </div>
-        <!--sudoku game-->
-        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-          <div class="aspect-w-16 aspect-h-9 bg-gray-100">
-            <Image 
-              src={sudoku} 
-              alt="遊戲編程作品展示" 
-              width={400}
-              height={300}
-              class="w-full h-48 object-cover"
-            />
-          </div>
-          <div class="p-6">
-            <h3 class="text-lg font-semibold te生們使用 AI 輔助工具創作的xt-gray-900 mb-2">數獨遊戲</h3>
-            <p class="text-gray-700 text-sm">經典數獨遊戲的網頁實現，包含提示功能和難度等級</p>
-          </div>
-        </div>
-        
-        <!-- Minesweeper Game -->
-        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-          <div class="aspect-w-16 aspect-h-9 bg-gray-100">
-            <Image 
-              src={minesweeper} 
-              alt="踩地雷遊戲作品" 
-              width={400}
-              height={300}
-              class="w-full h-48 object-cover"
-            />
-          </div>
-          <div class="p-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">踩地雷遊戲</h3>
-            <p class="text-gray-700 text-sm">經典踩地雷遊戲的網頁版本，考驗邏輯思維能力</p>
-          </div>
-        </div>
+            <!-- Tic-tac-tactics Game -->
+            <a href="/games/ai-game-coding/TicTacTactics/TicTacTactics/index.html" target="_blank" class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+              <div class="aspect-w-16 aspect-h-9 bg-gray-100">
+                <Image 
+                  src={ticTacToe2} 
+                  alt="井字棋戰術遊戲作品" 
+                  width={400}
+                  height={300}
+                  class="w-full h-48 object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">井字棋戰術遊戲</h3>
+                <p class="text-gray-700 text-sm">加入戰術元素的創新井字棋，考驗策略思維</p>
+              </div>
+            </a>
 
-        <!-- Pac-Man Game -->
-        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-          <div class="aspect-w-16 aspect-h-9 bg-gray-100">
-            <Image 
-              src={pacman} 
-              alt="食鬼遊戲作品" 
-              width={400}
-              height={300}
-              class="w-full h-48 object-cover"
-            />
+            <!-- Sudoku Game -->
+            <a href="/games/ai-game-coding/SudokuMaster/index.html" target="_blank" class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+              <div class="aspect-w-16 aspect-h-9 bg-gray-100">
+                <Image 
+                  src={sudoku} 
+                  alt="數獨遊戲作品" 
+                  width={400}
+                  height={300}
+                  class="w-full h-48 object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">數獨大師</h3>
+                <p class="text-gray-700 text-sm">經典數獨遊戲的完整實現，包含提示功能和難度等級</p>
+              </div>
+            </a>
+            
+            <!-- Minesweeper Game -->
+            <a href="/games/ai-game-coding/MinefieldChallenge/index.html" target="_blank" class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+              <div class="aspect-w-16 aspect-h-9 bg-gray-100">
+                <Image 
+                  src={minesweeper} 
+                  alt="踩地雷遊戲作品" 
+                  width={400}
+                  height={300}
+                  class="w-full h-48 object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">踩地雷挑戰</h3>
+                <p class="text-gray-700 text-sm">經典踩地雷遊戲的網頁版本，考驗邏輯思維能力</p>
+              </div>
+            </a>
+
+            <!-- Pac-Man Game -->
+            <a href="/games/ai-game-coding/PacManChase/PacManChase/index.html" target="_blank" class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+              <div class="aspect-w-16 aspect-h-9 bg-gray-100">
+                <Image 
+                  src={pacman} 
+                  alt="食鬼遊戲作品" 
+                  width={400}
+                  height={300}
+                  class="w-full h-48 object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">食鬼追逐遊戲</h3>
+                <p class="text-gray-700 text-sm">經典食鬼遊戲的重新詮釋，展現動畫和遊戲邏輯的結合</p>
+              </div>
+            </a>
+
+            <!-- Chinese Puzzle Game -->
+            <a href="/games/ai-game-coding/ChinesePuzzle/index.html" target="_blank" class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+              <div class="aspect-w-16 aspect-h-9 bg-gray-100">
+                <div class="flex items-center justify-center h-48 bg-gradient-to-br from-purple-100 to-indigo-100">
+                  <div class="text-center">
+                    <i class="fas fa-puzzle-piece text-4xl text-purple-500 mb-4"></i>
+                    <p class="text-gray-600">中國拼圖遊戲</p>
+                  </div>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">中國拼圖遊戲</h3>
+                <p class="text-gray-700 text-sm">傳統中國益智遊戲的現代化實現，學習成語和中文</p>
+              </div>
+            </a>
           </div>
-          <div class="p-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">食鬼遊戲</h3>
-            <p class="text-gray-700 text-sm">經典食鬼遊戲的重新詮釋，展現動畫和遊戲邏輯的結合</p>
-          </div>
-        </div>
-      </div>
+
+
 
       <!-- Student Testimonials -->
       <div class="mt-16 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-lg p-8">
