@@ -15,6 +15,7 @@ export interface CourseData {
   // Media
   videoId?: string;
   featuredImage?: string;
+  heroImage?: string;
   
   // Optional sections
   featureGrid?: {
@@ -60,6 +61,7 @@ const { courseData } = Astro.props;
     videoId={courseData.videoId}
     description={courseData.description}
     featuredImage={courseData.featuredImage}
+    heroImage={courseData.heroImage}
   />
 
   <!-- Feature Grid Section - Optional -->

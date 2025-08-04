@@ -1,6 +1,21 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
+// Course interface
+interface Course {
+  slug: string;
+  filename: string;
+  title: string;
+  description: string;
+  courseType: string;
+  targetAudience: string;
+  duration: string;
+  tags: string[];
+  heroImage?: string;
+  publishDate: string;
+  source: string;
+}
+
 // No content collection courses for now
 const contentCourses: any[] = [];
 
@@ -31,82 +46,8 @@ const astroCourses = Object.entries(courseFiles)
       'Tello無人機編程課程': 'tello'
     };
     
-    // Map filenames to actual course titles and descriptions
-    const courseDataMapping: Record<string, { title: string; description: string; tags: string[] }> = {
-      '人工智能遊戲編程課程': {
-        title: '人工智能遊戲編程課程',
-        description: '本課程將教授學生如何使用人工智能輔助開發網頁遊戲。學生將學習使用 HTML、CSS 和 JavaScript 製作網頁遊戲，並透過 Poe 和 Repl.it 等 AI 工具簡化開發流程。',
-        tags: ['Programming 編程', 'AI 人工智能', '初中', '高中', '遊戲開發', '網頁遊戲']
-      },
-      'raspberry-pi編程課程': {
-        title: 'Raspberry Pi 編程課程',
-        description: 'Raspberry Pi 是一個廣泛應用於各種領域的單板電腦。課程旨在幫助學生掌握 Raspberry Pi 及 Python 編程的基礎知識，以致配合機器學習和人工智慧，進行人體姿態檢測。',
-        tags: ['AI 人工智能', 'Coral', 'Python', 'Raspberry Pi', 'Tensorflow', '初中', '高中']
-      },
-      'AI數位動畫展覽課程': {
-        title: 'AI數碼動畫展',
-        description: 'AI數碼動畫展是一個簡單有趣的 STEM Day 活動，學生可按主題設計喜歡的圖案/角色，通過人工智能把圖案轉換成栩栩如生的動畫，呈現在學校LED Wall或螢幕上面跳舞，讓學生能以輕鬆有趣的方式體驗生成式AI技術。',
-        tags: ['AI 人工智能', '動畫', '創意', '藝術', 'STEM']
-      },
-      '組件演示課程': {
-        title: '組件演示課程',
-        description: '組件演示課程描述',
-        tags: ['演示', '組件']
-      },
-      'Coral通用示例課程': {
-        title: 'Coral通用示例課程',
-        description: 'Coral通用示例課程描述',
-        tags: ['Coral', 'AI 人工智能']
-      },
-      'CoSpaces虛擬實境課程': {
-        title: 'CoSpaces虛擬實境課程',
-        description: 'CoSpaces虛擬實境課程描述',
-        tags: ['VR', '虛擬實境', '創意']
-      },
-      '通用示例課程': {
-        title: '通用示例課程',
-        description: '通用示例課程描述',
-        tags: ['示例', '通用']
-      },
-      'ksp太空計劃課程': {
-        title: 'Kerbal Space Program (KSP) 太空任務設計課程',
-        description: '通過 KSP 模擬太空任務和探索宇宙，學生將進入迷人的太空科學世界，學習如何建構火箭，並掌握引力、推進力和運動力學等重要概念。透過模擬真實的太空環境和挑戰，他們將學習如何計劃和執行成功的發射任務，激發學員的創造力和探索精神，培養解決問題和團隊合作的能力。',
-        tags: ['Engineering 工程', 'KSP', 'Science 科學', '初中', '遊戲開發', '高中', '高小']
-      },
-      'Minecraft編程課程': {
-        title: 'Minecraft編程課程',
-        description: 'Minecraft編程課程描述',
-        tags: ['Minecraft', '遊戲', '編程']
-      },
-      'Procreate數位藝術課程': {
-        title: 'Procreate電繪課程',
-        description: '從介紹Procreate界面和工具開始，課程幫助學生並探索Procreate繪畫技巧、色彩應用。學習分層、合併元素，提高創作效率和繪製並匯出多種畫作。',
-        tags: ['Arts 藝術', 'Procreate', '數位藝術', '創意', '繪畫']
-      },
-      'ScratchAI編程課程': {
-        title: 'ScratchAI編程課程',
-        description: 'ScratchAI編程課程描述',
-        tags: ['Scratch', 'AI 人工智能', '編程']
-      },
-      'Scratch遊戲設計課程': {
-        title: 'Scratch遊戲設計課程',
-        description: 'Scratch遊戲設計課程描述',
-        tags: ['Scratch', '遊戲設計', '編程']
-      },
-      'SwiftPlaygrounds編程課程': {
-        title: 'Swift Playgrounds 初階編程',
-        description: '這個課程將帶領學生透過 Swift Playgrounds 學習編寫一個飛機大戰遊戲。學生將學會基礎編程概念、創建圖像元素、動畫設計和碰撞檢測等技巧，最終完成一個功能完整的飛機大戰遊戲。課程將通過互動式編程、示範和實踐來實現學習效果。',
-        tags: ['Programming 編程', 'Swift Playground', '初中', '軟件開發', '遊戲開發', '高中']
-      },
-      'Tello無人機編程課程': {
-        title: 'Tello無人機編程課程',
-        description: 'Tello無人機編程課程描述',
-        tags: ['無人機', 'Tello', '編程']
-      }
-    };
-    
-    // Get course data from mapping or use defaults
-    const courseData = courseDataMapping[filename] || {
+    // Extract courseData from frontmatter (now accessible via import.meta.glob)
+    const courseData = module.courseData || {
       title: filename,
       description: `${filename} 課程頁面`,
       tags: [filename.replace('-', ' ')]
@@ -115,6 +56,7 @@ const astroCourses = Object.entries(courseFiles)
     const courseTitle = courseData.title;
     const courseDescription = courseData.description;
     const courseTags = courseData.tags;
+    const courseHeroImage = courseData.heroImage;
     const courseTargetAudience = '待定';
     const courseDuration = '待定';
     
@@ -127,9 +69,10 @@ const astroCourses = Object.entries(courseFiles)
       targetAudience: courseTargetAudience,
       duration: courseDuration,
       tags: courseTags,
+      heroImage: courseHeroImage,
       publishDate: new Date().toISOString().split('T')[0],
       source: 'astro'
-    };
+    } as Course;
   });
 
 // Convert content collection courses to same format
@@ -142,12 +85,13 @@ const mdCourses = contentCourses.map(course => ({
   targetAudience: course.data.targetAudience || '待定',
   duration: course.data.duration || '待定',
   tags: course.data.tags || [],
+  heroImage: course.data.heroImage,
   publishDate: course.data.publishDate,
   source: 'markdown'
-}));
+} as Course));
 
 // Combine both sources (prefer .astro if same slug exists)
-const allCourses = [...mdCourses, ...astroCourses];
+const allCourses: Course[] = [...mdCourses, ...astroCourses];
 const courses = allCourses.filter((course, index, self) => 
   index === self.findIndex(c => c.slug === course.slug)
 );
@@ -209,6 +153,16 @@ const pageKeywords = "STEM課程總覽, AI課程列表, 編程課程, 機器人�
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {sortedCourses.map((course) => (
               <article class="course-card bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+                <!-- Hero Image -->
+                {course.heroImage && (
+                  <div class="aspect-video bg-gray-100 overflow-hidden">
+                    <img 
+                      src={course.heroImage} 
+                      alt={course.title}
+                      class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                )}
                 <div class="p-6">
                   <!-- Course Header -->
                   <div class="mb-4">
