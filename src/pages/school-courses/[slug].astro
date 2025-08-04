@@ -2,130 +2,28 @@
 // Dynamic route to handle English URLs while using Chinese-named components
 export async function getStaticPaths() {
   return [
-    {
-      params: { slug: 'ai-game-coding' },
-      props: { 
-        title: "人工智能遊戲編程課程",
-        componentName: 'ai-game-coding'
-      }
-    },
-    {
-      params: { slug: 'ai-digital-animation-exhibition' },
-      props: { 
-        title: "AI數位動畫展覽課程",
-        componentName: 'ai-digital-animation-exhibition'
-      }
-    },
-    {
-      params: { slug: 'component-demo' },
-      props: { 
-        title: "組件演示課程",
-        componentName: 'component-demo'
-      }
-    },
-    {
-      params: { slug: 'coral-generalized-example' },
-      props: { 
-        title: "Coral通用示例課程",
-        componentName: 'coral-generalized-example'
-      }
-    },
-    {
-      params: { slug: 'cospaces' },
-      props: { 
-        title: "CoSpaces虛擬實境課程",
-        componentName: 'cospaces'
-      }
-    },
-    {
-      params: { slug: 'generalized-example' },
-      props: { 
-        title: "通用示例課程",
-        componentName: 'generalized-example'
-      }
-    },
-    {
-      params: { slug: 'ksp' },
-      props: { 
-        title: "KSP 太空計劃課程",
-        componentName: 'ksp'
-      }
-    },
-    {
-      params: { slug: 'minecraft' },
-      props: { 
-        title: "Minecraft編程課程",
-        componentName: 'minecraft'
-      }
-    },
-    {
-      params: { slug: 'procreate' },
-      props: { 
-        title: "Procreate數位藝術課程",
-        componentName: 'procreate'
-      }
-    },
-    {
-      params: { slug: 'raspberry-pi' },
-      props: { 
-        title: "Raspberry Pi 編程課程",
-        componentName: 'raspberry-pi'
-      }
-    },
-    {
-      params: { slug: 'scratch-ai-programming' },
-      props: { 
-        title: "ScratchAI編程課程",
-        componentName: 'scratch-ai-programming'
-      }
-    },
-    {
-      params: { slug: 'scratch-game-design' },
-      props: { 
-        title: "Scratch遊戲設計課程",
-        componentName: 'scratch-game-design'
-      }
-    },
-    {
-      params: { slug: 'swiftplaygrounds' },
-      props: { 
-        title: "SwiftPlaygrounds編程課程",
-        componentName: 'swiftplaygrounds'
-      }
-    },
-    {
-      params: { slug: 'tello' },
-      props: { 
-        title: "Tello無人機編程課程",
-        componentName: 'tello'
-      }
-    }
+    { params: { slug: 'ai-game-coding' } },
+    { params: { slug: 'ai-digital-animation-exhibition' } },
+    { params: { slug: 'component-demo' } },
+    { params: { slug: 'coral-generalized-example' } },
+    { params: { slug: 'cospaces' } },
+    { params: { slug: 'generalized-example' } },
+    { params: { slug: 'ksp' } },
+    { params: { slug: 'minecraft' } },
+    { params: { slug: 'procreate' } },
+    { params: { slug: 'raspberry-pi' } },
+    { params: { slug: 'scratch-ai-programming' } },
+    { params: { slug: 'scratch-game-design' } },
+    { params: { slug: 'swiftplaygrounds' } },
+    { params: { slug: 'tello' } }
   ];
 }
 
-const { title, componentName } = Astro.props;
-
-// Map component names to Chinese filenames
-const componentMapping = {
-  'ai-game-coding': '人工智能遊戲編程課程',
-  'ai-digital-animation-exhibition': 'AI數位動畫展覽課程',
-  'component-demo': '組件演示課程',
-  'coral-generalized-example': 'Coral通用示例課程',
-  'cospaces': 'CoSpaces虛擬實境課程',
-  'generalized-example': '通用示例課程',
-  'ksp': 'ksp太空計劃課程',
-  'minecraft': 'Minecraft編程課程',
-  'procreate': 'Procreate數位藝術課程',
-  'raspberry-pi': 'raspberry-pi編程課程',
-  'scratch-ai-programming': 'ScratchAI編程課程',
-  'scratch-game-design': 'Scratch遊戲設計課程',
-  'swiftplaygrounds': 'SwiftPlaygrounds編程課程',
-  'tello': 'Tello無人機編程課程'
-};
+const { slug } = Astro.params;
 
 // Import the Chinese-named component using a switch statement
 let ChineseComponent;
-switch (componentName) {
+switch (slug) {
   case 'ai-game-coding':
     ChineseComponent = await import('./人工智能遊戲編程課程.astro');
     break;
@@ -169,7 +67,7 @@ switch (componentName) {
     ChineseComponent = await import('./Tello無人機編程課程.astro');
     break;
   default:
-    throw new Error(`Unknown component: ${componentName}`);
+    throw new Error(`Unknown slug: ${slug}`);
 }
 ---
 
