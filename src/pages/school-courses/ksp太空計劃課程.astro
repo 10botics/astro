@@ -17,6 +17,15 @@ import kspCarousel4 from '../../assets/images/school-courses/ksp太空計劃課�
 import kspCarousel5 from '../../assets/images/school-courses/ksp太空計劃課程/ksp-carousel-5.png';
 import kspCarousel6 from '../../assets/images/school-courses/ksp太空計劃課程/ksp-carousel-6.png';
 
+// Course data (static)
+const courseData = {
+  title: "Kerbal Space Program (KSP) 太空任務設計課程",
+  subtitle: "開啟火箭工程之旅，進入KSP模擬的科學與奧秘！",
+  tags: ["Engineering 工程", "KSP", "Science 科學", "初中", "遊戲開發", "高中", "高小"],
+  description: "通過 KSP 模擬太空任務和探索宇宙，學生將進入迷人的太空科學世界，學習如何建構火箭，並掌握引力、推進力和運動力學等重要概念。透過模擬真實的太空環境和挑戰，他們將學習如何計劃和執行成功的發射任務，激發學員的創造力和探索精神，培養解決問題和團隊合作的能力。",
+  detailedDescription: "通過 KSP 模擬太空任務和探索宇宙，學生將進入迷人的太空科學世界，學習如何建構火箭，並掌握引力、推進力和運動力學等重要概念。透過模擬真實的太空環境和挑戰，他們將學習如何計劃和執行成功的發射任務，激發學員的創造力和探索精神，培養解決問題和團隊合作的能力。"
+};
+
 // FAQ items
 const faqItems = [
   {
@@ -51,7 +60,7 @@ const faqItems = [
 
 // SEO metadata
 const title = "Kerbal Space Program (KSP) 太空任務設計課程 - 10教育";
-const description = "通過 KSP 模擬太空任務和探索宇宙，學生將進入迷人的太空科學世界，學習如何建構火箭，並掌握引力、推進力和運動力學等重要概念。透過模擬真實的太空環境和挑戰，他們將學習如何計劃和執行成功的發射任務，激發學員的創造力和探索精神，培養解決問題和團隊合作的能力。";
+const description = courseData.description;
 const ogImage = kspMain.src;
 ---
 
@@ -62,19 +71,15 @@ const ogImage = kspMain.src;
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center">
         <h1 class="text-4xl md:text-6xl font-bold mb-6">
-          Kerbal Space Program (KSP) 太空任務設計課程
+          {courseData.title}
         </h1>
         <p class="text-xl md:text-2xl mb-8 max-w-4xl mx-auto">
-          開啟火箭工程之旅，進入KSP模擬的科學與奧秘！
+          {courseData.subtitle}
         </p>
         <div class="flex flex-wrap justify-center gap-4 text-sm">
-          <span class="bg-blue-700 px-3 py-1 rounded-full">Engineering 工程</span>
-          <span class="bg-blue-700 px-3 py-1 rounded-full">KSP</span>
-          <span class="bg-blue-700 px-3 py-1 rounded-full">Science 科學</span>
-          <span class="bg-blue-700 px-3 py-1 rounded-full">初中</span>
-          <span class="bg-blue-700 px-3 py-1 rounded-full">遊戲開發</span>
-          <span class="bg-blue-700 px-3 py-1 rounded-full">高中</span>
-          <span class="bg-blue-700 px-3 py-1 rounded-full">高小</span>
+          {courseData.tags.map(tag => (
+            <span class="bg-blue-700 px-3 py-1 rounded-full">{tag}</span>
+          ))}
         </div>
       </div>
     </div>
@@ -88,7 +93,7 @@ const ogImage = kspMain.src;
         <span class="mx-2">»</span>
         <a href="/school-courses" class="hover:text-blue-600">到校課程</a>
         <span class="mx-2">»</span>
-        <span class="text-gray-900">Kerbal Space Program (KSP) 太空任務設計課程</span>
+        <span class="text-gray-900">{courseData.title}</span>
       </nav>
     </div>
   </section>

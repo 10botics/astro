@@ -16,6 +16,16 @@ import swiftPlaygroundsTrying from '../../assets/images/school-courses/SwiftPlay
 import swiftPlaygroundsDoing from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-doing.jpg';
 import swiftPlaygroundsCoding2 from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-coding-2.jpg';
 
+// Course data (static)
+const courseData = {
+  title: "Swift Playgrounds 初階編程",
+  subtitle: "從遊戲中學習編程 — 探索Swift Playgrounds的奇妙世界",
+  tags: ["Programming 編程", "Swift Playground", "初中", "軟件開發", "遊戲開發", "高中"],
+  videoId: "s7tgxH8vSXk",
+  description: "這個課程將帶領學生透過 Swift Playgrounds 學習編寫一個飛機大戰遊戲。學生將學會基礎編程概念、創建圖像元素、動畫設計和碰撞檢測等技巧，最終完成一個功能完整的飛機大戰遊戲。課程將通過互動式編程、示範和實踐來實現學習效果。",
+  detailedDescription: "從遊戲中學習編程 — 探索Swift Playgrounds的奇妙世界。這個課程將帶領學生透過 Swift Playgrounds 學習編寫一個飛機大戰遊戲。學生將學會基礎編程概念、創建圖像元素、動畫設計和碰撞檢測等技巧，最終完成一個功能完整的飛機大戰遊戲。課程將通過互動式編程、示範和實踐來實現學習效果。"
+};
+
 // FAQ items
 const faqItems = [
   {
@@ -46,7 +56,7 @@ const faqItems = [
 
 // SEO metadata
 const title = "Swift Playgrounds 初階編程 - 10教育";
-const description = "這個課程將帶領學生透過 Swift Playgrounds 學習編寫一個飛機大戰遊戲。學生將學會基礎編程概念、創建圖像元素、動畫設計和碰撞檢測等技巧，最終完成一個功能完整的飛機大戰遊戲。課程將通過互動式編程、示範和實踐來實現學習效果。";
+const description = courseData.description;
 const ogImage = swiftPlaygroundsHero.src;
 ---
 
@@ -57,18 +67,15 @@ const ogImage = swiftPlaygroundsHero.src;
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center">
         <h1 class="text-4xl md:text-6xl font-bold mb-6">
-          Swift Playgrounds 初階編程
+          {courseData.title}
         </h1>
         <p class="text-xl md:text-2xl mb-8 max-w-4xl mx-auto">
-          從遊戲中學習編程 — 探索Swift Playgrounds的奇妙世界
+          {courseData.subtitle}
         </p>
         <div class="flex flex-wrap justify-center gap-4 text-sm">
-          <span class="bg-orange-700 px-3 py-1 rounded-full">Programming 編程</span>
-          <span class="bg-orange-700 px-3 py-1 rounded-full">Swift Playground</span>
-          <span class="bg-orange-700 px-3 py-1 rounded-full">初中</span>
-          <span class="bg-orange-700 px-3 py-1 rounded-full">軟件開發</span>
-          <span class="bg-orange-700 px-3 py-1 rounded-full">遊戲開發</span>
-          <span class="bg-orange-700 px-3 py-1 rounded-full">高中</span>
+          {courseData.tags.map(tag => (
+            <span class="bg-orange-700 px-3 py-1 rounded-full">{tag}</span>
+          ))}
         </div>
       </div>
     </div>
@@ -82,7 +89,7 @@ const ogImage = swiftPlaygroundsHero.src;
         <span class="mx-2">»</span>
         <a href="/school-courses" class="hover:text-orange-600">到校課程</a>
         <span class="mx-2">»</span>
-        <span class="text-gray-900">Swift Playgrounds 初階編程</span>
+        <span class="text-gray-900">{courseData.title}</span>
       </nav>
     </div>
   </section>
@@ -96,7 +103,7 @@ const ogImage = swiftPlaygroundsHero.src;
         <div class="aspect-video bg-black rounded-lg overflow-hidden">
           <iframe 
             class="w-full h-full" 
-            src="https://www.youtube.com/embed/s7tgxH8vSXk" 
+            src={`https://www.youtube.com/embed/${courseData.videoId}`}
             title="Swift Playgrounds Course Introduction"
             frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -107,7 +114,7 @@ const ogImage = swiftPlaygroundsHero.src;
       
       <div class="mt-8 max-w-4xl mx-auto">
         <p class="text-lg text-gray-700 leading-relaxed">
-          這個課程將帶領學生透過 Swift Playgrounds 學習編寫一個飛機大戰遊戲。學生將學會基礎編程概念、創建圖像元素、動畫設計和碰撞檢測等技巧，最終完成一個功能完整的飛機大戰遊戲。課程將通過互動式編程、示範和實踐來實現學習效果。
+          {courseData.description}
         </p>
       </div>
     </section>
