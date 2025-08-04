@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
 
 // Course interface
 interface Course {
@@ -11,7 +12,7 @@ interface Course {
   targetAudience: string;
   duration: string;
   tags: string[];
-  heroImage?: string;
+  heroImage?: string | any; // Allow both string paths and imported images
   publishDate: string;
   source: string;
 }
@@ -156,11 +157,19 @@ const pageKeywords = "STEM課程總覽, AI課程列表, 編程課程, 機器人�
                 <!-- Hero Image -->
                 {course.heroImage && (
                   <div class="aspect-video bg-gray-100 overflow-hidden">
-                    <img 
-                      src={course.heroImage} 
-                      alt={course.title}
-                      class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                    />
+                    {typeof course.heroImage === 'string' ? (
+                      <img 
+                        src={course.heroImage} 
+                        alt={course.title}
+                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    ) : (
+                      <Image 
+                        src={course.heroImage} 
+                        alt={course.title}
+                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    )}
                   </div>
                 )}
                 <div class="p-6">
