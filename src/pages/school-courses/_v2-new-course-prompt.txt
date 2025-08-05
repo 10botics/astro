@@ -115,6 +115,10 @@ For the "Course content/curriculum" section:
    - Download external images (imgur, etc.) to course directory
    - Import all images at the top of the Astro file
    - Use descriptive filenames matching content
+   - **CRITICAL: NEVER create new Python scripts for image extraction**
+   - **MANDATORY: Use ONLY the existing `extract_image.py` script in the root directory**
+   - **PROHIBITED: Creating any new image extraction scripts, even if they seem more specific or efficient**
+   - **REQUIRED: Run the existing script with: `python extract_image.py` to process markdown files from Downloads directory**
 
 2. **STYLE CONSISTENCY:**
    - Follow structure of other existing pages like 人工智能遊戲編程課程.astro, CoSpaces 虛擬實境課程.astro
