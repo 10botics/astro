@@ -16,6 +16,9 @@ Use the image component in astro
 - Reference these objects in the JSX/HTML sections
 - This makes content maintenance and updates much easier
 
+**CRITICAL COURSE CURRICULUM SEPARATION REQUIREMENT:**
+- When a course has more than one levels, ALWAYS create separate curriculum arrays
+
 **IMPORTANT: IMAGE ORGANIZATION**
 - All course images must be organized in course-specific directories
 - Download and save all images to: `src/assets/images/school-courses/[course-name]/`
