@@ -1,44 +1,167 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>數獨大師</title>
+    <title>Sudoku Game</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>數獨大師</h1>
-            <p>挑戰你的邏輯思維能力</p>
-        </header>
-        
-        <div class="game-area">
-            <div class="sudoku-container">
-                <div class="sudoku-grid" id="sudokuGrid">
-                    <!-- Sudoku grid will be generated here -->
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="logo">
+                        <span>S</span>
+                    </div>
+                    <h1>Sudoku</h1>
+                </div>
+                <div class="header-right">
+                    <div class="time-display">
+                        <span class="label">Time:</span>
+                        <span id="timer" class="timer">00:00</span>
+                    </div>
+                    <div class="difficulty-display">
+                        <span class="label">Difficulty:</span>
+                        <span id="current-difficulty" class="current-difficulty">Medium</span>
+                    </div>
                 </div>
             </div>
-            
-            <div class="controls">
-                <button id="newGameBtn" class="btn">新遊戲</button>
-                <button id="solveBtn" class="btn">解答</button>
-                <button id="hintBtn" class="btn">提示</button>
+        </header>
+
+        <!-- Main Game Container -->
+        <main class="main-container">
+            <div class="game-layout">
+                <!-- Game Board Section -->
+                <div class="game-board-section">
+                    <div class="game-board-container">
+                        <div class="board-header">
+                            <h2>Game Board</h2>
+                            <div class="board-info">
+                                <div class="legend">
+                                    <div class="legend-item">
+                                        <div class="legend-color given"></div>
+                                        <span>Given numbers</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-color user"></div>
+                                        <span>Your numbers</span>
+                                    </div>
+                                </div>
+                                <div class="mistakes-counter">
+                                    <span class="label">Mistakes:</span>
+                                    <span id="mistakes" class="mistakes">0/3</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="sudoku-grid" class="sudoku-grid"></div>
+                    </div>
+                </div>
+
+                <!-- Controls Section -->
+                <div class="controls-section">
+                    <!-- Number Pad -->
+                    <div class="control-panel">
+                        <h3>Number Pad</h3>
+                        <div class="number-pad">
+                            <button class="number-btn" data-number="1">1</button>
+                            <button class="number-btn" data-number="2">2</button>
+                            <button class="number-btn" data-number="3">3</button>
+                            <button class="number-btn" data-number="4">4</button>
+                            <button class="number-btn" data-number="5">5</button>
+                            <button class="number-btn" data-number="6">6</button>
+                            <button class="number-btn" data-number="7">7</button>
+                            <button class="number-btn" data-number="8">8</button>
+                            <button class="number-btn" data-number="9">9</button>
+                        </div>
+                        <div class="action-buttons">
+                            <button id="erase-btn" class="action-btn erase">Erase</button>
+                            <button id="notes-btn" class="action-btn notes">Notes</button>
+                        </div>
+                    </div>
+
+                    <!-- Game Actions -->
+                    <div class="control-panel">
+                        <h3>Game Actions</h3>
+                        <div class="game-actions">
+                            <button id="check-btn" class="game-btn check">Check Solution</button>
+                            <button id="hint-btn" class="game-btn hint">Get Hint</button>
+                            <button id="restart-btn" class="game-btn restart">Restart Game</button>
+                            <button id="new-game-btn" class="game-btn new-game">New Game</button>
+                        </div>
+                    </div>
+
+                    <!-- Difficulty Selection -->
+                    <div class="control-panel">
+                        <h3>Difficulty</h3>
+                        <div class="difficulty-buttons">
+                            <button class="difficulty-btn easy" data-difficulty="easy">Easy</button>
+                            <button class="difficulty-btn medium active" data-difficulty="medium">Medium</button>
+                            <button class="difficulty-btn hard" data-difficulty="hard">Hard</button>
+                            <button class="difficulty-btn expert" data-difficulty="expert">Expert</button>
+                        </div>
+                        <div class="difficulty-note">Changing difficulty will start a new game</div>
+                    </div>
+
+                    <!-- Game Stats -->
+                    <div class="control-panel">
+                        <h3>Statistics</h3>
+                        <div class="stats">
+                            <div class="stat-item">
+                                <span>Games Played</span>
+                                <span id="games-played">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>Games Won</span>
+                                <span id="games-won">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>Best Time</span>
+                                <span id="best-time">--:--</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>Current Streak</span>
+                                <span id="current-streak">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <div class="info">
-                <div class="moves">移動次數: <span id="moveCount">0</span></div>
-                <div class="time">時間: <span id="timer">00:00</span></div>
+        </main>
+
+        <!-- Success Modal -->
+        <div id="success-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="success-icon">✓</div>
+                    <h2>Congratulations!</h2>
+                </div>
+                <div class="modal-body">
+                    <p>You've successfully completed the Sudoku puzzle!</p>
+                    <div class="completion-stats">
+                        <div class="completion-stat">
+                            <span>Time:</span>
+                            <span id="completion-time">00:00</span>
+                        </div>
+                        <div class="completion-stat">
+                            <span>Difficulty:</span>
+                            <span id="completion-difficulty">Medium</span>
+                        </div>
+                        <div class="completion-stat">
+                            <span>Mistakes:</span>
+                            <span id="completion-mistakes">0</span>
+                        </div>
+                    </div>
+                    <div class="modal-actions">
+                        <button id="modal-new-game" class="modal-btn primary">New Game</button>
+                        <button id="modal-close" class="modal-btn secondary">Close</button>
+                    </div>
+                </div>
             </div>
-        </div>
-        
-        <div class="instructions">
-            <h3>遊戲說明</h3>
-            <p>在9x9的格子中填入數字1-9，使每行、每列和每個3x3的宮格都包含1-9的數字。</p>
-            <p>點擊空格子來填入數字。</p>
         </div>
     </div>
-    
+
     <script src="script.js"></script>
 </body>
-</html> 
+</html>

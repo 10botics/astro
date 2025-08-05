@@ -1,0 +1,237 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 480px;
+    width: 100%;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #4a5568;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 0 10px;
+}
+
+.status {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #4a5568;
+    transition: color 0.3s ease;
+}
+
+.status.winner {
+    color: #48bb78;
+    animation: pulse 1s infinite;
+}
+
+.status.draw {
+    color: #ed8936;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.reset-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.reset-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.reset-btn:active {
+    transform: translateY(0);
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 8px;
+    margin-bottom: 30px;
+    background: #e2e8f0;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.cell {
+    width: 70px;
+    height: 70px;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.cell:hover {
+    background: #f7fafc;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.cell.occupied {
+    cursor: not-allowed;
+}
+
+.cell.occupied:hover {
+    transform: none;
+    background: white;
+}
+
+.cell.x {
+    color: #e53e3e;
+    animation: placeMarker 0.3s ease-out;
+}
+
+.cell.o {
+    color: #3182ce;
+    animation: placeMarker 0.3s ease-out;
+}
+
+@keyframes placeMarker {
+    0% {
+        transform: scale(0) rotate(180deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2) rotate(90deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+.cell.winning {
+    background: linear-gradient(135deg, #48bb78, #38a169);
+    color: white;
+    animation: winningCell 0.6s ease-in-out;
+}
+
+@keyframes winningCell {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.score-board {
+    display: flex;
+    justify-content: space-around;
+    background: #f7fafc;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.score {
+    text-align: center;
+}
+
+.score .player {
+    display: block;
+    font-size: 0.9rem;
+    color: #718096;
+    margin-bottom: 5px;
+}
+
+.score .wins {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4a5568;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .cell {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+    }
+    
+    .game-info {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .score-board {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Hover effect for empty cells */
+.cell:not(.occupied):hover::before {
+    content: attr(data-hover);
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.3;
+    color: currentColor;
+    transition: opacity 0.2s ease;
+}
+
+.cell[data-current="X"]:not(.occupied):hover::before {
+    content: 'X';
+    color: #e53e3e;
+}
+
+.cell[data-current="O"]:not(.occupied):hover::before {
+    content: 'O';
+    color: #3182ce;
+}
