@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>數獨大師</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>數獨大師</h1>
+            <p>挑戰你的邏輯思維能力</p>
+        </header>
+        
+        <div class="game-area">
+            <div class="sudoku-container">
+                <div class="sudoku-grid" id="sudokuGrid">
+                    <!-- Sudoku grid will be generated here -->
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button id="newGameBtn" class="btn">新遊戲</button>
+                <button id="solveBtn" class="btn">解答</button>
+                <button id="hintBtn" class="btn">提示</button>
+            </div>
+            
+            <div class="info">
+                <div class="moves">移動次數: <span id="moveCount">0</span></div>
+                <div class="time">時間: <span id="timer">00:00</span></div>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3>遊戲說明</h3>
+            <p>在9x9的格子中填入數字1-9，使每行、每列和每個3x3的宮格都包含1-9的數字。</p>
+            <p>點擊空格子來填入數字。</p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中國傳統益智遊戲</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>中國傳統益智遊戲</h1>
+            <p>挑戰你的邏輯思維能力</p>
+        </header>
+        
+        <div class="game-area">
+            <div class="puzzle-container">
+                <div class="puzzle-grid" id="puzzleGrid">
+                    <!-- Puzzle pieces will be generated here -->
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button id="newGameBtn" class="btn">新遊戲</button>
+                <button id="solveBtn" class="btn">解答</button>
+                <button id="hintBtn" class="btn">提示</button>
+            </div>
+            
+            <div class="info">
+                <div class="moves">移動次數: <span id="moveCount">0</span></div>
+                <div class="time">時間: <span id="timer">00:00</span></div>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3>遊戲說明</h3>
+            <p>點擊方塊來移動它們，目標是將數字排列成正確的順序。</p>
+            <p>使用方向鍵或滑鼠點擊來移動方塊。</p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>吃豆人追逐</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>吃豆人追逐</h1>
+            <p>經典吃豆人遊戲體驗</p>
+        </header>
+        
+        <div class="game-area">
+            <div class="pacman-container">
+                <canvas id="gameCanvas" width="800" height="600">
+                    <!-- Pacman game canvas -->
+                </canvas>
+            </div>
+            
+            <div class="controls">
+                <button id="startBtn" class="btn">開始遊戲</button>
+                <button id="pauseBtn" class="btn">暫停</button>
+                <button id="resetBtn" class="btn">重置</button>
+            </div>
+            
+            <div class="info">
+                <div class="score">分數: <span id="score">0</span></div>
+                <div class="lives">生命: <span id="lives">3</span></div>
+                <div class="level">關卡: <span id="level">1</span></div>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3>遊戲說明</h3>
+            <p>使用方向鍵控制吃豆人移動，吃掉所有豆子來過關。</p>
+            <p>避開幽靈，吃掉能量豆可以暫時吃掉幽靈。</p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 
