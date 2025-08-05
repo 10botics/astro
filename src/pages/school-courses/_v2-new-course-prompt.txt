@@ -1,6 +1,14 @@
 Create the website in astro file under src/pages/school-courses/ and the name of the file should be "course name in traditional chinese.astro"
 Use the image component in astro
 
+**CRITICAL URL REQUIREMENTS:**
+- The filename MUST be in traditional Chinese 
+- The URL slug MUST be in English 
+- Add the Chinese filename to English slug mapping in both:
+  - `src/pages/school-courses/index.astro` (in the slugMapping object)
+  - `src/pages/school-courses/[slug].astro` (in the slugMapping object)
+- This ensures the course is accessible via English URLs while maintaining Chinese filenames
+
 **CRITICAL CONTENT ORGANIZATION REQUIREMENT:**
 - ALL text content must be defined as objects at the top of the file
 - Create separate objects for each section's content
@@ -119,64 +127,3 @@ For the "Course content/curriculum" section:
    - Follow same frontmatter structure with `courseData` export
    - Use identical data structures for all sections
    - Match exact section ordering and naming
-
-**CONTENT OBJECT STRUCTURE EXAMPLE:**
-```javascript
-// Hero section content
-const heroContent = {
-  title: "課程標題",
-  subtitle: "課程副標題", 
-  description: "課程描述",
-  features: [
-    "特色1",
-    "特色2", 
-    "特色3"
-  ]
-};
-
-// Technology section content
-const techContent = {
-  title: "為什麼選用這些技術？",
-  technologies: [
-    {
-      icon: "fas fa-robot",
-      title: "技術名稱",
-      description: "技術描述"
-    }
-  ]
-};
-
-// Requirements section content
-const requirementsContent = {
-  title: "課程要求",
-  requirements: [
-    {
-      icon: "fas fa-clock",
-      title: "課時",
-      description: "課程時長"
-    }
-  ]
-};
-
-// Course highlights content
-const highlightsContent = {
-  title: "課程重點",
-  highlights: [
-    {
-      icon: "fas fa-star",
-      title: "重點標題",
-      description: "重點描述"
-    }
-  ]
-};
-
-// FAQ content
-const faqContent = {
-  faqs: [
-    {
-      question: "常見問題",
-      answer: "問題答案"
-    }
-  ]
-};
-```
