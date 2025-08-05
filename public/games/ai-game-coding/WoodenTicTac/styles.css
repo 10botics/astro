@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Inter:wght@400;500;600&display=swap');
+
+/* CSS Variables for Wooden Theme */
+:root {
+  --wood-dark: hsl(20, 82%, 27%);
+  --wood-medium: hsl(26, 78%, 47%);
+  --wood-light: hsl(43, 56%, 70%);
+  --wood-lighter: hsl(48, 56%, 84%);
+  --game-green: hsl(120, 61%, 34%);
+  --game-red: hsl(348, 83%, 47%);
+  --dark-brown: hsl(25, 75%, 13%);
+}
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--wood-lighter);
+  background-image: 
+    radial-gradient(circle at 25% 25%, var(--wood-light) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, var(--wood-medium) 1px, transparent 1px),
+    linear-gradient(45deg, rgba(222, 184, 135, 0.3) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(210, 105, 30, 0.2) 25%, transparent 25%);
+  background-size: 60px 60px, 40px 40px, 20px 20px, 20px 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+/* Header Styles */
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 3rem;
+  color: var(--dark-brown);
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: var(--wood-dark);
+}
+
+/* Status Section */
+.status-container {
+  margin-bottom: 24px;
+}
+
+.status-board {
+  background: var(--wood-light);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--wood-medium);
+}
+
+.status-text {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--dark-brown);
+  text-align: center;
+}
+
+/* Game Board */
+.board-container {
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  padding: 16px;
+  background: var(--wood-dark);
+  border-radius: 16px;
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+}
+
+.cell {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--wood-lighter) 0%, var(--wood-light) 50%, var(--wood-medium) 100%);
+  box-shadow: inset 2px 2px 4px rgba(139, 69, 19, 0.3), inset -2px -2px 4px rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fredoka One', cursive;
+  font-size: 3rem;
+  user-select: none;
+}
+
+.cell:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.cell.disabled {
+  cursor: not-allowed;
+}
+
+/* Symbol Styles */
+.symbol-x {
+  color: var(--game-red);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.symbol-o {
+  color: var(--game-green);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Controls Section */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.reset-button {
+  background: var(--wood-medium);
+  color: white;
+  border: 2px solid var(--wood-dark);
+  border-radius: 8px;
+  padding: 12px 32px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.reset-button:hover {
+  background: var(--wood-dark);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: scale(1.05);
+}
+
+/* Statistics */
+.stats-container {
+  background: var(--wood-light);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--wood-medium);
+}
+
+.stats-content {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  color: var(--dark-brown);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-label {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.stat-value {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.25rem;
+}
+
+/* Rules Section */
+.rules-container {
+  margin-top: 32px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.rules-details {
+  background: var(--wood-light);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--wood-medium);
+}
+
+.rules-summary {
+  padding: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--dark-brown);
+  transition: background-color 0.2s ease;
+  border-radius: 8px;
+}
+
+.rules-summary:hover {
+  background: var(--wood-lighter);
+}
+
+.rules-content {
+  padding: 0 16px 16px;
+  color: var(--dark-brown);
+  font-size: 0.875rem;
+}
+
+.rules-content p {
+  margin-bottom: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+  
+  .cell {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+  
+  .stats-content {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .stat-item {
+    flex-direction: row;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+  }
+  
+  .cell {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+  
+  .game-board {
+    padding: 12px;
+    gap: 6px;
+  }
+}
+
+/* Winner Animation */
+@keyframes celebrate {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.winner-cell {
+  animation: celebrate 0.5s ease-in-out;
+  box-shadow: 0 0 20px rgba(34, 139, 34, 0.6);
+}
+
+/* Winning message styles */
+.winner-message {
+  font-size: 1.5rem;
+  font-weight: bold;
+  animation: celebrate 1s ease-in-out;
+}

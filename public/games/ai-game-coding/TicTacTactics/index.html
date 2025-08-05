@@ -1,43 +1,55 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>井字棋戰術</title>
+    <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>井字棋戰術</h1>
-            <p>挑戰AI的井字棋遊戲</p>
-        </header>
+        <h1>Tic Tac Toe</h1>
         
-        <div class="game-area">
-            <div class="board-container">
-                <div class="game-board" id="gameBoard">
-                    <!-- Game board will be generated here -->
-                </div>
-            </div>
-            
-            <div class="controls">
-                <button id="newGameBtn" class="btn">新遊戲</button>
-                <button id="resetBtn" class="btn">重置</button>
-            </div>
-            
-            <div class="info">
-                <div class="status">狀態: <span id="gameStatus">輪到玩家</span></div>
-                <div class="score">分數: <span id="playerScore">0</span> - <span id="aiScore">0</span></div>
-            </div>
+        <div class="game-info">
+            <div class="status" id="status">Player X's Turn</div>
+            <button class="reset-btn" id="resetBtn">New Game</button>
         </div>
         
-        <div class="instructions">
-            <h3>遊戲說明</h3>
-            <p>在3x3的棋盤上輪流放置X和O，先連成一線者獲勝。</p>
-            <p>點擊空格子來放置你的棋子。</p>
+        <div class="game-board" id="gameBoard">
+            <div class="cell" data-index="0"></div>
+            <div class="cell" data-index="1"></div>
+            <div class="cell" data-index="2"></div>
+            <div class="cell" data-index="3"></div>
+            <div class="cell" data-index="4"></div>
+            <div class="cell" data-index="5"></div>
+            <div class="cell" data-index="6"></div>
+            <div class="cell" data-index="7"></div>
+            <div class="cell" data-index="8"></div>
+            <div class="cell" data-index="9"></div>
+            <div class="cell" data-index="10"></div>
+            <div class="cell" data-index="11"></div>
+            <div class="cell" data-index="12"></div>
+            <div class="cell" data-index="13"></div>
+            <div class="cell" data-index="14"></div>
+            <div class="cell" data-index="15"></div>
+        </div>
+        
+        <div class="score-board">
+            <div class="score">
+                <span class="player">Player X</span>
+                <span class="wins" id="xWins">0</span>
+            </div>
+            <div class="score">
+                <span class="player">Player O</span>
+                <span class="wins" id="oWins">0</span>
+            </div>
+            <div class="score">
+                <span class="player">Draws</span>
+                <span class="wins" id="draws">0</span>
+            </div>
         </div>
     </div>
     
     <script src="script.js"></script>
 </body>
-</html> 
+</html>
