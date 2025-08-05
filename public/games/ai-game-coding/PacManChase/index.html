@@ -1,45 +1,66 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>吃豆人追逐</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Pac-Man Classic</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>吃豆人追逐</h1>
-            <p>經典吃豆人遊戲體驗</p>
-        </header>
-        
-        <div class="game-area">
-            <div class="pacman-container">
-                <canvas id="gameCanvas" width="800" height="600">
-                    <!-- Pacman game canvas -->
-                </canvas>
-            </div>
+    <div class="game-container">
+        <div class="game-wrapper">
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
             
-            <div class="controls">
-                <button id="startBtn" class="btn">開始遊戲</button>
-                <button id="pauseBtn" class="btn">暫停</button>
-                <button id="resetBtn" class="btn">重置</button>
+            <!-- Game UI -->
+            <div class="game-ui">
+                <!-- Score and Info -->
+                <div class="score-panel">
+                    <div>SCORE: <span id="score">0</span></div>
+                    <div>LEVEL: <span id="level">1</span></div>
+                    <div>LIVES: <span id="lives">●●●</span></div>
+                </div>
+
+                <!-- Controls -->
+                <div class="controls-panel">
+                    <button id="muteBtn" class="control-btn">🔊</button>
+                </div>
+
+                <!-- Game State Overlays -->
+                <div id="readyScreen" class="overlay">
+                    <div class="overlay-content">
+                        <h1>PAC-MAN</h1>
+                        <p>
+                            Use arrow keys to move<br/>
+                            Eat all dots to advance<br/>
+                            Avoid the ghosts!
+                        </p>
+                        <button id="startBtn" class="game-btn">START GAME</button>
+                    </div>
+                </div>
+
+                <div id="gameOverScreen" class="overlay hidden">
+                    <div class="overlay-content game-over">
+                        <h1>GAME OVER</h1>
+                        <p>Final Score: <span id="finalScore">0</span></p>
+                        <button id="restartBtn" class="game-btn">PLAY AGAIN</button>
+                    </div>
+                </div>
+
+                <!-- Mobile Controls -->
+                <div class="mobile-controls">
+                    <div class="control-grid">
+                        <div></div>
+                        <button class="mobile-btn" data-direction="up">↑</button>
+                        <div></div>
+                        <button class="mobile-btn" data-direction="left">←</button>
+                        <button class="mobile-btn" data-direction="down">↓</button>
+                        <button class="mobile-btn" data-direction="right">→</button>
+                    </div>
+                </div>
             </div>
-            
-            <div class="info">
-                <div class="score">分數: <span id="score">0</span></div>
-                <div class="lives">生命: <span id="lives">3</span></div>
-                <div class="level">關卡: <span id="level">1</span></div>
-            </div>
-        </div>
-        
-        <div class="instructions">
-            <h3>遊戲說明</h3>
-            <p>使用方向鍵控制吃豆人移動，吃掉所有豆子來過關。</p>
-            <p>避開幽靈，吃掉能量豆可以暫時吃掉幽靈。</p>
         </div>
     </div>
-    
+
     <script src="script.js"></script>
 </body>
-</html> 
+</html>
