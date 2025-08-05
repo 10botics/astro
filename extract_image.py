@@ -4,6 +4,8 @@ import os
 import requests
 from urllib.parse import urlparse
 import glob
+import sys
+import argparse
 
 def extract_base64_images(content, output_dir):
     """Extract all base64 images from content"""
@@ -138,25 +140,32 @@ def process_markdown_file(file_path, output_dir):
     return total_images
 
 def main():
-    """Main function to process all markdown files"""
-    # Find all markdown files in Downloads directory
-    downloads_dir = "c:/Users/testt/Downloads"
-    markdown_files = glob.glob(os.path.join(downloads_dir, "*.md"))
+    """Main function to process specific markdown files"""
+    parser = argparse.ArgumentParser(description='Extract images from markdown files')
+    parser.add_argument('files', nargs='+', help='Markdown files to process')
+    parser.add_argument('--output-dir', default='src/assets/images/school-courses', 
+                       help='Base output directory for extracted images')
     
-    if not markdown_files:
-        print("No markdown files found in Downloads directory")
-        return
-    
-    print(f"Found {len(markdown_files)} markdown file(s)")
+    args = parser.parse_args()
     
     all_extracted_images = []
     
-    for md_file in markdown_files:
-        # Create output directory based on filename
-        filename = os.path.splitext(os.path.basename(md_file))[0]
-        output_dir = f"src/assets/images/school-courses/{filename}/"
+    for file_path in args.files:
+        # Check if file exists
+        if not os.path.exists(file_path):
+            print(f"Warning: File {file_path} does not exist, skipping...")
+            continue
         
-        extracted_images = process_markdown_file(md_file, output_dir)
+        # Check if file is a markdown file
+        if not file_path.lower().endswith('.md'):
+            print(f"Warning: File {file_path} is not a markdown file, skipping...")
+            continue
+        
+        # Create output directory based on filename
+        filename = os.path.splitext(os.path.basename(file_path))[0]
+        output_dir = os.path.join(args.output_dir, filename)
+        
+        extracted_images = process_markdown_file(file_path, output_dir)
         all_extracted_images.extend(extracted_images)
     
     print(f"\nSummary: Extracted {len(all_extracted_images)} images total")
