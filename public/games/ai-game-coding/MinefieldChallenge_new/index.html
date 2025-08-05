@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地雷挑戰</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>地雷挑戰</h1>
+            <p>經典掃雷遊戲挑戰</p>
+        </header>
+        
+        <div class="game-area">
+            <div class="minefield-container">
+                <div class="minefield" id="minefield">
+                    <!-- Minefield grid will be generated here -->
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button id="newGameBtn" class="btn">新遊戲</button>
+                <button id="flagBtn" class="btn">標記模式</button>
+                <button id="resetBtn" class="btn">重置</button>
+            </div>
+            
+            <div class="info">
+                <div class="mines">剩餘地雷: <span id="minesLeft">10</span></div>
+                <div class="time">時間: <span id="timer">00:00</span></div>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3>遊戲說明</h3>
+            <p>點擊格子來揭示數字，數字表示周圍8個格子中地雷的數量。</p>
+            <p>標記可疑的地雷位置，避免踩到地雷。</p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 
