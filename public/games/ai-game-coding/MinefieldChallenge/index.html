@@ -3,36 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minesweeper</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Minefield Challenge - Classic Minesweeper Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
+        <!-- Game Header -->
         <header class="game-header">
-            <h1>Minesweeper</h1>
-            <div class="game-info">
-                <div class="info-item">
-                    <span class="label">Mines:</span>
-                    <span id="mine-count" class="value">10</span>
-                </div>
-                <div class="info-item">
-                    <span class="label">Time:</span>
-                    <span id="timer" class="value">0</span>
-                </div>
-                <button id="reset-btn" class="reset-button">New Game</button>
+            <div class="title-section">
+                <h1><i class="fas fa-bomb"></i> Minefield Challenge</h1>
+                <p class="subtitle">Classic Minesweeper Game</p>
+            </div>
+            
+            <!-- Difficulty Selection -->
+            <div class="difficulty-selector">
+                <button class="difficulty-btn active" data-difficulty="beginner">
+                    <i class="fas fa-star"></i> Beginner
+                </button>
+                <button class="difficulty-btn" data-difficulty="intermediate">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i> Intermediate
+                </button>
+                <button class="difficulty-btn" data-difficulty="expert">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> Expert
+                </button>
             </div>
         </header>
-        
+
+        <!-- Game Stats -->
+        <div class="game-stats">
+            <div class="stat-item">
+                <i class="fas fa-bomb"></i>
+                <span class="label">Mines:</span>
+                <span id="mine-count" class="value">10</span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-flag"></i>
+                <span class="label">Flags:</span>
+                <span id="flag-count" class="value">0</span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-clock"></i>
+                <span class="label">Time:</span>
+                <span id="timer" class="value">0</span>
+            </div>
+            <button id="reset-btn" class="reset-button">
+                <i class="fas fa-redo"></i> New Game
+            </button>
+        </div>
+
+        <!-- Game Area -->
         <main class="game-area">
             <div id="game-grid" class="grid"></div>
             <div id="game-message" class="message hidden"></div>
         </main>
-        
-        <footer class="game-footer">
-            <div class="controls-info">
-                <p><strong>Left click:</strong> Reveal cell</p>
-                <p><strong>Right click:</strong> Flag/Unflag mine</p>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <h3><i class="fas fa-info-circle"></i> How to Play</h3>
+            <div class="instruction-grid">
+                <div class="instruction-item">
+                    <i class="fas fa-mouse-pointer"></i>
+                    <div>
+                        <strong>Left Click:</strong> Reveal a cell
+                    </div>
+                </div>
+                <div class="instruction-item">
+                    <i class="fas fa-mouse-pointer"></i>
+                    <div>
+                        <strong>Right Click:</strong> Flag/unflag a mine
+                    </div>
+                </div>
+                <div class="instruction-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <div>
+                        <strong>Numbers:</strong> Show nearby mines
+                    </div>
+                </div>
+                <div class="instruction-item">
+                    <i class="fas fa-trophy"></i>
+                    <div>
+                        <strong>Goal:</strong> Clear all safe cells
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <!-- Game Controls -->
+        <div class="game-controls">
+            <button id="hint-btn" class="control-btn">
+                <i class="fas fa-lightbulb"></i> Hint
+            </button>
+            <button id="auto-solve-btn" class="control-btn">
+                <i class="fas fa-magic"></i> Auto Solve
+            </button>
+        </div>
+
+        <!-- Footer -->
+        <footer class="game-footer">
+            <p>Created by AI Game Coding Students</p>
         </footer>
     </div>
     
