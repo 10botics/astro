@@ -118,8 +118,8 @@ class GameEngine {
         if (this.gameState.isPlaying()) {
             this.processInputBuffer();
             this.update(deltaTime);
-            this.render();
-            this.updateUI();
+        this.render();
+        this.updateUI();
         }
         
         this.animationId = requestAnimationFrame(this.gameLoop);
@@ -127,28 +127,28 @@ class GameEngine {
     
     processInputBuffer() {
         if (this.inputBuffer.length === 0) return;
-        
+            
         const input = this.inputBuffer.shift();
         let direction = null;
-        
+            
         switch (input) {
-            case 'ArrowUp':
+                case 'ArrowUp':
             case 'KeyW':
                 direction = 'up';
-                break;
-            case 'ArrowDown':
+                    break;
+                case 'ArrowDown':
             case 'KeyS':
                 direction = 'down';
-                break;
-            case 'ArrowLeft':
+                    break;
+                case 'ArrowLeft':
             case 'KeyA':
                 direction = 'left';
-                break;
-            case 'ArrowRight':
+                    break;
+                case 'ArrowRight':
             case 'KeyD':
                 direction = 'right';
-                break;
-        }
+                    break;
+            }
         
         if (direction) {
             this.handleDirection(direction);
@@ -309,7 +309,7 @@ class AudioManager {
     
     initializeSounds() {
         try {
-            this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
         } catch (e) {
             console.log('Web Audio API not supported');
         }
@@ -477,8 +477,8 @@ class Maze {
             if (this.grid[gridY][gridX] === 'P') {
                 this.grid[gridY][gridX] = ' ';
                 this.powerPelletCount--;
-                return true;
-            }
+            return true;
+        }
         }
         return false;
     }
@@ -524,7 +524,7 @@ class Maze {
                     ctx.fill();
                 } else if (this.grid[y][x] === 'P') {
                     // Power pellet
-                    ctx.fillStyle = '#FFFF00';
+        ctx.fillStyle = '#FFFF00';
                     ctx.beginPath();
                     ctx.arc(cellX + cellSize/2, cellY + cellSize/2, 8, 0, Math.PI * 2);
                     ctx.fill();
@@ -617,7 +617,7 @@ class PacMan {
         ctx.fillStyle = '#FFFF00';
         ctx.beginPath();
         ctx.arc(0, 0, this.radius, this.mouthAngle, Math.PI * 2 - this.mouthAngle);
-        ctx.lineTo(0, 0);
+            ctx.lineTo(0, 0);
         ctx.fill();
         
         ctx.restore();
@@ -695,7 +695,7 @@ class Ghost {
     }
     
     blinkyBehavior(maze, pacmanPos) {
-        this.chaseTarget(maze, pacmanPos);
+            this.chaseTarget(maze, pacmanPos);
     }
     
     pinkyBehavior(maze, pacmanPos) {
@@ -730,21 +730,21 @@ class Ghost {
         
         directions.forEach(dir => {
             if (!this.isOppositeDirection(dir)) {
-                const offset = this.getDirectionOffset(dir);
+            const offset = this.getDirectionOffset(dir);
                 const newX = this.x + offset.x * 40;
                 const newY = this.y + offset.y * 40;
-                
+            
                 if (!maze.isWall(newX, newY)) {
-                    const distance = Math.sqrt(
+                const distance = Math.sqrt(
                         Math.pow(newX - targetPos.x, 2) + Math.pow(newY - targetPos.y, 2)
-                    );
-                    
+                );
+                
                     if (distance < bestDistance) {
                         bestDistance = distance;
-                        bestDirection = dir;
-                    }
+                    bestDirection = dir;
                 }
             }
+        }
         });
         
         this.direction = bestDirection;
@@ -757,21 +757,21 @@ class Ghost {
         
         directions.forEach(dir => {
             if (!this.isOppositeDirection(dir)) {
-                const offset = this.getDirectionOffset(dir);
+            const offset = this.getDirectionOffset(dir);
                 const newX = this.x + offset.x * 40;
                 const newY = this.y + offset.y * 40;
-                
+            
                 if (!maze.isWall(newX, newY)) {
-                    const distance = Math.sqrt(
+                const distance = Math.sqrt(
                         Math.pow(newX - pacmanPos.x, 2) + Math.pow(newY - pacmanPos.y, 2)
-                    );
-                    
+                );
+                
                     if (distance > bestDistance) {
                         bestDistance = distance;
-                        bestDirection = dir;
-                    }
+                    bestDirection = dir;
                 }
             }
+        }
         });
         
         this.direction = bestDirection;

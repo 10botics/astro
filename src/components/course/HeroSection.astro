@@ -1,12 +1,14 @@
 ---
+import { Image } from 'astro:assets';
+
 export interface Props {
   title: string;
   subtitle: string;
   tags: string[];
   videoId?: string;
   description: string;
-  featuredImage?: string;
-  heroImage?: string;
+  featuredImage?: any;
+  heroImage?: any;
 }
 
 const { title, subtitle, tags, videoId, description, featuredImage, heroImage } = Astro.props;
@@ -54,9 +56,11 @@ const { title, subtitle, tags, videoId, description, featuredImage, heroImage } 
       <div class="order-1">
         {heroImage ? (
           <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg">
-            <img 
+            <Image 
               src={heroImage} 
               alt={title}
+              width={600}
+              height={400}
               class="w-full h-full object-cover"
             />
           </div>
@@ -90,9 +94,11 @@ const { title, subtitle, tags, videoId, description, featuredImage, heroImage } 
   <section class="bg-white py-12">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
-        <img 
+        <Image 
           src={featuredImage} 
           alt={title}
+          width={800}
+          height={600}
           class="w-full h-auto rounded-lg shadow-md"
         />
       </div>
