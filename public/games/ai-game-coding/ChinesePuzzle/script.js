@@ -98,377 +98,505 @@ function generatePlayerId() {
 }
 
 function getPlayerId() {
-    if (!gameState.playerId) {
-        gameState.playerId = localStorage.getItem('playerId') || generatePlayerId();
-        localStorage.setItem('playerId', gameState.playerId);
+    let playerId = localStorage.getItem('chengyu_player_id');
+    if (!playerId) {
+        playerId = generatePlayerId();
+        localStorage.setItem('chengyu_player_id', playerId);
     }
-    return gameState.playerId;
+    return playerId;
 }
 
 function showToast(message, type = 'info') {
+    // Create toast element
     const toast = document.createElement('div');
     toast.className = `toast toast-${type}`;
     toast.textContent = message;
     
+    // Style the toast
+    toast.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 16px 24px;
+        background: ${type === 'error' ? '#f56565' : type === 'success' ? '#48bb78' : '#5a67d8'};
+        color: white;
+        border-radius: 8px;
+        font-weight: 500;
+        z-index: 9999;
+        transform: translateX(400px);
+        transition: transform 0.3s ease;
+    `;
+    
     document.body.appendChild(toast);
     
+    // Animate in
     setTimeout(() => {
-        toast.classList.add('show');
-    }, 100);
+        toast.style.transform = 'translateX(0)';
+    }, 10);
     
+    // Remove after 3 seconds
     setTimeout(() => {
-        toast.classList.remove('show');
+        toast.style.transform = 'translateX(400px)';
         setTimeout(() => {
             document.body.removeChild(toast);
         }, 300);
     }, 3000);
 }
 
-// Game Initialization
+// Game Logic Functions
 function initializeGame() {
+    gameState.playerId = getPlayerId();
     loadGameSession();
-    setupEventListeners();
-    updateUI();
 }
 
 function loadGameSession() {
-    const savedSession = localStorage.getItem('chinesePuzzleSession');
-    if (savedSession) {
-        try {
-            gameState.session = JSON.parse(savedSession);
-        } catch (e) {
-            console.error('Error loading session:', e);
-            gameState.session = null;
-        }
-    }
+    // In a real app, this would be an API call
+    // For now, we'll use localStorage to simulate persistence
+    const savedSession = localStorage.getItem('chengyu_game_session');
     
-    if (!gameState.session) {
+    if (savedSession) {
+        gameState.session = JSON.parse(savedSession);
+    } else {
         gameState.session = {
-            playerId: getPlayerId(),
-            currentPuzzleIndex: 0,
-            completedPuzzles: [],
-            totalAttempts: 0,
-            totalHintsUsed: 0,
-            startTime: Date.now()
+            id: 1,
+            playerId: gameState.playerId,
+            currentRound: 1,
+            totalRounds: 10,
+            score: 0,
+            level: 1,
+            isCompleted: false,
+            completedIdioms: []
         };
+        saveGameSession();
     }
     
     loadCurrentPuzzle();
     loadRecentAttempts();
+    updateUI();
 }
 
 function saveGameSession() {
-    localStorage.setItem('chinesePuzzleSession', JSON.stringify(gameState.session));
+    localStorage.setItem('chengyu_game_session', JSON.stringify(gameState.session));
 }
 
 function loadCurrentPuzzle() {
-    if (gameState.session.currentPuzzleIndex < idiomsDatabase.length) {
-        gameState.currentPuzzle = idiomsDatabase[gameState.session.currentPuzzleIndex];
-    } else {
+    const availableIdioms = idiomsDatabase.filter(
+        idiom => !gameState.session.completedIdioms.includes(idiom.id)
+    );
+    
+    if (availableIdioms.length === 0) {
         gameState.currentPuzzle = null;
+        return;
     }
+    
+    const randomIndex = Math.floor(Math.random() * availableIdioms.length);
+    gameState.currentPuzzle = availableIdioms[randomIndex];
 }
 
 function loadRecentAttempts() {
-    const saved = localStorage.getItem('recentAttempts');
-    if (saved) {
-        try {
-            gameState.recentAttempts = JSON.parse(saved);
-        } catch (e) {
-            gameState.recentAttempts = [];
-        }
+    const savedAttempts = localStorage.getItem('chengyu_recent_attempts');
+    if (savedAttempts) {
+        gameState.recentAttempts = JSON.parse(savedAttempts);
+    } else {
+        gameState.recentAttempts = [];
     }
 }
 
 function saveRecentAttempts() {
-    localStorage.setItem('recentAttempts', JSON.stringify(gameState.recentAttempts));
+    localStorage.setItem('chengyu_recent_attempts', JSON.stringify(gameState.recentAttempts));
 }
 
-// Game Logic
 function submitGuess(guess) {
-    if (gameState.isSubmitting || !gameState.currentPuzzle) return;
+    if (!gameState.currentPuzzle || gameState.isSubmitting) {
+        return;
+    }
     
     gameState.isSubmitting = true;
-    gameState.session.totalAttempts++;
+    updateSubmitButtonState();
     
+    // Simulate API delay
+    setTimeout(() => {
+        processGuess(guess);
+        gameState.isSubmitting = false;
+        updateSubmitButtonState();
+    }, 500);
+}
+
+function processGuess(guess) {
+    const isCorrect = guess.trim() === gameState.currentPuzzle.chinese;
+    let points = 0;
+    
+    if (isCorrect) {
+        points = Math.max(10 - gameState.hintsUsed * 2, 1);
+    }
+    
+    // Create attempt record
     const attempt = {
         id: Date.now(),
-        puzzleId: gameState.currentPuzzle.id,
-        guess: guess.trim(),
+        sessionId: gameState.session.id,
+        idiomId: gameState.currentPuzzle.id,
+        userGuess: guess,
+        isCorrect: isCorrect,
+        hintsUsed: gameState.hintsUsed,
+        points: points,
         timestamp: new Date().toISOString(),
-        isCorrect: guess.trim().toLowerCase() === gameState.currentPuzzle.chinese.toLowerCase()
+        idiom: {
+            chinese: gameState.currentPuzzle.chinese,
+            pinyin: gameState.currentPuzzle.pinyin,
+            meaning: gameState.currentPuzzle.meaning
+        }
     };
     
+    // Add to recent attempts
     gameState.recentAttempts.unshift(attempt);
-    if (gameState.recentAttempts.length > 10) {
-        gameState.recentAttempts = gameState.recentAttempts.slice(0, 10);
+    if (gameState.recentAttempts.length > 5) {
+        gameState.recentAttempts.pop();
     }
-    
     saveRecentAttempts();
-    processGuess(attempt);
-}
-
-function processGuess(attempt) {
-    if (attempt.isCorrect) {
-        showToast('恭喜！答案正確！', 'success');
-        
-        // Mark puzzle as completed
-        if (!gameState.session.completedPuzzles.includes(gameState.currentPuzzle.id)) {
-            gameState.session.completedPuzzles.push(gameState.currentPuzzle.id);
-        }
-        
-        // Move to next puzzle
-        gameState.session.currentPuzzleIndex++;
-        loadCurrentPuzzle();
-        
-        setTimeout(() => {
-            if (gameState.currentPuzzle) {
-                showResultModal(attempt);
-            } else {
-                showGameCompleteModal();
-            }
-        }, 1000);
-    } else {
-        showToast('答案不正確，請再試一次', 'error');
-        
-        setTimeout(() => {
-            showResultModal(attempt);
-        }, 500);
-    }
+    
+    // Update session
+    gameState.session.completedIdioms.push(gameState.currentPuzzle.id);
+    gameState.session.score += points;
+    gameState.session.currentRound = Math.min(gameState.session.currentRound + 1, gameState.session.totalRounds);
+    gameState.session.isCompleted = gameState.session.currentRound > gameState.session.totalRounds;
     
     saveGameSession();
-    updateUI();
-    gameState.isSubmitting = false;
+    
+    // Show result modal
+    showResultModal(attempt);
+    
+    // Reset for next round
+    gameState.hintsUsed = 0;
+    document.getElementById('user-guess').value = '';
+    hideHint();
+    
+    // Load next puzzle
+    loadCurrentPuzzle();
 }
 
-// UI Functions
 function showHint() {
-    if (!gameState.currentPuzzle || gameState.hintsUsed >= 2) return;
+    if (!gameState.currentPuzzle) return;
     
-    gameState.hintsUsed++;
-    gameState.session.totalHintsUsed++;
+    const hintSection = document.getElementById('hint-section');
+    const hintText = document.getElementById('hint-text');
+    const hintBtn = document.getElementById('hint-btn');
     
-    const hintElement = document.getElementById('hint');
-    hintElement.style.display = 'block';
-    hintElement.innerHTML = `
-        <div class="hint-content">
-            <h4>提示 ${gameState.hintsUsed}/2</h4>
-            <p><strong>拼音:</strong> ${gameState.currentPuzzle.pinyin}</p>
-            <p><strong>英文提示:</strong> ${gameState.currentPuzzle.englishClue}</p>
-        </div>
-    `;
-    
-    updateUI();
-    saveGameSession();
+    if (hintSection.classList.contains('hidden')) {
+        gameState.hintsUsed++;
+        hintText.textContent = `Pinyin: ${gameState.currentPuzzle.pinyin}`;
+        hintSection.classList.remove('hidden');
+        hintBtn.innerHTML = `
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                <path d="M12 17h.01"/>
+            </svg>
+            Hide Hint
+        `;
+    } else {
+        hideHint();
+    }
 }
 
 function hideHint() {
-    const hintElement = document.getElementById('hint');
-    hintElement.style.display = 'none';
+    const hintSection = document.getElementById('hint-section');
+    const hintBtn = document.getElementById('hint-btn');
+    
+    hintSection.classList.add('hidden');
+    hintBtn.innerHTML = `
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+            <path d="M12 17h.01"/>
+        </svg>
+        Need a Hint?
+    `;
 }
 
 function showResultModal(attempt) {
-    const modal = document.getElementById('resultModal');
-    const content = document.getElementById('resultContent');
+    const modal = document.getElementById('result-modal');
+    const resultIcon = document.getElementById('result-icon');
+    const resultTitle = document.getElementById('result-title');
+    const resultMessage = document.getElementById('result-message');
+    const correctAnswer = document.getElementById('correct-answer');
+    const answerPinyin = document.getElementById('answer-pinyin');
+    const answerMeaning = document.getElementById('answer-meaning');
     
+    // Update modal content
     if (attempt.isCorrect) {
-        content.innerHTML = `
-            <h3>🎉 恭喜！</h3>
-            <p>你成功猜出了成語：<strong>${gameState.currentPuzzle.chinese}</strong></p>
-            <p><strong>拼音:</strong> ${gameState.currentPuzzle.pinyin}</p>
-            <p><strong>含義:</strong> ${gameState.currentPuzzle.meaning}</p>
-            <button onclick="closeResultModal()" class="btn btn-primary">繼續下一題</button>
+        resultIcon.className = 'result-icon correct';
+        resultIcon.innerHTML = `
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 6L9 17l-5-5"/>
+            </svg>
         `;
+        resultTitle.textContent = 'Correct!';
+        resultMessage.textContent = `Great job! You earned ${attempt.points} points.`;
     } else {
-        content.innerHTML = `
-            <h3>❌ 答案不正確</h3>
-            <p>你的答案：<strong>${attempt.guess}</strong></p>
-            <p>正確答案：<strong>${gameState.currentPuzzle.chinese}</strong></p>
-            <p><strong>拼音:</strong> ${gameState.currentPuzzle.pinyin}</p>
-            <p><strong>含義:</strong> ${gameState.currentPuzzle.meaning}</p>
-            <button onclick="closeResultModal()" class="btn btn-primary">繼續嘗試</button>
+        resultIcon.className = 'result-icon incorrect';
+        resultIcon.innerHTML = `
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6L6 18"/>
+                <path d="M6 6l12 12"/>
+            </svg>
         `;
+        resultTitle.textContent = 'Incorrect';
+        resultMessage.textContent = "Don't worry, keep trying!";
     }
     
-    modal.style.display = 'flex';
+    correctAnswer.textContent = attempt.idiom.chinese;
+    answerPinyin.textContent = attempt.idiom.pinyin;
+    answerMeaning.textContent = attempt.idiom.meaning;
+    
+    modal.classList.remove('hidden');
+    
+    // Check if game is completed
+    if (gameState.session.isCompleted) {
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            showGameCompleteModal();
+        }, 2000);
+    }
 }
 
 function showGameCompleteModal() {
-    const modal = document.getElementById('resultModal');
-    const content = document.getElementById('resultContent');
+    const modal = document.getElementById('complete-modal');
+    const finalScore = document.querySelector('#final-score .score-value');
     
-    content.innerHTML = `
-        <h3>🎊 遊戲完成！</h3>
-        <p>恭喜你完成了所有成語挑戰！</p>
-        <p>總嘗試次數：${gameState.session.totalAttempts}</p>
-        <p>使用提示次數：${gameState.session.totalHintsUsed}</p>
-        <button onclick="resetGame()" class="btn btn-primary">重新開始</button>
-    `;
-    
-    modal.style.display = 'flex';
+    finalScore.textContent = gameState.session.score;
+    modal.classList.remove('hidden');
 }
 
 function resetGame() {
-    gameState.session = {
-        playerId: getPlayerId(),
-        currentPuzzleIndex: 0,
-        completedPuzzles: [],
-        totalAttempts: 0,
-        totalHintsUsed: 0,
-        startTime: Date.now()
-    };
+    // Clear saved data
+    localStorage.removeItem('chengyu_game_session');
+    localStorage.removeItem('chengyu_recent_attempts');
     
+    // Reset game state
+    gameState.session = {
+        id: 1,
+        playerId: gameState.playerId,
+        currentRound: 1,
+        totalRounds: 10,
+        score: 0,
+        level: 1,
+        isCompleted: false,
+        completedIdioms: []
+    };
     gameState.hintsUsed = 0;
     gameState.recentAttempts = [];
     
+    // Close modals
+    document.getElementById('result-modal').classList.add('hidden');
+    document.getElementById('complete-modal').classList.add('hidden');
+    
+    // Reset UI
+    document.getElementById('user-guess').value = '';
+    hideHint();
+    
+    // Load new game
     loadCurrentPuzzle();
-    saveGameSession();
-    saveRecentAttempts();
     updateUI();
-    closeResultModal();
+    
+    showToast('Game reset! Starting a new game.', 'success');
 }
 
+// UI Update Functions
 function updateUI() {
     updateProgressBar();
     updateHeader();
     updatePuzzleDisplay();
     updateRecentAttempts();
     updateCharCounter();
-    updateSubmitButtonState();
 }
 
 function updateProgressBar() {
-    const progress = (gameState.session.completedPuzzles.length / idiomsDatabase.length) * 100;
-    const progressBar = document.getElementById('progressBar');
-    progressBar.style.width = `${progress}%`;
+    const progressFill = document.getElementById('progress-fill');
+    const roundInfo = document.getElementById('round-info');
     
-    const progressText = document.getElementById('progressText');
-    progressText.textContent = `${gameState.session.completedPuzzles.length}/${idiomsDatabase.length}`;
+    if (gameState.session) {
+        const percentage = (gameState.session.currentRound / gameState.session.totalRounds) * 100;
+        progressFill.style.width = `${Math.min(percentage, 100)}%`;
+        roundInfo.textContent = `Round ${gameState.session.currentRound} of ${gameState.session.totalRounds}`;
+    }
 }
 
 function updateHeader() {
-    const title = document.getElementById('gameTitle');
-    if (gameState.currentPuzzle) {
-        title.textContent = `成語挑戰 ${gameState.session.currentPuzzleIndex + 1}/${idiomsDatabase.length}`;
-    } else {
-        title.textContent = '遊戲完成！';
+    const levelSpan = document.getElementById('level');
+    const scoreSpan = document.getElementById('score');
+    
+    if (gameState.session) {
+        levelSpan.textContent = gameState.session.level;
+        scoreSpan.textContent = gameState.session.score;
     }
 }
 
 function updatePuzzleDisplay() {
-    const puzzleDisplay = document.getElementById('puzzleDisplay');
+    const englishClue = document.getElementById('english-clue');
+    
     if (gameState.currentPuzzle) {
-        puzzleDisplay.innerHTML = `
-            <div class="puzzle-card">
-                <h3>猜猜這個成語</h3>
-                <div class="puzzle-hint">
-                    <p><strong>英文提示:</strong> ${gameState.currentPuzzle.englishClue}</p>
-                </div>
-                <div class="input-group">
-                    <input type="text" id="guessInput" placeholder="輸入成語..." maxlength="10">
-                    <button id="submitBtn" class="btn btn-primary">提交</button>
-                </div>
-                <div class="char-counter">
-                    字符數: <span id="charCount">0</span>/10
-                </div>
-            </div>
-        `;
+        englishClue.textContent = gameState.currentPuzzle.englishClue;
     } else {
-        puzzleDisplay.innerHTML = `
-            <div class="puzzle-card">
-                <h3>🎉 恭喜完成所有挑戰！</h3>
-                <p>你已經成功猜出了所有成語。</p>
-            </div>
-        `;
+        englishClue.textContent = 'No more puzzles available!';
     }
 }
 
 function updateRecentAttempts() {
-    const container = document.getElementById('recentAttempts');
+    const recentAttemptsSection = document.getElementById('recent-attempts');
+    const attemptsList = document.getElementById('attempts-list');
+    
     if (gameState.recentAttempts.length === 0) {
-        container.innerHTML = '<p class="no-attempts">還沒有嘗試記錄</p>';
+        recentAttemptsSection.classList.add('hidden');
         return;
     }
     
-    container.innerHTML = gameState.recentAttempts.map(attempt => {
-        const puzzle = idiomsDatabase.find(p => p.id === attempt.puzzleId);
-        return `
-            <div class="attempt-item ${attempt.isCorrect ? 'correct' : 'incorrect'}">
-                <div class="attempt-info">
-                    <span class="attempt-puzzle">${puzzle ? puzzle.chinese : 'Unknown'}</span>
-                    <span class="attempt-guess">${attempt.guess}</span>
+    recentAttemptsSection.classList.remove('hidden');
+    attemptsList.innerHTML = '';
+    
+    gameState.recentAttempts.forEach(attempt => {
+        const attemptItem = document.createElement('div');
+        attemptItem.className = 'attempt-item';
+        
+        attemptItem.innerHTML = `
+            <div class="attempt-left">
+                <div class="attempt-icon ${attempt.isCorrect ? 'correct' : 'incorrect'}">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        ${attempt.isCorrect ? 
+                            '<path d="M20 6L9 17l-5-5"/>' : 
+                            '<path d="M18 6L6 18"/><path d="M6 6l12 12"/>'
+                        }
+                    </svg>
                 </div>
-                <span class="attempt-status">${attempt.isCorrect ? '✓' : '✗'}</span>
+                <div class="attempt-text">
+                    <div class="attempt-answer chinese-text">${attempt.idiom.chinese}</div>
+                    <div class="attempt-pinyin">${attempt.idiom.pinyin}</div>
+                </div>
+            </div>
+            <div class="attempt-right">
+                <div class="attempt-status ${attempt.isCorrect ? 'correct' : 'incorrect'}">
+                    ${attempt.isCorrect ? 'Correct!' : 'Incorrect'}
+                </div>
+                <div class="attempt-points">
+                    ${attempt.isCorrect ? `+${attempt.points} points` : 'Try again!'}
+                </div>
             </div>
         `;
-    }).join('');
+        
+        attemptsList.appendChild(attemptItem);
+    });
 }
 
 function updateCharCounter() {
-    const input = document.getElementById('guessInput');
-    const counter = document.getElementById('charCount');
-    if (input && counter) {
-        input.addEventListener('input', () => {
-            counter.textContent = input.value.length;
-        });
-    }
+    const input = document.getElementById('user-guess');
+    const counter = document.getElementById('char-count');
+    
+    counter.textContent = input.value.length;
 }
 
 function updateSubmitButtonState() {
-    const submitBtn = document.getElementById('submitBtn');
-    const input = document.getElementById('guessInput');
-    if (submitBtn && input) {
-        submitBtn.disabled = !input.value.trim();
+    const submitBtn = document.getElementById('submit-btn');
+    const input = document.getElementById('user-guess');
+    
+    if (gameState.isSubmitting) {
+        submitBtn.classList.add('loading-btn');
+        submitBtn.disabled = true;
+    } else {
+        submitBtn.classList.remove('loading-btn');
+        submitBtn.disabled = !input.value.trim() || input.value.length !== 4;
     }
 }
 
 // Event Listeners
 function setupEventListeners() {
-    document.addEventListener('DOMContentLoaded', () => {
-        // Submit button
-        document.addEventListener('click', (e) => {
-            if (e.target.id === 'submitBtn') {
-                handleSubmitGuess();
-            }
-        });
-        
-        // Enter key in input
-        document.addEventListener('keypress', (e) => {
-            if (e.target.id === 'guessInput' && e.key === 'Enter') {
-                handleSubmitGuess();
-            }
-        });
-        
-        // Hint button
-        document.addEventListener('click', (e) => {
-            if (e.target.id === 'hintBtn') {
-                showHint();
-            }
-        });
-        
-        // Reset button
-        document.addEventListener('click', (e) => {
-            if (e.target.id === 'resetBtn') {
-                resetGame();
-            }
-        });
+    // Input events
+    const userGuessInput = document.getElementById('user-guess');
+    userGuessInput.addEventListener('input', () => {
+        updateCharCounter();
+        updateSubmitButtonState();
+    });
+    
+    userGuessInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && !gameState.isSubmitting) {
+            handleSubmitGuess();
+        }
+    });
+    
+    // Button events
+    document.getElementById('submit-btn').addEventListener('click', handleSubmitGuess);
+    document.getElementById('hint-btn').addEventListener('click', showHint);
+    document.getElementById('reset-btn').addEventListener('click', resetGame);
+    
+    // Modal events
+    document.getElementById('close-modal').addEventListener('click', () => {
+        document.getElementById('result-modal').classList.add('hidden');
+    });
+    
+    document.getElementById('next-round-btn').addEventListener('click', () => {
+        document.getElementById('result-modal').classList.add('hidden');
+        updateUI();
+    });
+    
+    document.getElementById('play-again-btn').addEventListener('click', resetGame);
+    
+    // Close modal on overlay click
+    document.getElementById('result-modal').addEventListener('click', (e) => {
+        if (e.target.classList.contains('modal-overlay')) {
+            document.getElementById('result-modal').classList.add('hidden');
+        }
+    });
+    
+    document.getElementById('complete-modal').addEventListener('click', (e) => {
+        if (e.target.classList.contains('modal-overlay')) {
+            document.getElementById('complete-modal').classList.add('hidden');
+        }
     });
 }
 
+// Main event handlers
 function handleSubmitGuess() {
-    const input = document.getElementById('guessInput');
-    if (input && input.value.trim()) {
-        submitGuess(input.value.trim());
-        input.value = '';
-        updateCharCounter();
-        updateSubmitButtonState();
+    const input = document.getElementById('user-guess');
+    const guess = input.value.trim();
+    
+    if (!guess || guess.length !== 4) {
+        showToast('Please enter exactly 4 Chinese characters.', 'error');
+        input.classList.add('animate-shake');
+        setTimeout(() => {
+            input.classList.remove('animate-shake');
+        }, 500);
+        return;
     }
+    
+    if (!gameState.currentPuzzle) {
+        showToast('No puzzle available.', 'error');
+        return;
+    }
+    
+    submitGuess(guess);
 }
 
-function closeResultModal() {
-    const modal = document.getElementById('resultModal');
-    modal.style.display = 'none';
-}
+// Initialize the game when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    // Hide loading screen and show game
+    setTimeout(() => {
+        document.getElementById('loading-screen').classList.add('hidden');
+        document.getElementById('game-container').classList.remove('hidden');
+        
+        // Initialize game
+        initializeGame();
+        setupEventListeners();
+    }, 1000);
+});
 
-// Initialize the game
-initializeGame(); 
+// Handle page visibility changes to save game state
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        saveGameSession();
+        saveRecentAttempts();
+    }
+});
+
+// Save game state before page unload
+window.addEventListener('beforeunload', () => {
+    saveGameSession();
+    saveRecentAttempts();
+});
