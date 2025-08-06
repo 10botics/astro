@@ -34,14 +34,6 @@ Structure the page with these sections in order:
 - Choose appropriate variant: 'accordion', 'details', or 'simple'
 - NEVER create custom FAQ sections - always use the standardized QnASection component
 
-For the course requirements section, create a separate section with:
-- Proper heading "課程資訊" or "課程要求"
-- Duration, equipment needed, and student requirements
-- Use icons and proper styling
-- Make it a full-width section, not part of the description column
-
-
-
 For the "Course content/curriculum" section:
 - Use ONLY ONE heading "課程內容" 
 - Include duration information (e.g., "共 X 小時") and adjustment note
