@@ -1,7 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
-import WhatIsScratch from '../../components/course/WhatIsScratch.astro';
 import CourseFeatures from '../../components/course/CourseFeatures.astro';
 import AccordionSection from '../../components/course/AccordionSection.astro';
 import QnASection from '../../components/course/QnASection.astro';
@@ -111,8 +110,116 @@ const curriculumItems = [
     heroImage={courseData.heroImage}
   />
 
-  <!-- What is Scratch Section -->
-  <WhatIsScratch />
+  <!-- AI Programming Introduction Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Content Section - Left side -->
+        <div class="space-y-8">
+          <h2 class="text-4xl font-bold text-gray-900 mb-8" style="color: #1e293b;">AI 編程新體驗</h2>
+          
+          <!-- Feature points -->
+          <div class="space-y-6">
+            <!-- Feature 1 -->
+            <div class="flex items-start space-x-4">
+              <div class="flex-shrink-0 mt-1">
+                <i class="fas fa-robot text-blue-600 text-xl"></i>
+              </div>
+              <div>
+                <p class="text-gray-700 text-base">
+                  結合 Scratch 視覺化編程與現代 AI 技術，讓學生輕鬆體驗人工智能的奧秘
+                </p>
+              </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="flex items-start space-x-4">
+              <div class="flex-shrink-0 mt-1">
+                <i class="fas fa-brain text-purple-600 text-xl"></i>
+              </div>
+              <div>
+                <p class="text-gray-700 text-base">
+                  透過 Teachable Machine 訓練自己的 AI 模型，實現面部識別、手勢識別和姿態識別
+                </p>
+              </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="flex items-start space-x-4">
+              <div class="flex-shrink-0 mt-1">
+                <i class="fas fa-gamepad text-green-600 text-xl"></i>
+              </div>
+              <div>
+                <p class="text-gray-700 text-base">
+                  將 AI 模型整合到 Scratch 遊戲中，創造互動性強、智能化的遊戲體驗
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image Section - Right side -->
+        <div class="flex justify-center">
+          <img 
+            src="/src/assets/images/school-courses/ScratchAI編程課程/scratch-interface.png" 
+            alt="Scratch AI Interface"
+            class="w-full max-w-md h-auto"
+          />
+        </div>
+      </div>
+
+      <!-- Why Learn AI Programming Section -->
+      <div class="mt-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-8" style="color: #1e293b;">為什麼要學習 AI 編程？</h2>
+        <div class="grid lg:grid-cols-2 gap-8">
+          <!-- Check mark items -->
+          <div class="flex items-start space-x-4">
+            <div class="flex-shrink-0 mt-1">
+              <i class="fas fa-check-circle text-green-600 text-xl"></i>
+            </div>
+            <div>
+              <p class="text-gray-700 text-base">
+                <span class="font-medium">未來技能</span> - AI 是未來最重要的技術之一，及早接觸為未來發展奠定基礎
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-4">
+            <div class="flex-shrink-0 mt-1">
+              <i class="fas fa-check-circle text-green-600 text-xl"></i>
+            </div>
+            <div>
+              <p class="text-gray-700 text-base">
+                <span class="font-medium">創意思維</span> - 透過 AI 技術實現創意想法，培養解決問題和創新思維能力
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-4">
+            <div class="flex-shrink-0 mt-1">
+              <i class="fas fa-check-circle text-green-600 text-xl"></i>
+            </div>
+            <div>
+              <p class="text-gray-700 text-base">
+                <span class="font-medium">實用技能</span> - 學習如何訓練和使用 AI 模型，掌握實用的技術技能
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-4">
+            <div class="flex-shrink-0 mt-1">
+              <i class="fas fa-check-circle text-green-600 text-xl"></i>
+            </div>
+            <div>
+              <p class="text-gray-700 text-base">
+                <span class="font-medium">互動體驗</span> - 創造能與 AI 互動的遊戲和應用，體驗科技的魅力
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Course Features Section -->
   <CourseFeatures />
