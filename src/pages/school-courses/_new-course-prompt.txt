@@ -21,11 +21,10 @@ Create the website in astro file under src/pages/school-courses/ and the name of
 Structure the page with these sections in order:
 1. Hero section with title, subtitle, tags, and breadcrumbs
 2. Hero description section
-3. Course requirements section (separate section with heading)
-4. Course highlights section
-5. Course content/curriculum section (ONLY ONE "課程內容" heading with duration info and accordion)
-6. FAQ section (MUST use QnASection component)
-7. Contact section
+3. Course highlights section
+4. Course content/curriculum section (ONLY ONE "課程內容" heading with duration info and accordion)
+5. FAQ section (MUST use QnASection component)
+6. Contact section
 
 **CRITICAL QnA COMPONENT REQUIREMENT:**
 - ALL new course pages MUST use the QnASection component for FAQ sections
