@@ -1,0 +1,384 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import AccordionSection from '../../components/course/AccordionSection.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import { Image } from 'astro:assets';
+
+// Import images
+import heroImage from '../../assets/images/school-courses/AI數位動畫展覽/background-05-1.jpg';
+import aiImageGeneration from '../../assets/images/school-courses/AI數位動畫展覽/ai-image-generation.png';
+import immersiveDrawing from '../../assets/images/school-courses/AI數位動畫展覽/immersive-drawing.png';
+import checkInInteraction from '../../assets/images/school-courses/AI數位動畫展覽/check-in-interaction.png';
+import backgroundMusic from '../../assets/images/school-courses/AI數位動畫展覽/background-music.png';
+import themeBackground from '../../assets/images/school-courses/AI數位動畫展覽/theme-background.png';
+import drawingPatterns from '../../assets/images/school-courses/AI數位動畫展覽/drawing-patterns.png';
+import stemDaySchedule from '../../assets/images/school-courses/AI數位動畫展覽/stem-day-schedule.png';
+import stemCourseSchedule from '../../assets/images/school-courses/AI數位動畫展覽/stem-course-schedule.png';
+import institutionActivity from '../../assets/images/school-courses/AI數位動畫展覽/institution-activity.png';
+
+// Course data
+export const courseData = {
+  title: "AI數位動畫展覽",
+  subtitle: "AI 驅動的數位動畫創作，讓角色在螢幕上跳舞",
+  tags: ["AI 人工智能", "Arts 藝術", "STEM Day", "動畫創作", "互動體驗"],
+  videoId: "LE8NNIhNHP0",
+  description: "AI數碼動畫展是一個簡單有趣的 STEM Day 活動，學生可按主題設計喜歡的圖案/角色，通過人工智能把圖案轉換成栩栩如生的動畫，呈現在學校LED Wall或螢幕上面跳舞，讓學生能以輕鬆有趣的方式體驗生成式AI技術。",
+  detailedDescription: "AI數碼動畫展是一個簡單有趣的 STEM Day 活動，學生可按主題設計喜歡的圖案/角色，通過人工智能把圖案轉換成栩栩如生的動畫，呈現在學校LED Wall或螢幕上面跳舞，讓學生能以輕鬆有趣的方式體驗生成式AI技術。",
+  heroImage: heroImage
+};
+
+// Course highlights
+const courseHighlights = [
+  {
+    icon: "fas fa-magic",
+    title: "AI 圖像生成體驗",
+    description: "使用 Mid Journey 進行創作，根據喜愛的角色輸入關鍵詞，創作出屬於自己的人物"
+  },
+  {
+    icon: "fas fa-paint-brush",
+    title: "沉浸式創意手繪",
+    description: "為圖案填上色彩，繪畫獨一無二的角色，透過 AI 偵測四肢體架製作動態圖"
+  },
+  {
+    icon: "fas fa-camera",
+    title: "打卡互動體驗",
+    description: "通過 AI 系統化身為數碼小人物，在螢幕上與其他角色互動"
+  },
+  {
+    icon: "fas fa-music",
+    title: "背景音樂創作",
+    description: "學習利用生成工具進行背景音樂的獨立創作"
+  },
+  {
+    icon: "fas fa-image",
+    title: "主題背景設計",
+    description: "使用 AI 圖像生成系統創作主題背景，配合課程需求"
+  }
+];
+
+// Course requirements
+const courseRequirements = [
+  {
+    icon: "fas fa-clock",
+    title: "活動時長",
+    description: "可根據需求調整"
+  },
+  {
+    icon: "fas fa-laptop",
+    title: "所需設備",
+    description: "具上網功能的電腦、HDMI線、螢幕"
+  },
+  {
+    icon: "fas fa-users",
+    title: "適用對象",
+    description: "小學至中學學生"
+  },
+  {
+    icon: "fas fa-cog",
+    title: "技術支援",
+    description: "提供工作人員到場協助"
+  }
+];
+
+// FAQ items
+const faqItems = [
+  {
+    question: "學校需要準備什麼設備？",
+    answer: "學校需準備具上網功能的手提電腦/電腦、HDMI線、螢幕。建議先致電+852 6554-1506 或電郵至 info@10botics.com 向同事溝通學校期望的教學內容。"
+  },
+  {
+    question: "活動可以同時容納多少人？",
+    answer: "可同時供多人遊玩，展示學校學生努力的成果，適合 STEM Day 等大型活動。"
+  },
+  {
+    question: "主題和內容可以客製化嗎？",
+    answer: "主題及內容可按校方進行修改或自訂，更能配合 STEM Day 需求。根據學校主題製作背景、主題音樂及圖案線稿。"
+  },
+  {
+    question: "適合什麼類型的活動？",
+    answer: "適合作為 STEM Day、公司開幕、簽到活動、公司親子活動、嘉年華等，簡單有趣且充滿互動性。"
+  }
+];
+
+// Activity sections
+const activitySections = [
+  {
+    title: "AI圖像生成體驗區",
+    description: "學生可使用AI圖像生成工具Mid Journey進行創作，根據自己喜愛的角色輸入不同關鍵詞，創作出屬於自己的人物，並在LED屏幕上起舞。更有機會將自己的AI作品製成相片打印出來，永久留念！",
+    image: aiImageGeneration
+  },
+  {
+    title: "沉浸式創意手繪站",
+    description: "學生可以為自己喜歡的圖案填上色彩，也可以繪畫出獨一無二的角色放進動畫展中，透過人工智能偵測角色四肢體架並製作出動態圖，盡情發揮無限的創意想像。",
+    image: immersiveDrawing
+  },
+  {
+    title: "打卡互動區",
+    description: "學生可前往打卡區進行拍照，通過人工智能系統化身為數碼小人物，在屏幕上與其他角色互動。學生將在大屏幕的人海中尋找自己的身影，亦是一個考驗觀察力的好機會。",
+    image: checkInInteraction
+  }
+];
+
+// Course arrangements
+const courseArrangements = [
+  {
+    title: "STEM Day",
+    description: [
+      "可同時供多人遊玩",
+      "展示學校學生努力的成果",
+      "主題及內容可按校方進行修改或自訂，更能配合STEM day需求",
+      "根據學校STEM Day的主題及需要為學校制作背景，主題音樂及圖案線稿",
+      "STEM Day當天會提供工作人員到場協助",
+      "校方需提供電子器材"
+    ],
+    image: stemDaySchedule
+  },
+  {
+    title: "STEM 課程",
+    description: [
+      "多元化學習體驗(STEM x Art)",
+      "可同時學習多種AI生成工具",
+      "簡單易明，多重感官體驗，適合初小學生",
+      "工作坊主題及內容可按校方/機構進行修改或自訂，更能配合需要"
+    ],
+    image: stemCourseSchedule
+  },
+  {
+    title: "機構活動",
+    description: [
+      "適合作為公司開幕/簽到活動/公司親子活動/嘉年華等",
+      "簡單有趣/充滿互動性",
+      "根據機構的主題及需要為機構制作背景，主題音樂及圖案線稿",
+      "活動當天會提供工作人員到場協助",
+      "機構需提供電子器材"
+    ],
+    image: institutionActivity
+  }
+];
+
+// Complete course features
+const completeCourseFeatures = [
+  {
+    title: "背景音樂",
+    description: "除了STEM活動上可以使用的歌曲外，完整課堂為學生提供如何進一步學習利用生成工具進行背景音樂的獨立創作。",
+    image: backgroundMusic
+  },
+  {
+    title: "主題背景",
+    description: "與提供的預設不同，學生可以按照主題的需要或自己的想法，使用AI圖像生成系統進行生成，配合AI啟蒙課程，學生將了解如何自行創作主題背景並使用AI圖像生成的技巧。",
+    image: themeBackground
+  },
+  {
+    title: "繪畫圖案",
+    description: "完整課堂為學生提供人物角色的創建，同學們可以按照所見所想，又或是相應的主題，創作喜歡的圖像角色。同時，透過學習AI生成的繪畫可以提供不同圖案的線稿供學生填色，發揮學生的創意，創造屬於自己獨一無二的角色。",
+    image: drawingPatterns
+  }
+];
+---
+
+<Layout title="AI數位動畫展覽">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <HeroSection 
+    title={courseData.title}
+    subtitle={courseData.subtitle}
+    tags={courseData.tags}
+    heroImage={courseData.heroImage}
+    description={courseData.description}
+  />
+
+  <!-- Video section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">活動介紹影片</h2>
+        <p class="text-lg text-gray-700">觀看我們的 AI 數位動畫展覽活動介紹</p>
+      </div>
+      <div class="max-w-4xl mx-auto">
+        <div class="aspect-w-16 aspect-h-9 bg-gray-100 rounded-lg overflow-hidden shadow-lg">
+          <iframe 
+            width="100%" 
+            height="400" 
+            src="https://www.youtube.com/embed/LE8NNIhNHP0" 
+            title="AI數位動畫展覽介紹"
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen
+            class="w-full h-full"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Activity content section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">活動內容</h2>
+      <p class="text-lg text-gray-700 text-center mb-12">工作坊分為三個活動體驗區，讓學生從不同的活動中投入參與：</p>
+      
+      <div class="space-y-12">
+        {activitySections.map((activity, index) => (
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="grid lg:grid-cols-2 gap-8 items-center">
+              <div class="p-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">{activity.title}</h3>
+                <p class="text-gray-700 leading-relaxed">{activity.description}</p>
+              </div>
+              <div class="p-8">
+                <Image 
+                  src={activity.image} 
+                  alt={activity.title}
+                  width={400}
+                  height={300}
+                  class="w-full h-auto rounded-lg"
+                />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Complete course section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">完整課堂</h2>
+      <p class="text-lg text-gray-700 text-center mb-12 font-semibold">
+        更自由和個性化的學習體驗，包括主題/人物角色/音樂的製作，以自訂你的AI動態繪畫
+      </p>
+      
+      <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
+        {completeCourseFeatures.map((feature) => (
+          <div class="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div class="text-center mb-6">
+              <Image 
+                src={feature.image} 
+                alt={feature.title}
+                width={300}
+                height={200}
+                class="w-full h-auto rounded-lg mb-4"
+              />
+              <h3 class="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+              <p class="text-gray-700">{feature.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course requirements section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">活動要求</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {courseRequirements.map((requirement) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow text-center">
+            <div class="flex justify-center mb-4">
+              <i class={`${requirement.icon} text-3xl text-cyan-500`}></i>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">{requirement.title}</h3>
+            <p class="text-gray-700">{requirement.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course highlights section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">活動特色</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {courseHighlights.map((highlight) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center mb-4">
+              <i class={`${highlight.icon} text-2xl text-cyan-500 mr-3`}></i>
+              <h3 class="text-lg font-semibold text-gray-900">{highlight.title}</h3>
+            </div>
+            <p class="text-gray-700">{highlight.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course arrangements section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">課程安排</h2>
+      <p class="text-lg text-gray-700 text-center mb-12">提供多元化活動形式，包括以下：</p>
+      
+      <div class="space-y-12">
+        {courseArrangements.map((arrangement) => (
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="grid lg:grid-cols-2 gap-8 items-center">
+              <div class="p-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">{arrangement.title}</h3>
+                <ul class="space-y-3">
+                  {arrangement.description.map((item) => (
+                    <li class="flex items-start space-x-3">
+                      <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+                      <span class="text-gray-700">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div class="p-8">
+                <Image 
+                  src={arrangement.image} 
+                  alt={arrangement.title}
+                  width={400}
+                  height={300}
+                  class="w-full h-auto rounded-lg"
+                />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer testimonial section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">客戶評價</h2>
+      
+      <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-lg p-8">
+        <div class="text-center">
+          <i class="fas fa-quote-left text-4xl text-cyan-500 mb-6"></i>
+          <p class="text-lg text-gray-700 leading-relaxed mb-6">
+            很好的體驗活動，操作亦簡單易明，本校中學生都很喜歡這個AI體驗活動，而當天到校參觀的小學生玩得很開心，氣氛熱鬧。另外當天的時間控制亦很恰當，整體而言我們都滿意是次以十二生肖為主題的AI數碼動畫展。
+          </p>
+          <div class="font-semibold text-cyan-600">
+            中華基督教會方潤華中學 Miss Lam
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <QnASection faqs={faqItems} />
+
+  <!-- Contact section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          聯絡我們
+        </h2>
+        <p class="text-lg text-gray-600">
+          想了解更多關於 AI 數位動畫展覽活動的資訊？歡迎聯絡我們，我們會為您提供詳細的活動安排和報名資訊。
+        </p>
+      </div>
+      <PaperformEmbed />
+    </div>
+  </section>
+</Layout> 
