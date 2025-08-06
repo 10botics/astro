@@ -19,6 +19,30 @@ Create the website in astro file under src/pages/school-courses/ and the name of
 **CRITICAL COURSE CURRICULUM SEPARATION REQUIREMENT:**
 - When a course has more than one levels, ALWAYS create separate curriculum arrays
 
+**CRITICAL COURSE ARRANGEMENTS SECTION REQUIREMENT:**
+- When the markdown content includes course arrangement information (different levels, durations, scheduling), ALWAYS include a Course Arrangements section
+- Create a courseArrangements array with objects containing:
+  - icon: FontAwesome icon class
+  - title: Course level/duration title
+  - description: Detailed description with line breaks using \n
+- Use grid layout: `grid md:grid-cols-2 gap-8` for responsive design
+- Include a note about contacting for consultation at the end of the section
+- Example structure:
+  ```javascript
+  const courseArrangements = [
+    {
+      icon: "fas fa-star",
+      title: "STEM Day 體驗課程 (3 小時)",
+      description: "適合初次接觸機器人的學生\n包含機器人組裝體驗、基礎編程操作\n讓學生快速了解WRO競賽的魅力"
+    },
+    {
+      icon: "fas fa-star",
+      title: "入門課程 (24 小時)",
+      description: "建議一個學期完成 12 堂課，每節 2 小時\n從零開始學習機器人組裝與基礎編程\n為WRO競賽打下堅實基礎"
+    }
+  ];
+  ```
+
 **CRITICAL VISUAL ELEMENTS REQUIREMENT:**
 - ALL course sections MUST include visual elements (icons or images)
 - For course focus, course features, and course objectives sections:
@@ -33,14 +57,18 @@ Structure the page with these sections in order:
 1. Hero section with title, subtitle, tags, and breadcrumbs
 2. Hero description section
 3. Course highlights section
-4. Course content/curriculum section (ONLY ONE "課程內容" heading with duration info and accordion)
-5. FAQ section (MUST use QnASection component)
-6. Contact section
+4. Course features section (if included)
+5. Course objectives section (if included)
+6. Course arrangements section (if markdown includes course arrangement info)
+7. Course content/curriculum section (ONLY ONE "課程內容" heading with duration info and accordion)
+8. FAQ section (MUST use QnASection component)
+9. Contact section
 
 **OPTIONAL SECTIONS:**
 - Course requirements section: ONLY include if specifically requested by the user
 - Course objectives section: ONLY include if specifically requested by the user
 - Course features section: ONLY include if specifically requested by the user
+- Course arrangements section: ONLY include if the markdown content includes course arrangement information (like different course levels, durations, or scheduling options)
 - Student work showcase section: ONLY include if specifically requested by the user
 
 **CRITICAL QnA COMPONENT REQUIREMENT:**
