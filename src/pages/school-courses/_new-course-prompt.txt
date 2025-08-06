@@ -1,5 +1,4 @@
 Create the website in astro file under src/pages/school-courses/ and the name of the file should be "course name in traditional chinese.astro"
-Use the image component in astro
 
 **CRITICAL URL REQUIREMENTS:**
 - The filename MUST be in traditional Chinese 
@@ -19,29 +18,14 @@ Use the image component in astro
 **CRITICAL COURSE CURRICULUM SEPARATION REQUIREMENT:**
 - When a course has more than one levels, ALWAYS create separate curriculum arrays
 
-**IMPORTANT: IMAGE ORGANIZATION**
-- All course images must be organized in course-specific directories
-- Download and save all images to: `src/assets/images/school-courses/[course-name]/`
-- Example: For course "人工智能遊戲編程課程", images go to `src/assets/images/school-courses/人工智能遊戲編程課程/`
-- Use descriptive filenames for easy identification
-- **EXAMPLE STRUCTURE:**
-  ```
-  src/assets/images/school-courses/人工智能遊戲編程課程/
-  ├── hero-image.jpg
-  ├── curriculum-overview.png
-  ├── student-work-1.jpg
-  ├── student-work-2.jpg
-  └── technology-diagram.png
-  ```
-
 Structure the page with these sections in order:
 1. Hero section with title, subtitle, tags, and breadcrumbs
-2. Hero image and description section (2-column layout)
+2. Hero description section
 3. Why the technology is important section (explain the significance of the technologies/tools used in the course, e.g., Poe, Repl.it, etc.)
 4. Course requirements section (separate section with heading)
 5. Course highlights section
 6. Course content/curriculum section (ONLY ONE "課程內容" heading with duration info and accordion)
- ,b007. FAQ section (MUST use QnASection component)
+7. FAQ section (MUST use QnASection component)
 8. Contact section
 
 **CRITICAL QnA COMPONENT REQUIREMENT:**
@@ -82,22 +66,6 @@ For the "Course content/curriculum" section:
 - Use responsive padding: `px-4 sm:px-6 lg:px-8`
 - Grid layouts should be responsive: `grid md:grid-cols-2 lg:grid-cols-3`
 - Text content should not exceed readable line lengths (avoid very wide text blocks)
-- Images should be constrained with `max-w-lg` or `max-w-xl` for larger images
-- Student work galleries should use `max-w-6xl` container with responsive grid
-
-**CRITICAL IMAGE HANDLING REQUIREMENTS:**
-- ALWAYS use Astro's `<Image>` component from 'astro:assets' for ALL images
-- NEVER use regular HTML `<img>` tags
-- Import the Image component at the top: `import { Image } from 'astro:assets';`
-- Always provide width and height attributes to the Image component
-- **IMAGE DOWNLOAD LOCATION**: All course images must be downloaded to `src/assets/images/school-courses/[course-name]/` directory
-  - Create the directory structure if it doesn't exist
-  - Use descriptive filenames (e.g., `hero-image.jpg`, `curriculum-overview.png`, `student-work-1.jpg`)
-  - Example path: `src/assets/images/school-courses/人工智能遊戲編程課程/hero-image.jpg`
-- For local images, import them first: `import myImage from '../../../assets/images/school-courses/[course-name]/my-image.jpg';`
-- Then use: `<Image src={myImage} alt="Description" class="..." />`
-- For external URLs that need to be downloaded, save them to the course-specific directory first
-- This is MANDATORY - never use `<img>` tags in Astro components
 
 **ICON REQUIREMENTS - CRITICAL:**
 - When creating course pages that use FontAwesome icons, ALWAYS include the FontAwesome CDN link:
@@ -111,26 +79,14 @@ For the "Course content/curriculum" section:
 - NEVER use complex or experimental SVG paths
 - Test all icons to ensure they render properly
 
-**AUTOMATIC IMAGE PROCESSING & STYLE CONSISTENCY REQUIREMENTS:**
+**STYLE CONSISTENCY REQUIREMENTS:**
+- Follow structure of other existing pages like 人工智能遊戲編程課程.astro, CoSpaces 虛擬實境課程.astro
+- Use same components, colors, spacing, and typography
+- Match grid layouts, card styling, and responsive design
+- Use identical container widths and padding
 
-1. **IMAGE PROCESSING:**
-   - Extract base64 images using existing `extract_image.py` script
-   - Download external images (imgur, etc.) to course directory
-   - Import all images at the top of the Astro file
-   - Use descriptive filenames matching content
-   - **CRITICAL: NEVER create new Python scripts for image extraction**
-   - **MANDATORY: Use ONLY the existing `extract_image.py` script in the root directory**
-   - **PROHIBITED: Creating any new image extraction scripts, even if they seem more specific or efficient**
-   - **REQUIRED: Run the existing script with: `python extract_image.py` to process markdown files from Downloads directory**
-
-2. **STYLE CONSISTENCY:**
-   - Follow structure of other existing pages like 人工智能遊戲編程課程.astro, CoSpaces 虛擬實境課程.astro
-   - Use same components, colors, spacing, and typography
-   - Match grid layouts, card styling, and responsive design
-   - Use identical container widths and padding
-
-3. **COMPONENT USAGE:**
-   - Use `HeroSection` component for hero section
-   - Follow same frontmatter structure with `courseData` export
-   - Use identical data structures for all sections
-   - Match exact section ordering and naming
+**COMPONENT USAGE:**
+- Use `HeroSection` component for hero section
+- Follow same frontmatter structure with `courseData` export
+- Use identical data structures for all sections
+- Match exact section ordering and naming
