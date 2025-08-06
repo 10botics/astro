@@ -141,7 +141,7 @@ For the "Course content/curriculum" section:
 - Grid layout: `grid md:grid-cols-2 lg:grid-cols-3 gap-8` for responsive design
 
 **STYLE CONSISTENCY REQUIREMENTS:**
-- Follow structure of other existing pages like 人工智能遊戲編程課程.astro, CoSpaces 虛擬實境課程.astro
+- Follow structure of other existing pages like 人工智能遊戲編程課程.astro, CoSpaces 遊戲設計課程.astro
 - Use same components, colors, spacing, and typography
 - Match grid layouts, card styling, and responsive design
 - Use identical container widths and padding
