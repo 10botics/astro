@@ -64,12 +64,43 @@ Structure the page with these sections in order:
 8. Course arrangements section (if markdown includes course arrangement info)
 9. Contact section
 
+**SECTION POSITIONING:**
+- Unknown sections (heading 1 in markdown) should be inserted in their relative position within this structure
+- Maintain the logical flow and readability of the page
+- If an unknown section appears between known sections in the markdown, position it accordingly in the HTML/JSX
+- Use alternating background colors (white/gray-50) for visual separation
+
 **OPTIONAL SECTIONS:**
 - Course requirements section: ONLY include if specifically requested by the user
 - Course objectives section: ONLY include if specifically requested by the user
 - Course features section: ONLY include if specifically requested by the user
 - Course arrangements section: ONLY include if the markdown content includes course arrangement information (like different course levels, durations, or scheduling options)
 - Student work showcase section: ONLY include if specifically requested by the user
+
+**UNKNOWN SECTIONS HANDLING:**
+- If the markdown contains heading 1 (#) sections that don't match any known section types, include them in their relative position within the page structure
+- Create content objects for these unknown sections following the same pattern as other sections
+- Use descriptive object names like `unknownSection1Content`, `unknownSection2Content`, etc.
+- Position these sections in the HTML/JSX in the same order they appear in the markdown relative to other sections
+- Apply consistent styling and layout patterns:
+  - Use standard section structure: `<section class="py-16 bg-gray-50">` (alternate with white background)
+  - Include proper container classes: `container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8`
+  - Add visual elements (icons) if the content suggests them
+  - Use appropriate heading levels and spacing
+- Example structure for unknown sections:
+  ```javascript
+  const unknownSection1Content = {
+    title: "Section Title from Markdown",
+    description: "Section description from markdown content",
+    items: [
+      {
+        icon: "fas fa-star",
+        title: "Item Title",
+        description: "Item description"
+      }
+    ]
+  };
+  ```
 
 **CRITICAL QnA COMPONENT REQUIREMENT:**
 - ALL new course pages MUST use the QnASection component for FAQ sections
