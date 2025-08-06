@@ -60,8 +60,8 @@ Structure the page with these sections in order:
 4. Course features section (if included)
 5. Course objectives section (if included)
 6. Course content/curriculum section (ONLY ONE "課程內容" heading with duration info and accordion)
-7. FAQ section (MUST use QnASection component)
-8. Course arrangements section (if markdown includes course arrangement info)
+7. Course arrangements section (if markdown includes course arrangement info)
+8. FAQ section (MUST use QnASection component)
 9. Contact section
 
 **SECTION POSITIONING:**
