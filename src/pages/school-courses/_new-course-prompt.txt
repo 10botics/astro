@@ -21,12 +21,11 @@ Create the website in astro file under src/pages/school-courses/ and the name of
 Structure the page with these sections in order:
 1. Hero section with title, subtitle, tags, and breadcrumbs
 2. Hero description section
-3. Why the technology is important section (explain the significance of the technologies/tools used in the course, e.g., Poe, Repl.it, etc.)
-4. Course requirements section (separate section with heading)
-5. Course highlights section
-6. Course content/curriculum section (ONLY ONE "課程內容" heading with duration info and accordion)
-7. FAQ section (MUST use QnASection component)
-8. Contact section
+3. Course requirements section (separate section with heading)
+4. Course highlights section
+5. Course content/curriculum section (ONLY ONE "課程內容" heading with duration info and accordion)
+6. FAQ section (MUST use QnASection component)
+7. Contact section
 
 **CRITICAL QnA COMPONENT REQUIREMENT:**
 - ALL new course pages MUST use the QnASection component for FAQ sections
@@ -42,11 +41,7 @@ For the course requirements section, create a separate section with:
 - Use icons and proper styling
 - Make it a full-width section, not part of the description column
 
-For the "Why the technology is important" section:
-- Add a clear heading, e.g., "為什麼選用這些技術？" or "技術重要性"
-- Briefly explain the significance and benefits of the main technologies/tools used in the course (e.g., Poe, Repl.it)
-- Use icons or visuals if possible
-- Make it a separate, full-width section
+
 
 For the "Course content/curriculum" section:
 - Use ONLY ONE heading "課程內容" 
