@@ -11,9 +11,10 @@ Create the website in astro file under src/pages/school-courses/ and the name of
 **CRITICAL CONTENT ORGANIZATION REQUIREMENT:**
 - ALL text content must be defined as objects at the top of the file
 - Create separate objects for each section's content
-- Use descriptive object names like `heroContent`, `techContent`, `requirementsContent`, etc.
+- Use descriptive object names like `heroContent`, `focusContent`, etc.
 - Reference these objects in the JSX/HTML sections
 - This makes content maintenance and updates much easier
+- ONLY create content objects for sections that are actually included in the page
 
 **CRITICAL COURSE CURRICULUM SEPARATION REQUIREMENT:**
 - When a course has more than one levels, ALWAYS create separate curriculum arrays
@@ -35,6 +36,12 @@ Structure the page with these sections in order:
 4. Course content/curriculum section (ONLY ONE "課程內容" heading with duration info and accordion)
 5. FAQ section (MUST use QnASection component)
 6. Contact section
+
+**OPTIONAL SECTIONS:**
+- Course requirements section: ONLY include if specifically requested by the user
+- Course objectives section: ONLY include if specifically requested by the user
+- Course features section: ONLY include if specifically requested by the user
+- Student work showcase section: ONLY include if specifically requested by the user
 
 **CRITICAL QnA COMPONENT REQUIREMENT:**
 - ALL new course pages MUST use the QnASection component for FAQ sections
@@ -76,7 +83,7 @@ For the "Course content/curriculum" section:
 - Test all icons to ensure they render properly
 
 **VISUAL SECTION REQUIREMENTS:**
-- Course focus, features, and objectives sections MUST use card-based layouts with icons/images
+- Course focus, features, and objectives sections (when included) MUST use card-based layouts with icons/images
 - Follow this structure for each item:
   ```javascript
   {
