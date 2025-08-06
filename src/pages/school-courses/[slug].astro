@@ -4,10 +4,7 @@ export async function getStaticPaths() {
   return [
     { params: { slug: 'ai-game-coding' } },
     { params: { slug: 'ai-digital-animation-exhibition' } },
-    { params: { slug: 'component-demo' } },
-    { params: { slug: 'coral-generalized-example' } },
     { params: { slug: 'cospaces' } },
-    { params: { slug: 'generalized-example' } },
     { params: { slug: 'ksp' } },
     { params: { slug: 'minecraft' } },
     { params: { slug: 'procreate' } },
@@ -30,17 +27,8 @@ switch (slug) {
   case 'ai-digital-animation-exhibition':
     ChineseComponent = await import('./AI數位動畫展覽.astro');
     break;
-  case 'component-demo':
-    ChineseComponent = await import('./組件演示課程.astro');
-    break;
-  case 'coral-generalized-example':
-    ChineseComponent = await import('./Coral通用示例課程.astro');
-    break;
   case 'cospaces':
     ChineseComponent = await import('./CoSpaces虛擬實境課程.astro');
-    break;
-  case 'generalized-example':
-    ChineseComponent = await import('./通用示例課程.astro');
     break;
   case 'ksp':
     ChineseComponent = await import('./ksp太空計劃課程.astro');
