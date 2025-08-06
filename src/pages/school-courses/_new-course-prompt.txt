@@ -18,6 +18,16 @@ Create the website in astro file under src/pages/school-courses/ and the name of
 **CRITICAL COURSE CURRICULUM SEPARATION REQUIREMENT:**
 - When a course has more than one levels, ALWAYS create separate curriculum arrays
 
+**CRITICAL VISUAL ELEMENTS REQUIREMENT:**
+- ALL course sections MUST include visual elements (icons or images)
+- For course focus, course features, and course objectives sections:
+  - Each item MUST have an `icon` property with FontAwesome class (e.g., "fas fa-robot")
+  - OR include an `image` property with imported image asset
+  - Use consistent icon styling: `text-3xl text-cyan-500 mr-4` for icons
+  - For images, use proper sizing: `w-16 h-16 object-cover rounded-lg` or similar
+- Import necessary images at the top of the file using `import { Image } from 'astro:assets';`
+- Follow the visual pattern from existing pages like 人工智能遊戲編程課程.astro
+
 Structure the page with these sections in order:
 1. Hero section with title, subtitle, tags, and breadcrumbs
 2. Hero description section
@@ -64,6 +74,20 @@ For the "Course content/curriculum" section:
 - For all other icons: use basic, widely-supported SVG paths
 - NEVER use complex or experimental SVG paths
 - Test all icons to ensure they render properly
+
+**VISUAL SECTION REQUIREMENTS:**
+- Course focus, features, and objectives sections MUST use card-based layouts with icons/images
+- Follow this structure for each item:
+  ```javascript
+  {
+    icon: "fas fa-robot", // FontAwesome class
+    title: "Section Title",
+    description: "Section description"
+  }
+  ```
+- Use consistent card styling: `bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow`
+- Icon styling: `text-3xl text-cyan-500 mr-4` for FontAwesome icons
+- Grid layout: `grid md:grid-cols-2 lg:grid-cols-3 gap-8` for responsive design
 
 **STYLE CONSISTENCY REQUIREMENTS:**
 - Follow structure of other existing pages like 人工智能遊戲編程課程.astro, CoSpaces 虛擬實境課程.astro
