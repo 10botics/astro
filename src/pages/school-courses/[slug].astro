@@ -16,7 +16,8 @@ export async function getStaticPaths() {
     { params: { slug: 'scratch-ai-programming' } },
     { params: { slug: 'scratch-game-design' } },
     { params: { slug: 'swiftplaygrounds' } },
-    { params: { slug: 'tello' } }
+    { params: { slug: 'tello' } },
+    { params: { slug: 'coral-environment-monitoring' } }
   ];
 }
 
@@ -69,6 +70,9 @@ switch (slug) {
     break;
   case 'tello':
     ChineseComponent = await import('./Tello 無人機課程.astro');
+    break;
+  case 'coral-environment-monitoring':
+    ChineseComponent = await import('./珊瑚環境監測入門課程.astro');
     break;
   default:
     throw new Error(`Unknown slug: ${slug}`);
