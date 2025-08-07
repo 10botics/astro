@@ -193,18 +193,47 @@ const pageKeywords = "STEM課程總覽, AI課程列表, 編程課程, 機器人�
                         const audienceTags = course.tags.filter(tag => targetAudienceTags.includes(tag));
                         const sortedTags = [...otherTags, ...audienceTags];
                         
-                        return sortedTags.map((tag: string) => {
+                        // Tag mapping for Chinese to English URLs
+                        const chineseToEnglishMapping = {
+                          // Chinese tags to English equivalents
+                          '初中': 'junior-secondary',
+                          '高中': 'senior-secondary', 
+                          '高小': 'upper-primary',
+                          '初小': 'lower-primary',
+                          '遊戲開發': 'game-development',
+                          '網頁遊戲': 'web-games',
+                          '無人機': 'drone',
+                          '軟件開發': 'software-development',
+                          '數位藝術': 'digital-art',
+                          '創意': 'creativity',
+                          '繪畫': 'drawing',
+                          '虛擬實境': 'virtual-reality',
+                          '動畫創作': 'animation-creation',
+                          '互動體驗': 'interactive-experience',
+                          'AI 人工智能': 'ai-artificial-intelligence',
+                          'Programming 編程': 'programming',
+                          'Block Coding 方塊編程': 'block-coding',
+                          'Arts 藝術': 'arts',
+                          'Engineering 工程': 'engineering',
+                          'Science 科學': 'science',
+                          'STEM Day': 'stem-day'
+                        };
+
+                        return sortedTags.map((tagName: string) => {
+                          // Check if we have a mapping for this tag
+                          const mappedTag = (chineseToEnglishMapping as any)[tagName] || tagName;
+                          
                           // Create a more robust slug that handles Chinese characters
-                          const tagSlug = tag
+                          const tagSlug = mappedTag
                             .toLowerCase()
                             .replace(/\s+/g, '-')
-                            .replace(/[^\w\u4e00-\u9fff-]/g, '') // Allow Chinese characters (Unicode range 4e00-9fff)
+                            .replace(/[^\w-]/g, '') // Remove all non-word characters except hyphens
                             .replace(/-+$/, '');
                           
                           return (
                             <a href={`/school-courses/tag/${tagSlug}`}
                                class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium hover:bg-blue-200 transition-colors">
-                              {tag}
+                              {tagName}
                             </a>
                           );
                         });
