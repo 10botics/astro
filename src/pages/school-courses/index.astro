@@ -33,6 +33,7 @@ const astroCourses = Object.entries(courseFiles)
     const slugMapping: Record<string, string> = {
       '人工智能遊戲編程課程': 'ai-game-coding',
       'AI數碼動畫展': 'ai-digital-animation-exhibition',
+      'Blockchain 區塊鏈課程': 'blockchain',
       'CoDrone無人機課程': 'codrone',
       'Delightex 遊戲設計課程': 'Delightex',
       'ksp太空計劃課程': 'ksp',
@@ -98,7 +99,7 @@ const courses = allCourses.filter((course, index, self) =>
 function extractCourseTypeFromFilename(filename: string): string {
   const typeMapping: Record<string, string> = {
     'ai': 'AI', 'scratch': 'AI', 'arduino': 'Hardware',
-    'raspberry': 'Hardware', 'donkey-car': 'Robotics',
+    'blockchain': 'AI', 'raspberry': 'Hardware', 'donkey-car': 'Robotics',
     'coral': 'Hardware', 'demo': 'Demo', 'example': 'Demo',
     'ksp': 'Creative', 'unity': 'Programming', 'roblox': 'Programming'
   };
