@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import CourseFeatures from '../../components/course/CourseFeatures.astro';
 import AccordionSection from '../../components/course/AccordionSection.astro';
-import DualCourseOutline from '../../components/course/DualCourseOutline.astro';
+import DualCourseContent from '../../components/course/DualCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import { Image } from 'astro:assets';
@@ -216,7 +216,7 @@ const studentWorkExamples = [
   </section>
 
   <!-- Course Content Section -->
-  <DualCourseOutline 
+  <DualCourseContent 
     beginnerTitle="初階課程"
     advancedTitle="進階課程"
     beginnerItems={beginnerCurriculum}

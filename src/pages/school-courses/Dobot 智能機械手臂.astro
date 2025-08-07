@@ -2,8 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import CourseFeatures from '../../components/course/CourseFeatures.astro';
-import AccordionSection from '../../components/course/AccordionSection.astro';
-import DualCourseOutline from '../../components/course/DualCourseOutline.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import { Image } from 'astro:assets';
@@ -190,36 +189,14 @@ const courseArrangement = [
   </section>
 
   <!-- Course Content -->
-  <section class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程內容</h2>
-        <div class="text-center mb-8">
-          <p class="text-xl text-gray-600">共 12 小時</p>
-          <p class="text-sm text-gray-500">* 可根據學校需要調整</p>
-        </div>
-        
-        <div class="grid md:grid-cols-2 gap-8 mb-8">
-          <div>
-            <Image 
-              src={dobotDraw} 
-              alt="Dobot Drawing" 
-              class="rounded-lg shadow-lg"
-            />
-          </div>
-          <div>
-            <Image 
-              src={dobotScreenshot} 
-              alt="Dobot Screenshot" 
-              class="rounded-lg shadow-lg"
-            />
-          </div>
-        </div>
-        
-        <AccordionSection title="課程大綱" items={courseContent} />
-      </div>
-    </div>
-  </section>
+  <SingleCourseContent 
+    items={courseContent} 
+    hours="12 小時"
+    images={[
+      { src: dobotDraw, alt: "Dobot Drawing" },
+      { src: dobotScreenshot, alt: "Dobot Screenshot" }
+    ]}
+  />
 
   <!-- Course Arrangement -->
   <section class="py-16 bg-gray-50">

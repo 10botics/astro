@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
-import AccordionSection from '../../components/course/AccordionSection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import { Image } from 'astro:assets';
@@ -239,7 +239,14 @@ const ogImage = swiftPlaygroundsHero.src;
   </section>
 
   <!-- Course content/curriculum section -->
-  <AccordionSection title="課程內容" items={curriculumItems} />
+  <SingleCourseContent 
+    items={curriculumItems} 
+    hours="15 小時"
+    images={[
+      { src: swiftPlaygroundsCoding, alt: "Swift Playgrounds coding" },
+      { src: swiftPlaygroundsTesting, alt: "Swift Playgrounds testing" }
+    ]}
+  />
 
   <!-- Course Schedule -->
   <section class="bg-white py-16">

@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
-import AccordionSection from '../../components/course/AccordionSection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import { Image } from 'astro:assets';
@@ -417,48 +417,11 @@ const faqItems = [
     </div>
   </section>
 
-  <!-- Course content/curriculum section -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">課程內容</h2>
-      <p class="text-lg text-gray-700 text-center mb-8">共 6-8 小時</p>
-      
-      <div class="max-w-4xl mx-auto">
-        <div class="space-y-4">
-          {curriculumItems.map((item, index) => (
-            <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden">
-              <button 
-                class="accordion-header w-full text-left p-6 bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center"
-                data-target={`accordion-${index}`}
-              >
-                <span class="font-semibold text-gray-900">{item.title}</span>
-                <div class="accordion-icon transition-transform duration-200">
-                  <i class="fas fa-plus text-gray-600"></i>
-                </div>
-              </button>
-              <div 
-                id={`accordion-${index}`}
-                class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
-              >
-                <div class="p-6 bg-white border-t border-gray-200">
-                  <ul class="space-y-3">
-                    {item.content.map((point) => (
-                      <li class="flex items-start space-x-3">
-                        <div class="text-cyan-500 mt-1">
-                          <i class="fas fa-chevron-right text-sm"></i>
-                        </div>
-                        <span class="text-gray-700">{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Course Content Section -->
+  <SingleCourseContent 
+    items={curriculumItems}
+    hours="6-8 小時"
+  />
 
   <QnASection faqs={faqItems} />
 
@@ -478,44 +441,4 @@ const faqItems = [
   </section>
 </Layout>
 
-<script>
-  // Accordion functionality for course content
-  document.addEventListener('DOMContentLoaded', function() {
-    const headers = document.querySelectorAll('.accordion-header');
-    
-    headers.forEach(header => {
-      header.addEventListener('click', function(this: HTMLElement) {
-        const target = this.getAttribute('data-target');
-        if (!target) return;
-        
-        const content = document.getElementById(target);
-        const icon = this.querySelector('.accordion-icon i') as HTMLElement;
-        
-        if (content && icon) {
-          // Toggle current accordion
-          if (content.style.maxHeight && content.style.maxHeight !== '0px') {
-            content.style.maxHeight = '0px';
-            icon.className = 'fas fa-plus text-gray-600';
-          } else {
-            content.style.maxHeight = content.scrollHeight + 'px';
-            icon.className = 'fas fa-minus text-gray-600';
-          }
-        }
-      });
-    });
 
-    // Open all accordions by default
-    headers.forEach(header => {
-      const target = header.getAttribute('data-target');
-      if (!target) return;
-      
-      const content = document.getElementById(target);
-      const icon = header.querySelector('.accordion-icon i') as HTMLElement | null;
-      
-      if (content && icon) {
-        content.style.maxHeight = content.scrollHeight + 'px';
-        icon.className = 'fas fa-minus text-gray-600';
-      }
-    });
-  });
-</script>

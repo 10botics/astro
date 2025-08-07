@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import { Image } from 'astro:assets';
@@ -47,8 +48,8 @@ const courseFeatures = [
   }
 ];
 
-// Course modules
-const courseModules = [
+// Course curriculum
+const curriculumItems = [
   {
     title: "簡介 ProCreate 及基本 ProCreate 操作 [2 節]",
     content: [
@@ -220,39 +221,13 @@ const ogImage = procreateThumbnail.src;
   </section>
 
   <!-- Course Content -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">課程內容</h2>
-        <p class="text-xl text-gray-600">共 8 小時</p>
-        <p class="text-sm text-cyan-600 mt-2">* 可根據學校需要調整</p>
-      </div>
-      
-      <div class="grid lg:grid-cols-2 gap-12">
-        <!-- Curriculum Image -->
-        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-lg">
-          <Image src={procreateCurriculum} alt="Procreate Course Curriculum" class="w-full h-auto" />
-        </div>
-        
-        <!-- Course Modules -->
-        <div class="space-y-6">
-          {courseModules.map((module) => (
-            <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
-              <h3 class="text-xl font-bold text-gray-900 mb-4">{module.title}</h3>
-              <ul class="space-y-2 text-gray-600">
-                {module.content.map((item) => (
-                  <li class="flex items-start">
-                    <i class="fas fa-circle text-cyan-500 text-xs mt-2 mr-3 flex-shrink-0"></i>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
+  <SingleCourseContent 
+    items={curriculumItems}
+    hours="8 小時"
+    images={[
+      { src: procreateCurriculum, alt: "Procreate Course Curriculum" }
+    ]}
+  />
 
   <!-- Course Arrangement -->
   <section class="bg-gray-50 py-16">

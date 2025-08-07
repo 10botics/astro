@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
-import AccordionSection from '../../components/course/AccordionSection.astro';
+import DualCourseContent from '../../components/course/DualCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import { Image } from 'astro:assets';
@@ -327,91 +327,15 @@ const ogImage = kspMain.src;
     </div>
   </section>
 
-  <!-- Course content/curriculum section -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">課程內容</h2>
-      <p class="text-lg text-gray-700 text-center mb-8">* 可根據學校需要調整</p>
-      
-      <div class="grid lg:grid-cols-2 gap-8">
-        <!-- Beginner Course -->
-        <div class="bg-white border border-gray-200 rounded-lg p-8">
-          <h3 class="text-2xl font-bold text-gray-900 mb-6">初階課程 (共 10 小時)</h3>
-          
-          <div class="space-y-4">
-            {curriculumItems.map((item, index) => (
-              <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden">
-                <button 
-                  class="accordion-header w-full text-left p-4 bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center"
-                  data-target={`beginner-accordion-${index}`}
-                >
-                  <span class="font-semibold text-gray-900">{item.title}</span>
-                  <div class="accordion-icon transition-transform duration-200">
-                    <i class="fas fa-plus text-gray-600"></i>
-                  </div>
-                </button>
-                <div 
-                  id={`beginner-accordion-${index}`}
-                  class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
-                >
-                  <div class="p-4 bg-white border-t border-gray-200">
-                    <ul class="space-y-3">
-                      {item.content.map((point) => (
-                        <li class="flex items-start space-x-3">
-                          <div class="text-cyan-500 mt-1">
-                            <i class="fas fa-chevron-right text-sm"></i>
-                          </div>
-                          <span class="text-gray-700">{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <!-- Advanced Course -->
-        <div class="bg-white border border-gray-200 rounded-lg p-8">
-          <h3 class="text-2xl font-bold text-gray-900 mb-6">進階課程 (共 10 小時)</h3>
-          
-          <div class="space-y-4">
-            {advancedCurriculumItems.map((item, index) => (
-              <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden">
-                <button 
-                  class="accordion-header w-full text-left p-4 bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center"
-                  data-target={`advanced-accordion-${index}`}
-                >
-                  <span class="font-semibold text-gray-900">{item.title}</span>
-                  <div class="accordion-icon transition-transform duration-200">
-                    <i class="fas fa-plus text-gray-600"></i>
-                  </div>
-                </button>
-                <div 
-                  id={`advanced-accordion-${index}`}
-                  class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
-                >
-                  <div class="p-4 bg-white border-t border-gray-200">
-                    <ul class="space-y-3">
-                      {item.content.map((point) => (
-                        <li class="flex items-start space-x-3">
-                          <div class="text-cyan-500 mt-1">
-                            <i class="fas fa-chevron-right text-sm"></i>
-                          </div>
-                          <span class="text-gray-700">{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Course Content Section -->
+  <DualCourseContent 
+    beginnerTitle="初階課程"
+    advancedTitle="進階課程"
+    beginnerItems={curriculumItems}
+    advancedItems={advancedCurriculumItems}
+    beginnerHours="10 小時"
+    advancedHours="10 小時"
+  />
 
   <!-- Course Schedule -->
   <section class="bg-gray-50 py-16">
