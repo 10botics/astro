@@ -4,6 +4,7 @@ export async function getStaticPaths() {
   return [
     { params: { slug: 'ai-game-coding' } },
     { params: { slug: 'ai-digital-animation-exhibition' } },
+    { params: { slug: 'blockchain' } },
     { params: { slug: 'codrone' } },
     { params: { slug: 'Delightex' } },
     { params: { slug: 'ksp' } },
@@ -27,6 +28,9 @@ switch (slug) {
     break;
   case 'ai-digital-animation-exhibition':
     ChineseComponent = await import('./AI數碼動畫展.astro');
+    break;
+  case 'blockchain':
+    ChineseComponent = await import('./Blockchain 區塊鏈課程.astro');
     break;
   case 'codrone':
     ChineseComponent = await import('./CoDrone無人機課程.astro');
