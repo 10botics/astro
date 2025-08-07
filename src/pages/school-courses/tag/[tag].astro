@@ -1,0 +1,308 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+// Course interface
+interface Course {
+  slug: string;
+  filename: string;
+  title: string;
+  description: string;
+  courseType: string;
+  targetAudience: string;
+  duration: string;
+  tags: string[];
+  heroImage?: string | any;
+  publishDate: string;
+  source: string;
+}
+
+// Get the tag from the URL parameter
+export async function getStaticPaths() {
+  // Auto-discover .astro course files
+  const courseFiles = await import.meta.glob('../*.astro', { eager: true });
+
+  // Convert .astro files to course data (excluding index and dynamic routes)
+  const astroCourses = Object.entries(courseFiles)
+    .filter(([path]) => !path.includes('../index.astro') && !path.includes('../[slug].astro'))
+    .map(([path, module]: [string, any]) => {
+      const filename = path.replace('../', '').replace('.astro', '');
+      
+      // Map Chinese filenames to English URLs
+      const slugMapping: Record<string, string> = {
+        '人工智能遊戲編程課程': 'ai-game-coding',
+        'AI數碼動畫展': 'ai-digital-animation-exhibition',
+        'CoSpaces 遊戲設計課程': 'cospaces',
+        'ksp太空計劃課程': 'ksp',
+        'Minecraft校園創建課程': 'minecraft',
+        'Procreate數位藝術課程': 'procreate',
+        'raspberry-pi編程課程': 'raspberry-pi',
+        'Scratch 人工智能編程': 'scratch-ai-programming',
+        'Scratch遊戲設計課程': 'scratch-game-design',
+        'SwiftPlaygrounds編程課程': 'swiftplaygrounds',
+        'Tello 無人機課程': 'tello'
+      };
+      
+      // Extract courseData from frontmatter
+      const courseData = module.courseData || {
+        title: filename,
+        description: `${filename} 課程頁面`,
+        tags: [filename.replace('-', ' ')]
+      };
+      
+      const courseTitle = courseData.title;
+      const courseDescription = courseData.description;
+      const courseTags = courseData.tags;
+      const courseHeroImage = courseData.heroImage;
+      const courseTargetAudience = '待定';
+      const courseDuration = '待定';
+      
+      // Simple course type mapping inline
+      const typeMapping: Record<string, string> = {
+        'ai': 'AI', 'scratch': 'AI', 'arduino': 'Hardware',
+        'raspberry': 'Hardware', 'donkey-car': 'Robotics',
+        'coral': 'Hardware', 'demo': 'Demo', 'example': 'Demo',
+        'ksp': 'Creative', 'unity': 'Programming', 'roblox': 'Programming'
+      };
+      
+      let courseType = 'Other';
+      for (const [key, type] of Object.entries(typeMapping)) {
+        if (filename.toLowerCase().includes(key)) {
+          courseType = type;
+          break;
+        }
+      }
+      
+      return {
+        slug: slugMapping[filename] || filename,
+        filename: `${filename}.astro`,
+        title: courseTitle,
+        description: courseDescription,
+        courseType: courseType,
+        targetAudience: courseTargetAudience,
+        duration: courseDuration,
+        tags: courseTags,
+        heroImage: courseHeroImage,
+        publishDate: new Date().toISOString().split('T')[0],
+        source: 'astro'
+      } as Course;
+    });
+
+  // Get all unique tags from all courses
+  const allTags = new Set<string>();
+  astroCourses.forEach(course => {
+    course.tags.forEach(tag => {
+      if (tag && tag.trim()) {
+        allTags.add(tag);
+      }
+    });
+  });
+
+  // Create paths for each tag
+  return Array.from(allTags)
+    .filter(tag => tag && tag.trim())
+    .map(tag => {
+      const tagSlug = tag.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+      // Only create paths for non-empty slugs
+      if (tagSlug && tagSlug.trim()) {
+        return {
+          params: { tag: tagSlug },
+          props: { tag: tagSlug, originalTag: tag }
+        };
+      }
+      return null;
+    })
+    .filter(Boolean);
+}
+
+// Get the tag from props
+const { tag, originalTag } = Astro.props;
+
+// Auto-discover .astro course files
+const courseFiles = await import.meta.glob('../*.astro', { eager: true });
+
+// Convert .astro files to course data (excluding index and dynamic routes)
+const astroCourses = Object.entries(courseFiles)
+  .filter(([path]) => !path.includes('../index.astro') && !path.includes('../[slug].astro'))
+  .map(([path, module]: [string, any]) => {
+    const filename = path.replace('../', '').replace('.astro', '');
+    
+    // Map Chinese filenames to English URLs
+    const slugMapping: Record<string, string> = {
+      '人工智能遊戲編程課程': 'ai-game-coding',
+      'AI數碼動畫展': 'ai-digital-animation-exhibition',
+      'CoSpaces 遊戲設計課程': 'cospaces',
+      'ksp太空計劃課程': 'ksp',
+      'Minecraft校園創建課程': 'minecraft',
+      'Procreate數位藝術課程': 'procreate',
+      'raspberry-pi編程課程': 'raspberry-pi',
+      'Scratch 人工智能編程': 'scratch-ai-programming',
+      'Scratch遊戲設計課程': 'scratch-game-design',
+      'SwiftPlaygrounds編程課程': 'swiftplaygrounds',
+      'Tello 無人機課程': 'tello'
+    };
+    
+    // Extract courseData from frontmatter
+    const courseData = module.courseData || {
+      title: filename,
+      description: `${filename} 課程頁面`,
+      tags: [filename.replace('-', ' ')]
+    };
+    
+    const courseTitle = courseData.title;
+    const courseDescription = courseData.description;
+    const courseTags = courseData.tags;
+    const courseHeroImage = courseData.heroImage;
+    const courseTargetAudience = '待定';
+    const courseDuration = '待定';
+    
+    return {
+      slug: slugMapping[filename] || filename,
+      filename: `${filename}.astro`,
+      title: courseTitle,
+      description: courseDescription,
+      targetAudience: courseTargetAudience,
+      duration: courseDuration,
+      tags: courseTags,
+      heroImage: courseHeroImage,
+      publishDate: new Date().toISOString().split('T')[0],
+      source: 'astro'
+    } as Course;
+  });
+
+// Filter courses by the current tag
+const filteredCourses = astroCourses.filter(course => 
+  course.tags.some(courseTag => 
+    courseTag.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '') === tag ||
+    courseTag === originalTag
+  )
+);
+
+// Sort courses by publication date (newest first)
+const sortedCourses = filteredCourses.sort((a, b) => 
+  new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
+);
+
+// SEO optimized page data
+const pageTitle = `${originalTag} 課程 - 10教育STEM及AI課程`;
+const pageDescription = `瀏覽所有 ${originalTag} 相關的STEM及人工智能課程，包括編程、機器人技術、AI應用等專業到校課程。共${sortedCourses.length}個課程。`;
+const pageKeywords = `${originalTag}, STEM課程, AI課程, 編程課程, 機器人課程, 到校課程, 10教育`;
+---
+
+<Layout 
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  ogImage="/images/og/courses-overview.jpg"
+>
+  <main class="courses-index">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-5xl font-bold mb-6">{originalTag} 課程</h1>
+          <p class="text-xl opacity-90 mb-8">
+            探索我們的 {originalTag} 相關 STEM 及人工智能課程，為學生提供最前沿的技術教育
+          </p>
+          <div class="flex justify-center">
+            <a href="/school-courses" class="bg-white text-blue-600 px-6 py-2 rounded-lg hover:bg-gray-100 transition-colors">
+              返回所有課程
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Filtered Courses -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          {sortedCourses.length > 0 ? (
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {sortedCourses.map((course) => (
+                <article class="course-card bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+                  <!-- Hero Image -->
+                  {course.heroImage && (
+                    <div class="course-image-container bg-gray-100 overflow-hidden aspect-video">
+                      {typeof course.heroImage === 'string' ? (
+                        <img 
+                          src={course.heroImage} 
+                          alt={course.title}
+                          width={600}
+                          height={400}
+                          class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      ) : (
+                        <Image 
+                          src={course.heroImage} 
+                          alt={course.title}
+                          width={600}
+                          height={400}
+                          class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      )}
+                    </div>
+                  )}
+                  <div class="p-6">
+                    <!-- Course Header -->
+                    <div class="mb-4">
+                      <h3 class="text-xl font-bold mb-2 text-gray-800 line-clamp-2">
+                        <a href={`/school-courses/${course.slug}`} 
+                           class="hover:text-blue-600 transition-colors">
+                          {course.title}
+                        </a>
+                      </h3>
+                      
+                      {course.description && (
+                        <p class="text-gray-600 text-sm line-clamp-3 mb-4">
+                          {course.description}
+                        </p>
+                      )}
+                    </div>
+                    
+                    <!-- Tags -->
+                    <div class="mb-4">
+                      <div class="flex flex-wrap gap-1">
+                        {(() => {
+                          const targetAudienceTags = ['初小', '高小', '初中', '高中'];
+                          const otherTags = course.tags.filter(tag => !targetAudienceTags.includes(tag));
+                          const audienceTags = course.tags.filter(tag => targetAudienceTags.includes(tag));
+                          const sortedTags = [...otherTags, ...audienceTags];
+                          
+                          return sortedTags.map((tag: string) => (
+                            <a href={`/school-courses/tag/${tag.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '')}`}
+                               class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium hover:bg-blue-200 transition-colors">
+                              {tag}
+                            </a>
+                          ));
+                        })()}
+                      </div>
+                    </div>
+                    
+                    <!-- Action Button -->
+                    <div class="mt-auto">
+                      <a href={`/school-courses/${course.slug}`}
+                         class="inline-block w-full text-center bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors text-sm font-medium">
+                        查看課程詳情
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div class="text-center py-16">
+              <h2 class="text-2xl font-bold text-gray-800 mb-4">沒有找到 {originalTag} 相關的課程</h2>
+              <p class="text-gray-600 mb-8">請嘗試其他標籤或瀏覽所有課程</p>
+              <a href="/school-courses" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                瀏覽所有課程
+              </a>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<!-- Styles are now centralized in src/styles/school-courses.css --> 
