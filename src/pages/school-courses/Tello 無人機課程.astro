@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import CourseFeatures from '../../components/course/CourseFeatures.astro';
 import AccordionSection from '../../components/course/AccordionSection.astro';
+import DualCourseOutline from '../../components/course/DualCourseOutline.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import { Image } from 'astro:assets';
@@ -347,94 +348,14 @@ const faqItems = [
   </section>
 
   <!-- Course Content -->
-  <section class="py-16">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">課程內容</h2>
-      <p class="text-center text-gray-600 mb-8">* 可根據學校需要調整</p>
-    </div>
-  </section>
-
-  <!-- Basic Course -->
-  <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <h3 class="text-2xl font-bold text-center mb-8">初階課程 (共 10 小時)</h3>
-      <div class="max-w-4xl mx-auto">
-        <div class="space-y-4">
-          {curriculumItems.map((item, index) => (
-            <div class="tello-accordion-item border border-gray-200 rounded-lg overflow-hidden bg-white">
-              <button 
-                class="tello-accordion-header w-full text-left p-6 bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center"
-                data-target={`tello-basic-${index}`}
-              >
-                <span class="font-semibold text-gray-900">{item.title}</span>
-                <div class="tello-accordion-icon transition-transform duration-200">
-                  <i class="fas fa-plus text-gray-600"></i>
-                </div>
-              </button>
-              <div 
-                id={`tello-basic-${index}`}
-                class="tello-accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
-              >
-                <div class="p-6 bg-white border-t border-gray-200">
-                  <ul class="space-y-3">
-                    {item.content.map((point) => (
-                      <li class="flex items-start space-x-3">
-                        <div class="text-blue-600 mt-1">
-                          <i class="fas fa-chevron-right text-sm"></i>
-                        </div>
-                        <span class="text-gray-700">{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Advanced Course -->
-  <section class="py-16">
-    <div class="container mx-auto px-4">
-      <h3 class="text-2xl font-bold text-center mb-8">進階課程 (共 10 小時)</h3>
-      <div class="max-w-4xl mx-auto">
-        <div class="space-y-4">
-          {advancedCurriculumItems.map((item, index) => (
-            <div class="tello-accordion-item border border-gray-200 rounded-lg overflow-hidden bg-white">
-              <button 
-                class="tello-accordion-header w-full text-left p-6 bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center"
-                data-target={`tello-advanced-${index}`}
-              >
-                <span class="font-semibold text-gray-900">{item.title}</span>
-                <div class="tello-accordion-icon transition-transform duration-200">
-                  <i class="fas fa-plus text-gray-600"></i>
-                </div>
-              </button>
-              <div 
-                id={`tello-advanced-${index}`}
-                class="tello-accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
-              >
-                <div class="p-6 bg-white border-t border-gray-200">
-                  <ul class="space-y-3">
-                    {item.content.map((point) => (
-                      <li class="flex items-start space-x-3">
-                        <div class="text-blue-600 mt-1">
-                          <i class="fas fa-chevron-right text-sm"></i>
-                        </div>
-                        <span class="text-gray-700">{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
+  <DualCourseOutline 
+    beginnerTitle="初階課程"
+    advancedTitle="進階課程"
+    beginnerItems={curriculumItems}
+    advancedItems={advancedCurriculumItems}
+    beginnerHours="10 小時"
+    advancedHours="10 小時"
+  />
 
   <!-- Course Arrangements -->
   <section class="py-16 bg-gray-50">

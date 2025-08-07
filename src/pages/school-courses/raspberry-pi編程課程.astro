@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import CourseFeatures from '../../components/course/CourseFeatures.astro';
 import AccordionSection from '../../components/course/AccordionSection.astro';
+import DualCourseOutline from '../../components/course/DualCourseOutline.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import { Image } from 'astro:assets';
@@ -239,28 +240,14 @@ const advancedCurriculumItems = [
   </section>
 
   <!-- Course Content Section -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-4xl font-bold text-gray-900 mb-8 text-center course-heading">課程內容</h2>
-      <div class="text-center mb-12">
-        <p class="text-gray-600 text-lg mb-2">* 可根據學校需要調整</p>
-      </div>
-      
-      <div class="grid lg:grid-cols-2 gap-8">
-        <!-- 入門課程 -->
-        <div class="bg-white p-8 rounded-lg shadow-md">
-          <h3 class="text-2xl font-bold text-gray-900 mb-6">入門課程 (共 15 小時)</h3>
-          <AccordionSection title="" items={beginnerCurriculumItems} />
-        </div>
-
-        <!-- AI 深蹲計數器 -->
-        <div class="bg-white p-8 rounded-lg shadow-md">
-          <h3 class="text-2xl font-bold text-gray-900 mb-6">AI 深蹲計數器 (共 15 小時)</h3>
-          <AccordionSection title="" items={advancedCurriculumItems} />
-        </div>
-      </div>
-    </div>
-  </section>
+  <DualCourseOutline 
+    beginnerTitle="入門課程"
+    advancedTitle="AI 深蹲計數器"
+    beginnerItems={beginnerCurriculumItems}
+    advancedItems={advancedCurriculumItems}
+    beginnerHours="15 小時"
+    advancedHours="15 小時"
+  />
 
   <!-- AI Integration Video Section -->
   <section class="bg-white py-16">
