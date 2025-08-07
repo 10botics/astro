@@ -5,7 +5,6 @@ export async function getStaticPaths() {
     { params: { slug: 'ai-game-coding' } },
     { params: { slug: 'ai-enrichment-course' } },
     { params: { slug: 'ai-digital-animation-exhibition' } },
-    { params: { slug: 'apple-vision-pro-game-development' } },
     { params: { slug: 'blockchain' } },
     { params: { slug: 'codrone' } },
     { params: { slug: 'Delightex' } },
@@ -40,9 +39,6 @@ switch (slug) {
     break;
   case 'ai-digital-animation-exhibition':
     ChineseComponent = await import('./AI數碼動畫展.astro');
-    break;
-  case 'apple-vision-pro-game-development':
-    ChineseComponent = await import('./Apple Vision Pro 遊戲開發課程.astro');
     break;
   case 'blockchain':
     ChineseComponent = await import('./Blockchain 區塊鏈課程.astro');
