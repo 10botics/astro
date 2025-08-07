@@ -1,0 +1,475 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+export async function getStaticPaths() {
+  return [
+    {
+      params: { slug: 'ai-digital-animation-exhibition' },
+      props: {
+        title: 'AI數碼動畫展',
+        description: '透過AI技術創作獨特的數碼動畫作品，讓學生體驗人工智能在藝術創作中的應用。',
+        content: `
+          <h2>活動介紹</h2>
+          <p>AI數碼動畫展是一個創新的STEM活動，讓學生透過人工智能技術創作獨特的數碼動畫作品。這個活動結合了藝術創作和科技應用，讓學生體驗人工智能在創意領域的無限可能。</p>
+          
+          <h2>學習目標</h2>
+          <ul>
+            <li>了解人工智能在藝術創作中的應用</li>
+            <li>學習使用AI工具進行動畫創作</li>
+            <li>培養創意思維和數碼藝術技能</li>
+            <li>體驗科技與藝術的結合</li>
+          </ul>
+          
+          <h2>活動流程</h2>
+          <ol>
+            <li>AI工具介紹和示範</li>
+            <li>學生分組進行創作</li>
+            <li>作品展示和分享</li>
+            <li>討論和反思</li>
+          </ol>
+        `,
+        image: '/placeholder-ai-animation.jpg',
+        duration: '2-3小時',
+        grade: '小四至中六',
+        maxStudents: 30
+      }
+    },
+    {
+      params: { slug: 'codrone-experience' },
+      props: {
+        title: 'CoDrone無人機體驗',
+        description: '透過編程控制無人機，學習飛行原理和自動化技術。',
+        content: `
+          <h2>活動介紹</h2>
+          <p>CoDrone無人機體驗讓學生透過編程控制無人機，學習飛行原理和自動化技術。學生將學習如何編寫程式來控制無人機的飛行路徑、速度和動作。</p>
+          
+          <h2>學習目標</h2>
+          <ul>
+            <li>了解無人機的基本原理和結構</li>
+            <li>學習編程控制無人機飛行</li>
+            <li>培養空間思維和邏輯推理能力</li>
+            <li>體驗自動化技術的應用</li>
+          </ul>
+          
+          <h2>活動流程</h2>
+          <ol>
+            <li>無人機原理介紹</li>
+            <li>編程環境設置</li>
+            <li>基本飛行控制練習</li>
+            <li>進階編程挑戰</li>
+            <li>飛行表演和競賽</li>
+          </ol>
+        `,
+        image: '/placeholder-codrone.jpg',
+        duration: '3-4小時',
+        grade: '小五至中六',
+        maxStudents: 20
+      }
+    },
+    {
+      params: { slug: 'microbit-maze' },
+      props: {
+        title: 'Micro:bit 小車：逃出迷宮',
+        description: '使用Micro:bit編程控制小車，學習感應器應用和路徑規劃。',
+        content: `
+          <h2>活動介紹</h2>
+          <p>Micro:bit小車逃出迷宮活動讓學生使用Micro:bit編程控制小車，學習感應器應用和路徑規劃。學生需要編寫程式讓小車能夠自動偵測障礙物並找到出路。</p>
+          
+          <h2>學習目標</h2>
+          <ul>
+            <li>學習Micro:bit編程基礎</li>
+            <li>了解感應器的工作原理</li>
+            <li>培養問題解決和邏輯思維</li>
+            <li>體驗機器人技術的應用</li>
+          </ul>
+          
+          <h2>活動流程</h2>
+          <ol>
+            <li>Micro:bit基礎介紹</li>
+            <li>感應器原理講解</li>
+            <li>基本編程練習</li>
+            <li>迷宮挑戰</li>
+            <li>優化程式競賽</li>
+          </ol>
+        `,
+        image: '/placeholder-microbit.jpg',
+        duration: '2-3小時',
+        grade: '小四至中三',
+        maxStudents: 25
+      }
+    },
+    {
+      params: { slug: 'straw-bridge' },
+      props: {
+        title: '飲管橋',
+        description: '使用飲管設計和建造橋樑，學習工程設計和結構力學。',
+        content: `
+          <h2>活動介紹</h2>
+          <p>飲管橋活動讓學生使用飲管設計和建造橋樑，學習工程設計和結構力學。學生需要考慮橋樑的穩定性、承重能力和美觀性。</p>
+          
+          <h2>學習目標</h2>
+          <ul>
+            <li>了解橋樑結構的基本原理</li>
+            <li>學習工程設計思維</li>
+            <li>培養團隊合作精神</li>
+            <li>體驗結構力學的應用</li>
+          </ul>
+          
+          <h2>活動流程</h2>
+          <ol>
+            <li>橋樑結構原理介紹</li>
+            <li>設計草圖繪製</li>
+            <li>材料準備和工具使用</li>
+            <li>橋樑建造</li>
+            <li>承重測試和評比</li>
+          </ol>
+        `,
+        image: '/placeholder-straw-bridge.jpg',
+        duration: '2-3小時',
+        grade: '小四至中二',
+        maxStudents: 30
+      }
+    },
+    {
+      params: { slug: 'ai-art-creation' },
+      props: {
+        title: 'AI藝術創作',
+        description: '使用人工智能工具進行藝術創作，探索AI在創意領域的應用。',
+        content: `
+          <h2>活動介紹</h2>
+          <p>AI藝術創作活動讓學生使用人工智能工具進行藝術創作，探索AI在創意領域的應用。學生將學習如何使用AI工具生成圖像、音樂或文字創作。</p>
+          
+          <h2>學習目標</h2>
+          <ul>
+            <li>了解AI在藝術創作中的應用</li>
+            <li>學習使用AI創作工具</li>
+            <li>培養創意思維和藝術鑑賞能力</li>
+            <li>探索人機協作的創作模式</li>
+          </ul>
+          
+          <h2>活動流程</h2>
+          <ol>
+            <li>AI藝術創作介紹</li>
+            <li>工具使用示範</li>
+            <li>個人創作時間</li>
+            <li>作品展示和分享</li>
+            <li>創作心得討論</li>
+          </ol>
+        `,
+        image: '/placeholder-ai-art.jpg',
+        duration: '2-3小時',
+        grade: '小五至中六',
+        maxStudents: 25
+      }
+    }
+  ];
+}
+
+const { slug } = Astro.params;
+const { title, description, content, image, duration, grade, maxStudents } = Astro.props;
+---
+
+<Layout title={`${title} - STEM Day`}>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">{title}</h1>
+          <p class="hero-description">{description}</p>
+          <div class="activity-meta">
+            <div class="meta-item">
+              <i class="fas fa-clock"></i>
+              <span>活動時長：{duration}</span>
+            </div>
+            <div class="meta-item">
+              <i class="fas fa-users"></i>
+              <span>適合年級：{grade}</span>
+            </div>
+            <div class="meta-item">
+              <i class="fas fa-user-graduate"></i>
+              <span>人數上限：{maxStudents}人</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section">
+      <div class="container">
+        <div class="content-wrapper">
+          <div class="main-content">
+            <div set:html={content}></div>
+          </div>
+          <div class="sidebar">
+            <div class="info-card">
+              <h3>活動詳情</h3>
+              <ul>
+                <li><strong>時長：</strong>{duration}</li>
+                <li><strong>年級：</strong>{grade}</li>
+                <li><strong>人數：</strong>最多{maxStudents}人</li>
+                <li><strong>地點：</strong>校內或指定場地</li>
+              </ul>
+            </div>
+            <div class="cta-card">
+              <h3>立即預約</h3>
+              <p>想要為您的學校安排這個活動？</p>
+              <a href="/Stemday#contact-form" class="cta-button">聯絡我們</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Activities -->
+    <section class="related-section">
+      <div class="container">
+        <h2 class="section-title">相關活動</h2>
+        <div class="related-grid">
+          <a href="/Stemday/ai-digital-animation-exhibition" class="related-card">
+            <h3>AI數碼動畫展</h3>
+            <p>透過AI技術創作獨特的數碼動畫作品</p>
+          </a>
+          <a href="/Stemday/codrone-experience" class="related-card">
+            <h3>CoDrone無人機體驗</h3>
+            <p>透過編程控制無人機，學習飛行原理</p>
+          </a>
+          <a href="/Stemday/microbit-maze" class="related-card">
+            <h3>Micro:bit 小車：逃出迷宮</h3>
+            <p>使用Micro:bit編程控制小車</p>
+          </a>
+          <a href="/Stemday/straw-bridge" class="related-card">
+            <h3>飲管橋</h3>
+            <p>使用飲管設計和建造橋樑</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #333;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4rem 0;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+
+  .hero-description {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .activity-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .meta-item i {
+    font-size: 1.2rem;
+  }
+
+  /* Content Section */
+  .content-section {
+    padding: 4rem 0;
+    background: white;
+  }
+
+  .content-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .main-content {
+    line-height: 1.8;
+  }
+
+  .main-content h2 {
+    font-size: 2rem;
+    color: #333;
+    margin: 2rem 0 1rem 0;
+  }
+
+  .main-content h2:first-child {
+    margin-top: 0;
+  }
+
+  .main-content p {
+    margin-bottom: 1rem;
+    color: #555;
+  }
+
+  .main-content ul,
+  .main-content ol {
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+  }
+
+  .main-content li {
+    margin-bottom: 0.5rem;
+    color: #555;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    position: sticky;
+    top: 2rem;
+  }
+
+  .info-card,
+  .cta-card {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .info-card h3,
+  .cta-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .info-card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .info-card li {
+    margin-bottom: 0.75rem;
+    color: #555;
+  }
+
+  .cta-card p {
+    margin-bottom: 1.5rem;
+    color: #555;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: #667eea;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background: #5a6fd8;
+  }
+
+  /* Related Section */
+  .related-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .related-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .related-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .related-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .related-card p {
+    color: #666;
+    line-height: 1.6;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2rem;
+    }
+
+    .hero-description {
+      font-size: 1.1rem;
+    }
+
+    .activity-meta {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .content-wrapper {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      position: static;
+    }
+
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .container {
+      padding: 0 15px;
+    }
+  }
+</style> 
