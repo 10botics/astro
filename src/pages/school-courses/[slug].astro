@@ -11,6 +11,7 @@ export async function getStaticPaths() {
     { params: { slug: 'ksp' } },
     { params: { slug: 'minecraft' } },
     { params: { slug: 'microbit-parachute' } },
+    { params: { slug: 'microbit-maze' } },
     { params: { slug: 'procreate' } },
     { params: { slug: 'raspberry-pi' } },
     { params: { slug: 'scratch-ai-programming' } },
@@ -52,6 +53,9 @@ switch (slug) {
     break;
   case 'microbit-parachute':
     ChineseComponent = await import('./Microbit 降落傘課程.astro');
+    break;
+  case 'microbit-maze':
+    ChineseComponent = await import('./Microbit 逃出迷宮.astro');
     break;
   case 'procreate':
     ChineseComponent = await import('./Procreate數位藝術課程.astro');
