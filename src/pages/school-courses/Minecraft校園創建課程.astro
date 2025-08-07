@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import CourseFeatures from '../../components/course/CourseFeatures.astro';
-import AccordionSection from '../../components/course/AccordionSection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import { Image } from 'astro:assets';
@@ -213,25 +213,12 @@ const faqItems = [
   </section>
 
   <!-- Course Content Section -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">課程內容</h2>
-      <p class="text-center text-gray-700 mb-8">共 16 小時</p>
-      <p class="text-center text-gray-600 mb-12">* 可根據學校需要調整</p>
-      
-      <div class="max-w-4xl mx-auto">
-        <Image 
-          src={courseStructure}
-          alt="Minecraft Course Structure"
-          class="w-full h-auto rounded-lg shadow-lg mb-12"
-        />
-      </div>
-    </div>
-  </section>
-
-  <AccordionSection 
-    title="課程大綱"
+  <SingleCourseContent 
     items={curriculumItems}
+    hours="16 小時"
+    images={[
+      { src: courseStructure, alt: "Minecraft Course Structure" }
+    ]}
   />
 
   <!-- Course Arrangements Section -->

@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
-import AccordionSection from '../../components/course/AccordionSection.astro';
+import DualCourseContent from '../../components/course/DualCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import { Image } from 'astro:assets';
@@ -300,29 +300,15 @@ const { title, subtitle, tags, description, detailedDescription, heroImage } = c
       </div>
     </section>
 
-    <!-- Course Curriculum -->
-    <section class="bg-white py-16">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto">
-          <h2 class="text-3xl font-bold text-gray-900 mb-4 text-center">課程內容</h2>
-          <p class="text-center text-gray-600 mb-8">共12小時 * 可根據學校需要調整</p>
-          
-          <div class="grid md:grid-cols-2 gap-8">
-            <!-- Beginner Curriculum -->
-            <div>
-              <h3 class="text-2xl font-bold mb-6">初階課程 (共 6 小時)</h3>
-              <AccordionSection title="" items={beginnerCurriculum} />
-            </div>
-            
-            <!-- Advanced Curriculum -->
-            <div>
-              <h3 class="text-2xl font-bold mb-6">進階課程 (共 6 小時)</h3>
-              <AccordionSection title="" items={advancedCurriculum} />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- Course Content Section -->
+    <DualCourseContent 
+      beginnerTitle="初階課程"
+      advancedTitle="進階課程"
+      beginnerItems={beginnerCurriculum}
+      advancedItems={advancedCurriculum}
+      beginnerHours="6 小時"
+      advancedHours="6 小時"
+    />
 
     <!-- Cross-disciplinary Learning -->
     <section class="py-16">

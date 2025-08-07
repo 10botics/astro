@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
-import AccordionSection from '../../components/course/AccordionSection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import { Image } from 'astro:assets';
@@ -207,36 +207,13 @@ const galleryImages = [
     </section>
 
     <!-- Course Content -->
-    <section class="bg-gray-50 py-16">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-4">課程內容</h2>
-        <p class="text-center mb-8">共 6 小時</p>
-        <p class="text-center mb-12 text-gray-600">* 可根據學校需要調整課堂數及時數</p>
-        
-        <!-- Video Section -->
-        <div class="mb-12">
-          <div class="aspect-video bg-gray-200 rounded-lg flex items-center justify-center">
-            <iframe 
-              class="w-full h-full rounded-lg"
-              src="https://www.youtube.com/embed/_Dht06VRD84" 
-              title="Micro:bit Maze Course Video"
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen>
-            </iframe>
-          </div>
-        </div>
-
-        <Image 
-          src={microbitTinybit} 
-          alt="Micro:bit with Tinybit" 
-          class="w-full rounded-lg mb-8"
-        />
-
-        <!-- Curriculum Accordion -->
-        <AccordionSection title="課程大綱" items={curriculumItems} />
-      </div>
-    </section>
+    <SingleCourseContent 
+      items={curriculumItems} 
+      hours="6 小時"
+      images={[
+        { src: microbitTinybit, alt: "Micro:bit with Tinybit" }
+      ]}
+    />
 
     <!-- Course Features -->
     <section class="py-16">

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import { Image } from 'astro:assets';
 import heroImage from '../../assets/images/school-courses/Blockchain 區塊鏈課程/hero-image.png';
 import instructorImage from '../../assets/images/school-courses/Blockchain 區塊鏈課程/instructor-louis-li.jpg';
@@ -9,8 +10,64 @@ import courseFeatures3 from '../../assets/images/school-courses/Blockchain 區�
 import courseContent1 from '../../assets/images/school-courses/Blockchain 區塊鏈課程/course-content-1.png';
 import courseContent2 from '../../assets/images/school-courses/Blockchain 區塊鏈課程/course-content-2.png';
 
+// Course data
+export const courseData = {
+  title: "Blockchain 區塊鏈課程",
+  subtitle: "融入Web 3.0趨勢，探索區塊鏈世界",
+  tags: ["AI 人工智能", "Blockchain 區塊鏈", "初中", "高中"],
+  description: "本課程旨在引領學生進入Web3.0的世界，瞭解在web3下充分利用的Blockchain區塊鏈技術的概念，同時也將探索加密貨幣、NFT、智能合約等重要應用。",
+  heroImage: heroImage
+};
+
 const title = "Blockchain 區塊鏈課程 - 10教育";
 const description = "本課程旨在引領學生進入Web3.0的世界，瞭解在web3下充分利用的Blockchain區塊鏈技術的概念，同時也將探索加密貨幣、NFT、智能合約等重要應用。";
+
+// Course curriculum
+const curriculumItems = [
+  {
+    title: "區塊鏈基礎 [2 節]",
+    content: [
+      "區塊鏈的起源和發展",
+      "區塊鏈的工作原理",
+      "區塊鏈的種類：公有鏈、私有鏈、聯盟鏈",
+      "分散式帳本技術"
+    ]
+  },
+  {
+    title: "加密貨幣與比特幣 [2 節]",
+    content: [
+      "比特幣的誕生和特點",
+      "加密貨幣的交易和挖礦",
+      "加密貨幣的發展和可能性"
+    ]
+  },
+  {
+    title: "開放源代碼與區塊鏈專案 [2 節]",
+    content: [
+      "開放源代碼軟件的重要性",
+      "著名的開放源區塊鏈專案：Ethereum、Hyperledger等",
+      "參與區塊鏈社區",
+      "SmartContract智能合約工作坊 – 認識智能合約的概念和應用"
+    ]
+  },
+  {
+    title: "NFT與數位資產 [2節]",
+    content: [
+      "什麼是NFT？非同質化代幣的概念",
+      "NFT的用途和市場",
+      "創建和交易NFT",
+      "生成式藝術 – Fidenza演算法的認識"
+    ]
+  },
+  {
+    title: "加密錢包和安全 [2 節]",
+    content: [
+      "加密錢包的種類：線上錢包、硬件錢包等",
+      "加密錢包的設置和使用",
+      "區塊鏈安全性和防護措施"
+    ]
+  }
+];
 ---
 
 <Layout title={title} description={description}>
@@ -109,92 +166,14 @@ const description = "本課程旨在引領學生進入Web3.0的世界，瞭解�
     </section>
 
     <!-- Course Content Section -->
-    <section class="bg-white rounded-lg p-8 mb-12 shadow-sm">
-      <h2 class="text-3xl font-bold text-gray-900 mb-4">課程內容</h2>
-      <p class="text-lg text-gray-700 mb-2">共 10 小時</p>
-      <p class="text-sm text-green-600 mb-8">* 可根據學校需要調整</p>
-
-      <div class="grid md:grid-cols-2 gap-8 mb-8">
-        <Image src={courseContent1} alt="Course Content Part 1" class="w-full rounded-lg" />
-        <Image src={courseContent2} alt="Course Content Part 2" class="w-full rounded-lg" />
-      </div>
-
-      <!-- Accordion for Course Modules -->
-      <div class="space-y-4">
-        <details class="group border rounded-lg">
-          <summary class="flex justify-between items-center p-4 cursor-pointer bg-gray-50 hover:bg-gray-100">
-            <span class="font-semibold">區塊鏈基礎 [2 節]</span>
-            <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
-          </summary>
-          <div class="p-4 border-t">
-            <ul class="space-y-2 text-gray-700">
-              <li>• 區塊鏈的起源和發展</li>
-              <li>• 區塊鏈的工作原理</li>
-              <li>• 區塊鏈的種類：公有鏈、私有鏈、聯盟鏈</li>
-              <li>• 分散式帳本技術</li>
-            </ul>
-          </div>
-        </details>
-
-        <details class="group border rounded-lg">
-          <summary class="flex justify-between items-center p-4 cursor-pointer bg-gray-50 hover:bg-gray-100">
-            <span class="font-semibold">加密貨幣與比特幣 [2 節]</span>
-            <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
-          </summary>
-          <div class="p-4 border-t">
-            <ul class="space-y-2 text-gray-700">
-              <li>• 比特幣的誕生和特點</li>
-              <li>• 加密貨幣的交易和挖礦</li>
-              <li>• 加密貨幣的發展和可能性</li>
-            </ul>
-          </div>
-        </details>
-
-        <details class="group border rounded-lg">
-          <summary class="flex justify-between items-center p-4 cursor-pointer bg-gray-50 hover:bg-gray-100">
-            <span class="font-semibold">開放源代碼與區塊鏈專案 [2 節]</span>
-            <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
-          </summary>
-          <div class="p-4 border-t">
-            <ul class="space-y-2 text-gray-700">
-              <li>• 開放源代碼軟件的重要性</li>
-              <li>• 著名的開放源區塊鏈專案：Ethereum、Hyperledger等</li>
-              <li>• 參與區塊鏈社區</li>
-              <li>• SmartContract智能合約工作坊 – 認識智能合約的概念和應用</li>
-            </ul>
-          </div>
-        </details>
-
-        <details class="group border rounded-lg">
-          <summary class="flex justify-between items-center p-4 cursor-pointer bg-gray-50 hover:bg-gray-100">
-            <span class="font-semibold">NFT與數位資產 [2節]</span>
-            <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
-          </summary>
-          <div class="p-4 border-t">
-            <ul class="space-y-2 text-gray-700">
-              <li>• 什麼是NFT？非同質化代幣的概念</li>
-              <li>• NFT的用途和市場</li>
-              <li>• 創建和交易NFT</li>
-              <li>• 生成式藝術 – Fidenza演算法的認識</li>
-            </ul>
-          </div>
-        </details>
-
-        <details class="group border rounded-lg">
-          <summary class="flex justify-between items-center p-4 cursor-pointer bg-gray-50 hover:bg-gray-100">
-            <span class="font-semibold">加密錢包和安全 [2 節]</span>
-            <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
-          </summary>
-          <div class="p-4 border-t">
-            <ul class="space-y-2 text-gray-700">
-              <li>• 加密錢包的種類：線上錢包、硬件錢包等</li>
-              <li>• 加密錢包的設置和使用</li>
-              <li>• 區塊鏈安全性和防護措施</li>
-            </ul>
-          </div>
-        </details>
-      </div>
-    </section>
+    <SingleCourseContent 
+      items={curriculumItems}
+      hours="10 小時"
+      images={[
+        { src: courseContent1, alt: "Course Content Part 1" },
+        { src: courseContent2, alt: "Course Content Part 2" }
+      ]}
+    />
 
     <!-- Course Schedule Section -->
     <section class="bg-white rounded-lg p-8 mb-12 shadow-sm">

@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import CourseFeatures from '../../components/course/CourseFeatures.astro';
-import AccordionSection from '../../components/course/AccordionSection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import { Image } from 'astro:assets';
@@ -231,27 +231,14 @@ const studentWorkExamples = [
   </section>
 
   <!-- Course Content Section -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">課程內容</h2>
-      <div class="text-center mb-8">
-        <p class="text-lg text-gray-700">共 10 小時</p>
-        <p class="text-sm text-gray-500 mt-2">* 可根據學校需要調整</p>
-      </div>
-      
-      <!-- Course images -->
-      <div class="grid md:grid-cols-2 gap-8 mb-12">
-        <div class="bg-white rounded-lg overflow-hidden shadow-lg">
-          <img src="https://10botics.com/wp-content/uploads/2023/06/Screenshot-2023-08-15-104602.png" alt="Delightex solar system" class="w-full h-64 object-cover" />
-        </div>
-        <div class="bg-white rounded-lg overflow-hidden shadow-lg">
-          <img src="https://10botics.com/wp-content/uploads/2023/06/Screenshot-2023-08-15-105114.png" alt="Delightex bowling" class="w-full h-64 object-cover" />
-        </div>
-      </div>
-
-      <AccordionSection title="課程大綱" items={curriculumItems} />
-    </div>
-  </section>
+  <SingleCourseContent 
+    items={curriculumItems} 
+    hours="10 小時"
+    images={[
+      { src: "https://10botics.com/wp-content/uploads/2023/06/Screenshot-2023-08-15-104602.png", alt: "Delightex solar system" },
+      { src: "https://10botics.com/wp-content/uploads/2023/06/Screenshot-2023-08-15-105114.png", alt: "Delightex bowling" }
+    ]}
+  />
 
   <!-- Course Arrangement Section -->
   <section class="bg-white py-16">

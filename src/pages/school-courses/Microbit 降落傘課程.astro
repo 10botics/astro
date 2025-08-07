@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
-import AccordionSection from '../../components/course/AccordionSection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import { Image } from 'astro:assets';
@@ -235,18 +235,10 @@ const faqItems = [
     </section>
 
     <!-- Course Content Section -->
-    <section class="py-16">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">課程內容</h2>
-          <p class="text-gray-600">共3小時</p>
-          <p class="text-gray-600">* 可根據學校需要調整</p>
-        </div>
-        <div class="max-w-4xl mx-auto">
-          <AccordionSection title="" items={courseCurriculum} />
-        </div>
-      </div>
-    </section>
+    <SingleCourseContent 
+      items={courseCurriculum} 
+      hours="3 小時"
+    />
 
     <!-- Course Arrangement Section -->
     <section class="py-16 bg-gray-50">

@@ -2,8 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import CourseFeatures from '../../components/course/CourseFeatures.astro';
-import AccordionSection from '../../components/course/AccordionSection.astro';
-import DualCourseOutline from '../../components/course/DualCourseOutline.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import { Image } from 'astro:assets';
@@ -299,8 +298,7 @@ const relatedCourses = [
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
         <p class="text-center text-gray-600 mb-8">* 可根據學校需要調整</p>
-        <AccordionSection 
-          title="課程內容" 
+        <SingleCourseContent 
           items={curriculumItems}
         />
       </div>

@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
-import AccordionSection from '../../components/course/AccordionSection.astro';
+import DualCourseContent from '../../components/course/DualCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import { Image } from 'astro:assets';
@@ -240,24 +240,14 @@ const courseHighlights = [
     </section>
 
     <!-- Course Content Section -->
-    <section class="py-16">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">課程內容</h2>
-          <p class="text-gray-600">* 可根據學校需要調整</p>
-        </div>
-
-        <!-- Beginner Course -->
-        <div class="mb-12">
-          <AccordionSection title="初階課程 (2-6小時)" items={beginnerCurriculum} />
-        </div>
-
-        <!-- Advanced Course -->
-        <div class="mb-12">
-          <AccordionSection title="進階：故事繪本課程 (4-10小時)" items={advancedCurriculum} />
-        </div>
-      </div>
-    </section>
+    <DualCourseContent 
+      beginnerTitle="初階課程"
+      advancedTitle="進階：故事繪本課程"
+      beginnerItems={beginnerCurriculum}
+      advancedItems={advancedCurriculum}
+      beginnerHours="2-6 小時"
+      advancedHours="4-10 小時"
+    />
 
     <!-- Course Arrangement Section -->
     <section class="py-16 bg-gray-50">
