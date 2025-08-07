@@ -6,7 +6,7 @@ interface Props {
     features?: Array<{
       text: string;
       icon?: string;
-    }>;
+    }> | string[];
     aiConceptsLink?: string;
     infographicImage?: string;
     demoVideo?: {
@@ -49,24 +49,30 @@ if (!features) {
       {features.features && features.features.length > 0 && (
         <div class="space-y-4">
           <ul class="space-y-3 text-gray-700">
-            {features.features.map((feature) => (
-              <li class="flex items-start space-x-3">
-                {feature.icon ? (
-                  <i class={`${feature.icon} text-blue-500 mt-1 w-5 text-center`}></i>
-                ) : (
-                  <span class="text-gray-900">•</span>
-                )}
-                <span>
-                  {feature.text.includes('AI 五大理念') && features.aiConceptsLink ? (
-                    <>
-                      了解 <a href={features.aiConceptsLink} class="text-cyan-400 hover:text-cyan-600">AI 五大理念</a>，趨勢與實踐
-                    </>
+            {features.features.map((feature) => {
+              // Handle both old format (string) and new format (object)
+              const featureText = typeof feature === 'string' ? feature : feature.text;
+              const featureIcon = typeof feature === 'string' ? undefined : feature.icon;
+              
+              return (
+                <li class="flex items-start space-x-3">
+                  {featureIcon ? (
+                    <i class={`${featureIcon} text-blue-500 mt-1 w-5 text-center`}></i>
                   ) : (
-                    feature.text
+                    <span class="text-gray-900">•</span>
                   )}
-                </span>
-              </li>
-            ))}
+                  <span>
+                    {featureText.includes('AI 五大理念') && features.aiConceptsLink ? (
+                      <>
+                        了解 <a href={features.aiConceptsLink} class="text-cyan-400 hover:text-cyan-600">AI 五大理念</a>，趨勢與實踐
+                      </>
+                    ) : (
+                      featureText
+                    )}
+                  </span>
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}
