@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Footer from '../../components/Footer.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import { Image } from 'astro:assets';
@@ -23,6 +23,89 @@ export const courseData = {
   heroImage: procreateCourseImage
 };
 
+// Course features
+const courseFeatures = [
+  {
+    icon: "fas fa-palette",
+    title: "創意表達和想像力",
+    description: "課程為學生提供了一個無限的數字繪畫空間，讓他們可以盡情表達創意和想像力。這可以激發學生的藝術靈感，並幫助他們將自己的想法轉化為視覺作品。"
+  },
+  {
+    icon: "fas fa-hand-pointer",
+    title: "互動學習體驗",
+    description: "Procreate的手勢操作和多點觸摸功能使學生能夠更加互動地參與數字創作。這種直觀的操作方式有助於學生更深入地理解繪畫技巧，並實際體驗藝術創作過程。"
+  },
+  {
+    icon: "fas fa-paint-brush",
+    title: "多樣化的工具運用",
+    description: "課程會用到Procreate中擁有的豐富筆刷和工具選項，學生可以使用各種不同的筆刷效果，從傳統畫風到數字插畫都能輕鬆實現。這使得學生能夠嘗試不同的風格和技巧，豐富他們的藝術體驗。"
+  },
+  {
+    icon: "fas fa-graduation-cap",
+    title: "學科整合",
+    description: "課程亦可以幫助學生結合其他學科一起應用，學生可以使用Procreate創建圖解、圖表，甚至是科學模型，將抽象的概念可視化，提高對學習內容的理解和記憶。"
+  }
+];
+
+// Course modules
+const courseModules = [
+  {
+    title: "簡介 ProCreate 及基本 ProCreate 操作 [2 節]",
+    content: [
+      "procreate基本功能",
+      "頁面設定",
+      "練習（圓，直線，填色）",
+      "實做 — 表情X4 （複製，剪切工具）"
+    ]
+  },
+  {
+    title: "介紹顏色設定 [2節]",
+    content: [
+      "濾鏡",
+      "練習（製作色卡，立體調色）",
+      "實做（提供一黑白畫，自行調色，加內容）"
+    ]
+  },
+  {
+    title: "拼貼 ，筆刷 [2 節]",
+    content: [
+      "自製筆刷",
+      "像素",
+      "實做（拼貼海報/背景） （提供素材，自行拼貼，及用上一堂已學習的工具完成）",
+      "導出png"
+    ]
+  },
+  {
+    title: "動畫 [2 節]",
+    content: [
+      "介紹動畫功能頁面（時間軸，協肋屏幕等）",
+      "練習（動畫人物——短時的循環動畫）",
+      "實做（提供人物/簽名，自行製作一循環動畫 )"
+    ]
+  }
+];
+
+// Course arrangements
+const courseArrangements = [
+  {
+    icon: "fas fa-calendar-day",
+    title: "STEM Day 活動 (1 至 2 小時)",
+    content: [
+      "通過簡單介紹，學生能了解Procreate的基本操作和功能",
+      "學生將練習形狀的繪畫，例如畫圓，方形",
+      "學生將親自製作循環動畫"
+    ]
+  },
+  {
+    icon: "fas fa-calendar-week",
+    title: "完整課程 (8小時)",
+    content: [
+      "建議一個學期完成 8 節課堂，每節 1 小時。",
+      "*可根據學校需要調整課堂數及時數"
+    ]
+  }
+];
+
 // FAQ items
 const faqItems = [
   {
@@ -39,6 +122,28 @@ const faqItems = [
   }
 ];
 
+// Related courses
+const relatedCourses = [
+  {
+    title: "AI啟蒙與藝術創作課程",
+    description: "課程將引導學生深入探索人工智能（AI）在視覺藝術領域的應用...",
+    link: "/school-courses/ai-enrichment-course",
+    gradient: "from-blue-400 to-blue-600"
+  },
+  {
+    title: "AI數碼動畫展",
+    description: "AI數碼動畫展是一個簡單有趣的 STEM Day 活動，學生可按主題設計喜歡的圖案/角色...",
+    link: "/stem-day/ai-digital-animation-exhibition",
+    gradient: "from-green-400 to-green-600"
+  },
+  {
+    title: "Blockchain 區塊鏈課程",
+    description: "本課程旨在引領學生進入Web3.0的世界，瞭解在web3.0時代下...",
+    link: "/school-courses/blockchain",
+    gradient: "from-orange-400 to-orange-600"
+  }
+];
+
 // SEO metadata
 const title = "Procreate電繪課程 - 10教育";
 const description = courseData.description;
@@ -46,297 +151,194 @@ const ogImage = procreateThumbnail.src;
 ---
 
 <Layout title={title} description={description} ogImage={ogImage}>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
-  <!-- Hero Section -->
-  <section class="bg-gradient-to-br from-purple-900 via-purple-800 to-pink-900 text-white py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center">
-        <h1 class="text-4xl md:text-6xl font-bold mb-6">
-          {courseData.title}
-        </h1>
-        <p class="text-xl md:text-2xl mb-8 max-w-4xl mx-auto">
-          {courseData.subtitle}
-        </p>
-        <div class="flex flex-wrap justify-center gap-4 text-sm">
-          {courseData.tags.map(tag => (
-            <span class="bg-purple-700 px-3 py-1 rounded-full">{tag}</span>
+  <HeroSection 
+    title={courseData.title}
+    subtitle={courseData.subtitle}
+    tags={courseData.tags}
+    heroImage={courseData.heroImage}
+    description={courseData.description}
+  />
+
+  <!-- Why Procreate section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <Image 
+              src={procreateHero} 
+              alt="Procreate Course Hero Image" 
+              width={600}
+              height={400}
+              class="w-full h-auto"
+            />
+          </div>
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">為什麼選擇 Procreate？</h2>
+          <p class="text-lg text-gray-700 leading-relaxed mb-6">
+            {courseData.detailedDescription}
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-start space-x-3">
+              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <span class="text-gray-700">專業級數位繪畫工具</span>
+            </div>
+            <div class="flex items-start space-x-3">
+              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <span class="text-gray-700">直觀易用的操作界面</span>
+            </div>
+            <div class="flex items-start space-x-3">
+              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <span class="text-gray-700">豐富的創作工具和效果</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Features -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程特色</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {courseFeatures.map((feature) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow text-center">
+            <div class="flex justify-center mb-4">
+              <i class={`${feature.icon} text-3xl text-cyan-500`}></i>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">{feature.title}</h3>
+            <p class="text-gray-700 text-sm">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Content -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">課程內容</h2>
+        <p class="text-xl text-gray-600">共 8 小時</p>
+        <p class="text-sm text-cyan-600 mt-2">* 可根據學校需要調整</p>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-12">
+        <!-- Curriculum Image -->
+        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-lg">
+          <Image src={procreateCurriculum} alt="Procreate Course Curriculum" class="w-full h-auto" />
+        </div>
+        
+        <!-- Course Modules -->
+        <div class="space-y-6">
+          {courseModules.map((module) => (
+            <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+              <h3 class="text-xl font-bold text-gray-900 mb-4">{module.title}</h3>
+              <ul class="space-y-2 text-gray-600">
+                {module.content.map((item) => (
+                  <li class="flex items-start">
+                    <i class="fas fa-circle text-cyan-500 text-xs mt-2 mr-3 flex-shrink-0"></i>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Breadcrumb -->
-  <section class="bg-gray-50 py-4">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <nav class="text-sm text-gray-600">
-        <a href="/" class="hover:text-purple-600">首頁</a>
-        <span class="mx-2">»</span>
-        <a href="/school-courses" class="hover:text-purple-600">到校課程</a>
-        <span class="mx-2">»</span>
-        <span class="text-gray-900">{courseData.title}</span>
-      </nav>
-    </div>
-  </section>
-
-  <!-- Main Content -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    
-    <!-- Hero Image Section -->
-    <section class="mb-16">
-      <div class="bg-gray-100 rounded-lg p-8">
-        <div class="aspect-video bg-white rounded-lg overflow-hidden">
-          <Image src={procreateHero} alt="Procreate Course Hero Image" class="w-full h-full object-cover" />
-        </div>
-      </div>
-      
-      <div class="mt-8 max-w-4xl mx-auto">
-        <p class="text-lg text-gray-700 leading-relaxed">
-          {courseData.detailedDescription}
-        </p>
-      </div>
-    </section>
-
-    <!-- Course Features -->
-    <section class="mb-16">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">課程特色</h2>
-      </div>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <!-- Feature 1 -->
-        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
-          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-8 h-8 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">創意表達和想像力</h3>
-          <p class="text-gray-600">
-            課程為學生提供了一個無限的數字繪畫空間，讓他們可以盡情表達創意和想像力。這可以激發學生的藝術靈感，並幫助他們將自己的想法轉化為視覺作品。
-          </p>
-        </div>
-
-        <!-- Feature 2 -->
-        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
-          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-8 h-8 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">互動學習體驗</h3>
-          <p class="text-gray-600">
-            Procreate的手勢操作和多點觸摸功能使學生能夠更加互動地參與數字創作。這種直觀的操作方式有助於學生更深入地理解繪畫技巧，並實際體驗藝術創作過程。
-          </p>
-        </div>
-
-        <!-- Feature 3 -->
-        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
-          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-8 h-8 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">多樣化的工具運用</h3>
-          <p class="text-gray-600">
-            課程會用到Procreate中擁有的豐富筆刷和工具選項，學生可以使用各種不同的筆刷效果，從傳統畫風到數字插畫都能輕鬆實現。這使得學生能夠嘗試不同的風格和技巧，豐富他們的藝術體驗。
-          </p>
-        </div>
-
-        <!-- Feature 4 -->
-        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
-          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-8 h-8 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">學科整合</h3>
-          <p class="text-gray-600">
-            課程亦可以幫助學生結合其他學科一起應用，學生可以使用Procreate創建圖解、圖表，甚至是科學模型，將抽象的概念可視化，提高對學習內容的理解和記憶。
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Course Content -->
-    <section class="mb-16">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">課程內容</h2>
-        <p class="text-xl text-gray-600">共 8 小時</p>
-        <p class="text-sm text-purple-600 mt-2">* 可根據學校需要調整</p>
-      </div>
-      
-      <div class="grid lg:grid-cols-2 gap-12">
-        <!-- Curriculum Image -->
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <Image src={procreateCurriculum} alt="Procreate Course Curriculum" class="w-full h-auto" />
-        </div>
-        
-        <!-- Course Modules -->
-        <div class="space-y-6">
-          <div class="bg-white rounded-lg shadow-lg p-6">
-            <h3 class="text-xl font-bold text-gray-900 mb-4">簡介 ProCreate 及基本 ProCreate 操作 [2 節]</h3>
-            <ul class="space-y-2 text-gray-600">
-              <li>• procreate基本功能</li>
-              <li>• 頁面設定</li>
-              <li>• 練習（圓，直線，填色）</li>
-              <li>• 實做 — 表情X4 （複製，剪切工具）</li>
-            </ul>
-          </div>
-          
-          <div class="bg-white rounded-lg shadow-lg p-6">
-            <h3 class="text-xl font-bold text-gray-900 mb-4">介紹顏色設定 [2節]</h3>
-            <ul class="space-y-2 text-gray-600">
-              <li>• 濾鏡</li>
-              <li>• 練習（製作色卡，立體調色）</li>
-              <li>• 實做（提供一黑白畫，自行調色，加內容）</li>
-            </ul>
-          </div>
-          
-          <div class="bg-white rounded-lg shadow-lg p-6">
-            <h3 class="text-xl font-bold text-gray-900 mb-4">拼貼 ，筆刷 [2 節]</h3>
-            <ul class="space-y-2 text-gray-600">
-              <li>• 自製筆刷</li>
-              <li>• 像素</li>
-              <li>• 實做（拼貼海報/背景） （提供素材，自行拼貼，及用上一堂已學習的工具完成）</li>
-              <li>• 導出png</li>
-            </ul>
-          </div>
-          
-          <div class="bg-white rounded-lg shadow-lg p-6">
-            <h3 class="text-xl font-bold text-gray-900 mb-4">動畫 [2 節]</h3>
-            <ul class="space-y-2 text-gray-600">
-              <li>• 介紹動畫功能頁面（時間軸，協肋屏幕等）</li>
-              <li>• 練習（動畫人物——短時的循環動畫）</li>
-              <li>• 實做（提供人物/簽名，自行製作一循環動畫 )</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Course Arrangement -->
-    <section class="mb-16">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">課程安排</h2>
-      </div>
+  <!-- Course Arrangement -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程安排</h2>
       
       <div class="grid md:grid-cols-2 gap-8">
-        <!-- STEM Day Activity -->
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <div class="flex items-center mb-4">
-            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
-              <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-              </svg>
+        {courseArrangements.map((arrangement) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-cyan-100 rounded-full flex items-center justify-center mr-4">
+                <i class={`${arrangement.icon} text-cyan-600`}></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900">{arrangement.title}</h3>
             </div>
-            <h3 class="text-xl font-bold text-gray-900">STEM Day 活動 (1 至 2 小時)</h3>
+            <ul class="space-y-2 text-gray-600">
+              {arrangement.content.map((item) => (
+                <li class="flex items-start">
+                  <i class="fas fa-circle text-cyan-500 text-xs mt-2 mr-3 flex-shrink-0"></i>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-          <ul class="space-y-2 text-gray-600">
-            <li>• 通過簡單介紹，學生能了解Procreate的基本操作和功能</li>
-            <li>• 學生將練習形狀的繪畫，例如畫圓，方形</li>
-            <li>• 學生將親自製作循環動畫</li>
-          </ul>
-        </div>
-        
-        <!-- Full Course -->
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <div class="flex items-center mb-4">
-            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
-              <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900">完整課程 (8小時)</h3>
-          </div>
-          <p class="text-gray-600">
-            建議一個學期完成 8 節課堂，每節 1 小時。<br>
-            <span class="text-purple-600">*可根據學校需要調整課堂數及時數</span>
-          </p>
-        </div>
+        ))}
       </div>
       
       <div class="text-center mt-8">
         <p class="text-lg text-gray-700">歡迎填妥下方表格讓同事為你提供咨詢。</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Gallery Section -->
-    <section class="mb-16">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">精選照片</h2>
-      </div>
+  <!-- Gallery Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">精選照片</h2>
       
       <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-lg">
           <Image src={procreateGallery1} alt="Procreate Gallery Image 1" class="w-full h-64 object-cover" />
         </div>
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-lg">
           <Image src={procreateGallery2} alt="Procreate Gallery Image 2" class="w-full h-64 object-cover" />
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <QnASection faqs={faqItems} />
+  <QnASection faqs={faqItems} />
 
-    <!-- Contact Section -->
-    <section class="mb-16">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">聯絡我們</h2>
-      </div>
+  <!-- Contact Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">聯絡我們</h2>
       
-      <div class="bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
+      <div class="bg-white border border-gray-200 rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
         <div class="text-center">
           <p class="text-lg text-gray-700 mb-6">想了解更多關於 Procreate 電繪課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。</p>
           <PaperformEmbed />
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Related Courses -->
-    <section class="mb-16">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">其他課程</h2>
-      </div>
+  <!-- Related Courses -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">其他課程</h2>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600"></div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-gray-900 mb-2">AI啟蒙與藝術創作課程</h3>
-            <p class="text-gray-600 mb-4">課程將引導學生深入探索人工智能（AI）在視覺藝術領域的應用...</p>
-            <a href="/school-courses/ai-enrichment-course" class="text-purple-600 hover:text-purple-700 font-semibold">
-              了解更多 »
-            </a>
+        {relatedCourses.map((course) => (
+          <div class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            <div class={`h-48 bg-gradient-to-br ${course.gradient}`}></div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">{course.title}</h3>
+              <p class="text-gray-600 mb-4">{course.description}</p>
+              <a href={course.link} class="text-cyan-600 hover:text-cyan-700 font-semibold">
+                了解更多 »
+              </a>
+            </div>
           </div>
-        </div>
-        
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="h-48 bg-gradient-to-br from-green-400 to-green-600"></div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-gray-900 mb-2">AI數碼動畫展</h3>
-            <p class="text-gray-600 mb-4">AI數碼動畫展是一個簡單有趣的 STEM Day 活動，學生可按主題設計喜歡的圖案/角色...</p>
-            <a href="/stem-day/ai-digital-animation-exhibition" class="text-purple-600 hover:text-purple-700 font-semibold">
-              了解更多 »
-            </a>
-          </div>
-        </div>
-        
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="h-48 bg-gradient-to-br from-orange-400 to-orange-600"></div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-gray-900 mb-2">Blockchain 區塊鏈課程</h3>
-            <p class="text-gray-600 mb-4">本課程旨在引領學生進入Web3.0的世界，瞭解在web3.0時代下...</p>
-            <a href="/school-courses/blockchain" class="text-purple-600 hover:text-purple-700 font-semibold">
-              了解更多 »
-            </a>
-          </div>
-        </div>
+        ))}
       </div>
-    </section>
-  </main>
-
-  <Footer />
+    </div>
+  </section>
 </Layout>
 
  
