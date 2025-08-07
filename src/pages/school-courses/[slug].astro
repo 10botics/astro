@@ -11,6 +11,7 @@ export async function getStaticPaths() {
     { params: { slug: 'donkey-car' } },
     { params: { slug: 'dobot' } },
     { params: { slug: 'ksp' } },
+    { params: { slug: 'lego-spike-prime' } },
     { params: { slug: 'minecraft' } },
     { params: { slug: 'microbit-parachute' } },
     { params: { slug: 'microbit-maze' } },
@@ -56,6 +57,9 @@ switch (slug) {
     break;
   case 'ksp':
     ChineseComponent = await import('./ksp太空計劃課程.astro');
+    break;
+  case 'lego-spike-prime':
+    ChineseComponent = await import('./Lego Spike Prime 機器人技術大師班.astro');
     break;
   case 'minecraft':
     ChineseComponent = await import('./Minecraft校園創建課程.astro');
