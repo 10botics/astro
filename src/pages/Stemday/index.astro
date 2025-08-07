@@ -1,0 +1,395 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import PaperformEmbed from '../../components/PaperformEmbed.astro';
+
+// Import images with error handling
+let heroImage, codroneExperience, aiArtCreation, virtualRocketDesign, aiDigitalAnimation, circuitTesting, microbitCar, mindControlRacing, martyRobot, matatalabProgramming, arGameExperience, vrGameExperience, virtualSpaceStation;
+
+try {
+  heroImage = await import('../../assets/images/stemday/mainpage/hero-image.jpeg');
+  codroneExperience = await import('../../assets/images/stemday/mainpage/codrone-experience.png');
+  aiArtCreation = await import('../../assets/images/stemday/mainpage/ai-art-creation.jpeg');
+  virtualRocketDesign = await import('../../assets/images/stemday/mainpage/virtual-rocket-design.jpg');
+  aiDigitalAnimation = await import('../../assets/images/stemday/mainpage/ai-digital-animation.png');
+  circuitTesting = await import('../../assets/images/stemday/mainpage/circuit-testing.png');
+  microbitCar = await import('../../assets/images/stemday/mainpage/microbit-car.png');
+  mindControlRacing = await import('../../assets/images/stemday/mainpage/mind-control-racing.png');
+  martyRobot = await import('../../assets/images/stemday/mainpage/marty-robot.png');
+  matatalabProgramming = await import('../../assets/images/stemday/mainpage/matatalab-programming.png');
+  arGameExperience = await import('../../assets/images/stemday/mainpage/ar-game-experience.png');
+  vrGameExperience = await import('../../assets/images/stemday/mainpage/vr-game-experience.png');
+  virtualSpaceStation = await import('../../assets/images/stemday/mainpage/virtual-space-station.png');
+} catch (error) {
+  console.warn('Some images could not be loaded:', error);
+}
+---
+
+<Layout title="STEM Day - 10教育">
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-background">
+        {heroImage && <Image src={heroImage.default} alt="STEM Day Hero" class="hero-image" />}
+        <div class="hero-overlay">
+          <div class="container">
+            <h1 class="hero-title">STEM Day</h1>
+            <h2 class="hero-subtitle">全力支援學校籌辦STEM day，讓學生對STEM有更加深入的認識，曠闊學生視野。​</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+      <div class="container">
+        <div class="video-container">
+          <iframe 
+            width="100%" 
+            height="400" 
+            src="https://www.youtube.com/embed/qs5OeXSTzsY" 
+            title="STEM Day Video"
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why 10botics Section -->
+    <section class="why-section">
+      <div class="container">
+        <h2 class="section-title">為什麼是10botics</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-clipboard-list"></i>
+            </div>
+            <h3>彈性活動配搭</h3>
+            <p>根據學校期望的內容安排適合不同年級學生的活動。我們亦可為您編排活動時間表。</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-pencil-alt"></i>
+            </div>
+            <h3>多元化內容</h3>
+            <p>融入 STEAM 和人工智能等多個的元素。提供一個全面的學習體驗，培養創造力和跨學科連接。内容更可按時間調節。</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-chalkboard-teacher"></i>
+            </div>
+            <h3>靈活人手安排</h3>
+            <p>就學校預算需求，我們可靈活編排導師人手，亦可活動前提供在校老師培訓。</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-crown"></i>
+            </div>
+            <h3>不同活動形式</h3>
+            <p>活動能以課堂、攤位、講座等形式進行。<br>10Botics亦可提供全級 / 全校性活動。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booths Section -->
+    <section class="booths-section">
+      <div class="container">
+        <h2 class="section-title">攤位</h2>
+        <p class="section-description">10Botics 提供以攤位的形式進行活動，例如過往爲不同學校舉行一日的STEM Day，為學生提供不同的攤位遊戲，當中包括：</p>
+        
+        <div class="booths-grid">
+          <div class="booth-card">
+            {codroneExperience && <Image src={codroneExperience.default} alt="CoDrone無人機體驗" class="booth-image" />}
+            <h3>CoDrone無人機體驗</h3>
+          </div>
+          <div class="booth-card">
+            {aiArtCreation && <Image src={aiArtCreation.default} alt="AI藝術創作" class="booth-image" />}
+            <h3>AI藝術創作</h3>
+          </div>
+          <div class="booth-card">
+            {virtualRocketDesign && <Image src={virtualRocketDesign.default} alt="虛擬火箭設計" class="booth-image" />}
+            <h3>虛擬火箭設計</h3>
+          </div>
+          <div class="booth-card">
+            {aiDigitalAnimation && <Image src={aiDigitalAnimation.default} alt="AI數碼動畫展" class="booth-image" />}
+            <h3>AI數碼動畫展</h3>
+          </div>
+          <div class="booth-card">
+            {circuitTesting && <Image src={circuitTesting.default} alt="電路接駁測試" class="booth-image" />}
+            <h3>電路接駁測試</h3>
+          </div>
+          <div class="booth-card">
+            {microbitCar && <Image src={microbitCar.default} alt="Micro:bit遙控車體驗" class="booth-image" />}
+            <h3>Micro:bit遙控車體驗</h3>
+          </div>
+          <div class="booth-card">
+            {mindControlRacing && <Image src={mindControlRacing.default} alt="念力賽車" class="booth-image" />}
+            <h3>念力賽車</h3>
+          </div>
+          <div class="booth-card">
+            {martyRobot && <Image src={martyRobot.default} alt="Marty 機械人編程體驗" class="booth-image" />}
+            <h3>Marty 機械人編程體驗</h3>
+          </div>
+          <div class="booth-card">
+            {matatalabProgramming && <Image src={matatalabProgramming.default} alt="Matatalab編程體驗" class="booth-image" />}
+            <h3>Matatalab編程體驗</h3>
+          </div>
+          <div class="booth-card">
+            {arGameExperience && <Image src={arGameExperience.default} alt="AR遊戲體驗" class="booth-image" />}
+            <h3>AR遊戲體驗</h3>
+          </div>
+          <div class="booth-card">
+            {vrGameExperience && <Image src={vrGameExperience.default} alt="VR遊戲體驗" class="booth-image" />}
+            <h3>VR遊戲體驗</h3>
+          </div>
+          <div class="booth-card">
+            {virtualSpaceStation && <Image src={virtualSpaceStation.default} alt="虛擬太空站接駁" class="booth-image" />}
+            <h3>虛擬太空站接駁</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-content">
+          <h2 class="section-title">想要了解更多？</h2>
+          <a href="#contact-form" class="cta-button">填寫下方表格聯絡我們</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact-form" class="form-section">
+      <div class="container">
+        <h2 class="section-title">聯絡我們</h2>
+        <PaperformEmbed />
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* Global Styles */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+  }
+
+  .section-description {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    color: #666;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    position: relative;
+    height: 60vh;
+    min-height: 400px;
+    overflow: hidden;
+  }
+
+  .hero-background {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+  }
+
+  .hero-title {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+    max-width: 800px;
+    line-height: 1.6;
+  }
+
+  /* Video Section */
+  .video-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+
+  .video-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* Why Section */
+  .why-section {
+    padding: 4rem 0;
+    background: white;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .feature-card {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .feature-icon {
+    font-size: 3rem;
+    color: #007bff;
+    margin-bottom: 1rem;
+  }
+
+  .feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .feature-card p {
+    color: #666;
+    line-height: 1.6;
+  }
+
+  /* Booths Section */
+  .booths-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+
+  .booths-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .booth-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .booth-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .booth-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .booth-card h3 {
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0;
+  }
+
+  /* Contact Section */
+  .contact-section {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+  }
+
+  .contact-content h2 {
+    color: white;
+    margin-bottom: 2rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: white;
+    color: #667eea;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Form Section */
+  .form-section {
+    padding: 4rem 0;
+    background: white;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .features-grid,
+    .booths-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .container {
+      padding: 0 15px;
+    }
+  }
+</style> 
