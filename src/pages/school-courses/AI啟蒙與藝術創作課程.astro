@@ -1,0 +1,305 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import AccordionSection from '../../components/course/AccordionSection.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import { Image } from 'astro:assets';
+
+// Import course image
+import featuredImage from '../../assets/images/school-courses/AI啟蒙與藝術創作課程/featured-image.png';
+
+// Course data
+export const courseData = {
+  title: "AI啟蒙與藝術創作課程",
+  subtitle: "探索人工智能在視覺藝術領域的應用及創作",
+  tags: ["AI 人工智能", "Arts 藝術", "ChatGPT", "Leonardo AI", "初中", "初小", "高小"],
+  videoId: "your-video-id-here",
+  description: "課程將引導學生深入探索人工智能（AI）在視覺藝術領域的應用及進行創作。學生將探索AI圖像生成平台上不同的功能，利用所學技巧，通過文字指令生成圖像。",
+  detailedDescription: "課程將引導學生深入探索人工智能（AI）在視覺藝術領域的應用及進行創作。學生將探索AI圖像生成平台上不同的功能，利用所學技巧，通過文字指令生成圖像。其後，學生更需以ChatGPT創作故事內容，並以AI圖像生成平台完成插畫製作。最後更製成故事繪本，並進行匯報，展示成果。",
+  heroImage: featuredImage
+};
+
+// Cross-disciplinary learning highlights
+const crossDisciplinaryLearning = [
+  {
+    icon: "fas fa-book-reader",
+    title: "價值教育",
+    description: "透過不同主題配合學校重點培養的價值觀和態度，例如使用中國詩詞/故事作主題以增強學生的國民身份認同。"
+  },
+  {
+    icon: "fas fa-highlighter",
+    title: "語文科",
+    description: "在創作AI生成作品時，學生需要就主題輸入各種中/英文文字指令，訓練學生對字詞及文字表達的能力。"
+  },
+  {
+    icon: "fas fa-file-image",
+    title: "視覺藝術科",
+    description: "AI圖像生成過程中會學習各種藝術風格、筆觸等和視藝有關的知識，讓學生可從嶄新的角度接觸藝術，激發創意。"
+  },
+  {
+    icon: "fas fa-robot",
+    title: "電腦科",
+    description: "引導學生探索人工智能的基本知識及各種應用，培養學生對科技的興趣。"
+  }
+];
+
+// Course curriculum - Beginner level
+const beginnerCurriculum = [
+  {
+    title: "簡介AI圖像生成平台",
+    content: [
+      "簡介AI藝術創作",
+      "AI藝術創作 - Poe教學",
+      "AI藝術創作 - Leonardo AI教學",
+      "如何輸入文字指令以生成圖像",
+      "Prompt Enhance 改善指令"
+    ]
+  },
+  {
+    title: "了解文字指令結構",
+    content: [
+      "如何以Poe構思文字指令(prompt)",
+      "如何修改圖像風格",
+      "圖像風格下的詳細設定",
+      "直接輸入風格關鍵字，加入到prompt前面"
+    ]
+  },
+  {
+    title: "探索自動改善文字指令功能",
+    content: [
+      "圖像比例+其他設定 (對比度、比例)",
+      "強化文字指令 (上)",
+      "AI生成隨機指令",
+      "AI自動改善現有文字指令"
+    ]
+  },
+  {
+    title: "以ChatGPT構思文字指令",
+    content: [
+      "整理圖像",
+      "以ChatGPT構思文字指令"
+    ]
+  },
+  {
+    title: "圖像風格及特殊參數",
+    content: [
+      "探索不同藝術風格，並加於圖像中"
+    ]
+  },
+  {
+    title: "調整圖像對比度及比例",
+    content: [
+      "調整圖像比例及其他特殊參數"
+    ]
+  },
+  {
+    title: "以AI局部強化文字指令",
+    content: [
+      "按個人需求給予AI指令，改善現有文字指令結構"
+    ]
+  },
+  {
+    title: "製作動畫",
+    content: [
+      "以現有AI圖像製作3至10秒動畫"
+    ]
+  }
+];
+
+// Course curriculum - Advanced level
+const advancedCurriculum = [
+  {
+    title: "以ChatGPT構思故事繪本大綱及文字指令",
+    content: [
+      "以ChatGPT生成故事繪本內每版內容，以及生成對應插圖所需之文字指令"
+    ]
+  },
+  {
+    title: "以參考圖像生成文字指令",
+    content: [
+      "上傳現有圖像 (AI生成、數位繪圖、實物等均可) 到AI圖像生成平台，讓AI生成相應文字指令"
+    ]
+  },
+  {
+    title: "讓AI參考現有圖像並生成畫面",
+    content: [
+      "讓AI根據參考圖像之整體風格、構圖、外觀、角色動作等生成近似畫面"
+    ]
+  },
+  {
+    title: "運用圖像種子製作固定的故事角色",
+    content: [
+      "學習圖像種子功能，製作固定外觀的故事角色"
+    ]
+  },
+  {
+    title: "故事插圖後製",
+    content: [
+      "對AI生成的角色外觀進行微調，例如衣服顏色、表情、動作等",
+      "製作角色後去除圖像背景，以便後期製作",
+      "獨立創作插圖背景及角色，並將兩者融合，完成插圖"
+    ]
+  },
+  {
+    title: "進行故事繪本匯報",
+    content: [
+      "完成故事繪本製作，並進行成果匯報"
+    ]
+  }
+];
+
+// Course arrangement
+const courseArrangement = [
+  {
+    icon: "fas fa-star",
+    title: "STEM Day 活動 (1.5 至 3 小時)",
+    description: ""
+  },
+  {
+    icon: "fas fa-star",
+    title: "完整課程 (16 小時)",
+    description: "建議一個學期完成 10 節課堂，每節 1.5 小時。*可根據學校需要調整課堂數及時數"
+  }
+];
+
+// FAQ section
+const faqItems = [
+  {
+    question: "什麽年級的學生適合？",
+    answer: [
+      "該課程一般適合任何初小至初中學生。",
+      "如學生具備基本電腦操作更好 （如打字）。"
+    ]
+  },
+  {
+    question: "學校需要甚麽設備？",
+    answer: [
+      "學校需準備以下項目",
+      "1） iPad / 手提電腦 / 電腦",
+      "2）學生Gmail 賬號 （以登入POE 及 Google Classroom）",
+      "建議先致電+852 6554-1506 或電郵至 info@10botics.com向同事溝通學校期望的教學內容，同事將就教學所需設備提供建議。"
+    ]
+  }
+];
+
+// Course highlights
+const courseHighlights = [
+  {
+    icon: "fas fa-palette",
+    title: "AI 藝術創作",
+    description: "學習使用 AI 圖像生成平台，通過文字指令創作獨特藝術作品"
+  },
+  {
+    icon: "fas fa-book",
+    title: "故事繪本製作",
+    description: "結合 ChatGPT 創作故事內容，並用 AI 生成插圖，完成完整的故事繪本"
+  },
+  {
+    icon: "fas fa-language",
+    title: "跨學科學習",
+    description: "整合語文、視覺藝術、電腦科等多個學科，培養綜合能力"
+  },
+  {
+    icon: "fas fa-users",
+    title: "協作與展示",
+    description: "與同學合作創作，並進行成果匯報，提升表達能力"
+  }
+];
+---
+
+<Layout title={courseData.title} description={courseData.description}>
+  <main>
+    <!-- Hero Section -->
+    <HeroSection 
+      title={courseData.title}
+      subtitle={courseData.subtitle}
+      description={courseData.detailedDescription}
+      heroImage={courseData.heroImage}
+      tags={courseData.tags}
+    />
+
+    <!-- Cross-disciplinary Learning Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">跨學科學習</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {crossDisciplinaryLearning.map((item) => (
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+              <div class="text-4xl text-blue-600 mb-4">
+                <i class={item.icon}></i>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
+              <p class="text-gray-600">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Content Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">課程內容</h2>
+          <p class="text-gray-600">* 可根據學校需要調整</p>
+        </div>
+
+        <!-- Beginner Course -->
+        <div class="mb-12">
+          <AccordionSection title="初階課程 (2-6小時)" items={beginnerCurriculum} />
+        </div>
+
+        <!-- Advanced Course -->
+        <div class="mb-12">
+          <AccordionSection title="進階：故事繪本課程 (4-10小時)" items={advancedCurriculum} />
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Arrangement Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">課程安排</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {courseArrangement.map((item) => (
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <div class="flex items-start">
+                <div class="text-3xl text-blue-600 mr-4">
+                  <i class={item.icon}></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
+                  {item.description && <p class="text-gray-600">{item.description}</p>}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="text-center mt-8">
+          <p class="text-gray-600">歡迎填妥下方表格讓同事為你提供咨詢。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <QnASection faqs={faqItems.map(item => ({
+      question: item.question,
+      answer: item.answer.join('\n')
+    }))} />
+
+    <!-- Contact Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">聯絡我們</h2>
+        </div>
+        <PaperformEmbed formId="qhmoqcvc" />
+      </div>
+    </section>
+  </main>
+</Layout> 
