@@ -53,6 +53,18 @@ Create the website in astro file under src/pages/school-courses/ and the name of
 - Import necessary images at the top of the file using `import { Image } from 'astro:assets';`
 - Follow the visual pattern from existing pages like 人工智能遊戲編程課程.astro
 
+**CRITICAL NO INLINE CSS REQUIREMENT:**
+- NEVER use inline `style=""` attributes in any HTML/JSX elements
+- Use Tailwind CSS classes for all styling needs
+- For dynamic styling that requires JavaScript:
+  - Use CSS classes and toggle them with JavaScript instead of inline styles
+  - Create CSS classes in a `<style>` block at the bottom of the file if needed
+  - Use `classList.add()`, `classList.remove()`, and `classList.toggle()` methods
+  - Example: Instead of `style="max-height: 0px"`, use `class="accordion-closed"` and define `.accordion-closed { max-height: 0; }`
+- For aspect ratios: Use Tailwind's aspect ratio utilities like `aspect-video` (16:9) or `aspect-square` (1:1)
+- For background patterns: Use Tailwind's background utilities or create reusable CSS classes
+- For color overrides: Use Tailwind's color utilities instead of inline color styles
+
 Structure the page with these sections in order:
 1. Hero section with title, subtitle, tags, and breadcrumbs
 2. Hero description section
@@ -139,6 +151,32 @@ For the "Course content/curriculum" section:
 - Use consistent card styling: `bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow`
 - Icon styling: `text-3xl text-cyan-500 mr-4` for FontAwesome icons
 - Grid layout: `grid md:grid-cols-2 lg:grid-cols-3 gap-8` for responsive design
+
+**JAVASCRIPT STYLING REQUIREMENTS:**
+- When JavaScript needs to modify element styles, use CSS classes instead of inline styles
+- Create CSS classes in a `<style>` block at the bottom of the file for dynamic styling
+- Use `classList` methods to toggle classes:
+  ```javascript
+  // Instead of: element.style.maxHeight = '0px';
+  // Use: element.classList.add('accordion-closed');
+  
+  // Instead of: element.style.maxHeight = element.scrollHeight + 'px';
+  // Use: element.classList.remove('accordion-closed');
+  ```
+- Example CSS classes for accordion functionality:
+  ```css
+  <style>
+    .accordion-closed {
+      max-height: 0 !important;
+    }
+    .accordion-open {
+      max-height: none !important;
+    }
+    .aspect-video {
+      aspect-ratio: 16 / 9;
+    }
+  </style>
+  ```
 
 **STYLE CONSISTENCY REQUIREMENTS:**
 - Follow structure of other existing pages like 人工智能遊戲編程課程.astro, CoSpaces 遊戲設計課程.astro
