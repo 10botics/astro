@@ -147,14 +147,14 @@ const pageKeywords = "STEM課程總覽, AI課程列表, 編程課程, 機器人�
               <article class="course-card bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
                 <!-- Hero Image -->
                 {course.heroImage && (
-                  <div class="course-image-container bg-gray-100 overflow-hidden">
+                  <div class="course-image-container bg-gray-100 overflow-hidden aspect-video">
                     {typeof course.heroImage === 'string' ? (
                       <img 
                         src={course.heroImage} 
                         alt={course.title}
                         width={600}
                         height={400}
-                        class="course-image hover:scale-105 transition-transform duration-300"
+                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                       />
                     ) : (
                       <Image 
@@ -162,7 +162,7 @@ const pageKeywords = "STEM課程總覽, AI課程列表, 編程課程, 機器人�
                         alt={course.title}
                         width={600}
                         height={400}
-                        class="course-image hover:scale-105 transition-transform duration-300"
+                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                       />
                     )}
                   </div>
