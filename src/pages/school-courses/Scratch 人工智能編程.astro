@@ -13,6 +13,38 @@ import faceRecognition from '../../assets/images/school-courses/Scratch 人工�
 import scratchAiHero from '../../assets/images/school-courses/Scratch 人工智能編程/scratch-ai-hero.jpg';
 import scratchprofie from '../../assets/images/school-courses/Scratch 人工智能編程/scratch-thumbnail.png';
 
+// Course features data
+const courseFeatures = {
+  title: "課程特色",
+  features: [
+    "了解 AI 五大理念，趨勢與實踐",
+    "認識機器學習 (Machine Learning) 的類別",
+    "透過 Teachable Machine 訓練人工智能模型，並結合 Scratch 製作不同的 AI 應用程式",
+    "讓學生體驗與 AI 互動"
+  ],
+  aiConceptsLink: "https://medium.com/10botics/ai-%E5%9F%BA%E7%A4%8E%E4%BA%94%E5%A4%A7%E7%90%86%E5%BF%B5-%E7%B5%A6k12%E5%AD%A9%E7%AB%A5%E7%9A%84ai%E6%95%99%E8%82%B2-44a4aafc03fb",
+  infographicImage: "/src/assets/images/school-courses/Scratch 人工智能編程/ai-five-concepts.webp",
+  demoVideo: {
+    videoId: "OoTX6U_aVto",
+    title: "Scratch AI Project - Mask Detector",
+    description: "輕易與 Teachable Machine 連結，讓學生發揮創意，實現所想"
+  },
+  aiExamples: [
+    {
+      title: "人面識別",
+      image: "https://lwfiles.mycourse.app/10botics-public/bf6bae32bf18a9afffdf2ef18615f8f9.gif"
+    },
+    {
+      title: "手勢識別",
+      image: "https://lwfiles.mycourse.app/10botics-public/c98ce8ccb7da82373fec7c244b34a9b3.gif"
+    },
+    {
+      title: "姿勢識別",
+      image: "https://lwfiles.mycourse.app/10botics-public/fa5eab50642474658210ee6ba7029e31.gif"
+    }
+  ]
+};
+
 // FAQ items
 const faqItems = [
   {
@@ -223,7 +255,7 @@ const curriculumItems = [
   </section>
 
   <!-- Course Features Section -->
-  <CourseFeatures />
+  <CourseFeatures features={courseFeatures} />
 
   <!-- Course Content Section -->
   <section class="bg-white py-16">
