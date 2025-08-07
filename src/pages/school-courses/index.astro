@@ -39,6 +39,7 @@ const astroCourses = Object.entries(courseFiles)
       'Delightex 遊戲設計課程': 'Delightex',
       'ksp太空計劃課程': 'ksp',
       'Minecraft校園創建課程': 'minecraft',
+      'Microbit 降落傘課程': 'microbit-parachute',
       'Procreate數位藝術課程': 'procreate',
       'raspberry-pi編程課程': 'raspberry-pi',
       'Scratch 人工智能編程': 'scratch-ai-programming',
@@ -102,7 +103,8 @@ function extractCourseTypeFromFilename(filename: string): string {
     'ai': 'AI', 'scratch': 'AI', 'arduino': 'Hardware',
     'blockchain': 'AI', 'raspberry': 'Hardware', 'donkey-car': 'Robotics',
     'coral': 'Hardware', 'demo': 'Demo', 'example': 'Demo',
-    'ksp': 'Creative', 'unity': 'Programming', 'roblox': 'Programming'
+    'ksp': 'Creative', 'unity': 'Programming', 'roblox': 'Programming',
+    'microbit': 'Hardware'
   };
   
   for (const [key, type] of Object.entries(typeMapping)) {
