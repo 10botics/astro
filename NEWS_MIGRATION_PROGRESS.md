@@ -125,7 +125,7 @@ Based on comprehensive crawl report analysis of ALL 121 pages, here are ALL news
 | 41 | 10教育推動AI藝術創作走出香港，連繫創意與旅遊學習 | `https://10botics.com/past-activities/2024/10/05/past-activities-2024-10-05-macau-ai-art/` | 2024-10-05 | ❌ Not Started | - | Macau AI art |
 | 42 | 澳門考察日：AI藝術重塑「旅遊+」體驗 | `https://10botics.com/past-activities/2024/10/18/past-activities-2024-10-18-macau-ai-art/` | 2024-10-18 | ❌ Not Started | - | Macau AI art tour |
 | 43 | 常識科組老師-如何運用AI工具協助提高教學效能 | `https://10botics.com/past-activities/2024/06/07/primary_school_ai_talk/` | 2024-06-07 | ❌ Not Started | - | Primary school AI talk |
-| 44 | 【深度探索Cospaces VR&AR】浸信會天虹小學 STEM Day | `https://10botics.com/past-activities/2024/07/10/rainbow-stem-day/` | 2024-07-10 | ❌ Not Started | - | STEM Day event |
+| 44 | 【深度探索Delightex VR&AR】浸信會天虹小學 STEM Day | `https://10botics.com/past-activities/2024/07/10/rainbow-stem-day/` | 2024-07-10 | ❌ Not Started | - | STEM Day event |
 | 45 | AI技術提升教學效能——10教育機構於潮州會館中學講座回顧 | `https://10botics.com/past-activities/2024/09/02/sdd-ccass/` | 2024-09-02 | ❌ Not Started | - | AI teaching effectiveness |
 | 46 | 家長教育講座-如何運用AI工具提高子女的學習效能 | `https://10botics.com/past-activities/2024/05/30/skhcwsms-parents-talk/` | 2024-05-30 | ❌ Not Started | - | Parent education talk |
 | 47 | 【科技夢想啟航】聖公會柴灣聖米迦勒小學 STEM Day | `https://10botics.com/past-activities/2024/06/24/skhcwsms-stem-day/` | 2024-06-24 | ❌ Not Started | - | STEM Day event |
