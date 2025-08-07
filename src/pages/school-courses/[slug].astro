@@ -9,6 +9,7 @@ export async function getStaticPaths() {
     { params: { slug: 'codrone' } },
     { params: { slug: 'Delightex' } },
     { params: { slug: 'donkey-car' } },
+    { params: { slug: 'dobot' } },
     { params: { slug: 'ksp' } },
     { params: { slug: 'minecraft' } },
     { params: { slug: 'microbit-parachute' } },
@@ -49,6 +50,9 @@ switch (slug) {
     break;
   case 'donkey-car':
     ChineseComponent = await import('./Donkey Car 無人車課程.astro');
+    break;
+  case 'dobot':
+    ChineseComponent = await import('./Dobot 智能機械手臂.astro');
     break;
   case 'ksp':
     ChineseComponent = await import('./ksp太空計劃課程.astro');
