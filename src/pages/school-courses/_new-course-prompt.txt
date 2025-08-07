@@ -71,7 +71,7 @@ Structure the page with these sections in order:
 3. Course highlights section
 4. Course features section (if included)
 5. Course objectives section (if included)
-6. Course content/curriculum section (ONLY ONE "課程內容" heading with duration info and accordion)
+6. Course content section (ONLY ONE "課程內容" heading with duration info and accordion)
 7. Course arrangements section (if markdown includes course arrangement info)
 8. FAQ section (MUST use QnASection component)
 9. Contact section
@@ -110,9 +110,7 @@ Structure the page with these sections in order:
 For the "Course content/curriculum" section:
 - Use ONLY ONE heading "課程內容" 
 - Include duration information (e.g., "共 X 小時") and adjustment note
-- Follow immediately with the accordion section for curriculum details
-- DO NOT create separate sections for course content - combine everything under one "課程內容" heading
-- IMPORTANT: When using the AccordionSection component, either pass an empty title or create a custom accordion section to avoid duplicate headings like "課程大綱" appearing after "課程內容"
+- Use the component SingleCourseContent component or DualCourseContent component
 - CRITICAL SPACING: The accordion content should follow immediately after the duration info with minimal spacing (use `mb-8` for duration info, not `mb-12` or separate sections)
 - The entire course content section should be ONE unified section, not split into separate sections
 
