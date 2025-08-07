@@ -102,7 +102,13 @@ export async function getStaticPaths() {
   return Array.from(allTags)
     .filter(tag => tag && tag.trim())
     .map(tag => {
-      const tagSlug = tag.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '').replace(/-+$/, '');
+      // Use the same slug generation logic as in index.astro
+      const tagSlug = tag
+        .toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(/[^\w\u4e00-\u9fff-]/g, '') // Allow Chinese characters (Unicode range 4e00-9fff)
+        .replace(/-+$/, '');
+      
       // Only create paths for non-empty slugs
       if (tagSlug && tagSlug.trim()) {
         return {
@@ -172,10 +178,16 @@ const astroCourses = Object.entries(courseFiles)
 
 // Filter courses by the current tag
 const filteredCourses = astroCourses.filter(course => 
-  course.tags.some(courseTag => 
-    courseTag.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '').replace(/-+$/, '') === tag ||
-    courseTag === originalTag
-  )
+  course.tags.some(courseTag => {
+    // Use the same slug generation logic for comparison
+    const courseTagSlug = courseTag
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^\w\u4e00-\u9fff-]/g, '') // Allow Chinese characters (Unicode range 4e00-9fff)
+      .replace(/-+$/, '');
+    
+    return courseTagSlug === tag || courseTag === originalTag;
+  })
 );
 
 // Sort courses by publication date (newest first)
