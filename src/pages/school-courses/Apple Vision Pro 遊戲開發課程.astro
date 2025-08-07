@@ -1,0 +1,318 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import { Image } from 'astro:assets';
+
+// Course data (static) - now in frontmatter
+export const courseData = {
+  title: "Apple Vision Pro 遊戲開發課程",
+  subtitle: "探索 Vision Pro 遊戲開發的無限可能！",
+  tags: ["遊戲開發", "Unity", "空間運算", "眼球追蹤", "手勢追蹤", "初中", "高中"],
+  videoId: "your-video-id-here",
+  description: "Apple Vision Pro 是蘋果公司研發的頭戴式裝置，具有強大的空間運算能力，提供沉浸式置身虛擬環境的效果。學員將可以親身體驗使用 Vision Pro，並利用 Unity 平台開發彈弓小遊戲，以掌握 Vision Pro 的獨特技術，如眼球追蹤和手勢追蹤。",
+  detailedDescription: "Apple Vision Pro 是蘋果公司研發的頭戴式裝置，具有強大的空間運算能力，提供沉浸式置身虛擬環境的效果。學員將可以親身體驗使用 Vision Pro，並利用 Unity 平台開發彈弓小遊戲，以掌握 Vision Pro 的獨特技術，如眼球追蹤和手勢追蹤。",
+  heroImage: null
+};
+
+// Course curriculum
+const curriculumItems = [
+  {
+    title: "體驗使用 Vision Pro 和設定 Vision Pro Unity Project",
+    content: [
+      "親身體驗 Apple Vision Pro 的使用方式",
+      "設定 Vision Pro Unity Project 開發環境",
+      "為 Vision Pro 遊戲開發基本互動功能"
+    ]
+  },
+  {
+    title: "改善互動體驗，設計遊戲關卡",
+    content: [
+      "改善互動體驗和用戶界面",
+      "設計遊戲關卡和遊戲機制",
+      "儲存關卡資料和遊戲進度"
+    ]
+  },
+  {
+    title: "關卡重置與限制，設計遊戲通關條件",
+    content: [
+      "實現關卡重置功能",
+      "設計遊戲限制和挑戰機制",
+      "建立遊戲通關條件和評分系統"
+    ]
+  },
+  {
+    title: "開發關卡列表，製作對話框，分享關卡",
+    content: [
+      "開發關卡列表和選擇界面",
+      "製作對話框和用戶提示",
+      "分享自己製作的關卡與同學交流"
+    ]
+  }
+];
+
+// Course highlights
+const courseHighlights = [
+  {
+    icon: "fas fa-vr-cardboard",
+    title: "沉浸式體驗",
+    description: "親身體驗 Apple Vision Pro 的強大空間運算能力，感受沉浸式虛擬環境"
+  },
+  {
+    icon: "fas fa-gamepad",
+    title: "Unity 遊戲開發",
+    description: "利用 Unity 平台開發適用於 Apple Vision Pro 的彈弓小遊戲"
+  },
+  {
+    icon: "fas fa-eye",
+    title: "眼球追蹤技術",
+    description: "掌握 Vision Pro 獨特的眼球追蹤技術，實現精準的互動體驗"
+  },
+  {
+    icon: "fas fa-hand-paper",
+    title: "手勢追蹤技術",
+    description: "學習手勢追蹤技術，創造直觀自然的遊戲互動方式"
+  },
+  {
+    icon: "fas fa-cube",
+    title: "空間運算",
+    description: "掌握空間運算概念，開發真正適合 AR/VR 平台的遊戲"
+  }
+];
+
+// Course features
+const courseFeatures = [
+  {
+    icon: "fas fa-code",
+    title: "Unity編程",
+    description: "利用 Unity 開發適用於Apple Vision Pro 的遊戲，如設定專案、設計互動功能等"
+  },
+  {
+    icon: "fas fa-cube",
+    title: "空間運算",
+    description: "掌握如何利用眼球追蹤和手勢追蹤等技術"
+  },
+  {
+    icon: "fas fa-puzzle-piece",
+    title: "遊戲開發技巧",
+    description: "利用 Scriptable Objects 和 Prefabs 設計遊戲關卡，設計可重複使用和修改的遊戲元素"
+  },
+  {
+    icon: "fas fa-cloud-upload-alt",
+    title: "發佈作品",
+    description: "發佈到 Vision OS App Store，將關卡整合到主遊戲，試玩和評價同學的關卡設計"
+  }
+];
+
+// Course objectives
+const courseObjectives = [
+  {
+    icon: "fas fa-vr-cardboard",
+    title: "體驗並熟悉 Apple Vision Pro 使用方式",
+    description: "通過實際操作，深入了解 Vision Pro 的功能和特性"
+  },
+  {
+    icon: "fas fa-code",
+    title: "掌握 Apple Vision Pro 遊戲開發的方法",
+    description: "學習使用 Unity 開發 Vision Pro 遊戲的完整流程"
+  },
+  {
+    icon: "fas fa-trophy",
+    title: "整合小遊戲關卡限制與通關條件",
+    description: "設計完整的遊戲機制，包括關卡設計、限制條件和通關要求"
+  }
+];
+
+// Course arrangements
+const courseArrangements = [
+  {
+    icon: "fas fa-clock",
+    title: "完整課程 (10-12 小時)",
+    description: "建議分為 4 節課完成\n每節課 2.5-3 小時\n從基礎體驗到完整遊戲開發\n包含實作和分享環節"
+  }
+];
+
+// FAQ items
+const faqItems = [
+  {
+    question: "需要自備 Apple Vision Pro 設備嗎？",
+    answer: "不需要，課程會提供 Apple Vision Pro 設備供學員體驗使用。"
+  },
+  {
+    question: "需要 Unity 編程經驗嗎？",
+    answer: "不需要，課程會從基礎開始教授 Unity 開發，適合初學者參加。"
+  },
+  {
+    question: "課程結束後能做出什麼作品？",
+    answer: "學生將完成一個完整的彈弓小遊戲，包含多個關卡和互動功能，並能分享給同學試玩。"
+  },
+  {
+    question: "可以將作品發佈到 App Store 嗎？",
+    answer: "課程會教授如何發佈到 Vision OS App Store，但實際發佈需要符合 Apple 的審核要求。"
+  },
+  {
+    question: "適合什麼年齡的學生？",
+    answer: "適合初中至高中學生，對遊戲開發和 AR/VR 技術有興趣的學員。"
+  }
+];
+
+---
+
+<Layout title="Apple Vision Pro 遊戲開發課程">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <HeroSection 
+    title={courseData.title}
+    subtitle={courseData.subtitle}
+    tags={courseData.tags}
+    heroImage={courseData.heroImage}
+    description={courseData.description}
+  />
+
+  <!-- Course highlights section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h3 class="text-base font-semibold leading-7 text-blue-600">課程亮點</h3>
+        <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl mt-2">為什麼選擇 Vision Pro 遊戲開發？</h2>
+        <p class="mt-6 text-lg leading-8 text-gray-600">
+          探索未來遊戲開發的新領域，掌握 AR/VR 技術的核心技能
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {courseHighlights.map((highlight) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-start">
+              <i class={`${highlight.icon} text-3xl text-cyan-500 mr-4 mt-1`}></i>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">{highlight.title}</h3>
+                <p class="text-gray-600">{highlight.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course features section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h3 class="text-base font-semibold leading-7 text-blue-600">課程特色</h3>
+        <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl mt-2">掌握 Vision Pro 開發核心技能</h2>
+        <p class="mt-6 text-lg leading-8 text-gray-600">
+          從基礎體驗到完整遊戲開發，全方位掌握 Apple Vision Pro 開發技術
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        {courseFeatures.map((feature) => (
+          <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-start">
+              <i class={`${feature.icon} text-3xl text-cyan-500 mr-4 mt-1`}></i>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
+                <p class="text-gray-600">{feature.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course objectives section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h3 class="text-base font-semibold leading-7 text-blue-600">學習目標</h3>
+        <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl mt-2">課程完成後你將能夠</h2>
+        <p class="mt-6 text-lg leading-8 text-gray-600">
+          掌握 Apple Vision Pro 開發的完整技能體系
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        {courseObjectives.map((objective) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-start">
+              <i class={`${objective.icon} text-3xl text-cyan-500 mr-4 mt-1`}></i>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">{objective.title}</h3>
+                <p class="text-gray-600">{objective.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course content section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">課程內容</h2>
+        <p class="mt-4 text-lg text-gray-600">共 10-12 小時 • 可根據學校需求調整課時安排</p>
+      </div>
+      
+      <div class="max-w-4xl mx-auto">
+        <SingleCourseContent items={curriculumItems} hours="10-12 小時" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Course arrangements section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h3 class="text-base font-semibold leading-7 text-blue-600">課程安排</h3>
+        <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl mt-2">靈活的課程規劃</h2>
+        <p class="mt-6 text-lg leading-8 text-gray-600">
+          根據學校需求提供不同的課程安排選項
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        {courseArrangements.map((arrangement) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-start">
+              <i class={`${arrangement.icon} text-3xl text-cyan-500 mr-4 mt-1`}></i>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">{arrangement.title}</h3>
+                <p class="text-gray-600 whitespace-pre-line">{arrangement.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div class="text-center mt-8">
+        <p class="text-gray-600">
+          需要其他課程安排？歡迎聯繫我們進行諮詢
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ section -->
+  <QnASection faqs={faqItems} />
+
+  <!-- Contact section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">立即報名</h2>
+        <p class="mt-4 text-lg text-gray-600">
+          開始你的 Vision Pro 遊戲開發之旅
+        </p>
+      </div>
+      
+      <PaperformEmbed />
+    </div>
+  </section>
+</Layout> 
