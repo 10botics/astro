@@ -110,314 +110,202 @@ try {
         </div>
       </div>
     </section>
-
-    <!-- Featured Activities Section (精選體驗活動) -->
-    <section class="classes-section featured-activities-section">
-      <div class="container">
-        <h2 class="section-title">精選體驗活動</h2>
-        <div class="cards-grid">
-          <div class="card">
-            {featuredAIDigitalAnimation && <Image src={featuredAIDigitalAnimation.default} alt="AI數碼動畫展" class="card-image" />}
-            <h3 class="card-title"><a href="/school-courses/AI數碼動畫展" rel="noopener">AI數碼動畫展</a></h3>
-          </div>
-          <div class="card">
-            {featuredTello && <Image src={featuredTello.default} alt="Tello 無人機課程" class="card-image" />}
-            <h3 class="card-title"><a href="/school-courses/Tello 無人機課程" rel="noopener">Tello 無人機課程</a></h3>
-          </div>
-          <div class="card">
-            {classKSP && <Image src={classKSP.default} alt="Kerbal Space Program (KSP) 太空任務設計課程" class="card-image" />}
-            <h3 class="card-title"><a href="/school-courses/ksp太空計劃課程" rel="noopener">Kerbal Space Program (KSP) 太空任務設計課程</a></h3>
-          </div>
-          <div class="card">
-            {classStrawBridge && <Image src={classStrawBridge.default} alt="飲管橋" class="card-image" />}
-            <h3 class="card-title"><a href="https://10botics.com/stem-day/straw-bridge/" target="_blank" rel="noopener">飲管橋</a></h3>
-          </div>
-          <div class="card">
-            {featuredDonkeyCar && <Image src={featuredDonkeyCar.default} alt="Donkey Car 無人車課程" class="card-image" />}
-            <h3 class="card-title"><a href="/school-courses/Donkey Car 無人車課程" rel="noopener">Donkey Car 無人車課程</a></h3>
-          </div>
-          <div class="card">
-            {featuredMinecraft && <Image src={featuredMinecraft.default} alt="Minecraft 校園創建課程" class="card-image" />}
-            <h3 class="card-title"><a href="/school-courses/Minecraft校園創建課程" rel="noopener">Minecraft 校園創建課程</a></h3>
-          </div>
-          <div class="card">
-            {featuredProcreate && <Image src={featuredProcreate.default} alt="Procreate電繪課程" class="card-image" />}
-            <h3 class="card-title"><a href="/school-courses/Procreate數位藝術課程" rel="noopener">Procreate電繪課程</a></h3>
-          </div>
-          <div class="card">
-            {classDIY && <Image src={classDIY.default} alt="DIY 手作" class="card-image" />}
-            <h3 class="card-title"><a href="https://10botics.com/stem-day/diy/" target="_blank" rel="noopener">DIY 手作</a></h3>
-          </div>
-          <div class="card">
-            {classScratchGame && <Image src={classScratchGame.default} alt="Scratch 遊戲設計課程" class="card-image" />}
-            <h3 class="card-title"><a href="/school-courses/Scratch遊戲設計課程" rel="noopener">Scratch 遊戲設計課程</a></h3>
-          </div>
-          <div class="card">
-            {matatalabProgramming && <Image src={matatalabProgramming.default} alt="Matatalab 入門編程課程" class="card-image" />}
-            <h3 class="card-title"><span>Matatalab 入門編程課程</span></h3>
-          </div>
-          <div class="card">
-            {classMicrobitMaze && <Image src={classMicrobitMaze.default} alt="Micro:bit 小車：逃出迷宮" class="card-image" />}
-            <h3 class="card-title"><a href="/school-courses/Microbit 逃出迷宮" rel="noopener">Micro:bit 小車：逃出迷宮</a></h3>
-          </div>
-          <div class="card">
-            {featuredDelightex && <Image src={featuredDelightex.default} alt="CoSpaces 遊戲設計課程" class="card-image" />}
-            <h3 class="card-title"><a href="/school-courses/Delightex 遊戲設計課程" rel="noopener">CoSpaces 遊戲設計課程</a></h3>
+      <!-- Video Section -->
+      <section class="video-section">
+        <div class="container">
+          <div class="video-container">
+            <iframe 
+              width="100%" 
+              height="400" 
+              src="https://www.youtube.com/embed/qs5OeXSTzsY" 
+              title="STEM Day Video"
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Video Section -->
-    <section class="video-section">
-      <div class="container">
-        <div class="video-container">
-          <iframe 
-            width="100%" 
-            height="400" 
-            src="https://www.youtube.com/embed/qs5OeXSTzsY" 
-            title="STEM Day Video"
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-    </section>
-
-    <!-- Why 10botics Section -->
-    <section class="why-section">
-      <div class="container">
-        <h2 class="section-title">為什麼是10botics</h2>
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-clipboard-list"></i>
+      </section>
+  
+      <!-- Why 10botics Section -->
+      <section class="why-section">
+        <div class="container">
+          <h2 class="section-title">為什麼是10botics</h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-clipboard-list"></i>
+              </div>
+              <h3>彈性活動配搭</h3>
+              <p>根據學校期望的內容安排適合不同年級學生的活動。我們亦可為您編排活動時間表。</p>
             </div>
-            <h3>彈性活動配搭</h3>
-            <p>根據學校期望的內容安排適合不同年級學生的活動。我們亦可為您編排活動時間表。</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-pencil-alt"></i>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-pencil-alt"></i>
+              </div>
+              <h3>多元化內容</h3>
+              <p>融入 STEAM 和人工智能等多個的元素。提供一個全面的學習體驗，培養創造力和跨學科連接。内容更可按時間調節。</p>
             </div>
-            <h3>多元化內容</h3>
-            <p>融入 STEAM 和人工智能等多個的元素。提供一個全面的學習體驗，培養創造力和跨學科連接。内容更可按時間調節。</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-chalkboard-teacher"></i>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-chalkboard-teacher"></i>
+              </div>
+              <h3>靈活人手安排</h3>
+              <p>就學校預算需求，我們可靈活編排導師人手，亦可活動前提供在校老師培訓。</p>
             </div>
-            <h3>靈活人手安排</h3>
-            <p>就學校預算需求，我們可靈活編排導師人手，亦可活動前提供在校老師培訓。</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-crown"></i>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-crown"></i>
+              </div>
+              <h3>不同活動形式</h3>
+              <p>活動能以課堂、攤位、講座等形式進行。<br>10Botics亦可提供全級 / 全校性活動。</p>
             </div>
-            <h3>不同活動形式</h3>
-            <p>活動能以課堂、攤位、講座等形式進行。<br>10Botics亦可提供全級 / 全校性活動。</p>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Booths Section -->
-    <section class="booths-section">
-      <div class="container">
-        <h2 class="section-title">攤位</h2>
-        <p class="section-description">10Botics 提供以攤位的形式進行活動，例如過往爲不同學校舉行一日的STEM Day，為學生提供不同的攤位遊戲，當中包括：</p>
-        
-        <div class="booths-grid">
-          <div class="booth-card">
-            {codroneExperience && <Image src={codroneExperience.default} alt="CoDrone無人機體驗" class="booth-image" />}
-            <h3>CoDrone無人機體驗</h3>
-          </div>
-          <div class="booth-card">
-            {aiArtCreation && <Image src={aiArtCreation.default} alt="AI藝術創作" class="booth-image" />}
-            <h3>AI藝術創作</h3>
-          </div>
-          <div class="booth-card">
-            {virtualRocketDesign && <Image src={virtualRocketDesign.default} alt="虛擬火箭設計" class="booth-image" />}
-            <h3>虛擬火箭設計</h3>
-          </div>
-          <div class="booth-card">
-            {aiDigitalAnimation && <Image src={aiDigitalAnimation.default} alt="AI數碼動畫展" class="booth-image" />}
-            <h3>AI數碼動畫展</h3>
-          </div>
-          <div class="booth-card">
-            {circuitTesting && <Image src={circuitTesting.default} alt="電路接駁測試" class="booth-image" />}
-            <h3>電路接駁測試</h3>
-          </div>
-          <div class="booth-card">
-            {microbitCar && <Image src={microbitCar.default} alt="Micro:bit遙控車體驗" class="booth-image" />}
-            <h3>Micro:bit遙控車體驗</h3>
-          </div>
-          <div class="booth-card">
-            {mindControlRacing && <Image src={mindControlRacing.default} alt="念力賽車" class="booth-image" />}
-            <h3>念力賽車</h3>
-          </div>
-          <div class="booth-card">
-            {martyRobot && <Image src={martyRobot.default} alt="Marty 機械人編程體驗" class="booth-image" />}
-            <h3>Marty 機械人編程體驗</h3>
-          </div>
-          <div class="booth-card">
-            {matatalabProgramming && <Image src={matatalabProgramming.default} alt="Matatalab編程體驗" class="booth-image" />}
-            <h3>Matatalab編程體驗</h3>
-          </div>
-          <div class="booth-card">
-            {arGameExperience && <Image src={arGameExperience.default} alt="AR遊戲體驗" class="booth-image" />}
-            <h3>AR遊戲體驗</h3>
-          </div>
-          <div class="booth-card">
-            {vrGameExperience && <Image src={vrGameExperience.default} alt="VR遊戲體驗" class="booth-image" />}
-            <h3>VR遊戲體驗</h3>
-          </div>
-          <div class="booth-card">
-            {virtualSpaceStation && <Image src={virtualSpaceStation.default} alt="虛擬太空站接駁" class="booth-image" />}
-            <h3>虛擬太空站接駁</h3>
+      </section>
+  
+      <!-- Booths Section -->
+      <section class="booths-section">
+        <div class="container">
+          <h2 class="section-title">攤位</h2>
+          <p class="section-description">10Botics 提供以攤位的形式進行活動，例如過往爲不同學校舉行一日的STEM Day，為學生提供不同的攤位遊戲，當中包括：</p>
+          
+          <div class="booths-grid">
+            <div class="booth-card">
+              {codroneExperience && <Image src={codroneExperience.default} alt="CoDrone無人機體驗" class="booth-image" />}
+              <h3>CoDrone無人機體驗</h3>
+            </div>
+            <div class="booth-card">
+              {aiArtCreation && <Image src={aiArtCreation.default} alt="AI藝術創作" class="booth-image" />}
+              <h3>AI藝術創作</h3>
+            </div>
+            <div class="booth-card">
+              {virtualRocketDesign && <Image src={virtualRocketDesign.default} alt="虛擬火箭設計" class="booth-image" />}
+              <h3>虛擬火箭設計</h3>
+            </div>
+            <div class="booth-card">
+              {aiDigitalAnimation && <Image src={aiDigitalAnimation.default} alt="AI數碼動畫展" class="booth-image" />}
+              <h3>AI數碼動畫展</h3>
+            </div>
+            <div class="booth-card">
+              {circuitTesting && <Image src={circuitTesting.default} alt="電路接駁測試" class="booth-image" />}
+              <h3>電路接駁測試</h3>
+            </div>
+            <div class="booth-card">
+              {microbitCar && <Image src={microbitCar.default} alt="Micro:bit遙控車體驗" class="booth-image" />}
+              <h3>Micro:bit遙控車體驗</h3>
+            </div>
+            <div class="booth-card">
+              {mindControlRacing && <Image src={mindControlRacing.default} alt="念力賽車" class="booth-image" />}
+              <h3>念力賽車</h3>
+            </div>
+            <div class="booth-card">
+              {martyRobot && <Image src={martyRobot.default} alt="Marty 機械人編程體驗" class="booth-image" />}
+              <h3>Marty 機械人編程體驗</h3>
+            </div>
+            <div class="booth-card">
+              {matatalabProgramming && <Image src={matatalabProgramming.default} alt="Matatalab編程體驗" class="booth-image" />}
+              <h3>Matatalab編程體驗</h3>
+            </div>
+            <div class="booth-card">
+              {arGameExperience && <Image src={arGameExperience.default} alt="AR遊戲體驗" class="booth-image" />}
+              <h3>AR遊戲體驗</h3>
+            </div>
+            <div class="booth-card">
+              {vrGameExperience && <Image src={vrGameExperience.default} alt="VR遊戲體驗" class="booth-image" />}
+              <h3>VR遊戲體驗</h3>
+            </div>
+            <div class="booth-card">
+              {virtualSpaceStation && <Image src={virtualSpaceStation.default} alt="虛擬太空站接駁" class="booth-image" />}
+              <h3>虛擬太空站接駁</h3>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
     <!-- Classes Section (課堂) -->
     <section class="classes-section">
-      <div class="container">
-        <h2 class="section-title">課堂</h2>
-        <p class="section-description">10Botics亦爲STEM Day提供以課室的形式進行，透過分班的方式進行課室活動，當中包括：</p>
-
-        <div class="cards-grid">
-          <div class="card">
-            {classMicrobitMaze && <Image src={classMicrobitMaze.default} alt="Micro:bit 小車：逃出迷宮" class="card-image" />}
-            <h3 class="card-title"><a href="https://10botics.com/school-courses/microbit-maze/" target="_blank" rel="noopener">Micro:bit 小車：逃出迷宮</a></h3>
-          </div>
-          <div class="card">
-            {classAIArtStory && <Image src={classAIArtStory.default} alt="AI藝術故事創作" class="card-image" />}
-            <h3 class="card-title"><a href="https://10botics.com/school-courses/ai-enrichment-course/" target="_blank" rel="noopener">AI藝術故事創作</a></h3>
-          </div>
-          <div class="card">
-            {classStrawBridge && <Image src={classStrawBridge.default} alt="飲管橋" class="card-image" />}
-            <h3 class="card-title"><a href="https://10botics.com/stem-day/straw-bridge/" target="_blank" rel="noopener">飲管橋</a></h3>
-          </div>
-          <div class="card">
-            {classMicrobitParachute && <Image src={classMicrobitParachute.default} alt="Micro:bit 降落傘" class="card-image" />}
-            <h3 class="card-title"><a href="https://10botics.com/stem-day/microbit-parachute/" target="_blank" rel="noopener">Micro:bit 降落傘</a></h3>
-          </div>
-          <div class="card">
-            {classScratchGame && <Image src={classScratchGame.default} alt="Scratch 遊戲設計" class="card-image" />}
-            <h3 class="card-title"><a href="https://10botics.com/school-courses/scratch-game-design/" target="_blank" rel="noopener">Scratch 遊戲設計</a></h3>
-          </div>
-          <div class="card">
-            {classKSP && <Image src={classKSP.default} alt="KSP太空遊戲設計" class="card-image" />}
-            <h3 class="card-title"><a href="https://10botics.com/school-courses/ksp/" target="_blank" rel="noopener">KSP太空遊戲設計</a></h3>
-          </div>
-          <div class="card">
-            {classDIY && <Image src={classDIY.default} alt="DIY手作" class="card-image" />}
-            <h3 class="card-title"><a href="https://10botics.com/stem-day/diy/" target="_blank" rel="noopener">DIY手作</a></h3>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Lectures Section (講座) -->
-    <section class="lectures-section">
-      <div class="container">
-        <h2 class="section-title">講座</h2>
-        <p class="section-description">10Botics也爲STEM Day提供以禮堂講座的方式進行，當中包括：</p>
-
-        <div class="lecture-row">
-          <div class="lecture-image">
-            {aiLectureImage && <Image src={aiLectureImage.default} alt="AI 人工智能講座" />}
-          </div>
-          <div class="lecture-content">
-            <h3>AI 人工智能講座</h3>
-            <p>講座將深入介紹人工智能是什麽，並解釋圖靈測試，講解AI 藝術創作、對話機器人等，讓學生全面瞭解最新的人工智能發展。</p>
-            <ul>
-              <li>認識人工智能</li>
-              <li>AI藝術創作：圖像生成、主題、設計風格與時間框架</li>
-              <li>什麽是圖靈測試</li>
-              <li>ChatGPT：原理與日常應用</li>
-              <li>AI 最新發展與無人車</li>
-            </ul>
+        <div class="container">
+          <h2 class="section-title">課堂</h2>
+          <p class="section-description">10Botics亦爲STEM Day提供以課室的形式進行，透過分班的方式進行課室活動，當中包括：</p>
+  
+          <div class="cards-grid">
+            <div class="card">
+              {classMicrobitMaze && <Image src={classMicrobitMaze.default} alt="Micro:bit 小車：逃出迷宮" class="card-image" />}
+              <h3 class="card-title"><a href="https://10botics.com/school-courses/microbit-maze/" target="_blank" rel="noopener">Micro:bit 小車：逃出迷宮</a></h3>
+            </div>
+            <div class="card">
+              {classAIArtStory && <Image src={classAIArtStory.default} alt="AI藝術故事創作" class="card-image" />}
+              <h3 class="card-title"><a href="https://10botics.com/school-courses/ai-enrichment-course/" target="_blank" rel="noopener">AI藝術故事創作</a></h3>
+            </div>
+            <div class="card">
+              {classStrawBridge && <Image src={classStrawBridge.default} alt="飲管橋" class="card-image" />}
+              <h3 class="card-title"><a href="https://10botics.com/stem-day/straw-bridge/" target="_blank" rel="noopener">飲管橋</a></h3>
+            </div>
+            <div class="card">
+              {classMicrobitParachute && <Image src={classMicrobitParachute.default} alt="Micro:bit 降落傘" class="card-image" />}
+              <h3 class="card-title"><a href="https://10botics.com/stem-day/microbit-parachute/" target="_blank" rel="noopener">Micro:bit 降落傘</a></h3>
+            </div>
+            <div class="card">
+              {classScratchGame && <Image src={classScratchGame.default} alt="Scratch 遊戲設計" class="card-image" />}
+              <h3 class="card-title"><a href="https://10botics.com/school-courses/scratch-game-design/" target="_blank" rel="noopener">Scratch 遊戲設計</a></h3>
+            </div>
+            <div class="card">
+              {classKSP && <Image src={classKSP.default} alt="KSP太空遊戲設計" class="card-image" />}
+              <h3 class="card-title"><a href="https://10botics.com/school-courses/ksp/" target="_blank" rel="noopener">KSP太空遊戲設計</a></h3>
+            </div>
+            <div class="card">
+              {classDIY && <Image src={classDIY.default} alt="DIY手作" class="card-image" />}
+              <h3 class="card-title"><a href="https://10botics.com/stem-day/diy/" target="_blank" rel="noopener">DIY手作</a></h3>
+            </div>
           </div>
         </div>
-
-        <div class="lecture-row">
-          <div class="lecture-image icon">
-            {blockchainIcon && <Image src={blockchainIcon.default} alt="區塊鏈專題講座" />}
+      </section>
+  
+      <!-- Lectures Section (講座) -->
+      <section class="lectures-section">
+        <div class="container">
+          <h2 class="section-title">講座</h2>
+          <p class="section-description">10Botics也爲STEM Day提供以禮堂講座的方式進行，當中包括：</p>
+  
+          <div class="lecture-row">
+            <div class="lecture-image">
+              {aiLectureImage && <Image src={aiLectureImage.default} alt="AI 人工智能講座" />}
+            </div>
+            <div class="lecture-content">
+              <h3>AI 人工智能講座</h3>
+              <p>講座將深入介紹人工智能是什麽，並解釋圖靈測試，講解AI 藝術創作、對話機器人等，讓學生全面瞭解最新的人工智能發展。</p>
+              <ul>
+                <li>認識人工智能</li>
+                <li>AI藝術創作：圖像生成、主題、設計風格與時間框架</li>
+                <li>什麽是圖靈測試</li>
+                <li>ChatGPT：原理與日常應用</li>
+                <li>AI 最新發展與無人車</li>
+              </ul>
+            </div>
           </div>
-          <div class="lecture-content">
-            <h3>區塊鏈專題講座</h3>
-            <p>由行業導師主講，講解區塊鏈基礎、加密貨幣、NFT 等熱門主題，幫助同學理解區塊鏈技術的實際價值與應用。</p>
-            <ul>
-              <li>認識區塊鏈基礎</li>
-              <li>開放源代碼與重要性</li>
-              <li>NFT 和數位資產</li>
-              <li>加密錢包與安全</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Featured Activities Section (精選體驗活動) -->
-    <section class="classes-section featured-activities-section">
-      <div class="container">
-        <h2 class="section-title">精選體驗活動</h2>
-        <div class="cards-grid">
-          <div class="card">
-            {featuredAIDigitalAnimation && <Image src={featuredAIDigitalAnimation.default} alt="AI數碼動畫展" class="card-image" />}
-            <h3 class="card-title"><a href="/school-courses/AI數碼動畫展" rel="noopener">AI數碼動畫展</a></h3>
-          </div>
-          <div class="card">
-            {featuredTello && <Image src={featuredTello.default} alt="Tello 無人機課程" class="card-image" />}
-            <h3 class="card-title"><a href="/school-courses/Tello 無人機課程" rel="noopener">Tello 無人機課程</a></h3>
-          </div>
-          <div class="card">
-            {classKSP && <Image src={classKSP.default} alt="Kerbal Space Program (KSP) 太空任務設計課程" class="card-image" />}
-            <h3 class="card-title"><a href="/school-courses/ksp太空計劃課程" rel="noopener">Kerbal Space Program (KSP) 太空任務設計課程</a></h3>
-          </div>
-          <div class="card">
-            {classStrawBridge && <Image src={classStrawBridge.default} alt="飲管橋" class="card-image" />}
-            <h3 class="card-title"><a href="https://10botics.com/stem-day/straw-bridge/" target="_blank" rel="noopener">飲管橋</a></h3>
-          </div>
-          <div class="card">
-            {featuredDonkeyCar && <Image src={featuredDonkeyCar.default} alt="Donkey Car 無人車課程" class="card-image" />}
-            <h3 class="card-title"><a href="/school-courses/Donkey Car 無人車課程" rel="noopener">Donkey Car 無人車課程</a></h3>
-          </div>
-          <div class="card">
-            {featuredMinecraft && <Image src={featuredMinecraft.default} alt="Minecraft 校園創建課程" class="card-image" />}
-            <h3 class="card-title"><a href="/school-courses/Minecraft校園創建課程" rel="noopener">Minecraft 校園創建課程</a></h3>
-          </div>
-          <div class="card">
-            {featuredProcreate && <Image src={featuredProcreate.default} alt="Procreate電繪課程" class="card-image" />}
-            <h3 class="card-title"><a href="/school-courses/Procreate數位藝術課程" rel="noopener">Procreate電繪課程</a></h3>
-          </div>
-          <div class="card">
-            {classDIY && <Image src={classDIY.default} alt="DIY 手作" class="card-image" />}
-            <h3 class="card-title"><a href="https://10botics.com/stem-day/diy/" target="_blank" rel="noopener">DIY 手作</a></h3>
-          </div>
-          <div class="card">
-            {classScratchGame && <Image src={classScratchGame.default} alt="Scratch 遊戲設計課程" class="card-image" />}
-            <h3 class="card-title"><a href="/school-courses/Scratch遊戲設計課程" rel="noopener">Scratch 遊戲設計課程</a></h3>
-          </div>
-          <div class="card">
-            {matatalabProgramming && <Image src={matatalabProgramming.default} alt="Matatalab 入門編程課程" class="card-image" />}
-            <h3 class="card-title"><span>Matatalab 入門編程課程</span></h3>
-          </div>
-          <div class="card">
-            {classMicrobitMaze && <Image src={classMicrobitMaze.default} alt="Micro:bit 小車：逃出迷宮" class="card-image" />}
-            <h3 class="card-title"><a href="/school-courses/Microbit 逃出迷宮" rel="noopener">Micro:bit 小車：逃出迷宮</a></h3>
-          </div>
-          <div class="card">
-            {featuredDelightex && <Image src={featuredDelightex.default} alt="CoSpaces 遊戲設計課程" class="card-image" />}
-            <h3 class="card-title"><a href="/school-courses/Delightex 遊戲設計課程" rel="noopener">CoSpaces 遊戲設計課程</a></h3>
+  
+          <div class="lecture-row">
+            <div class="lecture-image icon">
+              {blockchainIcon && <Image src={blockchainIcon.default} alt="區塊鏈專題講座" />}
+            </div>
+            <div class="lecture-content">
+              <h3>區塊鏈專題講座</h3>
+              <p>由行業導師主講，講解區塊鏈基礎、加密貨幣、NFT 等熱門主題，幫助同學理解區塊鏈技術的實際價值與應用。</p>
+              <ul>
+                <li>認識區塊鏈基礎</li>
+                <li>開放源代碼與重要性</li>
+                <li>NFT 和數位資產</li>
+                <li>加密錢包與安全</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-
+      </section>
+  
+     
+  
+  
     <!-- Gallery Section (活動花絮) -->
     <section class="gallery-section">
       <div class="container">
@@ -434,6 +322,61 @@ try {
           {galleryImg9 && <Image src={galleryImg9.default} alt="活動花絮 9" class="gallery-image" />}
         </div>
       </div>
+    </section>
+    <section>
+        <div class="container">
+            <h2 class="section-title">精選體驗活動</h2>
+            <div class="cards-grid">
+              <div class="card">
+                {featuredAIDigitalAnimation && <Image src={featuredAIDigitalAnimation.default} alt="AI數碼動畫展" class="card-image" />}
+                <h3 class="card-title"><a href="/school-courses/ai-digital-animation-exhibition" rel="noopener">AI數碼動畫展</a></h3>
+              </div>
+              <div class="card">
+                {featuredTello && <Image src={featuredTello.default} alt="Tello 無人機課程" class="card-image" />}
+                <h3 class="card-title"><a href="/school-courses/tello" rel="noopener">Tello 無人機課程</a></h3>
+              </div>
+              <div class="card">
+                {classKSP && <Image src={classKSP.default} alt="Kerbal Space Program (KSP) 太空任務設計課程" class="card-image" />}
+                <h3 class="card-title"><a href="/school-courses/ksp" rel="noopener">Kerbal Space Program (KSP) 太空任務設計課程</a></h3>
+              </div>
+              <div class="card">
+                {classStrawBridge && <Image src={classStrawBridge.default} alt="飲管橋" class="card-image" />}
+                <h3 class="card-title"><a href="https://10botics.com/stem-day/straw-bridge/" target="_blank" rel="noopener">飲管橋</a></h3>
+              </div>
+              <div class="card">
+                {featuredDonkeyCar && <Image src={featuredDonkeyCar.default} alt="Donkey Car 無人車課程" class="card-image" />}
+                <h3 class="card-title"><a href="/school-courses/donkey-car" rel="noopener">Donkey Car 無人車課程</a></h3>
+              </div>
+              <div class="card">
+                {featuredMinecraft && <Image src={featuredMinecraft.default} alt="Minecraft 校園創建課程" class="card-image" />}
+                <h3 class="card-title"><a href="/school-courses/minecraft" rel="noopener">Minecraft 校園創建課程</a></h3>
+              </div>
+              <div class="card">
+                {featuredProcreate && <Image src={featuredProcreate.default} alt="Procreate電繪課程" class="card-image" />}
+                <h3 class="card-title"><a href="/school-courses/procreate" rel="noopener">Procreate電繪課程</a></h3>
+              </div>
+              <div class="card">
+                {classDIY && <Image src={classDIY.default} alt="DIY 手作" class="card-image" />}
+                <h3 class="card-title"><a href="https://10botics.com/stem-day/diy/" target="_blank" rel="noopener">DIY 手作</a></h3>
+              </div>
+              <div class="card">
+                {classScratchGame && <Image src={classScratchGame.default} alt="Scratch 遊戲設計課程" class="card-image" />}
+                <h3 class="card-title"><a href="/school-courses/scratch-game-design" rel="noopener">Scratch 遊戲設計課程</a></h3>
+              </div>
+              <div class="card">
+                {matatalabProgramming && <Image src={matatalabProgramming.default} alt="Matatalab 入門編程課程" class="card-image" />}
+                <h3 class="card-title"><a href="/school-courses/raspberry-pi" rel="noopener">Matatalab 入門編程課程</a></h3>
+              </div>
+              <div class="card">
+                {classMicrobitMaze && <Image src={classMicrobitMaze.default} alt="Micro:bit 小車：逃出迷宮" class="card-image" />}
+                <h3 class="card-title"><a href="/school-courses/microbit-maze" rel="noopener">Micro:bit 小車：逃出迷宮</a></h3>
+              </div>
+              <div class="card">
+                {featuredDelightex && <Image src={featuredDelightex.default} alt="CoSpaces 遊戲設計課程" class="card-image" />}
+                <h3 class="card-title"><a href="/school-courses/Delightex" rel="noopener">CoSpaces 遊戲設計課程</a></h3>
+              </div>
+            </div>
+          </div>
     </section>
 
     <!-- Contact Form Section -->
