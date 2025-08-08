@@ -1,1 +1,165 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import CourseHighlights from '../../components/course/CourseHighlights.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import { Image } from 'astro:assets';
+
+// Hero image
+import heroImg from '../../assets/images/Stemday/飲管橋/20230718_024242873_iOS-scaled.jpg';
+
+// Images for 活動內容 left-side gallery
+import activityImg1 from '../../assets/images/Stemday/飲管橋/20230718_014654751_iOS-2048x1252.jpg';
+import activityImg2 from '../../assets/images/Stemday/飲管橋/WhatsApp-Image-2023-03-27-10-00-41-3-1.jpeg';
+
+// Gallery images (精選照片)
+import g1 from '../../assets/images/Stemday/飲管橋/IMG_9085-scaled.jpeg';
+import g2 from '../../assets/images/Stemday/飲管橋/IMG_9078-scaled.jpeg';
+import g3 from '../../assets/images/Stemday/飲管橋/20230630_104109-scaled.jpg';
+import g4 from '../../assets/images/Stemday/飲管橋/IMG_9987-scaled.jpeg';
+import g5 from '../../assets/images/Stemday/飲管橋/WhatsApp-Image-2023-03-27-10-00-23-1.jpeg';
+import g6 from '../../assets/images/Stemday/飲管橋/WhatsApp-Image-2022-07-20-16-32-25.jpeg';
+import g7 from '../../assets/images/Stemday/飲管橋/IMG_4439-scaled.jpg';
+import g8 from '../../assets/images/Stemday/飲管橋/20230718_024242873_iOS-scaled.jpg';
+import g9 from '../../assets/images/Stemday/飲管橋/IMG_2525-scaled.jpg';
+import g10 from '../../assets/images/Stemday/飲管橋/WhatsApp-Image-2023-03-27-10-00-41-3-1.jpeg';
+import g11 from '../../assets/images/Stemday/飲管橋/20230718_014654751_iOS-2048x1252.jpg';
+
+const hero = {
+  title: '飲管橋',
+  subtitle: '動手做工程，探索結構設計與力學原理',
+  tags: ['Engineering 工程', '初中', '高中', '高小'],
+  heroImage: heroImg,
+  description:
+    '想激發學生對工程學的興趣？透過親手建造吸管橋，了解橋樑的結構設計、力學概念與取捨，培養創造力與解難能力。',
+};
+
+const highlights: string[] = [
+  '實踐與學習結合：在動手建造中學會結構設計與物理力學',
+  '培養創造力：面對設計挑戰，提出創新解決方案',
+  '團隊合作與溝通：分工協作、有效討論與統一決策',
+  '實際應用工程原則：把理論轉化為解決真實問題的能力',
+];
+
+const activityItems = [
+  {
+    title: '簡介與前導 [5分鐘]',
+    content: [
+      '引導學生進入課程主題，介紹橋梁的不同結構和重要性。',
+      '說明活動目標和預期學習成果。',
+    ],
+  },
+  {
+    title: '結構與設計原則 [5分鐘]',
+    content: [
+      '簡要介紹結構的基本原則，如強度、支撐方式和負載分佈。',
+      '示範不同類型的橋梁結構，並討論其特點。',
+    ],
+  },
+  {
+    title: '團隊建造橋梁 [35分鐘]',
+    content: [
+      '將學生分成小組，每個小組設計和建造自己的吸管橋梁。',
+      '鼓勵團隊成員共同討論和計劃，並分工合作完成建造任務。',
+    ],
+  },
+  {
+    title: '展示和評估 [15分鐘]',
+    content: [
+      '每個小組將把他們的橋梁帶到測試站，將重物放置在橋梁上，並記錄所放置的重量。',
+      '能夠承受最多重量的橋梁將成為獲勝者。',
+    ],
+  },
+];
+
+const faqs = [
+  {
+    question: '這項活動適合什麼年級的同學參與？',
+    answer: '這項活動適合高小至初中學生。',
+  },
+  {
+    question: '學校需要準備什麼？',
+    answer:
+      '我們可按需要提供物資、人手及獎品，亦可提供英語教學與分組匯報等增值服務。歡迎致電 +852 6554-1506 與我們溝通細節。',
+  },
+];
+---
+
+<Layout title="飲管橋">
+  <!-- Font Awesome for icons used in accordions -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <HeroSection 
+    title={hero.title}
+    subtitle={hero.subtitle}
+    tags={hero.tags}
+    heroImage={hero.heroImage}
+    description={hero.description}
+  />
+
+  <!-- Intro: Video + Text -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-8 items-start">
+        <div class="aspect-w-16 aspect-h-9 w-full bg-black rounded-lg overflow-hidden shadow-lg">
+          <iframe 
+            class="w-full h-full"
+            src="https://www.youtube.com/embed/C9nv9BgHDnw" 
+            title="飲管橋活動影片"
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            透過建造橋梁，學生將學習結構設計、物理力學概念，並培養創造解決問題的能力。這項活動不僅教導建構穩固結構的原則，也讓學生實際應用工程學知識解決挑戰，同時激發他們的創造思維。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CourseHighlights title="活動特色" highlights={highlights} icon="star" />
+
+  <SingleCourseContent 
+    items={activityItems}
+    hours="約1小時"
+    images={[
+      { src: activityImg1, alt: '活動過程照 1' },
+      { src: activityImg2, alt: '活動過程照 2' },
+    ]}
+  />
+
+  <!-- 精選照片 -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-10 text-center">精選照片</h2>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {[g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11].map((img, idx) => (
+          <div class="rounded-lg overflow-hidden shadow-sm bg-white" aria-label={`gallery-${idx}`}>
+            <Image src={img} alt={`精選照片 ${idx + 1}`} width={800} height={600} class="w-full h-56 object-cover" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <QnASection faqs={faqs} />
+
+  <!-- Contact -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">聯絡我們</h2>
+        <p class="text-lg text-gray-600">想了解更多 STEM Day 活動安排？歡迎聯絡我們獲取詳細資訊。</p>
+      </div>
+      <PaperformEmbed />
+    </div>
+  </section>
+</Layout>
+
  
