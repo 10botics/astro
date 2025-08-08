@@ -4,7 +4,39 @@ import { Image } from 'astro:assets';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
 
 // Import images with error handling
-let heroImage, codroneExperience, aiArtCreation, virtualRocketDesign, aiDigitalAnimation, circuitTesting, microbitCar, mindControlRacing, martyRobot, matatalabProgramming, arGameExperience, vrGameExperience, virtualSpaceStation;
+let heroImage,
+  codroneExperience,
+  aiArtCreation,
+  virtualRocketDesign,
+  aiDigitalAnimation,
+  circuitTesting,
+  microbitCar,
+  mindControlRacing,
+  martyRobot,
+  matatalabProgramming,
+  arGameExperience,
+  vrGameExperience,
+  virtualSpaceStation;
+
+// Additional images from original STEM Day HTML content
+let classMicrobitMaze,
+  classAIArtStory,
+  classStrawBridge,
+  classMicrobitParachute,
+  classScratchGame,
+  classKSP,
+  classDIY,
+  aiLectureImage,
+  blockchainIcon,
+  galleryImg1,
+  galleryImg2,
+  galleryImg3,
+  galleryImg4,
+  galleryImg5,
+  galleryImg6,
+  galleryImg7,
+  galleryImg8,
+  galleryImg9;
 
 try {
   heroImage = await import('../../assets/images/Stemday/mainpage/hero-image.jpeg');
@@ -20,6 +52,30 @@ try {
   arGameExperience = await import('../../assets/images/Stemday/mainpage/ar-game-experience.png');
   vrGameExperience = await import('../../assets/images/Stemday/mainpage/vr-game-experience.png');
   virtualSpaceStation = await import('../../assets/images/Stemday/mainpage/virtual-space-station.png');
+  
+  // Classes (課堂)
+  classMicrobitMaze = await import('../../assets/images/Stemday/featured-activities/IMG_1726-1024x768.jpg');
+  classAIArtStory = await import('../../assets/images/Stemday/featured-activities/IMG_0089-1024x768.jpg');
+  classStrawBridge = await import('../../assets/images/Stemday/past-activities/20230718_024242873_iOS-1024x768.jpg');
+  classMicrobitParachute = await import('../../assets/images/Stemday/past-activities/Screenshot-2024-08-16-181803.png');
+  classScratchGame = await import('../../assets/images/Stemday/classroom-activities/Scratch-遊戲設計-768x701.png');
+  classKSP = await import('../../assets/images/Stemday/past-activities/WhatsApp-Image-2023-07-05-at-14.18.132-1024x768.jpeg');
+  classDIY = await import('../../assets/images/Stemday/featured-activities/IMG_3708-scaled-e1720172148276-1024x780.jpg');
+
+  // Lectures (講座)
+  aiLectureImage = await import('../../assets/images/Stemday/past-activities/Screenshot-2023-10-13-174241.png');
+  blockchainIcon = await import('../../assets/images/Stemday/featured-activities/112-e1696583914904.png');
+
+  // Gallery (活動花絮)
+  galleryImg1 = await import('../../assets/images/Stemday/featured-activities/IMG_0089-1024x768.jpg');
+  galleryImg2 = await import('../../assets/images/Stemday/featured-activities/LKN_2476-Enhanced-NR-1-1024x768.jpg');
+  galleryImg3 = await import('../../assets/images/Stemday/featured-activities/IMG_9985-1024x768.jpeg');
+  galleryImg4 = await import('../../assets/images/Stemday/past-activities/IMG_1979-scaled.jpg');
+  galleryImg5 = await import('../../assets/images/Stemday/past-activities/IMG_3821-scaled.jpg');
+  galleryImg6 = await import('../../assets/images/Stemday/past-activities/Screenshot-2024-08-02-181239-1024x768.png');
+  galleryImg7 = await import('../../assets/images/Stemday/past-activities/Screenshot-2024-08-02-103220-1024x768.png');
+  galleryImg8 = await import('../../assets/images/Stemday/past-activities/Screenshot-2024-08-02-105604-1024x768.png');
+  galleryImg9 = await import('../../assets/images/Stemday/past-activities/Screenshot-2024-08-02-105923-3-1024x768.png');
 } catch (error) {
   console.warn('Some images could not be loaded:', error);
 }
@@ -149,6 +205,104 @@ try {
             {virtualSpaceStation && <Image src={virtualSpaceStation.default} alt="虛擬太空站接駁" class="booth-image" />}
             <h3>虛擬太空站接駁</h3>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Classes Section (課堂) -->
+    <section class="classes-section">
+      <div class="container">
+        <h2 class="section-title">課堂</h2>
+        <p class="section-description">10Botics亦爲STEM Day提供以課室的形式進行，透過分班的方式進行課室活動，當中包括：</p>
+
+        <div class="cards-grid">
+          <div class="card">
+            {classMicrobitMaze && <Image src={classMicrobitMaze.default} alt="Micro:bit 小車：逃出迷宮" class="card-image" />}
+            <h3 class="card-title"><a href="https://10botics.com/school-courses/microbit-maze/" target="_blank" rel="noopener">Micro:bit 小車：逃出迷宮</a></h3>
+          </div>
+          <div class="card">
+            {classAIArtStory && <Image src={classAIArtStory.default} alt="AI藝術故事創作" class="card-image" />}
+            <h3 class="card-title"><a href="https://10botics.com/school-courses/ai-enrichment-course/" target="_blank" rel="noopener">AI藝術故事創作</a></h3>
+          </div>
+          <div class="card">
+            {classStrawBridge && <Image src={classStrawBridge.default} alt="飲管橋" class="card-image" />}
+            <h3 class="card-title"><a href="https://10botics.com/stem-day/straw-bridge/" target="_blank" rel="noopener">飲管橋</a></h3>
+          </div>
+          <div class="card">
+            {classMicrobitParachute && <Image src={classMicrobitParachute.default} alt="Micro:bit 降落傘" class="card-image" />}
+            <h3 class="card-title"><a href="https://10botics.com/stem-day/microbit-parachute/" target="_blank" rel="noopener">Micro:bit 降落傘</a></h3>
+          </div>
+          <div class="card">
+            {classScratchGame && <Image src={classScratchGame.default} alt="Scratch 遊戲設計" class="card-image" />}
+            <h3 class="card-title"><a href="https://10botics.com/school-courses/scratch-game-design/" target="_blank" rel="noopener">Scratch 遊戲設計</a></h3>
+          </div>
+          <div class="card">
+            {classKSP && <Image src={classKSP.default} alt="KSP太空遊戲設計" class="card-image" />}
+            <h3 class="card-title"><a href="https://10botics.com/school-courses/ksp/" target="_blank" rel="noopener">KSP太空遊戲設計</a></h3>
+          </div>
+          <div class="card">
+            {classDIY && <Image src={classDIY.default} alt="DIY手作" class="card-image" />}
+            <h3 class="card-title"><a href="https://10botics.com/stem-day/diy/" target="_blank" rel="noopener">DIY手作</a></h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lectures Section (講座) -->
+    <section class="lectures-section">
+      <div class="container">
+        <h2 class="section-title">講座</h2>
+        <p class="section-description">10Botics也爲STEM Day提供以禮堂講座的方式進行，當中包括：</p>
+
+        <div class="lecture-row">
+          <div class="lecture-image">
+            {aiLectureImage && <Image src={aiLectureImage.default} alt="AI 人工智能講座" />}
+          </div>
+          <div class="lecture-content">
+            <h3>AI 人工智能講座</h3>
+            <p>講座將深入介紹人工智能是什麽，並解釋圖靈測試，講解AI 藝術創作、對話機器人等，讓學生全面瞭解最新的人工智能發展。</p>
+            <ul>
+              <li>認識人工智能</li>
+              <li>AI藝術創作：圖像生成、主題、設計風格與時間框架</li>
+              <li>什麽是圖靈測試</li>
+              <li>ChatGPT：原理與日常應用</li>
+              <li>AI 最新發展與無人車</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="lecture-row">
+          <div class="lecture-image icon">
+            {blockchainIcon && <Image src={blockchainIcon.default} alt="區塊鏈專題講座" />}
+          </div>
+          <div class="lecture-content">
+            <h3>區塊鏈專題講座</h3>
+            <p>由行業導師主講，講解區塊鏈基礎、加密貨幣、NFT 等熱門主題，幫助同學理解區塊鏈技術的實際價值與應用。</p>
+            <ul>
+              <li>認識區塊鏈基礎</li>
+              <li>開放源代碼與重要性</li>
+              <li>NFT 和數位資產</li>
+              <li>加密錢包與安全</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section (活動花絮) -->
+    <section class="gallery-section">
+      <div class="container">
+        <h2 class="section-title">活動花絮</h2>
+        <div class="gallery-grid">
+          {galleryImg1 && <Image src={galleryImg1.default} alt="活動花絮 1" class="gallery-image" />}
+          {galleryImg2 && <Image src={galleryImg2.default} alt="活動花絮 2" class="gallery-image" />}
+          {galleryImg3 && <Image src={galleryImg3.default} alt="活動花絮 3" class="gallery-image" />}
+          {galleryImg4 && <Image src={galleryImg4.default} alt="活動花絮 4" class="gallery-image" />}
+          {galleryImg5 && <Image src={galleryImg5.default} alt="活動花絮 5" class="gallery-image" />}
+          {galleryImg6 && <Image src={galleryImg6.default} alt="活動花絮 6" class="gallery-image" />}
+          {galleryImg7 && <Image src={galleryImg7.default} alt="活動花絮 7" class="gallery-image" />}
+          {galleryImg8 && <Image src={galleryImg8.default} alt="活動花絮 8" class="gallery-image" />}
+          {galleryImg9 && <Image src={galleryImg9.default} alt="活動花絮 9" class="gallery-image" />}
         </div>
       </div>
     </section>
@@ -323,6 +477,102 @@ try {
     margin: 0;
   }
 
+  /* Classes Section */
+  .classes-section {
+    padding: 4rem 0;
+    background: white;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover { transform: translateY(-5px); }
+
+  .card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-title {
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.1rem;
+    margin: 0;
+  }
+
+  .card-title a { color: #333; text-decoration: none; }
+  .card-title a:hover { text-decoration: underline; }
+
+  /* Lectures Section */
+  .lectures-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+
+  .lecture-row {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+
+  .lecture-image :global(img) {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .lecture-image.icon :global(img) {
+    width: 200px;
+    height: auto;
+  }
+
+  .lecture-content h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .lecture-content p { color: #555; }
+  .lecture-content ul { margin-top: 1rem; padding-left: 1.2rem; color: #555; }
+
+  /* Gallery Section */
+  .gallery-section {
+    padding: 4rem 0;
+    background: white;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .gallery-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
   /* Contact Section */
   .contact-section {
     padding: 4rem 0;
@@ -375,6 +625,12 @@ try {
 
     .features-grid,
     .booths-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cards-grid,
+    .gallery-grid,
+    .lecture-row {
       grid-template-columns: 1fr;
     }
 
