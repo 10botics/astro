@@ -383,19 +383,19 @@ try {
             <div class="cards-grid">
               <div class="card">
             { (heroAIDigital || featuredAIDigitalAnimation) && (
-              <Image src={heroAIDigital || (featuredAIDigitalAnimation && featuredAIDigitalAnimation.default)} alt="AI數碼動畫展" class="card-image" />
+              <Image src={(heroAIDigital as any) ?? (featuredAIDigitalAnimation && featuredAIDigitalAnimation.default)} alt="AI數碼動畫展" class="card-image" />
             )}
                 <h3 class="card-title"><a href="/school-courses/ai-digital-animation-exhibition" rel="noopener">AI數碼動畫展</a></h3>
               </div>
               <div class="card">
             { (heroTello || featuredTello) && (
-              <Image src={heroTello || (featuredTello && featuredTello.default)} alt="Tello 無人機課程" class="card-image" />
+              <Image src={(heroTello as any) ?? (featuredTello && featuredTello.default)} alt="Tello 無人機課程" class="card-image" />
             )}
                 <h3 class="card-title"><a href="/school-courses/tello" rel="noopener">Tello 無人機課程</a></h3>
               </div>
               <div class="card">
             { (heroKSP || classKSP) && (
-              <Image src={heroKSP || (classKSP && classKSP.default)} alt="Kerbal Space Program (KSP) 太空任務設計課程" class="card-image" />
+              <Image src={(heroKSP as any) ?? (classKSP && classKSP.default)} alt="Kerbal Space Program (KSP) 太空任務設計課程" class="card-image" />
             )}
                 <h3 class="card-title"><a href="/school-courses/ksp" rel="noopener">Kerbal Space Program (KSP) 太空任務設計課程</a></h3>
               </div>
@@ -405,19 +405,19 @@ try {
               </div>
               <div class="card">
             { (heroDonkey || featuredDonkeyCar) && (
-              <Image src={heroDonkey || (featuredDonkeyCar && featuredDonkeyCar.default)} alt="Donkey Car 無人車課程" class="card-image" />
+              <Image src={(heroDonkey as any) ?? (featuredDonkeyCar && featuredDonkeyCar.default)} alt="Donkey Car 無人車課程" class="card-image" />
             )}
                 <h3 class="card-title"><a href="/school-courses/donkey-car" rel="noopener">Donkey Car 無人車課程</a></h3>
               </div>
               <div class="card">
             { (heroMinecraft || featuredMinecraft) && (
-              <Image src={heroMinecraft || (featuredMinecraft && featuredMinecraft.default)} alt="Minecraft 校園創建課程" class="card-image" />
+              <Image src={(heroMinecraft as any) ?? (featuredMinecraft && featuredMinecraft.default)} alt="Minecraft 校園創建課程" class="card-image" />
             )}
                 <h3 class="card-title"><a href="/school-courses/minecraft" rel="noopener">Minecraft 校園創建課程</a></h3>
               </div>
               <div class="card">
             { (heroProcreate || featuredProcreate) && (
-              <Image src={heroProcreate || (featuredProcreate && featuredProcreate.default)} alt="Procreate電繪課程" class="card-image" />
+              <Image src={(heroProcreate as any) ?? (featuredProcreate && featuredProcreate.default)} alt="Procreate電繪課程" class="card-image" />
             )}
                 <h3 class="card-title"><a href="/school-courses/procreate" rel="noopener">Procreate電繪課程</a></h3>
               </div>
@@ -427,25 +427,25 @@ try {
               </div>
               <div class="card">
             { (heroScratch || classScratchGame) && (
-              <Image src={heroScratch || (classScratchGame && classScratchGame.default)} alt="Scratch 遊戲設計課程" class="card-image" />
+              <Image src={(heroScratch as any) ?? (classScratchGame && classScratchGame.default)} alt="Scratch 遊戲設計課程" class="card-image" />
             )}
                 <h3 class="card-title"><a href="/school-courses/scratch-game-design" rel="noopener">Scratch 遊戲設計課程</a></h3>
               </div>
               <div class="card">
             { (heroRaspberryPi || matatalabProgramming) && (
-              <Image src={heroRaspberryPi || (matatalabProgramming && matatalabProgramming.default)} alt="Matatalab 入門編程課程" class="card-image" />
+              <Image src={(heroRaspberryPi as any) ?? (matatalabProgramming && matatalabProgramming.default)} alt="Matatalab 入門編程課程" class="card-image" />
             )}
                 <h3 class="card-title"><a href="/school-courses/raspberry-pi" rel="noopener">Matatalab 入門編程課程</a></h3>
               </div>
               <div class="card">
             { (heroMicrobitMaze || classMicrobitMaze) && (
-              <Image src={heroMicrobitMaze || (classMicrobitMaze && classMicrobitMaze.default)} alt="Micro:bit 小車：逃出迷宮" class="card-image" />
+              <Image src={(heroMicrobitMaze as any) ?? (classMicrobitMaze && classMicrobitMaze.default)} alt="Micro:bit 小車：逃出迷宮" class="card-image" />
             )}
                 <h3 class="card-title"><a href="/school-courses/microbit-maze" rel="noopener">Micro:bit 小車：逃出迷宮</a></h3>
               </div>
               <div class="card">
             { (heroDelightex || featuredDelightex) && (
-              <Image src={heroDelightex || (featuredDelightex && featuredDelightex.default)} alt="CoSpaces 遊戲設計課程" class="card-image" />
+              <Image src={(heroDelightex as any) ?? (featuredDelightex && featuredDelightex.default)} alt="CoSpaces 遊戲設計課程" class="card-image" />
             )}
                 <h3 class="card-title"><a href="/school-courses/Delightex" rel="noopener">CoSpaces 遊戲設計課程</a></h3>
               </div>
