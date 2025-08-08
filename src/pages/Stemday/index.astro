@@ -26,6 +26,7 @@ let classMicrobitMaze,
   classScratchGame,
   classKSP,
   classDIY,
+  classMatatalab,
   aiLectureImage,
   blockchainIcon,
   galleryImg1,
@@ -79,6 +80,7 @@ try {
   classScratchGame = await import('../../assets/images/Stemday/classroom-activities/Scratch-遊戲設計-768x701.png');
   classKSP = await import('../../assets/images/Stemday/past-activities/WhatsApp-Image-2023-07-05-at-14.18.132-1024x768.jpeg');
   classDIY = await import('../../assets/images/Stemday/featured-activities/IMG_3708-scaled-e1720172148276-1024x780.jpg');
+  classMatatalab = await import('../../assets/images/Stemday/Matatalab 入門編程課程/home-set-buy-now_1-1.png');
   classScratchGame = await import('../../assets/images/Stemday/classroom-activities/WhatsApp-Image-2023-03-06-at-16.40.556.jpeg');
 
   // Lectures (講座)
@@ -311,6 +313,10 @@ try {
             <div class="card">
               {classDIY && <Image src={classDIY.default} alt="DIY手作" class="card-image" />}
               <h3 class="card-title"><a href="Stemday/diy/" target="_blank" rel="noopener">DIY手作</a></h3>
+            </div>
+            <div class="card">
+              {classMatatalab && <Image src={classMatatalab.default} alt="Matatalab 入門編程課程" class="card-image" />}
+              <h3 class="card-title"><a href="Stemday/matatalab-入門編程課程/" target="_blank" rel="noopener">Matatalab 入門編程課程</a></h3>
             </div>
           </div>
         </div>
