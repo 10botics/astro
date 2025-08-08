@@ -1,9 +1,12 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import { Image } from 'astro:assets';
 
 // Import images
-import heroImage from '../../assets/images/Stemday/飲管橋/hero-image.jpg';
+import strawBridgeHero from '../../assets/images/Stemday/飲管橋/hero-image.jpg';
 import activityImage1 from '../../assets/images/Stemday/飲管橋/activity-image-1.jpg';
 import activityImage2 from '../../assets/images/Stemday/飲管橋/activity-image-2.jpeg';
 import gallery1 from '../../assets/images/Stemday/飲管橋/gallery-1.jpeg';
@@ -15,238 +18,236 @@ import gallery6 from '../../assets/images/Stemday/飲管橋/gallery-6.jpeg';
 import gallery7 from '../../assets/images/Stemday/飲管橋/gallery-7.jpg';
 import gallery8 from '../../assets/images/Stemday/飲管橋/gallery-8.jpg';
 
-const title = "飲管橋 - 10教育";
-const description = "想要激發您的學生對工程師職業的興趣嗎？想要向您的學生展示橋梁是如何建造的，以及它們的優缺點是什麼嗎？";
+// Activity data
+const activityData: {
+  title: string;
+  subtitle: string;
+  tags: string[];
+  videoId: string;
+  description: string;
+  heroImageAsset: any;
+} = {
+  title: "飲管橋",
+  subtitle: "想要激發您的學生對工程師職業的興趣嗎？想要向您的學生展示橋梁是如何建造的，以及它們的優缺點是什麼嗎？",
+  tags: ["工程", "STEM", "物理", "設計", "團隊合作", "初中", "高小"],
+  videoId: "C9nv9BgHDnw",
+  description: "透過建造橋梁，學生將學習結構設計、物理力學概念，並培養創造解決問題的能力。這項活動不僅教導建構穩固結構的原則，也讓學生實際應用工程學知識解決挑戰，同時激發他們的創造思維。",
+  heroImageAsset: strawBridgeHero
+};
+
+// Activity features
+const activityFeatures = [
+  {
+    icon: "fas fa-hands-helping",
+    title: "實踐與學習結合",
+    description: "通過親身參與建造橋梁的過程，學生將在實際操作中學習結構設計、物理力學等重要知識，讓抽象的概念變得更具體可見。"
+  },
+  {
+    icon: "fas fa-lightbulb",
+    title: "培養創造力",
+    description: "學生在面對各種橋梁設計挑戰時，將被鼓勵提出新穎的解決方案，培養他們的創造力和創新思維。"
+  },
+  {
+    icon: "fas fa-users",
+    title: "團隊合作與溝通",
+    description: "這個活動將促進學生的團隊合作能力，他們需要共同討論、計劃和執行橋梁的建造，並學習有效溝通與協調。"
+  },
+  {
+    icon: "fas fa-cogs",
+    title: "實際應用工程原則",
+    description: "學生不僅學習工程學的基本原則，還將實際應用這些知識解決實際的建造問題，培養他們將理論轉化為實際技能的能力。"
+  }
+];
+
+// Activity schedule
+const activitySchedule = [
+  {
+    title: "簡介與前導 [5分鐘]",
+    content: [
+      "引導學生進入課程主題，介紹橋梁的不同結構和重要性。",
+      "說明活動目標和預期學習成果。"
+    ]
+  },
+  {
+    title: "結構與設計原則 [5分鐘]",
+    content: [
+      "簡要介紹結構的基本原則，如強度、支撐方式和負載分佈。",
+      "示範不同類型的橋梁結構，並討論其特點。"
+    ]
+  },
+  {
+    title: "團隊建造橋梁 [35分鐘]",
+    content: [
+      "將學生分成小組，每個小組設計和建造自己的吸管橋梁。",
+      "鼓勵團隊成員共同討論和計劃，並分工合作完成建造任務。"
+    ]
+  },
+  {
+    title: "展示和評估 [15分鐘]",
+    content: [
+      "每個小組將把他們的橋梁帶到測試站，將重物放置在橋梁上，並記錄所放置的重量。",
+      "能夠承受最多重量的橋梁將成為獲勝者。"
+    ]
+  }
+];
+
+// FAQ data
+const faqData = [
+  {
+    question: "這項活動適合什麼年級的同學參與？",
+    answer: "這項活動適合高小至初中學生。"
+  },
+  {
+    question: "學校需要準備什麼？",
+    answer: "我們可以根據學校的需要，提供物資、人手及獎品。亦可為學校提供英語教學、帶安排學生分組匯報等增值服務。\n\n建議先致電+852 6554-1506 或電郵至 info@10botics.com 向同事溝通學校期望的活動內容及成果，同事將就學校所需提供建議。"
+  }
+];
+
+const { title, subtitle, tags, videoId, description, heroImageAsset: heroImage } = activityData;
 ---
 
 <Layout title={title} description={description}>
-  <div class="container mx-auto px-4 py-8">
+  <main>
     <!-- Hero Section -->
-    <div class="mb-12">
-      <div class="relative">
-        <Image 
-          src={heroImage} 
-          alt="飲管橋活動" 
-          class="w-full h-96 object-cover rounded-lg"
-        />
-        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-          <h1 class="text-4xl md:text-6xl font-bold text-white text-center">飲管橋</h1>
-        </div>
-      </div>
-    </div>
-
-    <!-- Video Section -->
-    <div class="mb-12">
-      <div class="aspect-video w-full max-w-4xl mx-auto">
-        <iframe 
-          src="https://www.youtube.com/embed/C9nv9BgHDnw" 
-          title="飲管橋活動介紹"
-          class="w-full h-full rounded-lg"
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-
-    <!-- Description -->
-    <div class="mb-12 max-w-4xl mx-auto">
-      <p class="text-lg text-gray-700 leading-relaxed">
-        透過建造橋梁，學生將學習結構設計、物理力學概念，並培養創造解決問題的能力。這項活動不僅教導建構穩固結構的原則，也讓學生實際應用工程學知識解決挑戰，同時激發他們的創造思維。
-      </p>
-    </div>
+    <HeroSection 
+      title={title}
+      subtitle={subtitle}
+      tags={tags}
+      videoId={videoId}
+      description={description}
+      heroImage={heroImage}
+    />
 
     <!-- Activity Features -->
-    <div class="mb-12 bg-gray-50 py-12">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold text-center mb-8">活動特色</h2>
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold mb-4">活動特色</h2>
+        </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div class="text-center">
-            <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i class="fas fa-star text-white text-2xl"></i>
+          {activityFeatures.map((feature) => (
+            <div class="text-center">
+              <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class={`${feature.icon} text-white text-2xl`}></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p class="text-gray-600">
+                {feature.description}
+              </p>
             </div>
-            <h3 class="text-xl font-semibold mb-2">實踐與學習結合</h3>
-            <p class="text-gray-600">
-              通過親身參與建造橋梁的過程，學生將在實際操作中學習結構設計、物理力學等重要知識，讓抽象的概念變得更具體可見。
-            </p>
-          </div>
-          <div class="text-center">
-            <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i class="fas fa-star text-white text-2xl"></i>
-            </div>
-            <h3 class="text-xl font-semibold mb-2">培養創造力</h3>
-            <p class="text-gray-600">
-              學生在面對各種橋梁設計挑戰時，將被鼓勵提出新穎的解決方案，培養他們的創造力和創新思維。
-            </p>
-          </div>
-          <div class="text-center">
-            <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i class="fas fa-star text-white text-2xl"></i>
-            </div>
-            <h3 class="text-xl font-semibold mb-2">團隊合作與溝通</h3>
-            <p class="text-gray-600">
-              這個活動將促進學生的團隊合作能力，他們需要共同討論、計劃和執行橋梁的建造，並學習有效溝通與協調。
-            </p>
-          </div>
-          <div class="text-center">
-            <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i class="fas fa-star text-white text-2xl"></i>
-            </div>
-            <h3 class="text-xl font-semibold mb-2">實際應用工程原則</h3>
-            <p class="text-gray-600">
-              學生不僅學習工程學的基本原則，還將實際應用這些知識解決實際的建造問題，培養他們將理論轉化為實際技能的能力。
-            </p>
-          </div>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- Activity Content -->
-    <div class="mb-12">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold text-center mb-8">活動內容</h2>
-        <div class="text-center mb-6">
-          <p class="text-xl font-semibold">約1小時</p>
-          <p class="text-sm text-gray-500">* 可根據學校需要調整</p>
-        </div>
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold text-center mb-8">活動內容</h2>
+          <div class="text-center mb-6">
+            <p class="text-xl font-semibold">約1小時</p>
+            <p class="text-sm text-gray-500">* 可根據學校需要調整</p>
+          </div>
 
-        <!-- Activity Images -->
-        <div class="grid md:grid-cols-2 gap-8 mb-8">
-          <Image 
-            src={activityImage1} 
-            alt="飲管橋活動照片1" 
-            class="w-full rounded-lg"
-          />
-          <Image 
-            src={activityImage2} 
-            alt="飲管橋活動照片2" 
-            class="w-full rounded-lg"
-          />
-        </div>
+          <!-- Activity Images -->
+          <div class="grid md:grid-cols-2 gap-8 mb-8">
+            <Image 
+              src={activityImage1} 
+              alt="飲管橋活動照片1" 
+              class="w-full rounded-lg shadow-lg"
+              width={600}
+              height={400}
+            />
+            <Image 
+              src={activityImage2} 
+              alt="飲管橋活動照片2" 
+              class="w-full rounded-lg shadow-lg"
+              width={600}
+              height={400}
+            />
+          </div>
 
-        <!-- Activity Schedule -->
-        <div class="bg-white border rounded-lg overflow-hidden">
-          <div class="accordion">
-            <div class="accordion-item border-b">
-              <button class="accordion-header w-full px-6 py-4 text-left bg-gray-50 hover:bg-gray-100 flex justify-between items-center">
-                <span class="font-semibold">簡介與前導 [5分鐘]</span>
-                <i class="fas fa-plus text-gray-500"></i>
-              </button>
-              <div class="accordion-content px-6 py-4">
-                <ul class="list-disc list-inside space-y-2">
-                  <li>引導學生進入課程主題，介紹橋梁的不同結構和重要性。</li>
-                  <li>說明活動目標和預期學習成果。</li>
-                </ul>
-              </div>
-            </div>
-            <div class="accordion-item border-b">
-              <button class="accordion-header w-full px-6 py-4 text-left bg-gray-50 hover:bg-gray-100 flex justify-between items-center">
-                <span class="font-semibold">結構與設計原則 [5分鐘]</span>
-                <i class="fas fa-plus text-gray-500"></i>
-              </button>
-              <div class="accordion-content px-6 py-4">
-                <ul class="list-disc list-inside space-y-2">
-                  <li>簡要介紹結構的基本原則，如強度、支撐方式和負載分佈。</li>
-                  <li>示範不同類型的橋梁結構，並討論其特點。</li>
-                </ul>
-              </div>
-            </div>
-            <div class="accordion-item border-b">
-              <button class="accordion-header w-full px-6 py-4 text-left bg-gray-50 hover:bg-gray-100 flex justify-between items-center">
-                <span class="font-semibold">團隊建造橋梁 [35分鐘]</span>
-                <i class="fas fa-plus text-gray-500"></i>
-              </button>
-              <div class="accordion-content px-6 py-4">
-                <ul class="list-disc list-inside space-y-2">
-                  <li>將學生分成小組，每個小組設計和建造自己的吸管橋梁。</li>
-                  <li>鼓勵團隊成員共同討論和計劃，並分工合作完成建造任務。</li>
-                </ul>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-header w-full px-6 py-4 text-left bg-gray-50 hover:bg-gray-100 flex justify-between items-center">
-                <span class="font-semibold">展示和評估 [15分鐘]</span>
-                <i class="fas fa-plus text-gray-500"></i>
-              </button>
-              <div class="accordion-content px-6 py-4">
-                <ul class="list-disc list-inside space-y-2">
-                  <li>每個小組將把他們的橋梁帶到測試站，將重物放置在橋梁上，並記錄所放置的重量。</li>
-                  <li>能夠承受最多重量的橋梁將成為獲勝者。</li>
-                </ul>
-              </div>
+          <!-- Activity Schedule -->
+          <div class="bg-white border rounded-lg overflow-hidden shadow-lg">
+            <div class="accordion">
+              {activitySchedule.map((item, index) => (
+                <div class="accordion-item border-b">
+                  <button class="accordion-header w-full px-6 py-4 text-left bg-gray-50 hover:bg-gray-100 flex justify-between items-center">
+                    <span class="font-semibold">{item.title}</span>
+                    <i class="fas fa-plus text-gray-500"></i>
+                  </button>
+                  <div class="accordion-content px-6 py-4">
+                    <ul class="list-disc list-inside space-y-2">
+                      {item.content.map((contentItem) => (
+                        <li>{contentItem}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- Gallery Section -->
-    <div class="mb-12 bg-gray-50 py-12">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold text-center mb-8">精選照片</h2>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          <Image src={gallery1} alt="飲管橋活動照片" class="w-full h-48 object-cover rounded-lg" />
-          <Image src={gallery2} alt="飲管橋活動照片" class="w-full h-48 object-cover rounded-lg" />
-          <Image src={gallery3} alt="飲管橋活動照片" class="w-full h-48 object-cover rounded-lg" />
-          <Image src={gallery4} alt="飲管橋活動照片" class="w-full h-48 object-cover rounded-lg" />
-          <Image src={gallery5} alt="飲管橋活動照片" class="w-full h-48 object-cover rounded-lg" />
-          <Image src={gallery6} alt="飲管橋活動照片" class="w-full h-48 object-cover rounded-lg" />
-          <Image src={gallery7} alt="飲管橋活動照片" class="w-full h-48 object-cover rounded-lg" />
-          <Image src={gallery8} alt="飲管橋活動照片" class="w-full h-48 object-cover rounded-lg" />
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold text-center mb-8">精選照片</h2>
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <Image src={gallery1} alt="飲管橋活動照片" class="w-full h-48 object-cover rounded-lg shadow-md" width={300} height={200} />
+            <Image src={gallery2} alt="飲管橋活動照片" class="w-full h-48 object-cover rounded-lg shadow-md" width={300} height={200} />
+            <Image src={gallery3} alt="飲管橋活動照片" class="w-full h-48 object-cover rounded-lg shadow-md" width={300} height={200} />
+            <Image src={gallery4} alt="飲管橋活動照片" class="w-full h-48 object-cover rounded-lg shadow-md" width={300} height={200} />
+            <Image src={gallery5} alt="飲管橋活動照片" class="w-full h-48 object-cover rounded-lg shadow-md" width={300} height={200} />
+            <Image src={gallery6} alt="飲管橋活動照片" class="w-full h-48 object-cover rounded-lg shadow-md" width={300} height={200} />
+            <Image src={gallery7} alt="飲管橋活動照片" class="w-full h-48 object-cover rounded-lg shadow-md" width={300} height={200} />
+            <Image src={gallery8} alt="飲管橋活動照片" class="w-full h-48 object-cover rounded-lg shadow-md" width={300} height={200} />
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- FAQ Section -->
-    <div class="mb-12">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold text-center mb-8">常見問題</h2>
-        <div class="space-y-4">
-          <div class="border rounded-lg">
-            <button class="faq-header w-full px-6 py-4 text-left hover:bg-gray-50 flex justify-between items-center">
-              <span class="font-semibold">這項活動適合什麼年級的同學參與？</span>
-              <i class="fas fa-caret-right text-gray-500"></i>
-            </button>
-            <div class="faq-content px-6 py-4 border-t">
-              <p>這項活動適合高小至初中學生。</p>
-            </div>
-          </div>
-          <div class="border rounded-lg">
-            <button class="faq-header w-full px-6 py-4 text-left hover:bg-gray-50 flex justify-between items-center">
-              <span class="font-semibold">學校需要準備什麼？</span>
-              <i class="fas fa-caret-right text-gray-500"></i>
-            </button>
-            <div class="faq-content px-6 py-4 border-t">
-              <p>我們可以根據學校的需要，提供物資、人手及獎品。亦可為學校提供英語教學、帶安排學生分組匯報等增值服務。</p>
-              <p class="mt-2">建議先致電+852 6554-1506 或電郵至 info@10botics.com 向同事溝通學校期望的活動內容及成果，同事將就學校所需提供建議。</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <QnASection faqs={faqData} />
 
-    <!-- Contact Section -->
-    <div class="mb-12 bg-blue-50 py-12">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl font-bold mb-8">聯絡我們</h2>
-        <div class="bg-white p-8 rounded-lg shadow-lg">
-          <p class="text-lg mb-4">想要了解更多關於飲管橋活動的詳情？</p>
-          <p class="text-gray-600 mb-6">請填寫以下表格，我們會盡快回覆您。</p>
-          <form class="space-y-4">
-            <div class="grid md:grid-cols-2 gap-4">
-              <input type="text" placeholder="姓名" class="w-full px-4 py-2 border rounded-lg" required>
-              <input type="email" placeholder="電郵地址" class="w-full px-4 py-2 border rounded-lg" required>
-            </div>
-            <input type="tel" placeholder="電話號碼" class="w-full px-4 py-2 border rounded-lg">
-            <textarea placeholder="訊息內容" rows="4" class="w-full px-4 py-2 border rounded-lg"></textarea>
-            <button type="submit" class="bg-blue-500 text-white px-8 py-3 rounded-lg hover:bg-blue-600 transition-colors">
-              發送訊息
-            </button>
-          </form>
+    <!-- Contact Form -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-4xl font-bold mb-8">聯絡我們</h2>
+          <PaperformEmbed />
         </div>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
+
+  <script>
+    // Accordion functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.accordion-header').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.parentElement;
+          if (!item) return;
+          
+          const isActive = item.classList.contains('active');
+          
+          // Close all accordion items
+          document.querySelectorAll('.accordion-item').forEach(accordionItem => {
+            accordionItem.classList.remove('active');
+          });
+          
+          // Open clicked item if it wasn't active
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
 
   <style>
     .accordion-content {
@@ -258,47 +259,5 @@ const description = "想要激發您的學生對工程師職業的興趣嗎？�
     .accordion-item.active .accordion-header i {
       transform: rotate(45deg);
     }
-    
-    .faq-content {
-      display: none;
-    }
-    .faq-item.active .faq-content {
-      display: block;
-    }
-    .faq-item.active .faq-header i {
-      transform: rotate(90deg);
-    }
   </style>
-
-  <script>
-    // Accordion functionality
-    document.querySelectorAll('.accordion-header').forEach(button => {
-      button.addEventListener('click', () => {
-        const item = button.parentElement;
-        if (!item) return;
-        
-        const isActive = item.classList.contains('active');
-        
-        // Close all accordion items
-        document.querySelectorAll('.accordion-item').forEach(accordionItem => {
-          accordionItem.classList.remove('active');
-        });
-        
-        // Open clicked item if it wasn't active
-        if (!isActive) {
-          item.classList.add('active');
-        }
-      });
-    });
-
-    // FAQ functionality
-    document.querySelectorAll('.faq-header').forEach(button => {
-      button.addEventListener('click', () => {
-        const item = button.parentElement;
-        if (item) {
-          item.classList.toggle('active');
-        }
-      });
-    });
-  </script>
 </Layout> 
