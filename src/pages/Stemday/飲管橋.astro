@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -141,56 +142,14 @@ const { title, subtitle, tags, videoId, description, heroImageAsset: heroImage }
     </section>
 
     <!-- Activity Content -->
-    <section class="py-16">
-      <div class="container mx-auto px-4">
-        <div class="max-w-6xl mx-auto">
-          <h2 class="text-4xl font-bold text-center mb-8">活動內容</h2>
-          <div class="text-center mb-6">
-            <p class="text-xl font-semibold">約1小時</p>
-            <p class="text-sm text-gray-500">* 可根據學校需要調整</p>
-          </div>
-
-          <!-- Activity Images -->
-          <div class="grid md:grid-cols-2 gap-8 mb-8">
-            <Image 
-              src={activityImage1} 
-              alt="飲管橋活動照片1" 
-              class="w-full rounded-lg shadow-lg"
-              width={600}
-              height={400}
-            />
-            <Image 
-              src={activityImage2} 
-              alt="飲管橋活動照片2" 
-              class="w-full rounded-lg shadow-lg"
-              width={600}
-              height={400}
-            />
-          </div>
-
-          <!-- Activity Schedule -->
-          <div class="bg-white border rounded-lg overflow-hidden shadow-lg">
-            <div class="accordion">
-              {activitySchedule.map((item, index) => (
-                <div class="accordion-item border-b">
-                  <button class="accordion-header w-full px-6 py-4 text-left bg-gray-50 hover:bg-gray-100 flex justify-between items-center">
-                    <span class="font-semibold">{item.title}</span>
-                    <i class="fas fa-plus text-gray-500"></i>
-                  </button>
-                  <div class="accordion-content px-6 py-4">
-                    <ul class="list-disc list-inside space-y-2">
-                      {item.content.map((contentItem) => (
-                        <li>{contentItem}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <SingleCourseContent 
+      items={activitySchedule}
+      hours="約1小時"
+      images={[
+        { src: activityImage1, alt: "飲管橋活動照片1" },
+        { src: activityImage2, alt: "飲管橋活動照片2" }
+      ]}
+    />
 
     <!-- Gallery Section -->
     <section class="py-16 bg-gray-50">
