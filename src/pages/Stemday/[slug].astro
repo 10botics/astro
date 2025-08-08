@@ -3,7 +3,8 @@
 export async function getStaticPaths() {
   return [
     { params: { slug: 'straw-bridge' } },
-    { params: { slug: 'diy' } }
+    { params: { slug: 'diy' } },
+    { params: { slug: 'matatalab-入門編程課程' } }
   ];
 }
 
@@ -17,6 +18,9 @@ switch (slug) {
     break;
   case 'diy':
     ChineseComponent = await import('./DIY 手作.astro');
+    break;
+  case 'matatalab-入門編程課程':
+    ChineseComponent = await import('./Matatalab 入門編程課程.astro');
     break;
   default:
     throw new Error(`Unknown slug: ${slug}`);
