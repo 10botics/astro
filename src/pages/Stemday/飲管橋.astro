@@ -5,7 +5,7 @@ import QnASection from '../../components/course/QnASection.astro';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import { Image } from 'astro:assets';
-
+import ContactSection from '../../components/ContactSection.astro';
 // Import images
 import strawBridgeHero from '../../assets/images/Stemday/飲管橋/hero-image.jpg';
 import activityImage1 from '../../assets/images/Stemday/飲管橋/activity-image-1.jpg';
@@ -176,10 +176,8 @@ const { title, subtitle, tags, videoId, description, heroImageAsset: heroImage }
     <!-- Contact Form -->
     <section class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center">
-          <h2 class="text-4xl font-bold mb-8">聯絡我們</h2>
-          <PaperformEmbed />
-        </div>
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">聯絡我們</h2>
+        <ContactSection subtitle="  歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
       </div>
     </section>
   </main>
