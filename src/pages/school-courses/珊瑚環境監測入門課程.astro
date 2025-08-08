@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import DualCourseContent from '../../components/course/DualCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
-import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import ContactSection from '../../components/ContactSection.astro';
 import { Image } from 'astro:assets';
 
 // Import course images
@@ -334,13 +334,6 @@ const { title, subtitle, tags, description, detailedDescription, heroImage } = c
     <QnASection faqs={faqData} />
 
     <!-- Contact Form -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center">
-          <h2 class="text-4xl font-bold mb-8">聯絡我們</h2>
-          <PaperformEmbed formId="qhmoqcvc" />
-        </div>
-      </div>
-    </section>
+    <ContactSection subtitle="想了解更多關於珊瑚環境監測入門課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
   </main>
 </Layout> 
