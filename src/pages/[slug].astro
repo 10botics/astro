@@ -1,0 +1,23 @@
+---
+// Dynamic route to handle URL mapping between English URLs and Chinese filename components
+export async function getStaticPaths() {
+  return [
+    { params: { slug: 'ai-art-competition-2025' } }
+    // Add more mappings here as needed
+  ];
+}
+
+const { slug } = Astro.params;
+
+// Import the Chinese filename component based on the slug
+let ChineseComponent;
+switch (slug) {
+  case 'ai-art-competition-2025':
+    ChineseComponent = await import('./第三屆 校際AI藝術創作大賽.astro');
+    break;
+  default:
+    throw new Error(`Unknown slug: ${slug}`);
+}
+---
+
+<ChineseComponent.default /> 
