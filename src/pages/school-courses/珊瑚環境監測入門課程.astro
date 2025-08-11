@@ -4,6 +4,7 @@ import HeroSection from '../../components/course/HeroSection.astro';
 import DualCourseContent from '../../components/course/DualCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
+import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
 import { Image } from 'astro:assets';
 
 // Import course images
@@ -271,6 +272,28 @@ const { title, subtitle, tags, description, detailedDescription, heroImage } = c
             </div>
           ))}
         </div>
+      </div>
+    </section>
+
+    <!-- Course Gallery -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <GalleryCarousel 
+          title="課程實況照片"
+          images={[
+            featuredImage,
+            img1676,
+            img1671,
+            img1639,
+            img1437,
+            img1506,
+            img1592,
+            img1754,
+            img1685,
+            img1499
+          ]}
+          intervalMs={4500}
+        />
       </div>
     </section>
 
