@@ -267,7 +267,7 @@ const navItems = [
 
   // Close mobile menu when clicking outside
   document.addEventListener('click', (e) => {
-    if (!mobileMenu?.contains(e.target) && !mobileMenuButton?.contains(e.target)) {
+    if (!mobileMenu?.contains(e.target as Node) && !mobileMenuButton?.contains(e.target as Node)) {
       mobileMenu?.classList.add('hidden');
     }
   });

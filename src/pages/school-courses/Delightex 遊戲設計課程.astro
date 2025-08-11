@@ -1,0 +1,302 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import CourseFeatures from '../../components/course/CourseFeatures.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import { Image } from 'astro:assets';
+
+// Import images
+import shareProject from '../../assets/images/school-courses/Delightex 遊戲設計課程/share-project.png';
+import codeBlocks from '../../assets/images/school-courses/Delightex 遊戲設計課程/code-blocks.jpg';
+import arVr from '../../assets/images/school-courses/Delightex 遊戲設計課程/ar-vr.png';
+import threeDThinking from '../../assets/images/school-courses/Delightex 遊戲設計課程/3d-thinking.png';
+import adminAjaxMin from '../../assets/images/school-courses/Delightex 遊戲設計課程/admin-ajax-min.png';
+
+// Course data (static) - now in frontmatter
+export const courseData = {
+  title: "Delightex 遊戲設計課程",
+  subtitle: "創造虛擬世界，體驗 VR 編程的樂趣",
+  tags: ["Programming 編程", "VR", "虛擬實境", "創意", "初中", "高中"],
+  videoId: "HQkDRxd4pUo",
+  description: "Delightex 遊戲設計課程讓學生學習如何創建虛擬現實環境，通過編程和設計來構建沉浸式的 VR 體驗。",
+  detailedDescription: "Delightex 遊戲設計課程讓學生學習如何創建虛擬現實環境，通過編程和設計來構建沉浸式的 VR 體驗。",
+  heroImage: adminAjaxMin
+};
+
+// What is Delightex features
+const whatIsDelightex = [
+  {
+    image: shareProject,
+    title: "可以創建、分享和體驗互動的虛擬現實平台",
+    description: "可以創建、分享和體驗互動的虛擬現實平台"
+  },
+  {
+    image: codeBlocks,
+    title: "簡易方塊編程",
+    description: "簡易方塊編程"
+  },
+  {
+    image: arVr,
+    title: "能應用虛擬現實(VR)和擴增現實(AR)",
+    description: "能應用虛擬現實(VR)和擴增現實(AR)"
+  },
+  {
+    image: threeDThinking,
+    title: "培養三維空間思維",
+    description: "培養三維空間思維"
+  }
+];
+
+// Course features
+const courseFeatures = [
+  {
+    icon: "fas fa-star",
+    title: "學生無需編程經驗",
+    description: "學生無需編程經驗"
+  },
+  {
+    icon: "fas fa-star",
+    title: "成品多樣化 (包括故事、影片、遊戲等)",
+    description: "成品多樣化 (包括故事、影片、遊戲等)"
+  },
+  {
+    icon: "fas fa-star",
+    title: "活用互動功能，為學校建立宣傳影片",
+    description: "活用互動功能，為學校建立宣傳影片"
+  },
+  {
+    icon: "fas fa-star",
+    title: "以互動的方式學習科學、數學等學科",
+    description: "以互動的方式學習科學、數學等學科"
+  }
+];
+
+// Course curriculum
+const curriculumItems = [
+  {
+    title: "簡介Delightex及介面 [1 節]",
+    content: [
+      "介紹Delightex界面、物件及場景創建",
+      "建立層層疊遊戲"
+    ]
+  },
+  {
+    title: "建立保齡球遊戲 [1 節]",
+    content: [
+      "學習設定 \"物理\" 及碰撞原理",
+      "建立計分系統"
+    ]
+  },
+  {
+    title: "建立太陽系模型 [1 節]",
+    content: [
+      "運用編程實行 \"平行運行\"",
+      "建立八大星球 + 各自路軌"
+    ]
+  },
+  {
+    title: "製作學校全景導覽片段 [2 節]",
+    content: [
+      "連結360相機",
+      "拍攝全景照片",
+      "製作導覽動畫",
+      "利用編程轉換場景",
+      "在Delightex內播放影片"
+    ]
+  },
+  {
+    title: "建立迷宮遊戲 [1 節]",
+    content: [
+      "上載迷宮初稿並建立迷宮",
+      "加入動物陷阱和計分版"
+    ]
+  },
+  {
+    title: "超現實VR過山車 [1 節]",
+    content: [
+      "學習拼接虛擬路軌",
+      "建立不同軌道並用編碼更改過山車的滑行速度",
+      "設置場景及各種特效"
+    ]
+  },
+  {
+    title: "建立跑酷遊戲 [1 節]",
+    content: [
+      "建立遊戲場景",
+      "透過編程移動板塊、設置動物的活動路線",
+      "建立生命值",
+      "調整鏡頭(玩家)速度"
+    ]
+  }
+];
+
+// Course arrangements
+const courseArrangements = [
+  {
+    icon: "fas fa-star",
+    title: "STEM Day 活動 (1 至 2 小時)",
+    description: "根據時數選擇一至兩款遊戲 (製作學校全景導覽片段除外)\n建議遊戲：層層疊遊戲 / 保齡球遊戲 / 超現實VR過山車 / 跑酷遊戲"
+  },
+  {
+    icon: "fas fa-star",
+    title: "完整課程 (12 至 16 小時)",
+    description: "建議一個學期完成 8 節課堂，每節 1.5 小時。\n*可根據學校需要調整課堂數及時數"
+  }
+];
+
+// FAQ items
+const faqItems = [
+  {
+    question: "Delightex課程適合哪些年級的學生",
+    answer: "課程一般適合高小至初中學生，歡迎填妥下方表格讓同事為你提供咨詢。"
+  },
+  {
+    question: "學校需要甚麼設備？",
+    answer: "學校需準備以下項目\n1） 電腦\n2）為學生建立個人電郵地址以註冊學生個人賬戶\n3）註冊Delightex專業版教學賬戶\n4）360全景相機、ipad、雲端 (視乎教學內容)\n5）AR、VR 裝備(視乎教學內容)\n建議先致電+852 6554-1506 或電郵至 info@10botics.com向同事溝通學校期望的教學內容，同事將就教學所需設備提供建議。"
+  },
+  {
+    question: "每堂到校的公司職員人數?",
+    answer: "視乎學校要求，一般每班會安排一至兩位導師負責。"
+  },
+  {
+    question: "完成課程後有證書嗎？",
+    answer: "到校課程並不包含證書。"
+  }
+];
+
+// Student work examples
+const studentWorkExamples = [
+  {
+    title: "學生作品示例 1",
+    embedUrl: "https://edu.cospaces.io/VPT-CFH"
+  },
+  {
+    title: "學生作品示例 2", 
+    embedUrl: "https://edu.cospaces.io/QTJ-VVN"
+  },
+  {
+    title: "學生作品示例 3",
+    embedUrl: "https://edu.cospaces.io/RJC-GYT"
+  },
+  {
+    title: "學生作品示例 4",
+    embedUrl: "https://edu.cospaces.io/HEG-HBW"
+  }
+];
+---
+
+<Layout title={courseData.title}>
+  <HeroSection 
+    title={courseData.title}
+    subtitle={courseData.subtitle}
+    tags={courseData.tags}
+    videoId={courseData.videoId}
+    description={courseData.description}
+  />
+
+  <!-- What is Delightex Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">什麼是 Delightex？</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {whatIsDelightex.map((feature) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
+            <Image src={feature.image} alt={feature.title} class="w-32 h-32 mx-auto mb-4 object-cover rounded-lg" />
+            <p class="text-gray-700 leading-relaxed">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Features Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程特色</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {courseFeatures.map((feature) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center mb-4">
+              <i class={`${feature.icon} text-3xl text-cyan-500 mr-4`}></i>
+              <h3 class="text-xl font-semibold text-gray-900">{feature.title}</h3>
+            </div>
+            <p class="text-gray-700 leading-relaxed">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Content Section -->
+  <SingleCourseContent 
+    items={curriculumItems} 
+    hours="10 小時"
+    images={[
+      { src: "https://10botics.com/wp-content/uploads/2023/06/Screenshot-2023-08-15-104602.png", alt: "Delightex solar system" },
+      { src: "https://10botics.com/wp-content/uploads/2023/06/Screenshot-2023-08-15-105114.png", alt: "Delightex bowling" }
+    ]}
+  />
+
+  <!-- Course Arrangement Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程安排</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        {courseArrangements.map((arrangement) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center mb-4">
+              <i class={`${arrangement.icon} text-3xl text-cyan-500 mr-4`}></i>
+              <h3 class="text-xl font-semibold text-gray-900">{arrangement.title}</h3>
+            </div>
+            <p class="text-gray-700 leading-relaxed whitespace-pre-line">{arrangement.description}</p>
+          </div>
+        ))}
+      </div>
+      
+      <div class="text-center mt-8">
+        <p class="text-lg text-gray-700">歡迎填妥下方表格讓同事為你提供咨詢。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Student Work Examples Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">學生成果​</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        {studentWorkExamples.map((work) => (
+          <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+            <iframe 
+              width="100%" 
+              height="400" 
+              frameborder="0" 
+              src={work.embedUrl}
+              title={work.title}
+              class="w-full"
+            ></iframe>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <QnASection faqs={faqItems} />
+
+  <!-- Contact Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">聯絡我們</h2>
+      <div class="bg-white rounded-lg p-8 shadow-lg">
+        <div class="text-center">
+          <p class="text-lg text-gray-700 mb-6">想了解更多關於 Delightex 遊戲設計課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。</p>
+          <PaperformEmbed />
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout> 

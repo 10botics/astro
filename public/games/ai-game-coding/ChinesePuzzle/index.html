@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChengYu Master - Chinese Idiom Puzzle Game</title>
+    <meta name="description" content="Learn Chinese idioms through an interactive puzzle game. Guess chengyu from English clues and improve your Chinese language skills.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Loading Screen -->
+        <div id="loading-screen" class="loading-screen">
+            <div class="loading-content">
+                <div class="spinner"></div>
+                <p>Loading game...</p>
+            </div>
+        </div>
+
+        <!-- Main Game Container -->
+        <div id="game-container" class="game-container hidden">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-content">
+                    <div class="header-left">
+                        <div class="logo">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L22 7l-10 5L2 7l10-5z"/>
+                                <path d="M2 17l10 5 10-5"/>
+                                <path d="M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <h1>ChengYu Master</h1>
+                    </div>
+                    <div class="header-right">
+                        <div class="stat">
+                            <span>Level: </span>
+                            <span id="level" class="stat-value">1</span>
+                        </div>
+                        <div class="stat">
+                            <span>Score: </span>
+                            <span id="score" class="stat-value">0</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Progress Section -->
+                <div class="progress-section">
+                    <div class="progress-header">
+                        <h2>Progress</h2>
+                        <span id="round-info">Round 1 of 10</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="progress-fill" class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <!-- Game Card -->
+                <div class="game-card">
+                    <div class="game-header">
+                        <div class="game-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                            </svg>
+                        </div>
+                        <h3>Guess the Chinese Idiom</h3>
+                        <p>Read the English clue and guess the corresponding chengyu</p>
+                    </div>
+
+                    <!-- Clue Section -->
+                    <div class="clue-section">
+                        <div class="clue-header">
+                            <div class="clue-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 12l2 2 4-4"/>
+                                    <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"/>
+                                    <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"/>
+                                    <path d="M12 21c0-1 1-3 3-3s3 2 3 3-1 3-3 3-3-2-3-3"/>
+                                    <path d="M12 3c0 1-1 3-3 3s-3-2-3-3 1-3 3-3 3 2 3 3"/>
+                                </svg>
+                            </div>
+                            <h4>English Clue:</h4>
+                        </div>
+                        <p id="english-clue" class="clue-text">Loading...</p>
+                    </div>
+
+                    <!-- Answer Input -->
+                    <div class="input-section">
+                        <label for="user-guess" class="input-label">
+                            Enter the Chinese idiom (4 characters):
+                        </label>
+                        <div class="input-wrapper">
+                            <input 
+                                type="text" 
+                                id="user-guess" 
+                                class="chinese-input"
+                                placeholder="输入成语"
+                                maxlength="4"
+                            >
+                            <div class="char-counter">
+                                <span id="char-count">0</span>/4
+                            </div>
+                        </div>
+                        <p class="input-hint">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                <path d="M12 17h.01"/>
+                            </svg>
+                            Type in Chinese characters or use pinyin input
+                        </p>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button id="submit-btn" class="btn btn-primary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 6L9 17l-5-5"/>
+                            </svg>
+                            Submit Guess
+                        </button>
+                        <button id="hint-btn" class="btn btn-secondary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                <path d="M12 17h.01"/>
+                            </svg>
+                            Need a Hint?
+                        </button>
+                    </div>
+
+                    <!-- Hint Section -->
+                    <div id="hint-section" class="hint-section hidden">
+                        <div class="hint-header">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 12l2 2 4-4"/>
+                                <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"/>
+                                <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"/>
+                                <path d="M12 21c0-1 1-3 3-3s3 2 3 3-1 3-3 3-3-2-3-3"/>
+                                <path d="M12 3c0 1-1 3-3 3s-3-2-3-3 1-3 3-3 3 2 3 3"/>
+                            </svg>
+                            <span>Hint:</span>
+                        </div>
+                        <p id="hint-text">Pinyin: </p>
+                    </div>
+                </div>
+
+                <!-- Recent Attempts -->
+                <div id="recent-attempts" class="recent-attempts hidden">
+                    <h3>Recent Attempts</h3>
+                    <div id="attempts-list" class="attempts-list"></div>
+                </div>
+
+                <!-- Reset Button -->
+                <div class="reset-section">
+                    <button id="reset-btn" class="btn btn-outline">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+                            <path d="M21 3v5h-5"/>
+                            <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+                            <path d="M3 21v-5h5"/>
+                        </svg>
+                        Reset Game
+                    </button>
+                </div>
+            </main>
+        </div>
+
+        <!-- Result Modal -->
+        <div id="result-modal" class="modal hidden">
+            <div class="modal-overlay"></div>
+            <div class="modal-content">
+                <button id="close-modal" class="modal-close">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18"/>
+                        <path d="M6 6l12 12"/>
+                    </svg>
+                </button>
+                <div class="modal-body">
+                    <div id="result-icon" class="result-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                    </div>
+                    <h3 id="result-title">Correct!</h3>
+                    <p id="result-message">Great job! You earned 10 points.</p>
+                    <div class="answer-details">
+                        <div class="answer-item">
+                            <strong>Answer:</strong>
+                            <span id="correct-answer" class="chinese-text">塞翁失马</span>
+                        </div>
+                        <div class="answer-item">
+                            <strong>Pinyin:</strong>
+                            <span id="answer-pinyin">sài wēng shī mǎ</span>
+                        </div>
+                        <div class="answer-item">
+                            <strong>Meaning:</strong>
+                            <span id="answer-meaning">A blessing in disguise</span>
+                        </div>
+                    </div>
+                    <button id="next-round-btn" class="btn btn-primary">
+                        Continue
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Complete Modal -->
+        <div id="complete-modal" class="modal hidden">
+            <div class="modal-overlay"></div>
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="trophy-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+                            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+                            <path d="M4 22h16"/>
+                            <path d="M10 14.66V17c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-2.34"/>
+                            <path d="M2 14a6 6 0 0 0 6-6 6 6 0 0 0 6 6 6 6 0 0 0 6-6 6 6 0 0 0-6-6 6 6 0 0 0-6 6 6 6 0 0 0-6 6z"/>
+                        </svg>
+                    </div>
+                    <h3>Game Complete!</h3>
+                    <p id="final-score">Your final score: <span class="score-value">0</span></p>
+                    <div class="complete-actions">
+                        <button id="play-again-btn" class="btn btn-primary">
+                            Play Again
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

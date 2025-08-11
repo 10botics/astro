@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pac-Man Chase - Classic Arcade Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Game Header -->
+        <header class="game-header">
+            <div class="title-section">
+                <h1><i class="fas fa-ghost"></i> Pac-Man Chase</h1>
+                <p class="subtitle">Classic Arcade Adventure</p>
+            </div>
+        </header>
+
+        <!-- Game Stats Panel -->
+        <div class="game-stats">
+            <div class="stat-item">
+                <i class="fas fa-star"></i>
+                <span class="label">Score:</span>
+                <span id="score" class="value">0</span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-layer-group"></i>
+                <span class="label">Level:</span>
+                <span id="level" class="value">1</span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-heart"></i>
+                <span class="label">Lives:</span>
+                <span id="lives" class="value">●●●</span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-volume-up"></i>
+                <button id="muteBtn" class="control-btn">🔊</button>
+            </div>
+        </div>
+
+        <!-- Game Area -->
+        <div class="game-wrapper">
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+                <!-- Game State Overlays -->
+                <div id="readyScreen" class="overlay">
+                    <div class="overlay-content">
+                    <div class="game-logo">
+                        <i class="fas fa-ghost"></i>
+                        <h1>PAC-MAN CHASE</h1>
+                    </div>
+                    
+                    <div class="instructions">
+                        <h3><i class="fas fa-info-circle"></i> How to Play</h3>
+                        <div class="instruction-grid">
+                            <div class="instruction-item">
+                                <i class="fas fa-arrow-up"></i>
+                                <div>
+                                    <strong>Arrow Keys:</strong> Move Pac-Man
+                                </div>
+                            </div>
+                            <div class="instruction-item">
+                                <i class="fas fa-circle"></i>
+                                <div>
+                                    <strong>Dots:</strong> Collect for points
+                                </div>
+                            </div>
+                            <div class="instruction-item">
+                                <i class="fas fa-star"></i>
+                                <div>
+                                    <strong>Power Pellets:</strong> Eat ghosts
+                                </div>
+                            </div>
+                            <div class="instruction-item">
+                                <i class="fas fa-ghost"></i>
+                                <div>
+                                    <strong>Ghosts:</strong> Avoid or eat them
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button id="startBtn" class="game-btn">
+                        <i class="fas fa-play"></i> START GAME
+                    </button>
+                    </div>
+                </div>
+
+                <div id="gameOverScreen" class="overlay hidden">
+                    <div class="overlay-content game-over">
+                    <div class="game-over-header">
+                        <i class="fas fa-skull"></i>
+                        <h1>GAME OVER</h1>
+                    </div>
+                    
+                    <div class="final-stats">
+                        <div class="stat-display">
+                            <span class="label">Final Score:</span>
+                            <span id="finalScore" class="value">0</span>
+                        </div>
+                        <div class="stat-display">
+                            <span class="label">Level Reached:</span>
+                            <span id="finalLevel" class="value">1</span>
+                        </div>
+                    </div>
+                    
+                    <div class="game-controls">
+                        <button id="restartBtn" class="game-btn">
+                            <i class="fas fa-redo"></i> PLAY AGAIN
+                        </button>
+                        <button id="menuBtn" class="game-btn secondary">
+                            <i class="fas fa-home"></i> MAIN MENU
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Controls -->
+        <div class="game-controls">
+            <div class="control-section">
+                <h3><i class="fas fa-gamepad"></i> Controls</h3>
+                <div class="control-options">
+                    <div class="control-option">
+                        <i class="fas fa-keyboard"></i>
+                        <span>Keyboard: Arrow Keys</span>
+                    </div>
+                    <div class="control-option">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Mobile: Touch Controls</span>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Controls -->
+                <div class="mobile-controls">
+                    <div class="control-grid">
+                        <div></div>
+                    <button class="mobile-btn" data-direction="up">
+                        <i class="fas fa-chevron-up"></i>
+                    </button>
+                        <div></div>
+                    <button class="mobile-btn" data-direction="left">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="mobile-btn" data-direction="down">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <button class="mobile-btn" data-direction="right">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Tips -->
+        <div class="game-tips">
+            <h3><i class="fas fa-lightbulb"></i> Pro Tips</h3>
+            <div class="tips-grid">
+                <div class="tip-item">
+                    <i class="fas fa-route"></i>
+                    <p>Plan your route to collect dots efficiently</p>
+                </div>
+                <div class="tip-item">
+                    <i class="fas fa-clock"></i>
+                    <p>Power pellets make ghosts vulnerable temporarily</p>
+                </div>
+                <div class="tip-item">
+                    <i class="fas fa-eye"></i>
+                    <p>Watch ghost patterns to predict their movement</p>
+                    </div>
+                <div class="tip-item">
+                    <i class="fas fa-trophy"></i>
+                    <p>Higher levels mean faster ghosts and more points</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="game-footer">
+            <p>Created by AI Game Coding Students</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

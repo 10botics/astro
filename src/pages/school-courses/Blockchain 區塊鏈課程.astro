@@ -1,0 +1,274 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import { Image } from 'astro:assets';
+import heroImage from '../../assets/images/school-courses/Blockchain 區塊鏈課程/hero-image.png';
+import instructorImage from '../../assets/images/school-courses/Blockchain 區塊鏈課程/instructor-louis-li.jpg';
+import courseFeatures1 from '../../assets/images/school-courses/Blockchain 區塊鏈課程/course-features-1.jpeg';
+import courseFeatures2 from '../../assets/images/school-courses/Blockchain 區塊鏈課程/course-features-2.png';
+import courseFeatures3 from '../../assets/images/school-courses/Blockchain 區塊鏈課程/course-features-3.jpeg';
+import courseContent1 from '../../assets/images/school-courses/Blockchain 區塊鏈課程/course-content-1.png';
+import courseContent2 from '../../assets/images/school-courses/Blockchain 區塊鏈課程/course-content-2.png';
+
+// Course data
+export const courseData = {
+  title: "Blockchain 區塊鏈課程",
+  subtitle: "融入Web 3.0趨勢，探索區塊鏈世界",
+  tags: ["AI 人工智能", "Blockchain 區塊鏈", "初中", "高中"],
+  description: "本課程旨在引領學生進入Web3.0的世界，瞭解在web3下充分利用的Blockchain區塊鏈技術的概念，同時也將探索加密貨幣、NFT、智能合約等重要應用。",
+  heroImage: heroImage
+};
+
+const title = "Blockchain 區塊鏈課程 - 10教育";
+const description = "本課程旨在引領學生進入Web3.0的世界，瞭解在web3下充分利用的Blockchain區塊鏈技術的概念，同時也將探索加密貨幣、NFT、智能合約等重要應用。";
+
+// Course curriculum
+const curriculumItems = [
+  {
+    title: "區塊鏈基礎 [2 節]",
+    content: [
+      "區塊鏈的起源和發展",
+      "區塊鏈的工作原理",
+      "區塊鏈的種類：公有鏈、私有鏈、聯盟鏈",
+      "分散式帳本技術"
+    ]
+  },
+  {
+    title: "加密貨幣與比特幣 [2 節]",
+    content: [
+      "比特幣的誕生和特點",
+      "加密貨幣的交易和挖礦",
+      "加密貨幣的發展和可能性"
+    ]
+  },
+  {
+    title: "開放源代碼與區塊鏈專案 [2 節]",
+    content: [
+      "開放源代碼軟件的重要性",
+      "著名的開放源區塊鏈專案：Ethereum、Hyperledger等",
+      "參與區塊鏈社區",
+      "SmartContract智能合約工作坊 – 認識智能合約的概念和應用"
+    ]
+  },
+  {
+    title: "NFT與數位資產 [2節]",
+    content: [
+      "什麼是NFT？非同質化代幣的概念",
+      "NFT的用途和市場",
+      "創建和交易NFT",
+      "生成式藝術 – Fidenza演算法的認識"
+    ]
+  },
+  {
+    title: "加密錢包和安全 [2 節]",
+    content: [
+      "加密錢包的種類：線上錢包、硬件錢包等",
+      "加密錢包的設置和使用",
+      "區塊鏈安全性和防護措施"
+    ]
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <div class="container mx-auto px-4 py-8">
+    <!-- Breadcrumbs -->
+    <nav class="text-sm text-gray-600 mb-4">
+      <ol class="list-none p-0 inline-flex">
+        <li class="flex items-center">
+          <a href="/" class="hover:text-blue-600">首頁</a>
+          <span class="mx-2">»</span>
+        </li>
+        <li class="flex items-center">
+          <a href="/school-courses/" class="hover:text-blue-600">到校課程</a>
+          <span class="mx-2">»</span>
+        </li>
+        <li class="text-gray-900">Blockchain 區塊鏈課程</li>
+      </ol>
+    </nav>
+
+    <!-- Page Title -->
+    <h1 class="text-4xl font-bold text-gray-900 mb-4">Blockchain 區塊鏈課程</h1>
+    
+    <!-- Course Subtitle -->
+    <p class="text-lg text-gray-700 mb-6">融入Web 3.0趨勢，探索區塊鏈世界</p>
+
+    <!-- Tags -->
+    <div class="flex flex-wrap gap-2 mb-8">
+      <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">AI 人工智能</span>
+      <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Blockchain 區塊鏈</span>
+      <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">初中</span>
+      <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">高中</span>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="bg-gray-50 rounded-lg p-8 mb-12">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <Image src={heroImage} alt="Blockchain Course Hero" class="w-full rounded-lg" />
+        </div>
+        <div>
+          <p class="text-lg leading-relaxed">
+            本課程旨在引領學生進入Web3.0的世界，瞭解在web3下充分利用的Blockchain區塊鏈技術的概念，同時也將探索加密貨幣、NFT<span class="bg-yellow-200">、智能合約</span>等重要應用。透過該課程，學生將從基礎知識出發，進一步獲得實用技能，包括建立加密錢包、創建NFT，並深入研究區塊鏈在金融、供應链等不同行業的實際應用，掌握區塊鏈技術的實際價值與發展。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Instructor Section -->
+    <section class="bg-white rounded-lg p-8 mb-12 shadow-sm">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">導師簡介</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="md:col-span-1">
+          <Image src={instructorImage} alt="Louis Li 李思聰" class="w-full rounded-lg" />
+        </div>
+        <div class="md:col-span-2">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Louis Li 李思聰</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li>• Louis Li 李思聰</li>
+            <li>• 多間web3公司的合夥人、創辦人</li>
+            <li>• 香港著名區塊鏈和加密貨幣專家和導師</li>
+            <li>• 自2018年起，教授各種區塊鏈、加密貨幣、DeFi相關課程，學生已逾5,000人</li>
+            <li>• 於不同媒體製作有關節目，及接受訪問，包括香港電台、TVB、各大報章</li>
+            <li>• 撰寫相關文章和製造作podcast，分享市場資訊和正確知識</li>
+            <li>• 活躍於各種加密貨幣社區，主持各種活動</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Features Section -->
+    <section class="bg-gray-50 rounded-lg p-8 mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">課程特色</h2>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Feature 1 -->
+        <div class="text-center">
+          <Image src={courseFeatures1} alt="多元化的主題涵蓋" class="w-full rounded-lg mb-4" />
+          <h3 class="text-xl font-bold text-gray-900 mb-2">多元化的主題涵蓋</h3>
+          <p class="text-gray-700">涵蓋多個重要主題，包括區塊鏈基礎、加密貨幣、NFT等</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="text-center">
+          <Image src={courseFeatures2} alt="實踐導向的學習" class="w-full rounded-lg mb-4" />
+          <h3 class="text-xl font-bold text-gray-900 mb-2">實踐導向的學習</h3>
+          <p class="text-gray-700">不但會學到區塊鏈的基礎知識，還將參與區塊鏈相關的項目，例如NFT製作</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="text-center">
+          <Image src={courseFeatures3} alt="關注實際應用和行業趨勢" class="w-full rounded-lg mb-4" />
+          <h3 class="text-xl font-bold text-gray-900 mb-2">關注實際應用和行業趨勢</h3>
+          <p class="text-gray-700">學生將能夠深入了解區塊鏈在不同行業的應用和影響，這有助於他們理解區塊鏈技術的實際價值和潛在應用。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Content Section -->
+    <SingleCourseContent 
+      items={curriculumItems}
+      hours="10 小時"
+      images={[
+        { src: courseContent1, alt: "Course Content Part 1" },
+        { src: courseContent2, alt: "Course Content Part 2" }
+      ]}
+    />
+
+    <!-- Course Schedule Section -->
+    <section class="bg-white rounded-lg p-8 mb-12 shadow-sm">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">課程安排</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center">
+            <span class="text-white font-bold">★</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">STEM Day 活動 (1 至 2 小時)</h3>
+            <p class="text-gray-700">主要介紹區塊鏈的起源和發展，並探索這些新興技術在現實使用的例子和運用。</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center">
+            <span class="text-white font-bold">★</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">完整課程 (10 小時)</h3>
+            <p class="text-gray-700">建議一個學期完成 10 節課堂，每節 1 小時。<br> *可根據學校需要調整課堂數及時數</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-gray-700 mt-8">歡迎填妥下方表格讓同事為你提供咨詢。</p>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="bg-gray-50 rounded-lg p-8 mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">常見問題</h2>
+      
+      <div class="space-y-4">
+        <details class="group border rounded-lg bg-white">
+          <summary class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-50">
+            <span class="font-semibold">課程是否需要有關區塊鏈的基礎知識？</span>
+            <span class="text-gray-500 group-open:rotate-180 transition-transform">▶</span>
+          </summary>
+          <div class="p-4 border-t">
+            <p class="text-gray-700">這個課程不需要學生事先擁有區塊鏈或加密貨幣方面的知識。它從基礎開始，適合初學者，並提供了建立相關知識和技能的機會。</p>
+          </div>
+        </details>
+
+        <details class="group border rounded-lg bg-white">
+          <summary class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-50">
+            <span class="font-semibold">課程是否學到如何保護區塊鏈和加密貨幣資產的安全？</span>
+            <span class="text-gray-500 group-open:rotate-180 transition-transform">▶</span>
+          </summary>
+          <div class="p-4 border-t">
+            <p class="text-gray-700">是。課程將包括有關區塊鏈安全性和保護加密錢包的內容。學生將學到如何識別潛在風險，並實施安全措施以保護他們的資產。</p>
+          </div>
+        </details>
+
+        <details class="group border rounded-lg bg-white">
+          <summary class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-50">
+            <span class="font-semibold">課程是否學到如何創建自己的加密錢包和NFT？</span>
+            <span class="text-gray-500 group-open:rotate-180 transition-transform">▶</span>
+          </summary>
+          <div class="p-4 border-t">
+            <p class="text-gray-700">是。課程將涵蓋如何創建加密錢包、安全地存儲加密貨幣，以及如何創建自己的NFT。學生將獲得實用技能，能夠參與區塊鏈和NFT市場。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="bg-white rounded-lg p-8 shadow-sm">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">聯絡我們</h2>
+      <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+        <p class="text-gray-700 mb-4">如需了解更多關於此課程的資訊，請聯絡我們：</p>
+        <div class="space-y-2 text-gray-700">
+          <p><strong>電話:</strong> +852 6554-1506</p>
+          <p><strong>電郵:</strong> info@10botics.com</p>
+          <p><strong>地址:</strong> 觀塘偉業街161號 THE 80|20 12樓01-02室</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  details[open] summary ~ * {
+    animation: slideDown 0.3s ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style> 

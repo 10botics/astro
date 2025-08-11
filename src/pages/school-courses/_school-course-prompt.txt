@@ -1,5 +1,24 @@
-- Use the components avaialble in src/components/homepage
-- When user give a url to migrate, you should adhere to the exact url and exact title. 
-- Pay attention to existing page structure and divide into the exact section of the original page have
-- Download the image and put into a separate folder under src/assets/images/school-courses
-- Rename the download image into their appropriate name and make them related to the content.
+I want to migrate a complete school course page from my existing website. Please:
+
+1. **Fetch the complete page content** from [URL] using the PowerShell command
+2. **Extract ALL information** including:
+   - Exact page title and subtitle
+   - Complete course description and detailed content
+   - All course sections and subsections
+   - Exact curriculum content (beginner and advanced)
+   - All course features and highlights
+   - Complete FAQ items
+   - All images (png, jpg, gif) and their descriptions
+   - Any videos or embedded content (if there are any)
+   - Contact information and forms
+   - Course arrangements and pricing (if there are any)
+   - Student work examples (if there are any)
+
+3. **Download ALL images** from the original page and place them in src/assets/images/school-courses/[course name]
+4. **Create the exact page structure** matching the original layout
+5. **Use only the components available** in src/components/homepage and src/components/course
+6. **Preserve exact wording** from the original website
+7. **Maintain the exact URL structure** (/school-courses/[course-name])
+8. **DO NOT EXAMINE EXISTING COURSE PAGES TO UNDERSTAND PAGE STRUCTURE**
+
+Please extract and migrate EVERY piece of information from the original page without any loss.

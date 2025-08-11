@@ -1,0 +1,346 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import DualCourseContent from '../../components/course/DualCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import { Image } from 'astro:assets';
+
+// Import course images
+import featuredImage from '../../assets/images/school-courses/珊瑚環境監測入門課程/IMG_1686-1024x768.jpeg';
+import img1676 from '../../assets/images/school-courses/珊瑚環境監測入門課程/IMG_1676-scaled.jpeg';
+import img1671 from '../../assets/images/school-courses/珊瑚環境監測入門課程/IMG_1671-1024x768.jpeg';
+import img1639 from '../../assets/images/school-courses/珊瑚環境監測入門課程/IMG_1639-1024x768.jpeg';
+import img1437 from '../../assets/images/school-courses/珊瑚環境監測入門課程/IMG_1437-1024x768.jpeg';
+import img1506 from '../../assets/images/school-courses/珊瑚環境監測入門課程/IMG_1506-1024x768.jpeg';
+import img1592 from '../../assets/images/school-courses/珊瑚環境監測入門課程/IMG_1592-1024x768.jpeg';
+import img1754 from '../../assets/images/school-courses/珊瑚環境監測入門課程/IMG_1754-1024x768.jpeg';
+import img1685 from '../../assets/images/school-courses/珊瑚環境監測入門課程/IMG_1685-1024x768.jpeg';
+import img1499 from '../../assets/images/school-courses/珊瑚環境監測入門課程/IMG_1499-1024x741.jpeg';
+
+// Course data
+export const courseData = {
+  title: "珊瑚環境監測入門課程",
+  subtitle: "從生物、化學的角度探索海洋環境，學習IoT監察系統和自動化系統",
+  tags: ["Arduino", "IoT", "Microbit", "Programming 編程", "初中", "海洋環境", "高中", "高小"],
+  videoId: "your-video-id-here",
+  description: "本課程會從生物、化學的角度與同學探索海洋環境，除了了解不同海洋生物的生理結構外，還會科學的方式製作和監控一個海洋生存環境。",
+  detailedDescription: "本課程會從生物、化學的角度與同學探索海洋環境，除了了解不同海洋生物的生理結構外，還會科學的方式製作和監控一個海洋生存環境。課程會用到Microbit及Arduino去設置IoT監察系統和自動化系統，配合 IoT 平台將收集到的數據整理然後上傳至雲端，再通過自動化方式全天候紀錄和管理珊瑚缸的狀況。",
+  heroImage: featuredImage
+};
+
+// Cross-disciplinary learning highlights
+const crossDisciplinaryLearning = [
+  {
+    icon: "fas fa-water",
+    title: "生物科",
+    description: "深入了解海洋環境的特性，如水質、溫度和光照對海洋生態系統的影響，學習各種珊瑚、魚類和其他無脊椎動物的生活習性和互動關係。"
+  },
+  {
+    icon: "fas fa-flask",
+    title: "化學科",
+    description: "通過組裝魚缸的過程和測試，學生可以理解不同生物知識和氮循環各種化學性質，進行各種科學實驗及各種測試分析水質。"
+  },
+  {
+    icon: "fas fa-microchip",
+    title: "電腦科",
+    description: "同學能實時監控珊瑚缸內的環境參數，通過數據分析來維持珊瑚缸的健康狀況，通過自動化系統的編寫和製作，方便照顧魚缸。"
+  },
+  {
+    icon: "fas fa-cogs",
+    title: "物理科",
+    description: "學習使用各種化學試劑和儀器，如試紙和感應器，來測試和分析海水中的各項化學指標，包括鹽度、pH值、氨氮等。"
+  }
+];
+
+// Course curriculum - Beginner level
+const beginnerCurriculum = [
+  {
+    title: "介紹海洋環境［1節］",
+    content: [
+      "介紹海洋內含有的不同化學物質",
+      "探究海洋生物的生存要求"
+    ]
+  },
+  {
+    title: "組裝海洋缸［1節］",
+    content: [
+      "製造一個適合海洋生物在學校生存的水缸環境",
+      "學習使用珊瑚缸的設備"
+    ]
+  },
+  {
+    title: "介紹海洋生物［1節］",
+    content: [
+      "學習海洋生物的生理構造和什麼氮循環",
+      "了解不同的海水魚類與軟體珊瑚"
+    ]
+  },
+  {
+    title: "初步水質測試［1節］",
+    content: [
+      "研究不同水質對海洋生物的影響",
+      "學習如何用科學知識去測試水質"
+    ]
+  },
+  {
+    title: "Microbit 監察系統［2節］",
+    content: [
+      "學習組裝不同傳感器",
+      "了解傳感器是如何工作",
+      "通過編程來使用傳感器",
+      "利用傳感器進利測試",
+      "把Microbit連到IoT平台並上傳數據"
+    ]
+  }
+];
+
+// Course curriculum - Advanced level
+const advancedCurriculum = [
+  {
+    title: "進階水質測試［2節］",
+    content: [
+      "了解其他會影響水質的化學物質",
+      "學習使用更多的測試水質的方法，例如試紙，滴定法等",
+      "探究這些化學物質會如何影響到海洋生物"
+    ]
+  },
+  {
+    title: "Arduino 監察系統［2節］",
+    content: [
+      "學習使用難度更高的傳感器",
+      "利用傳感器進行測試",
+      "比較Microbit與Arduino系統的差異",
+      "比較電子傳感器與光學量度器的測試差異",
+      "把收集到的數據上傳到IoT平台"
+    ]
+  },
+  {
+    title: "自動化系統［2節］",
+    content: [
+      "了解如何簡化維護魚缸的方法",
+      "探究魚缸在長時間運行後的變化",
+      "用自動化的方法去調節水質",
+      "明白IoT與自動化的關聯",
+      "學習組裝自動化系統"
+    ]
+  }
+];
+
+// Learning outcomes
+const learningOutcomes = [
+  {
+    title: "海洋缸組裝",
+    description: "掌握魚缸組裝的基本步驟和技巧，學習如何使用各種設備和工具，來創造和維持適宜的水族環境。",
+    image: img1437
+  },
+  {
+    title: "使用科學儀器",
+    description: "學習使用各種化學試劑和儀器，如試紙和感應器，來測試和分析海水中的各項化學指標，包括鹽度、pH值、氨氮等",
+    image: img1506
+  },
+  {
+    title: "海洋環境研究",
+    description: "深入了解海洋環境的特性，如水質、溫度和光照對海洋生態系統的影響，學習到各種珊瑚、魚類和其他無脊椎動物的生活習性和互動關係。",
+    image: img1671
+  },
+  {
+    title: "維護海洋缸",
+    description: "探討魚缸生態系統的維護方法，學習如何通過科學實驗來管理光度和溫度，確保水生生物的健康生長。",
+    image: img1592
+  },
+  {
+    title: "Blockly/Python程式編寫及IoT系統",
+    description: "編寫簡單的程式，讀取感測器數據並進行處理和在IoT上顯示，在課程中提升編程技能。",
+    image: img1754
+  },
+  {
+    title: "學習海洋生物知識",
+    description: "通過接觸各種海洋生物，了解他們的分類和特徵，學生可以認識不同類型的海洋生物在生態系統中的角色。",
+    image: img1685
+  },
+  {
+    title: "建造自動化系統",
+    description: "學生將根據所學的知識，設計並建造一個小型自動化項目，例如是自動餵糧機和補水器等自動系統，了解機械工程帶來的方便及可靠性。",
+    image: img1499
+  }
+];
+
+// Course highlights
+const courseHighlights = [
+  {
+    title: "海洋環境研究",
+    description: "深入了解海洋環境的特性，如水質、溫度和光照對海洋生態系統的影響，學習到各種珊瑚、魚類和其他無脊椎動物的生活習性和互動關係。",
+    image: img1671
+  },
+  {
+    title: "科學測試",
+    description: "通過組裝魚缸的過程和測試，學生可以理解不同生物知識和氮循環各種化學性質，學生在課程中可以進行各種科學實驗及各種測試分析水質。",
+    image: img1639
+  },
+  {
+    title: "編程監控",
+    description: "同學能實時監控珊瑚缸內的環境參數，通過數據分析來維持珊瑚缸的健康狀況，通過自動化系統的編寫和製作，方便照顧魚缸。",
+    image: img1671
+  }
+];
+
+// FAQ data
+const faqData = [
+  {
+    question: "這個課程適合什麼年級的學生？",
+    answer: "本課程適合初中、高中和高小學生，課程內容會根據學生的程度進行調整。"
+  },
+  {
+    question: "課程需要什麼設備？",
+    answer: "課程會提供Microbit、Arduino、各種傳感器和海洋缸設備，學生無需自備設備。"
+  },
+  {
+    question: "課程時長是多少？",
+    answer: "課程總共12小時，分為初階課程（6小時）和進階課程（6小時），可根據學校需要調整。"
+  },
+  {
+    question: "學生會學到什麼編程技能？",
+    answer: "學生將學習Blockly和Python編程，掌握IoT系統的應用，以及如何編寫自動化程式。"
+  },
+  {
+    question: "課程會提供學習材料嗎？",
+    answer: "是的，課程配備學習歷程冊，引導學生循序漸進地學習知識，並記錄實驗成果。"
+  }
+];
+
+const { title, subtitle, tags, description, detailedDescription, heroImage } = courseData;
+---
+
+<Layout title={title} description={description}>
+  <main>
+    <!-- Hero Section -->
+    <HeroSection 
+      title={title}
+      subtitle={subtitle}
+      tags={tags}
+      description={detailedDescription}
+      heroImage={heroImage}
+    />
+
+    <!-- Course Introduction -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <Image 
+                src={img1676} 
+                alt="學習歷程冊" 
+                class="rounded-lg shadow-lg"
+                width={800}
+                height={600}
+              />
+            </div>
+            <div>
+              <h2 class="text-3xl font-bold mb-6">學習歷程冊</h2>
+              <p class="text-lg text-gray-700 leading-relaxed">
+                本課程配備一份<strong>學習歷程冊</strong>，而學習歷程冊將引導學生循序漸進地學習知識，從簡單的概念過渡到實踐應用，並通過記錄來證明實驗的成果。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Highlights -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold mb-4">課程重點</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          {courseHighlights.map((highlight) => (
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+              <Image 
+                src={highlight.image} 
+                alt={highlight.title}
+                class="w-full h-48 object-cover"
+                width={400}
+                height={300}
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-3">{highlight.title}</h3>
+                <p class="text-gray-700">{highlight.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Learning Outcomes -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold mb-4">目標成果</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {learningOutcomes.map((outcome) => (
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+              <Image 
+                src={outcome.image} 
+                alt={outcome.title}
+                class="w-full h-48 object-cover"
+                width={400}
+                height={300}
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-3">{outcome.title}</h3>
+                <p class="text-gray-700">{outcome.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Content Section -->
+    <DualCourseContent 
+      beginnerTitle="初階課程"
+      advancedTitle="進階課程"
+      beginnerItems={beginnerCurriculum}
+      advancedItems={advancedCurriculum}
+      beginnerHours="6 小時"
+      advancedHours="6 小時"
+    />
+
+    <!-- Cross-disciplinary Learning -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold mb-4">跨學科學習重點</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {crossDisciplinaryLearning.map((item) => (
+            <div class="text-center p-6 bg-white rounded-lg shadow-lg">
+              <div class="text-4xl text-blue-600 mb-4">
+                <i class={item.icon}></i>
+              </div>
+              <h3 class="text-xl font-bold mb-3">{item.title}</h3>
+              <p class="text-gray-700">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <QnASection faqs={faqData} />
+
+    <!-- Contact Form -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-4xl font-bold mb-8">聯絡我們</h2>
+          <PaperformEmbed formId="qhmoqcvc" />
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout> 

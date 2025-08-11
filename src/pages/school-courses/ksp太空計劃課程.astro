@@ -1,0 +1,534 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import DualCourseContent from '../../components/course/DualCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import { Image } from 'astro:assets';
+
+// Import images
+import kspMain from '../../assets/images/school-courses/ksp太空計劃課程/ksp-main.png';
+import kspRocket from '../../assets/images/school-courses/ksp太空計劃課程/ksp-rocket.png';
+import kspTravel from '../../assets/images/school-courses/ksp太空計劃課程/ksp-travel.png';
+import kspSpace from '../../assets/images/school-courses/ksp太空計劃課程/ksp-space.png';
+import kspCarousel1 from '../../assets/images/school-courses/ksp太空計劃課程/ksp-carousel-1.png';
+import kspCarousel2 from '../../assets/images/school-courses/ksp太空計劃課程/ksp-carousel-2.png';
+import kspCarousel3 from '../../assets/images/school-courses/ksp太空計劃課程/ksp-carousel-3.png';
+import kspCarousel4 from '../../assets/images/school-courses/ksp太空計劃課程/ksp-carousel-4.png';
+import kspCarousel5 from '../../assets/images/school-courses/ksp太空計劃課程/ksp-carousel-5.png';
+import kspCarousel6 from '../../assets/images/school-courses/ksp太空計劃課程/ksp-carousel-6.png';
+
+// Course data (static) - now in frontmatter
+export const courseData = {
+  title: "Kerbal Space Program (KSP) 太空任務設計課程",
+  subtitle: "開啟火箭工程之旅，進入KSP模擬的科學與奧秘！",
+  tags: ["Engineering 工程", "KSP", "Science 科學", "初中", "遊戲開發", "高中", "高小"],
+  videoId: "yBQEm80belU",
+  description: "通過 KSP 模擬太空任務和探索宇宙，學生將進入迷人的太空科學世界，學習如何建構火箭，並掌握引力、推進力和運動力學等重要概念。透過模擬真實的太空環境和挑戰，他們將學習如何計劃和執行成功的發射任務，激發學員的創造力和探索精神，培養解決問題和團隊合作的能力。",
+  detailedDescription: "通過 KSP 模擬太空任務和探索宇宙，學生將進入迷人的太空科學世界，學習如何建構火箭，並掌握引力、推進力和運動力學等重要概念。透過模擬真實的太空環境和挑戰，他們將學習如何計劃和執行成功的發射任務，激發學員的創造力和探索精神，培養解決問題和團隊合作的能力。",
+  heroImage: kspMain
+};
+
+// Course curriculum
+const curriculumItems = [
+  {
+    title: "簡介 KSP 及基本 KSP 操作 [2 節]",
+    content: [
+      "簡介 Kerbal Space Program",
+      "認識KSP基本操作",
+      "認識火箭推進原理及設計",
+      "認識基本火箭結構及零件種類",
+      "製作固體火箭、液體火箭、離子推力並發射"
+    ]
+  },
+  {
+    title: "認識火箭升空後會遇到到問題和解決方法 [2 節]",
+    content: [
+      "如何解決燃料不足的問題",
+      "如何解決火箭不穩定的問題",
+      "製作多段式火箭",
+      "利用固體火箭助推器製作多段式火箭",
+      "設計使用液體火箭助推器的火箭",
+      "學習使用燃料管道，將燃料從助推器轉移到主油箱"
+    ]
+  },
+  {
+    title: "認識軌道和軌道飛行 [2 節]",
+    content: [
+      "學習軌道的重要性",
+      "認識人造衛星和軌道的關係",
+      "製作多段式火箭飛上太空",
+      "學習如何進行軌道飛行"
+    ]
+  },
+  {
+    title: "認識軌道操作和霍曼轉移軌道 [2 節]",
+    content: [
+      "學習改變軌道，讓火箭能夠到達更遠的目的地"
+    ]
+  },
+  {
+    title: "月球登陸任務 [2 節]",
+    content: [
+      "製作多段式火箭",
+      "發射火箭並進入地球軌道",
+      "進行軌道調節讓火箭進入月球軌道",
+      "利用動力下降方法登陸月球插旗",
+      "安全返回地球"
+    ]
+  }
+];
+
+// Advanced curriculum items
+const advancedCurriculumItems = [
+  {
+    title: "衛星星座和火星探測車 [2 節]",
+    content: [
+      "了解衛星星座在通訊和觀測方面的應用",
+      "火星探測車的設計和任務：瞭解火星探測車的功能、科學目標和探測挑戰"
+    ]
+  },
+  {
+    title: "簡單軌道操控和霍曼轉移 [2 節]",
+    content: [
+      "基礎軌道操控：學習如何改變太空船的軌道，包括提升軌道、降低軌道和改變軌道傾角",
+      "霍曼轉移：瞭解霍曼轉移的原理和應用，以實現太陽系中不同天體之間的轉移"
+    ]
+  },
+  {
+    title: "交會和對接太空站 [2 節]",
+    content: [
+      "交會：學習如何計劃和執行太空船的交會，使它們能夠在太空中相遇",
+      "太空站對接：瞭解太空站對接的過程和技術，並實際進行模擬對接操作"
+    ]
+  },
+  {
+    title: "阿波羅式月球探索任務 [2 節]",
+    content: [
+      "阿波羅式探月任務的回顧：研究阿波羅式探月任務的目標、設計和成就",
+      "模擬阿波羅式任務：學習如何計劃和執行類似阿波羅式的月球探索任務，包括著陸和返回"
+    ]
+  },
+  {
+    title: "太空任務設計項目 [2 節]",
+    content: [
+      "太空任務設計：以團隊為單位，設計和計劃自己的太空任務，包括目標、軌道、載具和科學實驗",
+      "項目呈現：團隊向其他同學展示和解釋他們的太空任務設計，並接受反饋和討論"
+    ]
+  }
+];
+
+// Course highlights
+const courseHighlights = [
+  {
+    icon: "fas fa-rocket",
+    title: "基本 KSP 知識與火箭設計",
+    description: "學習 Kerbal Space Program 的基本操作，認識火箭推進原理、結構和零件種類，並實際製作固體、液體火箭以及離子推力的發射。"
+  },
+  {
+    icon: "fas fa-cogs",
+    title: "解決火箭升空後問題的技巧",
+    description: "學習解決火箭升空過程中可能遇到的問題，包括燃料不足、火箭不穩定等，並掌握製作多段式火箭的技巧，包括固體火箭助推器和液體火箭助推器的運用。"
+  },
+  {
+    icon: "fas fa-satellite",
+    title: "軌道飛行與太空探索",
+    description: "瞭解軌道的重要性，探討人造衛星與軌道的關係，並實際製作多段式火箭飛上太空，學習軌道飛行的技巧。"
+  }
+];
+
+// Course requirements
+const courseRequirements = [
+  {
+    icon: "fas fa-clock",
+    title: "課時",
+    description: "10 - 20 小時"
+  },
+  {
+    icon: "fas fa-laptop",
+    title: "所需設備",
+    description: "手提電腦"
+  },
+  {
+    icon: "fas fa-user-graduate",
+    title: "學員要求",
+    description: "高小至高中"
+  },
+  {
+    icon: "fas fa-users",
+    title: "開班人數",
+    description: "最少 15 人"
+  }
+];
+
+// FAQ items
+const faqItems = [
+  {
+    question: "甚麼是「Kerbal Space Program」？",
+    answer: "Kerbal Space Program 是一款太空探索模擬遊戲，玩家可以建立和管理自己的太空計劃，設計、建造和發射太空船，進行太空任務和科學研究。"
+  },
+  {
+    question: "同學需要有任何先備知識或技能才能參加KSP課程嗎？",
+    answer: "不需要。課程設計為適合初學者，並且會從基礎概念開始進行教學。"
+  },
+  {
+    question: "課程開班的最少人數是多少？",
+    answer: "課程開班的最少人數是15人。"
+  },
+  {
+    question: "每堂到校的公司職員人數?",
+    answer: "一般課程都會是一位導師到校教授。如果學生人數超過25人，導師人數會作調整。"
+  },
+  {
+    question: "學校需要否提供任何協助?如充電器或其他器材?",
+    answer: "上課地點需要有投影設備，包括投影機, 屏幕, HDMI線及咪。另外需要確保課室有 WiFi 供學生和導師使用。\n\nKSP軟件需要在電腦上運行，不能使用平板電腦。"
+  },
+  {
+    question: "需要甚麼樣的電腦才能玩「Kerbal Space Program」？",
+    answer: "需要一台具有以下最低配置的電腦：\n\n操作系統：Windows 7 64-bit\n處理器：雙核心 2.0 GHz\n記憶體：4 GB RAM\n圖形：512 MB顯示記憶體、DirectX 9.0c相容\n顯示卡：支援Shader Model 3.0的顯示卡\n存儲空間：至少3 GB可用空間。\n\n我們亦有提供手提電腦租借服務，如果學校有需要可以向我們查詢報價。"
+  },
+  {
+    question: "可否接收政府採購卡(P-card) 付款?",
+    answer: "我們暫不按受政府採購卡(P-card) 付款。"
+  }
+];
+
+// SEO metadata
+const title = "Kerbal Space Program (KSP) 太空任務設計課程 - 10教育";
+const description = courseData.description;
+const ogImage = kspMain.src;
+---
+
+<Layout title={title} description={description} ogImage={ogImage}>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <HeroSection 
+    title={courseData.title}
+    subtitle={courseData.subtitle}
+    tags={courseData.tags}
+    videoId={courseData.videoId}
+    description={courseData.description}
+    heroImage={courseData.heroImage}
+  />
+
+  <!-- Hero image and description section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <Image 
+              src={kspRocket} 
+              alt="KSP 火箭設計" 
+              width={600}
+              height={400}
+              class="w-full h-auto"
+            />
+          </div>
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">為什麼選擇 KSP 太空任務設計？</h2>
+          <p class="text-lg text-gray-700 leading-relaxed mb-6">
+            KSP 課程引領學生進入迷人的太空科學世界，建構火箭、掌握推力、軌道、重力等核心概念。他們將學習如何計劃和執行成功的發射任務。通過這個課程，學生將培養解難思維、團隊合作和創造力等重要的科學技能。
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-start space-x-3">
+              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <span class="text-gray-700">真實的太空科學模擬</span>
+            </div>
+            <div class="flex items-start space-x-3">
+              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <span class="text-gray-700">動手實踐的工程設計</span>
+            </div>
+            <div class="flex items-start space-x-3">
+              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <span class="text-gray-700">培養科學思維和創造力</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why the technology is important section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">為什麼選用這些技術？</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+          <div class="flex items-center mb-4">
+            <i class="fas fa-rocket text-3xl text-cyan-500 mr-4"></i>
+            <h3 class="text-xl font-semibold text-gray-900">真實物理模擬</h3>
+          </div>
+          <p class="text-gray-700">
+            KSP 使用真實的物理引擎，讓學生體驗真實的太空飛行物理學，包括重力、軌道力學、推進系統等核心概念。
+          </p>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+          <div class="flex items-center mb-4">
+            <i class="fas fa-gamepad text-3xl text-cyan-500 mr-4"></i>
+            <h3 class="text-xl font-semibold text-gray-900">遊戲化學習</h3>
+          </div>
+          <p class="text-gray-700">
+            通過遊戲化的方式學習複雜的太空科學概念，讓抽象的理論變得具體有趣，激發學生的學習興趣和探索精神。
+          </p>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+          <div class="flex items-center mb-4">
+            <i class="fas fa-flask text-3xl text-cyan-500 mr-4"></i>
+            <h3 class="text-xl font-semibold text-gray-900">STEM 教育整合</h3>
+          </div>
+          <p class="text-gray-700">
+            整合科學、技術、工程和數學（STEM）學科，讓學生在實際應用中理解這些學科之間的關聯性和重要性。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course requirements section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程要求</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {courseRequirements.map((requirement) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow text-center">
+            <div class="flex justify-center mb-4">
+              <i class={`${requirement.icon} text-3xl text-cyan-500`}></i>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">{requirement.title}</h3>
+            <p class="text-gray-700">{requirement.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course highlights section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程重點</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {courseHighlights.map((highlight) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center mb-4">
+              <i class={`${highlight.icon} text-2xl text-cyan-500 mr-3`}></i>
+              <h3 class="text-lg font-semibold text-gray-900">{highlight.title}</h3>
+            </div>
+            <p class="text-gray-700">{highlight.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Content Section -->
+  <DualCourseContent 
+    beginnerTitle="初階課程"
+    advancedTitle="進階課程"
+    beginnerItems={curriculumItems}
+    advancedItems={advancedCurriculumItems}
+    beginnerHours="10 小時"
+    advancedHours="10 小時"
+  />
+
+  <!-- Course Schedule -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程安排</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+          <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-star text-white text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">STEM Day 活動 (1 至 2 小時)</h3>
+          <p class="text-gray-600">
+            • 利用遊戲中提供的資源和工具，自行設計和建造自己的太空火箭<br>
+            • 採用KSP模擬執行太空任務
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+          <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-rocket text-white text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">初階課程 (10 小時)</h3>
+          <p class="text-gray-600">
+            建議一個學期完成 5 節課堂，每節 2 小時。<br>
+            *可根據學校需要調整課堂數及時數
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+          <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-satellite text-white text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">進階課程 (10 小時)</h3>
+          <p class="text-gray-600">
+            建議一個學期完成 5 節課堂，每節 2 小時。<br>
+            *可根據學校需要調整課堂數及時數
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+          <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-globe text-white text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">組合課程 (20 小時)</h3>
+          <p class="text-gray-600">
+            初階課程 (上學期) + 進階課程 (下學期)<br>
+            建議兩個學期共完成 10 節課堂，每節 2 小時。<br>
+            *可根據學校需要調整課堂數及時數
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center mt-8">
+        <p class="text-lg text-gray-700">歡迎填妥下方表格讓同事為你提供咨詢。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaching Demo Video -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Kerbal Space Program 教學示範</h2>
+      
+      <div class="bg-gray-100 rounded-lg p-8">
+        <div class="aspect-video bg-black rounded-lg overflow-hidden">
+          <iframe 
+            class="w-full h-full" 
+            src="https://www.youtube.com/embed/U5HnLw0Mmdk" 
+            title="KSP Teaching Demo"
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Gallery -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">精選照片</h2>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <Image src={kspCarousel1} alt="KSP gaming" class="w-full h-32 object-cover rounded-lg shadow-md" />
+        <Image src={kspCarousel2} alt="KSP learn" class="w-full h-32 object-cover rounded-lg shadow-md" />
+        <Image src={kspCarousel3} alt="KSP try" class="w-full h-32 object-cover rounded-lg shadow-md" />
+        <Image src={kspCarousel4} alt="KSP game" class="w-full h-32 object-cover rounded-lg shadow-md" />
+        <Image src={kspCarousel5} alt="KSP focus" class="w-full h-32 object-cover rounded-lg shadow-md" />
+        <Image src={kspCarousel6} alt="KSP attention" class="w-full h-32 object-cover rounded-lg shadow-md" />
+      </div>
+    </div>
+  </section>
+
+  <QnASection faqs={faqItems} />
+
+  <!-- Contact section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          聯絡我們
+        </h2>
+        <p class="text-lg text-gray-600">
+          想了解更多關於 KSP 太空任務設計課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。
+        </p>
+      </div>
+      <PaperformEmbed />
+    </div>
+  </section>
+
+  <!-- Other Courses -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">其他課程</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="https://10botics.com/wp-content/uploads/2023/09/mj100_a_captivating_web_featured_image_that_delves_deep_into_th_83bb5e4a-9e38-49e9-9b65-1f5d9851d71b-768x578.png" alt="AI Course" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-3">
+              <a href="/school-courses/ai-enrichment-course" class="hover:text-blue-600">AI啟蒙與藝術創作課程</a>
+            </h3>
+            <p class="text-gray-600 mb-4">課程將引導學生深入探索人工智能（AI）在視覺藝術領</p>
+            <a href="/school-courses/ai-enrichment-course" class="text-blue-600 hover:underline font-semibold">了解更多 »</a>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="https://10botics.com/wp-content/uploads/2024/01/background-05-1.jpg" alt="AI Digital Animation" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-3">
+              <a href="/stem-day/ai-digital-animation-exhibition" class="hover:text-blue-600">AI數碼動畫展</a>
+            </h3>
+            <p class="text-gray-600 mb-4">AI數碼動畫展是一個簡單有趣的 STEM Day 活動，學生可按主題設計喜歡的圖案/角色，通過人工智能把圖案轉換成栩栩如生的動畫，呈現在學校LED Wall或螢幕上面跳舞，讓學生能以輕鬆有趣的方式體驗生成式AI技術。</p>
+            <a href="/stem-day/ai-digital-animation-exhibition" class="text-blue-600 hover:underline font-semibold">了解更多 »</a>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="https://10botics.com/wp-content/uploads/2023/09/112-768x577.png" alt="Blockchain Course" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-3">
+              <a href="/school-courses/blockchain" class="hover:text-blue-600">Blockchain 區塊鏈課程</a>
+            </h3>
+            <p class="text-gray-600 mb-4">本課程旨在引領學生進入Web3.0的世界，瞭解在w</p>
+            <a href="/school-courses/blockchain" class="text-blue-600 hover:underline font-semibold">了解更多 »</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Accordion functionality for course content
+  document.addEventListener('DOMContentLoaded', function() {
+    const headers = document.querySelectorAll('.accordion-header');
+    
+    headers.forEach(header => {
+      header.addEventListener('click', function(this: HTMLElement) {
+        const target = this.getAttribute('data-target');
+        if (!target) return;
+        
+        const content = document.getElementById(target);
+        const icon = this.querySelector('.accordion-icon i') as HTMLElement;
+        
+        if (content && icon) {
+          // Toggle current accordion
+          if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+            content.style.maxHeight = '0px';
+            icon.className = 'fas fa-plus text-gray-600';
+          } else {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            icon.className = 'fas fa-minus text-gray-600';
+          }
+        }
+      });
+    });
+
+    // Open all accordions by default
+    headers.forEach(header => {
+      const target = header.getAttribute('data-target');
+      if (!target) return;
+      
+      const content = document.getElementById(target);
+      const icon = header.querySelector('.accordion-icon i') as HTMLElement | null;
+      
+      if (content && icon) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        icon.className = 'fas fa-minus text-gray-600';
+      }
+    });
+  });
+</script> 

@@ -1,0 +1,308 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import { Image } from 'astro:assets';
+
+// Import images
+import swiftPlaygroundsHero from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-hero.png';
+import swiftPlaygroundsCoding from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-coding.jpg';
+import swiftPlaygroundsTesting from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-testing.jpg';
+import swiftPlaygroundsPlaying from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-playing.png';
+import swiftPlaygroundsLearning from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-learning.jpg';
+import swiftPlaygroundsThinking from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-thinking.jpg';
+import swiftPlaygroundsTrying from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-trying.jpg';
+import swiftPlaygroundsDoing from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-doing.jpg';
+import swiftPlaygroundsCoding2 from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-coding-2.jpg';
+
+// Course data (static) - now in frontmatter
+export const courseData = {
+  title: "Swift Playgrounds 初階編程",
+  subtitle: "從遊戲中學習編程 — 探索Swift Playgrounds的奇妙世界",
+  tags: ["Programming 編程", "Swift Playground", "初中", "軟件開發", "遊戲開發", "高中"],
+  videoId: "s7tgxH8vSXk",
+  description: "這個課程將帶領學生透過 Swift Playgrounds 學習編寫一個飛機大戰遊戲。學生將學會基礎編程概念、創建圖像元素、動畫設計和碰撞檢測等技巧，最終完成一個功能完整的飛機大戰遊戲。課程將通過互動式編程、示範和實踐來實現學習效果。",
+  detailedDescription: "從遊戲中學習編程 — 探索Swift Playgrounds的奇妙世界。這個課程將帶領學生透過 Swift Playgrounds 學習編寫一個飛機大戰遊戲。學生將學會基礎編程概念、創建圖像元素、動畫設計和碰撞檢測等技巧，最終完成一個功能完整的飛機大戰遊戲。課程將通過互動式編程、示範和實踐來實現學習效果。",
+  heroImage: swiftPlaygroundsHero
+};
+
+// Course curriculum
+const curriculumItems = [
+  {
+    title: "介紹Swift Playgrounds [1 節]",
+    content: [
+      "認識Swift Playgrounds和基本編程概念",
+      "介紹Swift Playgrounds的基本功能和界面",
+      "編寫簡單的程式碼，理解基本的Swift語法",
+      "使用Playgrounds環境進行互動式編程練習"
+    ]
+  },
+  {
+    title: "Swift Playgrounds方案介紹 [2 節]",
+    content: [
+      "探索Apple在Swift Playgrounds中提供的項目和方案",
+      "透過專案：「學習程式設計 1」學習編寫程式代碼"
+    ]
+  },
+  {
+    title: "條件語句、函數和集合類型 [1 節]",
+    content: [
+      "學習使用Swift Playgrounds進行基本數據操作，如算術運算和字串處理",
+      "探索條件語句，如if語句和switch語句",
+      "理解函數的概念和使用方法"
+    ]
+  },
+  {
+    title: "創作飛機大戰遊戲的概念和設計 [1 節]",
+    content: [
+      "介紹飛機大戰遊戲的基本概念和設計思路",
+      "討論遊戲的玩法、目標和操作方式",
+      "設計遊戲界面，包括玩家飛機、敵人和背景等元素"
+    ]
+  },
+  {
+    title: "創建玩家飛機和敵方飛機 [1 節]",
+    content: [
+      "創建玩家飛機和敵方飛機的圖形表示和動畫效果"
+    ]
+  },
+  {
+    title: "增加子彈和碰撞檢測 [1 節]",
+    content: [
+      "介紹碰撞檢測原理",
+      "創建子彈和敵人飛機，並實現它們在屏幕上的移動",
+      "編寫碰撞檢測代碼，實現子彈和敵人飛機的碰撞檢測"
+    ]
+  },
+  {
+    title: "設計得分和失敗機制 [1 節]",
+    content: [
+      "介紹得分和失敗的設計思路",
+      "創建得分和失敗機制，計算分數和顯示得分和失敗提示"
+    ]
+  },
+  {
+    title: "優化遊戲 [2 節]",
+    content: [
+      "優化遊戲內容和遊戲體驗",
+      "分享和展示自己的成果"
+    ]
+  }
+];
+
+// Course highlights
+const courseHighlights = [
+  {
+    icon: "fas fa-gamepad",
+    title: "熟悉 Swift Playgrounds",
+    description: "學生熟悉Swift Playgrounds應用程式，了解其基本功能和界面。同時，學生將學習編寫簡單的程式碼，理解基本的 Swift 語法。透過互動式編程練習，他們可以在遊戲化的環境中開始建立編程基礎。"
+  },
+  {
+    icon: "fas fa-code",
+    title: "探索Swift Playgrounds方案",
+    description: "學生將深入了解Swift Playgrounds中提供的項目和方案。他們將使用專案「學習程式設計 」來學習編寫程式代碼。這有助於學生進一步鞏固他們的編程知識和技能，並開始應用所學的概念。"
+  },
+  {
+    icon: "fas fa-palette",
+    title: "創作遊戲的概念和設計",
+    description: "引導學生探索遊戲的基本概念和設計思路。他們將學習遊戲的玩法、目標和操作方式。同時，他們將設計遊戲界面，包括玩家飛機、敵人和背景等元素。這將激發學生的創造力和設計思維，並為他們後續的編程工作打下基礎。"
+  }
+];
+
+// Course requirements
+const courseRequirements = [
+  {
+    icon: "fas fa-clock",
+    title: "課時",
+    description: "15 小時"
+  },
+  {
+    icon: "fas fa-laptop",
+    title: "所需設備",
+    description: "Mac 或 iPad"
+  },
+  {
+    icon: "fas fa-user-graduate",
+    title: "學員要求",
+    description: "初中至高中"
+  },
+  {
+    icon: "fas fa-users",
+    title: "開班人數",
+    description: "最少 15 人"
+  }
+];
+
+// FAQ items
+const faqItems = [
+  {
+    question: "學生需要有編程背景嗎？",
+    answer: "無需。課程一般適合任何初中至高中學生。"
+  },
+  {
+    question: "課程開班的最少人數是多少？",
+    answer: "課程開班的最少人數是15人。"
+  },
+  {
+    question: "每堂到校的公司職員人數?",
+    answer: "一般課程都會是一位導師到校教授。如果學生人數超過25人，導師人數會作調整。"
+  },
+  {
+    question: "學校需要否提供任何協助?如充電器或其他器材?",
+    answer: "上課地點需要有投影設備，包括投影機, 屏幕, HDMI線及咪。另外需要確保課室有 WiFi 供學生和導師使用。\n\nSwift Playgorund軟件需要在MacOS 或 iPad上運行，不能使用windows電腦或Android平板電腦。"
+  },
+  {
+    question: "需要甚麼樣的電腦 / iPad才能使用swift playgrounds？",
+    answer: "iPad：\n• iPadOS 10.0或更高版本\n• 支援Apple Pencil的iPad型號（第一代或更新）或支援觸控筆的iPad型號\n\nMac：\n• macOS 10.15.4 Catalina或更高版本\n• 具有4 GB RAM的Mac（8 GB或更高建議）\n• 具有Metal支援的Mac型號\n\n[ 下載連結 ](https://www.apple.com/hk/en/swift/playgrounds/)"
+  },
+  {
+    question: "可否接收政府採購卡(P-card) 付款?",
+    answer: "我們暫不按受政府採購卡(P-card) 付款。"
+  }
+];
+
+// SEO metadata
+const title = "Swift Playgrounds 初階編程 - 10教育";
+const description = courseData.description;
+const ogImage = swiftPlaygroundsHero.src;
+---
+
+<Layout title={title} description={description} ogImage={ogImage}>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <HeroSection 
+    title={courseData.title}
+    subtitle={courseData.subtitle}
+    tags={courseData.tags}
+    videoId={courseData.videoId}
+    description={courseData.description}
+    heroImage={courseData.heroImage}
+  />
+
+  <!-- Why Swift Playgrounds section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <Image 
+              src={swiftPlaygroundsCoding} 
+              alt="Swift Playgrounds 編程" 
+              width={600}
+              height={400}
+              class="w-full h-auto"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course requirements section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程要求</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {courseRequirements.map((requirement) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow text-center">
+            <div class="flex justify-center mb-4">
+              <i class={`${requirement.icon} text-3xl text-cyan-500`}></i>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">{requirement.title}</h3>
+            <p class="text-gray-700">{requirement.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course highlights section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程重點</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {courseHighlights.map((highlight) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center mb-4">
+              <i class={`${highlight.icon} text-2xl text-cyan-500 mr-3`}></i>
+              <h3 class="text-lg font-semibold text-gray-900">{highlight.title}</h3>
+            </div>
+            <p class="text-gray-700">{highlight.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course content/curriculum section -->
+  <SingleCourseContent 
+    items={curriculumItems} 
+    hours="15 小時"
+    images={[
+      { src: swiftPlaygroundsCoding, alt: "Swift Playgrounds coding" },
+      { src: swiftPlaygroundsTesting, alt: "Swift Playgrounds testing" }
+    ]}
+  />
+
+  <!-- Course Schedule -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程安排</h2>
+
+      <div class="bg-gradient-to-r from-cyan-50 to-blue-50 rounded-lg p-8">
+        <div class="flex items-center justify-center mb-6">
+          <div class="bg-cyan-500 text-white p-3 rounded-full mr-4">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900">完整課程 (15 小時)</h3>
+        </div>
+        <p class="text-center text-gray-700 text-lg">
+          建議一個學期完成 10 節課堂，每節 1.5 小時。<br>
+          <span class="text-sm text-gray-600">*可根據學校需要調整課堂數及時數</span>
+        </p>
+      </div>
+
+      <div class="text-center mt-8">
+        <p class="text-gray-700">歡迎填妥下方表格讓同事為你提供咨詢。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Gallery -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">精選照片</h2>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <Image src={swiftPlaygroundsLearning} alt="Swift Playgrounds learning" class="w-full h-32 object-cover rounded-lg shadow-md" />
+        <Image src={swiftPlaygroundsThinking} alt="Swift Playgrounds thinking" class="w-full h-32 object-cover rounded-lg shadow-md" />
+        <Image src={swiftPlaygroundsTrying} alt="Swift Playgrounds trying" class="w-full h-32 object-cover rounded-lg shadow-md" />
+        <Image src={swiftPlaygroundsDoing} alt="Swift Playgrounds doing" class="w-full h-32 object-cover rounded-lg shadow-md" />
+        <Image src={swiftPlaygroundsCoding2} alt="Swift Playgrounds coding" class="w-full h-32 object-cover rounded-lg shadow-md" />
+      </div>
+    </div>
+  </section>
+
+  <QnASection faqs={faqItems} />
+
+  <!-- Contact section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          聯絡我們
+        </h2>
+        <p class="text-lg text-gray-600">
+          想了解更多關於 Swift Playgrounds 初階編程課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。
+        </p>
+      </div>
+      <PaperformEmbed />
+    </div>
+  </section>
+</Layout> 
