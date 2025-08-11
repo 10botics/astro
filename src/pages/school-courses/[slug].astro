@@ -22,7 +22,8 @@ export async function getStaticPaths() {
     { params: { slug: 'swiftplaygrounds' } },
     { params: { slug: 'tello' } },
     { params: { slug: 'coral-environment-monitoring' } },
-    { params: { slug: 'unity' } }
+    { params: { slug: 'unity' } },
+    { params: { slug: 'ai-art-competition-2025' } }
   ];
 }
 
@@ -93,6 +94,9 @@ switch (slug) {
     break;
   case 'unity':
     ChineseComponent = await import('./Unity 課程.astro');
+    break;
+  case 'ai-art-competition-2025':
+    ChineseComponent = await import('../competition/第三屆校際AI藝術創作大賽《智畫神話》.astro');
     break;
   default:
     throw new Error(`Unknown slug: ${slug}`);

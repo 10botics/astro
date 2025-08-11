@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
 
 // Import images with error handling
 let heroImage,
@@ -369,18 +370,21 @@ try {
     <!-- Gallery Section (活動花絮) -->
     <section class="gallery-section">
       <div class="container">
-        <h2 class="section-title">活動花絮</h2>
-        <div class="gallery-grid">
-          {galleryImg1 && <Image src={galleryImg1.default} alt="活動花絮 1" class="gallery-image" />}
-          {galleryImg2 && <Image src={galleryImg2.default} alt="活動花絮 2" class="gallery-image" />}
-          {galleryImg3 && <Image src={galleryImg3.default} alt="活動花絮 3" class="gallery-image" />}
-          {galleryImg4 && <Image src={galleryImg4.default} alt="活動花絮 4" class="gallery-image" />}
-          {galleryImg5 && <Image src={galleryImg5.default} alt="活動花絮 5" class="gallery-image" />}
-          {galleryImg6 && <Image src={galleryImg6.default} alt="活動花絮 6" class="gallery-image" />}
-          {galleryImg7 && <Image src={galleryImg7.default} alt="活動花絮 7" class="gallery-image" />}
-          {galleryImg8 && <Image src={galleryImg8.default} alt="活動花絮 8" class="gallery-image" />}
-          {galleryImg9 && <Image src={galleryImg9.default} alt="活動花絮 9" class="gallery-image" />}
-        </div>
+        <GalleryCarousel
+          title="活動花絮"
+          images={[
+            galleryImg1 && galleryImg1.default,
+            galleryImg2 && galleryImg2.default,
+            galleryImg3 && galleryImg3.default,
+            galleryImg4 && galleryImg4.default,
+            galleryImg5 && galleryImg5.default,
+            galleryImg6 && galleryImg6.default,
+            galleryImg7 && galleryImg7.default,
+            galleryImg8 && galleryImg8.default,
+            galleryImg9 && galleryImg9.default,
+          ].filter(Boolean) as string[]}
+          intervalMs={4500}
+        />
       </div>
     </section>
     <section>

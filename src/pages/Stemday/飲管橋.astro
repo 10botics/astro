@@ -4,6 +4,7 @@ import HeroSection from '../../components/course/HeroSection.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
 import { Image } from 'astro:assets';
 import ContactSection from '../../components/ContactSection.astro';
 // Import images
@@ -154,19 +155,20 @@ const { title, subtitle, tags, videoId, description, heroImageAsset: heroImage }
     <!-- Gallery Section -->
     <section class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
-        <div class="max-w-6xl mx-auto">
-          <h2 class="text-4xl font-bold text-center mb-8">精選照片</h2>
-          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <Image src={gallery1} alt="飲管橋活動照片" class="w-full h-48 object-cover rounded-lg shadow-md" width={300} height={200} />
-            <Image src={gallery2} alt="飲管橋活動照片" class="w-full h-48 object-cover rounded-lg shadow-md" width={300} height={200} />
-            <Image src={gallery3} alt="飲管橋活動照片" class="w-full h-48 object-cover rounded-lg shadow-md" width={300} height={200} />
-            <Image src={gallery4} alt="飲管橋活動照片" class="w-full h-48 object-cover rounded-lg shadow-md" width={300} height={200} />
-            <Image src={gallery5} alt="飲管橋活動照片" class="w-full h-48 object-cover rounded-lg shadow-md" width={300} height={200} />
-            <Image src={gallery6} alt="飲管橋活動照片" class="w-full h-48 object-cover rounded-lg shadow-md" width={300} height={200} />
-            <Image src={gallery7} alt="飲管橋活動照片" class="w-full h-48 object-cover rounded-lg shadow-md" width={300} height={200} />
-            <Image src={gallery8} alt="飲管橋活動照片" class="w-full h-48 object-cover rounded-lg shadow-md" width={300} height={200} />
-          </div>
-        </div>
+        <GalleryCarousel 
+          title="精選照片"
+          images={[
+            gallery1,
+            gallery2,
+            gallery3,
+            gallery4,
+            gallery5,
+            gallery6,
+            gallery7,
+            gallery8
+          ]}
+          intervalMs={4000}
+        />
       </div>
     </section>
 
