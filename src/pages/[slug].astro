@@ -2,7 +2,8 @@
 // Dynamic route to handle URL mapping between English URLs and Chinese filename components
 export async function getStaticPaths() {
   return [
-    { params: { slug: 'ai-art-competition-2025' } }
+    { params: { slug: 'ai-art-competition-2025' } },
+    { params: { slug: 'ai-art-competition-2025-result' } }
     // Add more mappings here as needed
   ];
 }
@@ -14,6 +15,9 @@ let ChineseComponent;
 switch (slug) {
   case 'ai-art-competition-2025':
     ChineseComponent = await import('./第三屆 校際AI藝術創作大賽.astro');
+    break;
+  case 'ai-art-competition-2025-result':
+    ChineseComponent = await import('./第三屆校際AI藝術創作大賽《智畫神話》result.astro');
     break;
   default:
     throw new Error(`Unknown slug: ${slug}`);
