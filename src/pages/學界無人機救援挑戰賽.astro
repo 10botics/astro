@@ -1,0 +1,614 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import DifficultyChart from '../assets/images/competition/學界無人機救援挑戰賽/難度表-2.jpg';
+import Task1Overview from '../assets/images/competition/學界無人機救援挑戰賽/3-1.png';
+import Task1Screenshot1 from '../assets/images/competition/學界無人機救援挑戰賽/螢幕擷取畫面-2024-10-16-114515.png';
+import Task1Screenshot2 from '../assets/images/competition/學界無人機救援挑戰賽/螢幕擷取畫面-2024-10-16-121056.png';
+import Task1Screenshot3 from '../assets/images/competition/學界無人機救援挑戰賽/5.png';
+import Task2Screenshot1 from '../assets/images/competition/學界無人機救援挑戰賽/螢幕截圖-2024-10-09-下午6.00.18.png';
+import Task2Screenshot2 from '../assets/images/competition/學界無人機救援挑戰賽/Untitled-design-1.jpg';
+import Task3Screenshot from '../assets/images/competition/學界無人機救援挑戰賽/螢幕擷取畫面-2024-11-01-111207.png';
+import Task4Screenshot from '../assets/images/competition/學界無人機救援挑戰賽/螢幕擷取畫面-2024-11-11-120546.png';
+
+const title = "學界無人機救援挑戰賽";
+const description = "冇無人機都可以參加嘅無人機比賽！學界無人機救援挑戰賽，為響應學界透過無人機提升學生編程能力，10教育將於2024-2025學年舉辦學界無人機救援挑戰賽。";
+---
+
+<Layout title={title} description={description}>
+  <div class="min-h-screen bg-gray-50">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">冇無人機都可以參加嘅無人機比賽！</h2>
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">學界無人機救援</h1>
+        <h3 class="text-2xl md:text-3xl font-bold mb-8">挑戰賽</h3>
+        
+        <div class="space-y-4">
+          <div class="inline-block bg-white/20 text-white px-8 py-4 rounded-full font-semibold text-lg">
+            比賽已經完滿結束，感謝各位支持
+          </div>
+          <br>
+          <a 
+            href="https://10botics.com/competition-drone2024/final-results/"
+            target="_blank"
+            class="inline-block bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105"
+          >
+            決賽得獎名單
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest News -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">最新消息</h2>
+        
+        <div class="max-w-4xl mx-auto space-y-8">
+          <!-- Preliminary Results -->
+          <div class="bg-blue-50 p-8 rounded-lg border-l-4 border-blue-500">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">學界無人機救援挑戰賽初賽結果</h3>
+            <p class="text-lg text-gray-700 mb-6">
+              初賽結果現已公佈，感謝大家的踴躍參與！所有初賽得獎者將獲進入決賽的資格，決賽日期及地點即將公佈，敬請留意！
+            </p>
+            <div class="flex flex-wrap gap-4 justify-center">
+              <a 
+                href="https://10botics.com/competition-drone2024/preliminary-results/"
+                target="_blank"
+                class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300"
+              >
+                初賽得獎名單
+              </a>
+              <a 
+                href="https://10botics.com/competition-drone2024/final-teamlist/"
+                target="_blank"
+                class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors duration-300"
+              >
+                決賽隊伍名單及時間表
+              </a>
+            </div>
+          </div>
+
+          <!-- Beta Tester Recruitment -->
+          <div class="bg-green-50 p-8 rounded-lg border-l-4 border-green-500">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">嬴在起跑線~Beta測試員招募中！</h3>
+            <p class="text-lg text-gray-700 mb-6">
+              我們正在招募無人機模擬器Beta 測試員，協助我們測試並優化Codrone Simulator！同學可以在模擬器正式發佈前取得模擬器軟件並進行練習，是一個提前掌握比賽流程的好機會！
+            </p>
+            
+            <div class="bg-white p-6 rounded-lg mb-6">
+              <h4 class="font-bold text-lg mb-4">模擬器簡介會</h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
+                <div><strong>日期：</strong>12月14日 (六)</div>
+                <div><strong>時間：</strong>10:00 AM – 12:00 NN</div>
+                <div><strong>地點：</strong>Slash All 九龍長沙灣永康街29-33號兆威工業大廈305室</div>
+                <div><strong>對象：</strong>中小學生及老師</div>
+              </div>
+              <p class="text-sm text-gray-600 mt-4">
+                ＊以學校為單位報名，每間學校最多派出1名老師和 3名同學參加簡介會<br>
+                ＊如有家長希望陪同12歲或以下學生出席該簡介會，請與我們聯絡
+              </p>
+            </div>
+            
+            <div class="text-center">
+              <a 
+                href="https://www.youtube.com/watch?v=d7UvGR0n-bo&list=PLo-JR4LW4slEUkrIw6Ay-QAMu6KAioUz7"
+                target="_blank"
+                class="inline-block bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition-colors duration-300"
+              >
+                Beta測試員報名連結
+              </a>
+            </div>
+          </div>
+
+          <!-- Participant List -->
+          <div class="bg-yellow-50 p-8 rounded-lg border-l-4 border-yellow-500">
+            <p class="text-lg text-gray-700 mb-6">參賽名單現已更新，詳細資料請瀏覽以下連結。</p>
+            <div class="text-center">
+                              <a 
+                    href="/學界無人機救援挑戰賽-比賽名單"
+                    class="inline-block bg-yellow-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-yellow-700 transition-colors duration-300"
+              >
+                參賽名單
+              </a>
+            </div>
+          </div>
+
+          <!-- Online Briefing -->
+          <div class="bg-purple-50 p-8 rounded-lg border-l-4 border-purple-500">
+            <h4 class="text-xl font-bold text-gray-800 mb-4">網上簡介會</h4>
+            <p class="text-lg text-gray-700 mb-6">簡介會已完結，詳情可觀看影片回放。</p>
+            <div class="text-center">
+              <a 
+                href="https://www.youtube.com/watch?v=d7UvGR0n-bo&list=PLo-JR4LW4slEUkrIw6Ay-QAMu6KAioUz7"
+                target="_blank"
+                class="inline-block bg-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-purple-700 transition-colors duration-300"
+              >
+                簡介會回放
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Competition Focus -->
+    <section class="py-16 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 text-gray-800">比賽焦點</h2>
+          <div class="bg-white p-8 rounded-lg shadow-lg">
+            <p class="text-lg text-gray-700 mb-6">
+              為響應學界透過無人機提升學生編程能力，10教育將於 2024 – 2025 學年舉辦 <strong>學界無人機救援挑戰賽</strong>。賽事以救援作為比賽主軸，藉由比賽過程中與隊員建立團隊精神，為學生提供技術交流的平台。
+            </p>
+            <p class="text-lg text-gray-700 mb-8">
+              是次比賽將分為初賽和決賽兩部份。初賽將首次使用 <strong>模擬器</strong>進行，讓未擁有實體無人機的學生亦可以參與此比賽，而決賽將會以實體形式舉行。賽事設有多個比賽項目，包括以燈光發出摩斯密碼搜救信號、物資空投任務、救援音樂回響及救援著陸挑戰，考驗學生臨場應變能力及團隊合作精神。
+            </p>
+            
+            <!-- Video Section -->
+            <div class="aspect-video bg-gray-200 rounded-lg flex items-center justify-center mb-8">
+              <div class="text-center">
+                <p class="text-gray-600 mb-4">比賽介紹影片</p>
+                <a 
+                  href="https://www.youtube.com/watch?v=Wsiz4ZkPn18"
+                  target="_blank"
+                  class="inline-block bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-300"
+                >
+                  觀看影片
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Competition Schedule -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">比賽日程</h2>
+        
+        <div class="max-w-6xl mx-auto">
+          <div class="overflow-x-auto">
+            <table class="w-full border-collapse border border-gray-300 bg-white shadow-lg rounded-lg overflow-hidden">
+              <thead class="bg-blue-600 text-white">
+                <tr>
+                  <th class="border border-gray-300 px-6 py-4 text-left font-semibold">活動</th>
+                  <th class="border border-gray-300 px-6 py-4 text-left font-semibold">日期</th>
+                  <th class="border border-gray-300 px-6 py-4 text-left font-semibold">說明</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <tr class="hover:bg-gray-50">
+                  <td class="border border-gray-300 px-6 py-4 font-medium">截止報名日期</td>
+                  <td class="border border-gray-300 px-6 py-4">2024年10月30日</td>
+                  <td class="border border-gray-300 px-6 py-4">學校需完成登記報名</td>
+                </tr>
+                <tr class="hover:bg-gray-50 bg-gray-50">
+                  <td class="border border-gray-300 px-6 py-4 font-medium">模擬器發佈日期</td>
+                  <td class="border border-gray-300 px-6 py-4">2025年1月(具體日期待定）</td>
+                  <td class="border border-gray-300 px-6 py-4">供參賽者下載並進行練習</td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="border border-gray-300 px-6 py-4 font-medium">初賽提交截止日期</td>
+                  <td class="border border-gray-300 px-6 py-4">2025年3月15日</td>
+                  <td class="border border-gray-300 px-6 py-4">提交初賽成績</td>
+                </tr>
+                <tr class="hover:bg-gray-50 bg-gray-50">
+                  <td class="border border-gray-300 px-6 py-4 font-medium">初賽結果公佈</td>
+                  <td class="border border-gray-300 px-6 py-4">2025年3月18日</td>
+                  <td class="border border-gray-300 px-6 py-4">通過官方網站及電郵通知</td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="border border-gray-300 px-6 py-4 font-medium">決賽登記截止</td>
+                  <td class="border border-gray-300 px-6 py-4">2025年3月31日</td>
+                  <td class="border border-gray-300 px-6 py-4">決賽隊伍需完成登記和確認</td>
+                </tr>
+                <tr class="hover:bg-gray-50 bg-gray-50">
+                  <td class="border border-gray-300 px-6 py-4 font-medium">決賽</td>
+                  <td class="border border-gray-300 px-6 py-4">2025年4月26日</td>
+                  <td class="border border-gray-300 px-6 py-4">現場進行無人機挑戰</td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="border border-gray-300 px-6 py-4 font-medium">決賽結果公佈</td>
+                  <td class="border border-gray-300 px-6 py-4">2025年4月28日</td>
+                  <td class="border border-gray-300 px-6 py-4">公佈最終比賽結果</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Registration Details -->
+    <section class="py-16 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto space-y-12">
+          <!-- Registration Details -->
+          <div class="bg-white p-8 rounded-lg shadow-lg">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">參賽隊伍登記詳情</h2>
+            <p class="text-lg text-gray-700 mb-6 text-center">
+              <span class="text-black">即將開放予已報名參賽學校登記，敬請留意！</span>
+            </p>
+            
+            <div class="bg-blue-50 p-6 rounded-lg">
+              <h3 class="font-bold text-lg text-gray-800 mb-4">登記須知：</h3>
+              <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                <li>已報名之參賽學校需填妥參賽隊伍登記表格</li>
+                <li>請確保在截止日期前完成登記，否則則將無法參加比賽</li>
+                <li>每支隊伍都必須提交完整的登認表格，方獲得參賽資格</li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- Team Composition -->
+          <div class="bg-white p-8 rounded-lg shadow-lg">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">隊伍組成</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div class="bg-green-50 p-6 rounded-lg">
+                <h3 class="font-bold text-lg text-gray-800 mb-4">隊伍人數：</h3>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li>每個隊伍需由2-4名學生生組成，必須來自同一間學校</li>
+                  <li>初賽和決賽隊伍成員必須一樣，不可替換</li>
+                </ul>
+              </div>
+              
+              <div class="bg-yellow-50 p-6 rounded-lg">
+                <h3 class="font-bold text-lg text-gray-800 mb-4">參賽次數限制：</h3>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                  <li>每個隊伍可以選擇參加一項或多項任務</li>
+                  <li>每個隊伍僅可參加每個任務一次，無法重複參加相同任務</li>
+                  <li>每個任務可以選擇部份或全站隊員參加</li>
+                  <li>每位學生可參加多個任務</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Competition Information -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto space-y-12">
+          <!-- Preliminary Round -->
+          <div class="bg-blue-50 p-8 rounded-lg">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">初賽資訊</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg text-gray-700">
+              <div><strong>初賽提交截止日期：</strong>2025年3月15日</div>
+              <div><strong>地點：</strong>於模擬器內進行</div>
+              <div><strong>參賽費用：</strong>免費參加</div>
+              <div><strong>比賽方式：</strong>在模擬器編程無人機完成任務</div>
+            </div>
+          </div>
+
+          <!-- Final Round -->
+          <div class="bg-green-50 p-8 rounded-lg">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">決賽資訊</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg text-gray-700">
+              <div><strong>日期:</strong> 2025 年 4 月 26 日</div>
+              <div><strong>地點:</strong> 瑪利諾中學</div>
+              <div><strong>地址：</strong>秀茂坪安秀道27號</div>
+              <div><strong>參賽費用:</strong> 每位參賽學生$500</div>
+              <div><strong>比賽方式:</strong> 現場進行無人機編程和任務挑戰</div>
+            </div>
+          </div>
+
+          <!-- Drone Specifications -->
+          <div class="bg-yellow-50 p-8 rounded-lg">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">決賽參賽無人機規格</h2>
+            <ul class="list-disc list-inside space-y-3 text-lg text-gray-700">
+              <li>不限機型，重量不超過250克，需以編程完成</li>
+              <li>參賽隊伍須自行負責該設備的安全</li>
+              <li>每隊最多可準備部備用無人機</li>
+              <li>若飛行中出現故障無法繼續，可替換換另一部無人機</li>
+            </ul>
+          </div>
+
+          <!-- Simulator Information -->
+          <div class="bg-purple-50 p-8 rounded-lg">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">模擬器資訊</h2>
+            <div class="text-center mb-6">
+              <p class="text-lg text-purple-700 font-semibold">
+                模擬器計劃於2025年1月正式推出，參賽者可下載並進行練習，敬請期待！
+              </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg text-gray-700">
+              <div><strong>安裝步驟：</strong>我們會提供.exe檔及.dmg檔供安裝，詳細安裝指南會稍後公佈</div>
+              <div><strong>下載費用：</strong>模擬器可免費下載，供所有參賽者使用</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Task Details -->
+    <section class="py-16 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">比賽任務詳情</h2>
+        
+        <div class="max-w-6xl mx-auto space-y-12">
+          <!-- Task 1 -->
+          <div class="bg-white p-8 rounded-lg shadow-lg">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">任務一：摩斯密碼搜救信號</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <p class="text-lg text-gray-700 mb-4">
+                  參賽者需要編程無人機，使其能夠通過燈光發出摩斯密碼信號來進行搜救。這項任務考驗學生的編程能力和對摩斯密碼的理解。
+                </p>
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-gray-800 mb-2">任務要求：</h4>
+                  <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>無人機必須能夠準確發出摩斯密碼信號</li>
+                    <li>信號必須清晰可見</li>
+                    <li>完成指定的搜救序列</li>
+                  </ul>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg mt-4">
+                  <h4 class="font-semibold text-gray-800 mb-2">評分標準：</h4>
+                  <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <strong>特等獎：</strong>成績最高的隊伍
+                    </div>
+                    <div>
+                      <strong>一等獎：</strong>90分以上
+                    </div>
+                    <div>
+                      <strong>二等獎：</strong>75分 – 89分
+                    </div>
+                    <div>
+                      <strong>優異獎：</strong>60分 – 74分
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="space-y-4">
+                <Image src={Task1Overview} alt="任務一概述" class="w-full rounded-lg shadow-md" />
+                <div class="grid grid-cols-3 gap-2">
+                  <Image src={Task1Screenshot1} alt="任務一截圖1" class="w-full rounded-lg" />
+                  <Image src={Task1Screenshot2} alt="任務一截圖2" class="w-full rounded-lg" />
+                  <Image src={Task1Screenshot3} alt="任務一截圖3" class="w-full rounded-lg" />
+                </div>
+                <!-- Video Section -->
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-gray-800 mb-3">任務一影片介紹</h4>
+                  <a 
+                    href="https://youtu.be/AViMApJXpXk"
+                    target="_blank"
+                    class="inline-block bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-300"
+                  >
+                    觀看任務一影片
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Task 2 -->
+          <div class="bg-white p-8 rounded-lg shadow-lg">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">任務二：物資空投任務</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <p class="text-lg text-gray-700 mb-4">
+                  參賽者需要編程無人機完成精確的物資空投任務。這項任務考驗學生的精確控制能力和空間感知能力。
+                </p>
+                <div class="bg-green-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-gray-800 mb-2">任務要求：</h4>
+                  <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>無人機必須能夠準確定位到指定空投點</li>
+                    <li>物資必須安全準確地投放到目標區域</li>
+                    <li>完成多個空投點的任務</li>
+                  </ul>
+                </div>
+                <div class="bg-blue-50 p-4 rounded-lg mt-4">
+                  <h4 class="font-semibold text-gray-800 mb-2">評分標準：</h4>
+                  <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <strong>特等獎：</strong>成績最高的隊伍
+                    </div>
+                    <div>
+                      <strong>一等獎：</strong>85分以上
+                    </div>
+                    <div>
+                      <strong>二等獎：</strong>70分 – 84分
+                    </div>
+                    <div>
+                      <strong>優異獎：</strong>55分 – 69分
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="space-y-4">
+                <Image src={Task2Screenshot1} alt="任務二截圖1" class="w-full rounded-lg shadow-md" />
+                <Image src={Task2Screenshot2} alt="任務二截圖2" class="w-full rounded-lg shadow-md" />
+                <!-- Video Section -->
+                <div class="bg-green-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-gray-800 mb-3">任務二影片介紹</h4>
+                  <a 
+                    href="https://youtu.be/8Tw3H1bXVEU"
+                    target="_blank"
+                    class="inline-block bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-300"
+                  >
+                    觀看任務二影片
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Task 3 -->
+          <div class="bg-white p-8 rounded-lg shadow-lg">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">任務三：救援音樂回響</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <p class="text-lg text-gray-700 mb-4">
+                  參賽者需要編程無人機完成救援音樂回響任務。這項任務結合了音樂和技術，考驗學生的創意和技術實現能力。
+                </p>
+                <div class="bg-yellow-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-gray-800 mb-2">評分標準：</h4>
+                  <div class="space-y-3">
+                    <div class="border-b border-yellow-200 pb-2">
+                      <strong>創意與原創性（50分）：</strong>
+                      <ul class="list-disc list-inside text-gray-700 mt-1 space-y-1">
+                        <li>獨特且新穎</li>
+                        <li>明顯原創元素</li>
+                        <li>無使用預設音效或模板</li>
+                      </ul>
+                    </div>
+                    <div class="border-b border-yellow-200 pb-2">
+                      <strong>音樂結構與流暢性（30分）：</strong>
+                      <ul class="list-disc list-inside text-gray-700 mt-1 space-y-1">
+                        <li>結構完整</li>
+                        <li>開頭、中間、結尾銜接流暢</li>
+                        <li>無不必要停頓</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <strong>與主題的契合度（20分）：</strong>
+                      <ul class="list-disc list-inside text-gray-700 mt-1 space-y-1">
+                        <li>與救援主題高度契合</li>
+                        <li>強烈情感表達</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg mt-4">
+                  <h4 class="font-semibold text-gray-800 mb-2">評分標準：</h4>
+                  <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <strong>特等獎：</strong>成績最高的隊伍
+                    </div>
+                    <div>
+                      <strong>一等獎：</strong>80分以上
+                    </div>
+                    <div>
+                      <strong>二等獎：</strong>65分 -79分
+                    </div>
+                    <div>
+                      <strong>優異獎：</strong>50分 – 64分
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <Image src={Task3Screenshot} alt="任務三截圖" class="w-full rounded-lg shadow-md" />
+                <!-- Video Section -->
+                <div class="bg-yellow-50 p-4 rounded-lg mt-4">
+                  <h4 class="font-semibold text-gray-800 mb-3">任務三影片介紹</h4>
+                  <a 
+                    href="https://youtu.be/6-j-it1BpZE"
+                    target="_blank"
+                    class="inline-block bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-300"
+                  >
+                    觀看任務三影片
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Task 4 -->
+          <div class="bg-white p-8 rounded-lg shadow-lg">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">任務四：救援障礙飛行</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <p class="text-lg text-gray-700 mb-4">
+                  任務四「無人機救援障礙飛行」要求參賽者編程操控無人機穿越障礙物，並降落於箭靶式停機坪。不同的著陸位置和障礙物會獲得不同分數，你需要在有限時間內平衡速度與精準度，爭取最高分數！
+                </p>
+                <div class="bg-purple-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-gray-800 mb-2">必須完成項目＊</h4>
+                  <div class="space-y-3">
+                    <div class="border-b border-purple-200 pb-2">
+                      <strong>障礙物分數：</strong>每通過一個障礙物即可獲得10分
+                    </div>
+                    <div class="border-b border-purple-200 pb-2">
+                      <strong>著陸準確度分數：</strong>
+                      <ul class="list-disc list-inside text-gray-700 mt-1 space-y-1">
+                        <li>靶心（黃色範圍）：30分</li>
+                        <li>第二環（紅色範圍）：25分</li>
+                        <li>第三環（藍色範圍）：20分</li>
+                        <li>第四環（黑色範圍）：15分</li>
+                        <li>降落在靶外：0分</li>
+                      </ul>
+                      <p class="text-sm text-gray-600 mt-1">必須降落在箭靶式停機坪內，任務方視為完成</p>
+                    </div>
+                    <div class="border-b border-purple-200 pb-2">
+                      <strong>時間加分：</strong>在 60 秒內完成得 30 分，每超過 1 秒扣 1 分
+                    </div>
+                    <div>
+                      <strong>撞擊扣分：</strong>無人機每撞到障礙物1次會扣1分
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg mt-4">
+                  <h4 class="font-semibold text-gray-800 mb-2">評分標準：</h4>
+                  <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <strong>特等獎：</strong>成績最高的隊伍
+                    </div>
+                    <div>
+                      <strong>一等獎：</strong>95分以上
+                    </div>
+                    <div>
+                      <strong>二等獎：</strong>80分 – 94分
+                    </div>
+                    <div>
+                      <strong>優異獎：</strong>65分 – 79分
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <Image src={Task4Screenshot} alt="任務四截圖" class="w-full rounded-lg shadow-md" />
+                <!-- Video Section -->
+                <div class="bg-purple-50 p-4 rounded-lg mt-4">
+                  <h4 class="font-semibold text-gray-800 mb-3">任務四影片介紹</h4>
+                  <a 
+                    href="https://youtu.be/H6RFaY9TLEw"
+                    target="_blank"
+                    class="inline-block bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-300"
+                  >
+                    觀看任務四影片
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Difficulty Chart -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">任務難度表</h2>
+        <div class="max-w-4xl mx-auto">
+          <Image src={DifficultyChart} alt="任務難度表" class="w-full rounded-lg shadow-lg" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 bg-blue-600 text-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8">準備好參加挑戰了嗎？</h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto">
+          立即報名參加學界無人機救援挑戰賽，展現你的編程才華和團隊合作精神！
+        </p>
+        <div class="space-y-4">
+          <a 
+            href="https://or0uzdua.paperform.co"
+            target="_blank"
+            class="inline-block bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105"
+          >
+            索取課程總覽
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout> 
