@@ -2,14 +2,12 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
-import vercel from '@astrojs/vercel/serverless';
 import path from 'path';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://staging.10botics.com',
-  output: 'server', // Change from 'static' to 'server'
-  adapter: vercel(), // Add Vercel adapter
+  output: 'static', // Static output for static website
   vite: {
     resolve: {
       alias: {
