@@ -373,16 +373,16 @@ try {
         <GalleryCarousel
           title="活動花絮"
           images={[
-            galleryImg1 && galleryImg1.default,
-            galleryImg2 && galleryImg2.default,
-            galleryImg3 && galleryImg3.default,
-            galleryImg4 && galleryImg4.default,
-            galleryImg5 && galleryImg5.default,
-            galleryImg6 && galleryImg6.default,
-            galleryImg7 && galleryImg7.default,
-            galleryImg8 && galleryImg8.default,
-            galleryImg9 && galleryImg9.default,
-          ].filter(Boolean) as string[]}
+            galleryImg1?.default,
+            galleryImg2?.default,
+            galleryImg3?.default,
+            galleryImg4?.default,
+            galleryImg5?.default,
+            galleryImg6?.default,
+            galleryImg7?.default,
+            galleryImg8?.default,
+            galleryImg9?.default,
+          ].filter(Boolean) as (string | ImageMetadata)[]}
           intervalMs={4500}
         />
       </div>
