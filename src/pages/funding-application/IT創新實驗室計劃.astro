@@ -1,0 +1,352 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
+import { Image } from 'astro:assets';
+
+// Import images
+import bannerImage from '../../assets/images/funding-application/IT創新實驗室計劃/it_lab_main_page_banner_tc-1024x439.jpg';
+import courseImage from '../../assets/images/funding-application/IT創新實驗室計劃/39046f2752a1eaa7a7f0d64e1be16ee9-1024x1024.png';
+import carouselImage1 from '../../assets/images/funding-application/IT創新實驗室計劃/Screenshot-2023-08-16-154335-724x1024.png';
+import carouselImage2 from '../../assets/images/funding-application/IT創新實驗室計劃/Screenshot-2023-08-16-154439-724x1024.png';
+import carouselImage3 from '../../assets/images/funding-application/IT創新實驗室計劃/Screenshot-2023-08-16-154523-716x1024.png';
+import carouselImage4 from '../../assets/images/funding-application/IT創新實驗室計劃/Screenshot-2023-08-16-154551-720x1024.png';
+import carouselImage5 from '../../assets/images/funding-application/IT創新實驗室計劃/Screenshot-2023-08-16-154637-1-725x1024.png';
+import carouselImage6 from '../../assets/images/funding-application/IT創新實驗室計劃/Screenshot-2023-08-16-154707-715x1024.png';
+
+const title = "IT創新實驗室 - 10教育";
+const description = "IT創新實驗室計劃 資科辦在現行的「中學資訊科技增潤計劃」下推行「中學IT創新實驗室」計劃，在新一輪的2023/24至2025/26這3個學年中，向公帑資助的中學每所提供最高100萬元的資助。";
+---
+
+<Layout title={title} description={description}>
+  <!-- Breadcrumbs -->
+  <div class="bg-gray-100 py-4">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <nav class="text-sm text-gray-600">
+        <a href="/" class="hover:text-blue-600">首頁</a>
+        <span class="mx-2">»</span>
+        <a href="/funding-application/" class="hover:text-blue-600">資助申請</a>
+        <span class="mx-2">»</span>
+        <span class="text-gray-900">IT創新實驗室</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Hero Banner -->
+  <section class="bg-white">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center">
+        <Image 
+          src={bannerImage} 
+          alt="中學IT創新實驗室" 
+          class="w-full max-w-4xl mx-auto rounded-lg shadow-lg"
+          width={1024}
+          height={439}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-gray-900 mb-6">IT創新實驗室計劃</h1>
+        <p class="text-lg text-gray-700 max-w-4xl mx-auto">
+          資科辦在現行的「中學資訊科技增潤計劃」下推行「中學IT創新實驗室」計劃，在新一輪的<strong>2023/24至2025/26</strong>這3個學年中，向公帑資助的中學每所提供最高 <strong>100 萬元</strong>的資助，以提升校內資訊科技設備和設施，以及舉辦與資訊科技相關的課外活動，加深同學對嶄新資訊科技的認識。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Funding Categories -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">計劃資助範疇</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- IT設備和設施 -->
+        <div class="bg-white rounded-lg p-6 shadow-lg text-center">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-keyboard text-2xl text-blue-600"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">IT設備和設施</h3>
+          <ul class="text-gray-700 text-left space-y-2">
+            <li>• 採購或租⽤硬件、軟件及服務器等服務</li>
+            <li>• 光纖和寬頻服務</li>
+            <li>• 雲端儲存服務</li>
+          </ul>
+        </div>
+
+        <!-- IT相關課程 -->
+        <div class="bg-white rounded-lg p-6 shadow-lg text-center">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-leanpub text-2xl text-green-600"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">IT相關課程</h3>
+          <ul class="text-gray-700 text-left space-y-2">
+            <li>• 人工智能課程</li>
+            <li>• 流動應用程式編程班</li>
+            <li>• 無人車競賽</li>
+            <li>• 無人機編程</li>
+          </ul>
+        </div>
+
+        <!-- 其他 -->
+        <div class="bg-white rounded-lg p-6 shadow-lg text-center">
+          <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-dollar-sign text-2xl text-yellow-600"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">其他</h3>
+          <ul class="text-gray-700 text-left space-y-2">
+            <li>• 活動營運開支</li>
+            <li>（例如為支援學習而設的維修保養，專業服務，外聘導師）</li>
+            <li>• 行政費用（會計和審計服務）</li>
+          </ul>
+        </div>
+
+        <!-- IT相關課外活動 -->
+        <div class="bg-white rounded-lg p-6 shadow-lg text-center">
+          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-laptop text-2xl text-purple-600"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">IT相關課外活動</h3>
+          <ul class="text-gray-700 text-left space-y-2">
+            <li>• 參觀香港的跨國公司和本地初創企業</li>
+            <li>• 舉辦或參與本地和非本地比賽</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Flow -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">計劃流程</h2>
+      <div class="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-leanpub text-2xl text-blue-600"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900">出標書</h3>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-dollar-sign text-2xl text-green-600"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900">收到批核結果</h3>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-wpforms text-2xl text-yellow-600"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900">遞交申請表</h3>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-book text-2xl text-purple-600"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900">提交年度報告</h3>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-keyboard text-2xl text-red-600"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900">開展相關IT課程和活動</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">讓遞交申請變得更簡單快捷</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">申請表格範本</h3>
+          <ul class="text-gray-700 space-y-2">
+            <li>• 提供簡單易明的計劃表格範本進行參考，讓申請更加不易出錯而成功獲取批核。</li>
+          </ul>
+        </div>
+        <div class="bg-white rounded-lg p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">制定教育撥款方案​</h3>
+          <ul class="text-gray-700 space-y-2">
+            <li>• 可協助學校準備IT創新實驗室申請表格和申請程序，並幫助構思一站式計劃幫助學校活用款項舉辦各類STEM活動。</li>
+          </ul>
+        </div>
+        <div class="bg-white rounded-lg p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">協助學校解決申請上的問題</h3>
+          <ul class="text-gray-700 space-y-2">
+            <li>• 瞭解和迎合學校不同需要 （例如配合學校解決有關添置設備上的疑慮以適合IT相關活動）</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Form Carousel -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <GalleryCarousel 
+        title="申請表格範本預覽"
+        images={[carouselImage1, carouselImage2, carouselImage3, carouselImage4, carouselImage5, carouselImage6]}
+        intervalMs={5000}
+      />
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">可靠的導師和團隊</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white rounded-lg p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">資歷全面的STEM導師</h3>
+          <ul class="text-gray-700 space-y-2">
+            <li>• 導師能夠應付不同STEM Day活動和恆常課程需要，不論是人數較多的禮堂講座，還是人數較少的班房式課堂。讓老師無後顧之憂。</li>
+          </ul>
+        </div>
+        <div class="bg-white rounded-lg p-6 shadow-lg">
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">經驗豐富的STEM團隊</h3>
+          <ul class="text-gray-700 space-y-2">
+            <li>• 在出標書階段，我們先後協助每間學校制定適合的課時，並協助配搭不同的STEM課程和課外活動組合供學校選擇，確保配合學校的進度和時間。</li>
+            <li>• 對於年度報告的遞交經驗豐富，瞭解報告所需要求，我們能夠協助學校並提供所需的的資料。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Example -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">多元化課程</h2>
+          <p class="text-lg text-gray-700">
+            以Mincraft校園創建課程爲例，該課程希望透過所運用到的不同學科，例如地理，數學，藝術等知識，配合學生最常用玩的遊戲Minecraft，吸引學生的注意，讓他們在學習的同時，也能一邊玩樂，這令課程不但充滿趣味，而且還具有教育意義。
+          </p>
+        </div>
+        <div class="text-center">
+          <Image 
+            src={courseImage} 
+            alt="Minecraft校園創建課程" 
+            class="w-full max-w-md mx-auto rounded-lg shadow-lg"
+            width={1024}
+            height={1024}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Courses -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">更多中學精選課程</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">CoDrone無人機課程</h3>
+            <p class="text-gray-600">學習無人機編程和操作</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Blockchain 區塊鏈課程</h3>
+            <p class="text-gray-600">了解區塊鏈技術和應用</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">AI啟蒙與藝術創作課程</h3>
+            <p class="text-gray-600">探索AI藝術創作的可能性</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">珊瑚環境監測入門課程</h3>
+            <p class="text-gray-600">學習環境監測技術</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Micro:bit 小車：逃出迷宮</h3>
+            <p class="text-gray-600">編程控制小車完成任務</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Donkey Car 無人車課程</h3>
+            <p class="text-gray-600">AI無人車編程與控制</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest News -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">最新消息</h2>
+      <div class="bg-gray-50 rounded-lg p-8">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">OGCIO學校IT創新實驗室方案分享日</h3>
+        <p class="text-gray-700 mb-4">
+          最近教育局推出的初中人工智能課程單元引起了廣泛的關注。10Botics也因此參與了本週二的「OGCIO學校IT創新實驗室 方案分享日」，與眾多學界同仁進行交流互動。
+        </p>
+        <div class="text-center">
+          <a href="/news/" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+            了解更多
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Timeline -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="bg-white rounded-lg p-8 shadow-lg">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">申請時間表</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="text-center">
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">計劃申請時間</h3>
+            <p class="text-gray-700">
+              新一輪計劃期為2023/24至2025/26三個學年，將於2023年9月1日開始接受申請，申請學校可全年提交申請。
+            </p>
+          </div>
+          <div class="text-center">
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">審批時間</h3>
+            <p class="text-gray-700">
+              收到申請後大約一個月或以上，視乎申請是否完整、當時收到的申請數目和評審委員會的會議次數而定
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="bg-blue-600 py-16">
+    <div class="container mx-auto px-4 max-w-6xl text-center">
+      <h2 class="text-3xl font-bold text-white mb-6">已經準備好申請？</h2>
+      <p class="text-blue-100 mb-8">填寫下方表格聯絡我們，我們會為您提供詳細的申請協助</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <ContactSection subtitle="想了解更多關於IT創新實驗室計劃的資訊？歡迎聯絡我們，我們會為您提供詳細的申請協助和課程安排。" />
+</Layout>
+
+<style>
+  /* Font Awesome icons */
+  .fas, .fab, .far {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+  }
+  
+  .fab {
+    font-weight: 400;
+  }
+</style>
