@@ -7,8 +7,15 @@ export interface Props {
 
 const { title, images, intervalMs = 4000 } = Astro.props;
 
-// Normalize images to src strings
-const imageSrcs = images.map(img => (img as any).src ?? img);
+// Normalize images to src strings - handle both string URLs and ImageMetadata objects
+const imageSrcs = images.map(img => {
+  if (typeof img === 'string') {
+    return img;
+  } else if (img && typeof img === 'object' && 'src' in img) {
+    return img.src;
+  }
+  return '';
+}).filter(src => src !== '');
 ---
 
 <div class="gallery-carousel relative" data-interval-ms={intervalMs}>
@@ -60,7 +67,7 @@ const imageSrcs = images.map(img => (img as any).src ?? img);
 
     <!-- Dots -->
     <div class="carousel-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
-      {Array.from({ length: imageSrcs.length - 2 }, (_, i) => (
+      {Array.from({ length: Math.max(1, imageSrcs.length - 2) }, (_, i) => (
         <button 
           class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white transition-colors duration-200"
           aria-label={`Go to slide ${i + 1}`}
@@ -99,22 +106,22 @@ const imageSrcs = images.map(img => (img as any).src ?? img);
     private autoplayInterval: ReturnType<typeof setInterval> | null;
     private intervalMs: number;
 
-         constructor(container: HTMLElement) {
-       this.container = container;
-       this.track = container.querySelector('.carousel-track') as HTMLElement;
-       this.slides = container.querySelectorAll('.carousel-slide');
-       this.prevBtn = container.querySelector('.carousel-prev') as HTMLElement | null;
-       this.nextBtn = container.querySelector('.carousel-next') as HTMLElement | null;
-       this.dots = container.querySelectorAll('.carousel-dot');
-       
-       this.currentIndex = 0;
-       this.perView = 3; // Always show 3 images
-       this.totalGroups = this.slides.length - 2; // Max positions to show 3 consecutive images
-       this.autoplayInterval = null;
-       this.intervalMs = parseInt(container.dataset.intervalMs || '4000');
-       
-       this.init();
-     }
+    constructor(container: HTMLElement) {
+      this.container = container;
+      this.track = container.querySelector('.carousel-track') as HTMLElement;
+      this.slides = container.querySelectorAll('.carousel-slide');
+      this.prevBtn = container.querySelector('.carousel-prev') as HTMLElement | null;
+      this.nextBtn = container.querySelector('.carousel-next') as HTMLElement | null;
+      this.dots = container.querySelectorAll('.carousel-dot');
+      
+      this.currentIndex = 0;
+      this.perView = 3; // Always show 3 images
+      this.totalGroups = Math.max(1, this.slides.length - 2); // Max positions to show 3 consecutive images
+      this.autoplayInterval = null;
+      this.intervalMs = parseInt(container.dataset.intervalMs || '4000');
+      
+      this.init();
+    }
     
     init() {
       this.bindEvents();
@@ -123,36 +130,36 @@ const imageSrcs = images.map(img => (img as any).src ?? img);
       this.updateButtons();
     }
     
-         bindEvents() {
-       this.prevBtn?.addEventListener('click', () => this.prev());
-       this.nextBtn?.addEventListener('click', () => this.next());
-       
-       this.dots.forEach((dot: Element, index: number) => {
-         dot.addEventListener('click', () => this.goToSlide(index));
-       });
-       
-       // Pause autoplay on hover
-       this.container.addEventListener('mouseenter', () => this.pauseAutoplay());
-       this.container.addEventListener('mouseleave', () => this.resumeAutoplay());
-       
-       // Pause autoplay on interaction
-       this.container.addEventListener('click', () => this.pauseAutoplay());
-       
-       // Keyboard navigation
-       document.addEventListener('keydown', (e) => {
-         if (this.container.contains(document.activeElement)) {
-           if (e.key === 'ArrowLeft') this.prev();
-           if (e.key === 'ArrowRight') this.next();
-         }
-       });
-     }
+    bindEvents() {
+      this.prevBtn?.addEventListener('click', () => this.prev());
+      this.nextBtn?.addEventListener('click', () => this.next());
+      
+      this.dots.forEach((dot: Element, index: number) => {
+        dot.addEventListener('click', () => this.goToSlide(index));
+      });
+      
+      // Pause autoplay on hover
+      this.container.addEventListener('mouseenter', () => this.pauseAutoplay());
+      this.container.addEventListener('mouseleave', () => this.resumeAutoplay());
+      
+      // Pause autoplay on interaction
+      this.container.addEventListener('click', () => this.pauseAutoplay());
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (this.container.contains(document.activeElement)) {
+          if (e.key === 'ArrowLeft') this.prev();
+          if (e.key === 'ArrowRight') this.next();
+        }
+      });
+    }
     
-         updateTrack() {
-       // Move by 1 image at a time - each image is (100 / total_images)% of track width
-       const slideWidth = 100 / this.slides.length;
-       const translateX = -(this.currentIndex * slideWidth);
-       this.track.style.transform = `translateX(${translateX}%)`;
-     }
+    updateTrack() {
+      // Move by 1 image at a time - each image is (100 / total_images)% of track width
+      const slideWidth = 100 / this.slides.length;
+      const translateX = -(this.currentIndex * slideWidth);
+      this.track.style.transform = `translateX(${translateX}%)`;
+    }
     
     prev() {
       this.currentIndex = this.currentIndex > 0 ? this.currentIndex - 1 : this.totalGroups - 1;
