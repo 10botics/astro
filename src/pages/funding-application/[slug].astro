@@ -1,0 +1,23 @@
+---
+// Dynamic route to handle URL mapping for funding application pages
+export async function getStaticPaths() {
+  return [
+    { params: { slug: 'it-innovation-lab' } },
+    // Add more funding application slugs here as needed
+  ];
+}
+
+const { slug } = Astro.params;
+
+// Import the appropriate component based on the slug
+let FundingComponent;
+switch (slug) {
+  case 'it-innovation-lab':
+    FundingComponent = await import('./IT創新實驗室計劃.astro');
+    break;
+  default:
+    throw new Error(`Unknown funding application slug: ${slug}`);
+}
+---
+
+<FundingComponent.default />
