@@ -5,6 +5,7 @@ export interface Props {
 	ogImage?: string;
 	keywords?: string;
 	robots?: string;
+	showCompanyInfo?: boolean;
 }
 
 const { 
@@ -12,7 +13,8 @@ const {
 	description = "10Botics - AI教育專家，提供專業STEM及人工智能課程", 
 	ogImage = "/images/og-default.jpg",
 	keywords = "STEM教育, AI課程, 人工智能, 10教育, 編程課程",
-	robots = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+	robots = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+	showCompanyInfo = true
 } = Astro.props;
 
 import Header from '../components/Header.astro';
@@ -112,7 +114,7 @@ const organizationSchema = {
 		<main>
 			<slot />
 		</main>
-		<Footer />
+		<Footer showCompanyInfo={showCompanyInfo} />
 		<FloatingWhatsApp />
 		
 		<!-- Speed Insights with beforeSend function -->
