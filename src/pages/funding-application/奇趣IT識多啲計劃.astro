@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ContactSection from '../../components/ContactSection.astro';
+import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -109,64 +110,18 @@ const description = "奇趣IT識多啲計劃 爲了透過課外活動啟發小�
   <!-- Image Carousel -->
   <section class="bg-gray-50 py-16">
     <div class="container mx-auto px-4 max-w-6xl">
-      <div class="bg-white rounded-lg p-8 shadow-lg">
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          <div class="text-center">
-            <Image 
-              src={carouselImage1} 
-              alt="申請表格範例 1" 
-              class="w-full rounded-lg shadow-md"
-              width={724}
-              height={1024}
-            />
-          </div>
-          <div class="text-center">
-            <Image 
-              src={carouselImage2} 
-              alt="申請表格範例 2" 
-              class="w-full rounded-lg shadow-md"
-              width={724}
-              height={1024}
-            />
-          </div>
-          <div class="text-center">
-            <Image 
-              src={carouselImage3} 
-              alt="申請表格範例 3" 
-              class="w-full rounded-lg shadow-md"
-              width={716}
-              height={1024}
-            />
-          </div>
-          <div class="text-center">
-            <Image 
-              src={carouselImage4} 
-              alt="申請表格範例 4" 
-              class="w-full rounded-lg shadow-md"
-              width={720}
-              height={1024}
-            />
-          </div>
-          <div class="text-center">
-            <Image 
-              src={carouselImage5} 
-              alt="申請表格範例 5" 
-              class="w-full rounded-lg shadow-md"
-              width={725}
-              height={1024}
-            />
-          </div>
-          <div class="text-center">
-            <Image 
-              src={carouselImage6} 
-              alt="申請表格範例 6" 
-              class="w-full rounded-lg shadow-md"
-              width={715}
-              height={1024}
-            />
-          </div>
-        </div>
-      </div>
+      <GalleryCarousel 
+        title="申請表格範例"
+        images={[
+          carouselImage1,
+          carouselImage2,
+          carouselImage3,
+          carouselImage4,
+          carouselImage5,
+          carouselImage6
+        ]}
+        intervalMs={5000}
+      />
     </div>
   </section>
 
