@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import ContactSection from '../components/ContactSection.astro';
 import QnASection from '../components/course/QnASection.astro';
+import {Image} from 'astro:assets';
 
 // Import images
 import aiArtPaperform from '../assets/images/competition/校際AI藝術創作大賽 2024/ai-art-paperform-element-01-scaled.jpg';
@@ -197,13 +198,13 @@ const description = "校際AI藝術創作大賽 2024 《數碼詠古》 - 重現
             <div class="flex overflow-hidden rounded-lg shadow-2xl">
               <div class="flex transition-transform duration-500 ease-in-out" id="image-carousel">
                 <div class="w-full md:w-1/3 flex-shrink-0">
-                  <img src={whatsappImage1.src} alt="AI Art Sample 1" class="w-full h-64 md:h-80 object-cover" />
+                  <Image src={whatsappImage1.src} alt="AI Art Sample 1" class="w-full h-64 md:h-80 object-cover" />
                 </div>
                 <div class="w-full md:w-1/3 flex-shrink-0">
-                  <img src={whatsappImage2.src} alt="AI Art Sample 2" class="w-full h-64 md:h-80 object-cover" />
+                  <Image src={whatsappImage2.src} alt="AI Art Sample 2" class="w-full h-64 md:h-80 object-cover" />
                 </div>
                 <div class="w-full md:w-1/3 flex-shrink-0">
-                  <img src={whatsappImage3.src} alt="AI Art Sample 3" class="w-full h-64 md:h-80 object-cover" />
+                  <Image src={whatsappImage3.src} alt="AI Art Sample 3" class="w-full h-64 md:h-80 object-cover" />
                 </div>
               </div>
             </div>
@@ -443,7 +444,7 @@ const description = "校際AI藝術創作大賽 2024 《數碼詠古》 - 重現
             <!-- Judge 1 -->
             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
               <div class="p-6 text-center">
-                <img src={judgeWangWenhao.src} alt="王文浩先生" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
+                <Image src={judgeWangWenhao.src} alt="王文浩先生" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
                 <h3 class="text-xl font-bold text-gray-900 mb-2">王文浩先生</h3>
                 <p class="text-gray-700">香港知專<br>設計學院 <br>高級講師兼課程主任</p>
               </div>
@@ -452,7 +453,7 @@ const description = "校際AI藝術創作大賽 2024 《數碼詠古》 - 重現
             <!-- Judge 2 -->
             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
               <div class="p-6 text-center">
-                <img src={judgeJiangPeiqiang.src} alt="江培強博士" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
+                <Image src={judgeJiangPeiqiang.src} alt="江培強博士" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
                 <h3 class="text-xl font-bold text-gray-900 mb-2">江培強博士</h3>
                 <p class="text-gray-700">香港理工大學 <br>設計學院 <br>助理教授及<br>多媒體科藝理學碩士副課程主任</p>
               </div>
@@ -461,7 +462,7 @@ const description = "校際AI藝術創作大賽 2024 《數碼詠古》 - 重現
             <!-- Judge 3 -->
             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
               <div class="p-6 text-center">
-                <img src={judgeLiangPeiyun.src} alt="梁佩雲女士" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
+                <Image src={judgeLiangPeiyun.src} alt="梁佩雲女士" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
                 <h3 class="text-xl font-bold text-gray-900 mb-2">梁佩雲女士</h3>
                 <p class="text-gray-700">香港教育大學 <br>中國語言學系<br>教授(實踐) 暨<br>署理系主任 及 <br>人文學院副院長(學術質素保證及提升)</p>
               </div>
@@ -470,7 +471,7 @@ const description = "校際AI藝術創作大賽 2024 《數碼詠古》 - 重現
             <!-- Judge 4 -->
             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
               <div class="p-6 text-center">
-                <img src={judgeZhangLing.src} alt="張凌博士" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
+                <Image src={judgeZhangLing.src} alt="張凌博士" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
                 <h3 class="text-xl font-bold text-gray-900 mb-2">張凌博士</h3>
                 <p class="text-gray-700">香港教育大學 <br>中國語言學系 <br>助理教授</p>
               </div>
@@ -479,7 +480,7 @@ const description = "校際AI藝術創作大賽 2024 《數碼詠古》 - 重現
             <!-- Judge 5 -->
             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
               <div class="p-6 text-center">
-                <img src={judgeChengZhongshan.src} alt="程中山博士" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
+                <Image src={judgeChengZhongshan.src} alt="程中山博士" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
                 <h3 class="text-xl font-bold text-gray-900 mb-2">程中山博士</h3>
                 <p class="text-gray-700">香港中文大學 <br>中國語言及<br>文學系高級講師</p>
               </div>
@@ -488,7 +489,7 @@ const description = "校際AI藝術創作大賽 2024 《數碼詠古》 - 重現
             <!-- Judge 6 -->
             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
               <div class="p-6 text-center">
-                <img src={judgeTKH.src} alt="謝家浩博士" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
+                <Image src={judgeTKH.src} alt="謝家浩博士" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
                 <h3 class="text-xl font-bold text-gray-900 mb-2">謝家浩博士</h3>
                 <p class="text-gray-700">香港教育大學 <br>中國語言學系 <br>兼任副教授</p>
               </div>
@@ -550,7 +551,7 @@ const description = "校際AI藝術創作大賽 2024 《數碼詠古》 - 重現
           <div class="text-center">
             <h3 class="text-2xl font-bold text-gray-900 mb-6">主辦單位</h3>
             <div class="flex justify-center">
-              <img src={hkceeLogo.src} alt="香港電腦教育學會" class="h-24 object-contain" />
+              <Image src={hkceeLogo.src} alt="香港電腦教育學會" class="h-24 object-contain" />
             </div>
           </div>
 
@@ -559,16 +560,16 @@ const description = "校際AI藝術創作大賽 2024 《數碼詠古》 - 重現
             <h3 class="text-2xl font-bold text-gray-900 mb-6">支持機構</h3>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 items-center">
               <div class="flex justify-center">
-                <img src="https://10botics.com/wp-content/uploads/2023/11/cropped-Screenshot-2019-04-08-at-11.53.28-AM-1.png" alt="Supporting Organization 1" class="h-20 object-contain" />
+                <Image src="https://10botics.com/wp-content/uploads/2023/11/cropped-Screenshot-2019-04-08-at-11.53.28-AM-1.png" alt="Supporting Organization 1" class="h-20 object-contain" />
               </div>
               <div class="flex justify-center">
-                <img src="https://10botics.com/wp-content/uploads/2023/11/logo_7.jpg" alt="Supporting Organization 2" class="h-20 object-contain" />
+                <Image src="https://10botics.com/wp-content/uploads/2023/11/logo_7.jpg" alt="Supporting Organization 2" class="h-20 object-contain" />
               </div>
               <div class="flex justify-center">
-                <img src="https://10botics.com/wp-content/uploads/2023/11/logo.jpg" alt="Supporting Organization 3" class="h-20 object-contain" />
+                <Image src="https://10botics.com/wp-content/uploads/2023/11/logo.jpg" alt="Supporting Organization 3" class="h-20 object-contain" />
               </div>
               <div class="flex justify-center">
-                <img src="https://10botics.com/wp-content/uploads/2023/11/logo_jsit-1200x800-1-1024x683.png" alt="Supporting Organization 4" class="h-20 object-contain" />
+                <Image src="https://10botics.com/wp-content/uploads/2023/11/logo_jsit-1200x800-1-1024x683.png" alt="Supporting Organization 4" class="h-20 object-contain" />
               </div>
             </div>
           </div>
@@ -577,7 +578,7 @@ const description = "校際AI藝術創作大賽 2024 《數碼詠古》 - 重現
           <div class="text-center">
             <h3 class="text-2xl font-bold text-gray-900 mb-6">顧問學校</h3>
             <div class="flex justify-center">
-              <img src="https://10botics.com/wp-content/uploads/2023/08/五旬節聖潔會永光書院.png" alt="五旬節聖潔會永光書院" class="h-24 object-contain" />
+              <Image src="https://10botics.com/wp-content/uploads/2023/08/五旬節聖潔會永光書院.png" alt="五旬節聖潔會永光書院" class="h-24 object-contain" />
             </div>
           </div>
 
@@ -585,7 +586,7 @@ const description = "校際AI藝術創作大賽 2024 《數碼詠古》 - 重現
           <div class="text-center">
             <h3 class="text-2xl font-bold text-gray-900 mb-6">籌辦單位</h3>
             <div class="flex justify-center">
-              <img src={logo10botics.src} alt="10Botics" class="h-24 object-contain" />
+              <Image src={logo10botics.src} alt="10Botics" class="h-24 object-contain" />
             </div>
           </div>
         </div>
