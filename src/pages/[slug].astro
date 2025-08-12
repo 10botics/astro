@@ -12,6 +12,7 @@ export async function getStaticPaths() {
     { params: { slug: 'competition-minecraft2021' } },
     { params: { slug: 'competition-minecraft2022' } },
     { params: { slug: 'competition-minecraft2023' } },
+    { params: { slug: 'competition-minecraft2024' } },
     { params: { slug: 'contact-us' } },
     // Add more mappings here as needed
   ];
@@ -51,6 +52,9 @@ switch (slug) {
     break;
   case 'competition-minecraft2023':
     ChineseComponent = await import('./Minecraft 校園創建計劃 2023.astro');
+    break;
+  case 'competition-minecraft2024':
+    ChineseComponent = await import('./Minecraft 校園創建計劃 2024.astro');
     break;
   case 'contact-us':
     ChineseComponent = await import('./聯絡我們.astro');
