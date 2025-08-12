@@ -1,0 +1,974 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactSection from '../components/ContactSection.astro';
+
+// Import images
+import aiArtPaperform from '../assets/images/competition/校際AI藝術創作大賽 2024/ai-art-paperform-element-01-scaled.jpg';
+import whatsappImage1 from '../assets/images/competition/校際AI藝術創作大賽 2024/whatsapp-image-1.jpeg';
+import whatsappImage2 from '../assets/images/competition/校際AI藝術創作大賽 2024/whatsapp-image-2.jpeg';
+import whatsappImage3 from '../assets/images/competition/校際AI藝術創作大賽 2024/whatsapp-image-3.jpeg';
+import judgeWangWenhao from '../assets/images/competition/校際AI藝術創作大賽 2024/judge-wang-wenhao.jpg';
+import judgeJiangPeiqiang from '../assets/images/competition/校際AI藝術創作大賽 2024/judge-jiang-peiqiang.jpg';
+import judgeLiangPeiyun from '../assets/images/competition/校際AI藝術創作大賽 2024/judge-liang-peiyun.jpg';
+import judgeZhangLing from '../assets/images/competition/校際AI藝術創作大賽 2024/judge-zhang-ling.jpg';
+import judgeChengZhongshan from '../assets/images/competition/校際AI藝術創作大賽 2024/judge-cheng-zhongshan.jpg';
+import judgeTKH from '../assets/images/competition/校際AI藝術創作大賽 2024/judge-tkh.png';
+import hkceeLogo from '../assets/images/competition/校際AI藝術創作大賽 2024/hkcee-logo.jpg';
+import logo10botics from '../assets/images/competition/校際AI藝術創作大賽 2024/10botics-logo.png';
+
+const title = "校際AI藝術創作大賽 2024 《數碼詠古》";
+const description = "校際AI藝術創作大賽 2024 《數碼詠古》 - 重現中國詩詞歌賦之意境，結合AI圖像生成技術與中華文化之美。";
+---
+
+<Layout title={title} description={description}>
+  <div class="min-h-screen bg-gray-50">
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-r from-blue-600 to-purple-700 text-white py-20">
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6">{title}</h1>
+        <p class="text-xl md:text-2xl mb-8 max-w-4xl mx-auto">
+          重現中國詩詞歌賦之意境，結合AI圖像生成技術與中華文化之美
+        </p>
+        <div class="flex justify-center space-x-4">
+          <a href="#latest-news" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+            最新消息
+          </a>
+          <a href="#competition-details" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+            比賽詳情
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest News Section -->
+    <section id="latest-news" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">最新消息</h2>
+        </div>
+        <div class="max-w-4xl mx-auto text-center">
+          <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+            衷心感謝各位對2024 校際AI藝術創作大賽《數碼詠古》的熱烈參與。經評審團進行評核後，最後從超過2700份作品中，選出100名學生獲得殊榮。
+          </p>
+          <p class="text-lg text-gray-700 mb-8">
+            頒獎典禮及得獎作品展覽已於4月15日舉行，活動完滿落幕!
+          </p>
+          <a href="https://10botics.com/ai-art-competition-result/" 
+             class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+            比賽結果
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ceremony and Exhibition Section -->
+    <section class="py-16 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+            校際AI藝術創作大賽 2024《數碼詠古》頒獎典禮及得獎作品展覽
+          </h2>
+        </div>
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-white rounded-lg p-8 shadow-lg">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">校際AI藝術創作大賽 2024《數碼詠古》頒獎典禮</h3>
+            <div class="space-y-3 text-gray-700 mb-8">
+              <p><strong>日期</strong>：2024年4月15日 (星期一) (國家安全教育日)</p>
+              <p><strong>時間</strong>：14:30 – 16:00 (報到時間：14:00)</p>
+              <p><strong>地點</strong>：香港科學園 高錕會議中心 (金蛋)</p>
+              <p class="text-sm">*場地座位有限，每位得獎學生最多可由<span class="underline">兩位</span>家長或老師陪同</p>
+            </div>
+            
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">校際AI藝術創作大賽 2024《數碼詠古》得獎作品展覽</h3>
+            <div class="space-y-3 text-gray-700 mb-8">
+              <p><strong>日期</strong>：2024年4月15日 (星期一) (國家安全教育日)</p>
+              <p><strong>時間</strong>：16:00 – 17:30</p>
+              <p><strong>地點</strong>：香港科學園 高錕會議中心 (金蛋) 對出 Pre-function Hall</p>
+            </div>
+            
+            <div class="text-center">
+              <a href="https://10botics.com/past-activities/2024/04/15/ai-art-ceremony-exhibition/" 
+                 class="inline-block bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                活動回顧及花絮
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Competition Details Section -->
+    <section id="competition-details" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">比賽詳情</h2>
+        </div>
+        
+        <div class="max-w-6xl mx-auto space-y-12">
+          <!-- Focus -->
+          <div class="bg-gray-50 rounded-lg p-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">焦點</h3>
+            <p class="text-lg text-gray-700 leading-relaxed">
+              為響應教育局對學校有關國家安全報告的要求，以及提升學生對國民身份的認同，是次比賽將以「重現中國詩詞歌賦之意境」為題目，學生需運用不同的AI圖像生成軟件進行創作，以表達自己對國家文化的理解。詩詞比賽結合了科技和藝術，并以創意的方式展現中華文化之美。
+            </p>
+          </div>
+
+          <!-- Theme -->
+          <div class="bg-blue-50 rounded-lg p-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">主題</h3>
+            <p class="text-xl text-blue-800 font-semibold">
+              《數碼詠古》- 重現中國詩詞歌賦之意境
+            </p>
+          </div>
+
+          <!-- Target Audience -->
+          <div class="bg-green-50 rounded-lg p-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">對象</h3>
+            <p class="text-lg text-gray-700">全港小三至中六學生</p>
+          </div>
+
+          <!-- Competition Categories -->
+          <div class="bg-purple-50 rounded-lg p-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">參賽組別</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+              <div class="text-center">
+                <div class="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span class="text-2xl">⭐</span>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-2">小學組</h4>
+                <p class="text-gray-700">小三至小六</p>
+              </div>
+              <div class="text-center">
+                <div class="w-16 h-16 bg-blue-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span class="text-2xl">⭐</span>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-2">初中組</h4>
+                <p class="text-gray-700">中一至中三</p>
+              </div>
+              <div class="text-center">
+                <div class="w-16 h-16 bg-green-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span class="text-2xl">⭐</span>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-2">高中組</h4>
+                <p class="text-gray-700">中四至中六</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submission Format -->
+          <div class="bg-orange-50 rounded-lg p-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">提交形式</h3>
+            <p class="text-lg text-gray-700">網上提交作品</p>
+          </div>
+
+          <!-- Fee -->
+          <div class="bg-red-50 rounded-lg p-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">費用</h3>
+            <p class="text-lg text-gray-700">全免</p>
+          </div>
+
+          <!-- Awards -->
+          <div class="bg-indigo-50 rounded-lg p-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">比賽獎項</h3>
+            <div class="space-y-3 text-gray-700">
+              <p>各組別設特等獎，「最佳文字指令獎」（一名）。</p>
+              <p>一等 、二等、三等獎 及 優異獎（多名）</p>
+              <p>所有報名參賽並成功提交作品的各參賽者，均會獲發電子參賽證書乙張。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sample Works Section -->
+    <section class="py-16 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">作品示例</h2>
+          <p class="text-lg text-gray-700 mb-8">
+            <strong>《早發白帝城》中的一句：</strong><br>
+            <strong class="text-xl">朝辭白帝彩雲間</strong>
+          </p>
+        </div>
+        
+        <div class="max-w-6xl mx-auto">
+          <div class="relative">
+            <div class="flex overflow-hidden rounded-lg shadow-2xl">
+              <div class="flex transition-transform duration-500 ease-in-out" id="image-carousel">
+                <div class="w-full md:w-1/3 flex-shrink-0">
+                  <img src={whatsappImage1.src} alt="AI Art Sample 1" class="w-full h-64 md:h-80 object-cover" />
+                </div>
+                <div class="w-full md:w-1/3 flex-shrink-0">
+                  <img src={whatsappImage2.src} alt="AI Art Sample 2" class="w-full h-64 md:h-80 object-cover" />
+                </div>
+                <div class="w-full md:w-1/3 flex-shrink-0">
+                  <img src={whatsappImage3.src} alt="AI Art Sample 3" class="w-full h-64 md:h-80 object-cover" />
+                </div>
+              </div>
+            </div>
+            
+            <!-- Navigation Buttons -->
+            <button class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-2 shadow-lg transition-all" onclick="previousImage()">
+              <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+              </svg>
+            </button>
+            <button class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-2 shadow-lg transition-all" onclick="nextImage()">
+              <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </button>
+            
+            <!-- Dots -->
+            <div class="flex justify-center mt-6 space-x-2">
+              <button class="w-3 h-3 bg-blue-600 rounded-full" onclick="goToImage(0)"></button>
+              <button class="w-3 h-3 bg-gray-300 rounded-full" onclick="goToImage(1)"></button>
+              <button class="w-3 h-3 bg-gray-300 rounded-full" onclick="goToImage(2)"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Competition Schedule Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">比賽日程</h2>
+        </div>
+        
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <table class="w-full">
+              <thead class="bg-blue-600 text-white">
+                <tr>
+                  <th class="px-6 py-4 text-center font-semibold">日期</th>
+                  <th class="px-6 py-4 text-center font-semibold">項目</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <tr class="hover:bg-gray-50">
+                  <td class="px-6 py-4 text-center text-gray-700">2023年11月16日</td>
+                  <td class="px-6 py-4 text-center text-gray-700">比賽簡介會</td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="px-6 py-4 text-center text-gray-700">2024年01月26日</td>
+                  <td class="px-6 py-4 text-center text-gray-700">開放作品遞交</td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="px-6 py-4 text-center text-gray-700">2024年03月18日</td>
+                  <td class="px-6 py-4 text-center text-gray-700">截止作品遞交</td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="px-6 py-4 text-center text-gray-700">2024年03月28日</td>
+                  <td class="px-6 py-4 text-center text-gray-700">網站公佈得獎名單</td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="px-6 py-4 text-center text-gray-700">2024年04月15日</td>
+                  <td class="px-6 py-4 text-center text-gray-700">頒獎典禮及展覽</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Registration Requirements Section -->
+    <section class="py-16 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">報名注意事項</h2>
+        </div>
+        
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-white rounded-lg p-8 shadow-lg">
+            <ul class="space-y-4 text-lg text-gray-700">
+              <li class="flex items-start">
+                <span class="text-red-500 mr-3 mt-1">•</span>
+                於比賽報名截止日期 2023年12月22日 (五) 前 以學校為單位報名<br>
+                (恕不接受學生以個人名義報名)
+              </li>
+              <li class="flex items-start">
+                <span class="text-red-500 mr-3 mt-1">•</span>
+                各參賽學校須派出一位負責老師
+              </li>
+              <li class="flex items-start">
+                <span class="text-red-500 mr-3 mt-1">•</span>
+                學校於報名時須提交預計參賽學生人數，其後可以作出調整<br>
+                (如最終參賽學生人數調整幅度較大，請與比賽籌委會10Botics聯絡以重新安排)
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Submission Requirements Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">作品提交要求</h2>
+        </div>
+        
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-white rounded-lg p-8 shadow-lg">
+            <ul class="space-y-4 text-lg text-gray-700">
+              <li class="flex items-start">
+                <span class="text-blue-500 mr-3 mt-1">•</span>
+                提交作品表格及注意事項會經電郵個別通知參賽學校負責老師
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-500 mr-3 mt-1">•</span>
+                每名參賽者只可遞交參賽作品一份，並以最後一份遞交作品為準
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-500 mr-3 mt-1">•</span>
+                參賽者須提交並列明：
+                <ul class="ml-8 mt-2 space-y-2">
+                  <li>比例為 2:3 或 3:2之圖像 (原圖及經後製之圖像) *註：可使用任何軟件對圖像進行後製 (提交作品時須連原圖一併提交)</li>
+                  <li>古詩名稱及作者</li>
+                  <li>所使用之AI繪圖平台或軟件</li>
+                  <li>所使用之AI繪圖平台或軟件生成圖像後的畫面截圖，圖像須顯示所輸入的文字指令及生成的原圖</li>
+                  <li>文字指令(prompt) *中、英文均可 (字數限制：300字或以內)</li>
+                  <li>作品描述 (字數限制：300字或以內)</li>
+                </ul>
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-500 mr-3 mt-1">•</span>
+                圖像要求：
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-500 mr-3 mt-1">•</span>
+                檔案格式：JPG/PNG
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-500 mr-3 mt-1">•</span>
+                檔案大小：不限 (請提交最高解像度之圖像)
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Judging Criteria Section -->
+    <section class="py-16 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">評審準則</h2>
+        </div>
+        
+        <div class="max-w-6xl mx-auto space-y-8">
+          <!-- Poetry Understanding -->
+          <div class="bg-white rounded-lg p-8 shadow-lg">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">詩詞理解</h3>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start">
+                <span class="text-green-500 mr-3 mt-1">•</span>
+                <strong>詩詞理解的深度</strong>：評估學生對詩詞含義的理解程度，包括對詩詞主題、情感和象徵意義的把握。考察他們是否能深入挖掘詩詞背後的故事和隱喻。
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-3 mt-1">•</span>
+                <strong>語言運用的能力</strong>：觀察學生在解釋或表達詩詞時的語言運用，包括詞彙的選擇、語句的結構和表達的流暢性。評價他們如何使用語言來準確和生動地傳達詩詞的內涵。
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-3 mt-1">•</span>
+                <strong>文學修辭的識別與應用</strong>：考察學生對詩詞中修辭手法的識別能力，以及他們如何在自己的表達中運用這些修辭技巧。
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-3 mt-1">•</span>
+                <strong>文化和歷史背景的融合</strong>：評估學生在解釋詩詞時，是否能結合其歷史和文化背景，並理解這些背景如何影響詩詞的創作和解讀。
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-3 mt-1">•</span>
+                <strong>關聯的分析</strong>：考量學生是否能將詩詞與其時代背景或文學流派進行關聯，展現出對詩詞更廣泛的文學理解。
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-3 mt-1">•</span>
+                <strong>主題的一致性</strong>：評估圖像是否準確地反映了詩詞的主題。圖像應與詩詞中的核心思想和情感相呼應。
+              </li>
+            </ul>
+          </div>
+
+          <!-- Visual Arts -->
+          <div class="bg-white rounded-lg p-8 shadow-lg">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">視覺藝術</h3>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start">
+                <span class="text-purple-500 mr-3 mt-1">•</span>
+                <strong>視覺美感與和諧</strong>：評估圖像的整體美感，包括顏色搭配、構圖平衡以及視覺元素的和諧統一。考察圖像是否具有藝術吸引力。
+              </li>
+              <li class="flex items-start">
+                <span class="text-purple-500 mr-3 mt-1">•</span>
+                <strong>創意表現</strong>：評價學生在圖像創作中的創意和創新能力。重視獨特的視角、新穎的表現手法，以及對傳統題材的現代詮釋。
+              </li>
+              <li class="flex items-start">
+                <span class="text-purple-500 mr-3 mt-1">•</span>
+                <strong>技術精湛度</strong>：觀察學生在藝術創作中展現的技術能力，包括畫面處理的細膩程度、運用文字指令的熟練度以及整體作品的完成度。
+              </li>
+              <li class="flex items-start">
+                <span class="text-purple-500 mr-3 mt-1">•</span>
+                <strong>情感傳達</strong>：評估圖像是否能有效傳達情感和氣氛，創造出觀者與作品之間的情感連結。重視作品能否喚起觀者的情感共鳴。
+              </li>
+              <li class="flex items-start">
+                <span class="text-purple-500 mr-3 mt-1">•</span>
+                <strong>風格特色</strong>：考察學生是否能在作品中展現出獨特的個人風格或是對某一藝術流派的有效運用。鼓勵學生發展個性化的表達方式。
+              </li>
+              <li class="flex items-start">
+                <span class="text-purple-500 mr-3 mt-1">•</span>
+                <strong>文化元素的融合</strong>：評價學生是否能在作品中巧妙地結合中國詩詞中的文化元素，如詩詞創作背景或朝代，並將這些元素以美學的方式展現出來。
+              </li>
+              <li class="flex items-start">
+                <span class="text-purple-500 mr-3 mt-1">•</span>
+                <strong>主題相關性</strong>：考察圖像中是否包含了文字指令中提及的關鍵細節，並且這些細節是否得到了恰當的展現。圖像應與所給指令緊密相關，並清晰表達文字指令中的核心概念或主旨。
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Judges Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">評審團名單</h2>
+          <p class="text-lg text-gray-700">（按姓氏筆劃排列，排名不分先後）</p>
+        </div>
+        
+        <div class="max-w-6xl mx-auto">
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Judge 1 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div class="p-6 text-center">
+                <img src={judgeWangWenhao.src} alt="王文浩先生" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
+                <h3 class="text-xl font-bold text-gray-900 mb-2">王文浩先生</h3>
+                <p class="text-gray-700">香港知專<br>設計學院 <br>高級講師兼課程主任</p>
+              </div>
+            </div>
+
+            <!-- Judge 2 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div class="p-6 text-center">
+                <img src={judgeJiangPeiqiang.src} alt="江培強博士" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
+                <h3 class="text-xl font-bold text-gray-900 mb-2">江培強博士</h3>
+                <p class="text-gray-700">香港理工大學 <br>設計學院 <br>助理教授及<br>多媒體科藝理學碩士副課程主任</p>
+              </div>
+            </div>
+
+            <!-- Judge 3 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div class="p-6 text-center">
+                <img src={judgeLiangPeiyun.src} alt="梁佩雲女士" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
+                <h3 class="text-xl font-bold text-gray-900 mb-2">梁佩雲女士</h3>
+                <p class="text-gray-700">香港教育大學 <br>中國語言學系<br>教授(實踐) 暨<br>署理系主任 及 <br>人文學院副院長(學術質素保證及提升)</p>
+              </div>
+            </div>
+
+            <!-- Judge 4 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div class="p-6 text-center">
+                <img src={judgeZhangLing.src} alt="張凌博士" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
+                <h3 class="text-xl font-bold text-gray-900 mb-2">張凌博士</h3>
+                <p class="text-gray-700">香港教育大學 <br>中國語言學系 <br>助理教授</p>
+              </div>
+            </div>
+
+            <!-- Judge 5 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div class="p-6 text-center">
+                <img src={judgeChengZhongshan.src} alt="程中山博士" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
+                <h3 class="text-xl font-bold text-gray-900 mb-2">程中山博士</h3>
+                <p class="text-gray-700">香港中文大學 <br>中國語言及<br>文學系高級講師</p>
+              </div>
+            </div>
+
+            <!-- Judge 6 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div class="p-6 text-center">
+                <img src={judgeTKH.src} alt="謝家浩博士" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
+                <h3 class="text-xl font-bold text-gray-900 mb-2">謝家浩博士</h3>
+                <p class="text-gray-700">香港教育大學 <br>中國語言學系 <br>兼任副教授</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Other Details Section -->
+    <section class="py-16 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">其他細則</h2>
+        </div>
+        
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-white rounded-lg p-8 shadow-lg">
+            <ul class="space-y-4 text-lg text-gray-700">
+              <li class="flex items-start">
+                <span class="text-red-500 mr-3 mt-1">•</span>
+                參賽作品如有偽冒、抄襲、代筆，查證屬實，一律取消資格，獎項不遞補。已領取獎項者，本會將收回獎項；
+              </li>
+              <li class="flex items-start">
+                <span class="text-red-500 mr-3 mt-1">•</span>
+                本活動所得之個人資料只作是次比賽遴選之用，並作保密處理，活動後將會銷毀；
+              </li>
+              <li class="flex items-start">
+                <span class="text-red-500 mr-3 mt-1">•</span>
+                所有參賽作品之版權，均屬主辦單位所有。凡參賽者提交參賽作品，即表示同意本組委會將參賽作品或得獎者相片用於與本賽事有關的推廣活動，包括但不限於刊物、新聞發佈、網站、及公開展覽等。主辦單位無須徵求參賽者同意及支付任何費用，並保留採用作品之最終決定權；
+              </li>
+              <li class="flex items-start">
+                <span class="text-red-500 mr-3 mt-1">•</span>
+                所有參賽者必須遵守參賽規則及尊重評判之決定；
+              </li>
+              <li class="flex items-start">
+                <span class="text-red-500 mr-3 mt-1">•</span>
+                所有獎項將以本會評判之評審決定為最終依歸，各組別得獎名額及獎項可因各組別之實際參賽作品水準而有所變動。本會保留最終決定權，任何人不得異議；
+              </li>
+              <li class="flex items-start">
+                <span class="text-red-500 mr-3 mt-1">•</span>
+                本章程如有未盡善之處，本會有權修改而不需另行通知。
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Organizations Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">主辦單位及支持機構</h2>
+        </div>
+        
+        <div class="max-w-6xl mx-auto space-y-12">
+          <!-- Host Organization -->
+          <div class="text-center">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">主辦單位</h3>
+            <div class="flex justify-center">
+              <img src={hkceeLogo.src} alt="香港電腦教育學會" class="h-24 object-contain" />
+            </div>
+          </div>
+
+          <!-- Supporting Organizations -->
+          <div class="text-center">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">支持機構</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 items-center">
+              <div class="flex justify-center">
+                <img src="https://10botics.com/wp-content/uploads/2023/11/cropped-Screenshot-2019-04-08-at-11.53.28-AM-1.png" alt="Supporting Organization 1" class="h-20 object-contain" />
+              </div>
+              <div class="flex justify-center">
+                <img src="https://10botics.com/wp-content/uploads/2023/11/logo_7.jpg" alt="Supporting Organization 2" class="h-20 object-contain" />
+              </div>
+              <div class="flex justify-center">
+                <img src="https://10botics.com/wp-content/uploads/2023/11/logo.jpg" alt="Supporting Organization 3" class="h-20 object-contain" />
+              </div>
+              <div class="flex justify-center">
+                <img src="https://10botics.com/wp-content/uploads/2023/11/logo_jsit-1200x800-1-1024x683.png" alt="Supporting Organization 4" class="h-20 object-contain" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Advisory School -->
+          <div class="text-center">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">顧問學校</h3>
+            <div class="flex justify-center">
+              <img src="https://10botics.com/wp-content/uploads/2023/08/五旬節聖潔會永光書院.png" alt="五旬節聖潔會永光書院" class="h-24 object-contain" />
+            </div>
+          </div>
+
+          <!-- Organizing Unit -->
+          <div class="text-center">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">籌辦單位</h3>
+            <div class="flex justify-center">
+              <img src={logo10botics.src} alt="10Botics" class="h-24 object-contain" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Past Competition Review Section -->
+    <section class="py-16 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">過往比賽回顧</h2>
+        </div>
+        
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-white rounded-lg p-8 shadow-lg">
+            <div class="text-center mb-6">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">2023</h3>
+            </div>
+            
+            <div class="space-y-6">
+              <div class="border-l-4 border-blue-500 pl-6">
+                <h4 class="text-lg font-semibold text-gray-900 mb-2">主題：</h4>
+                <p class="text-gray-700">AI藝術創作大賽《以書畫之名》- 重新構想書籍封面</p>
+              </div>
+              
+              <div class="border-l-4 border-green-500 pl-6">
+                <h4 class="text-lg font-semibold text-gray-900 mb-2">對象：</h4>
+                <p class="text-gray-700">全港小一至中六學生</p>
+              </div>
+              
+              <div class="border-l-4 border-purple-500 pl-6">
+                <h4 class="text-lg font-semibold text-gray-900 mb-2">參賽組別：</h4>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mt-3">
+                  <div class="text-center">
+                    <div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <span class="text-lg">⭐</span>
+                    </div>
+                    <h5 class="font-semibold text-gray-900">小學組</h5>
+                    <p class="text-sm text-gray-700">小一至小三</p>
+                  </div>
+                  <div class="text-center">
+                    <div class="w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <span class="text-lg">⭐</span>
+                    </div>
+                    <h5 class="font-semibold text-gray-900">高小組</h5>
+                    <p class="text-sm text-gray-700">小四至小六</p>
+                  </div>
+                  <div class="text-center">
+                    <div class="w-12 h-12 bg-green-400 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <span class="text-lg">⭐</span>
+                    </div>
+                    <h5 class="font-semibold text-gray-900">初中組</h5>
+                    <p class="text-sm text-gray-700">中一至中三</p>
+                  </div>
+                  <div class="text-center">
+                    <div class="w-12 h-12 bg-purple-400 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <span class="text-lg">⭐</span>
+                    </div>
+                    <h5 class="font-semibold text-gray-900">高中組</h5>
+                    <p class="text-sm text-gray-700">中四至中六</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="border-l-4 border-red-500 pl-6">
+                <h4 class="text-lg font-semibold text-gray-900 mb-2">比賽獎項：</h4>
+                <div class="space-y-2 text-gray-700">
+                  <p>各組別設特等獎、「最佳文字指令獎」（一名）。</p>
+                  <p>一等 、二等、三等獎（多名）</p>
+                  <p>所有報名參賽並成功提交作品的參賽者均會獲發參賽證書乙張。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">常見問題</h2>
+        </div>
+        
+        <div class="max-w-4xl mx-auto">
+          <div class="space-y-4">
+            <!-- FAQ Item 1 -->
+            <div class="bg-white border border-gray-200 rounded-lg">
+              <button class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 focus:outline-none" onclick="toggleFAQ(this)">
+                <span class="font-semibold text-gray-900">學生是否需要參與課程後方能出賽？</span>
+                <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="px-6 pb-4 hidden">
+                <p class="text-gray-700">不是。無需參與課程即可參加比賽。</p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="bg-white border border-gray-200 rounded-lg">
+              <button class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 focus:outline-none" onclick="toggleFAQ(this)">
+                <span class="font-semibold text-gray-900">有否限制使用哪種AI繪圖工具？</span>
+                <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="px-6 pb-4 hidden">
+                <p class="text-gray-700">沒有，任何生成式AI繪圖工具均可使用。</p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="bg-white border border-gray-200 rounded-lg">
+              <button class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 focus:outline-none" onclick="toggleFAQ(this)">
+                <span class="font-semibold text-gray-900">使用AI繪圖工具是否需要收費？</span>
+                <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="px-6 pb-4 hidden">
+                <div class="text-gray-700 space-y-2">
+                  <p>以Discord程式內的Midjourney AI圖像生成器為例，每個付費帳號可生成的圖像數量分別為：</p>
+                  <p>-付費帳號 (Basic Plan): 每月約200幅圖像</p>
+                  <p>-付費帳號 (Standard Plan): 無上限，可同時間生成3幅畫作</p>
+                  <p>-付費帳號 (Pro Plan): 無上限，可同時間生成12幅畫作</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="bg-white border border-gray-200 rounded-lg">
+              <button class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 focus:outline-none" onclick="toggleFAQ(this)">
+                <span class="font-semibold text-gray-900">可否單獨向大會購買Midjourney帳號？</span>
+                <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="px-6 pb-4 hidden">
+                <p class="text-gray-700">不能。如各校需要Midjourney帳號，​請自行購買或參加整套比賽培訓課程。</p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div class="bg-white border border-gray-200 rounded-lg">
+              <button class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 focus:outline-none" onclick="toggleFAQ(this)">
+                <span class="font-semibold text-gray-900">沒有AI藝術創作相關經驗，是否能夠參加比賽？</span>
+                <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="px-6 pb-4 hidden">
+                <p class="text-gray-700">可以。歡迎所有對AI藝術創作有興趣的學生參與是次賽事。</p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 6 -->
+            <div class="bg-white border border-gray-200 rounded-lg">
+              <button class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 focus:outline-none" onclick="toggleFAQ(this)">
+                <span class="font-semibold text-gray-900">作品是否可以後製?</span>
+                <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="px-6 pb-4 hidden">
+                <p class="text-gray-700">可以。您可以使用其他程序或軟件來編輯您的藝術作品。</p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 7 -->
+            <div class="bg-white border border-gray-200 rounded-lg">
+              <button class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 focus:outline-none" onclick="toggleFAQ(this)">
+                <span class="font-semibold text-gray-900">後製內容是否有限制?</span>
+                <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="px-6 pb-4 hidden">
+                <p class="text-gray-700">可以添加你選擇的詩句，或加上你的姓名章或閒章。</p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 8 -->
+            <div class="bg-white border border-gray-200 rounded-lg">
+              <button class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 focus:outline-none" onclick="toggleFAQ(this)">
+                <span class="font-semibold text-gray-900">可否用後製方式改動圖像比例(即3:2或2:3)?</span>
+                <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="px-6 pb-4 hidden">
+                <p class="text-gray-700">可以。</p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 9 -->
+            <div class="bg-white border border-gray-200 rounded-lg">
+              <button class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 focus:outline-none" onclick="toggleFAQ(this)">
+                <span class="font-semibold text-gray-900">後製是否必須?會否加分或減分?</span>
+                <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="px-6 pb-4 hidden">
+                <p class="text-gray-700">後製不是必須的。我們會先審視原圖，然後比較後期製作效果，以決定是否進行調整分數。</p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 10 -->
+            <div class="bg-white border border-gray-200 rounded-lg">
+              <button class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 focus:outline-none" onclick="toggleFAQ(this)">
+                <span class="font-semibold text-gray-900">我所使用的AI繪圖平台只能輸入英文指令，那遞交作品時是否需要提交中文指令?</span>
+                <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="px-6 pb-4 hidden">
+                <p class="text-gray-700">
+                  參賽者必須提交中文指令。<br>
+                  在使用AI繪圖平台創作中國詩詞歌賦為題的作品時，大會鼓勵同學首先用中文深入思考中國詩詞歌賦的意境，並以中文將想法寫成指令。如果同學所使用的AI平台只接受英文指令，請將中文指令轉換成英文，並同時提交這兩種語言的指令。大會評審將根據中英文指令之間的準確度和匹配程度來評估你的作品。
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 11 -->
+            <div class="bg-white border border-gray-200 rounded-lg">
+              <button class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 focus:outline-none" onclick="toggleFAQ(this)">
+                <span class="font-semibold text-gray-900">網上遞交參賽作品是否必須要由學校老師提交?</span>
+                <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="px-6 pb-4 hidden">
+                <p class="text-gray-700">學生可以自行提交他們的參賽作品。</p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 12 -->
+            <div class="bg-white border border-gray-200 rounded-lg">
+              <button class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 focus:outline-none" onclick="toggleFAQ(this)">
+                <span class="font-semibold text-gray-900">現時未能確認於比賽報名截止日期前能否參賽，應如何處理？</span>
+                <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="px-6 pb-4 hidden">
+                <p class="text-gray-700">建議有興趣的學校可以先填寫報名表格，表達參賽意向，大會將聯絡負責老師作進一步跟進。</p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 13 -->
+            <div class="bg-white border border-gray-200 rounded-lg">
+              <button class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 focus:outline-none" onclick="toggleFAQ(this)">
+                <span class="font-semibold text-gray-900">開放提交作品的日期是？</span>
+                <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="px-6 pb-4 hidden">
+                <p class="text-gray-700">大會將於報名參賽截止日期 <strong>(2023年12月22日)</strong>後 公佈，預計於2024年一月開放提交作品。</p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 14 -->
+            <div class="bg-white border border-gray-200 rounded-lg">
+              <button class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 focus:outline-none" onclick="toggleFAQ(this)">
+                <span class="font-semibold text-gray-900">有否限制使用哪些詩詞歌賦?</span>
+                <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="px-6 pb-4 hidden">
+                <p class="text-gray-700">沒有，由學校自行決定。</p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 15 -->
+            <div class="bg-white border border-gray-200 rounded-lg">
+              <button class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 focus:outline-none" onclick="toggleFAQ(this)">
+                <span class="font-semibold text-gray-900">可否用多於一個AI繪圖軟件生成圖像?</span>
+                <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="px-6 pb-4 hidden">
+                <p class="text-gray-700">需選擇一個 AI 軟件製作原圖，之後不限工具做後製。</p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 16 -->
+            <div class="bg-white border border-gray-200 rounded-lg">
+              <button class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 focus:outline-none" onclick="toggleFAQ(this)">
+                <span class="font-semibold text-gray-900">會否有過往簡介内容參考？</span>
+                <svg class="w-5 h-5 text-gray-500 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div class="px-6 pb-4 hidden">
+                <p class="text-gray-700">
+                  「2024 校際AI藝術創作大賽」比賽簡介會已經結束，大家可於
+                  <a href="https://www.youtube.com/watch?v=tczouhpNYbo" class="text-blue-600 hover:underline">簡介會錄影回放</a>
+                  中觀看詳情。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">聯絡我們</h2>
+          <p class="text-lg text-gray-700">想了解更多關於校際AI藝術創作大賽的資訊？歡迎聯絡我們</p>
+        </div>
+        
+        <div class="max-w-4xl mx-auto">
+          <ContactSection subtitle="想了解更多關於校際AI藝術創作大賽的資訊？歡迎聯絡我們，我們會為您提供詳細的比賽安排和報名資訊。" />
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Image Carousel Functionality
+    let currentImageIndex = 0;
+    const totalImages = 3;
+    const carousel = document.getElementById('image-carousel');
+    const dots = document.querySelectorAll('[onclick^="goToImage"]');
+
+    function nextImage() {
+      currentImageIndex = (currentImageIndex + 1) % totalImages;
+      updateCarousel();
+    }
+
+    function previousImage() {
+      currentImageIndex = (currentImageIndex - 1 + totalImages) % totalImages;
+      updateCarousel();
+    }
+
+    function goToImage(index) {
+      currentImageIndex = index;
+      updateCarousel();
+    }
+
+    function updateCarousel() {
+      const translateX = -currentImageIndex * (100 / totalImages);
+      carousel.style.transform = `translateX(${translateX}%)`;
+      
+      // Update dots
+      dots.forEach((dot, index) => {
+        if (index === currentImageIndex) {
+          dot.classList.remove('bg-gray-300');
+          dot.classList.add('bg-blue-600');
+        } else {
+          dot.classList.remove('bg-blue-600');
+          dot.classList.add('bg-gray-300');
+        }
+      });
+    }
+
+    // Auto-advance carousel
+    setInterval(nextImage, 5000);
+
+    // FAQ Toggle Functionality
+    function toggleFAQ(button) {
+      const content = button.nextElementSibling;
+      const icon = button.querySelector('svg');
+      
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        content.classList.add('hidden');
+        icon.style.transform = 'rotate(0deg)';
+      }
+    }
+
+    // Initialize carousel
+    document.addEventListener('DOMContentLoaded', function() {
+      updateCarousel();
+    });
+  </script>
+</Layout>

@@ -2,6 +2,7 @@
 // Dynamic route to handle URL mapping between English URLs and Chinese filename components
 export async function getStaticPaths() {
   return [
+    { params: { slug: 'ai-art-competition-2024' } },
     { params: { slug: 'ai-art-competition-2025' } },
     { params: { slug: 'ai-art-competition-2025-result' } },
     { params: { slug: 'competition-drone2024' } },
@@ -16,6 +17,9 @@ const { slug } = Astro.params;
 // Import the Chinese filename component based on the slug
 let ChineseComponent;
 switch (slug) {
+  case 'ai-art-competition-2024':
+    ChineseComponent = await import('./校際AI藝術創作大賽 2024.astro');
+    break;
   case 'ai-art-competition-2025':
     ChineseComponent = await import('./第三屆 校際AI藝術創作大賽.astro');
     break;
