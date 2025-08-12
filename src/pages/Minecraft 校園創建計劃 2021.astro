@@ -98,89 +98,97 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
       <!-- Tabs -->
       <div class="max-w-4xl mx-auto">
         <div class="flex flex-wrap justify-center mb-8">
-          <button class="tab-button active px-6 py-3 bg-blue-600 text-white rounded-t-lg mx-1" data-tab="1">
+          <button class="tab-button active px-6 py-3 bg-blue-600 text-white rounded-t-lg mx-1 transition-all duration-200" data-tab="1">
             面授課堂
           </button>
-          <button class="tab-button px-6 py-3 bg-gray-200 text-gray-700 rounded-t-lg mx-1" data-tab="2">
+          <button class="tab-button px-6 py-3 bg-gray-200 text-gray-700 rounded-t-lg mx-1 transition-all duration-200" data-tab="2">
             Project Period
           </button>
-          <button class="tab-button px-6 py-3 bg-gray-200 text-gray-700 rounded-t-lg mx-1" data-tab="3">
+          <button class="tab-button px-6 py-3 bg-gray-200 text-gray-700 rounded-t-lg mx-1 transition-all duration-200" data-tab="3">
             遞交作品
           </button>
-          <button class="tab-button px-6 py-3 bg-gray-200 text-gray-700 rounded-t-lg mx-1" data-tab="4">
+          <button class="tab-button px-6 py-3 bg-gray-200 text-gray-700 rounded-t-lg mx-1 transition-all duration-200" data-tab="4">
             Buildathon
           </button>
         </div>
 
         <!-- Tab Content -->
         <div class="tab-content active" data-tab="1">
-          <h3 class="text-2xl font-bold text-center mb-8">課堂內容</h3>
-          <div class="space-y-6">
-            <div>
-              <h4 class="text-xl font-semibold mb-2">World-Edit 命令行</h4>
-              <p>課程教授 World-Edit 命令行的基本概念和運作，例如 //set, //line, //stack, //replace 等，加快學生建設速度。</p>
-            </div>
-            <div>
-              <h4 class="text-xl font-semibold mb-2">2D 及 3D 地圖</h4>
-              <p>課程讓學生認識 Google Map, Google Earth 等工具的使用方法，令學生能夠在相對應的坐標興建 1:1 的校園和社區。</p>
-            </div>
-            <div>
-              <h4 class="text-xl font-semibold mb-2">實地考察</h4>
-              <p>課程為學生們提供實地考察的機會，一起發掘校園建築物的設計細節，共同討論Minecraft內的建設方法。</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="tab-content hidden" data-tab="2">
-          <h3 class="text-2xl font-bold text-center mb-8">課堂內容</h3>
-          <div class="space-y-6">
-            <div>
-              <h4 class="text-xl font-semibold mb-2">興建校園及周邊社區</h4>
-              <p>學生利用課堂學習的知識，包括 World-Edit 命令行及網上工具，正式開始創建校園。</p>
-            </div>
-            <div>
-              <h4 class="text-xl font-semibold mb-2">自主學習</h4>
-              <p>學生們在課餘時間亦可進入 Minecraft Server 自行興建，遇到問題可以向同學或導師發問。</p>
-            </div>
-            <div>
-              <h4 class="text-xl font-semibold mb-2">團體合作</h4>
-              <p>校園及周邊社區建築範圍較大，學生們需自行分工，加快建構速度。</p>
+          <div class="bg-white p-8 rounded-lg shadow-lg">
+            <h3 class="text-2xl font-bold text-center mb-8 text-blue-600">課堂內容</h3>
+            <div class="space-y-6">
+              <div class="border-l-4 border-blue-500 pl-4">
+                <h4 class="text-xl font-semibold mb-2 text-gray-800">World-Edit 命令行</h4>
+                <p class="text-gray-600 leading-relaxed">課程教授 World-Edit 命令行的基本概念和運作，例如 //set, //line, //stack, //replace 等，加快學生建設速度。</p>
+              </div>
+              <div class="border-l-4 border-blue-500 pl-4">
+                <h4 class="text-xl font-semibold mb-2 text-gray-800">2D 及 3D 地圖</h4>
+                <p class="text-gray-600 leading-relaxed">課程讓學生認識 Google Map, Google Earth 等工具的使用方法，令學生能夠在相對應的坐標興建 1:1 的校園和社區。</p>
+              </div>
+              <div class="border-l-4 border-blue-500 pl-4">
+                <h4 class="text-xl font-semibold mb-2 text-gray-800">實地考察</h4>
+                <p class="text-gray-600 leading-relaxed">課程為學生們提供實地考察的機會，一起發掘校園建築物的設計細節，共同討論Minecraft內的建設方法。</p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="tab-content hidden" data-tab="3">
-          <h3 class="text-2xl font-bold text-center mb-8">課程成果</h3>
-          <div class="space-y-6">
-            <div>
-              <h4 class="text-xl font-semibold mb-2">Minecraft 校園</h4>
-              <p>學生們在 Minecraft Server 內完成校園及社區建設後，供評判判定建築物的準確度及運用的創意力。</p>
-            </div>
-            <div>
-              <h4 class="text-xl font-semibold mb-2">成果影片</h4>
-              <p>學生們以 Minecraft 第一人視角錄製影片，帶領觀眾參觀整個校園及社區的建築物，展示校園創建成果。</p>
-            </div>
-            <div>
-              <h4 class="text-xl font-semibold mb-2">匯報簡報</h4>
-              <p>學生們完成校園創建後，對校園或社區內建築物背景及歷史加深了認識，藉此機會分享其建築物的用途、背景及歷史及對學校的意義。</p>
+        <div class="tab-content" data-tab="2">
+          <div class="bg-white p-8 rounded-lg shadow-lg">
+            <h3 class="text-2xl font-bold text-center mb-8 text-green-600">課堂內容</h3>
+            <div class="space-y-6">
+              <div class="border-l-4 border-green-500 pl-4">
+                <h4 class="text-xl font-semibold mb-2 text-gray-800">興建校園及周邊社區</h4>
+                <p class="text-gray-600 leading-relaxed">學生利用課堂學習的知識，包括 World-Edit 命令行及網上工具，正式開始創建校園。</p>
+              </div>
+              <div class="border-l-4 border-green-500 pl-4">
+                <h4 class="text-xl font-semibold mb-2 text-gray-800">自主學習</h4>
+                <p class="text-gray-600 leading-relaxed">學生們在課餘時間亦可進入 Minecraft Server 自行興建，遇到問題可以向同學或導師發問。</p>
+              </div>
+              <div class="border-l-4 border-green-500 pl-4">
+                <h4 class="text-xl font-semibold mb-2 text-gray-800">團體合作</h4>
+                <p class="text-gray-600 leading-relaxed">校園及周邊社區建築範圍較大，學生們需自行分工，加快建構速度。</p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="tab-content hidden" data-tab="4">
-          <h3 class="text-2xl font-bold text-center mb-8">準備內容</h3>
-          <div class="space-y-6">
-            <div>
-              <h4 class="text-xl font-semibold mb-2">排位賽</h4>
-              <p>排位賽幫助學生了解 Buildathon 規則，以及判定隊伍選擇建築物選項的先後次序。</p>
+        <div class="tab-content" data-tab="3">
+          <div class="bg-white p-8 rounded-lg shadow-lg">
+            <h3 class="text-2xl font-bold text-center mb-8 text-purple-600">課程成果</h3>
+            <div class="space-y-6">
+              <div class="border-l-4 border-purple-500 pl-4">
+                <h4 class="text-xl font-semibold mb-2 text-gray-800">Minecraft 校園</h4>
+                <p class="text-gray-600 leading-relaxed">學生們在 Minecraft Server 內完成校園及社區建設後，供評判判定建築物的準確度及運用的創意力。</p>
+              </div>
+              <div class="border-l-4 border-purple-500 pl-4">
+                <h4 class="text-xl font-semibold mb-2 text-gray-800">成果影片</h4>
+                <p class="text-gray-600 leading-relaxed">學生們以 Minecraft 第一人視角錄製影片，帶領觀眾參觀整個校園及社區的建築物，展示校園創建成果。</p>
+              </div>
+              <div class="border-l-4 border-purple-500 pl-4">
+                <h4 class="text-xl font-semibold mb-2 text-gray-800">匯報簡報</h4>
+                <p class="text-gray-600 leading-relaxed">學生們完成校園創建後，對校園或社區內建築物背景及歷史加深了認識，藉此機會分享其建築物的用途、背景及歷史及對學校的意義。</p>
+              </div>
             </div>
-            <div>
-              <h4 class="text-xl font-semibold mb-2">相討策略</h4>
-              <p>學生們在30個建築物選項中，選擇適合自己隊伍的建築物，爭取最高分數。</p>
-            </div>
-            <div>
-              <h4 class="text-xl font-semibold mb-2">練習建設</h4>
-              <p>確認建築物選項後，在挑戰賽前進行練習，加快比賽時的興建速度。</p>
+          </div>
+        </div>
+
+        <div class="tab-content" data-tab="4">
+          <div class="bg-white p-8 rounded-lg shadow-lg">
+            <h3 class="text-2xl font-bold text-center mb-8 text-orange-600">準備內容</h3>
+            <div class="space-y-6">
+              <div class="border-l-4 border-orange-500 pl-4">
+                <h4 class="text-xl font-semibold mb-2 text-gray-800">排位賽</h4>
+                <p class="text-gray-600 leading-relaxed">排位賽幫助學生了解 Buildathon 規則，以及判定隊伍選擇建築物選項的先後次序。</p>
+              </div>
+              <div class="border-l-4 border-orange-500 pl-4">
+                <h4 class="text-xl font-semibold mb-2 text-gray-800">相討策略</h4>
+                <p class="text-gray-600 leading-relaxed">學生們在30個建築物選項中，選擇適合自己隊伍的建築物，爭取最高分數。</p>
+              </div>
+              <div class="border-l-4 border-orange-500 pl-4">
+                <h4 class="text-xl font-semibold mb-2 text-gray-800">練習建設</h4>
+                <p class="text-gray-600 leading-relaxed">確認建築物選項後，在挑戰賽前進行練習，加快比賽時的興建速度。</p>
+              </div>
             </div>
           </div>
         </div>
@@ -657,27 +665,81 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
     </div>
   </section>
 
+  <style>
+    .tab-content {
+      display: none;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease-in-out;
+    }
+    .tab-content.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .tab-button {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .tab-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    .tab-button:hover::before {
+      left: 100%;
+    }
+    
+    .tab-button.active {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+  </style>
+
   <script>
     // Tab functionality
     document.addEventListener('DOMContentLoaded', function() {
       const tabButtons = document.querySelectorAll('.tab-button');
       const tabContents = document.querySelectorAll('.tab-content');
       
+      // Initialize first tab as active
+      const firstTabButton = document.querySelector('.tab-button[data-tab="1"]');
+      const firstTabContent = document.querySelector('.tab-content[data-tab="1"]');
+      if (firstTabButton && firstTabContent) {
+        firstTabButton.classList.add('active', 'bg-blue-600', 'text-white');
+        firstTabButton.classList.remove('bg-gray-200', 'text-gray-700');
+        firstTabContent.classList.add('active');
+      }
+      
       tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          const tabNumber = button.getAttribute('data-tab');
+        button.addEventListener('click', function() {
+          const tabNumber = this.getAttribute('data-tab');
           
           // Remove active class from all buttons and contents
-          tabButtons.forEach(btn => btn.classList.remove('active', 'bg-blue-600', 'text-white'));
-          tabButtons.forEach(btn => btn.classList.add('bg-gray-200', 'text-gray-700'));
-          tabContents.forEach(content => content.classList.add('hidden'));
+          tabButtons.forEach(btn => {
+            btn.classList.remove('active', 'bg-blue-600', 'text-white');
+            btn.classList.add('bg-gray-200', 'text-gray-700');
+          });
+          
+          tabContents.forEach(content => {
+            content.classList.remove('active');
+          });
           
           // Add active class to clicked button and corresponding content
-          button.classList.add('active', 'bg-blue-600', 'text-white');
-          button.classList.remove('bg-gray-200', 'text-gray-700');
-          const targetContent = document.querySelector(`[data-tab="${tabNumber}"]`);
+          this.classList.add('active', 'bg-blue-600', 'text-white');
+          this.classList.remove('bg-gray-200', 'text-gray-700');
+          
+          const targetContent = document.querySelector(`.tab-content[data-tab="${tabNumber}"]`);
           if (targetContent) {
-            targetContent.classList.remove('hidden');
+            targetContent.classList.add('active');
           }
         });
       });
@@ -686,9 +748,9 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
       const faqButtons = document.querySelectorAll('.faq-button');
       
       faqButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          const content = button.nextElementSibling;
-          const icon = button.querySelector('span:last-child');
+        button.addEventListener('click', function() {
+          const content = this.nextElementSibling;
+          const icon = this.querySelector('span:last-child');
           
           if (content && icon && content.classList.contains('hidden')) {
             content.classList.remove('hidden');
@@ -697,6 +759,26 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
             content.classList.add('hidden');
             icon.textContent = '▼';
           }
+        });
+      });
+      
+      // Add keyboard navigation for tabs
+      tabButtons.forEach(button => {
+        button.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.click();
+          }
+        });
+        
+        // Add focus styles
+        button.addEventListener('focus', function() {
+          this.style.outline = '2px solid #3B82F6';
+          this.style.outlineOffset = '2px';
+        });
+        
+        button.addEventListener('blur', function() {
+          this.style.outline = 'none';
         });
       });
     });
