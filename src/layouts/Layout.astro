@@ -18,6 +18,7 @@ const {
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import { SpeedInsights } from '@vercel/speed-insights/astro';
 
 // Generate canonical URL
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -113,5 +114,6 @@ const organizationSchema = {
 		</main>
 		<Footer />
 		<FloatingWhatsApp />
+		<SpeedInsights />
 	</body>
 </html> 
