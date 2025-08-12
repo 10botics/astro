@@ -1,0 +1,430 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+
+const title = "Minecraft 校園創建計劃2022 - 10教育";
+const description = "校園創建計劃 2022 香港旅遊 KOL 比賽已經完滿結束，感謝各位支持。元宇宙就聽得多，你有沒有想過學生都有能力成為元宇宙建築工程師的一員？";
+---
+
+<Layout title={title} description={description}>
+	
+	<main id="content" class="site-main">
+		<div class="page-content">
+			<!-- Hero Section -->
+			<div class="hero-section bg-gradient-to-br from-blue-50 to-indigo-100 py-16">
+				<div class="container mx-auto px-4 text-center">
+					<img 
+						decoding="async" 
+						width="768" 
+						height="183" 
+						src="/src/assets/images/competition/Minecraft 校園創建計劃 2022/minecraftLogo-768x183.png" 
+						class="mx-auto mb-8 max-w-md" 
+						alt="Minecraft Logo" 
+					/>
+					<h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+						校園創建計劃 2022
+					</h1>
+					<h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8">
+						香港旅遊 KOL
+					</h2>
+					<div class="space-y-6">
+						<button class="bg-gray-600 text-white px-6 py-3 rounded-lg text-lg font-medium">
+							比賽已經完滿結束，感謝各位支持
+						</button>
+						<a href="#minecraft2022winner" class="bg-blue-600 text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-blue-700 transition-colors">
+							得獎名單
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Competition Introduction Section -->
+			<div class="bg-white py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-4xl mx-auto">
+						<h2 class="text-3xl font-bold text-center text-gray-900 mb-12">比賽簡介</h2>
+						<div class="prose prose-lg max-w-none text-gray-700 leading-relaxed text-center">
+							<p class="mb-6">
+								元宇宙就聽得多，你有沒有想過學生都有能力成為元宇宙建築工程師的一員? 上年度，一共 7 間學校接受了創建校園及週邊社區的挑戰，參賽的學生都獲益不少。最近，我地更將他們的作品加載至 10Botics 的元宇宙!
+							</p>
+							<p class="mb-6">
+								今年度，我們將再次舉辦 Minecraft 校園創建計劃 2022，希望同學可以繼續運用創意於 Minecraft 興建學校及週邊社區。
+							</p>
+							<p class="mb-8">
+								除了起學校外，我們亦增設比賽組別 – 打卡景點組。希望同學可以運用創意於 Minecraft 興建不同的香港景點，以創新的方式為外國人提供探索香港的平台，以吸引遊客於疫後來港觀光。
+							</p>
+							<button class="bg-green-600 text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-green-700 transition-colors">
+								觀看10Botics元宇宙
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Video Section -->
+			<div class="bg-gray-50 py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-4xl mx-auto">
+						<div class="aspect-w-16 aspect-h-9 mb-8">
+							<iframe 
+								class="w-full h-96 rounded-lg shadow-lg" 
+								src="https://www.youtube.com/embed/UzLQ0MPLS_0" 
+								title="Minecraft 校園創建計劃 2022" 
+								frameborder="0" 
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+								allowfullscreen>
+							</iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- What is Minecraft Section -->
+			<div class="bg-white py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-4xl mx-auto text-center">
+						<h2 class="text-3xl font-bold text-gray-900 mb-6">甚麼是Minecraft?</h2>
+						<h3 class="text-xl text-gray-700 mb-8 max-w-3xl mx-auto">
+							Minecraft 是一款沙盒遊戲。玩家可以通過拆除或放置遊戲方塊(blocks) 改變遊戲環境，興建屬於自己的建築物。
+						</h3>
+						<img 
+							decoding="async" 
+							width="768" 
+							height="183" 
+							src="/src/assets/images/competition/Minecraft 校園創建計劃 2022/minecraftLogo-768x183.png" 
+							class="mx-auto max-w-md" 
+							alt="Minecraft Logo" 
+						/>
+					</div>
+				</div>
+			</div>
+
+			<!-- Why Learn Minecraft Section -->
+			<div class="bg-gray-50 py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-6xl mx-auto">
+						<h2 class="text-3xl font-bold text-center text-gray-900 mb-12">為甚麼要學Minecraft?</h2>
+						<div class="grid md:grid-cols-3 gap-8">
+							<div class="bg-white p-6 rounded-lg shadow-md text-center">
+								<div class="text-4xl text-blue-600 mb-4">
+									<i class="fas fa-pencil-alt"></i>
+								</div>
+								<h3 class="text-xl font-bold text-gray-900 mb-4">發揮創意</h3>
+								<p class="text-gray-700">
+									學生可以天馬行空地創造其想像的世界，例如：建製作遊戲，興建現實建築物，興建理想中的社區。
+								</p>
+							</div>
+							<div class="bg-white p-6 rounded-lg shadow-md text-center">
+								<div class="text-4xl text-green-600 mb-4">
+									<i class="fas fa-shapes"></i>
+								</div>
+								<h3 class="text-xl font-bold text-gray-900 mb-4">沉浸式學習</h3>
+								<p class="text-gray-700">
+									學生以第一身角度探索及建立想像中的世界，甚至可以將現實的項目帶入 Minecraft, 並透過具創意的形式介紹其項目，使參觀者更有代入感。
+								</p>
+							</div>
+							<div class="bg-white p-6 rounded-lg shadow-md text-center">
+								<div class="text-4xl text-purple-600 mb-4">
+									<i class="fas fa-flag"></i>
+								</div>
+								<h3 class="text-xl font-bold text-gray-900 mb-4">培養團隊精神</h3>
+								<p class="text-gray-700">
+									校園創建計劃以小組形式進行，能增強學生的溝通能力和團隊合作性。
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Part 1: Campus Creation Section -->
+			<div class="bg-white py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-4xl mx-auto">
+						<h2 class="text-3xl font-bold text-center text-gray-900 mb-12">部分一：校園創建組</h2>
+						<div class="prose prose-lg max-w-none text-gray-700 leading-relaxed mb-8">
+							<p class="mb-4">
+								以 1:1 的方式於 Minecraft 重現學校，並用創新方式向校外人分享學生心中的校園生活，呈現型式包括但不限於:
+							</p>
+							<ul class="list-disc pl-6 mb-6">
+								<li>學校外觀</li>
+								<li>校園故事</li>
+								<li>學校背景</li>
+								<li>運用 NPC 重現日常校園生活</li>
+							</ul>
+						</div>
+						<div class="text-center mb-8">
+							<img 
+								decoding="async" 
+								width="800" 
+								height="428" 
+								src="/src/assets/images/competition/Minecraft 校園創建計劃 2022/校園創建組-1024x548.png" 
+								class="mx-auto max-w-full rounded-lg shadow-lg" 
+								alt="校園創建組" 
+							/>
+						</div>
+						<div class="bg-blue-50 p-6 rounded-lg mb-8">
+							<h3 class="text-xl font-bold text-gray-900 mb-4">參賽要求</h3>
+							<p class="text-gray-700">
+								參賽者需要於賽前遞交校園創建作品介紹，包括一段不長於1分鐘之影片，介紹其作品特色
+							</p>
+						</div>
+						<div class="bg-green-50 p-6 rounded-lg">
+							<h3 class="text-xl font-bold text-gray-900 mb-4">作品要求</h3>
+							<ol class="list-decimal pl-6 text-gray-700">
+								<li>以 1:1 的方式 ，於Minecraft世界製作自己的校園及週邊社區</li>
+								<li>參賽者需使用Minecraft Java版本</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Part 2: Check-in Spots Section -->
+			<div class="bg-gray-50 py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-4xl mx-auto">
+						<h2 class="text-3xl font-bold text-center text-gray-900 mb-12">部分二：打卡景點</h2>
+						<div class="text-center mb-8">
+							<img 
+								decoding="async" 
+								width="800" 
+								height="455" 
+								src="/src/assets/images/competition/Minecraft 校園創建計劃 2022/打卡景點-1024x583.png" 
+								class="mx-auto max-w-full rounded-lg shadow-lg" 
+								alt="打卡景點" 
+							/>
+						</div>
+						<div class="prose prose-lg max-w-none text-gray-700 leading-relaxed mb-8">
+							<p class="mb-6">
+								目標要求同學係 Minecraft 建造最具香港特色既旅遊景點，為推動香港旅遊業出一分力！我地希望同學可以向世界各地既 Minecraft player 推廣本地人心中既旅遊景點，藉此提高佢地到訪香港既興趣。我地深信透過今次既活動，學生也可以對香港社會作出貢獻。
+							</p>
+						</div>
+						<div class="bg-blue-50 p-6 rounded-lg mb-8">
+							<h3 class="text-xl font-bold text-gray-900 mb-4">參賽要求</h3>
+							<p class="text-gray-700">
+								參賽者需要於賽前遞交打卡景點作品介紹，包括一段不長於1分鐘之影片，介紹其作品特色
+							</p>
+						</div>
+						<div class="bg-green-50 p-6 rounded-lg">
+							<h3 class="text-xl font-bold text-gray-900 mb-4">作品要求</h3>
+							<ol class="list-decimal pl-6 text-gray-700">
+								<li>參賽者需使用Minecraft Java版本</li>
+								<li>參賽者的作品亦應包含介紹該地標的互動元素</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Part 3: Live Competition Section -->
+			<div class="bg-white py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-4xl mx-auto">
+						<h2 class="text-3xl font-bold text-center text-gray-900 mb-12">部分三：現場比賽</h2>
+						<div class="prose prose-lg max-w-none text-gray-700 leading-relaxed mb-8">
+							<p class="mb-6">
+								學生需要在限時內完成一個香港特色景點並向大家介紹。希望藉此同學可以對香港建築有更深入的認識。
+							</p>
+						</div>
+						<div class="text-center mb-8">
+							<img 
+								decoding="async" 
+								width="800" 
+								height="428" 
+								src="/src/assets/images/competition/Minecraft 校園創建計劃 2022/現場比賽-1024x548.png" 
+								class="mx-auto max-w-full rounded-lg shadow-lg" 
+								alt="現場比賽" 
+							/>
+						</div>
+						<div class="bg-blue-50 p-6 rounded-lg mb-8">
+							<h3 class="text-xl font-bold text-gray-900 mb-4">參賽要求</h3>
+							<p class="text-gray-700">
+								參賽者需已經提交打卡景點作品並確認出席比賽
+							</p>
+						</div>
+						<div class="bg-green-50 p-6 rounded-lg">
+							<h3 class="text-xl font-bold text-gray-900 mb-4">作品要求</h3>
+							<p class="text-gray-700">
+								參賽者需使用Minecraft Java版本
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Winners Section -->
+			<div class="bg-gray-50 py-16" id="minecraft2022winner">
+				<div class="container mx-auto px-4">
+					<div class="max-w-4xl mx-auto">
+						<h2 class="text-3xl font-bold text-center text-gray-900 mb-12">得獎名單</h2>
+						
+						<!-- Campus Creation Winners -->
+						<div class="mb-12">
+							<h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">校園創建組</h3>
+							<div class="text-center">
+								<img 
+									decoding="async" 
+									width="800" 
+									height="420" 
+									src="/src/assets/images/competition/Minecraft 校園創建計劃 2022/校園創建組winner-1024x537.png" 
+									class="mx-auto max-w-full rounded-lg shadow-lg" 
+									alt="校園創建組得獎名單" 
+								/>
+							</div>
+						</div>
+
+						<!-- Check-in Spots Winners -->
+						<div class="mb-12">
+							<h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">打卡景點組</h3>
+							<div class="text-center">
+								<img 
+									decoding="async" 
+									width="800" 
+									height="485" 
+									src="/src/assets/images/competition/Minecraft 校園創建計劃 2022/打卡景點組winner-1024x621.png" 
+									class="mx-auto max-w-full rounded-lg shadow-lg" 
+									alt="打卡景點組得獎名單" 
+								/>
+							</div>
+						</div>
+
+						<!-- Live Competition Winners -->
+						<div class="mb-12">
+							<h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">現場比賽</h3>
+							<div class="text-center">
+								<img 
+									decoding="async" 
+									width="800" 
+									height="220" 
+									src="/src/assets/images/competition/Minecraft 校園創建計劃 2022/現場比賽winner-1024x281.png" 
+									class="mx-auto max-w-full rounded-lg shadow-lg" 
+									alt="現場比賽得獎名單" 
+								/>
+							</div>
+						</div>
+
+						<!-- Total Score Winners -->
+						<div class="mb-12">
+							<h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">總分</h3>
+							<div class="text-center">
+								<img 
+									decoding="async" 
+									width="800" 
+									height="257" 
+									src="/src/assets/images/competition/Minecraft 校園創建計劃 2022/總分winner-1024x329.png" 
+									class="mx-auto max-w-full rounded-lg shadow-lg" 
+									alt="總分得獎名單" 
+								/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Competition Review Section -->
+			<div class="bg-white py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-4xl mx-auto">
+						<h2 class="text-3xl font-bold text-center text-gray-900 mb-12">比賽重溫 - 香港著名打卡景點</h2>
+						<div class="aspect-w-16 aspect-h-9 mb-8">
+							<iframe 
+								class="w-full h-96 rounded-lg shadow-lg" 
+								src="https://www.youtube.com/embed/r0gt59_s9LE" 
+								title="Minecraft 校園創建計劃 2022 比賽重溫" 
+								frameborder="0" 
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+								allowfullscreen>
+							</iframe>
+						</div>
+						<div class="text-center">
+							<h3 class="text-xl font-bold text-gray-900 mb-6">更多比賽片段可到我們的Youtube 觀看！</h3>
+							<a href="https://www.youtube.com/playlist?list=PLo-JR4LW4slGIdmVtWV2Ez550qVyg73nR" 
+							   target="_blank" 
+							   class="inline-flex items-center bg-red-600 text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-red-700 transition-colors">
+								<i class="fab fa-youtube mr-2"></i>
+								Youtube
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- How to Participate Section -->
+			<div class="bg-gray-50 py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-4xl mx-auto text-center">
+						<h2 class="text-3xl font-bold text-gray-900 mb-12">如何參加？</h2>
+						<div class="prose prose-lg max-w-none text-gray-700 leading-relaxed mb-8">
+							<p class="text-xl">
+								本年度的比賽已經結束，感謝各位支持。如對我們的 Minecraft 課程感興趣，歡迎聯絡我們。
+							</p>
+						</div>
+						<div class="space-y-6">
+							<button class="bg-blue-600 text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-blue-700 transition-colors">
+								參加校園創建計劃課程
+							</button>
+							<a href="/school-courses/" class="bg-green-600 text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-green-700 transition-colors">
+								其他課程
+							</a>
+							<a href="/contact-us/" class="bg-purple-600 text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-purple-700 transition-colors">
+								聯絡我們
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Terms and Conditions Section -->
+			<div class="bg-white py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-4xl mx-auto">
+						<h2 class="text-3xl font-bold text-center text-gray-900 mb-12">條款及細則</h2>
+						<div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+							<ul class="list-disc pl-6 space-y-2">
+								<li>Minecraft 軟件為主辦機構擁有，並在課程期間提供予學生使用。</li>
+								<li>活動結束將會以網上課堂及導師面授課堂完結作為標準。比賽則會按照政府的防疫為準則，主辦機構將會保留最終決定權。</li>
+								<li>主辦機構有權使用所有參加學校作品作宣傳及展示之用，而毋須通知參加學校。</li>
+								<li>主辦機構保留權利更改、取消活動內容及細則，而毋須作另行通知。</li>
+								<li>如有任何爭議，主辦機構保留最後決定權。</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<FloatingWhatsApp />
+</Layout>
+
+<style>
+	.hero-section {
+		background: linear-gradient(135deg, #EBF8FF 0%, #E0E7FF 100%);
+	}
+	
+	.aspect-w-16 {
+		position: relative;
+		padding-bottom: 56.25%;
+	}
+	
+	.aspect-w-16 iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+	
+	.prose ul {
+		list-style-type: disc;
+		padding-left: 1.5rem;
+	}
+	
+	.prose ol {
+		list-style-type: decimal;
+		padding-left: 1.5rem;
+	}
+</style>
