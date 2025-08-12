@@ -31,6 +31,20 @@ import siteLogo from '../assets/images/competition/Minecraft 校園創建計劃 
 import hkmuLogo from '../assets/images/competition/Minecraft 校園創建計劃 2021/scraped-image-20.png';
 import computerEduLogo from '../assets/images/competition/Minecraft 校園創建計劃 2021/scraped-image-21.png';
 
+// Buildathon product images from 10botics.com
+import buildathonProduct1 from '../assets/images/competition/Minecraft 校園創建計劃 2021/buildathon-product-1.png';
+import buildathonProduct2 from '../assets/images/competition/Minecraft 校園創建計劃 2021/buildathon-product-2.png';
+import buildathonProduct3 from '../assets/images/competition/Minecraft 校園創建計劃 2021/buildathon-product-3.png';
+import buildathonProduct4 from '../assets/images/competition/Minecraft 校園創建計劃 2021/buildathon-product-4.png';
+import buildathonProduct5 from '../assets/images/competition/Minecraft 校園創建計劃 2021/buildathon-product-5.png';
+import buildathonProduct6 from '../assets/images/competition/Minecraft 校園創建計劃 2021/buildathon-product-6.png';
+import buildathonProduct7 from '../assets/images/competition/Minecraft 校園創建計劃 2021/buildathon-product-7.png';
+import buildathonProduct8 from '../assets/images/competition/Minecraft 校園創建計劃 2021/buildathon-product-8.png';
+import buildathonProduct9 from '../assets/images/competition/Minecraft 校園創建計劃 2021/buildathon-product-9.png';
+import buildathonProduct10 from '../assets/images/competition/Minecraft 校園創建計劃 2021/buildathon-product-10.png';
+import buildathonProduct11 from '../assets/images/competition/Minecraft 校園創建計劃 2021/buildathon-product-11.png';
+import buildathonProduct12 from '../assets/images/competition/Minecraft 校園創建計劃 2021/buildathon-product-12.png';
+
 const title = "Minecraft 校園創建計劃 2021";
 const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程回顧 究竟同學係呢個course做過啲咩呢？";
 ---
@@ -179,11 +193,15 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
     <div class="container mx-auto px-4">
       <h2 class="text-4xl font-bold text-center mb-12">面授課堂花絮</h2>
       <div class="max-w-4xl mx-auto">
-        <div class="aspect-video bg-gray-200 rounded-lg flex items-center justify-center mb-8">
-          <div class="text-center">
-            <p class="text-xl text-gray-600 mb-4">YouTube Video</p>
-            <p class="text-gray-500">https://www.youtube.com/watch?v=Ua7J6aV8X6o</p>
-          </div>
+        <div class="aspect-video bg-gray-200 rounded-lg mb-8 overflow-hidden">
+          <iframe 
+            src="https://www.youtube.com/embed/Ua7J6aV8X6o?rel=0&modestbranding=1" 
+            title="面授課堂花絮 - Minecraft 校園創建計劃 2021"
+            class="w-full h-full"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
         </div>
         <div class="text-center">
         </div>
@@ -240,11 +258,15 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
           <p>更多比賽規則介紹可看：</p>
           <p class="font-bold">比賽簡介會（Buildathon部分由 11:15 開始）</p>
         </div>
-        <div class="aspect-video bg-gray-200 rounded-lg flex items-center justify-center">
-          <div class="text-center">
-            <p class="text-xl text-gray-600 mb-4">YouTube Video</p>
-            <p class="text-gray-500">https://www.youtube.com/watch?v=a4Jra-TB9nY</p>
-          </div>
+        <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
+          <iframe 
+            src="https://www.youtube.com/embed/a4Jra-TB9nY?rel=0&modestbranding=1" 
+            title="比賽簡介會 - Buildathon 部分 - Minecraft 校園創建計劃 2021"
+            class="w-full h-full"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
         </div>
       </div>
     </div>
@@ -280,24 +302,75 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
       <h2 class="text-4xl font-bold text-center mb-8">Buildathon 成果</h2>
       <p class="text-xl text-center mb-12">呢啲建築物全部都係學生係兩個鐘內起出嚟架！</p>
       
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto mb-8">
-         <div class="w-full h-32 bg-gray-200 rounded flex items-center justify-center">
-          <span class="text-gray-500">Image 1</span>
-         </div>
-        <div class="bg-white p-4 rounded-lg shadow-lg">
-          <div class="w-full h-32 bg-gray-200 rounded flex items-center justify-center">
-            <span class="text-gray-500">Image 2</span>
+      <!-- Buildathon Products Gallery -->
+      <div class="mb-12">
+        <h3 class="text-2xl font-bold text-center mb-6">Buildathon 作品展示</h3>
+        <p class="text-center text-gray-600 mb-8">學生們在 Buildathon 挑戰賽中創建的精彩作品，展現了他們的創意和建築技能</p>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
+          <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+            <Image src={buildathonProduct1} alt="Buildathon 作品 1" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+          </div>
+          
+          <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+            <Image src={buildathonProduct2} alt="Buildathon 作品 2" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+          </div>
+          
+          <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+            <Image src={buildathonProduct3} alt="Buildathon 作品 3" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+          </div>
+          
+          <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+            <Image src={buildathonProduct4} alt="Buildathon 作品 4" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+          </div>
+          
+          <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+            <Image src={buildathonProduct5} alt="Buildathon 作品 5" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+          </div>
+          
+          <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+            <Image src={buildathonProduct6} alt="Buildathon 作品 6" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+          </div>
+          
+          <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+            <Image src={buildathonProduct7} alt="Buildathon 作品 7" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+          </div>
+          
+          <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+            <Image src={buildathonProduct8} alt="Buildathon 作品 8" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+          </div>
+          
+          <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+            <Image src={buildathonProduct9} alt="Buildathon 作品 9" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+          </div>
+          
+          <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+            <Image src={buildathonProduct10} alt="Buildathon 作品 10" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+          </div>
+          
+          <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+            <Image src={buildathonProduct11} alt="Buildathon 作品 11" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+          </div>
+          
+          <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+            <Image src={buildathonProduct12} alt="Buildathon 作品 12" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
           </div>
         </div>
-        <div class="bg-white p-4 rounded-lg shadow-lg">
-          <div class="w-full h-32 bg-gray-200 rounded flex items-center justify-center">
-            <span class="text-gray-500">Image 3</span>
-          </div>
-        </div>
-        <div class="bg-white p-4 rounded-lg shadow-lg">
-          <div class="w-full h-32 bg-gray-200 rounded flex items-center justify-center">
-            <span class="text-gray-500">Image 4</span>
-          </div>
+        
+        <div class="text-center mt-6">
+          <p class="text-sm text-gray-500">所有作品均來自 <a href="https://10botics.com" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline">10Botics</a> 元宇宙平台</p>
         </div>
       </div>
       
@@ -317,11 +390,15 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
       </p>
       
       <div class="max-w-4xl mx-auto mb-12">
-        <div class="aspect-video bg-gray-200 rounded-lg flex items-center justify-center mb-8">
-          <div class="text-center">
-            <p class="text-xl text-gray-600 mb-4">YouTube Video</p>
-            <p class="text-gray-500">https://www.youtube.com/watch?v=WtLVnl3uYUY</p>
-          </div>
+        <div class="aspect-video bg-gray-200 rounded-lg mb-8 overflow-hidden">
+          <iframe 
+            src="https://www.youtube.com/embed/WtLVnl3uYUY?rel=0&modestbranding=1" 
+            title="Buildathon 挑戰賽暨成果分享會 - Minecraft 校園創建計劃 2021"
+            class="w-full h-full"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
         </div>
         <div class="text-center">
         </div>
