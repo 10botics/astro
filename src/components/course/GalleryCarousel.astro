@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 export interface Props {
   title?: string;
   images: (string | ImageMetadata)[];
@@ -11,10 +13,11 @@ const { title, images, intervalMs = 4000 } = Astro.props;
 const normalizedImages = images.map(img => {
   if (typeof img === 'string') {
     // If it's a string URL, return it as is for static assets
-    return { src: img, alt: 'Gallery image' };
+    return { src: img, alt: 'Gallery image', isRemote: true };
   } else if (img && typeof img === 'object' && 'src' in img) {
-    // This is an ImageMetadata object from Astro import
-    return { src: img.src, alt: 'Gallery image' };
+    // This is an ImageMetadata object from Astro import - use the src property
+    // According to Astro docs, ImageMetadata objects have a src property that contains the processed image URL
+    return { src: img, alt: 'Gallery image', isRemote: false };
   }
   return null;
 }).filter(img => img !== null);
@@ -46,16 +49,27 @@ if (import.meta.env.DEV) {
               class="carousel-slide flex-shrink-0"
               style={`width: ${100 / normalizedImages.length}%`}
             >
-              <img 
-                src={img.src} 
-                alt={img.alt}
-                class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-lg"
-                loading="lazy"
-                decoding="async"
-                onerror="this.style.display='none'; console.warn('Failed to load image:', this.src);"
-                onload="this.style.opacity='1'"
-                style="opacity: 0; transition: opacity 0.3s ease-in-out;"
-              />
+              {img.isRemote ? (
+                <!-- For remote/string URLs, use regular img tag -->
+                <img 
+                  src={img.src as string} 
+                  alt={img.alt}
+                  class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-lg"
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <!-- For ImageMetadata objects, use Astro's Image component -->
+                <Image 
+                  src={img.src as ImageMetadata} 
+                  alt={img.alt}
+                  class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-lg"
+                  loading="lazy"
+                  decoding="async"
+                  width={400}
+                  height={300}
+                />
+              )}
             </div>
           ))}
         </div>
