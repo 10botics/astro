@@ -114,6 +114,16 @@ const organizationSchema = {
 		</main>
 		<Footer />
 		<FloatingWhatsApp />
+		
+		<!-- Speed Insights with beforeSend function -->
+		<script is:inline>
+			function speedInsightsBeforeSend(data) {
+				console.log("Speed Insights before send", data);
+				// You can modify or filter the data here before sending
+				// For example, remove sensitive URL parameters
+				return data;
+			}
+		</script>
 		<SpeedInsights />
 	</body>
 </html> 
