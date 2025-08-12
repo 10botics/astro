@@ -8,6 +8,9 @@ import path from 'path';
 export default defineConfig({
   site: 'https://staging.10botics.com',
   output: 'static', // Static output for static website
+  build: {
+    assets: '_astro', // Ensure consistent asset naming
+  },
   vite: {
     resolve: {
       alias: {
