@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PaperformEmbed from '../components/PaperformEmbed.astro';
+import { Image } from 'astro:assets';
+import logo from '../assets/images/加入我們/logo_website_700x200.png';
+import mainImage from '../assets/images/加入我們/IMG_3821-scaled.jpg';
+import favicon from '../assets/images/加入我們/favicon-300x300.jpg';
+---
+
+<Layout 
+	title="加入我們 - 10教育" 
+	description="我們很高興收到您的查詢。請填寫此頁面上的表格，我們的同事將在3個工作日內與您聯繫，或者可以瀏覽我們免費的教材及資源。"
+	ogImage="/images/og-join-us.jpg"
+	keywords="加入我們, 10教育, 工作機會, 職業發展, STEM教育, AI課程"
+>
+	<!-- Hero Section -->
+	<section class="hero-section bg-gradient-to-br from-blue-50 to-indigo-100 py-20">
+		<div class="container mx-auto px-4 text-center">
+			<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+				加入我們
+			</h1>
+		</div>
+	</section>
+
+	<!-- Main Content Section -->
+	<section class="main-content py-16">
+		<div class="container mx-auto px-4 max-w-4xl">
+			<div class="bg-white rounded-lg shadow-lg p-8 md:p-12">
+				<h2 class="text-2xl md:text-3xl font-semibold text-gray-800 mb-8 text-center leading-relaxed">
+					我們很高興收到您的查詢。請填寫此頁面上的表格，我們的同事將在3個工作日內與您聯繫，或者可以瀏覽我們免費的教材及資源。​
+				</h2>
+				
+				<!-- Contact Form Section -->
+				<div class="contact-form-section mt-12">
+					<div class="bg-gray-50 rounded-lg p-6 md:p-8">
+						<h3 class="text-xl md:text-2xl font-semibold text-gray-800 mb-6 text-center">
+							聯絡表格
+						</h3>
+						<PaperformEmbed />
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.hero-section {
+		background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+	}
+	
+	.company-info {
+		background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+	}
+	
+	.contact-form-section {
+		background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+	}
+	
+	.contact-details {
+		background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+	}
+	
+	/* Responsive adjustments */
+	@media (max-width: 768px) {
+		.hero-section {
+			padding: 3rem 1rem;
+		}
+		
+		.main-content {
+			padding: 2rem 1rem;
+		}
+		
+		.company-info {
+			padding: 2rem 1rem;
+		}
+		
+		.contact-details {
+			padding: 2rem 1rem;
+		}
+	}
+</style>
