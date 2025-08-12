@@ -1,0 +1,638 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+// Main course images
+import mainHero from '../assets/images/competition/Minecraft 校園創建計劃 2021/scraped-image-2.jpeg';
+import minecraftMap from '../assets/images/competition/Minecraft 校園創建計劃 2021/scraped-image-3.png';
+import qualifyingRound from '../assets/images/competition/Minecraft 校園創建計劃 2021/scraped-image-4.png';
+
+// Winner images - Campus Category
+import championCampus from '../assets/images/competition/Minecraft 校園創建計劃 2021/scraped-image-5.png';
+import runnerUpCampus from '../assets/images/competition/Minecraft 校園創建計劃 2021/scraped-image-6.png';
+import thirdPlaceCampus1 from '../assets/images/competition/Minecraft 校園創建計劃 2021/scraped-image-7.png';
+import thirdPlaceCampus2 from '../assets/images/competition/Minecraft 校園創建計劃 2021/scraped-image-8.png';
+import architectureOscar from '../assets/images/competition/Minecraft 校園創建計劃 2021/scraped-image-9.png';
+import popularChoice from '../assets/images/competition/Minecraft 校園創建計劃 2021/scraped-image-10.png';
+import bestPresentation from '../assets/images/competition/Minecraft 校園創建計劃 2021/scraped-image-11.png';
+
+// Winner images - Buildathon Category
+import championBuildathon from '../assets/images/competition/Minecraft 校園創建計劃 2021/scraped-image-12.png';
+import runnerUpBuildathon from '../assets/images/competition/Minecraft 校園創建計劃 2021/scraped-image-13.png';
+import thirdPlaceBuildathon from '../assets/images/competition/Minecraft 校園創建計劃 2021/scraped-image-14.png';
+import architectureStar from '../assets/images/competition/Minecraft 校園創建計劃 2021/scraped-image-15.png';
+
+// Overall Champion images
+import overallChampion1 from '../assets/images/competition/Minecraft 校園創建計劃 2021/scraped-image-16.png';
+import overallChampion2 from '../assets/images/competition/Minecraft 校園創建計劃 2021/scraped-image-17.png';
+import overallChampion3 from '../assets/images/competition/Minecraft 校園創建計劃 2021/scraped-image-18.png';
+
+// Organizer logos
+import siteLogo from '../assets/images/competition/Minecraft 校園創建計劃 2021/scraped-image-19.png';
+import hkmuLogo from '../assets/images/competition/Minecraft 校園創建計劃 2021/scraped-image-20.png';
+import computerEduLogo from '../assets/images/competition/Minecraft 校園創建計劃 2021/scraped-image-21.png';
+import eventPhoto from '../assets/images/competition/Minecraft 校園創建計劃 2021/scraped-image-22.jpg';
+
+const title = "Minecraft 校園創建計劃 2021";
+const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程回顧 究竟同學係呢個course做過啲咩呢？";
+---
+
+<Layout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-blue-600 to-purple-700 text-white py-20">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-5xl font-bold mb-4">Minecraft<br>校園創建計劃</h1>
+      <h2 class="text-4xl font-bold mb-8">2021</h2>
+      <a href="#" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+        更多課程內容
+      </a>
+    </div>
+  </section>
+
+  <!-- Main Hero Image -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <Image 
+          src={mainHero} 
+          alt="Minecraft 校園創建計劃 2021" 
+          class="w-full rounded-lg shadow-lg"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Review Section -->
+  <section class="bg-gray-50 py-20">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-4xl font-bold mb-8">課程回顧</h2>
+      <p class="text-xl mb-12">究竟同學係呢個course做過啲咩呢？</p>
+      <div class="max-w-4xl mx-auto">
+        <Image 
+          src={minecraftMap} 
+          alt="Minecraft 2021 Map" 
+          class="w-full rounded-lg shadow-lg"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Highlights Section -->
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-8">課程重點</h2>
+      <h3 class="text-2xl font-semibold text-center mb-16">學生喺每個階段都學到好多嘢架！</h3>
+      
+      <!-- Tabs -->
+      <div class="max-w-4xl mx-auto">
+        <div class="flex flex-wrap justify-center mb-8">
+          <button class="tab-button active px-6 py-3 bg-blue-600 text-white rounded-t-lg mx-1" data-tab="1">
+            面授課堂
+          </button>
+          <button class="tab-button px-6 py-3 bg-gray-200 text-gray-700 rounded-t-lg mx-1" data-tab="2">
+            Project Period
+          </button>
+          <button class="tab-button px-6 py-3 bg-gray-200 text-gray-700 rounded-t-lg mx-1" data-tab="3">
+            遞交作品
+          </button>
+          <button class="tab-button px-6 py-3 bg-gray-200 text-gray-700 rounded-t-lg mx-1" data-tab="4">
+            Buildathon
+          </button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content active" data-tab="1">
+          <h3 class="text-2xl font-bold text-center mb-8">課堂內容</h3>
+          <div class="space-y-6">
+            <div>
+              <h4 class="text-xl font-semibold mb-2">World-Edit 命令行</h4>
+              <p>課程教授 World-Edit 命令行的基本概念和運作，例如 //set, //line, //stack, //replace 等，加快學生建設速度。</p>
+            </div>
+            <div>
+              <h4 class="text-xl font-semibold mb-2">2D 及 3D 地圖</h4>
+              <p>課程讓學生認識 Google Map, Google Earth 等工具的使用方法，令學生能夠在相對應的坐標興建 1:1 的校園和社區。</p>
+            </div>
+            <div>
+              <h4 class="text-xl font-semibold mb-2">實地考察</h4>
+              <p>課程為學生們提供實地考察的機會，一起發掘校園建築物的設計細節，共同討論Minecraft內的建設方法。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content hidden" data-tab="2">
+          <h3 class="text-2xl font-bold text-center mb-8">課堂內容</h3>
+          <div class="space-y-6">
+            <div>
+              <h4 class="text-xl font-semibold mb-2">興建校園及周邊社區</h4>
+              <p>學生利用課堂學習的知識，包括 World-Edit 命令行及網上工具，正式開始創建校園。</p>
+            </div>
+            <div>
+              <h4 class="text-xl font-semibold mb-2">自主學習</h4>
+              <p>學生們在課餘時間亦可進入 Minecraft Server 自行興建，遇到問題可以向同學或導師發問。</p>
+            </div>
+            <div>
+              <h4 class="text-xl font-semibold mb-2">團體合作</h4>
+              <p>校園及周邊社區建築範圍較大，學生們需自行分工，加快建構速度。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content hidden" data-tab="3">
+          <h3 class="text-2xl font-bold text-center mb-8">課程成果</h3>
+          <div class="space-y-6">
+            <div>
+              <h4 class="text-xl font-semibold mb-2">Minecraft 校園</h4>
+              <p>學生們在 Minecraft Server 內完成校園及社區建設後，供評判判定建築物的準確度及運用的創意力。</p>
+            </div>
+            <div>
+              <h4 class="text-xl font-semibold mb-2">成果影片</h4>
+              <p>學生們以 Minecraft 第一人視角錄製影片，帶領觀眾參觀整個校園及社區的建築物，展示校園創建成果。</p>
+            </div>
+            <div>
+              <h4 class="text-xl font-semibold mb-2">匯報簡報</h4>
+              <p>學生們完成校園創建後，對校園或社區內建築物背景及歷史加深了認識，藉此機會分享其建築物的用途、背景及歷史及對學校的意義。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content hidden" data-tab="4">
+          <h3 class="text-2xl font-bold text-center mb-8">準備內容</h3>
+          <div class="space-y-6">
+            <div>
+              <h4 class="text-xl font-semibold mb-2">排位賽</h4>
+              <p>排位賽幫助學生了解 Buildathon 規則，以及判定隊伍選擇建築物選項的先後次序。</p>
+            </div>
+            <div>
+              <h4 class="text-xl font-semibold mb-2">相討策略</h4>
+              <p>學生們在30個建築物選項中，選擇適合自己隊伍的建築物，爭取最高分數。</p>
+            </div>
+            <div>
+              <h4 class="text-xl font-semibold mb-2">練習建設</h4>
+              <p>確認建築物選項後，在挑戰賽前進行練習，加快比賽時的興建速度。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Class Highlights Section -->
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12">面授課堂花絮</h2>
+      <div class="max-w-4xl mx-auto">
+        <div class="aspect-video bg-gray-200 rounded-lg flex items-center justify-center mb-8">
+          <div class="text-center">
+            <p class="text-xl text-gray-600 mb-4">YouTube Video</p>
+            <p class="text-gray-500">https://www.youtube.com/watch?v=Ua7J6aV8X6o</p>
+          </div>
+        </div>
+        <div class="text-center">
+          <Image 
+            src={eventPhoto} 
+            alt="Minecraft 校園創建計劃 2021 面授課堂" 
+            class="w-full max-w-2xl mx-auto rounded-lg shadow-lg"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Buildathon Section -->
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12">Buildathon - 1:1 還原九龍灣挑戰賽</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h3 class="text-2xl font-bold mb-4">得分方法​</h3>
+          <ul class="space-y-2">
+            <li>• 完成建築物的所有合格要求</li>
+            <li>• 合格後，完成更多額外項目</li>
+          </ul>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h3 class="text-2xl font-bold mb-4">獲勝方法</h3>
+          <p>兩小時內建設並提交指定建築物，獲得最高分數</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h3 class="text-2xl font-bold mb-4">建築契約卡選項</h3>
+          <ul class="space-y-2">
+            <li>• 30個九龍灣建築物選項</li>
+            <li>• 不同類別、難度、分數</li>
+          </ul>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h3 class="text-2xl font-bold mb-4">檢查/提交建築物</h3>
+          <ul class="space-y-2">
+            <li>• 檢查為合格：繼續修改/提交</li>
+            <li>• 檢查為不合格：必須繼續修改</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <a href="#" class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors">
+          九龍灣建築圖鑒
+        </a>
+      </div>
+
+      <div class="max-w-4xl mx-auto mt-12">
+        <div class="text-center mb-6">
+          <p>更多比賽規則介紹可看：</p>
+          <p class="font-bold">比賽簡介會（Buildathon部分由 11:15 開始）</p>
+        </div>
+        <div class="aspect-video bg-gray-200 rounded-lg flex items-center justify-center">
+          <div class="text-center">
+            <p class="text-xl text-gray-600 mb-4">YouTube Video</p>
+            <p class="text-gray-500">https://www.youtube.com/watch?v=a4Jra-TB9nY</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qualifying Round Section -->
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12">排位賽</h2>
+      <p class="text-xl text-center mb-12 max-w-4xl mx-auto">
+        係比賽正式開始之前，我地仲舉行左排位賽比各位學生，幫助佢哋理解比賽規則，同埋決定佢哋選擇第一張建築契約卡嘅先後次序～
+      </p>
+      
+      <div class="max-w-4xl mx-auto">
+        <Image 
+          src={qualifyingRound} 
+          alt="排位賽" 
+          class="w-full rounded-lg shadow-lg mb-8"
+        />
+        <p class="text-lg leading-relaxed">
+          左圖就係七間學校的排位賽成品啦！<br><br>
+          我地選擇左九龍灣嘅屋苑 &#8211; <strong>麗晶花園第12至18座</strong> 作為排位賽嘅建築項目。<br><br>
+          每座建築在現實模樣相似，但各個隊伍係 Minecraft 入面起嘅麗晶花園各有特色，無分對錯。<br><br>
+          學生們將排位賽期間犯過嘅錯誤都銘記在心，係 Buildathon 比賽當日建設速度全部都快左好多啊！
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Buildathon Results Section -->
+  <section class="bg-gray-50 py-20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-8">Buildathon 成果</h2>
+      <p class="text-xl text-center mb-12">呢啲建築物全部都係學生係兩個鐘內起出嚟架！</p>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto mb-8">
+        <div class="bg-white p-4 rounded-lg shadow-lg">
+          <Image src={eventPhoto} alt="Buildathon Event Photo" class="w-full rounded" />
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-lg">
+          <div class="w-full h-32 bg-gray-200 rounded flex items-center justify-center">
+            <span class="text-gray-500">Image 2</span>
+          </div>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-lg">
+          <div class="w-full h-32 bg-gray-200 rounded flex items-center justify-center">
+            <span class="text-gray-500">Image 3</span>
+          </div>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-lg">
+          <div class="w-full h-32 bg-gray-200 rounded flex items-center justify-center">
+            <span class="text-gray-500">Image 4</span>
+          </div>
+        </div>
+      </div>
+      
+      <p class="text-center text-lg max-w-4xl mx-auto">
+        從左上至右下為：一號九龍、零碳天地、其士商業中心、恩浩國際中心、宏力工業大廈、合力工業中心、宏泰道休憩處、瑞興中心、企業廣場五期、興力工業中心、德福大廈、中國建設銀行中心（導師示範建築）
+      </p>
+    </div>
+  </section>
+
+  <!-- Results Sharing Section -->
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-8">成果分享會</h2>
+      <p class="text-xl text-center mb-12 max-w-4xl mx-auto">
+        係課程嘅結束之前。。。<br>
+        我們邀請所有學校隊伍前嚟，參加 Buildathon 賽事同埋展示他們的創建校園和社區的作品！
+      </p>
+      
+      <div class="max-w-4xl mx-auto mb-12">
+        <div class="aspect-video bg-gray-200 rounded-lg flex items-center justify-center mb-8">
+          <div class="text-center">
+            <p class="text-xl text-gray-600 mb-4">YouTube Video</p>
+            <p class="text-gray-500">https://www.youtube.com/watch?v=WtLVnl3uYUY</p>
+          </div>
+        </div>
+        <div class="text-center">
+          <Image 
+            src={eventPhoto} 
+            alt="Minecraft 校園創建計劃 2021 成果分享會" 
+            class="w-full max-w-2xl mx-auto rounded-lg shadow-lg"
+          />
+        </div>
+      </div>
+
+      <div class="max-w-4xl mx-auto mb-12">
+        <p class="text-lg leading-relaxed">
+          2021年8月21日當日，<strong>「Minecraft 校園創建計劃」Buildathon 挑戰賽暨成果分享會</strong> 正式係 香港科學園 舉行。<br><br>
+          除左七間學校嘅參賽同學同老師之外，我地亦邀請左以下四位嘉賓評判出席：
+        </p>
+        
+        <div class="mt-8 space-y-4">
+          <div class="flex items-center">
+            <span class="w-3 h-3 bg-blue-600 rounded-full mr-4"></span>
+            <strong><u>香港電腦教育學會</u></strong> 副主席 陳俊銘
+          </div>
+          <div class="flex items-center">
+            <span class="w-3 h-3 bg-blue-600 rounded-full mr-4"></span>
+            香港大學建築學系講師 衛翠芷博士
+          </div>
+          <div class="flex items-center">
+            <span class="w-3 h-3 bg-blue-600 rounded-full mr-4"></span>
+            <strong><u>cuhkminecraft</u></strong> 創辦人 Owen
+          </div>
+          <div class="flex items-center">
+            <span class="w-3 h-3 bg-blue-600 rounded-full mr-4"></span>
+            <strong><u>Build-The-Earth 香港澳門隊</u></strong> 隊長 Ansen
+          </div>
+        </div>
+      </div>
+
+      <h3 class="text-3xl font-bold text-center mb-12">同學係呢日入面有咩做架？</h3>
+      
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+          <h4 class="text-xl font-bold mb-4">Buildathon 挑戰賽</h4>
+          <p>參賽隊伍運用課程中學會的Minecraft技巧，在兩個小時內 1:1 快速興建九龍灣建築物。</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+          <h4 class="text-xl font-bold mb-4">小組匯報</h4>
+          <p>參賽隊伍播放成果影片，並分享興建 Minecraft校園和社區的成果，及相關的背景和歷史故事。</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+          <h4 class="text-xl font-bold mb-4">頒獎典禮</h4>
+          <p>經過為期一個半月的暑期課程後，參賽隊伍付出過的努力值得被嘉許。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Winners Section -->
+  <section class="bg-gray-50 py-20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-8">得獎學校名單</h2>
+      
+      <div class="mb-16">
+        <h3 class="text-3xl font-bold text-center mb-12">校園創建組別</h3>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+            <div class="w-24 h-24 mx-auto mb-4 flex items-center justify-center">
+              <Image src={championCampus} alt="冠軍-九龍華仁書院" class="w-full h-full object-cover rounded-full" />
+            </div>
+            <h4 class="text-xl font-bold mb-2">冠軍-九龍華仁書院</h4>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+            <div class="w-24 h-24 mx-auto mb-4 flex items-center justify-center">
+              <Image src={runnerUpCampus} alt="亞軍-天主教郭得勝中學" class="w-full h-full object-cover rounded-full" />
+            </div>
+            <h4 class="text-xl font-bold mb-2">亞軍-天主教郭得勝中學</h4>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+            <div class="w-24 h-24 mx-auto mb-4 flex items-center justify-center">
+              <Image src={thirdPlaceCampus1} alt="季軍-萬鈞匯知中學" class="w-full h-full object-cover rounded-full" />
+            </div>
+            <h4 class="text-xl font-bold mb-2">季軍-萬鈞匯知中學</h4>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+            <div class="w-24 h-24 mx-auto mb-4 flex items-center justify-center">
+              <Image src={thirdPlaceCampus2} alt="季軍-樂善堂余近卿中學" class="w-full h-full object-cover rounded-full" />
+            </div>
+            <h4 class="text-xl font-bold mb-2">季軍-樂善堂余近卿中學</h4>
+          </div>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mt-8">
+          <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+            <div class="w-24 h-24 mx-auto mb-4 flex items-center justify-center">
+              <Image src={architectureOscar} alt="建築界奧斯卡-匯基書院(東九龍)" class="w-full h-full object-cover rounded-full" />
+            </div>
+            <h4 class="text-xl font-bold mb-2">建築界奧斯卡-匯基書院(東九龍)</h4>
+            <p>社區最大項目範圍獎<br>總面積：55590 平方米</p>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+            <div class="w-24 h-24 mx-auto mb-4 flex items-center justify-center">
+              <Image src={popularChoice} alt="我最喜愛校園人氣獎-九龍華仁書院" class="w-full h-full object-cover rounded-full" />
+            </div>
+            <h4 class="text-xl font-bold mb-2">我最喜愛校園人氣獎-九龍華仁書院</h4>
+            <p>Instagram 公眾投票<br>2978 讚好</p>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+            <div class="w-24 h-24 mx-auto mb-4 flex items-center justify-center">
+              <Image src={bestPresentation} alt="最佳匯報獎-五旬節聖潔永光書院" class="w-full h-full object-cover rounded-full" />
+            </div>
+            <h4 class="text-xl font-bold mb-2">最佳匯報獎-五旬節聖潔永光書院</h4>
+            <p>成果影片+小組匯報</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mb-16">
+        <h3 class="text-3xl font-bold text-center mb-12">Buildathon 組別</h3>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+            <div class="w-24 h-24 mx-auto mb-4 flex items-center justify-center">
+              <Image src={championBuildathon} alt="冠軍-天主教郭得勝中學" class="w-full h-full object-cover rounded-full" />
+            </div>
+            <h4 class="text-xl font-bold mb-2">冠軍-天主教郭得勝中學</h4>
+            <p>零碳天地-37分<br>其士商業中心-24分<br>總分：61分</p>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+            <div class="w-24 h-24 mx-auto mb-4 flex items-center justify-center">
+              <Image src={runnerUpBuildathon} alt="亞軍-九龍華仁書院" class="w-full h-full object-cover rounded-full" />
+            </div>
+            <h4 class="text-xl font-bold mb-2">亞軍-九龍華仁書院</h4>
+            <p>企業廣場五期(Megabox)-32分<br>興力工業中心-15分<br>總分：47分</p>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+            <div class="w-24 h-24 mx-auto mb-4 flex items-center justify-center">
+              <Image src={thirdPlaceBuildathon} alt="季軍-萬鈞匯知中學" class="w-full h-full object-cover rounded-full" />
+            </div>
+            <h4 class="text-xl font-bold mb-2">季軍-萬鈞匯知中學</h4>
+            <p>一號九龍-38分<br>總分：38分</p>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+            <div class="w-24 h-24 mx-auto mb-4 flex items-center justify-center">
+              <Image src={architectureStar} alt="建築界之星-天主教郭得勝中學" class="w-full h-full object-cover rounded-full" />
+            </div>
+            <h4 class="text-xl font-bold mb-2">建築界之星-天主教郭得勝中學</h4>
+            <p>最精緻建築物：其士商業中心</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center">
+        <h3 class="text-3xl font-bold mb-8">全場總冠軍-九龍華仁書院</h3>
+        <div class="max-w-6xl mx-auto">
+          <div class="grid md:grid-cols-3 gap-6">
+            <Image 
+              src={overallChampion1} 
+              alt="全場總冠軍-九龍華仁書院 1" 
+              class="w-full rounded-lg shadow-lg"
+            />
+            <Image 
+              src={overallChampion2} 
+              alt="全場總冠軍-九龍華仁書院 2" 
+              class="w-full rounded-lg shadow-lg"
+            />
+            <Image 
+              src={overallChampion3} 
+              alt="全場總冠軍-九龍華仁書院 3" 
+              class="w-full rounded-lg shadow-lg"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12">常見問題？</h2>
+      
+      <div class="max-w-4xl mx-auto space-y-4">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <button class="faq-button w-full px-6 py-4 text-left bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center">
+            <span class="font-semibold">課程是否只在暑期舉行？</span>
+            <span class="text-gray-500">▼</span>
+          </button>
+          <div class="faq-content hidden px-6 py-4 border-t">
+            <p>我們亦提供常規課後課程，詳情可向 10botics 查詢。</p>
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <button class="faq-button w-full px-6 py-4 text-left bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center">
+            <span class="font-semibold">小學隊伍可否參加課程？</span>
+            <span class="text-gray-500">▼</span>
+          </button>
+          <div class="faq-content hidden px-6 py-4 border-t">
+            <p>小學隊伍亦可報名參加課程，但我們建議讓小四或以上學生參與。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Organizers Section -->
+  <section class="bg-gray-50 py-20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12">主辦及協辦機構</h2>
+      
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+          <div class="w-24 h-24 mx-auto mb-4 flex items-center justify-center">
+            <Image src={siteLogo} alt="10Botics Logo" class="w-full h-full object-cover rounded-full" />
+          </div>
+          <h3 class="text-xl font-bold mb-2">主辦機構</h3>
+          <p class="text-lg">10Botics</p>
+          <div class="flex justify-center space-x-4 mt-4">
+            <a href="#" class="text-blue-600 hover:text-blue-800">Facebook</a>
+            <a href="#" class="text-red-600 hover:text-red-800">YouTube</a>
+            <a href="#" class="text-pink-600 hover:text-pink-800">Instagram</a>
+            <a href="#" class="text-blue-700 hover:text-blue-900">LinkedIn</a>
+          </div>
+        </div>
+        
+        <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+          <div class="w-24 h-24 mx-auto mb-4 flex items-center justify-center">
+            <Image src={hkmuLogo} alt="HKMU Logo" class="w-full h-full object-cover rounded-full" />
+          </div>
+          <h3 class="text-xl font-bold mb-2">主辦機構</h3>
+          <p class="text-lg">BTEHKMU</p>
+          <div class="flex justify-center space-x-4 mt-4">
+            <a href="#" class="text-blue-600 hover:text-blue-800">Facebook</a>
+            <a href="#" class="text-blue-400 hover:text-blue-600">Twitter</a>
+            <a href="#" class="text-red-600 hover:text-red-800">YouTube</a>
+            <a href="#" class="text-pink-600 hover:text-pink-800">Instagram</a>
+          </div>
+        </div>
+        
+        <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+          <div class="w-24 h-24 mx-auto mb-4 flex items-center justify-center">
+            <Image src={computerEduLogo} alt="香港電腦教育學會 Logo" class="w-full h-full object-cover rounded-full" />
+          </div>
+          <h3 class="text-xl font-bold mb-2">協辦機構</h3>
+          <p class="text-lg">香港電腦教育學會</p>
+          <div class="flex justify-center space-x-4 mt-4">
+            <a href="#" class="text-blue-600 hover:text-blue-800">Facebook</a>
+            <a href="#" class="text-gray-600 hover:text-gray-800">Website</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Tab functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabButtons = document.querySelectorAll('.tab-button');
+      const tabContents = document.querySelectorAll('.tab-content');
+      
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const tabNumber = button.getAttribute('data-tab');
+          
+          // Remove active class from all buttons and contents
+          tabButtons.forEach(btn => btn.classList.remove('active', 'bg-blue-600', 'text-white'));
+          tabButtons.forEach(btn => btn.classList.add('bg-gray-200', 'text-gray-700'));
+          tabContents.forEach(content => content.classList.add('hidden'));
+          
+          // Add active class to clicked button and corresponding content
+          button.classList.add('active', 'bg-blue-600', 'text-white');
+          button.classList.remove('bg-gray-200', 'text-gray-700');
+          const targetContent = document.querySelector(`[data-tab="${tabNumber}"]`);
+          if (targetContent) {
+            targetContent.classList.remove('hidden');
+          }
+        });
+      });
+      
+      // FAQ functionality
+      const faqButtons = document.querySelectorAll('.faq-button');
+      
+      faqButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const content = button.nextElementSibling;
+          const icon = button.querySelector('span:last-child');
+          
+          if (content && icon && content.classList.contains('hidden')) {
+            content.classList.remove('hidden');
+            icon.textContent = '▲';
+          } else if (content && icon) {
+            content.classList.add('hidden');
+            icon.textContent = '▼';
+          }
+        });
+      });
+    });
+  </script>
+</Layout>
