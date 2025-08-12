@@ -7,15 +7,17 @@ export interface Props {
 
 const { title, images, intervalMs = 4000 } = Astro.props;
 
-// Normalize images to src strings - handle both string URLs and ImageMetadata objects
-const imageSrcs = images.map(img => {
+// Normalize images to ImageMetadata objects - handle both string URLs and ImageMetadata objects
+const normalizedImages = images.map(img => {
   if (typeof img === 'string') {
+    // If it's a string, we can't use it directly in Astro - it should be a relative path
+    return null;
+  } else if (img && typeof img === 'object') {
+    // This should be an ImageMetadata object from Astro import
     return img;
-  } else if (img && typeof img === 'object' && 'src' in img) {
-    return img.src;
   }
-  return '';
-}).filter(src => src !== '');
+  return null;
+}).filter(img => img !== null);
 ---
 
 <div class="gallery-carousel relative" data-interval-ms={intervalMs}>
@@ -29,15 +31,15 @@ const imageSrcs = images.map(img => {
     <!-- Carousel Track -->
     <div 
       class="carousel-track flex transition-transform duration-500 ease-in-out"
-      style={`width: ${imageSrcs.length * (100/3)}%`}
+      style={`width: ${normalizedImages.length * (100/3)}%`}
     >
-      {imageSrcs.map((src, index) => (
+      {normalizedImages.map((img, index) => (
         <div 
           class="carousel-slide flex-shrink-0"
-          style={`width: ${100 / imageSrcs.length}%`}
+          style={`width: ${100 / normalizedImages.length}%`}
         >
           <img 
-            src={src} 
+            src={img.src} 
             alt={`Gallery image ${index + 1}`}
             class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-lg"
             loading="lazy"
@@ -67,7 +69,7 @@ const imageSrcs = images.map(img => {
 
     <!-- Dots -->
     <div class="carousel-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
-      {Array.from({ length: Math.max(1, imageSrcs.length - 2) }, (_, i) => (
+      {Array.from({ length: Math.max(1, normalizedImages.length - 2) }, (_, i) => (
         <button 
           class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white transition-colors duration-200"
           aria-label={`Go to slide ${i + 1}`}
