@@ -1,0 +1,318 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import { Image } from 'astro:assets';
+
+// Import course images
+import heroImage from '../../assets/images/courses/自然生物探究手作課程/hero-image.jpeg';
+import courseImage1 from '../../assets/images/courses/自然生物探究手作課程/course-image-1.jpeg';
+import courseImage2 from '../../assets/images/courses/自然生物探究手作課程/course-image-2.jpeg';
+import lionSilhouette from '../../assets/images/courses/自然生物探究手作課程/lion-silhouette.png';
+import oceanCraft from '../../assets/images/courses/自然生物探究手作課程/ocean-craft.png';
+import birdHouse from '../../assets/images/courses/自然生物探究手作課程/bird-house.jpeg';
+import catDogMask from '../../assets/images/courses/自然生物探究手作課程/cat-dog-mask.png';
+import rabbitLantern from '../../assets/images/courses/自然生物探究手作課程/rabbit-lantern.png';
+import insectScratch from '../../assets/images/courses/自然生物探究手作課程/insect-scratch.png';
+import twistPottedPlant from '../../assets/images/courses/自然生物探究手作課程/twist-potted-plant.png';
+import dinosaurCraft from '../../assets/images/courses/自然生物探究手作課程/dinosaur-craft.png';
+import pandaClay from '../../assets/images/courses/自然生物探究手作課程/panda-clay.jpeg';
+import turtleMoss from '../../assets/images/courses/自然生物探究手作課程/turtle-moss.jpeg';
+
+// Course data
+export const courseData = {
+  title: "自然生物探究手作課程",
+  subtitle: "探索動物特徵與生活環境，透過互動學習培養觀察力與探究精神",
+  tags: ["Arts 藝術", "小學", "科學"],
+  videoId: "your-video-id-here",
+  description: "此課程旨在介紹各種動物的特徵和生活環境。透過互動式學習，學生將探索不同動物的習性，了解它們在自然界中的角色與重要性。",
+  detailedDescription: "此課程旨在介紹各種動物的特徵和生活環境。透過互動式學習，學生將探索不同動物的習性，了解它們在自然界中的角色與重要性。課程中，學生不僅能夠學習有關動物的知識，還將親手製作小手作，增強實踐能力和創造力。這個課程將激發學生對自然界的好奇心，並培養他們的觀察力與探究精神。",
+  heroImage: heroImage
+};
+
+// Course features
+const courseFeatures = [
+  {
+    icon: "fas fa-check-circle",
+    title: "適合小一至小六學生",
+    description: "課程內容貼近生活且有趣，非常受學生歡迎，亦可按學生程度調節深淺。"
+  },
+  {
+    icon: "fas fa-star",
+    title: "自然科學x視覺藝術",
+    description: "結合自然科學和藝術元素，讓學生在學習理論時亦可以發揮創意!"
+  },
+  {
+    icon: "fas fa-lightbulb",
+    title: "實踐創作",
+    description: "學生將親手製作小手作，提升實踐能力，培養動手能力與創造力。"
+  }
+];
+
+// Course curriculum
+const courseCurriculum = [
+  {
+    title: "草原國度 [1 節]",
+    content: [
+      "非洲大草原的特點和氣侯",
+      "介紹非洲BIG 5動物",
+      "為什麼動物要大遷徙?",
+      "製作木質獅子剪影畫"
+    ]
+  },
+  {
+    title: "海洋的奧秘 [1節]",
+    content: [
+      "簡單介紹海洋的知識",
+      "了解6-8種海洋生物的習性和特徵",
+      "學習不同的海洋棲息地",
+      "製作海洋風鈴/海洋立體景深手作"
+    ]
+  },
+  {
+    title: "香港雀鳥知多少 [1 節]",
+    content: [
+      "介紹香港常見/飼養的雀鳥",
+      "認識牠們的習性和棲息地方",
+      "正確觀鳥的方式",
+      "製作雀鳥小屋"
+    ]
+  },
+  {
+    title: "可愛小夥伴 [1 節]",
+    content: [
+      "介紹貓狗的特點",
+      "生活環境需要的設備",
+      "如何正確和牠們交流互動",
+      "製作貓/狗面具"
+    ]
+  },
+  {
+    title: "兔子大解構 [1 節]",
+    content: [
+      "了解兔子的特點",
+      "認識牠們的生活環境及飲食",
+      "如何飼養兔子",
+      "製作兔子燈籠"
+    ]
+  },
+  {
+    title: "植物的世界 [1 節]",
+    content: [
+      "植物的構造",
+      "光合作用",
+      "常見的植物種類",
+      "如何種植種子",
+      "製作扭扭棒盆栽"
+    ]
+  },
+  {
+    title: "大自然的小幫手 [1 節]",
+    content: [
+      "昆蟲的構造",
+      "常見的昆蟲特性及生活環境",
+      "昆蟲的重要",
+      "製作刮刮昆蟲畫"
+    ]
+  },
+  {
+    title: "走進史前世界 [1 節]",
+    content: [
+      "介紹史前世界",
+      "探索恐龍與古生物",
+      "恐龍生活環境",
+      "製作可活動恐龍創意畫"
+    ]
+  },
+  {
+    title: "我們的國寶 [1 節]",
+    content: [
+      "熊貓的特點",
+      "熊貓的生活環境",
+      "熊貓的保育現況",
+      "製作熊貓黏土"
+    ]
+  },
+  {
+    title: "大自然的慢行者 [1 節]",
+    content: [
+      "陸龜和水龜的特點",
+      "牠們的生活環境",
+      "製作永生小龜苔蘚畫"
+    ]
+  }
+];
+
+// Handcraft content
+const handcraftContent = [
+  {
+    image: lionSilhouette,
+    title: "木質獅子剪影畫",
+    course: "草原國度"
+  },
+  {
+    image: oceanCraft,
+    title: "海洋立體景深手作",
+    course: "海洋的奧秘"
+  },
+  {
+    image: birdHouse,
+    title: "雀鳥小屋",
+    course: "香港雀鳥知多少"
+  },
+  {
+    image: catDogMask,
+    title: "貓狗面具",
+    course: "可愛小夥伴"
+  },
+  {
+    image: rabbitLantern,
+    title: "兔子燈籠",
+    course: "兔子大解構"
+  },
+  {
+    image: insectScratch,
+    title: "刮刮昆蟲畫",
+    course: "大自然的小幫手"
+  },
+  {
+    image: twistPottedPlant,
+    title: "扭扭棒盆栽",
+    course: "植物的世界"
+  },
+  {
+    image: dinosaurCraft,
+    title: "可活動恐龍創意畫",
+    course: "走進史前世界"
+  },
+  {
+    image: pandaClay,
+    title: "熊貓黏土",
+    course: "我們的國寶"
+  },
+  {
+    image: turtleMoss,
+    title: "永生小龜苔蘚畫",
+    course: "大自然的慢行者"
+  }
+];
+
+// Course duration
+const courseDuration = "10 節 共 15 小時";
+const courseNote = "* 可根據學校需要調整";
+
+// FAQ section
+const faqData = [
+  {
+    question: "這個課程適合什麼年級的學生？",
+    answer: "課程適合小一至小六學生，內容會根據學生程度調整深淺。"
+  },
+  {
+    question: "課程會教授哪些技能？",
+    answer: "學生將學習自然科學知識、動物習性、植物生長，以及各種手作技巧，培養觀察力、創造力和實踐能力。"
+  },
+  {
+    question: "手作材料會提供嗎？",
+    answer: "是的，所有手作材料都會由我們提供，學生只需要帶着學習的熱情來參加課程。"
+  },
+  {
+    question: "課程可以根據學校需求調整嗎？",
+    answer: "當然可以！我們會根據學校的具體需求和時間安排來調整課程內容和節數。"
+  }
+];
+---
+
+<Layout title={courseData.title} description={courseData.description}>
+  <!-- Hero Section -->
+  <HeroSection 
+    title={courseData.title}
+    subtitle={courseData.subtitle}
+    description={courseData.detailedDescription}
+    heroImage={courseData.heroImage}
+    tags={courseData.tags}
+  />
+
+  <!-- Course Features -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">課程特色</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {courseFeatures.map((feature) => (
+          <div class="text-center p-6 bg-white rounded-lg shadow-lg">
+            <div class="text-4xl text-blue-600 mb-4">
+              <i class={feature.icon}></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
+            <p class="text-gray-600">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Content -->
+  <SingleCourseContent 
+    items={courseCurriculum} 
+    hours="15 小時"
+    images={[
+      { src: courseImage1, alt: "課程活動照片" },
+      { src: courseImage2, alt: "課程活動照片" }
+    ]}
+  />
+
+  <!-- Handcraft Content -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">手作內容</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        {handcraftContent.map((item) => (
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="h-48 overflow-hidden">
+              <Image src={item.image} alt={item.title} class="w-full h-full object-cover" />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
+              <p class="text-blue-600 font-medium">{item.course}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <QnASection faqs={faqData} />
+
+  <!-- Contact Section -->
+  <ContactSection />
+</Layout>
+
+<style>
+  /* Custom styles for the course page */
+  .container {
+    max-width: 1200px;
+  }
+  
+  /* Smooth transitions for interactive elements */
+  button, .hover\:bg-blue-700:hover {
+    transition: all 0.3s ease;
+  }
+  
+  /* Enhanced shadows for cards */
+  .shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Responsive grid adjustments */
+  @media (max-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
