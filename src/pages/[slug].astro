@@ -19,6 +19,7 @@ export async function getStaticPaths() {
     { params: { slug: 'join-us' } },
     { params: { slug: 'terms-conditions' } },
     { params: { slug: 'privacy-policy' } },
+    { params: { slug: 'cookie-policy' } },
     // Add more mappings here as needed
   ];
 }
@@ -78,6 +79,9 @@ switch (slug) {
     break;
   case 'privacy-policy':
     ChineseComponent = await import('./隱私政策.astro');
+    break;
+  case 'cookie-policy':
+    ChineseComponent = await import('./Cookie政策.astro');
     break;
   default:
     throw new Error(`Unknown slug: ${slug}`);
