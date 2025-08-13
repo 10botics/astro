@@ -1,0 +1,234 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import { Image } from 'astro:assets';
+
+// Import course images
+import featureImage from '../../assets/images/school-courses/Python 初階遊戲編程/feature-1.png';
+import pythonCodeImage from '../../assets/images/school-courses/Python 初階遊戲編程/python-code.png';
+import studentPlayingImage from '../../assets/images/school-courses/Python 初階遊戲編程/student-playing.jpg';
+import pygameDemoImage from '../../assets/images/school-courses/Python 初階遊戲編程/pygame-demo.png';
+import studentWorkImage from '../../assets/images/school-courses/Python 初階遊戲編程/student-work.jpg';
+import studentDrawingImage from '../../assets/images/school-courses/Python 初階遊戲編程/student-drawing.jpg';
+import studentGameImage from '../../assets/images/school-courses/Python 初階遊戲編程/student-game.jpg';
+
+// Course data
+export const courseData = {
+  title: "Python 初階遊戲編程",
+  subtitle: "由零開始打造屬於自己的遊戲",
+  tags: ["Programming 編程", "Python", "初中", "遊戲開發", "高中"],
+  videoId: "WeiQxepA26c",
+  description: "讓學生由零開始打造屬於自己的遊戲 - 在這個課程中，我們將引領學生從零開始創建自己的 Flappy Bird 遊戲。學生將獲得關於遊戲設計基礎、Python 語言及其運算邏輯，以及如何運用 Pygame 庫來開發遊戲的全面知識。",
+  detailedDescription: "在 Python 初階遊戲編程課程中，我們將引領學生從零開始創建自己的 Flappy Bird 遊戲。學生將獲得關於遊戲設計基礎、Python 語言及其運算邏輯，以及如何運用 Pygame 庫來開發遊戲的全面知識。我們的課程內容將按照學習進程逐步深化，讓學生逐步掌握從簡單圖形與動畫，到遊戲邏輯和玩家互動的所有要素。無論是剛入門還是有一定基礎的同學，都能在這裡找到學習的樂趣並感受到創建自己的遊戲的成就感。",
+  heroImage: featureImage
+};
+
+// Course features
+const courseFeatures = [
+  {
+    icon: "far fa-edit",
+    title: "最適合學習編程的筆記",
+    description: "使用 Jupyter Notebook 為主要教材，內建執行程式碼的功能，讓學生可以即時測試自己的程式碼，並作出相應的調整，互動性十足，有助提升同學學習編程的效率。"
+  },
+  {
+    icon: "far fa-grin-beam",
+    title: "了解並體驗遊戲開發的樂趣",
+    description: "課程讓同學化身成遊戲工程師，由程式碼，到遊戲圖像設計，都可以根據自己的偏好作出微調，充滿自由度。"
+  },
+  {
+    icon: "fas fa-award",
+    title: "適合不同程度的同學",
+    description: "課程由 Python 的基本知識開始，為未接觸過編程的同學打好基礎，循序漸進，但同時亦有為具一定編程能力的同學設計的挑戰題，照顧不同程度的同學。"
+  },
+  {
+    icon: "fas fa-paint-brush",
+    title: "以創意打造獨一無二的遊戲",
+    description: "同學可以自己設計屬於自己的遊戲圖像，並應用在自己的遊戲之中，不限於任何主題，盡情發揮創意，創造出別具一格的遊戲。"
+  }
+];
+
+// Course curriculum for SingleCourseContent
+const curriculumItems = [
+  {
+    title: "課程介紹及 Jupyter Lab 基礎 [1 節]",
+    content: [
+      "通過輸入-處理-輸出週期，了解 Flappy Bird 的遊戲運作",
+      "熟習使用 Jupyter Lab"
+    ]
+  },
+  {
+    title: "Python基礎 [3 節]",
+    content: [
+      "介紹Python",
+      "函數 (如 print()、type()、range() 等)",
+      "運算子 (如算術運算子、比較運算子等)",
+      "循環 (如 For 循環、While 循環等)",
+      "認識不同資料類型"
+    ]
+  },
+  {
+    title: "Pygame 基礎及圖像設計 [1 節]",
+    content: [
+      "認識程式集及其應用",
+      "介紹 Pygame 程式集",
+      "繪製遊戲圖像"
+    ]
+  },
+  {
+    title: "Pygame 圖像應用 [1 節]",
+    content: [
+      "在 Pygame 中匯入、顯示及移動自己的圖片",
+      "認識電腦顯示顏色的方法"
+    ]
+  },
+  {
+    title: "遊戲編程 [3 節]",
+    content: [
+      "在 Pygame 中: (各 1 節)",
+      "創建玩家",
+      "創建障礙物",
+      "完善遊戲機制",
+      "為遊戲加入隨機性",
+      "自行摸索及更改程式碼，改變遊戲的運作"
+    ]
+  },
+  {
+    title: "額外課題 [1 節]",
+    content: [
+      "為遊戲增加額外功能",
+      "提升遊戲的難度、原創性、及趣味性！"
+    ]
+  }
+];
+
+// Course schedule
+const courseSchedule = [
+  {
+    icon: "fas fa-star",
+    title: "完整課程 (10 至 15 小時)",
+    description: "建議一個學期完成 8 節課堂，每節 1.5 小時。*可根據學校需要調整課堂數及時數"
+  }
+];
+
+// Course gallery images
+const courseGalleryImages = [
+  studentPlayingImage,
+  pygameDemoImage,
+  studentWorkImage,
+  studentDrawingImage,
+  studentGameImage
+];
+
+// FAQ data
+const faqData = [
+  {
+    question: "Python初階遊戲編程課程適合哪些年級的學生？",
+    answer: "課程一般適合初中至高中學生，歡迎填妥下方表格讓同事為你提供咨詢。"
+  },
+  {
+    question: "學生需要有編程背景嗎？",
+    answer: "課程內容由淺入深，編程背景並非必須，唯學生應對遊戲開發感興趣。"
+  },
+  {
+    question: "學校需要甚麼設備？",
+    answer: "學校需為同學準備電腦，並已預先安裝: Python、Jupyter Lab 及課程教材、Git (建議)"
+  }
+];
+---
+
+<Layout title={courseData.title} description={courseData.description}>
+  <HeroSection 
+    title={courseData.title}
+    subtitle={courseData.subtitle}
+    tags={courseData.tags}
+    videoId={courseData.videoId}
+    description={courseData.description}
+    heroImage={courseData.heroImage}
+  />
+
+  <!-- Course Description -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-lg text-gray-700 leading-relaxed">{courseData.detailedDescription}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Features -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">課程特色</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        {courseFeatures.map((feature) => (
+          <div class="text-center p-6 bg-white rounded-lg shadow-lg">
+            <div class="text-4xl text-blue-600 mb-4">
+              <i class={feature.icon}></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
+            <p class="text-gray-600">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Content -->
+  <SingleCourseContent 
+    items={curriculumItems}
+    hours="10 小時"
+    images={[
+      { src: featureImage, alt: "Python 遊戲開發特色" },
+      { src: pythonCodeImage, alt: "Python 程式碼實作" }
+    ]}
+  />
+
+  <!-- Course Schedule -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">課程安排</h2>
+      </div>
+      <div class="max-w-4xl mx-auto">
+        {courseSchedule.map((schedule) => (
+          <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+            <div class="text-4xl text-blue-600 mb-4">
+              <i class={schedule.icon}></i>
+            </div>
+            <h3 class="text-2xl font-semibold text-gray-900 mb-4">{schedule.title}</h3>
+            <p class="text-gray-600 text-lg">{schedule.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Gallery -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">精選照片</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {courseGalleryImages.map((image) => (
+          <div class="group cursor-pointer">
+            <Image 
+              src={image} 
+              alt="Python 課程活動照片" 
+              class="w-full h-64 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <QnASection faqs={faqData} />
+
+  <ContactSection />
+</Layout>
