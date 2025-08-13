@@ -17,6 +17,7 @@ export async function getStaticPaths() {
     { params: { slug: 'microbit-parachute' } },
     { params: { slug: 'microbit-maze' } },
     { params: { slug: 'procreate' } },
+    { params: { slug: 'python-game-dev-beginner' } },
     { params: { slug: 'raspberry-pi' } },
     { params: { slug: 'scratch-ai-programming' } },
     { params: { slug: 'scratch-game-design' } },
@@ -77,6 +78,9 @@ switch (slug) {
     break;
   case 'procreate':
     ChineseComponent = await import('./Procreate數位藝術課程.astro');
+    break;
+  case 'python-game-dev-beginner':
+    ChineseComponent = await import('./Python 初階遊戲編程.astro');
     break;
   case 'raspberry-pi':
     ChineseComponent = await import('./raspberry-pi編程課程.astro');
