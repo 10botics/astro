@@ -1,13 +1,40 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import { Image } from 'astro:assets';
+import ContactForm from '../components/homepage/ContactForm.astro';
+import BlogGrid from '../components/homepage/BlogGrid.astro';
+import CTAWithImage from '../components/homepage/CTAWithImage.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+
+// Import images
+import heroImage from '../assets/images/index/hero-image.jpg';
+import stemDayImage from '../assets/images/index/stem-day.jpg';
+import aiCoursesImage from '../assets/images/index/ai-courses.jpg';
+import teacherDevImage from '../assets/images/index/teacher-development.jpg';
+import hardwareImage from '../assets/images/index/hardware.jpg';
+import fundingImage from '../assets/images/index/funding.jpg';
+import logoImage from '../assets/images/index/logo.png';
+
+// Import news images
+import hackathonImage from '../assets/images/news/2024-09-10-匯豐香港社區夥伴計劃社區創新科技大賽-hackathon-2024/image1.jpeg';
+import minecraftTinPoImage from '../assets/images/news/2024-09-04-minecraft校園創建計劃2024-共融大世界天保民學校陳校長的話/image1.jpeg';
+import minecraftKennedyImage from '../assets/images/news/2024-09-04-minecraft校園創建計劃2024-共融大世界香港紅十字會甘迺迪中心-馮耀宗老師的話/image1.jpeg';
+
+// Import client images for the partners section
+import plkTinKaPing from '../assets/images/關於我們/保良局田家炳小學.jpg';
+import stLouis from '../assets/images/關於我們/聖類斯中學.png';
+import wahYanKowloon from '../assets/images/關於我們/九龍華仁書院-.png';
+import kingGeorge from '../assets/images/關於我們/英皇書院.png';
+import cuhk from '../assets/images/關於我們/香港港中文大學CUHK_-300x300-1.png';
+import hkage from '../assets/images/關於我們/香港資優學院.jpg';
+import cuhkJockey from '../assets/images/關於我們/中大賽馬會智為未來計劃-300x300-1.png';
+import claptech from '../assets/images/關於我們/鼓掌-–創新教育歷程CLAPTECH-300x300-1.png';
+import hksp from '../assets/images/關於我們/香港科學園.png';
 
 // SEO optimized homepage data
-const pageTitle = "10教育 - 香港專業STEM及人工智能課程教育機構";
-const pageDescription = "香港領先的STEM教育機構，提供AI人工智能、Scratch編程、機器人技術、Arduino硬件編程等專業到校課程服務。專業導師團隊，創新教學方法，培養未來科技人才。";
-const pageKeywords = "STEM教育, AI課程, 人工智能, Scratch編程, 機器人課程, Arduino, 編程教育, 到校服務, 香港, 10教育, 10Botics";
+const pageTitle = "首頁 - 10教育";
+const pageDescription = "專注 STEM 課程研發及教學 STEM 到校課程 教材及課程是由我們專業 STEM 團隊開發，提供創新及完整的STEM教育方案";
+const pageKeywords = "STEM教育, AI課程, 人工智能, 到校課程, STEM Day, 教師發展日, 硬件提供, 教育撥款, 香港, 10教育, 10Botics";
 ---
 
 <Layout 
@@ -16,121 +43,463 @@ const pageKeywords = "STEM教育, AI課程, 人工智能, Scratch編程, 機器�
   keywords={pageKeywords}
   ogImage="/images/og/homepage.jpg"
 >
-  <div class="min-h-screen bg-gray-50">
-    <main>
-      <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
-        <div class="container mx-auto px-4">
-          <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-6xl font-bold mb-6">10教育</h1>
-            <h2 class="text-2xl mb-8 opacity-90">專業STEM及人工智能課程教育機構</h2>
-            <p class="text-xl mb-12 opacity-80">
-              提供創新的STEM教育課程，包括AI人工智能、Scratch編程、機器人技術等專業到校服務
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/school-courses" 
-                 class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-                瀏覽課程
-              </a>
-              <a href="/contact" 
-                 class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
-                聯絡我們
-              </a>
-            </div>
+  <div class="min-h-screen">
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-r from-blue-600 to-purple-600 text-white py-32">
+      <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+      <div class="relative container mx-auto px-4">
+        <div class="max-w-6xl mx-auto text-center">
+          <div class="mb-8">
+            <Image src={logoImage} alt="10Botics Logo" class="mx-auto max-w-md" />
+          </div>
+          <h1 class="text-5xl md:text-7xl font-bold mb-6">10教育</h1>
+          <h2 class="text-2xl md:text-3xl mb-8 opacity-90">專注 STEM 課程研發及教學</h2>
+          <p class="text-xl mb-12 opacity-80 max-w-4xl mx-auto">
+            教材及課程是由我們專業 STEM 團隊開發，提供創新及完整的STEM教育方案，讓每位學生發揮創意，實現所想
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/school-courses" 
+               class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+              瀏覽課程
+            </a>
+            <a href="/contact" 
+               class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+              聯絡我們
+            </a>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="py-16">
-        <div class="container mx-auto px-4">
-          <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">我們的STEM課程</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-              <div class="bg-white p-8 rounded-lg shadow-lg text-center">
-                <div class="text-4xl mb-4">🤖</div>
-                <h3 class="text-xl font-bold mb-4">AI人工智能</h3>
-                <p class="text-gray-600 mb-6">學習機器學習、深度學習及AI應用開發，培養未來科技領袖</p>
-                <a href="/school-courses" class="text-blue-600 hover:text-blue-800 font-semibold">了解更多 →</a>
-              </div>
-              
-              <div class="bg-white p-8 rounded-lg shadow-lg text-center">
-                <div class="text-4xl mb-4">💻</div>
-                <h3 class="text-xl font-bold mb-4">Scratch編程</h3>
-                <p class="text-gray-600 mb-6">透過視覺化編程語言，讓學生輕鬆學習程式設計基礎</p>
-                <a href="/school-courses" class="text-blue-600 hover:text-blue-800 font-semibold">了解更多 →</a>
-              </div>
-              
-              <div class="bg-white p-8 rounded-lg shadow-lg text-center">
-                <div class="text-4xl mb-4">🔧</div>
-                <h3 class="text-xl font-bold mb-4">硬件編程</h3>
-                <p class="text-gray-600 mb-6">Arduino、Raspberry Pi等硬件編程，結合軟硬件學習</p>
-                <a href="/school-courses" class="text-blue-600 hover:text-blue-800 font-semibold">了解更多 →</a>
-              </div>
+    <!-- Stats Section -->
+    <section class="py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid md:grid-cols-4 gap-8 text-center">
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+              <div class="text-4xl font-bold text-blue-600 mb-2" data-count="3500">0</div>
+              <p class="text-gray-600">累計時間</p>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+              <div class="text-4xl font-bold text-blue-600 mb-2" data-count="50">0</div>
+              <p class="text-gray-600">合作學校</p>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+              <div class="text-4xl font-bold text-blue-600 mb-2" data-count="1000">0</div>
+              <p class="text-gray-600">學生受益</p>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+              <div class="text-4xl font-bold text-blue-600 mb-2" data-count="5">0</div>
+              <p class="text-gray-600">年經驗</p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="bg-blue-50 py-16">
-        <div class="container mx-auto px-4">
-          <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-8 text-gray-800">為什麼選擇10教育？</h2>
-            <div class="grid md:grid-cols-2 gap-8 text-left">
-              <div class="flex items-start space-x-4">
-                <div class="text-2xl">✅</div>
-                <div>
-                  <h3 class="text-lg font-bold mb-2">專業導師團隊</h3>
-                  <p class="text-gray-600">擁有豐富STEM教育經驗的專業導師，提供高質量教學服務</p>
-                </div>
-              </div>
-              
-              <div class="flex items-start space-x-4">
-                <div class="text-2xl">🎯</div>
-                <div>
-                  <h3 class="text-lg font-bold mb-2">客製化課程</h3>
-                  <p class="text-gray-600">根據學校需求和學生程度，量身定制適合的STEM課程內容</p>
-                </div>
-              </div>
-              
-              <div class="flex items-start space-x-4">
-                <div class="text-2xl">🏆</div>
-                <div>
-                  <h3 class="text-lg font-bold mb-2">實作導向</h3>
-                  <p class="text-gray-600">注重動手實作，讓學生在做中學，培養解決問題的能力</p>
-                </div>
-              </div>
-              
-              <div class="flex items-start space-x-4">
-                <div class="text-2xl">📈</div>
-                <div>
-                  <h3 class="text-lg font-bold mb-2">跟上時代</h3>
-                  <p class="text-gray-600">課程內容與時俱進，涵蓋最新的科技趨勢和應用</p>
-                </div>
-              </div>
+    <!-- Gallery Section -->
+    <section class="py-20">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">活動花絮</h2>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+              <Image src={heroImage} alt="STEM活動" class="w-full h-64 object-cover" />
+            </div>
+            <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+              <Image src={stemDayImage} alt="STEM Day活動" class="w-full h-64 object-cover" />
+            </div>
+            <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+              <Image src={aiCoursesImage} alt="AI課程" class="w-full h-64 object-cover" />
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="py-16">
-        <div class="container mx-auto px-4">
-          <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-8 text-gray-800">開始您的STEM教育之旅</h2>
-            <p class="text-xl text-gray-600 mb-8">
-              立即聯絡我們，為您的學校量身打造最適合的STEM課程
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/school-courses" 
-                 class="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-                瀏覽所有課程
-              </a>
-              <a href="/contact" 
-                 class="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors">
-                聯絡我們
-              </a>
+    <!-- Services Section -->
+    <section class="py-20 bg-blue-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">我們的服務</h2>
+          <h5 class="text-xl text-center mb-12 text-gray-600">提供一系列STEM教育資源和方案</h5>
+          
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- 到校課程 -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-lg relative group">
+              <div class="relative h-64 overflow-hidden">
+                <Image src={heroImage} alt="到校課程" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+                <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                  popular
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">到校課程</h3>
+                <p class="text-gray-600 mb-6">針對學校的需要特別設計課程及方案，開設新穎有趣的STEM課程，讓每位學生發揮創意，實現所想。</p>
+                <a href="/school-courses" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                  了解更多
+                </a>
+              </div>
+            </div>
+
+            <!-- STEM Day -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-lg relative group">
+              <div class="relative h-64 overflow-hidden">
+                <Image src={stemDayImage} alt="STEM Day" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+                <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                  popular
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">STEM Day</h3>
+                <p class="text-gray-600 mb-6">全力支援學校籌辦STEM day，讓學生對STEM有更加深入的認識，曠闊視野。</p>
+                <a href="/stemday" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                  了解更多
+                </a>
+              </div>
+            </div>
+
+            <!-- 人工智能課程 -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-lg relative group">
+              <div class="relative h-64 overflow-hidden">
+                <Image src={aiCoursesImage} alt="人工智能課程" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+                <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                  popular
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">人工智能課程</h3>
+                <p class="text-gray-600 mb-6">為不同學生提供一系列AI智能課程選擇，把現實生活的例子中帶進複雜的課程中，令學習變得輕鬆及有趣。</p>
+                <a href="/school-courses/tag/ai" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                  了解更多
+                </a>
+              </div>
+            </div>
+
+            <!-- 教師發展日 -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-lg relative group">
+              <div class="relative h-64 overflow-hidden">
+                <Image src={teacherDevImage} alt="教師發展日" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">教師發展日</h3>
+                <p class="text-gray-600 mb-6">定期舉辦教師工作坊，為教師提供STEM培訓，實踐 STEM 教學應用及 教案編寫。</p>
+                <a href="/teacher-workshop" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                  了解更多
+                </a>
+              </div>
+            </div>
+
+            <!-- 硬件提供 -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-lg relative group">
+              <div class="relative h-64 overflow-hidden">
+                <Image src={hardwareImage} alt="硬件提供" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">硬件提供</h3>
+                <p class="text-gray-600 mb-6">設有硬件外借的服務，例如手提電腦，協助學校解決一次需要大量硬件的需求。</p>
+                <a href="/contact-us" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                  了解更多
+                </a>
+              </div>
+            </div>
+
+            <!-- 學校申請教育撥款協助 -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-lg relative group">
+              <div class="relative h-64 overflow-hidden">
+                <Image src={fundingImage} alt="學校申請教育撥款協助" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+                <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                  popular
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">學校申請教育撥款協助</h3>
+                <p class="text-gray-600 mb-6">設有「奇趣it識多啲」計劃、「中學IT 創新實驗室」等STEM 教育資助，協助學校申請教育撥款</p>
+                <a href="/funding-application/it-innovation-lab" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                  了解更多
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
+
+    <!-- Latest News Section -->
+    <section class="py-20">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">最新消息</h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+              <div class="h-48 overflow-hidden">
+                <Image src={hackathonImage} alt="【匯豐香港社區夥伴計劃】社區創新科技大賽 Hackathon 2024" class="w-full h-full object-cover" />
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-3 text-gray-800">
+                  <a href="/news/2024-09-10-匯豐香港社區夥伴計劃社區創新科技大賽-hackathon-2024" class="hover:text-blue-600">
+                    【匯豐香港社區夥伴計劃】社區創新科技大賽 Hackathon 2024
+                  </a>
+                </h3>
+                <p class="text-gray-600 mb-4">今年，10教育有幸可以成為「匯豐香港社區夥伴計劃」之其中一個項目 &#8211; 社區創新科技大賽 Hackathon 2024 之宣傳夥伴🎊 本次比賽支持學校</p>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-500">2024 年 9 月 10 日</span>
+                  <a href="/news/2024-09-10-匯豐香港社區夥伴計劃社區創新科技大賽-hackathon-2024" class="text-blue-600 hover:text-blue-800 font-semibold">
+                    了解更多 »
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+              <div class="h-48 overflow-hidden">
+                <Image src={minecraftTinPoImage} alt="Minecraft校園創建計劃2024 共融大世界－天保民學校陳校長的話" class="w-full h-full object-cover" />
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-3 text-gray-800">
+                  <a href="/news/2024-09-04-minecraft校園創建計劃2024-共融大世界天保民學校陳校長的話" class="hover:text-blue-600">
+                    Minecraft校園創建計劃2024 共融大世界－天保民學校陳校長的話
+                  </a>
+                </h3>
+                <p class="text-gray-600 mb-4">本校同學於本學年參加了由「10教育」舉辦的「Minecraft校園創建計劃2024 —— 共融大世界」活動。經過了三個月的學習和實踐，同學們終於在群策群力之下，創建了第一所「Minecraft校園」。</p>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-500">2024 年 9 月 4 日</span>
+                  <a href="/news/2024-09-04-minecraft校園創建計劃2024-共融大世界天保民學校陳校長的話" class="text-blue-600 hover:text-blue-800 font-semibold">
+                    了解更多 »
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+              <div class="h-48 overflow-hidden">
+                <Image src={minecraftKennedyImage} alt="Minecraft校園創建計劃2024 共融大世界－香港紅十字會甘迺迪中心 馮耀宗老師的話" class="w-full h-full object-cover" />
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-3 text-gray-800">
+                  <a href="/news/2024-09-04-minecraft校園創建計劃2024-共融大世界香港紅十字會甘迺迪中心-馮耀宗老師的話" class="hover:text-blue-600">
+                    Minecraft校園創建計劃2024 共融大世界－香港紅十字會甘迺迪中心 馮耀宗老師的話
+                  </a>
+                </h3>
+                <p class="text-gray-600 mb-4">參與 Minecraft 校園創建計劃，是一次難得的體驗，我校學生與聖安多尼學校的同學攜手，在比賽中展現出極佳的合作精神。</p>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-500">2024 年 9 月 4 日</span>
+                  <a href="/news/2024-09-04-minecraft校園創建計劃2024-共融大世界香港紅十字會甘迺迪中心-馮耀宗老師的話" class="text-blue-600 hover:text-blue-800 font-semibold">
+                    了解更多 »
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="text-center mt-12">
+            <a href="/news" class="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+              了解更多
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">客戶及合作機構</h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-9 gap-6 items-center">
+            <div class="text-center">
+              <Image src={plkTinKaPing} alt="保良局田家炳小學" class="h-16 w-16 object-contain rounded-full mx-auto mb-2" />
+              <p class="text-sm text-gray-600">保良局田家炳小學</p>
+            </div>
+            <div class="text-center">
+              <Image src={stLouis} alt="聖類斯中學" class="h-16 w-16 object-contain rounded-full mx-auto mb-2" />
+              <p class="text-sm text-gray-600">聖類斯中學</p>
+            </div>
+            <div class="text-center">
+              <Image src={wahYanKowloon} alt="九龍華仁書院" class="h-16 w-16 object-contain rounded-full mx-auto mb-2" />
+              <p class="text-sm text-gray-600">九龍華仁書院</p>
+            </div>
+            <div class="text-center">
+              <Image src={kingGeorge} alt="英皇書院" class="h-16 w-16 object-contain rounded-full mx-auto mb-2" />
+              <p class="text-sm text-gray-600">英皇書院</p>
+            </div>
+            <div class="text-center">
+              <Image src={cuhk} alt="香港中文大學" class="h-16 w-16 object-contain rounded-full mx-auto mb-2" />
+              <p class="text-sm text-gray-600">香港中文大學</p>
+            </div>
+            <div class="text-center">
+              <Image src={hkage} alt="香港資優教育學苑" class="h-16 w-16 object-contain rounded-full mx-auto mb-2" />
+              <p class="text-sm text-gray-600">香港資優教育學苑</p>
+            </div>
+            <div class="text-center">
+              <Image src={cuhkJockey} alt="中大賽馬會智為未來計劃" class="h-16 w-16 object-contain rounded-full mx-auto mb-2" />
+              <p class="text-sm text-gray-600">中大賽馬會智為未來計劃</p>
+            </div>
+            <div class="text-center">
+              <Image src={claptech} alt="鼓掌 - 創新教育歷程" class="h-16 w-16 object-contain rounded-full mx-auto mb-2" />
+              <p class="text-sm text-gray-600">鼓掌 - 創新教育歷程</p>
+            </div>
+            <div class="text-center">
+              <Image src={hksp} alt="香港科學園" class="h-16 w-16 object-contain rounded-full mx-auto mb-2" />
+              <p class="text-sm text-gray-600">香港科學園</p>
+            </div>
+          </div>
+          
+          <div class="text-center mt-12">
+            <a href="/client" class="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+              了解更多
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">客戶評價</h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+              <div class="text-gray-600 mb-6">
+                很好的體驗活動，操作亦簡單易明，本校中學生都很喜歡這個AI體驗活動，而當天到校參觀的小學生玩得很開心，氣氛熱鬧。另外當天的時間控制亦很恰當，整體而言我們都滿意是次以十二生肖為主題的AI數碼動畫展。
+              </div>
+              <div class="border-t pt-4">
+                <cite class="text-gray-800 font-semibold">中華基督教會方潤華中學</cite>
+              </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+              <div class="text-gray-600 mb-6">
+                本校同學於本學年參加了由「10教育」舉辦的「Minecraft校園創建計劃2024 —— 共融大世界」活動。經過了三個月的學習和實踐，同學們終於在群策群力之下，創建了第一所「Minecraft校園」。
+              </div>
+              <div class="border-t pt-4">
+                <cite class="text-gray-800 font-semibold">天保民學校陳校長</cite>
+              </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+              <div class="text-gray-600 mb-6">
+                參與 Minecraft 校園創建計劃，是一次難得的體驗。我校學生與聖安多尼學校的同學攜手，在比賽中展現出極佳的合作精神。利用 Minecraft 設計虛擬校園的過程充滿挑戰，卻也充滿樂趣。
+              </div>
+              <div class="border-t pt-4">
+                <cite class="text-gray-800 font-semibold">香港紅十字會甘迺迪中心</cite>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- YouTube Videos Section -->
+    <section class="py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">YouTube最新影片</h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+              <div class="aspect-video">
+                <iframe 
+                  src="https://www.youtube.com/embed/Rp4HD5kxs5Q"
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen
+                  class="w-full h-full">
+                </iframe>
+              </div>
+            </div>
+            <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+              <div class="aspect-video">
+                <iframe 
+                  src="https://www.youtube.com/embed/-eBXs4Yo1OQ" 
+                  title="STEM教育活動"
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen
+                  class="w-full h-full">
+                </iframe>
+              </div>
+            </div>
+            <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+              <div class="aspect-video">
+                <iframe 
+                  src="https://www.youtube.com/embed/ohG-qyg0gxc" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen
+                  class="w-full h-full">
+                </iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section class="py-20 bg-blue-600 text-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-4xl font-bold mb-8">開始您的STEM教育之旅</h2>
+          <p class="text-xl mb-8 opacity-90">
+            立即聯絡我們，為您的學校量身打造最適合的STEM課程
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/school-courses" 
+               class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+              瀏覽所有課程
+            </a>
+            <a href="/contact" 
+               class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+              聯絡我們
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
+
+  <script>
+    // Counter animation
+    function animateCounters() {
+      const counters = document.querySelectorAll('[data-count]');
+      counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-count') || '0');
+        const duration = 2000;
+        const step = target / (duration / 16);
+        let current = 0;
+        
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          counter.textContent = Math.floor(current).toLocaleString();
+        }, 16);
+      });
+    }
+
+    // Intersection Observer for counters
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+
+    const statsSection = document.querySelector('.bg-gray-50');
+    if (statsSection) {
+      observer.observe(statsSection);
+    }
+  </script>
 </Layout> 
