@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import PaperformEmbed from '../components/PaperformEmbed.astro';
 import { Image } from 'astro:assets';
 import logo from '../assets/images/加入我們/logo_website_700x200.png';
 import mainImage from '../assets/images/加入我們/IMG_3821-scaled.jpg';
@@ -36,7 +35,15 @@ import favicon from '../assets/images/加入我們/favicon-300x300.jpg';
 						<h3 class="text-xl md:text-2xl font-semibold text-gray-800 mb-6 text-center">
 							聯絡表格
 						</h3>
-						<PaperformEmbed />
+						<div class="paperform-container">
+							<iframe 
+								src="https://hf9rnwyu.paperform.co/" 
+								width="100%" 
+								height="600" 
+								frameborder="0" 
+								allowfullscreen>
+							</iframe>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -59,6 +66,11 @@ import favicon from '../assets/images/加入我們/favicon-300x300.jpg';
 	
 	.contact-details {
 		background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+	}
+	
+	.paperform-container {
+		width: 100%;
+		min-height: 600px;
 	}
 	
 	/* Responsive adjustments */
