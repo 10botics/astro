@@ -27,6 +27,7 @@ export async function getStaticPaths() {
     { params: { slug: 'funding-application' } },
     { params: { slug: 'news' } },
     { params: { slug: 'client' } },
+    { params: { slug: 'natural-bio-sciences-01' } },
     // Add more mappings here as needed
   ];
 }
@@ -110,6 +111,9 @@ switch (slug) {
     break;
   case 'client':
     ChineseComponent = await import('./關於我們.astro');
+    break;
+  case 'natural-bio-sciences-01':
+    ChineseComponent = await import('./草原國度.astro');
     break;
   default:
     throw new Error(`Unknown slug: ${slug}`);

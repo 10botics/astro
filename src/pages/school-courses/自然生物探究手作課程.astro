@@ -150,7 +150,8 @@ const handcraftContent = [
   {
     image: lionSilhouette,
     title: "木質獅子剪影畫",
-    course: "草原國度"
+    course: "草原國度",
+    link: "/草原國度"
   },
   {
     image: oceanCraft,
@@ -278,7 +279,13 @@ const faqData = [
             </div>
             <div class="p-6">
               <h3 class="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
-              <p class="text-blue-600 font-medium">{item.course}</p>
+              {item.link ? (
+                <a href={item.link} class="text-blue-600 font-medium hover:text-blue-800 transition-colors duration-200">
+                  {item.course}
+                </a>
+              ) : (
+                <p class="text-blue-600 font-medium">{item.course}</p>
+              )}
             </div>
           </div>
         ))}

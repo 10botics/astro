@@ -1,0 +1,202 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import heroImage from '../assets/images/natural-science/草原國度/hero-image.png';
+import savannaOverview from '../assets/images/natural-science/草原國度/savanna-overview.png';
+import africanFive from '../assets/images/natural-science/草原國度/african-five.png';
+import animalMigration from '../assets/images/natural-science/草原國度/animal-migration.png';
+---
+
+<Layout title="自然生物探究手作課程-草原國度 - 10教育">
+  <main class="min-h-screen bg-gradient-to-br from-green-50 to-yellow-50">
+    <!-- Hero Section -->
+    <section class="relative py-20 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+          草原國度
+        </h1>
+        <h2 class="text-2xl md:text-3xl font-semibold text-green-700 mb-8">
+          探索非洲大草原，見證生命的壯麗！
+        </h2>
+        <div class="max-w-4xl mx-auto">
+          <Image 
+            src={heroImage} 
+            alt="非洲大草原景觀" 
+            class="rounded-lg shadow-2xl w-full"
+            width={800}
+            height={449}
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Description -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+      <div class="max-w-4xl mx-auto">
+        <p class="text-lg text-gray-700 leading-relaxed text-center">
+          非洲的大草原是世界上面積最大的桸樹草原，是許多動物的家園，包括著名的「非洲五大」動物：獅子、豹、象、水牛和犀牛。這裡也是成群結隊的角馬和斑馬的聚集地，形成壯觀的遷徙現象。大草原的生態系統由草地、灌木叢和小樹組成，這些植物適應了乾燥的氣候，並為眾多野生動物提供了栖息地和食物。
+        </p>
+      </div>
+    </section>
+
+    <!-- What We Learn Section -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-green-50">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">
+          課堂學什麼？
+        </h2>
+
+        <!-- Savanna Overview -->
+        <div class="mb-20">
+          <h3 class="text-2xl md:text-3xl font-bold text-center text-green-800 mb-8">
+            什麼是稀樹草原？
+          </h3>
+          <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="order-2 lg:order-1">
+              <Image 
+                src={savannaOverview} 
+                alt="稀樹草原景觀" 
+                class="rounded-lg shadow-xl w-full"
+                width={800}
+                height={519}
+              />
+            </div>
+            <div class="order-1 lg:order-2">
+              <p class="text-lg text-gray-700 mb-6">
+                稀樹草原是一種特定的生態系統，主要由稀疏的樹木和草地組成，通常分布在熱帶和亞熱帶地區。
+              </p>
+              <p class="text-lg text-gray-700 mb-4">稀樹草原的特點:</p>
+              <ul class="space-y-2 text-lg text-gray-700">
+                <li class="flex items-center">
+                  <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+                  稀疏的樹木
+                </li>
+                <li class="flex items-center">
+                  <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+                  草類植物高大茂密
+                </li>
+                <li class="flex items-center">
+                  <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+                  樹呈傘形
+                </li>
+              </ul>
+              <p class="text-lg text-gray-700 mt-6">
+                而在稀樹草原的季節和氣候也與我們生活的地方大有不同呢!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- African Five -->
+        <div class="mb-20">
+          <h3 class="text-2xl md:text-3xl font-bold text-center text-green-800 mb-8">
+            非洲五霸
+          </h3>
+          <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <p class="text-lg text-gray-700 mb-6">
+                非洲五霸是非洲草原上最具代表性和吸引力的五種大型野生動物，分別是獅子、豹、象、水牛和犀牛，牠們各有各的特別之處和生活方式。
+              </p>
+              <p class="text-lg text-gray-700">
+                別小看非洲大象和水牛，牠們甚至比獅子更危險兇猛!
+              </p>
+            </div>
+            <div>
+              <Image 
+                src={africanFive} 
+                alt="非洲五霸動物" 
+                class="rounded-lg shadow-xl w-full"
+                width={777}
+                height={516}
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Animal Migration -->
+        <div>
+          <h3 class="text-2xl md:text-3xl font-bold text-center text-green-800 mb-8">
+            動物大遷徙
+          </h3>
+          <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="order-2 lg:order-1">
+              <Image 
+                src={animalMigration} 
+                alt="動物大遷徙" 
+                class="rounded-lg shadow-xl w-full"
+                width={800}
+                height={532}
+              />
+            </div>
+            <div class="order-1 lg:order-2">
+              <p class="text-lg text-gray-700 mb-6">
+                動物大遷徙是自然界中一個壯觀的現象，每年非洲約有超過一百萬隻角馬、斑馬和其他草食性動物沿著固定路徑遷徙。
+              </p>
+              <p class="text-lg text-gray-700">
+                當中和稀樹草原中的環境氣候息息相關，遷徙途中更伴隨著食肉動物的追逐，而草食動物亦會靠着經驗和勇氣開啟遷徙的腳步尋找適合生活的地方，是一場鬥智鬥力的較量。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Benefits -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12">
+          課程特色
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">互動式學習</h3>
+            <p class="text-gray-600">透過生動的課程內容和實作活動，讓學習變得有趣且印象深刻</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">科學知識</h3>
+            <p class="text-gray-600">深入了解生態系統、動物行為和自然環境的奧秘</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">手作實踐</h3>
+            <p class="text-gray-600">透過動手製作，培養創造力和實踐能力</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-green-600">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+          準備好探索草原的奧秘了嗎？
+        </h2>
+        <p class="text-xl text-green-100 mb-8">
+          此課程旨在介紹各種動物的特徵和生活環境。透過互動式學習，學生將探索不同動物的習性，了解它們在自然界中的角色與重要性。
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact" class="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-green-600 bg-white hover:bg-gray-50 transition-colors duration-200">
+            立即報名
+          </a>
+          <a href="/school-courses" class="inline-flex items-center px-8 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-green-700 transition-colors duration-200">
+            了解更多課程
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
