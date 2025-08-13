@@ -39,6 +39,8 @@ export default defineConfig({
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date(),
+      // Ensure sitemap is accessible
+      filter: (page) => !page.includes('404'),
     }),
   ],
 });
