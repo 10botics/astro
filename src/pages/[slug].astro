@@ -28,6 +28,7 @@ export async function getStaticPaths() {
     { params: { slug: 'news' } },
     { params: { slug: 'client' } },
     { params: { slug: 'natural-bio-sciences-01' } },
+    { params: { slug: '2024-stem-competition-list' } },
     // Add more mappings here as needed
   ];
 }
@@ -117,6 +118,9 @@ switch (slug) {
     break;
   case 'natural-bio-sciences-01':
     ChineseComponent = await import('./草原國度.astro');
+    break;
+  case '2024-stem-competition-list':
+    ChineseComponent = await import('./2024 STEM 比賽名單.astro');
     break;
   default:
     throw new Error(`Unknown slug: ${slug}`);
