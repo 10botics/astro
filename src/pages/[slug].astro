@@ -7,7 +7,7 @@ export async function getStaticPaths() {
     { params: { slug: 'ai-art-competition-2025' } },
     { params: { slug: 'ai-art-competition-2025-result' } },
     { params: { slug: 'competition-drone2024' } },
-    { params: { slug: 'competition-drone2024-competitionlist'}},
+    { params: { slug: 'competition-drone-competitionlist'}},
     { params: { slug: 'competition-drone2024-preliminary-results'}},
     { params: { slug: 'competition-drone2024-final-teamlist'}},
     { params: { slug: 'competition-ksp2022' } },
@@ -52,7 +52,7 @@ switch (slug) {
   case 'competition-drone2024':
     ChineseComponent = await import('./學界無人機救援挑戰賽.astro');
     break;
-  case 'competition-drone2024-competitionlist':
+  case 'competition-drone-competitionlist':
     ChineseComponent = await import('./學界無人機救援挑戰賽-比賽名單.astro');
     break;
   case 'competition-drone2024-preliminary-results':
