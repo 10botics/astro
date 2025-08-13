@@ -20,6 +20,13 @@ export async function getStaticPaths() {
     { params: { slug: 'terms-conditions' } },
     { params: { slug: 'privacy-policy' } },
     { params: { slug: 'cookie-policy' } },
+    { params: { slug: 'contact' } },
+    { params: { slug: 'school-courses' } },
+    { params: { slug: 'stemday' } },
+    { params: { slug: 'teacher-workshop' } },
+    { params: { slug: 'funding-application' } },
+    { params: { slug: 'news' } },
+    { params: { slug: 'client' } },
     // Add more mappings here as needed
   ];
 }
@@ -82,6 +89,27 @@ switch (slug) {
     break;
   case 'cookie-policy':
     ChineseComponent = await import('./Cookie政策.astro');
+    break;
+  case 'contact':
+    ChineseComponent = await import('./聯絡我們.astro');
+    break;
+  case 'school-courses':
+    ChineseComponent = await import('./school-courses/index.astro');
+    break;
+  case 'stemday':
+    ChineseComponent = await import('./Stemday/index.astro');
+    break;
+  case 'teacher-workshop':
+    ChineseComponent = await import('./staff-development-day/index.astro');
+    break;
+  case 'funding-application':
+    ChineseComponent = await import('./funding-application/index.astro');
+    break;
+  case 'news':
+    ChineseComponent = await import('./news/index.astro');
+    break;
+  case 'client':
+    ChineseComponent = await import('./關於我們.astro');
     break;
   default:
     throw new Error(`Unknown slug: ${slug}`);
