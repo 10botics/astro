@@ -17,6 +17,8 @@ export async function getStaticPaths() {
     { params: { slug: 'competition-minecraft2024' } },
     { params: { slug: 'contact-us' } },
     { params: { slug: 'join-us' } },
+    { params: { slug: 'terms-conditions' } },
+    { params: { slug: 'privacy-policy' } },
     // Add more mappings here as needed
   ];
 }
@@ -70,6 +72,12 @@ switch (slug) {
     break;
   case 'join-us':
     ChineseComponent = await import('./加入我們.astro');
+    break;
+  case 'terms-conditions':
+    ChineseComponent = await import('./條款及細則.astro');
+    break;
+  case 'privacy-policy':
+    ChineseComponent = await import('./隱私政策.astro');
     break;
   default:
     throw new Error(`Unknown slug: ${slug}`);
