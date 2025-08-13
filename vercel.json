@@ -3,11 +3,6 @@
   "outputDirectory": "dist",
   "installCommand": "npm install",
   "framework": "astro",
-  "functions": {
-    "dist/sitemap-*.xml": {
-      "maxDuration": 10
-    }
-  },
   "rewrites": [
     {
       "source": "/sitemap.xml",
