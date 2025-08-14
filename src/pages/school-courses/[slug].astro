@@ -25,7 +25,17 @@ export async function getStaticPaths() {
     { params: { slug: 'tello' } },
     { params: { slug: 'coral-environment-monitoring'} },
     { params: { slug: 'unity' } },
-    { params: { slug: 'natural-bio-sciences' } }
+    { params: { slug: 'natural-bio-sciences' } },
+    // New redirects from CSV
+    { params: { slug: '10botics-x-btehkmu-minecraft' } },
+    { params: { slug: 'minecraftbuildmyschool' } },
+    { params: { slug: 'donkey-car-beginner-course' } },
+    { params: { slug: 'donkey-car-advanced-course' } },
+    { params: { slug: 'tello-x-scratch-ai-takeoff-landing' } },
+    { params: { slug: 'scratch-ai' } },
+    { params: { slug: 'kerbal-space-program' } },
+    { params: { slug: 'kerbal-space-program-eng' } },
+    { params: { slug: 'ai-courses' } }
   ];
 }
 
@@ -105,6 +115,35 @@ switch (slug) {
     break;
   case 'natural-bio-sciences':
     ChineseComponent = await import('./自然生物探究手作課程.astro');
+    break;
+  // New redirects from CSV
+  case '10botics-x-btehkmu-minecraft':
+    ChineseComponent = await import('./Minecraft校園創建課程.astro');
+    break;
+  case 'minecraftbuildmyschool':
+    ChineseComponent = await import('./Minecraft校園創建課程.astro');
+    break;
+  case 'donkey-car-beginner-course':
+    ChineseComponent = await import('./Donkey Car 無人車課程.astro');
+    break;
+  case 'donkey-car-advanced-course':
+    ChineseComponent = await import('./Donkey Car 無人車課程.astro');
+    break;
+  case 'tello-x-scratch-ai-takeoff-landing':
+    // This should redirect to external blog URL, but we'll redirect to tello course for now
+    ChineseComponent = await import('./Tello 無人機課程.astro');
+    break;
+  case 'scratch-ai':
+    ChineseComponent = await import('./Scratch 人工智能編程.astro');
+    break;
+  case 'kerbal-space-program':
+    ChineseComponent = await import('./ksp太空計劃課程.astro');
+    break;
+  case 'kerbal-space-program-eng':
+    ChineseComponent = await import('./ksp太空計劃課程.astro');
+    break;
+  case 'ai-courses':
+    ChineseComponent = await import('./Scratch 人工智能編程.astro');
     break;
   default:
     throw new Error(`Unknown slug: ${slug}`);
