@@ -1,0 +1,97 @@
+---
+// Redirect handler for /course/xxx URLs to /school-courses/xxx
+export async function getStaticPaths() {
+  return [
+    // Original course slugs that need redirecting
+    { params: { slug: 'ai-game-coding' } },
+    { params: { slug: 'ai-enrichment-course' } },
+    { params: { slug: 'ai-digital-animation-exhibition' } },
+    { params: { slug: 'blockchain' } },
+    { params: { slug: 'codrone' } },
+    { params: { slug: 'Delightex' } },
+    { params: { slug: 'donkey-car' } },
+    { params: { slug: 'dobot' } },
+    { params: { slug: 'ksp' } },
+    { params: { slug: 'lego-spike-prime' } },
+    { params: { slug: 'minecraft' } },
+    { params: { slug: 'minecraft-2024' } },
+    { params: { slug: 'microbit-parachute' } },
+    { params: { slug: 'microbit-maze' } },
+    { params: { slug: 'procreate' } },
+    { params: { slug: 'python-game-dev-beginner' } },
+    { params: { slug: 'raspberry-pi' } },
+    { params: { slug: 'scratch-ai-programming' } },
+    { params: { slug: 'scratch-game-design' } },
+    { params: { slug: 'swiftplaygrounds' } },
+    { params: { slug: 'tello' } },
+    { params: { slug: 'coral-environment-monitoring'} },
+    { params: { slug: 'unity' } },
+    { params: { slug: 'natural-bio-sciences' } },
+    // Redirects from CSV file
+    { params: { slug: '10botics-x-btehkmu-minecraft' } },
+    { params: { slug: 'minecraftbuildmyschool' } },
+    { params: { slug: 'donkey-car-beginner-course' } },
+    { params: { slug: 'donkey-car-advanced-course' } },
+    { params: { slug: 'tello-x-scratch-ai-takeoff-landing' } },
+    { params: { slug: 'scratch-ai' } },
+    { params: { slug: 'kerbal-space-program' } },
+    { params: { slug: 'kerbal-space-program-eng' } },
+    { params: { slug: 'ai-courses' } }
+  ];
+}
+
+const { slug } = Astro.params;
+
+// Define redirect mappings from /course/xxx to /school-courses/xxx
+const redirectMappings: Record<string, string> = {
+  // Direct mappings (most courses redirect to same slug)
+  'ai-game-coding': '/school-courses/ai-game-coding',
+  'ai-enrichment-course': '/school-courses/ai-enrichment-course',
+  'ai-digital-animation-exhibition': '/school-courses/ai-digital-animation-exhibition',
+  'blockchain': '/school-courses/blockchain',
+  'codrone': '/school-courses/codrone',
+  'Delightex': '/school-courses/Delightex',
+  'donkey-car': '/school-courses/donkey-car',
+  'dobot': '/school-courses/dobot',
+  'ksp': '/school-courses/ksp',
+  'lego-spike-prime': '/school-courses/lego-spike-prime',
+  'minecraft': '/school-courses/minecraft',
+  'minecraft-2024': '/school-courses/minecraft-2024',
+  'microbit-parachute': '/school-courses/microbit-parachute',
+  'microbit-maze': '/school-courses/microbit-maze',
+  'procreate': '/school-courses/procreate',
+  'python-game-dev-beginner': '/school-courses/python-game-dev-beginner',
+  'raspberry-pi': '/school-courses/raspberry-pi',
+  'scratch-ai-programming': '/school-courses/scratch-ai-programming',
+  'scratch-game-design': '/school-courses/scratch-game-design',
+  'swiftplaygrounds': '/school-courses/swiftplaygrounds',
+  'tello': '/school-courses/tello',
+  'coral-environment-monitoring': '/school-courses/coral-environment-monitoring',
+  'unity': '/school-courses/unity',
+  'natural-bio-sciences': '/school-courses/natural-bio-sciences',
+  
+  // Special mappings from CSV file
+  '10botics-x-btehkmu-minecraft': '/school-courses/minecraft',
+  'minecraftbuildmyschool': '/school-courses/minecraft',
+  'donkey-car-beginner-course': '/school-courses/donkey-car',
+  'donkey-car-advanced-course': '/school-courses/donkey-car',
+  'tello-x-scratch-ai-takeoff-landing': '/blog/one-hour-ai-drone-part-1',  // External blog redirect
+  'scratch-ai': '/school-courses/ai-courses',
+  'kerbal-space-program': '/school-courses/ksp',
+  'kerbal-space-program-eng': '/school-courses/ksp',
+  'ai-courses': '/school-courses/ai-courses'
+};
+
+// Get the redirect URL for this slug
+const redirectUrl = redirectMappings[slug];
+
+if (redirectUrl) {
+  // Perform the redirect
+  return Astro.redirect(redirectUrl);
+} else {
+  // Fallback: redirect to school-courses with same slug
+  return Astro.redirect(`/school-courses/${slug}`);
+}
+---
+
+<!-- This file should never render content as it only handles redirects -->

@@ -189,8 +189,8 @@ switch (slug) {
     ChineseComponent = await import('./school-courses/index.astro');
     break;
   case 'timesheet_submission_form':
-    // This should redirect to external URL, but we'll redirect to contact page for now
-    ChineseComponent = await import('./聯絡我們.astro');
+    // External redirect to Paperform
+    return Astro.redirect('https://otfxid9w.paperform.co');
     break;
   case 'logo_jnb.png':
     // This should redirect to external URL, but we'll redirect to home page for now
