@@ -1,0 +1,1262 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import QnASection from '../components/course/QnASection.astro';
+import {Image} from 'astro:assets';
+
+const title = "Minecraft 校園創建計劃2024 - 10教育";
+const description = "參與「Minecraft 校園創建計劃2024」比賽日有感，本校同學於本學年參加了由「10教育」舉辦的「Minecraft校園創建計劃2024 —— 共融大世界」活動。";
+
+// FAQ data for the QnA section
+const faqData = [
+	{
+		question: "非主流學校參與本計劃的好處是什麼？",
+		answer: "非主流學校的學生將獲得與主流學校學生合作的機會，這不僅增進了雙方的理解和友誼，還能讓非主流學校的學生透過共同完成建造和設計遊戲的過程，提升自己的技能和創造力。"
+	},
+	{
+		question: "本計劃如何針對非主流學生的特殊需求，設計遊戲主題和活動？",
+		answer: "計劃將設計符合非主流學生需求的遊戲主題，讓他們能夠在遊戲設計和建造過程中，發揮創意並解決問題，從而提升自信和技能。"
+	},
+	{
+		question: "非主流學校的老師在計劃中扮演什麼角色，特別是在選擇遊戲主題方面？",
+		answer: "非主流學校的老師將直接參與選擇遊戲主題的過程。這樣做是為了確保遊戲主題不僅吸引學生的興趣，而且能夠針對他們的能力和需求，提供適當的挑戰和學習機會。"
+	},
+	{
+		question: "本計劃是否為非主流學校的學生提供了任何特別的職業發展機會？",
+		answer: "表現優秀的非主流學生將有機會在下一年度被邀請加入成為10botics的Minecraft導師，進入不同學校教授Minecraft，享受教學的樂趣。這次機會也旨在探索非主流學生成為特定領域STEM導師的可能性，為他們畢業後提供更多職業選擇。"
+	},
+	{
+		question: "作為一名非主流學校教師，我如何判斷我的學生是否能夠在Minecraft中表現良好？",
+		answer: "為了幫助非主流學校教師評估學生在Minecraft中的潛力和表現，我們建議從以下幾個方面進行：\n\n初步介紹和觀察：首先向學生介紹Minecraft的基本操作和概念。通過觀察學生對遊戲的反應和學習速度，教師可以初步判斷學生對Minecraft的興趣和適應能力。\n\n詢問學生的經驗：直接詢問學生是否曾經玩過Minecraft，以及他們對遊戲的熟悉程度。學生可能會告訴你他們玩得很好。"
+	},
+	{
+		question: "如何確保非主流學生在參與Minecraft校園創建計劃中得到適當的支持和引導？",
+		answer: "我們將提供專門訓練有社工或特殊教育背景的導師，以協助學生合作和引導他們如何設計遊戲。這些導師將根據非主流學生的特定需要，提供個別化的支持，幫助他們充分參與計劃中的各項活動，從而確保他們能在一個包容、支持的環境中學習和成長。"
+	},
+	{
+		question: "以前參與過的學校可否再參與?",
+		answer: "今年度的活動適合過往已經參加的學校，因為比賽由建造自己的學校變為協助非主流學校建造校舍，設計遊戲亦是一項全新的挑戰，誠意邀請以往參加過的學校再派隊參加。"
+	},
+	{
+		question: "我們的主流學校學生沒有Minecraft經驗，他們能夠適應比賽要求嗎？",
+		answer: "是的，本計劃特別設計了一系列的支援措施來幫助學生熟悉Minecraft。從基礎操作到進階建造技巧，我們將提供專門的培訓和輔導。此外，課程導師會指導學生如何使用Minecraft進行建造，並在整個過程中提供適當的支援。因此，無論學生是否有Minecraft經驗，都能在我們的指導下，快速上手並參與比賽。"
+	}
+];
+---
+
+<Layout title={title} description={description}>
+	
+	<main id="content" class="site-main">
+		<div class="page-content">
+			<!-- Hero Section -->
+			<div class="hero-section bg-gradient-to-br from-blue-50 to-indigo-100 py-16">
+				<div class="container mx-auto px-4 text-center">
+					<Image 
+						decoding="async" 
+						width="800" 
+						height="200" 
+						src="https://10botics.com/wp-content/uploads/2023/05/minecraftLogo-768x183.png" 
+						class="mx-auto mb-8 max-w-md" 
+						alt="Minecraft Logo" 
+					/>
+					<h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+						校園創建計劃 2024
+					</h1>
+					<div class="inline-block">
+						<button class="bg-gray-600 text-white px-6 py-3 rounded-lg text-lg font-medium">
+							比賽已經完滿結束，感謝各位支持
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- Teacher Testimonials Section -->
+			<div class="bg-white py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-4xl mx-auto">
+						<h2 class="text-3xl font-bold text-center text-gray-900 mb-12">老師感言</h2>
+						
+						<!-- First Teacher Testimonial -->
+						<div class="mb-16">
+							<h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">
+								<strong>參與「Minecraft 校園創建計劃2024」比賽日有感</strong>
+							</h3>
+							<div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+								<p class="mb-4">
+									本校同學於本學年參加了由「10教育」舉辦的「Minecraft校園創建計劃2024 —— 共融大世界」活動。經過了三個月的學習和實踐，同學們終於在群策群力之下，創建了第一所「Minecraft校園」。當中同學們經歷過探索、嘗試和失敗，但在「「10教育」導師 Beefung 的循循善誘之下，同學們拼發出驚人的耐力和創造力，用科技創建了屬於他們的虛擬校園，使人擊節讚賞！
+								</p>
+								<p class="mb-4">
+									最後，我們的同學在比賽日中更奪得「校園創建一等獎」及「積極投入獎」。其中，本校鍾嘉俊同學更獲得「傑出學生獎」，實在可喜可賀！
+								</p>
+								<p class="mb-4">
+									同學們在比賽日當日，真可謂樂在其中，全情投入各個攤位遊戲活動；可能正正因為他們無比投入，發出的聲浪也是全場之冠，所以獲得了評判的青睞，獲頒「最積極投入獎」，這對同學們而言，都是極大的肯定和鼓勵！
+								</p>
+								<p class="mb-4">
+									再次多謝「10教育」的安排，為主流、非主流學生們，開闢了一扇共融之窗，讓大家能一起邁步「共融大世界」！
+								</p>
+								<p class="text-right font-semibold">
+									天保民學校陳校長
+								</p>
+							</div>
+							<div class="mt-8 text-center">
+								<Image 
+									decoding="async" 
+									width="800" 
+									height="600" 
+									src="https://10botics.com/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-04-at-17.19.14-1024x768.jpeg" 
+									class="mx-auto max-w-full h-auto rounded-lg shadow-lg" 
+									alt="Teacher testimonial image" 
+								/>
+							</div>
+						</div>
+
+						<!-- Second Teacher Testimonial -->
+						<div class="bg-gray-50 p-8 rounded-lg">
+							<div class="grid md:grid-cols-2 gap-8 items-center">
+								<div>
+									<Image 
+										loading="lazy" 
+										decoding="async" 
+										width="768" 
+										height="576" 
+										src="https://10botics.com/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-04-at-17.19.16-768x576.jpeg" 
+										class="w-full h-auto rounded-lg shadow-lg" 
+										alt="Second teacher testimonial image" 
+									/>
+								</div>
+								<div>
+									<h3 class="text-2xl font-bold text-gray-900 mb-4">香港紅十字會甘迺迪中心</h3>
+									<div class="prose prose-lg text-gray-700 leading-relaxed">
+										<p>
+											參與 Minecraft 校園創建計劃，是一次難得的體驗。我校學生與聖安多尼學校的同學攜手，在比賽中展現出極佳的合作精神。利用 Minecraft 設計虛擬校園的過程充滿挑戰，卻也充滿樂趣。獲得最佳跨校合作獎，證明了特殊學校的孩子同樣能在合作中綻放光彩。感謝聖安多尼學校的支持，也為我校學生的努力與成長感到驕傲。
+										</p>
+										<p class="mt-4 font-semibold">
+											香港紅十字會甘迺迪中心 馮耀宗老師
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Photo Gallery Section -->
+			<div class="bg-gray-50 py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-6xl mx-auto">
+						<h2 class="text-3xl font-bold text-center text-gray-900 mb-12">精選相片</h2>
+						
+						<!-- Image Carousel -->
+						<div class="relative overflow-hidden rounded-lg shadow-xl">
+							<div class="flex transition-transform duration-500 ease-in-out" id="imageCarousel">
+								<div class="min-w-full">
+									<Image 
+										decoding="async" 
+										class="w-full h-96 object-cover" 
+										src="https://10botics.com/wp-content/uploads/2024/09/0825_Mincraft-158.jpg" 
+										alt="Minecraft competition photo 1" 
+										width="800"
+										height="384"
+									/>
+								</div>
+								<div class="min-w-full">
+									<Image 
+										decoding="async" 
+										class="w-full h-96 object-cover" 
+										src="https://10botics.com/wp-content/uploads/2024/09/0825_Mincraft-141.jpg" 
+										alt="Minecraft competition photo 2" 
+										width="800"
+										height="384"
+									/>
+								</div>
+								<div class="min-w-full">
+									<Image 
+										decoding="async" 
+										class="w-full h-96 object-cover" 
+										src="https://10botics.com/wp-content/uploads/2024/09/0825_Mincraft-138.jpg" 
+										alt="Minecraft competition photo 3" 
+										width="800"
+										height="384"
+									/>
+								</div>
+								<div class="min-w-full">
+									<Image 
+										decoding="async" 
+										class="w-full h-96 object-cover" 
+										src="https://10botics.com/wp-content/uploads/2024/09/0825_Mincraft-23.jpg" 
+										alt="Minecraft competition photo 4" 
+										width="800"
+										height="384"
+									/>
+								</div>
+								<div class="min-w-full">
+									<Image 
+										decoding="async" 
+										class="w-full h-96 object-cover" 
+										src="https://10botics.com/wp-content/uploads/2024/09/0825_Mincraft-30.jpg" 
+										alt="Minecraft competition photo 5" 
+										width="800"
+										height="384"
+									/>
+								</div>
+							</div>
+							
+							<!-- Navigation Buttons -->
+							<button class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200" id="prevBtn">
+								<i class="fas fa-chevron-left text-xl"></i>
+							</button>
+							<button class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200" id="nextBtn">
+								<i class="fas fa-chevron-right text-xl"></i>
+							</button>
+							
+							<!-- Dots -->
+							<div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2" id="dotsContainer">
+								<button class="w-3 h-3 bg-white bg-opacity-60 rounded-full transition-all duration-200 dot active" data-index="0"></button>
+								<button class="w-3 h-3 bg-white bg-opacity-60 rounded-full transition-all duration-200 dot" data-index="1"></button>
+								<button class="w-3 h-3 bg-white bg-opacity-60 rounded-full transition-all duration-200 dot" data-index="2"></button>
+								<button class="w-3 h-3 bg-white bg-opacity-60 rounded-full transition-all duration-200 dot" data-index="3"></button>
+								<button class="w-3 h-3 bg-white bg-opacity-60 rounded-full transition-all duration-200 dot" data-index="4"></button>
+							</div>
+						</div>
+						
+						<div class="text-center mt-8">
+							<a href="https://photos.app.goo.gl/tE8UzUPw2dx7kNiq6" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg text-lg font-medium transition-colors duration-200">
+								更多相片
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Competition Introduction Section -->
+			<div class="bg-white py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-4xl mx-auto">
+						<h2 class="text-3xl font-bold text-center text-gray-900 mb-8">比賽簡介</h2>
+						<div class="prose prose-lg max-w-none text-gray-700 leading-relaxed mb-8">
+							<p>
+								過去三年舉辦的「Minecraft 校園創建計劃」均得到學校以及一眾老師與學生既熱烈支持及參與。今年的主題為共融大世界，我們希望召集至少 20 間主流及非主流學校，透過合作建造校舍和設計適合非主流學生學習的遊戲，增強彼此的認識及建立友誼，創造共融的大世界。
+							</p>
+						</div>
+						<div class="text-center">
+							<Image 
+								loading="lazy" 
+								decoding="async" 
+								width="1448" 
+								height="2048" 
+								src="https://10botics.com/wp-content/uploads/2024/02/minecraft-posterrgb-02-1448x2048.jpg" 
+								class="mx-auto max-w-full h-auto rounded-lg shadow-lg" 
+								alt="Minecraft competition poster" 
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- What is Minecraft Section -->
+			<div class="bg-gray-50 py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-4xl mx-auto">
+						<div class="grid md:grid-cols-2 gap-8 items-center">
+							<div>
+								<h2 class="text-3xl font-bold text-gray-900 mb-6">甚麼是Minecraft?</h2>
+								<div class="prose prose-lg text-gray-700 leading-relaxed">
+									<p>
+										Minecraft 是一款沙盒遊戲。玩家可以通過拆除或放置遊戲方塊(blocks) 改變遊戲環境，興建屬於自己的建築物。
+									</p>
+								</div>
+							</div>
+							<div class="text-center">
+								<Image 
+									decoding="async" 
+									width="768" 
+									height="183" 
+									src="https://10botics.com/wp-content/uploads/2023/05/minecraftLogo-768x183.png" 
+									class="mx-auto max-w-md" 
+									alt="Minecraft Logo" 
+								/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Why Learn Minecraft Section -->
+			<div class="bg-white py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-6xl mx-auto">
+						<h2 class="text-3xl font-bold text-center text-gray-900 mb-12">為甚麼要學Minecraft?</h2>
+						
+						<div class="grid md:grid-cols-3 gap-8">
+							<!-- Creativity Card -->
+							<div class="text-center p-6 bg-gray-50 rounded-lg">
+								<div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+									<i class="fas fa-pencil-alt text-2xl text-blue-600"></i>
+								</div>
+								<h3 class="text-xl font-bold text-gray-900 mb-4">發揮創意​</h3>
+								<p class="text-gray-700">
+									學生可以天馬行空地創造其想像的世界，<br>例如：建製作遊戲，興建現實建築物，<br>興建理想中的社區。
+								</p>
+							</div>
+
+							<!-- Immersive Learning Card -->
+							<div class="text-center p-6 bg-gray-50 rounded-lg">
+								<div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+									<i class="fas fa-shapes text-2xl text-green-600"></i>
+								</div>
+								<h3 class="text-xl font-bold text-gray-900 mb-4">沉浸式學習</h3>
+								<p class="text-gray-700">
+									學生以第一身角度探索及建立想像中的世界，甚至可以將現實的項目帶入 Minecraft, 並透過具創意的形式介紹其項目，使參觀者更有代入感。
+								</p>
+							</div>
+
+							<!-- Team Spirit Card -->
+							<div class="text-center p-6 bg-gray-50 rounded-lg">
+								<div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+									<i class="fas fa-flag text-2xl text-purple-600"></i>
+								</div>
+								<h3 class="text-xl font-bold text-gray-900 mb-4">培養團隊精神</h3>
+								<p class="text-gray-700">
+									校園創建計劃以小組形式進行，能增強學生的溝通能力和團隊合作性。
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Integration Lecture Section -->
+			<div class="bg-gray-50 py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-4xl mx-auto">
+						<h2 class="text-3xl font-bold text-center text-gray-900 mb-12">共融講座（5月）</h2>
+						
+						<div class="grid md:grid-cols-2 gap-8">
+							<div>
+								<h3 class="text-xl font-bold text-gray-900 mb-4">主流學校</h3>
+								<div class="prose prose-lg text-gray-700">
+									<ul class="list-disc pl-6 space-y-2">
+										<li>瞭解 SEN 學生限制及需要</li>
+										<li>如何與 SEN 學生相處</li>
+										<li>學習如何協助合作</li>
+									</ul>
+								</div>
+							</div>
+							
+							<div>
+								<h3 class="text-xl font-bold text-gray-900 mb-4">非主流學校</h3>
+								<div class="prose prose-lg text-gray-700">
+									<ul class="list-disc pl-6 space-y-2">
+										<li>利用Minecraft遊戲學習各種建築指令</li>
+										<li>在協助下完成1:1 Minecraft 學校</li>
+										<li>利用Minecraft遊戲學習生活技能及解難</li>
+										<li>成功通過遊戲關卡</li>
+										<li>學習協同合作</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Building Phase Section -->
+			<div class="bg-white py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-4xl mx-auto">
+						<h2 class="text-3xl font-bold text-center text-gray-900 mb-8">建造校舍階段(5至8月)</h2>
+						
+						<div class="grid md:grid-cols-2 gap-8 mb-8">
+							<div>
+								<h3 class="text-xl font-bold text-gray-900 mb-4">主流學校</h3>
+								<div class="prose prose-lg text-gray-700">
+									<p class="mb-4">主流學校會被指派協助非流學校以 1:1 的方式於 Minecraft 重現非主流學校的校舍。</p>
+									<ul class="list-disc pl-6 space-y-2">
+										<li>加藉此機會彼此瞭解及交流</li>
+										<li>讓主流學校學生掌握如何協助SEN 學生興建校舍</li>
+									</ul>
+								</div>
+							</div>
+							
+							<div>
+								<h3 class="text-xl font-bold text-gray-900 mb-4">非主流學校</h3>
+								<div class="prose prose-lg text-gray-700">
+									<p class="mb-4">非主流學校學生將會在Minecraft中建造他們的校舍，課程導師會向學生教授建造方法，其餘部分則由學生自行合作完成，人員會按情況提供適當支援。</p>
+									<ul class="list-disc pl-6 space-y-2">
+										<li>培養團隊合作及領袖等能力</li>
+										<li>帶領學生自發性完成相關目標。</li>
+									</ul>
+									<p class="mt-4">另外非主流學校需要製作1分鐘介紹短片並在比賽日展示，呈現型式包括但不限於:</p>
+									<ul class="list-disc pl-6 space-y-2 mt-2">
+										<li>學校外觀</li>
+										<li>校園故事</li>
+										<li>學校背景</li>
+										<li>運用 NPC 重現日常校園生活</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+						<div class="text-center">
+							<Image 
+								loading="lazy" 
+								decoding="async" 
+								width="800" 
+								height="498" 
+								src="https://10botics.com/wp-content/uploads/2023/08/2023-08-26_05.24.07-1-1024x637.png" 
+								class="mx-auto max-w-full h-auto rounded-lg shadow-lg" 
+								alt="Minecraft building phase" 
+							/>
+						</div>
+						
+						<h3 class="text-xl font-bold text-gray-900 mb-4 mt-8">參賽要求</h3>
+						<div class="prose prose-lg text-gray-700">
+							<p>主流學校需要於賽前遞交遊戲關卡作品，而非主流學校需遞交校園創建作品介紹，包括一段不長於1分鐘之影片，介紹其作品特色</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Game Design Phase Section -->
+			<div class="bg-gray-50 py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-4xl mx-auto">
+						<h2 class="text-3xl font-bold text-center text-gray-900 mb-8">遊戲設計階段(5至8月)</h2>
+						
+						<div class="grid md:grid-cols-2 gap-8 mb-8">
+							<div>
+								<h3 class="text-xl font-bold text-gray-900 mb-4">主流學校</h3>
+								<div class="prose prose-lg text-gray-700">
+									<p class="mb-4">主流學校的學生需按主題及非主流學生能力程度在Minecraft中設計遊戲，例如:過馬路，到超級市場購物等，讓非主流學在遊戲中利用不同方塊建造/折除去通關遊戲</p>
+									<ul class="list-disc pl-6 space-y-2">
+										<li>鼓勵主流學校的學生考慮多樣化的學習需求和能力，培養對非主流背景學生的包容心態和理解</li>
+										<li>通過挑戰學生設計既有趣又適合不同能力學生的遊戲，激發學生的創造力</li>
+									</ul>
+								</div>
+							</div>
+							
+							<div>
+								<h3 class="text-xl font-bold text-gray-900 mb-4">非主流學校</h3>
+								<div class="prose prose-lg text-gray-700">
+									<p class="mb-4">非主流學校學生需協助測試主流學校的遊戲，另外老師需協助主流學校學生回饋遊戲的挑戰及程度。</p>
+									<ul class="list-disc pl-6 space-y-2">
+										<li>增加非主流學校學生的參與感和歸屬感，讓他們感到自己是學習社區的重要一員</li>
+										<li>透過參與設計適合自己能力的遊戲，可以看到自己的需求和能力被重視，從而提高自信心和學習動機</li>
+										<li>在一個更適合自己能力的環境中學習，從而提高學習效果</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+						<div class="text-center">
+							<Image 
+								loading="lazy" 
+								decoding="async" 
+								width="800" 
+								height="455" 
+								src="https://10botics.com/wp-content/uploads/2023/08/2023-08-31_13.01.57-1-1024x583.png" 
+								class="mx-auto max-w-full h-auto rounded-lg shadow-lg" 
+								alt="Minecraft game design phase" 
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Course Fees Section -->
+			<div class="bg-white py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-4xl mx-auto">
+						<h2 class="text-3xl font-bold text-center text-gray-900 mb-8">課程及參賽費用</h2>
+						<div class="prose prose-lg text-gray-700 leading-relaxed mb-6">
+							<p>費用已包括參賽費用、Minecraft 帳戶、Minecraft server、8小時到校Minecraft校園創建課程、4小時到校Minecraft導師指導及協助、線上協助</p>
+						</div>
+						<ul class="list-disc pl-6 space-y-2 text-gray-700">
+							<li>每間學校最多只可派一支隊伍參加比賽</li>
+							<li>每隊學生人數為 5-6 人</li>
+							<li>課程可供15位學生上課</li>
+							<li>學校需自備手提電腦</li>
+							<li>學校不需自行購買 Minecraft 軟件</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<!-- Eligibility Section -->
+			<div class="bg-gray-50 py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-4xl mx-auto">
+						<h2 class="text-3xl font-bold text-center text-gray-900 mb-8">參賽資格</h2>
+						<div class="prose prose-lg text-gray-700">
+							<ul class="list-disc pl-6 space-y-2">
+								<li>就讀本港中小學學生 (23/24 小四 至 中六)</li>
+								<li>以學校名義參賽，成員須為同一學校學生</li>
+								<li>每間學校可派出一隊參賽隊伍</li>
+								<li>每隊5-6 人</li>
+								<li>需自行攜帶電腦
+									<ul class="list-disc pl-6 mt-2 space-y-1">
+										<li>建議電腦配備 8GB Ram, 最近五年出廠電腦</li>
+										<li>不需要電競顯示卡</li>
+										<li>Windows, Mac 皆可</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Work Requirements Section -->
+			<div class="bg-white py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-4xl mx-auto">
+						<h2 class="text-3xl font-bold text-center text-gray-900 mb-8">作品要求</h2>
+						<div class="prose prose-lg text-gray-700">
+							<ul class="list-disc pl-6 space-y-2">
+								<li>主流學校：以 1:1 的方式 ，於Minecraft世界製作適合非主流學生學習的遊戲關卡</li>
+								<li>非主流學校：以 1:1 的方式 ，於Minecraft世界製作自己的校園</li>
+								<li>參賽者需使用Minecraft Java版本</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Competition Day Section -->
+			<div class="bg-gray-50 py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-4xl mx-auto">
+						<h2 class="text-3xl font-bold text-center text-gray-900 mb-8">比賽日(8月25日)</h2>
+						
+						<div class="text-center mb-8">
+							<Image 
+								loading="lazy" 
+								decoding="async" 
+								width="800" 
+								height="498" 
+								src="https://10botics.com/wp-content/uploads/2023/08/2023-08-26_05.24.07-1-1024x637.png" 
+								class="mx-auto max-w-full h-auto rounded-lg shadow-lg" 
+								alt="Minecraft competition day" 
+							/>
+						</div>
+						
+						<div class="grid md:grid-cols-2 gap-8 mb-8">
+							<div>
+								<h3 class="text-xl font-bold text-gray-900 mb-4">主流學校</h3>
+								<div class="prose prose-lg text-gray-700">
+									<p class="mb-4">學生需在比賽日展示在 Minecraft 制作的遊戲，並協助各間非主流學生進行遊戲。</p>
+									<ul class="list-disc pl-6 space-y-2">
+										<li>遊戲主題由非主流學校老師設定</li>
+										<li>5 分鐘時間講解設計理念</li>
+									</ul>
+								</div>
+							</div>
+							
+							<div>
+								<h3 class="text-xl font-bold text-gray-900 mb-4">非主流學校</h3>
+								<div class="prose prose-lg text-gray-700">
+									<p>非主流學生需透過建造去完成各主流學校設計的遊戲</p>
+								</div>
+							</div>
+						</div>
+						
+						<h3 class="text-xl font-bold text-gray-900 mb-4">參賽要求</h3>
+						<div class="prose prose-lg text-gray-700">
+							<p>主流學校需要於賽前遞交遊戲關卡作品，而非主流學校需遞交校園創建作品介紹，包括一段不長於1分鐘之影片，介紹其作品特色</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Winners List Section -->
+			<div class="bg-white py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-6xl mx-auto">
+						<h2 class="text-3xl font-bold text-center text-gray-900 mb-12">得獎名單</h2>
+						
+						<!-- Campus Creation Awards -->
+						<div class="mb-12">
+							<h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">校園創建</h3>
+							<div class="overflow-x-auto">
+								<table class="w-full border-collapse border border-gray-300 bg-white shadow-lg rounded-lg overflow-hidden">
+									<tbody class="divide-y divide-gray-200">
+										<tr class="hover:bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">非主流學校組 最佳影片獎</td>
+											<td class="px-6 py-4 text-gray-700">三水同鄉會劉本章學校</td>
+										</tr>
+										<tr class="hover:bg-gray-50 bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">主流學校組 最佳影片獎</td>
+											<td class="px-6 py-4 text-gray-700">聖安多尼學校</td>
+										</tr>
+										<tr class="hover:bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">最佳聯校合作獎</td>
+											<td class="px-6 py-4 text-gray-700">聖安多尼學校</td>
+										</tr>
+										<tr class="hover:bg-gray-50 bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900"></td>
+											<td class="px-6 py-4 text-gray-700">紅十字會甘迺迪中心</td>
+										</tr>
+										<tr class="hover:bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">非主流學校組 一等獎</td>
+											<td class="px-6 py-4 text-gray-700">天保民學校</td>
+										</tr>
+										<tr class="hover:bg-gray-50 bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">非主流學校組 二等獎</td>
+											<td class="px-6 py-4 text-gray-700">紅十字會雅麗珊郡主學校</td>
+										</tr>
+										<tr class="hover:bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">小學組 一等獎</td>
+											<td class="px-6 py-4 text-gray-700">聖安多尼學校</td>
+										</tr>
+										<tr class="hover:bg-gray-50 bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">中學組 一等獎</td>
+											<td class="px-6 py-4 text-gray-700">可道中學(嗇色園主辦)</td>
+										</tr>
+										<tr class="hover:bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">傑出學生獎</td>
+											<td class="px-6 py-4 text-gray-700">紅十字會雅麗珊郡主學校 陳宇禧同學</td>
+										</tr>
+										<tr class="hover:bg-gray-50 bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900"></td>
+											<td class="px-6 py-4 text-gray-700">天保民學校 鍾嘉俊同學</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+						<!-- Game Design Awards -->
+						<div>
+							<h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">遊戲設計</h3>
+							<div class="overflow-x-auto">
+								<table class="w-full border-collapse border border-gray-300 bg-white shadow-lg rounded-lg overflow-hidden">
+									<tbody class="divide-y divide-gray-200">
+										<tr class="hover:bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">卓越匯報與海報展示大獎</td>
+											<td class="px-6 py-4 text-gray-700">香港中文大學校友會聯會陳震夏中學</td>
+										</tr>
+										<tr class="hover:bg-gray-50 bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">遊戲體驗投入大獎</td>
+											<td class="px-6 py-4 text-gray-700">天保民學校</td>
+										</tr>
+										<tr class="hover:bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">小學組 一等獎</td>
+											<td class="px-6 py-4 text-gray-700">聖安多尼學校</td>
+										</tr>
+										<tr class="hover:bg-gray-50 bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">中學組 一等獎</td>
+											<td class="px-6 py-4 text-gray-700">香港中文大學校友會聯會陳震夏中學</td>
+										</tr>
+										<tr class="hover:bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">中學組 二等獎</td>
+											<td class="px-6 py-4 text-gray-700">可道中學(嗇色園主辦)</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Award-winning Works Section -->
+			<div class="bg-gray-50 py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-6xl mx-auto">
+						<h2 class="text-3xl font-bold text-center text-gray-900 mb-12">得獎作品</h2>
+						
+						<!-- Campus Creation Non-mainstream Schools -->
+						<div class="mb-12">
+							<h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">校園創建 非主流學校組</h3>
+							<div class="grid md:grid-cols-2 gap-8">
+								<div class="text-center">
+									<Image 
+										decoding="async" 
+										src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-12.42.34-PM-qt9dc91g6ki88t6cfz3lq9i6ufiymbqohq74zgtry0.jpeg" 
+										title="WhatsApp Image 2024-08-28 at 12.42.34 PM" 
+										alt="WhatsApp Image 2024-08-28 at 12.42.34 PM" 
+										loading="lazy" 
+										class="w-full h-auto rounded-lg shadow-lg mb-4"
+										width="800"
+										height="600"
+									/>
+									<h4 class="text-xl font-bold text-gray-900">一等獎 - 天保民學校</h4>
+								</div>
+								<div class="text-center">
+									<Image 
+										decoding="async" 
+										src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-12.42.59-PM-qt9ddga0wy5f2vfjfhsfwyle65lugeibzo7h271nzs.jpeg" 
+										title="WhatsApp Image 2024-08-28 at 12.42.59 PM" 
+										alt="WhatsApp Image 2024-08-28 at 12.42.59 PM" 
+										loading="lazy" 
+										class="w-full h-auto rounded-lg shadow-lg mb-4"
+										width="800"
+										height="600"
+									/>
+									<h4 class="text-xl font-bold text-gray-900">二等獎 - 紅十字會雅麗珊郡主學校</h4>
+								</div>
+							</div>
+						</div>
+
+						<!-- Campus Creation Primary Schools -->
+						<div class="mb-12">
+							<h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">校園創建 小學組</h3>
+							<div class="text-center">
+								<Image 
+									decoding="async" 
+									src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-1.27.06-PM-qt9dgwcpz2v9nefbazf723a8l0maog6wgqbkepxp6g.jpeg" 
+									title="WhatsApp Image 2024-08-28 at 1.27.06 PM" 
+									alt="WhatsApp Image 2024-08-28 at 1.27.06 PM" 
+									loading="lazy" 
+									class="mx-auto max-w-md h-auto rounded-lg shadow-lg mb-4"
+									width="800"
+									height="600"
+								/>
+								<h4 class="text-xl font-bold text-gray-900">一等獎 - 聖安多尼學校</h4>
+							</div>
+						</div>
+
+						<!-- Campus Creation Secondary Schools -->
+						<div class="mb-12">
+							<h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">校園創建 中學組</h3>
+							<div class="text-center">
+								<Image 
+									decoding="async" 
+									src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-12.41.29-PM-qt9d8jkd83fig6k83dekw76qhpsu9b0sndk6u6bohk.jpeg" 
+									title="WhatsApp Image 2024-08-28 at 12.41.29 PM" 
+									alt="WhatsApp Image 2024-08-28 at 12.41.29 PM" 
+									loading="lazy" 
+									class="mx-auto max-w-md h-auto rounded-lg shadow-lg mb-4"
+									width="800"
+									height="600"
+								/>
+								<h4 class="text-xl font-bold text-gray-900">一等獎 - 可道中學(嗇色園主辦)</h4>
+							</div>
+						</div>
+
+						<!-- Game Design Primary Schools -->
+						<div class="mb-12">
+							<h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">遊戲設計 小學組</h3>
+							<div class="text-center">
+								<Image 
+									decoding="async" 
+									src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-12.39.13-PM-qt9d4gxjlxus50h7vm0s386ttlvkwiuo37sfz0d3g8.jpeg" 
+									title="WhatsApp Image 2024-08-28 at 12.39.13 PM" 
+									alt="WhatsApp Image 2024-08-28 at 12.39.13 PM" 
+									loading="lazy" 
+									class="mx-auto max-w-md h-auto rounded-lg shadow-lg mb-4"
+									width="800"
+									height="600"
+								/>
+								<h4 class="text-xl font-bold text-gray-900">一等獎 - 聖安多尼學校</h4>
+							</div>
+						</div>
+
+						<!-- Game Design Secondary Schools -->
+						<div class="mb-12">
+							<h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">遊戲設計 中學組</h3>
+							<div class="grid md:grid-cols-2 gap-8">
+								<div class="text-center">
+									<Image 
+										decoding="async" 
+										src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-12.37.25-PM-qt9c0gwsrr3i2ekxgbkbzbknrb19c81vx8ckr3o88o.jpeg" 
+										title="WhatsApp Image 2024-08-28 at 12.37.25 PM" 
+										alt="WhatsApp Image 2024-08-28 at 12.37.25 PM" 
+										loading="lazy" 
+										class="w-full h-auto rounded-lg shadow-lg mb-4"
+										width="800"
+										height="600"
+									/>
+									<h4 class="text-xl font-bold text-gray-900">一等獎 - 香港中文大學校友會聯會陳震夏中學</h4>
+								</div>
+								<div class="text-center">
+									<Image 
+										decoding="async" 
+										src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-12.40.28-PM-qt9c47bpx27i6n5onfnzdvnkpemqwxvi3pn0do4xiw.jpeg" 
+										title="WhatsApp Image 2024-08-28 at 12.40.28 PM" 
+										alt="WhatsApp Image 2024-08-28 at 12.40.28 PM" 
+										loading="lazy" 
+										class="w-full h-auto rounded-lg shadow-lg mb-4"
+										width="800"
+										height="600"
+									/>
+									<h4 class="text-xl font-bold text-gray-900">二等獎 - 可道中學(嗇色園主辦)</h4>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Winners List Section -->
+			<div class="bg-white py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-6xl mx-auto">
+						<h2 class="text-3xl font-bold text-center text-gray-900 mb-12">得獎名單</h2>
+						
+						<!-- Campus Creation Awards -->
+						<div class="mb-12">
+							<h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">校園創建</h3>
+							<div class="overflow-x-auto">
+								<table class="w-full border-collapse border border-gray-300 bg-white shadow-lg rounded-lg overflow-hidden">
+									<tbody class="divide-y divide-gray-200">
+										<tr class="hover:bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">非主流學校組 最佳影片獎</td>
+											<td class="px-6 py-4 text-gray-700">三水同鄉會劉本章學校</td>
+										</tr>
+										<tr class="hover:bg-gray-50 bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">主流學校組 最佳影片獎</td>
+											<td class="px-6 py-4 text-gray-700">聖安多尼學校</td>
+										</tr>
+										<tr class="hover:bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">最佳聯校合作獎</td>
+											<td class="px-6 py-4 text-gray-700">聖安多尼學校</td>
+										</tr>
+										<tr class="hover:bg-gray-50 bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900"></td>
+											<td class="px-6 py-4 text-gray-700">紅十字會甘迺迪中心</td>
+										</tr>
+										<tr class="hover:bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">非主流學校組 一等獎</td>
+											<td class="px-6 py-4 text-gray-700">天保民學校</td>
+										</tr>
+										<tr class="hover:bg-gray-50 bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">非主流學校組 二等獎</td>
+											<td class="px-6 py-4 text-gray-700">紅十字會雅麗珊郡主學校</td>
+										</tr>
+										<tr class="hover:bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">小學組 一等獎</td>
+											<td class="px-6 py-4 text-gray-700">聖安多尼學校</td>
+										</tr>
+										<tr class="hover:bg-gray-50 bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">中學組 一等獎</td>
+											<td class="px-6 py-4 text-gray-700">可道中學(嗇色園主辦)</td>
+										</tr>
+										<tr class="hover:bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">傑出學生獎</td>
+											<td class="px-6 py-4 text-gray-700">紅十字會雅麗珊郡主學校 陳宇禧同學</td>
+										</tr>
+										<tr class="hover:bg-gray-50 bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900"></td>
+											<td class="px-6 py-4 text-gray-700">天保民學校 鍾嘉俊同學</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+						<!-- Game Design Awards -->
+						<div>
+							<h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">遊戲設計</h3>
+							<div class="overflow-x-auto">
+								<table class="w-full border-collapse border border-gray-300 bg-white shadow-lg rounded-lg overflow-hidden">
+									<tbody class="divide-y divide-gray-200">
+										<tr class="hover:bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">卓越匯報與海報展示大獎</td>
+											<td class="px-6 py-4 text-gray-700">香港中文大學校友會聯會陳震夏中學</td>
+										</tr>
+										<tr class="hover:bg-gray-50 bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">遊戲體驗投入大獎</td>
+											<td class="px-6 py-4 text-gray-700">天保民學校</td>
+										</tr>
+										<tr class="hover:bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">小學組 一等獎</td>
+											<td class="px-6 py-4 text-gray-700">聖安多尼學校</td>
+										</tr>
+										<tr class="hover:bg-gray-50 bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">中學組 一等獎</td>
+											<td class="px-6 py-4 text-gray-700">香港中文大學校友會聯會陳震夏中學</td>
+										</tr>
+										<tr class="hover:bg-gray-50">
+											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">中學組 二等獎</td>
+											<td class="px-6 py-4 text-gray-700">可道中學(嗇色園主辦)</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Award-winning Works Section -->
+			<div class="bg-gray-50 py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-6xl mx-auto">
+						<h2 class="text-3xl font-bold text-center text-gray-900 mb-12">得獎作品</h2>
+						
+						<!-- Campus Creation Non-mainstream Schools -->
+						<div class="mb-12">
+							<h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">校園創建 非主流學校組</h3>
+							<div class="grid md:grid-cols-2 gap-8">
+								<div class="text-center">
+									<Image 
+										decoding="async" 
+										src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-12.42.34-PM-qt9dc91g6ki88t6cfz3lq9i6ufiymbqohq74zgtry0.jpeg" 
+										title="WhatsApp Image 2024-08-28 at 12.42.34 PM" 
+										alt="WhatsApp Image 2024-08-28 at 12.42.34 PM" 
+										loading="lazy" 
+										class="w-full h-auto rounded-lg shadow-lg mb-4"
+										width="800"
+										height="600"
+									/>
+									<h4 class="text-xl font-bold text-gray-900">一等獎 - 天保民學校</h4>
+								</div>
+								<div class="text-center">
+									<Image 
+										decoding="async" 
+										src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-12.42.59-PM-qt9ddga0wy5f2vfjfhsfwyle65lugeibzo7h271nzs.jpeg" 
+										title="WhatsApp Image 2024-08-28 at 12.42.59 PM" 
+										alt="WhatsApp Image 2024-08-28 at 12.42.59 PM" 
+										loading="lazy" 
+										class="w-full h-auto rounded-lg shadow-lg mb-4"
+										width="800"
+										height="600"
+									/>
+									<h4 class="text-xl font-bold text-gray-900">二等獎 - 紅十字會雅麗珊郡主學校</h4>
+								</div>
+							</div>
+						</div>
+
+						<!-- Campus Creation Primary Schools -->
+						<div class="mb-12">
+							<h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">校園創建 小學組</h3>
+							<div class="text-center">
+								<Image 
+									decoding="async" 
+									src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-1.27.06-PM-qt9dgwcpz2v9nefbazf723a8l0maog6wgqbkepxp6g.jpeg" 
+									title="WhatsApp Image 2024-08-28 at 1.27.06 PM" 
+									alt="WhatsApp Image 2024-08-28 at 1.27.06 PM" 
+									loading="lazy" 
+									class="mx-auto max-w-md h-auto rounded-lg shadow-lg mb-4"
+									width="800"
+									height="600"
+								/>
+								<h4 class="text-xl font-bold text-gray-900">一等獎 - 聖安多尼學校</h4>
+							</div>
+						</div>
+
+						<!-- Campus Creation Secondary Schools -->
+						<div class="mb-12">
+							<h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">校園創建 中學組</h3>
+							<div class="text-center">
+								<Image 
+									decoding="async" 
+									src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-12.41.29-PM-qt9d8jkd83fig6k83dekw76qhpsu9b0sndk6u6bohk.jpeg" 
+									title="WhatsApp Image 2024-08-28 at 12.41.29 PM" 
+									alt="WhatsApp Image 2024-08-28 at 12.41.29 PM" 
+									loading="lazy" 
+									class="mx-auto max-w-md h-auto rounded-lg shadow-lg mb-4"
+									width="800"
+									height="600"
+								/>
+								<h4 class="text-xl font-bold text-gray-900">一等獎 - 可道中學(嗇色園主辦)</h4>
+							</div>
+						</div>
+
+						<!-- Game Design Primary Schools -->
+						<div class="mb-12">
+							<h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">遊戲設計 小學組</h3>
+							<div class="text-center">
+								<Image 
+									decoding="async" 
+									src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-12.39.13-PM-qt9d4gxjlxus50h7vm0s386ttlvkwiuo37sfz0d3g8.jpeg" 
+									title="WhatsApp Image 2024-08-28 at 12.39.13 PM" 
+									alt="WhatsApp Image 2024-08-28 at 12.39.13 PM" 
+									loading="lazy" 
+									class="mx-auto max-w-md h-auto rounded-lg shadow-lg mb-4"
+									width="800"
+									height="600"
+								/>
+								<h4 class="text-xl font-bold text-gray-900">一等獎 - 聖安多尼學校</h4>
+							</div>
+						</div>
+
+						<!-- Game Design Secondary Schools -->
+						<div class="mb-12">
+							<h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">遊戲設計 中學組</h3>
+							<div class="grid md:grid-cols-2 gap-8">
+								<div class="text-center">
+									<Image 
+										decoding="async" 
+										src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-12.37.25-PM-qt9c0gwsrr3i2ekxgbkbzbknrb19c81vx8ckr3o88o.jpeg" 
+										title="WhatsApp Image 2024-08-28 at 12.37.25 PM" 
+										alt="WhatsApp Image 2024-08-28 at 12.37.25 PM" 
+										loading="lazy" 
+										class="w-full h-auto rounded-lg shadow-lg mb-4"
+										width="800"
+										height="600"
+									/>
+									<h4 class="text-xl font-bold text-gray-900">一等獎 - 香港中文大學校友會聯會陳震夏中學</h4>
+								</div>
+								<div class="text-center">
+									<Image 
+										decoding="async" 
+										src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-12.40.28-PM-qt9c47bpx27i6n5onfnzdvnkpemqwxvi3pn0do4xiw.jpeg" 
+										title="WhatsApp Image 2024-08-28 at 12.40.28 PM" 
+										alt="WhatsApp Image 2024-08-28 at 12.40.28 PM" 
+										loading="lazy" 
+										class="w-full h-auto rounded-lg shadow-lg mb-4"
+										width="800"
+										height="600"
+									/>
+									<h4 class="text-xl font-bold text-gray-900">二等獎 - 可道中學(嗇色園主辦)</h4>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Best Videos Section -->
+			<div class="bg-white py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-6xl mx-auto">
+						<h2 class="text-3xl font-bold text-center text-gray-900 mb-12">最佳影片</h2>
+						
+						<div class="grid md:grid-cols-2 gap-8 mb-8">
+							<div class="text-center">
+								<div class="aspect-video bg-gray-100 rounded-lg shadow-lg mb-4 flex items-center justify-center">
+									<iframe 
+										width="100%" 
+										height="100%" 
+										src="https://www.youtube.com/embed/nD-6gynt4Co" 
+										title="YouTube video player" 
+										frameborder="0" 
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+										allowfullscreen
+										class="rounded-lg"
+									></iframe>
+								</div>
+								<h4 class="text-xl font-bold text-gray-900">三水同鄉會劉本章學校</h4>
+							</div>
+							
+							<div class="text-center">
+								<div class="aspect-video bg-gray-100 rounded-lg shadow-lg mb-4 flex items-center justify-center">
+									<iframe 
+										width="100%" 
+										height="100%" 
+										src="https://www.youtube.com/embed/8MWGSo_xnLA" 
+										title="YouTube video player" 
+										frameborder="0" 
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+										allowfullscreen
+										class="rounded-lg"
+									></iframe>
+								</div>
+								<h4 class="text-xl font-bold text-gray-900">聖安多尼學校</h4>
+							</div>
+						</div>
+						
+						<div class="text-center mb-8">
+							<h3 class="text-xl font-bold text-gray-900 mb-4">各比賽學校的宣傳片段可到我們的 YouTube 觀看！</h3>
+							<a 
+								href="https://www.youtube.com/playlist?list=PLo-JR4LW4slHkmbpOL6BEvYUx_1LkPliK" 
+								target="_blank" 
+								class="inline-flex items-center bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg text-lg font-medium transition-colors duration-200"
+							>
+								<i class="fab fa-youtube mr-2"></i>
+								YouTube
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- FAQ Section -->
+			<QnASection 
+				title="常見問題"
+				subtitle="FAQ"
+				description="關於Minecraft校園創建計劃的常見問題"
+				faqs={faqData}
+				variant="accordion"
+			/>
+
+			<!-- How to Participate Section -->
+			<div class="bg-white py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-4xl mx-auto text-center">
+						<h2 class="text-3xl font-bold text-gray-900 mb-8">如何參加？</h2>
+						
+						<div class="flex flex-col sm:flex-row gap-4 justify-center">
+							<a 
+								href="https://exgj8uei.paperform.co" 
+								target="_blank"
+								class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-medium transition-colors duration-200"
+							>
+								參加校園創建計劃課程
+							</a>
+							<a 
+								href="https://10botics.com/school-courses/" 
+								class="inline-block bg-gray-600 hover:bg-gray-700 text-white px-8 py-4 rounded-lg text-lg font-medium transition-colors duration-200"
+							>
+								其他課程
+							</a>
+							<a 
+								href="https://10botics.com/contact-us/" 
+								class="inline-block bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-medium transition-colors duration-200"
+							>
+								聯絡我們
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Terms and Conditions Section -->
+			<div class="bg-gray-50 py-16">
+				<div class="container mx-auto px-4">
+					<div class="max-w-4xl mx-auto">
+						<h2 class="text-3xl font-bold text-center text-gray-900 mb-8">條款及細則</h2>
+						<div class="bg-white p-8 rounded-lg shadow-lg">
+							<ul class="list-disc pl-6 space-y-3 text-gray-700">
+								<li>Minecraft 軟件為主辦機構擁有，並在課程期間提供予學生使用。</li>
+								<li>活動結束將會以網上課堂及導師面授課堂完結作為標準。比賽則會按照政府的防疫為準則，主辦機構將會保留最終決定權。</li>
+								<li>主辦機構有權使用所有參加學校作品作宣傳及展示之用，而毋須通知參加學校。</li>
+								<li>主辦機構保留權利更改、取消活動內容及細則，而毋須作另行通知。</li>
+								<li>如有任何爭議，主辦機構保留最後決定權。</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<Footer />
+	<FloatingWhatsApp />
+
+	<script>
+		// Image Carousel Functionality
+		let currentSlide = 0;
+		const slides = document.querySelectorAll('#imageCarousel > div');
+		const dots = document.querySelectorAll('.dot');
+		const totalSlides = slides.length;
+		let autoplayInterval = undefined;
+
+		function showSlide(index) {
+			currentSlide = index;
+			const offset = -index * 100;
+			const carousel = document.getElementById('imageCarousel');
+			if (carousel) {
+				carousel.style.transform = `translateX(${offset}%)`;
+			}
+			
+			// Update dots
+			dots.forEach((dot, i) => {
+				dot.classList.toggle('active', i === index);
+			});
+		}
+
+		function nextSlide() {
+			currentSlide = (currentSlide + 1) % totalSlides;
+			showSlide(currentSlide);
+		}
+
+		function prevSlide() {
+			currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+			showSlide(currentSlide);
+		}
+
+		function startAutoplay() {
+			autoplayInterval = setInterval(nextSlide, 5000);
+		}
+
+		function stopAutoplay() {
+			if (autoplayInterval !== undefined) {
+				clearInterval(autoplayInterval);
+				autoplayInterval = undefined;
+			}
+		}
+
+		// Event Listeners
+		const nextBtn = document.getElementById('nextBtn');
+		if (nextBtn) {
+			nextBtn.addEventListener('click', () => {
+				nextSlide();
+				stopAutoplay();
+				setTimeout(startAutoplay, 10000);
+			});
+		}
+
+		const prevBtn = document.getElementById('prevBtn');
+		if (prevBtn) {
+			prevBtn.addEventListener('click', () => {
+				prevSlide();
+				stopAutoplay();
+				setTimeout(startAutoplay, 10000);
+			});
+		}
+
+		dots.forEach((dot, index) => {
+			dot.addEventListener('click', () => {
+				showSlide(index);
+				stopAutoplay();
+				setTimeout(startAutoplay, 10000);
+			});
+		});
+
+		// Pause autoplay on hover
+		const carousel = document.getElementById('imageCarousel');
+		if (carousel) {
+			carousel.addEventListener('mouseenter', stopAutoplay);
+			carousel.addEventListener('mouseleave', startAutoplay);
+		}
+
+		// Start autoplay
+		startAutoplay();
+	</script>
+
+	<style>
+		/* Custom styles for the page */
+		.hero-section {
+			background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+		}
+		
+		.prose h3 {
+			color: #1f2937;
+			font-weight: 600;
+		}
+		
+		.prose p {
+			margin-bottom: 1rem;
+		}
+		
+		.prose ul {
+			margin-bottom: 1rem;
+		}
+		
+		.dot.active {
+			background-color: #ffffff;
+			opacity: 1;
+		}
+		
+		#imageCarousel {
+			display: flex;
+			transition: transform 0.5s ease-in-out;
+		}
+		
+		#imageCarousel > div {
+			min-width: 100%;
+		}
+		
+		/* Responsive adjustments */
+		@media (max-width: 768px) {
+			.hero-section {
+				padding: 2rem 1rem;
+			}
+			
+			h1 {
+				font-size: 2rem;
+			}
+			
+			.container {
+				padding-left: 1rem;
+				padding-right: 1rem;
+			}
+		}
+	</style>
+</Layout>

@@ -4,7 +4,7 @@ import HeroSection from '../../components/course/HeroSection.astro';
 import CourseFeatures from '../../components/course/CourseFeatures.astro';
 import DualCourseContent from '../../components/course/DualCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
-import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import ContactSection from '../../components/ContactSection.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -211,7 +211,7 @@ const advancedCurriculumItems = [
         <!-- 縮時攝影機 -->
         <div class="text-center">
           <div class="mb-6">
-            <img src="https://lwfiles.mycourse.app/10botics-public/0e5fea39e8ed293269a77b52fcfd9969.gif" alt="縮時攝影機" class="w-full h-48 object-cover rounded-lg">
+            <Image src="/src/assets/images/school-courses/raspberry-pi編程課程/timelapse-camera.gif" alt="縮時攝影機" class="w-full h-48 object-cover rounded-lg" width="600" height="400">
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-3">縮時攝影機</h3>
           <p class="text-gray-600">認識如何從 GitHub 中複製一個項目下來</p>
@@ -220,7 +220,7 @@ const advancedCurriculumItems = [
         <!-- 測距器 -->
         <div class="text-center">
           <div class="mb-6">
-            <img src="https://lwfiles.mycourse.app/10botics-public/eb27302266f46cb79173778ca64b0bcc.gif" alt="測距器" class="w-full h-48 object-cover rounded-lg">
+            <Image src="/src/assets/images/school-courses/raspberry-pi編程課程/distance-sensor.gif" alt="測距器" class="w-full h-48 object-cover rounded-lg" width="600" height="400">
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-3">測距器</h3>
           <p class="text-gray-600">認識數位輸入和輸出</p>
@@ -229,7 +229,7 @@ const advancedCurriculumItems = [
         <!-- 復古遊戲機 RetroPie -->
         <div class="text-center">
           <div class="mb-6">
-            <img src="https://lwfiles.mycourse.app/10botics-public/ad9e102947b39eb2f171d269d2dfa1d1.gif" alt="復古遊戲機" class="w-full h-48 object-cover rounded-lg">
+            <Image src="/src/assets/images/school-courses/raspberry-pi編程課程/retro-gaming.gif" alt="復古遊戲機" class="w-full h-48 object-cover rounded-lg" width="600" height="400">
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-3">復古遊戲機 RetroPie</h3>
           <p class="text-gray-600">認識如何燒錄 OS 到 SD 卡</p>
@@ -352,7 +352,7 @@ const advancedCurriculumItems = [
         <p class="text-lg text-gray-600">想了解更多關於 Raspberry Pi 編程課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。</p>
       </div>
       <div class="max-w-4xl mx-auto">
-        <PaperformEmbed />
+        <ContactSection subtitle="想了解更多關於 Raspberry Pi 編程課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
       </div>
     </div>
   </section>

@@ -1,0 +1,225 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import { Image } from 'astro:assets';
+
+// Course data
+export const courseData = {
+  title: "胡克滾輪——STEM科學手作，動手製作胡克滾輪，探究彈性與簡單機械的奧秘，學習彈力的基本概念和作用",
+  subtitle: "Stem到校課程，提供不同範疇科學手作課程，可配合不同年級而選擇。旨在讓學生從探索不同科學原理和概念，透過動手製作而理解相關的概念，從更有趣生動的方式吸收新的知識。",
+  tags: ["STEM教育", "科學手作", "物理學", "彈性與彈力", "簡單機械", "初小", "高小", "中學"],
+  videoId: "your-video-id-here",
+  description: "透過製作胡克滾輪，學生將學習彈性的基本概念、彈力的作用原理，以及簡單機械的奧秘，並探索彈力在日常生活中的應用。",
+  detailedDescription: "此課程旨在讓學生透過動手製作胡克滾輪，深入理解彈性與彈力的基本概念和簡單機械原理。學生將學習胡克滾輪的組成結構、彈性的作用機制、彈力的測量方法，並親手製作胡克滾輪來驗證所學理論。課程還將探討彈力在實際生活中的應用，讓學生認識力與運動的關係，培養科學思維和實踐能力。",
+  heroImage: null // Will use placeholder for now
+};
+
+// Course features
+const courseFeatures = [
+  {
+    icon: "fas fa-cogs",
+    title: "動手製作胡克滾輪",
+    description: "學生將親手組裝胡克滾輪，透過實踐操作理解彈性原理和彈力的測量。"
+  },
+  {
+    icon: "fas fa-graduation-cap",
+    title: "適合不同年級學生",
+    description: "課程內容可配合不同年級調整深淺，從小學到中學都能參與學習。"
+  },
+  {
+    icon: "fas fa-lightbulb",
+    title: "科學理論結合實踐",
+    description: "結合科學理論與動手製作，讓學生在有趣生動的方式中吸收新知識。"
+  }
+];
+
+// Course curriculum
+const courseCurriculum = [
+  {
+    title: "胡克滾輪是什麼？ [20分鐘]",
+    content: [
+      "介紹胡克滾輪的組成結構",
+      "了解胡克滾輪的基本原理",
+      "認識彈性與彈力的關係"
+    ]
+  },
+  {
+    title: "彈性的作用 [20分鐘]",
+    content: [
+      "學習彈性的基本概念",
+      "認識彈力的作用原理",
+      "了解彈性在機械中的應用"
+    ]
+  },
+  {
+    title: "製作胡克滾輪 [20分鐘]",
+    content: [
+      "組裝胡克滾輪材料",
+      "調整滾輪的彈性係數",
+      "測試滾輪的功能和彈性"
+    ]
+  }
+];
+
+// Course highlights
+const courseHighlights = [
+  {
+    title: "彈性的應用",
+    description: "探索彈性在日常生活和工程中的實際應用，如彈簧、橡膠等。",
+    icon: "fas fa-industry"
+  },
+  {
+    title: "彈力的實作體驗",
+    description: "透過實際操作感受不同彈性係數的彈力，建立對彈力的直觀認識。",
+    icon: "fas fa-hands-helping"
+  },
+  {
+    title: "科學思維培養",
+    description: "培養觀察、分析、推理的科學思維能力。",
+    icon: "fas fa-brain"
+  }
+];
+
+// Learning objectives
+const learningObjectives = [
+  "理解胡克滾輪的基本組成和原理",
+  "認識彈性的概念、作用機制和測量方法",
+  "掌握彈力與彈性係數的關係",
+  "能夠製作和操作胡克滾輪",
+  "了解彈性在實際生活中的應用",
+  "培養科學探究精神和實踐能力"
+];
+
+// Materials provided
+const materialsProvided = [
+  "胡克滾輪材料包",
+  "胡克滾輪PPT",
+  "胡克滾輪工作紙"
+];
+
+// Related courses
+const relatedCourses = [
+  {
+    title: "滑輪測力器",
+    description: "動手製作滑輪測力器，學習力的基本概念，探索力的世界",
+    link: "/stem/滑輪測力器"
+  },
+  {
+    title: "減震裝置",
+    description: "探索振動控制和能量吸收原理",
+    link: "/stem/減震裝置"
+  }
+];
+
+// FAQ data
+const faqs = [
+  {
+    question: "這個課程適合什麼年級的學生？",
+    answer: "此課程適合小學三年級至中學三年級的學生，課程內容會根據學生年級調整深淺程度。"
+  },
+  {
+    question: "學生需要具備什麼基礎知識？",
+    answer: "學生不需要具備特殊的基礎知識，課程會從基本概念開始講解，適合初學者。"
+  },
+  {
+    question: "課程會提供什麼材料？",
+    answer: "我們會提供完整的胡克滾輪材料包、PPT教材和工作紙，學生可以帶回家繼續學習。"
+  },
+  {
+    question: "課程時長是多久？",
+    answer: "標準課程時長為1小時，可根據學校需要調整為45分鐘或90分鐘。"
+  },
+  {
+    question: "最多可以容納多少學生？",
+    answer: "建議每班15-25名學生，以確保每位學生都能得到充分的指導和實踐機會。"
+  }
+];
+
+// SEO and metadata
+const seoData = {
+  title: "胡克滾輪 - STEM科學手作課程 | 10教育",
+  description: "動手製作胡克滾輪，探究彈性與簡單機械的奧秘，學習彈力的基本概念和作用。Stem到校課程，提供不同範疇科學手作課程，可配合不同年級而選擇。",
+  keywords: "10Botics, 10教育, STEM教育, 胡克滾輪, 彈性與彈力, 簡單機械, 科學手作, Stem手作, 日常生活中的彈力",
+  ogImage: "/images/stem/hookes-pulley-og.jpg"
+};
+---
+
+<Layout 
+  title={seoData.title}
+  description={seoData.description}
+  keywords={seoData.keywords}
+  ogImage={seoData.ogImage}
+>
+  <main>
+    <!-- Hero Section -->
+    <HeroSection 
+      title="胡克滾輪"
+      subtitle="STEM科學手作，動手製作胡克滾輪，探究彈性與簡單機械的奧秘，學習彈力的基本概念和作用"
+      tags={courseData.tags}
+      description="Stem到校課程，提供不同範疇科學手作課程，可配合不同年級而選擇。旨在讓學生從探索不同科學原理和概念，透過動手製作而理解相關的概念，從更有趣生動的方式吸收新的知識。"
+      heroImage={courseData.heroImage}
+    />
+
+    <!-- Course Content -->
+    <SingleCourseContent 
+      items={courseCurriculum}
+      hours="1 小時"
+    />
+
+    <!-- Materials Section -->
+    <section class="py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-800 mb-4">材料提供</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            我們將為每位學生提供完整的學習材料，確保學習效果
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {materialsProvided.map((material, index) => (
+            <div class="bg-white rounded-lg p-6 text-center shadow-lg">
+              <div class="text-4xl text-blue-600 mb-4">
+                {index === 0 ? "📦" : index === 1 ? "📊" : "📝"}
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800">{material}</h3>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Courses Section -->
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-800 mb-4">相關手作內容</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            探索更多STEM科學手作項目，培養科學思維和實踐能力
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {relatedCourses.map((course) => (
+            <div class="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow">
+              <h3 class="text-xl font-bold text-gray-800 mb-3">{course.title}</h3>
+              <p class="text-gray-600 mb-4">{course.description}</p>
+              <a href={course.link} class="text-blue-600 hover:text-blue-800 font-semibold">
+                了解更多 →
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Q&A Section -->
+    <QnASection faqs={faqs} />
+
+    <!-- Contact Section -->
+    <ContactSection />
+  </main>
+</Layout>

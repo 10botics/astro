@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import DualCourseContent from '../../components/course/DualCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
-import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import ContactSection from '../../components/ContactSection.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -22,7 +22,7 @@ import kspCarousel6 from '../../assets/images/school-courses/ksp太空計劃課�
 export const courseData = {
   title: "Kerbal Space Program (KSP) 太空任務設計課程",
   subtitle: "開啟火箭工程之旅，進入KSP模擬的科學與奧秘！",
-  tags: ["Engineering 工程", "KSP", "Science 科學", "初中", "遊戲開發", "高中", "高小"],
+  tags: ["Engineering 工程", "KSP", "Science 科學", "遊戲開發", "高小", "初中", "高中"],
   videoId: "yBQEm80belU",
   description: "通過 KSP 模擬太空任務和探索宇宙，學生將進入迷人的太空科學世界，學習如何建構火箭，並掌握引力、推進力和運動力學等重要概念。透過模擬真實的太空環境和挑戰，他們將學習如何計劃和執行成功的發射任務，激發學員的創造力和探索精神，培養解決問題和團隊合作的能力。",
   detailedDescription: "通過 KSP 模擬太空任務和探索宇宙，學生將進入迷人的太空科學世界，學習如何建構火箭，並掌握引力、推進力和運動力學等重要概念。透過模擬真實的太空環境和挑戰，他們將學習如何計劃和執行成功的發射任務，激發學員的創造力和探索精神，培養解決問題和團隊合作的能力。",
@@ -223,6 +223,8 @@ const ogImage = kspMain.src;
               width={600}
               height={400}
               class="w-full h-auto"
+              width="600"
+              height="400"
             />
           </div>
         </div>
@@ -421,12 +423,12 @@ const ogImage = kspMain.src;
       <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">精選照片</h2>
       
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-        <Image src={kspCarousel1} alt="KSP gaming" class="w-full h-32 object-cover rounded-lg shadow-md" />
-        <Image src={kspCarousel2} alt="KSP learn" class="w-full h-32 object-cover rounded-lg shadow-md" />
-        <Image src={kspCarousel3} alt="KSP try" class="w-full h-32 object-cover rounded-lg shadow-md" />
-        <Image src={kspCarousel4} alt="KSP game" class="w-full h-32 object-cover rounded-lg shadow-md" />
-        <Image src={kspCarousel5} alt="KSP focus" class="w-full h-32 object-cover rounded-lg shadow-md" />
-        <Image src={kspCarousel6} alt="KSP attention" class="w-full h-32 object-cover rounded-lg shadow-md" />
+        <Image src={kspCarousel1} alt="KSP gaming" class="w-full h-32 object-cover rounded-lg shadow-md" width="800" height="320" />
+        <Image src={kspCarousel2} alt="KSP learn" class="w-full h-32 object-cover rounded-lg shadow-md" width="800" height="320" />
+        <Image src={kspCarousel3} alt="KSP try" class="w-full h-32 object-cover rounded-lg shadow-md" width="800" height="320" />
+        <Image src={kspCarousel4} alt="KSP game" class="w-full h-32 object-cover rounded-lg shadow-md" width="800" height="320" />
+        <Image src={kspCarousel5} alt="KSP focus" class="w-full h-32 object-cover rounded-lg shadow-md" width="800" height="320" />
+        <Image src={kspCarousel6} alt="KSP attention" class="w-full h-32 object-cover rounded-lg shadow-md" width="800" height="320" />
       </div>
     </div>
   </section>
@@ -444,7 +446,7 @@ const ogImage = kspMain.src;
           想了解更多關於 KSP 太空任務設計課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。
         </p>
       </div>
-      <PaperformEmbed />
+      <ContactSection subtitle="想了解更多關於 KSP 太空計劃課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
     </div>
   </section>
 
@@ -455,7 +457,7 @@ const ogImage = kspMain.src;
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="https://10botics.com/wp-content/uploads/2023/09/mj100_a_captivating_web_featured_image_that_delves_deep_into_th_83bb5e4a-9e38-49e9-9b65-1f5d9851d71b-768x578.png" alt="AI Course" class="w-full h-48 object-cover" />
+          <Image src="/src/assets/images/school-courses/ksp太空計劃課程/ai-course.png" alt="AI Course" class="w-full h-48 object-cover" width="800" height="578" />
           <div class="p-6">
             <h3 class="text-xl font-bold text-gray-900 mb-3">
               <a href="/school-courses/ai-enrichment-course" class="hover:text-blue-600">AI啟蒙與藝術創作課程</a>
@@ -466,7 +468,7 @@ const ogImage = kspMain.src;
         </div>
 
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="https://10botics.com/wp-content/uploads/2024/01/background-05-1.jpg" alt="AI Digital Animation" class="w-full h-48 object-cover" />
+          <Image src="/src/assets/images/school-courses/ksp太空計劃課程/ai-digital-animation.jpg" alt="AI Digital Animation" class="w-full h-48 object-cover" width="800" height="578" />
           <div class="p-6">
             <h3 class="text-xl font-bold text-gray-900 mb-3">
               <a href="/stem-day/ai-digital-animation-exhibition" class="hover:text-blue-600">AI數碼動畫展</a>
@@ -477,7 +479,7 @@ const ogImage = kspMain.src;
         </div>
 
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="https://10botics.com/wp-content/uploads/2023/09/112-768x577.png" alt="Blockchain Course" class="w-full h-48 object-cover" />
+          <Image src="/src/assets/images/school-courses/ksp太空計劃課程/blockchain-course.png" alt="Blockchain Course" class="w-full h-48 object-cover" width="800" height="577" />
           <div class="p-6">
             <h3 class="text-xl font-bold text-gray-900 mb-3">
               <a href="/school-courses/blockchain" class="hover:text-blue-600">Blockchain 區塊鏈課程</a>

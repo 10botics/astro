@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import AccordionSection from '../../components/course/AccordionSection.astro';
 import QnASection from '../../components/course/QnASection.astro';
-import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import ContactSection from '../../components/ContactSection.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -22,7 +22,7 @@ import institutionActivity from '../../assets/images/school-courses/AI數碼動�
 export const courseData = {
   title: "AI數碼動畫展",
   subtitle: "AI 驅動的數位動畫創作，讓角色在螢幕上跳舞",
-  tags: ["AI 人工智能", "Arts 藝術", "STEM Day", "動畫創作", "互動體驗"],
+  tags: ["AI 人工智能", "Arts 藝術"],
   videoId: "LE8NNIhNHP0",
   description: "AI數碼動畫展是一個簡單有趣的 STEM Day 活動，學生可按主題設計喜歡的圖案/角色，通過人工智能把圖案轉換成栩栩如生的動畫，呈現在學校LED Wall或螢幕上面跳舞，讓學生能以輕鬆有趣的方式體驗生成式AI技術。",
   detailedDescription: "AI數碼動畫展是一個簡單有趣的 STEM Day 活動，學生可按主題設計喜歡的圖案/角色，通過人工智能把圖案轉換成栩栩如生的動畫，呈現在學校LED Wall或螢幕上面跳舞，讓學生能以輕鬆有趣的方式體驗生成式AI技術。",
@@ -378,7 +378,7 @@ const completeCourseFeatures = [
           想了解更多關於 AI 數碼動畫展活動的資訊？歡迎聯絡我們，我們會為您提供詳細的活動安排和報名資訊。
         </p>
       </div>
-      <PaperformEmbed />
+      <ContactSection subtitle="想了解更多關於 AI 數碼動畫展的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
     </div>
   </section>
 </Layout> 

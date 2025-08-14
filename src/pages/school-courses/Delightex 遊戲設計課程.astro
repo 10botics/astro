@@ -4,7 +4,7 @@ import HeroSection from '../../components/course/HeroSection.astro';
 import CourseFeatures from '../../components/course/CourseFeatures.astro';
 import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
-import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import ContactSection from '../../components/ContactSection.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -13,12 +13,14 @@ import codeBlocks from '../../assets/images/school-courses/Delightex 遊戲設�
 import arVr from '../../assets/images/school-courses/Delightex 遊戲設計課程/ar-vr.png';
 import threeDThinking from '../../assets/images/school-courses/Delightex 遊戲設計課程/3d-thinking.png';
 import adminAjaxMin from '../../assets/images/school-courses/Delightex 遊戲設計課程/admin-ajax-min.png';
+import delightexSolarSystem from '../../assets/images/school-courses/Delightex 遊戲設計課程/delightex-solar-system.png';
+import delightexBowling from '../../assets/images/school-courses/Delightex 遊戲設計課程/delightex-bowling.png';
 
 // Course data (static) - now in frontmatter
 export const courseData = {
   title: "Delightex 遊戲設計課程",
   subtitle: "創造虛擬世界，體驗 VR 編程的樂趣",
-  tags: ["Programming 編程", "VR", "虛擬實境", "創意", "初中", "高中"],
+  tags: ["AR 擴增實境", "Delightex", "Metaverse 元宇宙", "Programming 編程", "VR 虛擬實境", "遊戲開發", "高小", "初中", "高中"],
   videoId: "HQkDRxd4pUo",
   description: "Delightex 遊戲設計課程讓學生學習如何創建虛擬現實環境，通過編程和設計來構建沉浸式的 VR 體驗。",
   detailedDescription: "Delightex 遊戲設計課程讓學生學習如何創建虛擬現實環境，通過編程和設計來構建沉浸式的 VR 體驗。",
@@ -235,8 +237,8 @@ const studentWorkExamples = [
     items={curriculumItems} 
     hours="10 小時"
     images={[
-      { src: "https://10botics.com/wp-content/uploads/2023/06/Screenshot-2023-08-15-104602.png", alt: "Delightex solar system" },
-      { src: "https://10botics.com/wp-content/uploads/2023/06/Screenshot-2023-08-15-105114.png", alt: "Delightex bowling" }
+      { src: delightexSolarSystem, alt: "Delightex solar system" },
+      { src: delightexBowling, alt: "Delightex bowling" }
     ]}
   />
 
@@ -293,8 +295,7 @@ const studentWorkExamples = [
       <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">聯絡我們</h2>
       <div class="bg-white rounded-lg p-8 shadow-lg">
         <div class="text-center">
-          <p class="text-lg text-gray-700 mb-6">想了解更多關於 Delightex 遊戲設計課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。</p>
-          <PaperformEmbed />
+          <ContactSection subtitle="想了解更多關於 Delightex 遊戲設計課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
         </div>
       </div>
     </div>
