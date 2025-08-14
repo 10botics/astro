@@ -47,6 +47,14 @@ const navItems = [
     ]
   },
   { 
+    name: '比賽名單', 
+    href: '#',
+    children: [
+      { name: '2024 中小學 STEM 比賽清單', href: '/2024-stem-competition-list' },
+      { name: '2025 中小學 STEM 比賽清單', href: '/2025-stem-competition-results' }
+    ]
+  },
+  { 
     name: '資助申請', 
     href: '#',
     children: [
@@ -97,7 +105,7 @@ const navItems = [
           <div class="relative group">
             <a
               href={item.href}
-              class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200 flex items-center"
+              class="text-gray-700 hover:text-blue-600 px-3 py-2 text-xs font-medium transition-colors duration-200 flex items-center"
             >
               {item.name}
               {item.children && (
@@ -115,7 +123,7 @@ const navItems = [
                     <div class="relative group/sub">
                       <a
                         href={child.href}
-                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150 flex items-center justify-between"
+                        class="block px-4 py-2 text-xs text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150 flex items-center justify-between"
                       >
                         {child.name}
                         {child.children && (
@@ -132,7 +140,7 @@ const navItems = [
                             {child.children.map((subChild) => (
                               <a
                                 href={subChild.href}
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150"
+                                class="block px-4 py-2 text-xs text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150"
                               >
                                 {subChild.name}
                               </a>
@@ -170,7 +178,7 @@ const navItems = [
           <div class="mobile-menu-item">
             <a
               href={item.href}
-              class="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium transition-colors duration-200 flex items-center justify-between"
+              class="text-gray-700 hover:text-blue-600 block px-3 py-2 text-sm font-medium transition-colors duration-200 flex items-center justify-between"
               data-has-children={item.children ? 'true' : 'false'}
             >
               {item.name}
@@ -188,7 +196,7 @@ const navItems = [
                   <div class="mobile-sub-item">
                     <a
                       href={child.href}
-                      class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200 flex items-center justify-between"
+                      class="block px-3 py-2 text-xs text-gray-600 hover:text-blue-600 transition-colors duration-200 flex items-center justify-between"
                       data-has-children={child.children ? 'true' : 'false'}
                     >
                       {child.name}
