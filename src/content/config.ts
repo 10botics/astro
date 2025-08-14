@@ -27,6 +27,32 @@ const newsCollection = defineCollection({
   }),
 });
 
+const primaryCompetitionsCollection = defineCollection({
+  type: 'data',
+  schema: z.object({
+    date: z.string(),
+    name: z.string(),
+    keywords: z.string(),
+    popularity: z.string(),
+    link: z.string(),
+    level: z.enum(['小學', '中學', '中小學']).default('小學'),
+  }),
+});
+
+const secondaryCompetitionsCollection = defineCollection({
+  type: 'data',
+  schema: z.object({
+    date: z.string(),
+    name: z.string(),
+    keywords: z.string(),
+    popularity: z.string(),
+    link: z.string(),
+    level: z.enum(['小學', '中學', '中小學']).default('中學'),
+  }),
+});
+
 export const collections = {
   'news': newsCollection,
+  'primary-competitions': primaryCompetitionsCollection,
+  'secondary-competitions': secondaryCompetitionsCollection,
 }; 

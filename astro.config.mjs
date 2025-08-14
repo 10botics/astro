@@ -4,6 +4,8 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import path from 'path';
 
+import db from '@astrojs/db';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://staging.10botics.com',
@@ -16,6 +18,7 @@ export default defineConfig({
     resolve: {
       alias: {
         '@': path.resolve('./src'),
+        '@table': path.resolve('./src/table'),
       },
     },
     // Exclude migration data from being watched
@@ -47,19 +50,16 @@ export default defineConfig({
       devSourcemap: false,
     },
   },
-  integrations: [
-    tailwind({
-      // Apply TailwindCSS to all files
-      applyBaseStyles: true,
-    }),
-    sitemap({
-      changefreq: 'weekly',
-      priority: 0.7,
-      lastmod: new Date(),
-      // Ensure sitemap is accessible
-      filter: (page) => !page.includes('404'),
-    }),
-  ],
+  integrations: [tailwind({
+    // Apply TailwindCSS to all files
+    applyBaseStyles: true,
+  }), sitemap({
+    changefreq: 'weekly',
+    priority: 0.7,
+    lastmod: new Date(),
+    // Ensure sitemap is accessible
+    filter: (page) => !page.includes('404'),
+  }), db()],
   // Image optimization using built-in Astro assets
   image: {
     // Enable image optimization
