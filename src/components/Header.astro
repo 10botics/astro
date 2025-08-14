@@ -112,6 +112,23 @@ const headerCriticalCSS = `
   .duration-200 { transition-duration: 200ms; }
   .ease-in-out { transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
   
+  /* Dropdown specific styles */
+  .opacity-0 { opacity: 0; }
+  .opacity-100 { opacity: 1; }
+  .invisible { visibility: hidden; }
+  .visible { visibility: visible; }
+  .transition-all { transition-property: all; }
+  .z-50 { z-index: 50; }
+  .absolute { position: absolute; }
+  .left-0 { left: 0; }
+  .mt-2 { margin-top: 0.5rem; }
+  .w-64 { width: 16rem; }
+  .bg-white { background-color: white; }
+  .rounded-md { border-radius: 0.375rem; }
+  .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+  .border { border-width: 1px; }
+  .border-gray-200 { border-color: #e5e7eb; }
+  
   @media (min-width: 640px) {
     .sm\\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
   }
@@ -148,24 +165,53 @@ const headerCriticalCSS = `
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex space-x-8">
         {navItems.map((item) => (
-          <div class="relative group">
+          <div class="relative" data-dropdown>
             <a 
               href={item.href} 
-              class="text-gray-700 hover:text-blue-600 transition-colors duration-200 ease-in-out font-medium"
+              class="text-gray-700 hover:text-blue-600 transition-colors duration-200 ease-in-out font-medium cursor-pointer"
+              data-dropdown-trigger
             >
               {item.name}
             </a>
             
             {item.children && (
-              <div class="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div class="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg opacity-0 invisible transition-all duration-200 z-50 border border-gray-200" data-dropdown-menu>
                 <div class="py-2">
                   {item.children.map((child) => (
-                    <a 
-                      href={child.href} 
-                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition-colors duration-200"
-                    >
-                      {child.name}
-                    </a>
+                    <div>
+                      {child.children ? (
+                        // This is a nested dropdown (like "過往比賽")
+                        <div class="relative" data-nested-dropdown>
+                          <a 
+                            href={child.href} 
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition-colors duration-200 cursor-pointer"
+                            data-nested-trigger
+                          >
+                            {child.name}
+                          </a>
+                          <div class="absolute left-full top-0 ml-1 w-64 bg-white rounded-md shadow-lg opacity-0 invisible transition-all duration-200 z-50 border border-gray-200" data-nested-menu>
+                            <div class="py-2">
+                              {child.children.map((grandchild) => (
+                                <a 
+                                  href={grandchild.href} 
+                                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition-colors duration-200"
+                                >
+                                  {grandchild.name}
+                                </a>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        // This is a regular menu item
+                        <a 
+                          href={child.href} 
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition-colors duration-200"
+                        >
+                          {child.name}
+                        </a>
+                      )}
+                    </div>
                   ))}
                 </div>
               </div>
@@ -219,9 +265,129 @@ const headerCriticalCSS = `
     </div>
   </div>
 
-  <!-- Mobile menu JavaScript -->
+  <!-- Desktop Navigation JavaScript -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Desktop dropdown functionality - handle both single and nested dropdowns
+      const dropdowns = document.querySelectorAll('[data-dropdown]');
+      
+      dropdowns.forEach(dropdown => {
+        const trigger = dropdown.querySelector('[data-dropdown-trigger]');
+        const menu = dropdown.querySelector('[data-dropdown-menu]');
+        
+        if (!trigger || !menu) return;
+        
+        // Show dropdown on mouse enter
+        dropdown.addEventListener('mouseenter', function() {
+          menu.classList.remove('opacity-0', 'invisible');
+          menu.classList.add('opacity-100', 'visible');
+        });
+        
+        // Hide dropdown on mouse leave
+        dropdown.addEventListener('mouseleave', function() {
+          menu.classList.add('opacity-0', 'invisible');
+          menu.classList.remove('opacity-100', 'visible');
+        });
+        
+        // Also handle click for better mobile-like experience
+        trigger.addEventListener('click', function(e) {
+          if (menu) {
+            e.preventDefault();
+            const isVisible = !menu.classList.contains('invisible');
+            
+            // Close all other dropdowns
+            dropdowns.forEach(otherDropdown => {
+              const otherMenu = otherDropdown.querySelector('[data-dropdown-menu]');
+              if (otherMenu && otherDropdown !== dropdown) {
+                otherMenu.classList.add('opacity-0', 'invisible');
+                otherMenu.classList.remove('opacity-100', 'visible');
+              }
+            });
+            
+            // Toggle current dropdown
+            if (isVisible) {
+              menu.classList.add('opacity-0', 'invisible');
+              menu.classList.remove('opacity-100', 'visible');
+            } else {
+              menu.classList.remove('opacity-0', 'invisible');
+              menu.classList.add('opacity-100', 'visible');
+            }
+          }
+        });
+      });
+      
+      // Handle nested dropdowns (like "過往比賽" within "比賽")
+      const nestedDropdowns = document.querySelectorAll('[data-nested-dropdown]');
+      
+      nestedDropdowns.forEach(nestedDropdown => {
+        const nestedTrigger = nestedDropdown.querySelector('[data-nested-trigger]');
+        const nestedMenu = nestedDropdown.querySelector('[data-nested-menu]');
+        
+        if (!nestedTrigger || !nestedMenu) return;
+        
+        // Show nested dropdown on mouse enter
+        nestedDropdown.addEventListener('mouseenter', function() {
+          nestedMenu.classList.remove('opacity-0', 'invisible');
+          nestedMenu.classList.add('opacity-100', 'visible');
+        });
+        
+        // Hide nested dropdown on mouse leave
+        nestedDropdown.addEventListener('mouseleave', function() {
+          nestedMenu.classList.add('opacity-0', 'invisible');
+          nestedMenu.classList.remove('opacity-100', 'visible');
+        });
+        
+        // Handle click for nested dropdown
+        nestedTrigger.addEventListener('click', function(e) {
+          if (nestedMenu) {
+            e.preventDefault();
+            const isVisible = !nestedMenu.classList.contains('invisible');
+            
+            // Close all other nested dropdowns
+            nestedDropdowns.forEach(otherNested => {
+              const otherMenu = otherNested.querySelector('[data-nested-menu]');
+              if (otherMenu && otherNested !== nestedDropdown) {
+                otherMenu.classList.add('opacity-0', 'invisible');
+                otherMenu.classList.remove('opacity-100', 'visible');
+              }
+            });
+            
+            // Toggle current nested dropdown
+            if (isVisible) {
+              nestedMenu.classList.add('opacity-0', 'invisible');
+              nestedMenu.classList.remove('opacity-100', 'visible');
+            } else {
+              nestedMenu.classList.remove('opacity-0', 'invisible');
+              nestedMenu.classList.add('opacity-100', 'visible');
+            }
+          }
+        });
+      });
+      
+      // Close dropdowns when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!(e.target instanceof Element) || !e.target.closest('[data-dropdown]')) {
+          dropdowns.forEach(dropdown => {
+            const menu = dropdown.querySelector('[data-dropdown-menu]');
+            if (menu) {
+              menu.classList.add('opacity-0', 'invisible');
+              menu.classList.remove('opacity-100', 'visible');
+            }
+          });
+        }
+        
+        if (!(e.target instanceof Element) || !e.target.closest('[data-nested-dropdown]')) {
+          nestedDropdowns.forEach(nestedDropdown => {
+            const nestedMenu = nestedDropdown.querySelector('[data-nested-menu]');
+            if (nestedMenu) {
+              nestedMenu.classList.add('opacity-0', 'invisible');
+              nestedMenu.classList.remove('opacity-100', 'visible');
+            }
+          });
+        }
+      });
+      
+      // Mobile menu functionality
       const mobileMenuButton = document.getElementById('mobile-menu-button');
       const mobileMenu = document.getElementById('mobile-menu');
       
