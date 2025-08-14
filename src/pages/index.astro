@@ -6,14 +6,16 @@ import BlogGrid from '../components/homepage/BlogGrid.astro';
 import CTAWithImage from '../components/homepage/CTAWithImage.astro';
 import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
 
-// Import images
+// Import critical images for above-the-fold content
 import heroImage from '../assets/images/index/hero-image.jpg';
+import logoImage from '../assets/images/index/logo.png';
+
+// Import non-critical images with lazy loading
 import stemDayImage from '../assets/images/index/stem-day.jpg';
 import aiCoursesImage from '../assets/images/index/ai-courses.jpg';
 import teacherDevImage from '../assets/images/index/teacher-development.jpg';
 import hardwareImage from '../assets/images/index/hardware.jpg';
 import fundingImage from '../assets/images/index/funding.jpg';
-import logoImage from '../assets/images/index/logo.png';
 
 // Import news images
 import hackathonImage from '../assets/images/news/2024-09-10-匯豐香港社區夥伴計劃社區創新科技大賽-hackathon-2024/image1.jpeg';
@@ -50,7 +52,14 @@ const pageKeywords = "STEM教育, AI課程, 人工智能, 到校課程, STEM Day
       <div class="relative container mx-auto px-4">
         <div class="max-w-6xl mx-auto text-center">
           <div class="mb-8">
-            <Image src={logoImage} alt="10Botics Logo" class="mx-auto max-w-md" />
+            <Image 
+              src={logoImage} 
+              alt="10Botics Logo" 
+              class="mx-auto max-w-md" 
+              width={400}
+              height={120}
+              priority={true}
+            />
           </div>
           <h2 class="text-2xl md:text-3xl mb-8 opacity-90">專注 STEM 課程研發及教學</h2>
           <p class="text-xl mb-12 opacity-80 max-w-4xl mx-auto">
@@ -103,13 +112,34 @@ const pageKeywords = "STEM教育, AI課程, 人工智能, 到校課程, STEM Day
           <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">活動花絮</h2>
           <div class="grid md:grid-cols-3 gap-6">
             <div class="bg-white rounded-lg overflow-hidden shadow-lg">
-              <Image src={heroImage} alt="STEM活動" class="w-full h-64 object-cover" />
+              <Image 
+                src={heroImage} 
+                alt="STEM活動" 
+                class="w-full h-64 object-cover" 
+                width={400}
+                height={256}
+                loading="lazy"
+              />
             </div>
             <div class="bg-white rounded-lg overflow-hidden shadow-lg">
-              <Image src={stemDayImage} alt="STEM Day活動" class="w-full h-64 object-cover" />
+              <Image 
+                src={stemDayImage} 
+                alt="STEM Day活動" 
+                class="w-full h-64 object-cover" 
+                width={400}
+                height={256}
+                loading="lazy"
+              />
             </div>
             <div class="bg-white rounded-lg overflow-hidden shadow-lg">
-              <Image src={aiCoursesImage} alt="AI課程" class="w-full h-64 object-cover" />
+              <Image 
+                src={aiCoursesImage} 
+                alt="AI課程" 
+                class="w-full h-64 object-cover" 
+                width={400}
+                height={256}
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
@@ -127,7 +157,14 @@ const pageKeywords = "STEM教育, AI課程, 人工智能, 到校課程, STEM Day
             <!-- 到校課程 -->
             <div class="bg-white rounded-lg overflow-hidden shadow-lg relative group">
               <div class="relative h-64 overflow-hidden">
-                <Image src={heroImage} alt="到校課程" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                <Image 
+                  src={heroImage} 
+                  alt="到校課程" 
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" 
+                  width={400}
+                  height={256}
+                  loading="lazy"
+                />
                 <div class="absolute inset-0 bg-black bg-opacity-40"></div>
                 <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
                   popular
@@ -145,7 +182,14 @@ const pageKeywords = "STEM教育, AI課程, 人工智能, 到校課程, STEM Day
             <!-- STEM Day -->
             <div class="bg-white rounded-lg overflow-hidden shadow-lg relative group">
               <div class="relative h-64 overflow-hidden">
-                <Image src={stemDayImage} alt="STEM Day" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                <Image 
+                  src={stemDayImage} 
+                  alt="STEM Day" 
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" 
+                  width={400}
+                  height={256}
+                  loading="lazy"
+                />
                 <div class="absolute inset-0 bg-black bg-opacity-40"></div>
                 <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
                   popular
@@ -163,7 +207,14 @@ const pageKeywords = "STEM教育, AI課程, 人工智能, 到校課程, STEM Day
             <!-- 人工智能課程 -->
             <div class="bg-white rounded-lg overflow-hidden shadow-lg relative group">
               <div class="relative h-64 overflow-hidden">
-                <Image src={aiCoursesImage} alt="人工智能課程" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                <Image 
+                  src={aiCoursesImage} 
+                  alt="人工智能課程" 
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" 
+                  width={400}
+                  height={256}
+                  loading="lazy"
+                />
                 <div class="absolute inset-0 bg-black bg-opacity-40"></div>
                 <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
                   popular
@@ -181,7 +232,14 @@ const pageKeywords = "STEM教育, AI課程, 人工智能, 到校課程, STEM Day
             <!-- 教師發展日 -->
             <div class="bg-white rounded-lg overflow-hidden shadow-lg relative group">
               <div class="relative h-64 overflow-hidden">
-                <Image src={teacherDevImage} alt="教師發展日" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                <Image 
+                  src={teacherDevImage} 
+                  alt="教師發展日" 
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" 
+                  width={400}
+                  height={256}
+                  loading="lazy"
+                />
                 <div class="absolute inset-0 bg-black bg-opacity-40"></div>
               </div>
               <div class="p-6">
@@ -196,7 +254,14 @@ const pageKeywords = "STEM教育, AI課程, 人工智能, 到校課程, STEM Day
             <!-- 硬件提供 -->
             <div class="bg-white rounded-lg overflow-hidden shadow-lg relative group">
               <div class="relative h-64 overflow-hidden">
-                <Image src={hardwareImage} alt="硬件提供" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                <Image 
+                  src={hardwareImage} 
+                  alt="硬件提供" 
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" 
+                  width={400}
+                  height={256}
+                  loading="lazy"
+                />
                 <div class="absolute inset-0 bg-black bg-opacity-40"></div>
               </div>
               <div class="p-6">
@@ -211,7 +276,14 @@ const pageKeywords = "STEM教育, AI課程, 人工智能, 到校課程, STEM Day
             <!-- 學校申請教育撥款協助 -->
             <div class="bg-white rounded-lg overflow-hidden shadow-lg relative group">
               <div class="relative h-64 overflow-hidden">
-                <Image src={fundingImage} alt="學校申請教育撥款協助" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                <Image 
+                  src={fundingImage} 
+                  alt="學校申請教育撥款協助" 
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" 
+                  width={400}
+                  height={256}
+                  loading="lazy"
+                />
                 <div class="absolute inset-0 bg-black bg-opacity-40"></div>
                 <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
                   popular
@@ -238,7 +310,14 @@ const pageKeywords = "STEM教育, AI課程, 人工智能, 到校課程, STEM Day
           <div class="grid md:grid-cols-3 gap-8">
             <div class="bg-white rounded-lg overflow-hidden shadow-lg">
               <div class="h-48 overflow-hidden">
-                <Image src={hackathonImage} alt="【匯豐香港社區夥伴計劃】社區創新科技大賽 Hackathon 2024" class="w-full h-full object-cover" />
+                <Image 
+                  src={hackathonImage} 
+                  alt="【匯豐香港社區夥伴計劃】社區創新科技大賽 Hackathon 2024" 
+                  class="w-full h-full object-cover" 
+                  width={400}
+                  height={192}
+                  loading="lazy"
+                />
               </div>
               <div class="p-6">
                 <h3 class="text-xl font-bold mb-3 text-gray-800">
@@ -258,7 +337,14 @@ const pageKeywords = "STEM教育, AI課程, 人工智能, 到校課程, STEM Day
 
             <div class="bg-white rounded-lg overflow-hidden shadow-lg">
               <div class="h-48 overflow-hidden">
-                <Image src={minecraftTinPoImage} alt="Minecraft校園創建計劃2024 共融大世界－天保民學校陳校長的話" class="w-full h-full object-cover" />
+                <Image 
+                  src={minecraftTinPoImage} 
+                  alt="Minecraft校園創建計劃2024 共融大世界－天保民學校陳校長的話" 
+                  class="w-full h-full object-cover" 
+                  width={400}
+                  height={192}
+                  loading="lazy"
+                />
               </div>
               <div class="p-6">
                 <h3 class="text-xl font-bold mb-3 text-gray-800">
@@ -278,7 +364,14 @@ const pageKeywords = "STEM教育, AI課程, 人工智能, 到校課程, STEM Day
 
             <div class="bg-white rounded-lg overflow-hidden shadow-lg">
               <div class="h-48 overflow-hidden">
-                <Image src={minecraftKennedyImage} alt="Minecraft校園創建計劃2024 共融大世界－香港紅十字會甘迺迪中心 馮耀宗老師的話" class="w-full h-full object-cover" />
+                <Image 
+                  src={minecraftKennedyImage} 
+                  alt="Minecraft校園創建計劃2024 共融大世界－香港紅十字會甘迺迪中心 馮耀宗老師的話" 
+                  class="w-full h-full object-cover" 
+                  width={400}
+                  height={192}
+                  loading="lazy"
+                />
               </div>
               <div class="p-6">
                 <h3 class="text-xl font-bold mb-3 text-gray-800">
@@ -313,19 +406,47 @@ const pageKeywords = "STEM教育, AI課程, 人工智能, 到校課程, STEM Day
           <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">客戶及合作機構</h2>
           <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-9 gap-6 items-center">
             <div class="text-center">
-              <Image src={plkTinKaPing} alt="保良局田家炳小學" class="h-16 w-16 object-contain rounded-full mx-auto mb-2" />
+              <Image 
+                src={plkTinKaPing} 
+                alt="保良局田家炳小學" 
+                class="h-16 w-16 object-contain rounded-full mx-auto mb-2" 
+                width={64}
+                height={64}
+                loading="lazy"
+              />
               <p class="text-sm text-gray-600">保良局田家炳小學</p>
             </div>
             <div class="text-center">
-              <Image src={stLouis} alt="聖類斯中學" class="h-16 w-16 object-contain rounded-full mx-auto mb-2" />
+              <Image 
+                src={stLouis} 
+                alt="聖類斯中學" 
+                class="h-16 w-16 object-contain rounded-full mx-auto mb-2" 
+                width={64}
+                height={64}
+                loading="lazy"
+              />
               <p class="text-sm text-gray-600">聖類斯中學</p>
             </div>
             <div class="text-center">
-              <Image src={wahYanKowloon} alt="九龍華仁書院" class="h-16 w-16 object-contain rounded-full mx-auto mb-2" />
+              <Image 
+                src={wahYanKowloon} 
+                alt="九龍華仁書院" 
+                class="h-16 w-16 object-contain rounded-full mx-auto mb-2" 
+                width={64}
+                height={64}
+                loading="lazy"
+              />
               <p class="text-sm text-gray-600">九龍華仁書院</p>
             </div>
             <div class="text-center">
-              <Image src={kingGeorge} alt="英皇書院" class="h-16 w-16 object-contain rounded-full mx-auto mb-2" />
+              <Image 
+                src={kingGeorge} 
+                alt="英皇書院" 
+                class="h-16 w-16 object-contain rounded-full mx-auto mb-2" 
+                width={64}
+                height={64}
+                loading="lazy"
+              />
               <p class="text-sm text-gray-600">英皇書院</p>
             </div>
             <div class="text-center">
@@ -464,40 +585,100 @@ const pageKeywords = "STEM教育, AI課程, 人工智能, 到校課程, STEM Day
     </section>
   </div>
 
+  <!-- Performance Optimization Script -->
   <script>
-    // Counter animation
-    function animateCounters() {
-      const counters = document.querySelectorAll('[data-count]');
-      counters.forEach(counter => {
-        const target = parseInt(counter.getAttribute('data-count') || '0');
-        const duration = 2000;
-        const step = target / (duration / 16);
-        let current = 0;
-        
-        const timer = setInterval(() => {
-          current += step;
-          if (current >= target) {
-            current = target;
-            clearInterval(timer);
-          }
-          counter.textContent = Math.floor(current).toLocaleString();
-        }, 16);
+    // Performance optimizations for better FCP
+    document.addEventListener('DOMContentLoaded', function() {
+      // Preload critical resources
+      const criticalImages = [
+        '/images/logo_website_700x200-300x86.png',
+        '/images/hero-image.jpg'
+      ];
+      
+      criticalImages.forEach(src => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = src;
+        document.head.appendChild(link);
       });
-    }
 
-    // Intersection Observer for counters
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateCounters();
-          observer.unobserve(entry.target);
-        }
+      // Intersection Observer for lazy loading
+      if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              if (img.dataset.src) {
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+                observer.unobserve(img);
+              }
+            }
+          });
+        });
+
+        // Observe all lazy images
+        document.querySelectorAll('img[data-src]').forEach(img => {
+          imageObserver.observe(img);
+        });
+      }
+
+      // Defer non-critical CSS
+      const nonCriticalCSS = [
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
+      ];
+
+      nonCriticalCSS.forEach(href => {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        link.media = 'print';
+        link.onload = function() {
+          this.media = 'all';
+        };
+        document.head.appendChild(link);
+      });
+
+      // Optimize font loading
+      if ('fonts' in document) {
+        Promise.all([
+          document.fonts.load('400 1em Inter'),
+          document.fonts.load('500 1em Inter'),
+          document.fonts.load('600 1em Inter'),
+          document.fonts.load('700 1em Inter')
+        ]).then(() => {
+          document.documentElement.classList.add('fonts-loaded');
+        });
+      }
+
+      // Preconnect to external domains
+      const externalDomains = [
+        'https://fonts.googleapis.com',
+        'https://fonts.gstatic.com',
+        'https://cdnjs.cloudflare.com'
+      ];
+
+      externalDomains.forEach(domain => {
+        const link = document.createElement('link');
+        link.rel = 'preconnect';
+        link.href = domain;
+        link.crossOrigin = '';
+        document.head.appendChild(link);
       });
     });
 
-    const statsSection = document.querySelector('.bg-gray-50');
-    if (statsSection) {
-      observer.observe(statsSection);
+    // Service Worker registration for caching
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js').then(function(registration) {
+          console.log('SW registered: ', registration);
+        }).catch(function(registrationError) {
+          console.log('SW registration failed: ', registrationError);
+        });
+      });
     }
   </script>
+
+  <FloatingWhatsApp />
 </Layout> 

@@ -1,0 +1,38 @@
+{
+  "name": "10教育 - STEM教育專家",
+  "short_name": "10教育",
+  "description": "專業STEM及人工智能教育機構，提供到校課程服務",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon-100x100.jpg",
+      "sizes": "100x100",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon-300x300.jpg",
+      "sizes": "300x300",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "technology", "stem"],
+  "lang": "zh-HK",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "screenshots": [
+    {
+      "src": "/images/og/homepage.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "form_factor": "wide"
+    }
+  ]
+} 
