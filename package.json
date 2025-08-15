@@ -19,6 +19,7 @@
     "@tailwindcss/typography": "^0.5.16",
     "@vercel/speed-insights": "^1.2.0",
     "astro": "^5.12.0",
+    "astro-csv": "^0.2.1",
     "csv-parse": "^6.1.0",
     "sharp": "^0.34.3",
     "tailwindcss": "^3.4.17",

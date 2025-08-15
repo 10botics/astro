@@ -1,7 +1,33 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import primaryCompetitions from '../content/table/2025比賽/2025小學比賽';
-import secondaryCompetitions from '../content/table/2025比賽/2025中學比賽';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+
+// Read CSV file content
+const csvPath = join(process.cwd(), 'src', 'data', 'competitions-2025.csv');
+const csvContent = readFileSync(csvPath, 'utf-8');
+
+// Parse CSV manually
+const parseCSV = (csvText: string) => {
+  const lines = csvText.trim().split('\n');
+  const headers = lines[0].split(',');
+  const data = lines.slice(1).map(line => {
+    const values = line.split(',');
+    const obj: any = {};
+    headers.forEach((header, index) => {
+      obj[header.trim()] = values[index]?.trim() || '';
+    });
+    return obj;
+  });
+  return data;
+};
+
+const allCompetitions = parseCSV(csvContent);
+
+// Filter competitions by level
+const primaryCompetitions = allCompetitions.filter((comp: any) => comp.level === '小學');
+const secondaryCompetitions = allCompetitions.filter((comp: any) => comp.level === '中學');
+
 // Sort competitions by date
 const sortByDate = (a: any, b: any) => {
   const dateA = new Date(a.date.replace(/年|月|日/g, '/'));
@@ -40,7 +66,7 @@ const totalCompetitions = primaryCompetitions.length + secondaryCompetitions.len
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
-            {primaryCompetitions.map((competition) => (
+            {primaryCompetitions.map((competition: any) => (
             <tr class="hover:bg-gray-50">
                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{competition.date}</td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{competition.name}</td>
@@ -73,7 +99,7 @@ const totalCompetitions = primaryCompetitions.length + secondaryCompetitions.len
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
-            {secondaryCompetitions.map((competition) => (
+            {secondaryCompetitions.map((competition: any) => (
             <tr class="hover:bg-gray-50">
                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{competition.date}</td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{competition.name}</td>
