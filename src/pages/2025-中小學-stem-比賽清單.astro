@@ -1,12 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import primaryCompetitions from '../table/2025小學比賽';
-import secondaryCompetitions from '../table/2025中學比賽';
-
-// Debug logging
-console.log('Primary competitions:', primaryCompetitions);
-console.log('Secondary competitions:', secondaryCompetitions);
-
+import primaryCompetitions from '../content/table/2025比賽/2025小學比賽';
+import secondaryCompetitions from '../content/table/2025比賽/2025中學比賽';
 // Sort competitions by date
 const sortByDate = (a: any, b: any) => {
   const dateA = new Date(a.date.replace(/年|月|日/g, '/'));
