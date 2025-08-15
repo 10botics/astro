@@ -3,7 +3,6 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import path from 'path';
-import astroCSV from 'astro-csv';
 
 import db from '@astrojs/db';
 
@@ -60,7 +59,7 @@ export default defineConfig({
     lastmod: new Date(),
     // Ensure sitemap is accessible
     filter: (page) => !page.includes('404'),
-  }), db(), astroCSV()],
+  }), db()],
   // Image optimization using built-in Astro assets
   image: {
     // Enable image optimization

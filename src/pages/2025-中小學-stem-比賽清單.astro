@@ -1,37 +1,41 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { readFileSync } from 'fs';
-import { join } from 'path';
+import { parse } from 'csv-parse/sync';
+import path from 'path';
 
-// Read CSV file content
-const csvPath = join(process.cwd(), 'src', 'data', 'competitions-2025.csv');
+// Read and parse the CSV file directly
+const csvPath = path.join(process.cwd(), 'src/data/competitions-2025.csv');
 const csvContent = readFileSync(csvPath, 'utf-8');
 
-// Parse CSV manually
-const parseCSV = (csvText: string) => {
-  const lines = csvText.trim().split('\n');
-  const headers = lines[0].split(',');
-  const data = lines.slice(1).map(line => {
-    const values = line.split(',');
-    const obj: any = {};
-    headers.forEach((header, index) => {
-      obj[header.trim()] = values[index]?.trim() || '';
-    });
-    return obj;
-  });
-  return data;
+// Parse CSV content
+const competitions = parse(csvContent, {
+  columns: true,
+  skipEmptyLines: true,
+  trim: true
+});
+
+// Convert popularity fractions to star ratings
+const convertToStars = (popularity: string) => {
+  if (!popularity.includes('/')) return popularity;
+  const [full, total] = popularity.split('/').map(Number);
+  const empty = total - full;
+  return '★'.repeat(full) + '☆'.repeat(empty);
 };
 
-const allCompetitions = parseCSV(csvContent);
+// Separate primary and secondary competitions based on the "級別" column
+const primaryCompetitions = competitions.filter((comp: any) => 
+  comp['級別'] === '小學'
+);
 
-// Filter competitions by level
-const primaryCompetitions = allCompetitions.filter((comp: any) => comp.level === '小學');
-const secondaryCompetitions = allCompetitions.filter((comp: any) => comp.level === '中學');
+const secondaryCompetitions = competitions.filter((comp: any) => 
+  comp['級別'] === '中學'
+);
 
 // Sort competitions by date
 const sortByDate = (a: any, b: any) => {
-  const dateA = new Date(a.date.replace(/年|月|日/g, '/'));
-  const dateB = new Date(b.date.replace(/年|月|日/g, '/'));
+  const dateA = new Date(a['比賽日期'].replace(/年|月|日/g, '/'));
+  const dateB = new Date(b['比賽日期'].replace(/年|月|日/g, '/'));
   return dateA.getTime() - dateB.getTime();
 };
 
@@ -68,12 +72,12 @@ const totalCompetitions = primaryCompetitions.length + secondaryCompetitions.len
           <tbody class="bg-white divide-y divide-gray-200">
             {primaryCompetitions.map((competition: any) => (
             <tr class="hover:bg-gray-50">
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{competition.date}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{competition.name}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{competition.keywords}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{competition.popularity}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{competition['比賽日期']}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{competition['比賽名稱']}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{competition['關鍵字']}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{convertToStars(competition['受歡迎程度'])}</td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                  <a href={competition.url || "#"} class="text-blue-600 hover:text-blue-800 underline">{competition.link}</a>
+                  <a href={competition['比賽連結'] || "#"} class="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">點擊進入</a>
                 </td>
             </tr>
             ))}
@@ -101,12 +105,12 @@ const totalCompetitions = primaryCompetitions.length + secondaryCompetitions.len
           <tbody class="bg-white divide-y divide-gray-200">
             {secondaryCompetitions.map((competition: any) => (
             <tr class="hover:bg-gray-50">
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{competition.date}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{competition.name}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{competition.keywords}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{competition.popularity}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{competition['比賽日期']}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{competition['比賽名稱']}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{competition['關鍵字']}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{convertToStars(competition['受歡迎程度'])}</td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                  <a href={competition.url || "#"} class="text-blue-600 hover:text-blue-800 underline">{competition.link}</a>
+                  <a href={competition['比賽連結'] || "#"} class="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">點擊進入</a>
                 </td>
             </tr>
             ))}

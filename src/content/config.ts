@@ -1,4 +1,6 @@
 import { defineCollection, z } from 'astro:content';
+import { file } from 'astro/loaders';
+import { parse as parseCsv } from 'csv-parse/sync';
 
 const newsCollection = defineCollection({
   type: 'content',
@@ -51,8 +53,19 @@ const secondaryCompetitionsCollection = defineCollection({
   }),
 });
 
+const competitions2025 = defineCollection({
+  loader: file('src/data/competitions-2025.csv', {
+    parser: (text) => parseCsv(text, { 
+      columns: true, 
+      skipEmptyLines: true,
+      trim: true 
+    }),
+  }),
+});
+
 export const collections = {
   'news': newsCollection,
   'primary-competitions': primaryCompetitionsCollection,
   'secondary-competitions': secondaryCompetitionsCollection,
+  'competitions-2025': competitions2025
 }; 
