@@ -48,7 +48,7 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout 
-  title="Scratch AI 編程課程 - 10教育"
+  title="Scratch 人工智能編程 - 10教育"
   description="學習使用 Scratch 和 AI 技術創建智能應用程式，適合初中及高小學生的專業課程。"
   keywords="Scratch, AI編程, 人工智能課程, 兒童編程"
   ogImage="/images/scratch-ai-course.jpg"
@@ -83,7 +83,7 @@ import Layout from '../layouts/Layout.astro';
 ### 📚 **Course Pages**
 ```astro
 <Layout 
-  title="Scratch AI 人工智能編程 - 10教育課程"
+  title="Scratch 人工智能編程 - 10教育課程"
   description="透過 Teachable Machine 和 Scratch 學習AI編程，適合初中高小學生。10小時完整課程，專業導師指導。"
   keywords="Scratch AI, 人工智能編程, Teachable Machine, 兒童編程課程"
   ogImage="/images/courses/scratch-ai-hero.jpg"

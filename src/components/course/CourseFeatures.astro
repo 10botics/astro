@@ -1,91 +1,115 @@
 ---
-// Component to recreate the Course Features section exactly like the original
+// Component to recreate the Course Features section with props
+interface Props {
+  features?: {
+    title: string;
+    features?: Array<{
+      text: string;
+      icon?: string;
+    }> | string[];
+    aiConceptsLink?: string;
+    infographicImage?: string;
+    demoVideo?: {
+      videoId: string;
+      title: string;
+      description: string;
+    };
+    aiExamples?: Array<{
+      title: string;
+      image: string;
+    }>;
+  };
+}
+
+const { features } = Astro.props;
+
+// If no features are provided, don't render anything
+if (!features) {
+  return null;
+}
 ---
 
 <section class="bg-white py-16">
   <div class="container mx-auto px-4 max-w-6xl">
-    <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center" style="color: #1e293b;">課程特色</h2>
+    <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center" style="color: #1e293b;">{features.title}</h2>
     
     <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
       <!-- Infographic Section - Left side -->
-      <div class="flex justify-center">
-        <img 
-          src="/media/0_oO_iRU00lA24TUfs-1024x724.webp" 
-          alt="AI 五大理念"
-          class="w-full h-auto rounded-lg"
-        />
-      </div>
+      {features.infographicImage && (
+        <div class="flex justify-center">
+          <img 
+            src={features.infographicImage}
+            alt="AI 五大理念"
+            class="w-full h-auto rounded-lg"
+          />
+        </div>
+      )}
 
       <!-- Features List - Right side -->
-      <div class="space-y-4">
-        <ul class="space-y-3 text-gray-700">
-          <li class="flex items-start space-x-2">
-            <span class="text-gray-900">•</span>
-            <span>了解 <a href="https://medium.com/10botics/ai-%E5%9F%BA%E7%A4%8E%E4%BA%94%E5%A4%A7%E7%90%86%E5%BF%B5-%E7%B5%A6k12%E5%AD%A9%E7%AB%A5%E7%9A%84ai%E6%95%99%E8%82%B2-44a4aafc03fb" class="text-cyan-400 hover:text-cyan-600">AI 五大理念</a>，趨勢與實踐</span>
-          </li>
-          <li class="flex items-start space-x-2">
-            <span class="text-gray-900">•</span>
-            <span>認識機器學習 (Machine Learning) 的類別</span>
-          </li>
-          <li class="flex items-start space-x-2">
-            <span class="text-gray-900">•</span>
-            <span>透過 Teachable Machine 訓練人工智能模型，並結合 Scratch 製作不同的 AI 應用程式</span>
-          </li>
-          <li class="flex items-start space-x-2">
-            <span class="text-gray-900">•</span>
-            <span>讓學生體驗與 AI 互動</span>
-          </li>
-        </ul>
-      </div>
+      {features.features && features.features.length > 0 && (
+        <div class="space-y-4">
+          <ul class="space-y-3 text-gray-700">
+            {features.features.map((feature) => {
+              // Handle both old format (string) and new format (object)
+              const featureText = typeof feature === 'string' ? feature : feature.text;
+              const featureIcon = typeof feature === 'string' ? undefined : feature.icon;
+              
+              return (
+                <li class="flex items-start space-x-3">
+                  {featureIcon ? (
+                    <i class={`${featureIcon} text-blue-500 mt-1 w-5 text-center`}></i>
+                  ) : (
+                    <span class="text-gray-900">•</span>
+                  )}
+                  <span>
+                    {featureText.includes('AI 五大理念') && features.aiConceptsLink ? (
+                      <>
+                        了解 <a href={features.aiConceptsLink} class="text-cyan-400 hover:text-cyan-600">AI 五大理念</a>，趨勢與實踐
+                      </>
+                    ) : (
+                      featureText
+                    )}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
     </div>
 
     <!-- Demo Video Section -->
-    <div class="text-center mb-12">
-      <div class="max-w-4xl mx-auto">
-        <div class="aspect-video bg-black rounded-lg overflow-hidden shadow-lg mb-4">
-          <iframe 
-            src="https://www.youtube.com/embed/OoTX6U_aVto?controls=1&rel=0"
-            class="w-full h-full"
-            frameborder="0"
-            allowfullscreen
-            title="Scratch AI Project - Mask Detector">
-          </iframe>
+    {features.demoVideo && (
+      <div class="text-center mb-12">
+        <div class="max-w-4xl mx-auto">
+          <div class="aspect-video bg-black rounded-lg overflow-hidden shadow-lg mb-4">
+            <iframe 
+              src={`https://www.youtube.com/embed/${features.demoVideo.videoId}?controls=1&rel=0`}
+              class="w-full h-full"
+              frameborder="0"
+              allowfullscreen
+              title={features.demoVideo.title}>
+            </iframe>
+          </div>
+          <p class="text-gray-600 text-base">{features.demoVideo.description}</p>
         </div>
-        <p class="text-gray-600 text-base">輕易與 Teachable Machine 連結，讓學生發揮創意，實現所想</p>
       </div>
-    </div>
+    )}
 
-    <!-- AI Recognition Examples - match original layout -->
-    <div class="grid md:grid-cols-3 gap-8">
-      <!-- Face Recognition -->
-      <div class="text-center">
-        <img 
-          src="/media/bf6bae32bf18a9afffdf2ef18615f8f9.gif" 
-          alt="人面識別" 
-          class="w-full h-48 object-cover rounded-lg mb-4"
-        />
-        <h3 class="text-xl font-bold text-gray-900 mb-2">人面識別</h3>
+    <!-- AI Recognition Examples -->
+    {features.aiExamples && features.aiExamples.length > 0 && (
+      <div class="grid md:grid-cols-3 gap-8">
+        {features.aiExamples.map((example) => (
+          <div class="text-center">
+            <img 
+              src={example.image}
+              alt={example.title}
+              class="w-full h-48 object-cover rounded-lg mb-4"
+            />
+            <h3 class="text-xl font-bold text-gray-900 mb-2">{example.title}</h3>
+          </div>
+        ))}
       </div>
-
-      <!-- Gesture Recognition -->
-      <div class="text-center">
-        <img 
-          src="/media/c98ce8ccb7da82373fec7c244b34a9b3.gif" 
-          alt="手勢識別" 
-          class="w-full h-48 object-cover rounded-lg mb-4"
-        />
-        <h3 class="text-xl font-bold text-gray-900 mb-2">手勢識別</h3>
-      </div>
-
-      <!-- Pose Recognition -->
-      <div class="text-center">
-        <img 
-          src="/media/fa5eab50642474658210ee6ba7029e31.gif" 
-          alt="姿勢識別" 
-          class="w-full h-48 object-cover rounded-lg mb-4"
-        />
-        <h3 class="text-xl font-bold text-gray-900 mb-2">姿勢識別</h3>
-      </div>
-    </div>
+    )}
   </div>
 </section> 

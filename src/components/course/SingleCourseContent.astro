@@ -1,0 +1,155 @@
+---
+/**
+ * SingleCourseContent Component
+ * 
+ * Displays a single course content with optional images on the left side.
+ * 
+ * Usage examples:
+ * 
+ * // With images (images will appear on the left, content on the right)
+ * <SingleCourseContent 
+ *   items={courseContent} 
+ *   hours="15 小時"
+ *   images={[
+ *     { src: image1, alt: "Description 1" },
+ *     { src: image2, alt: "Description 2" }
+ *   ]}
+ * />
+ * 
+ * // Without images (content takes full width)
+ * <SingleCourseContent 
+ *   items={courseContent} 
+ *   hours="15 小時"
+ * />
+ */
+
+export interface AccordionItem {
+  title: string;
+  content: string[];
+}
+
+export interface Props {
+  items: AccordionItem[];
+  hours?: string;
+  images?: Array<{
+    src: any;
+    alt: string;
+  }>;
+}
+
+const { 
+  items, 
+  hours = "10 小時",
+  images = []
+} = Astro.props;
+---
+
+<section class="bg-white py-16">
+  <div class="container mx-auto px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">課程內容</h2>
+      <div class="text-center mb-8">
+        <p class="text-xl text-gray-600">共 {hours}</p>
+        <p class="text-sm text-gray-500">* 可根據學校需要調整</p>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Images Section (Left) - Only shown if images are provided -->
+        {images && images.length > 0 && (
+          <div class="lg:col-span-1">
+            <div class="space-y-6">
+              {images.map((image, index) => (
+                <div class="group cursor-pointer">
+                  <img 
+                    src={image.src.src} 
+                    alt={image.alt} 
+                    class="w-full rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+        
+        <!-- Course Content Section (Right) - Takes full width if no images -->
+        <div class={images && images.length > 0 ? "lg:col-span-2" : "lg:col-span-3"}>
+          <div class="space-y-4">
+            {items.map((item, index) => (
+              <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden">
+                <button 
+                  class="accordion-header w-full text-left p-6 bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center"
+                  data-target={`single-accordion-${index}`}
+                >
+                  <span class="font-semibold text-gray-900">{item.title}</span>
+                  <div class="accordion-icon transition-transform duration-200">
+                    <i class="fas fa-minus text-gray-600"></i>
+                  </div>
+                </button>
+                <div 
+                  id={`single-accordion-${index}`}
+                  class="accordion-content overflow-hidden transition-all duration-300 ease-in-out"
+                  style="max-height: none;"
+                >
+                  <div class="p-6 bg-white border-t border-gray-200">
+                    <ul class="space-y-3">
+                      {item.content.map((point) => (
+                        <li class="flex items-start space-x-3">
+                          <div class="text-blue-600 mt-1">
+                            <i class="fas fa-chevron-right text-sm"></i>
+                          </div>
+                          <span class="text-gray-700">{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Accordion functionality for single course content
+  document.addEventListener('DOMContentLoaded', function() {
+    const headers = document.querySelectorAll('.accordion-header');
+    
+    headers.forEach(header => {
+      header.addEventListener('click', function(this: HTMLElement) {
+        const target = this.getAttribute('data-target');
+        if (!target) return;
+        
+        const content = document.getElementById(target);
+        const icon = this.querySelector('.accordion-icon i') as HTMLElement;
+        
+        if (content && icon) {
+          // Toggle current accordion
+          if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+            content.style.maxHeight = '0px';
+            icon.className = 'fas fa-plus text-gray-600';
+          } else {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            icon.className = 'fas fa-minus text-gray-600';
+          }
+        }
+      });
+    });
+    
+    // Open all accordions by default
+    headers.forEach(header => {
+      const target = header.getAttribute('data-target');
+      if (!target) return;
+      
+      const content = document.getElementById(target);
+      const icon = header.querySelector('.accordion-icon i') as HTMLElement | null;
+      
+      if (content && icon) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        icon.className = 'fas fa-minus text-gray-600';
+      }
+    });
+  });
+</script> 

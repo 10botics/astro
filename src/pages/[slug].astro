@@ -1,0 +1,134 @@
+---
+// Dynamic route to handle URL mapping between English URLs and Chinese filename components
+export async function getStaticPaths() {
+  return [
+    { params: { slug: 'about' } },
+    { params: { slug: 'ai-art-competition-2024' } },
+    { params: { slug: 'ai-art-competition-2025' } },
+    { params: { slug: 'ai-art-competition-result' } },
+    { params: { slug: 'competition-drone2024' } },
+    { params: { slug: 'competition-drone-competitionlist'}},
+    { params: { slug: 'competition-drone2024-preliminary-results'}},
+    { params: { slug: 'competition-drone2024-final-teamlist'}},
+    { params: { slug: 'competition-ksp2022' } },
+    { params: { slug: 'competition-minecraft2021' } },
+    { params: { slug: 'competition-minecraft2022' } },
+    { params: { slug: 'competition-minecraft2023' } },
+    { params: { slug: 'competition-minecraft2024' } },
+    { params: { slug: 'contact-us' } },
+    { params: { slug: 'join-us' } },
+    { params: { slug: 'terms-conditions' } },
+    { params: { slug: 'privacy-policy' } },
+    { params: { slug: 'cookie-policy' } },
+    { params: { slug: 'contact' } },
+    { params: { slug: 'school-courses' } },
+    { params: { slug: 'stemday' } },
+    { params: { slug: 'teacher-workshop' } },
+    { params: { slug: 'funding-application' } },
+    { params: { slug: 'news' } },
+    { params: { slug: 'client' } },
+    { params: { slug: 'natural-bio-sciences-01' } },
+    { params: { slug: '2024-stem-competition-list' } },    
+    { params: { slug: '2025-stem-competition-results' } },
+    // Add more mappings here as needed
+  ];
+}
+
+const { slug } = Astro.params;
+
+// Import the Chinese filename component based on the slug
+let ChineseComponent;
+switch (slug) {
+  case 'about':
+    ChineseComponent = await import('./關於我們.astro');
+    break;
+  case 'ai-art-competition-2024':
+    ChineseComponent = await import('./校際AI藝術創作大賽 2024.astro');
+    break;
+  case 'ai-art-competition-2025':
+    ChineseComponent = await import('./第三屆 校際AI藝術創作大賽.astro');
+    break;
+  case 'ai-art-competition-result':
+    ChineseComponent = await import('./第三屆校際AI藝術創作大賽《智畫神話》result.astro');
+    break;
+  case 'competition-drone2024':
+    ChineseComponent = await import('./學界無人機救援挑戰賽.astro');
+    break;
+  case 'competition-drone-competitionlist':
+    ChineseComponent = await import('./學界無人機救援挑戰賽-比賽名單.astro');
+    break;
+  case 'competition-drone2024-preliminary-results':
+    ChineseComponent = await import('./competition-drone2024/初賽結果.astro');
+    break;
+  case 'competition-drone2024-final-teamlist':
+    ChineseComponent = await import('./competition-drone2024/決賽隊伍名單及時間表.astro');
+    break;
+  case 'competition-ksp2022':
+    ChineseComponent = await import('./香港航天電競大賽 2022.astro');
+    break;
+  case 'competition-minecraft2021':
+    ChineseComponent = await import('./Minecraft 校園創建計劃 2021.astro');
+    break;
+  case 'competition-minecraft2022':
+    ChineseComponent = await import('./Minecraft 校園創建計劃 2022.astro');
+    break;
+  case 'competition-minecraft2023':
+    ChineseComponent = await import('./Minecraft 校園創建計劃 2023.astro');
+    break;
+  case 'competition-minecraft2024':
+    ChineseComponent = await import('./Minecraft 校園創建計劃 2024.astro');
+    break;
+  case 'contact-us':
+    ChineseComponent = await import('./聯絡我們.astro');
+    break;
+  case 'contact':
+    ChineseComponent = await import('./聯絡我們.astro');
+    break;
+  case 'join-us':
+    ChineseComponent = await import('./加入我們.astro');
+    break;
+  case 'terms-conditions':
+    ChineseComponent = await import('./條款及細則.astro');
+    break;
+  case 'privacy-policy':
+    ChineseComponent = await import('./隱私政策.astro');
+    break;
+  case 'cookie-policy':
+    ChineseComponent = await import('./Cookie政策.astro');
+    break;
+  case 'contact':
+    ChineseComponent = await import('./聯絡我們.astro');
+    break;
+  case 'school-courses':
+    ChineseComponent = await import('./school-courses/index.astro');
+    break;
+  case 'stemday':
+    ChineseComponent = await import('./Stemday/index.astro');
+    break;
+  case 'teacher-workshop':
+    ChineseComponent = await import('./staff-development-day/index.astro');
+    break;
+  case 'funding-application':
+    ChineseComponent = await import('./funding-application/index.astro');
+    break;
+  case 'news':
+    ChineseComponent = await import('./news/index.astro');
+    break;
+  case 'client':
+    ChineseComponent = await import('./關於我們.astro');
+    break;
+  case 'natural-bio-sciences-01':
+    ChineseComponent = await import('./草原國度.astro');
+    break;
+  case '2024-stem-competition-list':
+    ChineseComponent = await import('./2024 STEM 比賽名單.astro');
+    break;
+  case '2025-stem-competition-results':
+    ChineseComponent = await import('./2025-中小學-stem-比賽清單.astro');
+    break;
+  default:
+    throw new Error(`Unknown slug: ${slug}`);
+}
+---
+
+<ChineseComponent.default /> 

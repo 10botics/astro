@@ -1,0 +1,29 @@
+---
+// PaperformEmbed.astro
+// Component for embedding Paperform forms
+---
+
+<div class="paperform-container">
+  <iframe 
+    src="https://qhmoqcvc.paperform.co/" 
+    width="100%" 
+    height="600" 
+    frameborder="0" 
+    allowfullscreen>
+  </iframe>
+</div>
+
+<script>
+  (function() {
+    var script = document.createElement('script');
+    script.src = "https://paperform.co/__embed.min.js";
+    document.body.appendChild(script);
+  })();
+</script>
+
+<style>
+  .paperform-container {
+    width: 100%;
+    min-height: 600px;
+  }
+</style> 

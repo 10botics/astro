@@ -1,0 +1,342 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import CourseFeatures from '../../components/course/CourseFeatures.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import { Image } from 'astro:assets';
+
+// Import images
+import featuredImage from '../../assets/images/school-courses/Minecraft校園創建課程/featured-image.png';
+import courseStructure from '../../assets/images/school-courses/Minecraft校園創建課程/course-structure.png';
+import minecraftWorking from '../../assets/images/school-courses/Minecraft校園創建課程/minecraft-working.jpg';
+import school1 from '../../assets/images/school-courses/Minecraft校園創建課程/school-1.png';
+import school2 from '../../assets/images/school-courses/Minecraft校園創建課程/school-2.jpg';
+import school3 from '../../assets/images/school-courses/Minecraft校園創建課程/school-3.png';
+import school4 from '../../assets/images/school-courses/Minecraft校園創建課程/school-4.png';
+import landmark1 from '../../assets/images/school-courses/Minecraft校園創建課程/landmark-1.jpg';
+import landmark2 from '../../assets/images/school-courses/Minecraft校園創建課程/landmark-2.jpg';
+import landmark3 from '../../assets/images/school-courses/Minecraft校園創建課程/landmark-3.png';
+import landmark4 from '../../assets/images/school-courses/Minecraft校園創建課程/landmark-4.png';
+
+// Course data (static) - now in frontmatter
+export const courseData = {
+  title: "Minecraft 校園創建課程",
+  subtitle: "在 Minecraft 世界中學習編程，創造無限可能",
+  tags: ["Arts 藝術", "Programming 編程", "遊戲開發", "高小", "初中", "高中"],
+  videoId: "your-video-id-here",
+  description: "Minecraft 校園創建課程讓學生在熟悉的遊戲環境中學習編程概念，通過創建模組和自動化系統來掌握編程技能。",
+  detailedDescription: "Minecraft 校園創建課程讓學生在熟悉的遊戲環境中學習編程概念，通過創建模組和自動化系統來掌握編程技能。",
+  heroImage: featuredImage,
+  featuredImage: featuredImage
+};
+
+// Course curriculum
+const curriculumItems = [
+  {
+    title: "簡介Minecraft基本操作 [2 節]",
+    content: [
+      "認識和熟悉Minecraft基本操作",
+      "破冰游戲 – Hypixel Build Battle",
+      "讓導師瞭解學生的已有能力水平"
+    ]
+  },
+  {
+    title: "WorldEdit入門技巧 [2 節]",
+    content: [
+      "簡介 WorldEdit 插件的用途",
+      "介紹 WorldEdit 工具 – 木斧",
+      "學習選取所需範圍進行下一步操作",
+      "學習如何在背包查看方塊 ID",
+      "於選擇範圍內設置所需方塊、建造出 \"Hello\" 字樣"
+    ]
+  },
+  {
+    title: "WorldEdit進階技巧 [2 節]",
+    content: [
+      "嘗試把半完成的橋樑延伸",
+      "學習將選取範圍連線、繪畫建築物外殼",
+      "用方塊填滿封閉區域",
+      "示範在 Google Map 使用衛星及地球視圖功能獲取某位置的經緯度",
+      "示範使用 tpll 傳送至指定經緯度對應的 Minecraft 座標",
+      "參觀團隊興建的 1:1 Minecraft 香港地圖"
+    ]
+  },
+  {
+    title: "高樓大廈建造練習 - 外殼建造 [3 節]",
+    content: [
+      "示範如何使用 Google map 選擇某建築物的角落，於 minecraft 內使用 tpll 勾出建築物的角落位置",
+      "導師先準備好已使用 tpll 點出建築物角落的練習場地，示範如何以 //line 用羊毛連線連出建築物外框，給予學生時間嘗試",
+      "示範如何在 Google Earth 取得建築物的高度",
+      "示範用 //stack 把已連好的外框疊高至指定高度製作外殼，給予學生時間嘗試",
+      "示範用 //fill 填滿建築物天台完成建造外殼，給予學生時間嘗試"
+    ]
+  },
+  {
+    title: "高樓大廈建造練習 - 建築配色和外部細節 [3 節]",
+    content: [
+      "示範在 Google Map 使用街景模式及 Google Earth 3D 模型查看建築物細節",
+      "介紹如何選擇適用方塊重現現實效果 [Block Palette]",
+      "給予學生時間為建築物配色",
+      "教授建造建築物細節的技巧，例如層次、花紋、混色、窗戶等等",
+      "有效運用頭顱資料庫製作外牆細節，例如常見冷氣機、文字、路標、標誌等 [/heads 或 /hdb]",
+      "有效運用旗幟生成器製作外牆細節，例如窗戶或文字 [/banner]",
+      "製作一層細節後即用 //stack 疊加至其他樓層"
+    ]
+  },
+  {
+    title: "校園建設計劃 [4 節]",
+    content: [
+      "導師將課後指導學生建設自己的學校",
+      "製作PPT和短片拍攝",
+      "學生需匯報他們建設的學校"
+    ]
+  }
+];
+
+// Course highlights
+const courseHighlights = [
+  {
+    icon: "fab fa-java",
+    title: "Minecraft Java Edition",
+    description: "介紹 Jave Edition 的操作方法及各種建築材料"
+  },
+  {
+    icon: "fas fa-school",
+    title: "學校建造項目",
+    description: "學習命令行和Minecraft的操作，配合跨學科應用知識，完成學校的建造工程。​"
+  },
+  {
+    icon: "fab fa-leanpub",
+    title: "編程學習​",
+    description: "學習 Minecraft WorldEdit 命令行及應用，以完成不同建築物。​"
+  },
+  {
+    icon: "fas fa-hiking",
+    title: "實地考察​",
+    description: "走訪社區及學校不同角落，共同討論校園建築物的興建範圍和設計，活動導師會為學生們提供專業意見，並且落實建造計劃。"
+  },
+  {
+    icon: "fab fa-google",
+    title: "Google map 街景服務",
+    description: "參考 Google map 所提供的街景服務，讓學生能夠在相對應的坐標興建 1:1 的校園和社區。"
+  }
+];
+
+// Course arrangements
+const courseArrangements = [
+  {
+    icon: "fas fa-star",
+    title: "STEM Day 活動 (2 至 4 小時)",
+    description: "根據時數選擇一至兩節課堂\n建議組合一 ( 2小時 )：Minecraft 基本操作\n建議組合二 ( 4小時 )：Minecraft 基本操作 + WorldEdit入門技巧"
+  },
+  {
+    icon: "fas fa-star",
+    title: "完整課程 (16 小時)",
+    description: "建議一個學期完成 16 節課堂，每節1小時。（第一階段12節課堂 + 第二階段4節課後指導）\n*可根據學校需要調整課堂數及時數"
+  }
+];
+
+// FAQ items
+const faqItems = [
+  {
+    question: "可以使用不同版本的Minecraft嗎？",
+    answer: "不能，Minecraft 只限於Java版本。"
+  },
+  {
+    question: "學校需要甚麼設備？",
+    answer: "學校需準備以下項目\n1） 手提電腦 / 電腦\n2）Minecraft賬戶\n3）Minecraft 伺服器"
+  },
+  {
+    question: "電腦配置上有什麼要求？",
+    answer: "配備功能:\n• Windows：64-bit Windows 7以上\n• macOS：64-bit 10.9 Maverick以上\n• 必須備有網絡功能\n\n最低配置:\n• 處理器: Intel Pentium CPU 4415Y 1.60GHz或相等\n• 記憶體: 8.00GB\n• 圖像處理器: Intel HD Graphics 615\n\n建議配置:\n• 處理器: Intel Core CPU i3 3210 3.20GHz (2 Cores, 4 Threads) 或相等\n• 記憶體: 8.00GB\n• 圖像處理器: Intel HD Graphics / Nvidia 2xx Series with OpenGL 3.3"
+  },
+  {
+    question: "10botics有沒有Minecraft賬戶和伺服器提供？",
+    answer: "有。參加課程的學校都會提供Minecraft伺服器和賬號供課程期間使用"
+  },
+  {
+    question: "提供的Minecraft賬戶是否永久使用？",
+    answer: "否。Minecraft 帳戶將會在課程完結后14天收回。學校可另購帳戶予學生使用，每個帳戶收費為港幣$250元正。"
+  },
+  {
+    question: "提供的伺服器是否永久使用？",
+    answer: "否，Minecraft伺服器會於課程完結后的30天停止運作。"
+  },
+  {
+    question: "是否需要一人一個賬號？",
+    answer: "是，學校需要為每個學生準備Minecraft賬號，如果有需要，可向我們查詢。"
+  }
+];
+---
+
+<Layout title={courseData.title}>
+  <HeroSection 
+    title={courseData.title}
+    subtitle={courseData.subtitle}
+    tags={courseData.tags}
+    videoId={courseData.videoId}
+    description={courseData.description}
+    featuredImage={courseData.featuredImage}
+  />
+
+  <!-- What is Minecraft Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">什麼是Minecraft？</h2>
+      <div class="max-w-4xl mx-auto">
+        <p class="text-lg text-gray-700 leading-relaxed text-center">
+          Minecraft是一款沙盒遊戲，玩家可以在像素化的世界中發揮想像力，使用方塊建造任何東西，更可以加入線上伺服器，與其他玩家一同遊玩和合作，發揮無限創意。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Highlights Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程重點​</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {courseHighlights.map((highlight) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center mb-4">
+              <i class={`${highlight.icon} text-3xl text-cyan-500 mr-4`}></i>
+              <h3 class="text-xl font-semibold text-gray-900">{highlight.title}</h3>
+            </div>
+            <p class="text-gray-700 leading-relaxed">{highlight.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Content Section -->
+  <SingleCourseContent 
+    items={curriculumItems}
+    hours="16 小時"
+    images={[
+      { src: courseStructure, alt: "Minecraft Course Structure" }
+    ]}
+  />
+
+  <!-- Course Arrangements Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程安排</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        {courseArrangements.map((arrangement) => (
+          <div class="bg-gray-50 border border-gray-200 rounded-lg p-8">
+            <div class="flex items-center mb-4">
+              <i class={`${arrangement.icon} text-2xl text-cyan-500 mr-4`}></i>
+              <h3 class="text-xl font-semibold text-gray-900">{arrangement.title}</h3>
+            </div>
+            <p class="text-gray-700 leading-relaxed whitespace-pre-line">{arrangement.description}</p>
+          </div>
+        ))}
+      </div>
+      
+      <div class="text-center mt-8">
+        <p class="text-gray-700">歡迎填妥下方表格讓同事為你提供咨詢。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Competition Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">「校園創建計劃」比賽</h2>
+      
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <Image 
+            src={minecraftWorking}
+            alt="Minecraft working"
+            class="w-full h-auto rounded-lg shadow-lg"
+          />
+        </div>
+        
+        <div>
+          <p class="text-lg text-gray-700 leading-relaxed mb-6">
+            同學可在課程中學習不同建築概念及編程方法，在Minecraft 完成自己的校園，參加比賽，和其他學校一較高下！
+          </p>
+          
+          <div class="space-y-4">
+            <a href="https://10botics.com/minecraft-buildathon-2021" 
+               class="inline-block bg-cyan-500 text-white px-6 py-3 rounded-lg hover:bg-cyan-600 transition-colors">
+              Minecraft校園創建計劃2021
+            </a>
+            <br>
+            <a href="https://10botics.com/minecraft-my-campus-competition-2022" 
+               class="inline-block bg-cyan-500 text-white px-6 py-3 rounded-lg hover:bg-cyan-600 transition-colors">
+              Minecraft校園創建計劃2022
+            </a>
+            <br>
+            <a href="https://10botics.com/competition-minecraft2023" 
+               class="inline-block bg-cyan-500 text-white px-6 py-3 rounded-lg hover:bg-cyan-600 transition-colors">
+              Minecraft校園創建計劃2023
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Student Achievements Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">學生成果</h2>
+      
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-6">校園建設</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <Image src={school1} 
+                 alt="天主教領島學校" class="w-full h-auto rounded-lg" />
+            <Image src={school2} 
+                 alt="中華基督教基華小學" class="w-full h-auto rounded-lg" />
+            <Image src={school3} 
+                 alt="勵志會梁李秀娛紀念小學" class="w-full h-auto rounded-lg" />
+            <Image src={school4} 
+                 alt="賽馬會萬鈞毅智書院" class="w-full h-auto rounded-lg" />
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-6">著名景點建設</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <Image src={landmark1} 
+                 alt="香港中央圖書館" class="w-full h-auto rounded-lg" />
+            <Image src={landmark2} 
+                 alt="青馬大橋" class="w-full h-auto rounded-lg" />
+            <Image src={landmark3} 
+                 alt="西港城" class="w-full h-auto rounded-lg" />
+            <Image src={landmark4} 
+                 alt="中環海濱摩天輪" class="w-full h-auto rounded-lg" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <QnASection faqs={faqItems} />
+
+  <!-- Contact Section -->
+  <section class="bg-white py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          聯絡我們
+        </h2>
+        <p class="text-lg text-gray-600">
+          想了解更多關於 Minecraft 校園創建課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。
+        </p>
+      </div>
+      <ContactSection subtitle="想了解更多關於 Minecraft 校園創建課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
+    </div>
+  </section>
+</Layout>
+
+ 

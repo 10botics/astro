@@ -1,0 +1,308 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
+import { Image } from 'astro:assets';
+
+// Import images
+import heroImage from '../../assets/images/school-courses/Microbit 逃出迷宮/hero-image.png';
+import microbitCard from '../../assets/images/school-courses/Microbit 逃出迷宮/microbit-card.jpg';
+import tinybitScreenshot from '../../assets/images/school-courses/Microbit 逃出迷宮/tinybit-screenshot.png';
+import mbCode1 from '../../assets/images/school-courses/Microbit 逃出迷宮/mb-code-1.png';
+import mazeScreenshot from '../../assets/images/school-courses/Microbit 逃出迷宮/maze-screenshot.png';
+import microbitTinybit from '../../assets/images/school-courses/Microbit 逃出迷宮/microbit-tinybit.jpg';
+import marsRover from '../../assets/images/school-courses/Microbit 逃出迷宮/mars-rover.webp';
+import carousel1 from '../../assets/images/school-courses/Microbit 逃出迷宮/carousel-1.jpg';
+import carousel2 from '../../assets/images/school-courses/Microbit 逃出迷宮/carousel-2.jpg';
+
+// Course data
+export const courseData = {
+  title: "Micro:bit 小車：逃出迷宮",
+  subtitle: "簡易編程模擬自動駕駛",
+  tags: ["AI 人工智能", "Block Coding 方塊編程", "Engineering 工程", "Micro:bit", "Programming 編程", "Robotics 機械人", "高小", "初中"],
+  videoId: "XLQIvRbNIBA",
+  description: "構建和編程自動駕駛 Micro:bit 車，以逃脫迷宮 - 學習內容針對高小學生的校本需求，再加以延伸，提供有趣和互動的學習體驗。學生將學習使用不同技術設計能夠自主逃脫迷宮的 Micro:bit 擴展車，啟發學生的創造力和解難能力。",
+  detailedDescription: "學習內容啟發於高小學生的校本需求，利用 Micro:bit 製作遙控車逃出迷宮。再加以延伸，學習使用不同傳感器及人工智能設計能夠自主逃脫迷宮的 Micro:bit 擴展車，啟發學生的創造力和解難能力。",
+  heroImage: heroImage
+};
+
+// Course curriculum
+const curriculumItems = [
+  {
+    title: "自動駕駛 [1 節]",
+    content: [
+      "概述算法在機器人學習中的重要性",
+      "調整小車以提高其在迷宮中的表現",
+      "尋找不同解決迷宮的算法"
+    ]
+  },
+  {
+    title: "遙控車 [1 節]",
+    content: [
+      "介紹藍牙通訊",
+      "編程遙控擴展車"
+    ]
+  },
+  {
+    title: "循線駕駛 [1 節]",
+    content: [
+      "如何跟隨線路",
+      "學習不同類型的軌道"
+    ]
+  },
+  {
+    title: "自動偵測 [1 節]",
+    content: [
+      "介紹紅外線傳感器",
+      "改裝並編程擴展車"
+    ]
+  },
+  {
+    title: "AI 駕駛 [1 節]",
+    content: [
+      "介紹機器學習和圖像識別",
+      "透過 Teachable Machine 訓練模型以識別特定的標誌",
+      "將模型與小車的自動駕駛功能集成"
+    ]
+  },
+  {
+    title: "逃出迷宮 [1 節]",
+    content: [
+      "迷宮將因應課程內容設計",
+      "班內比賽"
+    ]
+  },
+  {
+    title: "擴充：火星探索計劃 [3 節]",
+    content: [
+      "學習火星及火星探測車的相關知識",
+      "火星探測車的特殊輪子、用處及歷史",
+      "火星任務中如何使用的繞行器、著陸器及探測車",
+      "拼建並編程擴展車",
+      "搭建模擬火星環境"
+    ]
+  }
+];
+
+// Course highlights
+const courseHighlights = [
+  {
+    icon: "fas fa-code",
+    title: "編程控制",
+    description: "編程操控 Tiny:bit 小車。經過反覆測試，找出小車能穩定運作的方法。",
+    image: mbCode1
+  },
+  {
+    icon: "fas fa-maze",
+    title: "逃出迷宮",
+    description: "合作探索路線，幫助小車逃出迷宮，訓練學生的協作和解難能力。",
+    image: mazeScreenshot
+  }
+];
+
+// Course arrangements
+const courseArrangements = [
+  {
+    icon: "fas fa-star",
+    title: "STEM Day 活動 (2 至 3 小時)",
+    description: "根據時數選擇一至兩節課堂 (火星探索計劃除外) + 逃出迷宮\n建議組合一 ( 2小時 )：自動駕駛 + 逃出迷宮\n建議組合二 ( 3小時 )：自動駕駛 + AI 駕駛 + 逃出迷宮"
+  },
+  {
+    icon: "fas fa-star",
+    title: "完整課程 (6 小時)",
+    description: "建議一個學期完成 4 節課堂，每節 1.5 小時，不包括火星探索計劃。\n*可根據學校需要調整課堂數及時數"
+  }
+];
+
+// FAQ items
+const faqItems = [
+  {
+    question: "學生需要有編程背景嗎？",
+    answer: "無需。課程一般適合任何高小至初中學生。"
+  },
+  {
+    question: "用哪個平台來進行編程？",
+    answer: "Microsoft MakeCode 平台\nMakecode 提供基於積木的程式設計環境，讓初學者可以使用拖放介面為 Micro:bit 創建程式。"
+  },
+  {
+    question: "學校需要甚麼設備？",
+    answer: "學校需準備以下項目\n1） 手提電腦 / 電腦 (不能使用 iPad 或平板電腦)\n2）Micro:bit 板 (視乎課堂需要，每組需要 1 – 2 塊 Micro:bit，建議 2 – 3 名學生一組)\n3) micro USB 數據線\n建議先致電+852 6554-1506 或電郵至 info@10botics.com向同事溝通學校期望的教學內容，同事將就教學所需設備提供建議。"
+  },
+  {
+    question: "課程可容納多少學生？",
+    answer: "課程開班的最少人數是20人。STEM Day 活動則可容納一整個年級的學生。"
+  },
+  {
+    question: "每堂到校的公司職員人數？",
+    answer: "一般課程都會是一位導師到校教授。如果作為 STEM Day 活動，導師人數會作調整。"
+  }
+];
+
+// Gallery images
+const galleryImages = [
+  carousel1,
+  carousel2,
+  microbitTinybit
+];
+---
+
+<Layout title={courseData.title} description={courseData.description}>
+  <main>
+    <!-- Hero Section -->
+    <HeroSection 
+      title={courseData.title}
+      subtitle={courseData.subtitle}
+      description={courseData.description}
+      videoId={courseData.videoId}
+      heroImage={courseData.heroImage}
+      tags={courseData.tags}
+    />
+
+    <!-- What is Micro:bit Section -->
+    <section class="bg-gray-50 py-16">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-8 items-start">
+          <div>
+            <h3 class="text-2xl font-bold mb-4">什麼是Micro:bit？</h3>
+            <div class="flex justify-center mb-4">
+              <Image 
+                src={microbitCard} 
+                alt="Micro:bit card" 
+                class="w-48 h-32 object-contain rounded-lg"
+              />
+            </div>
+            <p class="text-gray-700">使用拖放式編程，適合初學者。亦支援其他編程語言（包括Python、JavaScript）。能結合不同擴展，製作不同項目。</p>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold mb-4">什麼是Tiny:bit？</h3>
+            <div class="flex justify-center mb-4">
+              <Image 
+                src={tinybitScreenshot} 
+                alt="Tiny:bit screenshot" 
+                class="w-48 h-32 object-contain rounded-lg"
+              />
+            </div>
+            <p class="text-gray-700">Tiny:bit是其中一款Micro:bit的擴展智能小車，體積小巧，組裝簡單。並配備各種感應器應用，包括避障感應器、追線感應器等。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Highlights -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">課程重點</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          {courseHighlights.map((highlight) => (
+            <div class="bg-white rounded-lg shadow-lg p-6">
+              <Image 
+                src={highlight.image} 
+                alt={highlight.title}
+                class="w-full rounded-lg mb-4"
+              />
+              <h3 class="text-xl font-bold mb-3">{highlight.title}</h3>
+              <p class="text-gray-700">{highlight.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Content -->
+    <SingleCourseContent 
+      items={curriculumItems} 
+      hours="6 小時"
+      images={[
+        { src: microbitTinybit, alt: "Micro:bit with Tinybit" }
+      ]}
+    />
+
+    <!-- Course Features -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <h3 class="text-xl font-bold mb-4">遙控車</h3>
+            <div class="aspect-video bg-gray-200 rounded-lg mb-4 flex items-center justify-center">
+              <iframe 
+                class="w-full h-full rounded-lg"
+                src="https://www.youtube.com/embed/hjOqlroqGC8" 
+                title="Remote Control Car"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+              </iframe>
+            </div>
+            <p class="text-gray-700">利用 micro:bit 內置藍牙通訊，讓 micro:bit 板遙控擴展車。microbit 內置的加速度計可以檢測傾斜和加速度，使你能夠通過傾斜控制器來控制車輛的運動。</p>
+          </div>
+          
+          <div class="text-center">
+            <h3 class="text-xl font-bold mb-4">AI 駕駛</h3>
+            <div class="aspect-video bg-gray-200 rounded-lg mb-4 flex items-center justify-center">
+              <iframe 
+                class="w-full h-full rounded-lg"
+                src="https://www.youtube.com/embed/3nYkeGNOVm4" 
+                title="AI Driving"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+              </iframe>
+            </div>
+            <p class="text-gray-700">結合 Teachable Machine，能夠通過手勢或聲音來控制 micro:bit 車的運動。例如，你可以通過舉起不同物件讓 AI 識別不同物件時來發出信號控制擴展車前進、後退或轉彎。</p>
+          </div>
+          
+          <div class="text-center">
+            <h3 class="text-xl font-bold mb-4">擴充</h3>
+            <Image 
+              src={marsRover} 
+              alt="Mars Rover" 
+              class="w-full rounded-lg mb-4"
+            />
+            <p class="text-gray-700">若選擇火星探索計劃，學生需拼建並編程上圖的火星車。這火星車能在不同地形上行駛。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Arrangements -->
+    <section class="bg-gray-50 py-16">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">課程安排</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          {courseArrangements.map((arrangement) => (
+            <div class="bg-white rounded-lg shadow-lg p-6">
+              <div class="flex items-start">
+                <i class={`${arrangement.icon} text-2xl text-blue-600 mt-1 mr-4`}></i>
+                <div>
+                  <h3 class="text-xl font-bold mb-3">{arrangement.title}</h3>
+                  <p class="text-gray-700 whitespace-pre-line">{arrangement.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p class="text-center mt-8">歡迎填妥下方表格讓同事為你提供咨詢。</p>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <GalleryCarousel 
+          title="精選照片"
+          images={galleryImages}
+          intervalMs={5000}
+        />
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <QnASection faqs={faqItems} />
+
+    <!-- Contact Form -->
+          <ContactSection subtitle="想了解更多關於 Microbit 逃出迷宮課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
+  </main>
+</Layout> 

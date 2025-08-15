@@ -1,0 +1,473 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import CourseFeatures from '../../components/course/CourseFeatures.astro';
+import AccordionSection from '../../components/course/AccordionSection.astro';
+import DualCourseContent from '../../components/course/DualCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import { Image } from 'astro:assets';
+
+// Import images
+import unityLogo from '../../assets/images/school-courses/Unity 課程/unity-logo.png';
+import unityLogoGame from '../../assets/images/school-courses/Unity 課程/unity-logo-game.png';
+import unityLogoVr from '../../assets/images/school-courses/Unity 課程/unity-logo-vr.png';
+import genshin from '../../assets/images/school-courses/Unity 課程/genshin.jpeg';
+import ksp from '../../assets/images/school-courses/Unity 課程/ksp.jpeg';
+import coding1 from '../../assets/images/school-courses/Unity 課程/coding-1.png';
+import gamemech from '../../assets/images/school-courses/Unity 課程/gamemech.png';
+import levelDesign from '../../assets/images/school-courses/Unity 課程/2d-level-design.png';
+import arNamecard from '../../assets/images/school-courses/Unity 課程/ar-namecard.png';
+import arMarkers from '../../assets/images/school-courses/Unity 課程/ar-markers.png';
+import model3d from '../../assets/images/school-courses/Unity 課程/3d-model.png';
+import ar3dObjects from '../../assets/images/school-courses/Unity 課程/ar-3d-objects.png';
+import vrVisualScripting from '../../assets/images/school-courses/Unity 課程/vr-visual-scripting.png';
+import vr3dWorldDesign from '../../assets/images/school-courses/Unity 課程/vr-3d-world-design.png';
+import vrGame from '../../assets/images/school-courses/Unity 課程/vr-game.png';
+import heroImage from '../../assets/images/school-courses/Unity 課程/hero-image.png';
+
+// Course data (static) - now in frontmatter
+export const courseData = {
+  title: "Unity 課程",
+  subtitle: "Unity, 創造, 遊玩, 學習, 改進, 創新！",
+  tags: ["3D 建模", "元宇宙", "AR 擴增實境", "C#", "Unity", "VR 虛擬實境", "故事開發", "編程", "軟件開發", "遊戲開發"],
+  videoId: "mG3jRZtDGAw",
+  description: "Unity 課程是一門針對初學者和有興趣的愛好者設計的遊戲開發課程。這個課程將帶領學生進入Unity引擎的世界，學習如何創建遊戲、虛擬現實體驗和擴增實境應用。學生將獲得實際的遊戲開發經驗，並能夠將自己的創意變成現實。",
+  detailedDescription: "針對初學者的 Unity 課程，遊戲開發，VR 及 AR 軟體開發。Unity 遊戲開發涵蓋基礎 C# 程式編碼和遊戲開發的基本原理。VR 和 AR 的無編碼開發，專注於概念化和設計沉浸式體驗。",
+  heroImage: heroImage,
+};
+
+// Course features
+const courseFeatures = [
+  {
+    icon: "fas fa-gamepad",
+    title: "Unity 遊戲開發",
+    description: "開發三款遊戲，從零開始編程：馬里奧風格遊戲、俯視射擊遊戲和3D滾動遊戲"
+  },
+  {
+    icon: "fas fa-code",
+    title: "C# 編程語言",
+    description: "在 Unity 環境下，C# 是一門極受歡迎的編程語言，尤其在頂尖的軟體公司中，需求量非常大"
+  },
+  {
+    icon: "fas fa-mobile-alt",
+    title: "Unity AR",
+    description: "學習 AR 基礎，創建個人名片以展示他們最喜愛的愛好"
+  },
+  {
+    icon: "fas fa-vr-cardboard",
+    title: "Unity VR",
+    description: "掌握VR基礎，學習使用視覺腳本創建互動並開發VR密室逃脫體驗"
+  }
+];
+
+// Unity Game Development curriculum
+const unityGameCurriculum = [
+  {
+    title: "基礎 C# 程式編碼 [2 節]",
+    content: [
+      "學習 C# 編程語言基礎",
+      "了解變數、函數、條件語句",
+      "掌握物件導向編程概念"
+    ]
+  },
+  {
+    title: "馬里奧風格遊戲 [3 節]",
+    content: [
+      "角色控制與移動系統",
+      "碰撞檢測與物理系統",
+      "關卡設計與遊戲機制"
+    ]
+  },
+  {
+    title: "俯視射擊遊戲 [3 節]",
+    content: [
+      "射擊系統與彈道計算",
+      "敵人 AI 與生成系統",
+      "計分系統與遊戲平衡"
+    ]
+  },
+  {
+    title: "3D 滾動遊戲 [4 節]",
+    content: [
+      "3D 環境設計與建模",
+      "相機控制與視角系統",
+      "音效與視覺效果"
+    ]
+  }
+];
+
+// AR/VR curriculum
+const arVrCurriculum = [
+  {
+    title: "AR 基礎與標記技術 [2 節]",
+    content: [
+      "AR 技術原理與應用",
+      "標記式 AR 技術",
+      "AR 名片製作"
+    ]
+  },
+  {
+    title: "3D 建模基礎 (Blender) [3 節]",
+    content: [
+      "Blender 介面與基本操作",
+      "3D 建模技巧與工具",
+      "材質與貼圖應用"
+    ]
+  },
+  {
+    title: "VR 視覺腳本 [2 節]",
+    content: [
+      "視覺腳本基礎概念",
+      "無編碼遊戲邏輯設計",
+      "互動系統建立"
+    ]
+  },
+  {
+    title: "VR 密室逃脫體驗 [3 節]",
+    content: [
+      "VR 環境設計",
+      "3D 世界建構",
+      "沉浸式體驗開發"
+    ]
+  }
+];
+
+// Course arrangements
+const courseArrangements = [
+  {
+    icon: "fas fa-star",
+    title: "Unity 遊戲開發課程 (12 小時)",
+    description: "專注於 C# 編程和遊戲開發，包含三款完整遊戲的開發。\n建議 6 節課堂，每節 2 小時。"
+  },
+  {
+    icon: "fas fa-star",
+    title: "AR/VR 開發課程 (10 小時)",
+    description: "專注於 AR 和 VR 技術，無需編程基礎。\n建議 5 節課堂，每節 2 小時。"
+  },
+  {
+    icon: "fas fa-star",
+    title: "完整 Unity 課程 (22 小時)",
+    description: "遊戲開發 + AR/VR 開發的完整課程。\n建議 11 節課堂，每節 2 小時。"
+  },
+  {
+    icon: "fas fa-star",
+    title: "STEM Day 活動 (2 至 4 小時)",
+    description: "可選擇遊戲開發或 AR/VR 體驗作為 STEM Day 活動。\n*可根據學校需要調整內容及時數"
+  }
+];
+
+// FAQ items
+const faqItems = [
+  {
+    question: "學生需要有編程背景嗎？",
+    answer: "Unity 遊戲開發課程：建議有基本編程概念，但會從 C# 基礎開始教授。\nAR/VR 課程：無需編程背景，使用視覺腳本和無編碼工具。"
+  },
+  {
+    question: "學校需要甚麼設備？",
+    answer: "學校需準備以下項目：\n1） 高性能電腦（建議 8GB RAM 以上）\n2） 安裝 Unity Hub 和 Unity 編輯器\n3） AR 課程需要平板電腦或手機\n4） VR 課程需要 VR 頭戴設備（可選）\n建議先致電+852 6554-1506 或電郵至 info@10botics.com向同事溝通學校期望的教學內容。"
+  },
+  {
+    question: "課程適合甚麼年級的學生？",
+    answer: "建議適合初中至高中學生，對遊戲開發、AR/VR 技術有興趣的學生。\n課程內容可根據學生程度調整難度。"
+  }
+];
+
+// Student work examples (images from the original site)
+const studentWorkExamples = [
+  {
+    title: "Unity 遊戲開發",
+    image: unityLogoGame,
+    description: "學習 C# 編程，開發三款不同類型的遊戲"
+  },
+  {
+    title: "AR 擴增實境",
+    image: arNamecard,
+    description: "製作個人化 AR 名片，展示創意與技術"
+  },
+  {
+    title: "VR 虛擬實境",
+    image: unityLogoVr,
+    description: "使用視覺腳本開發 VR 密室逃脫體驗"
+  },
+  {
+    title: "3D 建模與設計",
+    image: model3d,
+    description: "學習 Blender 3D 建模，創建遊戲資產"
+  }
+];
+
+// Unity examples
+const unityExamples = [
+  {
+    title: "原神 (Genshin Impact)",
+    image: genshin,
+    description: "使用 Unity 開發的熱門開放世界遊戲"
+  },
+  {
+    title: "坎巴拉太空計劃 (KSP)",
+    image: ksp,
+    description: "Unity 引擎開發的太空模擬遊戲"
+  }
+];
+---
+
+<Layout title={courseData.title}>
+  <HeroSection 
+    title={courseData.title}
+    subtitle={courseData.subtitle}
+    tags={courseData.tags}
+    videoId={courseData.videoId}
+    description={courseData.description}
+  />
+
+  <!-- Unity Introduction Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <a href="https://unity.com/" target="_blank" class="inline-block">
+            <Image src={unityLogo} alt="Unity Logo" class="w-full max-w-md" />
+          </a>
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Unity 是什麼？</h2>
+          <p class="text-lg text-gray-700 leading-relaxed mb-6">
+            Unity 是一個功能豐富的遊戲開發引擎，適用於開發包括視頻遊戲、虛擬實境及增強實境等互動體驗。它提供了一個對創作者友好的平台，讓他們能自由設計和創建內容。
+          </p>
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">
+            <a href="https://unity.com/" target="_blank" class="text-cyan-600 hover:text-cyan-700">
+              採用 Unity 開發的電子遊戲
+            </a>
+          </h3>
+        </div>
+      </div>
+      
+      <!-- Unity Game Examples -->
+      <div class="mt-12">
+        <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">知名 Unity 遊戲作品</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+          {unityExamples.map((game) => (
+            <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+              <Image src={game.image} alt={game.title} class="w-full h-48 object-cover" />
+              <div class="p-6">
+                <h4 class="text-lg font-semibold text-gray-900 mb-2">{game.title}</h4>
+                <p class="text-gray-700">{game.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Features Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程特色</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {courseFeatures.map((feature) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center mb-4">
+              <i class={`${feature.icon} text-3xl text-cyan-500 mr-4`}></i>
+              <h3 class="text-xl font-semibold text-gray-900">{feature.title}</h3>
+            </div>
+            <p class="text-gray-700 leading-relaxed">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Unity Game Development Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Unity 遊戲開發</h2>
+        <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+          開發三款遊戲，從零開始編程：馬里奧風格遊戲、俯視射擊遊戲和3D滾動遊戲
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+          <Image src={coding1} alt="C# 編程" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">C# 編程基礎</h3>
+            <p class="text-gray-700">學習 C# 編程語言，掌握遊戲開發的核心技能</p>
+          </div>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+          <Image src={gamemech} alt="遊戲機制" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">遊戲機制設計</h3>
+            <p class="text-gray-700">實現角色動作與移動及遊戲玩法機制</p>
+          </div>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+          <Image src={levelDesign} alt="關卡設計" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">關卡設計</h3>
+            <p class="text-gray-700">學習如何設計遊戲關卡和遊戲平衡</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-gray-50 rounded-lg p-8">
+        <h3 class="text-2xl font-bold text-gray-900 mb-6">遊戲開發學習重點</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="text-lg font-semibold text-gray-900 mb-3">編碼規範</h4>
+            <p class="text-gray-700">在 Unity 環境下，C# 是一門極受歡迎的編程語言，尤其在頂尖的軟體公司中，需求量非常大</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold text-gray-900 mb-3">實現角色動作與移動及遊戲玩法機制</h4>
+            <p class="text-gray-700">學習如何實現角色動作和移動，並理解基本遊戲機制，以創造更互動的遊戲體驗</p>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold text-gray-900 mb-3">創意自由</h4>
+            <p class="text-gray-700">學生可以自由修改遊戲物件和遊戲玩法，實驗並創建他們版本的遊戲</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AR Development Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Unity AR 擴增實境</h2>
+        <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+          學習 AR 基礎，創建個人名片以展示他們最喜愛的愛好
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+          <Image src={arMarkers} alt="AR 標記" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">標記式AR技術</h3>
+            <p class="text-gray-700">掌握標記式AR技術，包括如何識別和追蹤</p>
+          </div>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+          <Image src={model3d} alt="3D 建模" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">3D建模基礎（Blender）</h3>
+            <p class="text-gray-700">探索Blender的3D建模基礎，這是一項適用於遊戲、動畫和建築等多個領域的多功能技能</p>
+          </div>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+          <Image src={ar3dObjects} alt="3D 物件整合" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">3D 物件與現實生活整合</h3>
+            <p class="text-gray-700">學習調整和優化物件以適應並對齊現實生活的大小，使 3D 物件看起來像是現實的一部分</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg p-8">
+        <div class="text-center">
+          <Image src={arNamecard} alt="AR 名片" class="w-full max-w-md mx-auto mb-6" />
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">個人化 AR 名片</h3>
+          <p class="text-lg text-gray-700">學生將學習如何製作展示個人愛好的個性化AR名片，結合創意與技術</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VR Development Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Unity VR 虛擬實境</h2>
+        <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+          掌握VR基礎，學習使用視覺腳本創建互動並開發VR密室逃脫體驗
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+          <Image src={vrVisualScripting} alt="視覺腳本" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">視覺腳本</h3>
+            <p class="text-gray-700">透過視覺界面學習創建和應用遊戲邏輯，使得遊戲開發無需任何編碼知識</p>
+          </div>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+          <Image src={vr3dWorldDesign} alt="3D 世界設計" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">3D 世界設計</h3>
+            <p class="text-gray-700">學習如何設計和建構沉浸式的 VR 環境</p>
+          </div>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+          <Image src={vrGame} alt="VR 遊戲" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">VR 密室逃脫</h3>
+            <p class="text-gray-700">開發完整的 VR 密室逃脫遊戲體驗</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Content Section -->
+  <DualCourseContent 
+    beginnerTitle="Unity 遊戲開發課程"
+    advancedTitle="AR/VR 開發課程"
+    beginnerItems={unityGameCurriculum}
+    advancedItems={arVrCurriculum}
+    beginnerHours="12 小時"
+    advancedHours="10 小時"
+  />
+
+  <!-- Course Arrangement Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程安排</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        {courseArrangements.map((arrangement) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center mb-4">
+              <i class={`${arrangement.icon} text-3xl text-cyan-500 mr-4`}></i>
+              <h3 class="text-xl font-semibold text-gray-900">{arrangement.title}</h3>
+            </div>
+            <p class="text-gray-700 leading-relaxed whitespace-pre-line">{arrangement.description}</p>
+          </div>
+        ))}
+      </div>
+      
+      <div class="text-center mt-8">
+        <p class="text-lg text-gray-700">歡迎填妥下方表格讓同事為你提供咨詢。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Student Work Examples Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程內容展示</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {studentWorkExamples.map((work) => (
+          <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+            <Image src={work.image} alt={work.title} class="w-full h-48 object-cover" />
+            <div class="p-4">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">{work.title}</h3>
+              <p class="text-gray-700 text-sm">{work.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <QnASection faqs={faqItems} />
+
+  <!-- Contact Section -->
+  <ContactSection subtitle="想了解更多關於 Unity 課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
+</Layout> 

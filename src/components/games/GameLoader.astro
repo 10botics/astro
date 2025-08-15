@@ -1,0 +1,169 @@
+---
+export interface Props {
+  gamePath: string;
+  gameTitle: string;
+  width?: string;
+  height?: string;
+}
+
+const { gamePath, gameTitle, width = "100%", height = "600px" } = Astro.props;
+---
+
+<div class="game-loader">
+  <div class="game-header">
+    <h3 class="game-title">{gameTitle}</h3>
+    <div class="game-controls">
+      <button class="fullscreen-btn" onclick="toggleFullscreen(this)">
+        <i class="fas fa-expand"></i> 全螢幕
+      </button>
+    </div>
+  </div>
+  
+  <div class="game-container">
+    <iframe 
+      src={gamePath}
+      title={gameTitle}
+      width={width}
+      height={height}
+      frameborder="0"
+      allowfullscreen
+      class="game-frame"
+    ></iframe>
+  </div>
+  
+  <div class="game-instructions">
+    <p><i class="fas fa-info-circle"></i> 遊戲載入中，請稍候...</p>
+  </div>
+</div>
+
+<style>
+  .game-loader {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .game-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .game-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .game-controls {
+    display: flex;
+    gap: 10px;
+  }
+
+  .fullscreen-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+
+  .fullscreen-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .game-container {
+    position: relative;
+    background: #f8f9fa;
+  }
+
+  .game-frame {
+    display: block;
+    border: none;
+    background: white;
+  }
+
+  .game-instructions {
+    background: #f8f9fa;
+    padding: 15px 20px;
+    border-top: 1px solid #e9ecef;
+    text-align: center;
+    color: #6c757d;
+    font-size: 14px;
+  }
+
+  .game-instructions i {
+    margin-right: 5px;
+  }
+
+  /* Fullscreen styles */
+  .game-loader.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    border-radius: 0;
+  }
+
+  .game-loader.fullscreen .game-frame {
+    width: 100%;
+    height: calc(100vh - 120px);
+  }
+</style>
+
+<script>
+  function toggleFullscreen(button) {
+    const gameLoader = button.closest('.game-loader');
+    const iframe = gameLoader.querySelector('.game-frame');
+    
+    if (!document.fullscreenElement) {
+      // Enter fullscreen
+      if (gameLoader.requestFullscreen) {
+        gameLoader.requestFullscreen();
+      } else if (gameLoader.webkitRequestFullscreen) {
+        gameLoader.webkitRequestFullscreen();
+      } else if (gameLoader.msRequestFullscreen) {
+        gameLoader.msRequestFullscreen();
+      }
+      gameLoader.classList.add('fullscreen');
+      button.innerHTML = '<i class="fas fa-compress"></i> 退出全螢幕';
+    } else {
+      // Exit fullscreen
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+      gameLoader.classList.remove('fullscreen');
+      button.innerHTML = '<i class="fas fa-expand"></i> 全螢幕';
+    }
+  }
+
+  // Handle fullscreen change events
+  document.addEventListener('fullscreenchange', handleFullscreenChange);
+  document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+  document.addEventListener('msfullscreenchange', handleFullscreenChange);
+
+  function handleFullscreenChange() {
+    const gameLoaders = document.querySelectorAll('.game-loader');
+    const buttons = document.querySelectorAll('.fullscreen-btn');
+    
+    if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
+      gameLoaders.forEach(loader => loader.classList.remove('fullscreen'));
+      buttons.forEach(button => {
+        button.innerHTML = '<i class="fas fa-expand"></i> 全螢幕';
+      });
+    }
+  }
+</script> 

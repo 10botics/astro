@@ -1,0 +1,474 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import CourseFeatures from '../../components/course/CourseFeatures.astro';
+import AccordionSection from '../../components/course/AccordionSection.astro';
+import DualCourseContent from '../../components/course/DualCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import { Image } from 'astro:assets';
+
+// Import images
+import featuredImage from '../../assets/images/school-courses/Tello 無人機課程/hero-image.jpg';
+import droneExperience from '../../assets/images/school-courses/Tello 無人機課程/drone-experience.gif';
+import programmingControl from '../../assets/images/school-courses/Tello 無人機課程/programming-control.gif';
+import swarmPerformance from '../../assets/images/school-courses/Tello 無人機課程/swarm-performance.gif';
+import gallery1 from '../../assets/images/school-courses/Tello 無人機課程/gallery-1.png';
+import gallery2 from '../../assets/images/school-courses/Tello 無人機課程/gallery-2.png';
+import gallery3 from '../../assets/images/school-courses/Tello 無人機課程/gallery-3.png';
+
+// Course data (static) - now in frontmatter
+export const courseData = {
+  title: "Tello 無人機課程",
+  subtitle: "翱翔天際，探索無人機編程的無限可能",
+  tags: ["Programming 編程", "Scratch", "Tello", "無人機", "高小", "初中", "高中"],
+  videoId: "your-video-id-here",
+  description: "Tello 無人機課程讓學生學習如何通過編程控制無人機，體驗飛行技術與編程的完美結合。",
+  detailedDescription: "Tello 無人機課程讓學生學習如何通過編程控制無人機，體驗飛行技術與編程的完美結合。",
+  heroImage: featuredImage,
+  featuredImage: featuredImage
+};
+
+// Course curriculum
+const curriculumItems = [
+  {
+    title: "簡介無人機及無人機體驗 [1 節]",
+    content: [
+      "無人機的演變歷史和應用領域",
+      "基本操作和飛行原理"
+    ]
+  },
+  {
+    title: "無人機的應用及編程(1) [1 節]",
+    content: [
+      "安全使用Tello及連接設定",
+      "Tello App 介紹和基本操作",
+      "初步認識編程"
+    ]
+  },
+  {
+    title: "無人機的應用及編程(2) [2 節]",
+    content: [
+      "循環結構與優化編程",
+      "使用 Mission Pad 进行编程",
+      "花式飛行"
+    ]
+  },
+  {
+    title: "無人機的應用及編程(3) [2 節]",
+    content: [
+      "三維座標與避障飛行的基本概念"
+    ]
+  },
+  {
+    title: "Teachable Machine [2 節]",
+    content: [
+      "理解 Teachable Machine 的基本概念",
+      "圖像控制無人機的操作编程"
+    ]
+  },
+  {
+    title: "群飛基礎概念 [2 節]",
+    content: [
+      "群飛的應用領域介紹",
+      "將Tello轉為 Station Mode",
+      "群飛 Demo 動作體驗"
+    ]
+  }
+];
+
+// Advanced curriculum
+const advancedCurriculumItems = [
+  {
+    title: "群飛技巧訓練 [2 節]",
+    content: [
+      "群飛任務的準備和組織",
+      "群飛動作的編程和執行",
+      "測試和優化"
+    ]
+  },
+  {
+    title: "群飛進階技巧 [2 節]",
+    content: [
+      "複雜群飛任務的規劃和編程",
+      "群飛動作的協調和同步",
+      "優化與調試"
+    ]
+  },
+  {
+    title: "高級編程與創新應用 [2 節]",
+    content: [
+      "學習高級編程概念與技巧",
+      "設計創新的飛行任務與動作"
+    ]
+  },
+  {
+    title: "項目實踐 - 實現群飛任務 [2 節]",
+    content: [
+      "組合作實現複雜群飛任務",
+      "結合之前學到的技巧和知識"
+    ]
+  },
+  {
+    title: "項目演示與反饋 [2 節]",
+    content: [
+      "學生展示自己設計的群飛任務和動作",
+      "接收反饋和改進"
+    ]
+  }
+];
+
+// Course highlights
+const courseHighlights = [
+  {
+    icon: "fas fa-drone",
+    title: "無人機體驗",
+    description: "介紹無人機的技術和飛行原理，學生可以掌握如何操控Tello無人機，以無人機進行航拍及各種飛行動作。"
+  },
+  {
+    icon: "fas fa-code",
+    title: "編程控制",
+    description: "利用Scratch編程工具操控Tello無人機，從而進行不同的任務和挑戰。學生亦可以自行探索，創作自己的花式表演，從而訓練他們的創意和解難能力。"
+  },
+  {
+    icon: "fas fa-users",
+    title: "群飛匯演",
+    description: "課程讓學生體驗編程指令多部無人機進行群飛的刺激。學生可以利用多部無人機組合不同的圖䅁，能夠在各種埸合進行不同的展示效果。"
+  }
+];
+
+// Course features
+const courseFeatures = [
+  {
+    icon: "fas fa-check-circle",
+    title: "課程適合高小及中學生"
+  },
+  {
+    icon: "fas fa-check-circle",
+    title: "助學生成為Tello高手"
+  },
+  {
+    icon: "fas fa-check-circle",
+    title: "創作自己的花式表演"
+  },
+  {
+    icon: "fas fa-check-circle",
+    title: "有趣的障礙物挑戰和群飛專題研習"
+  }
+];
+
+// Course objectives
+const courseObjectives = [
+  {
+    icon: "fas fa-check-circle",
+    title: "無人機認識",
+    description: "認識無人機的運作和飛行原理，講解使用無人機時的安全守則及探討無人機在社會上的應用。"
+  },
+  {
+    icon: "fas fa-check-circle",
+    title: "Tello 無人機飛行操作",
+    description: "學習Tello無人機電池安全檢查、起飛及降落的步驟。操控Tello無人機進行各種飛行動作及航拍。"
+  },
+  {
+    icon: "fas fa-check-circle",
+    title: "Scratch 程式編寫",
+    description: "學習 Scratch 編寫程式界面，以Scratch的拖拉設定去控制Tello無人機進行趣味十足的表演，並在課程中提升編程技能。"
+  },
+  {
+    icon: "fas fa-check-circle",
+    title: "精準編程",
+    description: "學習編寫程序讓Tello無人機能夠識別到挑戰卡。結合挑戰卡的幫助，做出想要的動作。"
+  },
+  {
+    icon: "fas fa-check-circle",
+    title: "群飛匯演",
+    description: "Tello無人機支援多機編隊，透過Scratch程序和挑戰卡的幫助，做出編隊飛行，用編程操控無人機進行千變萬化的表演。"
+  }
+];
+
+// Course arrangements
+const courseArrangements = [
+  {
+    icon: "fas fa-star",
+    title: "STEM Day 活動 (1 至 2 小時)",
+    description: "通過簡單的操作和飛行，學生將了解無人機的基本原理。學生將親自操作Tello無人機進行簡單的飛行。他們會學習如何起飛、降落、懸停以及基本的飛行控制。學生將進行一些簡單的飛行挑戰，如穿越障礙物、畫出特定圖形等，鍛煉他們的控制技能。"
+  },
+  {
+    icon: "fas fa-star",
+    title: "初階課程 (10 小時)",
+    description: "建議一個學期完成 10 節課堂，每節 1 小時。*可根據學校需要調整課堂數及時數"
+  },
+  {
+    icon: "fas fa-star",
+    title: "進階課程 (10 小時)",
+    description: "建議一個學期完成 10 節課堂，每節 1 小時。*可根據學校需要調整課堂數及時數"
+  },
+  {
+    icon: "fas fa-star",
+    title: "組合課程 (20 小時)",
+    description: "初階課程 (上學期) + 進階課程 (下學期)。建議兩個學期共完成 20 節課堂，每節 1 小時。*可根據學校需要調整課堂數及時數"
+  }
+];
+
+// FAQ items
+const faqItems = [
+  {
+    question: "上課場地是室內課室或室外操場?",
+    answer: "需要在室內上課，建議能提供活動室或禮堂等空間較大的地方作為上課地點。"
+  },
+  {
+    question: "學生需要有編程背景嗎？",
+    answer: "無需。課程一般適合任何高小至高中學生。"
+  },
+  {
+    question: "課程開班的最少人數是多少？",
+    answer: "課程開班的最少人數是10人。"
+  },
+  {
+    question: "每堂課程提供的無人機上限是多少？",
+    answer: "課程本身不包含任何無人機，如有需要學校可以向我們購買。我們亦有提供租借無人機的服務，會視乎上堂人數決定租借數量。"
+  },
+  {
+    question: "每堂到校的公司職員人數?",
+    answer: "一般課程都會是一位導師到校教授。如果學生人數超過20人，導師人數會作調整。"
+  },
+  {
+    question: "學校需要否提供任何協助?如充電器或其他器材?",
+    answer: "上課地點需要有投影設備，包括投影機, 屏幕, HDMI線及咪。另外需要確保課室有 WiFi 供學生和導師使用。每次上課前需要為iPad和Tello電池進行充電。"
+  },
+  {
+    question: "可否接收政府採購卡(P-card) 付款?",
+    answer: "我們暫不按受政府採購卡(P-card) 付款。"
+  }
+];
+---
+
+<Layout title={courseData.title} description={courseData.description}>
+  <HeroSection 
+    title={courseData.title}
+    subtitle={courseData.subtitle}
+    tags={courseData.tags}
+    videoId={courseData.videoId}
+    description={courseData.description}
+    featuredImage={courseData.featuredImage}
+  />
+
+  <!-- Course Highlights -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">課程重點</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- 無人機體驗 -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="mb-6">
+            <Image src={droneExperience} alt="無人機體驗" class="w-full h-48 object-cover rounded-lg" />
+          </div>
+          <div class="flex items-center mb-4">
+            <i class="fas fa-drone text-3xl text-blue-600 mr-4"></i>
+            <h3 class="text-xl font-semibold">無人機體驗</h3>
+          </div>
+          <p class="text-gray-600">介紹無人機的技術和飛行原理，學生可以掌握如何操控Tello無人機，以無人機進行航拍及各種飛行動作。</p>
+        </div>
+
+        <!-- 編程控制 -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="mb-6">
+            <Image src={programmingControl} alt="編程控制" class="w-full h-48 object-cover rounded-lg" />
+          </div>
+          <div class="flex items-center mb-4">
+            <i class="fas fa-code text-3xl text-blue-600 mr-4"></i>
+            <h3 class="text-xl font-semibold">編程控制</h3>
+          </div>
+          <p class="text-gray-600">利用Scratch編程工具操控Tello無人機，從而進行不同的任務和挑戰。學生亦可以自行探索，創作自己的花式表演，從而訓練他們的創意和解難能力。</p>
+        </div>
+
+        <!-- 群飛匯演 -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="mb-6">
+            <Image src={swarmPerformance} alt="群飛匯演" class="w-full h-48 object-cover rounded-lg" />
+          </div>
+          <div class="flex items-center mb-4">
+            <i class="fas fa-users text-3xl text-blue-600 mr-4"></i>
+            <h3 class="text-xl font-semibold">群飛匯演</h3>
+          </div>
+          <p class="text-gray-600">課程讓學生體驗編程指令多部無人機進行群飛的刺激。學生可以利用多部無人機組合不同的圖䅁，能夠在各種埸合進行不同的展示效果。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Features -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">課程特色</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {courseFeatures.map((feature) => (
+          <div class="flex items-center p-4 bg-white rounded-lg shadow-md">
+            <i class={`${feature.icon} text-2xl text-green-600 mr-4`}></i>
+            <h3 class="font-semibold">{feature.title}</h3>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Additional Video Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="aspect-video bg-black rounded-lg overflow-hidden shadow-lg">
+          <iframe 
+            src="https://www.youtube.com/embed/q0JQXZY3wZ4?controls=1&rel=0"
+            class="w-full h-full"
+            frameborder="0"
+            allowfullscreen
+            title="Tello 無人機課程演示">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Objectives -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">課程目標</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {courseObjectives.map((objective) => (
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex items-start mb-4">
+              <i class={`${objective.icon} text-2xl text-green-600 mr-4 mt-1`}></i>
+              <h3 class="text-lg font-semibold">{objective.title}</h3>
+            </div>
+            <p class="text-gray-600 ml-10">{objective.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Content -->
+  <DualCourseContent 
+    beginnerTitle="初階課程"
+    advancedTitle="進階課程"
+    beginnerItems={curriculumItems}
+    advancedItems={advancedCurriculumItems}
+    beginnerHours="10 小時"
+    advancedHours="10 小時"
+  />
+
+  <!-- Course Arrangements -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">課程安排</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {courseArrangements.map((arrangement) => (
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex items-start mb-4">
+              <i class={`${arrangement.icon} text-2xl text-yellow-500 mr-4 mt-1`}></i>
+              <h3 class="text-lg font-semibold">{arrangement.title}</h3>
+            </div>
+            <p class="text-gray-600 ml-10">{arrangement.description}</p>
+          </div>
+        ))}
+      </div>
+      <p class="text-center mt-8 text-gray-600">歡迎填妥下方表格讓同事為你提供咨詢。</p>
+    </div>
+  </section>
+
+  <!-- Photo Gallery Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">精選照片</h2>
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <!-- Tello teaching session -->
+          <div class="aspect-square bg-cover bg-center rounded-lg shadow-md bg-gray-200 flex items-center justify-center">
+            <Image src={gallery1} alt="Tello teaching session" class="w-full h-full object-cover rounded-lg" />
+          </div>
+          <!-- Tello learning activity -->
+          <div class="aspect-square bg-cover bg-center rounded-lg shadow-md bg-gray-200 flex items-center justify-center">
+            <Image src={gallery2} alt="Tello learning activity" class="w-full h-full object-cover rounded-lg" />
+          </div>
+          <!-- Tello programming interface -->
+          <div class="aspect-square bg-cover bg-center rounded-lg shadow-md bg-gray-200 flex items-center justify-center">
+            <Image src={gallery3} alt="Tello programming interface" class="w-full h-full object-cover rounded-lg" />
+          </div>
+          <!-- Tello swarm flying -->
+          <div class="aspect-square bg-cover bg-center rounded-lg shadow-md bg-gray-200 flex items-center justify-center">
+            <Image src={droneExperience} alt="Tello swarm flying" class="w-full h-full object-cover rounded-lg" />
+          </div>
+          <!-- Tello drone demonstration -->
+          <div class="aspect-square bg-cover bg-center rounded-lg shadow-md bg-gray-200 flex items-center justify-center">
+            <Image src={programmingControl} alt="Tello drone demonstration" class="w-full h-full object-cover rounded-lg" />
+          </div>
+          <!-- Tello course overview -->
+          <div class="aspect-square bg-cover bg-center rounded-lg shadow-md bg-gray-200 flex items-center justify-center">
+            <Image src={swarmPerformance} alt="Tello course overview" class="w-full h-full object-cover rounded-lg" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <QnASection faqs={faqItems} variant="details" />
+
+  <!-- Contact Form -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          聯絡我們
+        </h2>
+        <p class="text-lg text-gray-600">
+          想了解更多關於 Tello 無人機課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。
+        </p>
+      </div>
+      <ContactSection subtitle="想了解更多關於 Tello 無人機課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Custom Tello accordion functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const headers = document.querySelectorAll('.tello-accordion-header');
+    
+    headers.forEach((header: Element) => {
+      header.addEventListener('click', function(this: HTMLElement) {
+        const target = this.getAttribute('data-target');
+        if (!target) return;
+        
+        const content = document.getElementById(target);
+        if (!content) return;
+        
+        const icon = this.querySelector('.tello-accordion-icon i') as HTMLElement;
+        if (!icon) return;
+        
+        // Toggle current accordion
+        if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+          content.style.maxHeight = '0px';
+          icon.className = 'fas fa-plus text-gray-600';
+        } else {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.className = 'fas fa-minus text-gray-600';
+        }
+      });
+    });
+    
+    // Open all Tello accordions by default
+    headers.forEach((header: Element) => {
+      const target = header.getAttribute('data-target');
+      if (!target) return;
+      
+      const content = document.getElementById(target);
+      if (!content) return;
+      
+      const icon = header.querySelector('.tello-accordion-icon i') as HTMLElement;
+      if (!icon) return;
+      
+      content.style.maxHeight = content.scrollHeight + 'px';
+      icon.className = 'fas fa-minus text-gray-600';
+    });
+  });
+</script> 

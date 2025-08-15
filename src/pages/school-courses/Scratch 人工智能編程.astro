@@ -1,0 +1,380 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import CourseFeatures from '../../components/course/CourseFeatures.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import { Image } from 'astro:assets';
+
+// Import images
+import machineLearningTraining from '../../assets/images/school-courses/Scratch 人工智能編程/machine-learning-training.gif';
+import faceRecognition from '../../assets/images/school-courses/Scratch 人工智能編程/face-recognition.gif';
+import scratchAiHero from '../../assets/images/school-courses/Scratch 人工智能編程/scratch-ai-hero.jpg';
+import scratchprofie from '../../assets/images/school-courses/Scratch 人工智能編程/scratch-thumbnail.png';
+
+// Course features data
+const courseFeatures = {
+  title: "課程特色",
+  features: [
+    "了解 AI 五大理念，趨勢與實踐",
+    "認識機器學習 (Machine Learning) 的類別",
+    "透過 Teachable Machine 訓練人工智能模型，並結合 Scratch 製作不同的 AI 應用程式",
+    "讓學生體驗與 AI 互動"
+  ],
+  aiConceptsLink: "https://medium.com/10botics/ai-%E5%9F%BA%E7%A4%8E%E4%BA%94%E5%A4%A7%E7%90%86%E5%BF%B5-%E7%B5%A6k12%E5%AD%A9%E7%AB%A5%E7%9A%84ai%E6%95%99%E8%82%B2-44a4aafc03fb",
+  infographicImage: "/src/assets/images/school-courses/Scratch 人工智能編程/ai-five-concepts.webp",
+  demoVideo: {
+    videoId: "OoTX6U_aVto",
+    title: "Scratch AI Project - Mask Detector",
+    description: "輕易與 Teachable Machine 連結，讓學生發揮創意，實現所想"
+  },
+  aiExamples: [
+    {
+      title: "人面識別",
+      image: "/src/assets/images/school-courses/Scratch 人工智能編程/scratch-ai-1.gif"
+    },
+    {
+      title: "手勢識別",
+      image: "/src/assets/images/school-courses/Scratch 人工智能編程/scratch-ai-2.gif"
+    },
+    {
+      title: "姿勢識別",
+      image: "/src/assets/images/school-courses/Scratch 人工智能編程/scratch-ai-3.gif"
+    }
+  ]
+};
+
+// FAQ items
+const faqItems = [
+  {
+    question: "只有 iPad 的學生能否參加課程？",
+    answer: "不可以。因課程中使用的 Teachable Machine 不能在 iPad 運行。"
+  },
+  {
+    question: "學校需要甚麼設備？",
+    answer: "學校需準備以下項目\n1. 手提電腦 / 電腦（配備鏡頭）\n\n建議先致電 +852 6554-1506 或電郵至 sales@10botics.com 向同事溝通學校期望的教學內容，同事將就教學所需設備提供幫助和建議。"
+  },
+  {
+    question: "誰適合這個課程？",
+    answer: "• 小四至初中學生\n• 初學者，無需任何經驗"
+  }
+];
+
+// Course data (static) - now in frontmatter
+export const courseData = {
+  title: "Scratch 人工智能編程",
+  subtitle: "結合 Scratch 與 AI，創造智能遊戲體驗",
+  tags: ["AI 人工智能", "Block Coding 方塊編程", "Programming 編程", "Scratch", "高小", "初中"],
+  videoId: "your-video-id-here",
+  description: "Scratch 人工智能編程結合了傳統的 Scratch 編程與現代的人工智能技術，讓學生在學習基礎編程概念的同時，也能體驗 AI 技術的應用。",
+  detailedDescription: "Scratch 人工智能編程結合了傳統的 Scratch 編程與現代的人工智能技術，讓學生在學習基礎編程概念的同時，也能體驗 AI 技術的應用。",
+  heroImage: scratchprofie
+};
+
+// Course curriculum
+const curriculumItems = [
+  {
+    title: "認識 Scratch 介面、操作以及人工智能",
+    content: [
+      "認識Scratch介面基本操作",
+      "講解WASD以外的移動方法",
+      "認識人工智能五大理念"
+    ]
+  },
+  {
+    title: "認識Teachable Machine [1 節]",
+    content: [
+      "概述Teachable Machine及其功能",
+      "解釋Teachable Machine如何使用機器學習進行分類",
+      "演示使用Teachable Machine創建的不同項目"
+    ]
+  },
+  {
+    title: "探索面部識別 [2 節]",
+    content: [
+      "定義面部識別的重要性",
+      "介紹面部特徵點及其在面部識別中的作用",
+      "演示使用Teachable Machine模型進行面部識別的過程",
+      "學生創建並訓練自己的Teachable Machine面部識別模型"
+    ]
+  },
+  {
+    title: "探索手勢識別 [2 節]",
+    content: [
+      "解釋手勢識別及其在互動遊戲中的相關性",
+      "介紹不同手勢及其重要性",
+      "逐步指導學生使用Teachable Machine訓練手勢識別模型",
+      "學生設計並訓練自己的Teachable Machine手勢識別模型"
+    ]
+  },
+  {
+    title: "探索姿態識別 [2 節]",
+    content: [
+      "定義姿態識別及其在互動遊戲中的重要性",
+      "概述人體關鍵點及其在姿態識別中的作用",
+      "演示使用Teachable Machine模型進行姿態識別的過程",
+      "學生開發並訓練自己的Teachable Machine姿態識別模型"
+    ]
+  },
+  {
+    title: "整合Teachable Machine與Scratch [2 節]",
+    content: [
+      "介紹Scratch及其可視化編程環境",
+      "解釋如何使用網絡攝像頭擴展將Teachable Machine與Scratch連接",
+      "指導編程技巧，以在Scratch中實現面部識別、手勢識別和姿態識別",
+      "學生將自己的Teachable Machine模型與Scratch結合，設計互動遊戲"
+    ]
+  }
+];
+---
+
+<Layout title={courseData.title}>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Hero Section -->
+  <HeroSection 
+    title={courseData.title}
+    subtitle={courseData.subtitle}
+    tags={courseData.tags}
+    videoId={courseData.videoId}
+    description={courseData.description}
+    heroImage={courseData.heroImage}
+  />
+
+  <!-- AI Programming Introduction Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Content Section - Left side -->
+        <div class="space-y-8">
+          <h2 class="text-4xl font-bold text-gray-900 mb-8 course-heading">AI 編程新體驗</h2>
+          
+          <!-- Feature points -->
+          <div class="space-y-6">
+            <!-- Feature 1 -->
+            <div class="flex items-start space-x-4">
+              <div class="flex-shrink-0 mt-1">
+                <i class="fas fa-robot text-blue-600 text-xl"></i>
+              </div>
+              <div>
+                <p class="text-gray-700 text-base">
+                  結合 Scratch 視覺化編程與現代 AI 技術，讓學生輕鬆體驗人工智能的奧秘
+                </p>
+              </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="flex items-start space-x-4">
+              <div class="flex-shrink-0 mt-1">
+                <i class="fas fa-brain text-purple-600 text-xl"></i>
+              </div>
+              <div>
+                <p class="text-gray-700 text-base">
+                  透過 Teachable Machine 訓練自己的 AI 模型，實現面部識別、手勢識別和姿態識別
+                </p>
+              </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="flex items-start space-x-4">
+              <div class="flex-shrink-0 mt-1">
+                <i class="fas fa-gamepad text-green-600 text-xl"></i>
+              </div>
+              <div>
+                <p class="text-gray-700 text-base">
+                  將 AI 模型整合到 Scratch 遊戲中，創造互動性強、智能化的遊戲體驗
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image Section - Right side -->
+        <div class="flex justify-center">
+          <Image 
+            src="/src/assets/images/school-courses/Scratch 人工智能編程/scratch-interface.png" 
+            alt="Scratch AI Interface"
+            class="w-full max-w-md h-auto"
+            width="600"
+            height="400"
+          />
+        </div>
+      </div>
+
+      <!-- Why Learn AI Programming Section -->
+      <div class="mt-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-8 course-heading">為什麼要學習 AI 編程？</h2>
+        <div class="grid lg:grid-cols-2 gap-8">
+          <!-- Check mark items -->
+          <div class="flex items-start space-x-4">
+            <div class="flex-shrink-0 mt-1">
+              <i class="fas fa-check-circle text-green-600 text-xl"></i>
+            </div>
+            <div>
+              <p class="text-gray-700 text-base">
+                <span class="font-medium">未來技能</span> - AI 是未來最重要的技術之一，及早接觸為未來發展奠定基礎
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-4">
+            <div class="flex-shrink-0 mt-1">
+              <i class="fas fa-check-circle text-green-600 text-xl"></i>
+            </div>
+            <div>
+              <p class="text-gray-700 text-base">
+                <span class="font-medium">創意思維</span> - 透過 AI 技術實現創意想法，培養解決問題和創新思維能力
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-4">
+            <div class="flex-shrink-0 mt-1">
+              <i class="fas fa-check-circle text-green-600 text-xl"></i>
+            </div>
+            <div>
+              <p class="text-gray-700 text-base">
+                <span class="font-medium">實用技能</span> - 學習如何訓練和使用 AI 模型，掌握實用的技術技能
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-4">
+            <div class="flex-shrink-0 mt-1">
+              <i class="fas fa-check-circle text-green-600 text-xl"></i>
+            </div>
+            <div>
+              <p class="text-gray-700 text-base">
+                <span class="font-medium">互動體驗</span> - 創造能與 AI 互動的遊戲和應用，體驗科技的魅力
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Features Section -->
+  <CourseFeatures features={courseFeatures} />
+
+  <!-- Course Content Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8 text-center course-heading">課程內容</h2>
+      <div class="text-center mb-12">
+        <p class="text-gray-600 text-lg mb-2">共 10 小時</p>
+        <p class="text-gray-500 text-sm italic">*可根據學校需要調整</p>
+      </div>
+      
+      <!-- Featured Image -->
+      <div class="flex justify-center mb-12">
+        <Image 
+          src="/src/assets/images/school-courses/Scratch 人工智能編程/course-activity.jpg" 
+          alt="課程實況"
+          class="max-w-lg w-full h-auto rounded-lg shadow-md"
+          width="600"
+          height="400"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Curriculum Accordion -->
+          <SingleCourseContent 
+          items={curriculumItems} 
+          hours="15 小時"
+        />
+
+  <!-- Course Arrangements -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center course-heading">課程安排</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- STEM Day -->
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 mt-1">
+            <i class="fas fa-star text-yellow-500 text-xl"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">STEM Day 活動 (1 至 2 小時)</h3>
+            <p class="text-gray-600">選擇課程內的其中一種人工智能模型作為 STEM Day 活動。</p>
+          </div>
+        </div>
+
+        <!-- Full Course -->
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 mt-1">
+            <i class="fas fa-star text-yellow-500 text-xl"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">完整課程 (10 小時)</h3>
+            <p class="text-gray-600">建議一個學期完成 10 節課堂，每節 1 小時。<br><em class="text-sm">*可根據學校需要調整課堂數及時數</em></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Learning Outcomes -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8 text-center course-heading">學習成果</h2>
+      <p class="text-lg text-gray-600 mb-12 text-center">透過不同專題學習及體驗 AI 的應用</p>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Machine Learning Training -->
+        <div class="text-center">
+          <div class="mb-6">
+            <Image src={machineLearningTraining} alt="機器學習訓練" class="w-full h-48 object-cover rounded-lg" width="600" height="400" />
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">訓練機器學習模型</h3>
+          <p class="text-gray-600">透過 Teachable Machine 訓練不同類型的人工智能模型</p>
+        </div>
+
+        <!-- Face Recognition -->
+        <div class="text-center">
+          <div class="mb-6">
+            <Image src={faceRecognition} alt="人面識別" class="w-full h-48 object-cover rounded-lg" />
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">人面識別</h3>
+          <p class="text-gray-600">透過預先訓練的人面識別模型為人面增加不同裝飾</p>
+        </div>
+
+        <!-- Speech Recognition -->
+        <div class="text-center">
+          <div class="mb-6">
+            <div class="aspect-video bg-black rounded-lg overflow-hidden">
+              <iframe 
+                src="https://www.youtube.com/embed/nvPrVAlELtU?controls=1&rel=0"
+                class="w-full h-full"
+                frameborder="0"
+                allowfullscreen
+                title="Speech Recognition Demo">
+              </iframe>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">聲音辨識</h3>
+          <p class="text-gray-600">透過預先訓練的聲音辨識模型指示 Scratch 貓的行走方向</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <QnASection faqs={faqItems} variant="details" />
+
+  <!-- Contact Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-4xl font-bold text-gray-900 mb-8 text-center course-heading">聯絡我們</h2>
+      <div class="text-center mb-8">
+        <p class="text-lg text-gray-600">想了解更多關於 Scratch 人工智能編程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。</p>
+      </div>
+      <div class="max-w-4xl mx-auto">
+        <ContactSection subtitle="想了解更多關於 Scratch 人工智能編程課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
+      </div>
+    </div>
+  </section>
+</Layout> 

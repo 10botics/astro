@@ -1,0 +1,207 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CourseHero from '../../components/course/CourseHero.astro';
+import CourseFeatureGrid from '../../components/course/CourseFeatureGrid.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import { Image } from 'astro:assets';
+import heroImage from '../../assets/images/school-courses/Blockchain 區塊鏈課程/hero-image.png';
+import instructorImage from '../../assets/images/school-courses/Blockchain 區塊鏈課程/instructor-louis-li.jpg';
+import courseFeatures1 from '../../assets/images/school-courses/Blockchain 區塊鏈課程/course-features-1.jpeg';
+import courseFeatures2 from '../../assets/images/school-courses/Blockchain 區塊鏈課程/course-features-2.png';
+import courseFeatures3 from '../../assets/images/school-courses/Blockchain 區塊鏈課程/course-features-3.jpeg';
+import courseContent1 from '../../assets/images/school-courses/Blockchain 區塊鏈課程/course-content-1.png';
+import courseContent2 from '../../assets/images/school-courses/Blockchain 區塊鏈課程/course-content-2.png';
+
+// Course data
+export const courseData = {
+  title: "Blockchain 區塊鏈課程",
+  subtitle: "融入Web 3.0趨勢，探索區塊鏈世界",
+  tags: ["AI 人工智能", "Blockchain 區塊鏈", "初中", "高中"],
+  description: "本課程旨在引領學生進入Web3.0的世界，瞭解在web3下充分利用的Blockchain區塊鏈技術的概念，同時也將探索加密貨幣、NFT、智能合約等重要應用。",
+  heroImage: heroImage
+};
+
+const title = "Blockchain 區塊鏈課程 - 10教育";
+const description = "本課程旨在引領學生進入Web3.0的世界，瞭解在web3下充分利用的Blockchain區塊鏈技術的概念，同時也將探索加密貨幣、NFT、智能合約等重要應用。透過該課程，學生將從基礎知識出發，進一步獲得實用技能，包括建立加密錢包、創建NFT，並深入研究區塊鏈在金融、供應链等不同行業的實際應用，掌握區塊鏈技術的實際價值與發展。";
+
+// Course curriculum
+const curriculumItems = [
+  {
+    title: "區塊鏈基礎 [2 節]",
+    content: [
+      "區塊鏈的起源和發展",
+      "區塊鏈的工作原理",
+      "區塊鏈的種類：公有鏈、私有鏈、聯盟鏈",
+      "分散式帳本技術"
+    ]
+  },
+  {
+    title: "加密貨幣與比特幣 [2 節]",
+    content: [
+      "比特幣的誕生和特點",
+      "加密貨幣的交易和挖礦",
+      "加密貨幣的發展和可能性"
+    ]
+  },
+  {
+    title: "開放源代碼與區塊鏈專案 [2 節]",
+    content: [
+      "開放源代碼軟件的重要性",
+      "著名的開放源區塊鏈專案：Ethereum、Hyperledger等",
+      "參與區塊鏈社區",
+      "SmartContract智能合約工作坊 – 認識智能合約的概念和應用"
+    ]
+  },
+  {
+    title: "NFT與數位資產 [2節]",
+    content: [
+      "什麼是NFT？非同質化代幣的概念",
+      "NFT的用途和市場",
+      "創建和交易NFT",
+      "生成式藝術 – Fidenza演算法的認識"
+    ]
+  },
+  {
+    title: "加密錢包和安全 [2 節]",
+    content: [
+      "加密錢包的種類：線上錢包、硬件錢包等",
+      "加密錢包的設置和使用",
+      "區塊鏈安全性和防護措施"
+    ]
+  }
+];
+
+// Course features for CourseFeatureGrid
+const courseFeatures = [
+  {
+    image: (courseFeatures1 as any).src ?? courseFeatures1,
+    title: "多元化的主題涵蓋",
+    description: "涵蓋多個重要主題，包括區塊鏈基礎、加密貨幣、NFT等"
+  },
+  {
+    image: (courseFeatures2 as any).src ?? courseFeatures2,
+    title: "實踐導向的學習",
+    description: "不但會學到區塊鏈的基礎知識，還將參與區塊鏈相關的項目，例如NFT製作"
+  },
+  {
+    image: (courseFeatures3 as any).src ?? courseFeatures3,
+    title: "關注實際應用和行業趨勢",
+    description: "學生將能夠深入了解區塊鏈在不同行業的應用和影響，這有助於他們理解區塊鏈技術的實際價值和潛在應用。"
+  }
+];
+
+// FAQ data
+const faqs = [
+  {
+    question: "課程是否需要有關區塊鏈的基礎知識？",
+    answer: "這個課程不需要學生事先擁有區塊鏈或加密貨幣方面的知識。它從基礎開始，適合初學者，並提供了建立相關知識和技能的機會。"
+  },
+  {
+    question: "課程是否學到如何保護區塊鏈和加密貨幣資產的安全？",
+    answer: "是。課程將包括有關區塊鏈安全性和保護加密錢包的內容。學生將學到如何識別潛在風險，並實施安全措施以保護他們的資產。"
+  },
+  {
+    question: "課程是否學到如何創建自己的加密錢包和NFT？",
+    answer: "是。課程將涵蓋如何創建加密錢包、安全地存儲加密貨幣，以及如何創建自己的NFT。學生將獲得實用技能，能夠參與區塊鏈和NFT市場。"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <!-- Course Hero Section -->
+  <CourseHero
+    title={courseData.title}
+    subtitle={courseData.subtitle}
+    tags={courseData.tags}
+    description={description}
+    heroImage={(courseData.heroImage as any).src ?? courseData.heroImage}
+  />
+
+  <!-- Instructor Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center" style="color: #1e293b;">導師簡介</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="md:col-span-1">
+          <Image src={instructorImage} alt="Louis Li 李思聰" class="w-full rounded-lg" />
+        </div>
+        <div class="md:col-span-2">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Louis Li 李思聰</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li>• Louis Li 李思聰</li>
+            <li>• 多間web3公司的合夥人、創辦人</li>
+            <li>• 香港著名區塊鏈和加密貨幣專家和導師</li>
+            <li>• 自2018年起，教授各種區塊鏈、加密貨幣、DeFi相關課程，學生已逾5,000人</li>
+            <li>• 於不同媒體製作有關節目，及接受訪問，包括香港電台、TVB、各大報章</li>
+            <li>• 撰寫相關文章和製造作podcast，分享市場資訊和正確知識</li>
+            <li>• 活躍於各種加密貨幣社區，主持各種活動</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Features Section -->
+  <CourseFeatureGrid
+    sectionTitle="課程特色"
+    features={courseFeatures}
+  />
+
+  <!-- Course Content Section -->
+  <SingleCourseContent 
+    items={curriculumItems}
+    hours="10 小時"
+    images={[
+      { src: courseContent1, alt: "Course Content Part 1" },
+      { src: courseContent2, alt: "Course Content Part 2" }
+    ]}
+  />
+
+  <!-- Course Schedule Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center" style="color: #1e293b;">課程安排</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center">
+            <span class="text-white font-bold">★</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">STEM Day 活動 (1 至 2 小時)</h3>
+            <p class="text-gray-700">主要介紹區塊鏈的起源和發展，並探索這些新興技術在現實使用的例子和運用。</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center">
+            <span class="text-white font-bold">★</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">完整課程 (10 小時)</h3>
+            <p class="text-gray-700">建議一個學期完成 10 節課堂，每節 1 小時。<br> *可根據學校需要調整課堂數及時數</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-gray-700 mt-8 text-center">歡迎填妥下方表格讓同事為你提供咨詢。</p>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <QnASection
+    title="常見問題"
+    faqs={faqs}
+    variant="details"
+  />
+
+  <!-- Contact Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">聯絡我們</h2>
+      <ContactSection subtitle="想了解更多關於 Blockchain 區塊鏈課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
+    </div>
+  </section>
+</Layout> 

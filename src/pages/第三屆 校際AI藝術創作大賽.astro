@@ -1,0 +1,384 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import Screenshot1 from '../assets/images/competition/第三屆校際AI藝術創作大賽《智畫神話》/Screenshot_2024-11-28_155140-removebg-preview.png';
+import Screenshot2 from '../assets/images/competition/第三屆校際AI藝術創作大賽《智畫神話》/Screenshot_2024-11-28_155147-removebg-preview-1.png';
+import Screenshot3 from '../assets/images/competition/第三屆校際AI藝術創作大賽《智畫神話》/Screenshot_2024-11-28_155153-removebg-preview-1.png';
+
+const title = "第三屆校際AI藝術創作大賽《智畫神話》";
+const description = "第三屆校際AI藝術創作大賽《智畫神話》 衷心感謝各位對第三屆校際AI藝術創作大賽 -《智畫神話》的熱烈參與及支持，比賽結果現已公佈!";
+---
+
+<Layout title={title} description={description}>
+  <div class="min-h-screen bg-gray-50">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">{title}</h1>
+        <p class="text-xl md:text-2xl mb-8 max-w-4xl mx-auto">
+          衷心感謝各位對第三屆校際AI藝術創作大賽 -《智畫神話》的熱烈參與及支持，比賽結果現已公佈!
+        </p>
+        <a 
+          href='/ai-art-competition-result/'
+          target="_blank"
+          class="inline-block bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105"
+        >
+          比賽結果
+        </a>
+      </div>
+    </section>
+
+    <!-- Competition Details -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">比賽詳情</h2>
+        
+        <div class="max-w-4xl mx-auto space-y-8">
+          <!-- Theme -->
+          <div class="flex flex-col md:flex-row items-start gap-6">
+            <div class="w-full md:w-1/3">
+              <p class="font-bold text-lg text-gray-700">主題：</p>
+            </div>
+            <div class="w-full md:w-2/3">
+              <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
+                <p class="text-lg text-gray-800">《智畫神話》－四格漫畫再現中國神話</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Target Audience -->
+          <div class="flex flex-col md:flex-row items-start gap-6">
+            <div class="w-full md:w-1/3">
+              <p class="font-bold text-lg text-gray-700">對象：</p>
+            </div>
+            <div class="w-full md:w-2/3">
+              <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
+                <p class="text-lg text-gray-800 font-semibold">全港中小學學生</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Categories -->
+          <div class="flex flex-col md:flex-row items-start gap-6">
+            <div class="w-full md:w-1/3">
+              <p class="font-bold text-lg text-gray-700">參賽組別：</p>
+            </div>
+            <div class="w-full md:w-2/3">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                  <div class="flex items-center gap-3">
+                    <div class="text-yellow-500">
+                      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="font-semibold text-gray-800">小學組</h3>
+                      <p class="text-gray-600">小一至小六</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                  <div class="flex items-center gap-3">
+                    <div class="text-yellow-500">
+                      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="font-semibold text-gray-800">初中組</h3>
+                      <p class="text-gray-600">中一至中三</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                  <div class="flex items-center gap-3">
+                    <div class="text-yellow-500">
+                      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="font-semibold text-gray-800">高中組</h3>
+                      <p class="text-gray-600">中四至中六</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                  <div class="flex items-center gap-3">
+                    <div class="text-yellow-500">
+                      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="font-semibold text-gray-800">特殊學校 (小學組)</h3>
+                      <p class="text-gray-600">小一至小六</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                  <div class="flex items-center gap-3">
+                    <div class="text-yellow-500">
+                      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="font-semibold text-gray-800">特殊學校 (中學組)</h3>
+                      <p class="text-gray-600">中一至中六</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submission Format -->
+          <div class="flex flex-col md:flex-row items-start gap-6">
+            <div class="w-full md:w-1/3">
+              <p class="font-bold text-lg text-gray-700">提交形式：</p>
+            </div>
+            <div class="w-full md:w-2/3">
+              <div class="bg-purple-50 p-6 rounded-lg border-l-4 border-purple-500">
+                <p class="text-lg text-gray-800">網上提交作品</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Deadline -->
+          <div class="flex flex-col md:flex-row items-start gap-6">
+            <div class="w-full md:w-1/3">
+              <p class="font-bold text-lg text-gray-700">截止報名日期：</p>
+            </div>
+            <div class="w-full md:w-2/3">
+              <div class="bg-red-50 p-6 rounded-lg border-l-4 border-red-500">
+                <p class="text-lg text-gray-800 font-semibold">2025年1月10日 (五)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fee -->
+          <div class="flex flex-col md:flex-row items-start gap-6">
+            <div class="w-full md:w-1/3">
+              <p class="font-bold text-lg text-gray-700">費用：</p>
+            </div>
+            <div class="w-full md:w-2/3">
+              <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
+                <p class="text-lg text-gray-800">每位學生一百元正</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Awards -->
+          <div class="flex flex-col md:flex-row items-start gap-6">
+            <div class="w-full md:w-1/3">
+              <p class="font-bold text-lg text-gray-700">比賽獎項：</p>
+            </div>
+            <div class="w-full md:w-2/3">
+              <div class="bg-yellow-50 p-6 rounded-lg border-l-4 border-yellow-500">
+                <p class="text-lg text-gray-800 mb-2">各組別設最佳神話再現獎，「最佳文字指令獎」（一名）。</p>
+                <p class="text-lg text-gray-800 mb-2">一等 、二等、三等獎 及 優異獎（多名）</p>
+                <p class="text-lg text-gray-800">所有報名參賽並成功提交作品的各參賽者，均會獲發電子參賽證書乙張。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Competition Schedule -->
+    <section class="py-16 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">比賽日程</h2>
+        
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <table class="w-full">
+              <thead class="bg-blue-600 text-white">
+                <tr>
+                  <th class="px-6 py-4 text-center font-semibold">日期</th>
+                  <th class="px-6 py-4 text-center font-semibold">項目</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <tr class="hover:bg-gray-50">
+                  <td class="px-6 py-4 text-center">2024年11月27日(三)</td>
+                  <td class="px-6 py-4 text-center">比賽簡介會</td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="px-6 py-4 text-center">2025年1月10日(五)</td>
+                  <td class="px-6 py-4 text-center">截止報名</td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="px-6 py-4 text-center">2025年1月18日(六)</td>
+                  <td class="px-6 py-4 text-center">開放作品遞交</td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="px-6 py-4 text-center">2025年5月12日(一) 23:59</td>
+                  <td class="px-6 py-4 text-center">截止作品遞交</td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="px-6 py-4 text-center">2025年5月28日(三)</td>
+                  <td class="px-6 py-4 text-center">網站公佈得獎名單</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Registration Notes -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">報名注意事項</h2>
+        
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-blue-50 p-8 rounded-lg border-l-4 border-blue-500">
+            <ul class="space-y-4 text-lg text-gray-800">
+              <li class="flex items-start gap-3">
+                <span class="text-blue-500 mt-1">•</span>
+                <span>於比賽報名截止日期 2025年1月10日 (五) 前 以學校為單位報名 (恕不接受學生以個人名義報名)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-blue-500 mt-1">•</span>
+                <span>各參賽學校須派出一位負責老師</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-blue-500 mt-1">•</span>
+                <span>學校於報名時須提交參賽學生人數</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Submission Requirements -->
+    <section class="py-16 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">作品提交要求</h2>
+        
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-green-50 p-8 rounded-lg border-l-4 border-green-500">
+            <ul class="space-y-4 text-lg text-gray-800">
+              <li class="flex items-start gap-3">
+                <span class="text-green-500 mt-1">•</span>
+                <span><strong>主題：</strong>學生可自由選擇<span class="underline">任何中國神話故事</span>作為創作主題 (學生可以選擇神話故事中的其中一個章節。例如《西遊記》中的《孫悟空三打白骨精》)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-500 mt-1">•</span>
+                <span><strong>格式：</strong>一幅四格漫畫</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-500 mt-1">•</span>
+                <span><strong>AI生成要求：</strong>作品的圖像必須由AI生成。參賽者可使用任何軟件對圖像<span class="underline">進行後製</span> (例如加上故事背景、情節、角色之間的對話等)</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-500 mt-1">•</span>
+                <span><strong>AI繪圖平台：</strong>不限</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-500 mt-1">•</span>
+                <span><strong>圖像比例：</strong>不限</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-500 mt-1">•</span>
+                <span><strong>檔案格式：</strong>JPG/PNG</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-500 mt-1">•</span>
+                <span><strong>檔案大小：</strong>10MB 或以下（請提交最高解像度的圖像）</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-green-500 mt-1">•</span>
+                <span><strong>作品數量：</strong>每名參賽者可提交作品次數不限，大會將評選在截止日期前<span class="underline">最後一份</span>提交的作品</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Submission Materials -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">提交資料</h2>
+        
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-purple-50 p-8 rounded-lg border-l-4 border-purple-500">
+            <ul class="space-y-4 text-lg text-gray-800">
+              <li class="flex items-start gap-3">
+                <span class="text-purple-500 mt-1">•</span>
+                <span><strong>AI繪圖平台：</strong>參賽者須列明所使用的AI繪圖平台或軟件。</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-purple-500 mt-1">•</span>
+                <span><strong>文字指令：</strong>中、英文皆可，每格圖畫所使用之文字指令字數限制為300字以內。</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-purple-500 mt-1">•</span>
+                <span><strong>作品描述：</strong>必須為中文，字數限制為300字以內。</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-purple-500 mt-1">•</span>
+                <span><strong>最終作品：</strong>經後製編輯的最終作品，並確保圖像已升級至最高解像度</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Judging Criteria -->
+    <section class="py-16 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">評審準則</h2>
+        
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+              <Image 
+                src={Screenshot1} 
+                alt="評審準則圖片1" 
+                class="w-full h-auto mb-4 rounded-lg"
+                width={497}
+                height={502}
+              />
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+              <Image 
+                src={Screenshot2} 
+                alt="評審準則圖片2" 
+                class="w-full h-auto mb-4 rounded-lg"
+                width={494}
+                height={505}
+              />
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+              <Image 
+                src={Screenshot3} 
+                alt="評審準則圖片3" 
+                class="w-full h-auto mb-4 rounded-lg"
+                width={500}
+                height={499}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Update Notice -->
+    <section class="py-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8">比賽資訊將持續更新，敬請留意！</h2>
+      </div>
+    </section>
+  </div>
+</Layout> 

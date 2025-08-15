@@ -1,0 +1,246 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import CourseFeatures from '../../components/course/CourseFeatures.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import { Image } from 'astro:assets';
+
+// Import images
+import heroImage from '../../assets/images/school-courses/Lego Spike Prime 機器人技術大師班/hero-image.png';
+import grabber1 from '../../assets/images/school-courses/Lego Spike Prime 機器人技術大師班/grabber-1.jpg';
+import code2 from '../../assets/images/school-courses/Lego Spike Prime 機器人技術大師班/code-2.png';
+import hopper from '../../assets/images/school-courses/Lego Spike Prime 機器人技術大師班/hopper.jpg';
+import driving from '../../assets/images/school-courses/Lego Spike Prime 機器人技術大師班/driving.jpg';
+import sensing from '../../assets/images/school-courses/Lego Spike Prime 機器人技術大師班/sensing.jpg';
+import auto from '../../assets/images/school-courses/Lego Spike Prime 機器人技術大師班/auto.jpg';
+
+// Course data
+export const courseData = {
+  title: "Lego Spike Prime 機器人技術大師班",
+  subtitle: "發掘你在機器人領域的潛力​",
+  tags: ["Block Coding 方塊編程", "Engineering 工程", "Lego", "Programming 編程", "Robotics 機械人", "初中", "高中"],
+  videoId: "jkkHInocn5U",
+  description: "學習 Lego Spike Prime 機器人、傳感器和編程概念的基礎知識，以及如何使用 LEGO Education 軟件進行編程和構建機器人。探索現實生活中的機器人應用，學習如何設計和構建能夠解決日常問題的機器人。通過理論與實踐相結合，培養學生對機器人和編程的興趣。",
+  detailedDescription: "學習 Lego Spike Prime 的傳感器和編程概念的基礎知識，以及如何使用 LEGO Education 軟件進行編程和構建機器人。探索現實生活中的機器人應用和案例研究，學習如何設計和構建能夠解決日常問題的機器人。通過理論與實踐相結合，培養學生對機器人和編程的興趣。",
+  heroImage: heroImage,
+};
+
+// Course content (共 15 小時)
+const courseContent = [
+  {
+    title: "跳躍器 [1 節]",
+    content: [
+      "認識設計原形",
+      "拼建並編程跳躍器"
+    ]
+  },
+  {
+    title: "抓取器 [1 節]",
+    content: [
+      "學習定製設計和除錯測試",
+      "設計不同功能的抓取器"
+    ]
+  },
+  {
+    title: "認識感應器 [1 節]",
+    content: [
+      "學習使用顏色感應器、距離感應器偵測障礙物",
+      "拼建並編程行駛底座"
+    ]
+  },
+  {
+    title: "自動化機器 [2 節]",
+    content: [
+      "認識自動化機器",
+      "拼建並編程自定工廠",
+      "項目解釋和演示"
+    ]
+  },
+  {
+    title: "跟踪線路 [1 節]",
+    content: [
+      "重新拼建並編程行駛底座",
+      "解決不同類型的軌道 (例如T型交叉口、直角轉彎、不連續線路等)"
+    ]
+  },
+  {
+    title: "擴展工具 [1 節]",
+    content: [
+      "設計不同工具(例如推土鏟和升降臂)",
+      "編程各工具完成指定任務"
+    ]
+  },
+  {
+    title: "了解任務和比賽規則 [1 節]",
+    content: [
+      "拼建比賽場地",
+      "分析任務和比賽規則",
+      "編程已建立的行駛底座"
+    ]
+  },
+  {
+    title: "專案式學習 [2 節]",
+    content: [
+      "創建至少兩個帶有自定義任務的場景",
+      "拼建並編程探索車",
+      "項目解釋和演示"
+    ]
+  }
+];
+
+// FAQ data
+const faqData = [
+  {
+    question: "學生需要有編程背景嗎？",
+    answer: "無需。課程一般適合任何高小至初中學生。"
+  },
+  {
+    question: "學校需要甚麼設備？",
+    answer: "學校需準備以下項目：1） 手提電腦 / 電腦 (需安裝 Lego Education)，2）每組一套 Lego Education Prime Set 及 Lego Education Prime Expansion Set，建議 4 - 5 名學生一組。建議先致電+852 6554-1506 或電郵至 info@10botics.com向同事溝通學校期望的教學內容，同事將就教學所需設備提供建議。"
+  }
+];
+
+// Course arrangement
+const courseArrangement = [
+  {
+    title: "完整課程 (12 至 18 小時)",
+    description: "建議一個學期完成 10 節課堂，每節 1.5 小時。*可根據學校需要調整課堂數及時數"
+  }
+];
+
+// Course features
+const courseFeatures = [
+  {
+    icon: "fas fa-robot",
+    title: "實踐應用",
+    description: "通過構建和編程 Lego Spike Prime 機器人，學生可以以實際而有趣的方式探索和應用概念，體驗科技在日常生活中的應用，從而加深對技術的理解和興趣。"
+  },
+  {
+    icon: "fas fa-handshake",
+    title: "合作學習",
+    description: "鼓勵他們共同解決挑戰，分享想法並有效地溝通，促進學生之間的合作和團隊合作，增強批判性思維和社交技能。"
+  },
+  {
+    icon: "far fa-lightbulb",
+    title: "多功能和創造性",
+    description: "套件包括各種樂高 Technic 元素、馬達、傳感器和可編程控制器，學生可以根據他們的想像力建立和自定義自己的機器人。套件的多功能能培養學生的創造力和解難能力。"
+  },
+  {
+    icon: "fas fa-code",
+    title: "簡易操作",
+    description: "使用簡單的拖放編程界面，即使對初學者來說也很容易上手。學生可以快速學習編程，無需廣泛的先備知識。"
+  }
+];
+---
+
+<Layout title={courseData.title} description={courseData.description}>
+  <!-- Hero Section -->
+  <HeroSection 
+    title={courseData.title}
+    subtitle={courseData.subtitle}
+    description={courseData.description}
+    videoId={courseData.videoId}
+    tags={courseData.tags}
+  />
+
+  <!-- Course Features -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程特色</h2>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {courseFeatures.map((feature) => (
+            <div class="text-center">
+              <div class="flex justify-center mb-4">
+                <i class={`${feature.icon} text-4xl text-blue-600`}></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-3">{feature.title}</h3>
+              <p class="text-gray-600 text-sm">{feature.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Content -->
+  <SingleCourseContent 
+    items={courseContent} 
+    hours="15 小時"
+    images={[
+      { src: grabber1, alt: "Lego Spike Prime grabber" },
+      { src: code2, alt: "Lego Spike Prime code and car" }
+    ]}
+  />
+
+  <!-- Course Arrangement -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程安排</h2>
+        <div class="grid md:grid-cols-1 gap-8">
+          {courseArrangement.map((arrangement) => (
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <div class="flex items-center mb-4">
+                <i class="fas fa-star text-yellow-500 text-xl mr-3"></i>
+                <h3 class="text-xl font-semibold">{arrangement.title}</h3>
+              </div>
+              <p class="text-gray-600">{arrangement.description}</p>
+            </div>
+          ))}
+        </div>
+        <div class="text-center mt-8">
+          <p class="text-gray-600">歡迎填妥下方表格讓同事為你提供咨詢。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Gallery -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">精選照片</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="group cursor-pointer">
+            <Image 
+              src={hopper} 
+              alt="Lego Spike Prime obstacles" 
+              class="w-full h-48 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+            />
+          </div>
+          <div class="group cursor-pointer">
+            <Image 
+              src={driving} 
+              alt="Lego Spike Prime ultrasonic sensor" 
+              class="w-full h-48 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+            />
+          </div>
+          <div class="group cursor-pointer">
+            <Image 
+              src={sensing} 
+              alt="Lego Spike Prime color sensor" 
+              class="w-full h-48 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+            />
+          </div>
+          <div class="group cursor-pointer">
+            <Image 
+              src={auto} 
+              alt="Lego Spike Prime automation" 
+              class="w-full h-48 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <QnASection faqs={faqData} />
+
+  <!-- Contact Form -->
+  <ContactSection subtitle="想了解更多關於 Lego Spike Prime 機器人技術大師班的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
+</Layout> 

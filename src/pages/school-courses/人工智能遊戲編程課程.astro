@@ -1,0 +1,432 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import { Image } from 'astro:assets';
+
+// Import student work images
+import ticTacToe1 from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/student-work-1.jpg';
+import ticTacToe2 from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/student-work-2.jpg';
+import pacman from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/student-work-3.jpg';
+import sudoku from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/student-work-4.jpg';
+import minesweeper from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/student-work-5.jpg';
+import chinesePuzzleDemo from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/chinese-puzzle-demo.png';
+import aiGeneratedCodeImage from '../../assets/images/school-courses/人工智能遊戲編程課程/ai_generated_code1_Main.jpg';
+import aiGameCodingHero from '../../assets/images/school-courses/人工智能遊戲編程課程/ai-game-coding-hero.jpg';
+
+// Course data (static) - now in frontmatter
+export const courseData = {
+  title: "人工智能遊戲編程課程",
+  subtitle: "AI 驅動的遊戲開發，創造智能遊戲體驗",
+  tags: ["AI 人工智能", "Programming 編程", "遊戲開發","初中", "高中"],
+  videoId: "your-video-id-here",
+  description: "本課程將教授學生如何使用人工智能輔助開發網頁遊戲。學生將學習使用 HTML、CSS 和 JavaScript 製作網頁遊戲，並透過 Poe 和 Repl.it 等 AI 工具簡化開發流程。",
+  detailedDescription: "本課程將教授學生如何使用人工智能輔助開發網頁遊戲。學生將學習使用 HTML、CSS 和 JavaScript 製作網頁遊戲，並透過 Poe 和 Repl.it 等 AI 工具簡化開發流程。",
+  heroImage: aiGameCodingHero
+};
+
+// Course curriculum
+const curriculumItems = [
+  {
+    title: "AI Coding 入門",
+    content: [
+      "認識不同的客戶端執行環境（手機遊戲, 電腦遊戲, 網頁遊戲）",
+      "認識反覆設計流程 (設計 - 實作 - 評估)",
+      "使用 Poe 平台協助設計井字棋原型",
+      "使用 Repl.it 環境建構井字棋初步成品",
+      "測試系統與除錯"
+    ]
+  },
+  {
+    title: "加入難度選擇",
+    content: [
+      "增加 4x4 棋盤模式",
+      "測試系統與除錯"
+    ]
+  },
+  {
+    title: "客製化成品",
+    content: [
+      "新增自選功能",
+      "測試系統與除錯"
+    ]
+  },
+  {
+    title: "輸出專案至互聯網",
+    content: [
+      "透過 Repl.it 將專案輸出至互聯網",
+      "與同學交流各自井字棋成品"
+    ]
+  },
+  {
+    title: "專案式學習",
+    content: [
+      "簡述專案式學習內容",
+      "與Poe 平台協作，設計自選遊戲原型",
+      "使用 Repl.it 製作自選遊戲成品",
+      "測試系統與除錯",
+      "與同學交流各自成品",
+      "分享使用人工智能編程的感想"
+    ]
+  }
+];
+
+// Course highlights
+const courseHighlights = [
+  {
+    icon: "fas fa-robot",
+    title: "AI 編程入門",
+    description: "學習使用 Poe 和 Repl.it 等 AI 工具進行遊戲開發，無需深厚編程基礎"
+  },
+  {
+    icon: "fas fa-gamepad",
+    title: "網頁遊戲開發實戰",
+    description: "使用 HTML、CSS、JavaScript 從井字棋開始，逐步製作踩地雷、食鬼、數獨等經典網頁遊戲"
+  },
+  {
+    icon: "fas fa-code",
+    title: "網頁遊戲優勢",
+    description: "網頁遊戲無需安裝，可在任何設備上運行，開發簡單且易於分享"
+  },
+  {
+    icon: "fas fa-users",
+    title: "協作學習",
+    description: "與同學交流作品，分享開發心得，建立編程社群"
+  },
+  {
+    icon: "fas fa-globe",
+    title: "線上部署",
+    description: "學習將作品部署到互聯網，讓全世界都能玩到你的遊戲"
+  }
+];
+
+// Course requirements
+const courseRequirements = [
+  {
+    icon: "fas fa-clock",
+    title: "課時",
+    description: "6 - 8 小時"
+  },
+  {
+    icon: "fas fa-laptop",
+    title: "所需設備",
+    description: "手提電腦"
+  },
+  {
+    icon: "fas fa-user-graduate",
+    title: "學員要求",
+    description: "中一至中六"
+  },
+  {
+    icon: "fas fa-sign-in-alt",
+    title: "帳戶需求",
+    description: "Repl.it 帳戶"
+  }
+];
+
+// FAQ items
+const faqItems = [
+  {
+    question: "零基礎學生可以參加嗎？",
+    answer: "完全可以！本課程專為零基礎學生設計，使用 AI 工具讓編程變得簡單易懂。"
+  },
+  {
+    question: "需要自備電腦嗎？",
+    answer: "是的，學校需要自備手提電腦，並確保有穩定的網絡連接。"
+  },
+  {
+    question: "會學到什麼編程語言？",
+    answer: "主要使用 HTML、CSS 和 JavaScript 開發網頁遊戲，並學習如何使用 AI 工具輔助編程。"
+  },
+  {
+    question: "課程結束後能做出什麼作品？",
+    answer: "學生將完成井字棋遊戲和一個自選遊戲項目，並能將作品部署到互聯網。"
+  }
+];
+
+
+---
+
+<Layout title="人工智能遊戲編程課程">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <HeroSection 
+    title={courseData.title}
+    subtitle={courseData.subtitle}
+    tags={courseData.tags}
+    heroImage={courseData.heroImage}
+    description={courseData.description}
+  />
+
+  <!-- Hero image and description section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <Image 
+              src={aiGeneratedCodeImage} 
+              alt="AI 編程新時代" 
+              width={600}
+              height={400}
+              class="w-full h-auto"
+            />
+          </div>
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">為什麼選擇 AI 編程？</h2>
+          <p class="text-lg text-gray-700 leading-relaxed mb-6">
+            在人工智能快速發展的時代，學會與 AI 協作進行網頁遊戲開發是未來的重要技能。本課程讓學生體驗 AI 輔助開發的樂趣，同時建立紮實的網頁編程思維。網頁遊戲開發相比其他平台更簡單，學生可以快速看到成果並分享給朋友。
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-start space-x-3">
+              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <span class="text-gray-700">降低編程門檻，專注創意實現</span>
+            </div>
+            <div class="flex items-start space-x-3">
+              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <span class="text-gray-700">學習未來工作模式</span>
+            </div>
+            <div class="flex items-start space-x-3">
+              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <span class="text-gray-700">快速原型開發能力</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why the technology is important section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">為什麼選用這些技術？</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+          <div class="flex items-center mb-4">
+            <i class="fas fa-brain text-3xl text-cyan-500 mr-4"></i>
+            <h3 class="text-xl font-semibold text-gray-900">Poe 平台</h3>
+          </div>
+          <p class="text-gray-700">
+            Poe 提供強大的 AI 助手，能幫助學生設計遊戲邏輯、生成代碼片段，讓編程過程更加直觀和高效。
+          </p>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+          <div class="flex items-center mb-4">
+            <i class="fas fa-cloud text-3xl text-cyan-500 mr-4"></i>
+            <h3 class="text-xl font-semibold text-gray-900">Repl.it 環境</h3>
+          </div>
+          <p class="text-gray-700">
+            Repl.it 提供完整的雲端開發環境，無需本地安裝，支持多種編程語言，讓學生專注於創意實現。
+          </p>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+          <div class="flex items-center mb-4">
+            <i class="fas fa-gamepad text-3xl text-cyan-500 mr-4"></i>
+            <h3 class="text-xl font-semibold text-gray-900">網頁遊戲開發</h3>
+          </div>
+          <p class="text-gray-700">
+            網頁遊戲相比其他平台遊戲更容易開發，無需複雜的安裝程序，學生可以快速看到成果並分享給朋友。通過遊戲開發學習編程，讓抽象的編程概念變得具體有趣。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course requirements section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程要求</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {courseRequirements.map((requirement) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow text-center">
+            <div class="flex justify-center mb-4">
+              <i class={`${requirement.icon} text-3xl text-cyan-500`}></i>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">{requirement.title}</h3>
+            <p class="text-gray-700">{requirement.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course highlights section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程重點</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {courseHighlights.map((highlight) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center mb-4">
+              <i class={`${highlight.icon} text-2xl text-cyan-500 mr-3`}></i>
+              <h3 class="text-lg font-semibold text-gray-900">{highlight.title}</h3>
+            </div>
+            <p class="text-gray-700">{highlight.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+        <!-- Student Work Showcase section -->
+      <section class="bg-white py-16">
+        <div class="container mx-auto px-4 max-w-6xl">
+          <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">學生作品展示</h2>
+          <p class="text-lg text-gray-700 text-center mb-12 max-w-3xl mx-auto">
+            點擊下方作品直接試玩學生們在 AI 遊戲編程課程中創作的精彩遊戲！從經典的井字棋到創新的自製遊戲，每個作品都展現了學生們的創意和編程技能。
+          </p>
+          
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Wooden Tic-tac-toe Game -->
+            <a href="/games/ai-game-coding/WoodenTicTac/index.html" target="_blank" class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+              <div class="aspect-w-16 aspect-h-9 bg-gray-100">
+                <Image 
+                  src={ticTacToe1} 
+                  alt="木製井字棋遊戲作品" 
+                  width={400}
+                  height={300}
+                  class="w-full h-48 object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">木製井字棋遊戲</h3>
+                <p class="text-gray-700 text-sm">具有木製質感的經典井字棋遊戲，結合傳統與現代設計</p>
+              </div>
+            </a>
+
+            <!-- Tic-tac-tactics Game -->
+            <a href="/games/ai-game-coding/TicTacTactics/index.html" target="_blank" class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+              <div class="aspect-w-16 aspect-h-9 bg-gray-100">
+                <Image 
+                  src={ticTacToe2} 
+                  alt="井字棋戰術遊戲作品" 
+                  width={400}
+                  height={300}
+                  class="w-full h-48 object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">井字棋戰術遊戲</h3>
+                <p class="text-gray-700 text-sm">加入戰術元素的創新井字棋，考驗策略思維</p>
+              </div>
+            </a>
+
+            <!-- Sudoku Game -->
+            <a href="/games/ai-game-coding/SudokuMaster/index.html" target="_blank" class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+              <div class="aspect-w-16 aspect-h-9 bg-gray-100">
+                <Image 
+                  src={sudoku} 
+                  alt="數獨遊戲作品" 
+                  width={400}
+                  height={300}
+                  class="w-full h-48 object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">數獨大師</h3>
+                <p class="text-gray-700 text-sm">經典數獨遊戲的完整實現，包含提示功能和難度等級</p>
+              </div>
+            </a>
+            
+            <!-- Minesweeper Game -->
+            <a href="/games/ai-game-coding/MinefieldChallenge/index.html" target="_blank" class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+              <div class="aspect-w-16 aspect-h-9 bg-gray-100">
+                <Image 
+                  src={minesweeper} 
+                  alt="踩地雷遊戲作品" 
+                  width={400}
+                  height={300}
+                  class="w-full h-48 object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">踩地雷挑戰</h3>
+                <p class="text-gray-700 text-sm">經典踩地雷遊戲的網頁版本，考驗邏輯思維能力</p>
+              </div>
+            </a>
+
+            <!-- Pac-Man Game -->
+            <a href="/games/ai-game-coding/PacManChase/index.html" target="_blank" class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+              <div class="aspect-w-16 aspect-h-9 bg-gray-100">
+                <Image 
+                  src={pacman} 
+                  alt="食鬼遊戲作品" 
+                  width={400}
+                  height={300}
+                  class="w-full h-48 object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">食鬼追逐遊戲</h3>
+                <p class="text-gray-700 text-sm">經典食鬼遊戲的重新詮釋，展現動畫和遊戲邏輯的結合</p>
+              </div>
+            </a>
+
+            <!-- Chinese Puzzle Game -->
+            <a href="/games/ai-game-coding/ChinesePuzzle/index.html" target="_blank" class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+              <div class="aspect-w-16 aspect-h-9 bg-gray-100">
+                <Image 
+                  src={chinesePuzzleDemo} 
+                  alt="中國拼圖遊戲作品" 
+                  width={400}
+                  height={300}
+                  class="w-full h-48 object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">中國拼圖遊戲</h3>
+                <p class="text-gray-700 text-sm">傳統中國益智遊戲的現代化實現，學習成語和中文</p>
+              </div>
+            </a>
+          </div>
+
+
+
+      <!-- Student Testimonials -->
+      <div class="mt-16 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-lg p-8">
+        <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">學生心得分享</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white rounded-lg p-6 shadow-sm">
+            <div class="flex items-center mb-4">
+              <i class="fas fa-quote-left text-2xl text-cyan-500 mr-3"></i>
+              <h4 class="text-lg font-semibold text-gray-900">AI 編程初體驗</h4>
+            </div>
+            <p class="text-gray-700 italic">
+              "沒想到編程可以這麼有趣！使用 AI 工具幫助我設計遊戲邏輯，讓我能專注在創意上。完成第一個井字棋遊戲時，那種成就感真的很棒！"
+            </p>
+          </div>
+          <div class="bg-white rounded-lg p-6 shadow-sm">
+            <div class="flex items-center mb-4">
+              <i class="fas fa-quote-left text-2xl text-cyan-500 mr-3"></i>
+              <h4 class="text-lg font-semibold text-gray-900">從零到一的突破</h4>
+            </div>
+            <p class="text-gray-700 italic">
+              "作為編程新手，這個課程讓我學會了如何與 AI 協作開發。現在我不僅能製作遊戲，還能將作品分享給朋友們玩，真的很興奮！"
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Content Section -->
+  <SingleCourseContent 
+    items={curriculumItems}
+    hours="6-8 小時"
+  />
+
+  <QnASection faqs={faqItems} />
+
+  <!-- Contact section -->
+  <ContactSection subtitle="想了解更多關於人工智能網頁遊戲編程工作坊的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
+</Layout>
+
+

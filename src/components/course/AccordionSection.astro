@@ -26,12 +26,13 @@ const { title, items } = Astro.props;
             >
               <span class="font-semibold text-gray-900">{item.title}</span>
               <div class="accordion-icon transition-transform duration-200">
-                <i class="fas fa-plus text-gray-600"></i>
+                <i class="fas fa-minus text-gray-600"></i>
               </div>
             </button>
             <div 
               id={`accordion-${index}`}
-              class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+              class="accordion-content overflow-hidden transition-all duration-300 ease-in-out"
+              style="max-height: none;"
             >
               <div class="p-6 bg-white border-t border-gray-200">
                 <ul class="space-y-3">
@@ -59,20 +60,38 @@ const { title, items } = Astro.props;
     const headers = document.querySelectorAll('.accordion-header');
     
     headers.forEach(header => {
-      header.addEventListener('click', function() {
+      header.addEventListener('click', function(this: HTMLElement) {
         const target = this.getAttribute('data-target');
-        const content = document.getElementById(target);
-        const icon = this.querySelector('.accordion-icon i');
+        if (!target) return;
         
-        // Toggle current accordion
-        if (content.style.maxHeight && content.style.maxHeight !== '0px') {
-          content.style.maxHeight = '0px';
-          icon.className = 'fas fa-plus text-gray-600';
-        } else {
-          content.style.maxHeight = content.scrollHeight + 'px';
-          icon.className = 'fas fa-minus text-gray-600';
+        const content = document.getElementById(target);
+        const icon = this.querySelector('.accordion-icon i') as HTMLElement;
+        
+        if (content && icon) {
+          // Toggle current accordion
+          if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+            content.style.maxHeight = '0px';
+            icon.className = 'fas fa-plus text-gray-600';
+          } else {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            icon.className = 'fas fa-minus text-gray-600';
+          }
         }
       });
+    });
+    
+    // Open all accordions by default
+    headers.forEach(header => {
+      const target = header.getAttribute('data-target');
+      if (!target) return;
+      
+      const content = document.getElementById(target);
+      const icon = header.querySelector('.accordion-icon i') as HTMLElement | null;
+      
+      if (content && icon) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        icon.className = 'fas fa-minus text-gray-600';
+      }
     });
   });
 </script> 

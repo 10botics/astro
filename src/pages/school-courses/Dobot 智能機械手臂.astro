@@ -1,0 +1,268 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import CourseFeatures from '../../components/course/CourseFeatures.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import { Image } from 'astro:assets';
+
+// Import images
+import dobotCover from '../../assets/images/school-courses/Dobot 智能機械手臂/dobot-cover-pic.png';
+import dobotAI from '../../assets/images/school-courses/Dobot 智能機械手臂/Screenshot-2023-09-20-104014-1.png';
+import dobotIndustry from '../../assets/images/school-courses/Dobot 智能機械手臂/20230913_183600-1.jpg';
+import dobotAutomation from '../../assets/images/school-courses/Dobot 智能機械手臂/20230913_183152-1-1.jpg';
+import dobotDraw from '../../assets/images/school-courses/Dobot 智能機械手臂/dobot-draw.png';
+import dobotScreenshot from '../../assets/images/school-courses/Dobot 智能機械手臂/Screenshot-2023-09-20-095010.png';
+import dobotThumbnail from '../../assets/images/school-courses/Dobot 智能機械手臂/dobot-thumbnail.png';
+import dobotScreenshot2 from '../../assets/images/school-courses/Dobot 智能機械手臂/Screenshot-2023-09-20-102638.png';
+import dobotPhoto1 from '../../assets/images/school-courses/Dobot 智能機械手臂/20230913_184049-1.jpg';
+import dobotConveyor from '../../assets/images/school-courses/Dobot 智能機械手臂/dobot-conveyor.jpg';
+
+// Course data
+export const courseData = {
+  title: "Dobot 智能機械手臂",
+  subtitle: "探索創意與自動化的無限可能",
+  tags: ["AI 人工智能", "Block Coding 方塊編程", "Dobot", "Programming 編程", "初中", "高中"],
+  videoId: "Vh0EtEY1MQ4",
+  description: "課程無需特定前置知識或技能，適合所有對機械臂技術感興趣的初學者和專業人士。從基礎概念開始，逐步引導掌握 Dobot Magician Lite 的操作和編程技巧。透過該課程，學生將能夠深入了解機械臂技術並掌握其在教育、創新和工業領域的應用。",
+  detailedDescription: "課程由專業導師編寫，學習內容針對中學生的學習需求。課程透過 Dobot Magician Lite 認識人工智能（AI）和機械臂技術。課程涵蓋基本編程技術，不同的機器學習原理，例如視覺辨識和自動化控制。學生可以運用課程所學到的知識和原理來操作和編程機械臂。",
+  heroImage: dobotCover,
+};
+
+// Course content (共 12 小時)
+const courseContent = [
+  {
+    title: "介紹 Dobot Magician Lite 及繪圖 [1 節]",
+    content: [
+      "選擇書寫工具和筆跡設置",
+      "實際操作 Dobot Magician Lite 完成書寫任務"
+    ]
+  },
+  {
+    title: "物體夾取與放置 [1 節]",
+    content: [
+      "不同夾爪的選擇和應用場景",
+      "實際操作 Dobot Magician Lite 進行物體夾取和放置任務"
+    ]
+  },
+  {
+    title: "AI攝像頭 [2 節]",
+    content: [
+      "介紹AI攝像頭的視覺辨識和原理",
+      "實際操作 Dobot Magician Lite 搭配AI攝像頭執行相關任務",
+      "結合課堂所學習的知識，製作流水線作業"
+    ]
+  },
+  {
+    title: "自動化輸送帶 [2 節]",
+    content: [
+      "組裝自動化輸送帶",
+      "使用紅外線感應器和顏色感應器實現自動化控制",
+      "實際操作 Dobot Magician Lite 自動化輸送帶進行物體檢測和運輸"
+    ]
+  }
+];
+
+// FAQ data
+const faqData = [
+  {
+    question: "學生需要有編程背景嗎？",
+    answer: "無需。課程一般適合任何初中學生。"
+  },
+  {
+    question: "學校需要甚麼設備？",
+    answer: "學校需準備以下項目：1） 手提電腦 / 電腦，並已預先安裝 Dobot Link 及 Dobot Studio，2）Dobot Magician Lite / Dobot Magician，3）輸送帶擴展。建議先致電+852 6554-1506 或電郵至 info@10botics.com向同事溝通學校期望的教學內容，同事將就教學所需設備提供建議。"
+  }
+];
+
+// Course arrangement
+const courseArrangement = [
+  {
+    title: "STEM Day 活動 (2 至 4 小時)",
+    description: "學習 Dobot Magician Lite 的基本操作，並進行物體夾取和放置任務。"
+  },
+  {
+    title: "完整課程 (9 至 12 小時)",
+    description: "建議一個學期完成 6 節課堂，每節 1.5 小時。*可根據學校需要調整課堂數及時數"
+  }
+];
+---
+
+<Layout title={courseData.title} description={courseData.description}>
+  <!-- Hero Section -->
+  <HeroSection 
+    title={courseData.title}
+    subtitle={courseData.subtitle}
+    description={courseData.description}
+    videoId={courseData.videoId}
+    tags={courseData.tags}
+  />
+
+
+  <!-- What is Dobot Magician Lite -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">甚麼是 Dobot Magician Lite</h2>
+        
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+          <div>
+            <Image 
+              src={dobotCover} 
+              alt="Dobot Magician Lite" 
+              class="rounded-lg shadow-lg"
+            />
+          </div>
+          <div class="grid grid-cols-1 gap-6">
+            <div class="flex items-center space-x-4">
+              <div class="flex-shrink-0">
+                <i class="fas fa-code text-3xl text-blue-600"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold">圖形化編程</h3>
+              </div>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+              <div class="flex-shrink-0">
+                <i class="fas fa-link text-3xl text-blue-600"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold">同時支援 12 個擴展</h3>
+              </div>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+              <div class="flex-shrink-0">
+                <i class="fas fa-camera text-3xl text-blue-600"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold">豐富配件，如搭配AI視覺套件</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Features with Images -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程特色</h2>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <Image 
+              src={dobotAI} 
+              alt="結合人工智能" 
+              class="w-full h-48 object-cover rounded-lg shadow-md mb-4"
+            />
+            <h3 class="text-xl font-semibold mb-2">結合人工智能</h3>
+            <p class="text-gray-600">運用 AI 攝像頭進行視覺辨識</p>
+          </div>
+          
+          <div class="text-center">
+            <Image 
+              src={dobotIndustry} 
+              alt="實現工業 4.0" 
+              class="w-full h-48 object-cover rounded-lg shadow-md mb-4"
+            />
+            <h3 class="text-xl font-semibold mb-2">實現工業 4.0</h3>
+            <p class="text-gray-600">結合機器學習感測模擬智慧工廠</p>
+          </div>
+          
+          <div class="text-center">
+            <Image 
+              src={dobotAutomation} 
+              alt="自動化控制" 
+              class="w-full h-48 object-cover rounded-lg shadow-md mb-4"
+            />
+            <h3 class="text-xl font-semibold mb-2">自動化控制</h3>
+            <p class="text-gray-600">使用不同的夾爪抓取和放置物體</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Content -->
+  <SingleCourseContent 
+    items={courseContent} 
+    hours="12 小時"
+    images={[
+      { src: dobotDraw, alt: "Dobot Drawing" },
+      { src: dobotScreenshot, alt: "Dobot Screenshot" }
+    ]}
+  />
+
+  <!-- Course Arrangement -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程安排</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          {courseArrangement.map((arrangement) => (
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <div class="flex items-center mb-4">
+                <i class="fas fa-star text-yellow-500 text-xl mr-3"></i>
+                <h3 class="text-xl font-semibold">{arrangement.title}</h3>
+              </div>
+              <p class="text-gray-600">{arrangement.description}</p>
+            </div>
+          ))}
+        </div>
+        <div class="text-center mt-8">
+          <p class="text-gray-600">歡迎填妥下方表格讓同事為你提供咨詢。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Gallery -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">精選照片</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="group cursor-pointer">
+            <Image 
+              src={dobotThumbnail} 
+              alt="Dobot Thumbnail" 
+              class="w-full h-48 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+            />
+          </div>
+          <div class="group cursor-pointer">
+            <Image 
+              src={dobotScreenshot2} 
+              alt="Dobot Screenshot 2" 
+              class="w-full h-48 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+            />
+          </div>
+          <div class="group cursor-pointer">
+            <Image 
+              src={dobotPhoto1} 
+              alt="Dobot Photo 1" 
+              class="w-full h-48 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+            />
+          </div>
+          <div class="group cursor-pointer">
+            <Image 
+              src={dobotConveyor} 
+              alt="Dobot Conveyor" 
+              class="w-full h-48 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <QnASection faqs={faqData} />
+
+  <!-- Contact Form -->
+  <ContactSection subtitle="想了解更多關於 Dobot 智能機械手臂課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
+</Layout> 

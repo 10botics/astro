@@ -5,6 +5,7 @@ export interface Props {
 	ogImage?: string;
 	keywords?: string;
 	robots?: string;
+	showCompanyInfo?: boolean;
 }
 
 const { 
@@ -12,11 +13,14 @@ const {
 	description = "10Botics - AI教育專家，提供專業STEM及人工智能課程", 
 	ogImage = "/images/og-default.jpg",
 	keywords = "STEM教育, AI課程, 人工智能, 10教育, 編程課程",
-	robots = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+	robots = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+	showCompanyInfo = true
 } = Astro.props;
 
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 // Generate canonical URL
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -94,6 +98,9 @@ const organizationSchema = {
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 		
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		
 		<!-- Structured Data -->
 		<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
 	</head>
@@ -107,6 +114,18 @@ const organizationSchema = {
 		<main>
 			<slot />
 		</main>
-		<Footer />
+		<Footer showCompanyInfo={showCompanyInfo} />
+		<FloatingWhatsApp />
+		
+		<!-- Speed Insights with beforeSend function -->
+		<script is:inline>
+			function speedInsightsBeforeSend(data) {
+				console.log("Speed Insights before send", data);
+				// You can modify or filter the data here before sending
+				// For example, remove sensitive URL parameters
+				return data;
+			}
+		</script>
+		<SpeedInsights />
 	</body>
 </html> 

@@ -1,0 +1,294 @@
+---
+import { Image } from 'astro:assets';
+
+export interface Props {
+  title?: string;
+  images: (string | ImageMetadata)[];
+  intervalMs?: number;
+}
+
+const { title, images, intervalMs = 4000 } = Astro.props;
+
+// Normalize images to ensure proper handling for both string URLs and ImageMetadata objects
+const normalizedImages = images.map(img => {
+  if (typeof img === 'string') {
+    // If it's a string URL, return it as is for static assets
+    return { src: img, alt: 'Gallery image', isRemote: true };
+  } else if (img && typeof img === 'object' && 'src' in img) {
+    // This is an ImageMetadata object from Astro import - use the src property
+    // According to Astro docs, ImageMetadata objects have a src property that contains the processed image URL
+    return { src: img, alt: 'Gallery image', isRemote: false };
+  }
+  return null;
+}).filter(img => img !== null);
+
+// Debug logging for development
+if (import.meta.env.DEV) {
+  console.log('GalleryCarousel - Original images:', images);
+  console.log('GalleryCarousel - Normalized images:', normalizedImages);
+}
+---
+
+<div class="gallery-carousel relative" data-interval-ms={intervalMs}>
+  {title && (
+    <div class="text-center mb-8">
+      <h3 class="text-2xl font-bold text-gray-800">{title}</h3>
+    </div>
+  )}
+  
+  <div class="relative overflow-hidden">
+    {normalizedImages.length > 0 ? (
+      <>
+        <!-- Carousel Track -->
+        <div 
+          class="carousel-track flex transition-transform duration-500 ease-in-out"
+          style={`width: ${normalizedImages.length * (100/3)}%`}
+        >
+          {normalizedImages.map((img, index) => (
+            <div 
+              class="carousel-slide flex-shrink-0"
+              style={`width: ${100 / normalizedImages.length}%`}
+            >
+              {img.isRemote ? (
+                <!-- For remote/string URLs, use regular img tag -->
+                <img 
+                  src={img.src as string} 
+                  alt={img.alt}
+                  class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-lg"
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <!-- For ImageMetadata objects, use Astro's Image component -->
+                <Image 
+                  src={img.src as ImageMetadata} 
+                  alt={img.alt}
+                  class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-lg"
+                  loading="lazy"
+                  decoding="async"
+                  width={400}
+                  height={300}
+                />
+              )}
+            </div>
+          ))}
+        </div>
+
+        <!-- Navigation Buttons -->
+        <button 
+          class="carousel-btn carousel-prev absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200 z-10"
+          aria-label="Previous image"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        
+        <button 
+          class="carousel-btn carousel-next absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200 z-10"
+          aria-label="Next image"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </button>
+
+        <!-- Dots -->
+        <div class="carousel-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+          {Array.from({ length: Math.max(1, Math.ceil(normalizedImages.length / 3)) }, (_, i) => (
+            <button 
+              class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white transition-colors duration-200"
+              aria-label={`Go to slide ${i + 1}`}
+              data-index={i}
+            ></button>
+          ))}
+        </div>
+      </>
+    ) : (
+      <div class="text-center py-16 text-gray-500">
+        <p>No images available</p>
+      </div>
+    )}
+  </div>
+</div>
+
+<style>
+  .gallery-carousel {
+    --per-view: 3;
+  }
+  
+  .carousel-track {
+    transform: translateX(0);
+  }
+  
+  .carousel-slide {
+    padding: 0 0.5rem;
+  }
+</style>
+
+<script>
+  class GalleryCarousel {
+    private container: HTMLElement;
+    private track: HTMLElement;
+    private slides: NodeListOf<Element>;
+    private prevBtn: HTMLElement | null;
+    private nextBtn: HTMLElement | null;
+    private dots: NodeListOf<Element>;
+    private currentIndex: number;
+    private perView: number;
+    private totalGroups: number;
+    private autoplayInterval: ReturnType<typeof setInterval> | null;
+    private intervalMs: number;
+
+    constructor(container: HTMLElement) {
+      this.container = container;
+      this.track = container.querySelector('.carousel-track') as HTMLElement;
+      this.slides = container.querySelectorAll('.carousel-slide');
+      this.prevBtn = container.querySelector('.carousel-prev') as HTMLElement | null;
+      this.nextBtn = container.querySelector('.carousel-next') as HTMLElement | null;
+      this.dots = container.querySelectorAll('.carousel-dot');
+      
+      this.currentIndex = 0;
+      this.perView = this.getPerView(); // Get responsive perView
+      this.totalGroups = Math.max(1, this.slides.length - this.perView + 1);
+      this.autoplayInterval = null;
+      this.intervalMs = parseInt(container.dataset.intervalMs || '4000');
+      
+      this.init();
+    }
+    
+    getPerView(): number {
+      if (window.innerWidth >= 1024) return 3; // lg
+      if (window.innerWidth >= 640) return 2;  // md
+      return 1; // sm
+    }
+    
+    updatePerView() {
+      const newPerView = this.getPerView();
+      if (newPerView !== this.perView) {
+        this.perView = newPerView;
+        this.totalGroups = Math.max(1, this.slides.length - this.perView + 1);
+        this.currentIndex = Math.min(this.currentIndex, this.totalGroups - 1);
+        this.updateTrack();
+        this.updateDots();
+      }
+    }
+    
+    init() {
+      this.bindEvents();
+      this.startAutoplay();
+      this.updateDots();
+      this.updateButtons();
+    }
+    
+    bindEvents() {
+      this.prevBtn?.addEventListener('click', () => this.prev());
+      this.nextBtn?.addEventListener('click', () => this.next());
+      
+      this.dots.forEach((dot: Element, index: number) => {
+        dot.addEventListener('click', () => this.goToSlide(index));
+      });
+      
+      // Pause autoplay on hover
+      this.container.addEventListener('mouseenter', () => this.pauseAutoplay());
+      this.container.addEventListener('mouseleave', () => this.resumeAutoplay());
+      
+      // Pause autoplay on interaction
+      this.container.addEventListener('click', () => this.pauseAutoplay());
+      
+      // Handle responsive behavior
+      window.addEventListener('resize', () => this.updatePerView());
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (this.container.contains(document.activeElement)) {
+          if (e.key === 'ArrowLeft') this.prev();
+          if (e.key === 'ArrowRight') this.next();
+        }
+      });
+    }
+    
+    updateTrack() {
+      // Move by 1 image at a time - each image is (100 / total_images)% of track width
+      const slideWidth = 100 / this.slides.length;
+      const translateX = -(this.currentIndex * slideWidth);
+      this.track.style.transform = `translateX(${translateX}%)`;
+    }
+    
+    prev() {
+      this.currentIndex = this.currentIndex > 0 ? this.currentIndex - 1 : this.totalGroups - 1;
+      this.updateTrack();
+      this.updateDots();
+      this.updateButtons();
+      this.restartAutoplay();
+    }
+    
+    next() {
+      this.currentIndex = this.currentIndex < this.totalGroups - 1 ? this.currentIndex + 1 : 0;
+      this.updateTrack();
+      this.updateDots();
+      this.updateButtons();
+      this.restartAutoplay();
+    }
+    
+    goToSlide(slideIndex: number) {
+      this.currentIndex = slideIndex;
+      this.updateTrack();
+      this.updateDots();
+      this.updateButtons();
+      this.restartAutoplay();
+    }
+    
+    updateDots() {
+      this.dots.forEach((dot: Element, index: number) => {
+        if (index === this.currentIndex) {
+          dot.classList.add('bg-white');
+          dot.classList.remove('bg-white/60');
+          dot.setAttribute('aria-selected', 'true');
+        } else {
+          dot.classList.remove('bg-white');
+          dot.classList.add('bg-white/60');
+          dot.setAttribute('aria-selected', 'false');
+        }
+      });
+    }
+    
+    updateButtons() {
+      // Buttons are always enabled for circular navigation
+      this.prevBtn?.setAttribute('aria-disabled', 'false');
+      this.nextBtn?.setAttribute('aria-disabled', 'false');
+    }
+    
+    startAutoplay() {
+      this.autoplayInterval = setInterval(() => {
+        this.next();
+      }, this.intervalMs);
+    }
+    
+    pauseAutoplay() {
+      if (this.autoplayInterval) {
+        clearInterval(this.autoplayInterval);
+        this.autoplayInterval = null;
+      }
+    }
+    
+    resumeAutoplay() {
+      setTimeout(() => {
+        this.startAutoplay();
+      }, 1000);
+    }
+    
+    restartAutoplay() {
+      this.pauseAutoplay();
+      this.startAutoplay();
+    }
+  }
+  
+  // Initialize all carousels
+  document.addEventListener('DOMContentLoaded', () => {
+    const carousels = document.querySelectorAll('.gallery-carousel');
+    carousels.forEach(carousel => {
+      new GalleryCarousel(carousel as HTMLElement);
+    });
+  });
+</script> 
