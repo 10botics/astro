@@ -13,16 +13,19 @@ export async function getStaticPaths() {
     { params: { slug: 'ksp' } },
     { params: { slug: 'lego-spike-prime' } },
     { params: { slug: 'minecraft' } },
+    { params: { slug: 'minecraft-2024' } },
     { params: { slug: 'microbit-parachute' } },
     { params: { slug: 'microbit-maze' } },
     { params: { slug: 'procreate' } },
+    { params: { slug: 'python-game-dev-beginner' } },
     { params: { slug: 'raspberry-pi' } },
     { params: { slug: 'scratch-ai-programming' } },
     { params: { slug: 'scratch-game-design' } },
     { params: { slug: 'swiftplaygrounds' } },
     { params: { slug: 'tello' } },
-    { params: { slug: 'coral-environment-monitoring' } },
-    { params: { slug: 'unity' } }
+    { params: { slug: 'coral-environment-monitoring'} },
+    { params: { slug: 'unity' } },
+    { params: { slug: 'natural-bio-sciences' } }
   ];
 }
 
@@ -64,6 +67,9 @@ switch (slug) {
   case 'minecraft':
     ChineseComponent = await import('./Minecraft校園創建課程.astro');
     break;
+  case 'minecraft-2024':
+    ChineseComponent = await import('../Minecraft 校園創建計劃 2024.astro');
+    break;
   case 'microbit-parachute':
     ChineseComponent = await import('./Microbit 降落傘課程.astro');
     break;
@@ -72,6 +78,9 @@ switch (slug) {
     break;
   case 'procreate':
     ChineseComponent = await import('./Procreate數位藝術課程.astro');
+    break;
+  case 'python-game-dev-beginner':
+    ChineseComponent = await import('./Python 初階遊戲編程.astro');
     break;
   case 'raspberry-pi':
     ChineseComponent = await import('./raspberry-pi編程課程.astro');
@@ -93,6 +102,9 @@ switch (slug) {
     break;
   case 'unity':
     ChineseComponent = await import('./Unity 課程.astro');
+    break;
+  case 'natural-bio-sciences':
+    ChineseComponent = await import('./自然生物探究手作課程.astro');
     break;
   default:
     throw new Error(`Unknown slug: ${slug}`);

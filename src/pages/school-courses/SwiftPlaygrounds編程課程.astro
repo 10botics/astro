@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
-import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import ContactSection from '../../components/ContactSection.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -21,7 +21,7 @@ import swiftPlaygroundsCoding2 from '../../assets/images/school-courses/SwiftPla
 export const courseData = {
   title: "Swift Playgrounds 初階編程",
   subtitle: "從遊戲中學習編程 — 探索Swift Playgrounds的奇妙世界",
-  tags: ["Programming 編程", "Swift Playground", "初中", "軟件開發", "遊戲開發", "高中"],
+  tags: ["Programming 編程", "Swift Playground", "軟件開發", "遊戲開發", "初中", "高中"],
   videoId: "s7tgxH8vSXk",
   description: "這個課程將帶領學生透過 Swift Playgrounds 學習編寫一個飛機大戰遊戲。學生將學會基礎編程概念、創建圖像元素、動畫設計和碰撞檢測等技巧，最終完成一個功能完整的飛機大戰遊戲。課程將通過互動式編程、示範和實踐來實現學習效果。",
   detailedDescription: "從遊戲中學習編程 — 探索Swift Playgrounds的奇妙世界。這個課程將帶領學生透過 Swift Playgrounds 學習編寫一個飛機大戰遊戲。學生將學會基礎編程概念、創建圖像元素、動畫設計和碰撞檢測等技巧，最終完成一個功能完整的飛機大戰遊戲。課程將通過互動式編程、示範和實踐來實現學習效果。",
@@ -302,7 +302,7 @@ const ogImage = swiftPlaygroundsHero.src;
           想了解更多關於 Swift Playgrounds 初階編程課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。
         </p>
       </div>
-      <PaperformEmbed />
+      <ContactSection subtitle="想了解更多關於 SwiftPlaygrounds 編程課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
     </div>
   </section>
 </Layout> 

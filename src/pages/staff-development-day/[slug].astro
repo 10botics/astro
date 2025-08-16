@@ -1,0 +1,25 @@
+---
+// Dynamic route to handle English URLs while using Chinese-named components
+export async function getStaticPaths() {
+  return [
+    { params: { slug: 'staff-development-day' } }
+  ];
+}
+
+const { slug } = Astro.params;
+
+// Import the Chinese-named component using a switch statement
+let ChineseComponent;
+switch (slug) {
+  case 'staff-development-day':
+    ChineseComponent = await import('./index.astro');
+    break;
+  default:
+    throw new Error(`Unknown slug: ${slug}`);
+}
+
+// Get the default export from the imported component
+const Component = ChineseComponent.default;
+---
+
+<Component /> 

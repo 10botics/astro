@@ -1,0 +1,66 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import contactHero from '../assets/images/聯絡我們/contact-hero.jpeg';
+import ContactSection from '../components/ContactSection.astro';
+---
+
+<Layout 
+	title="聯絡我們 - 10教育"
+	description="STEM到校課程查詢，如果您有興趣讓學生學習人工智能，我們專業課程教學團隊可以提供不同的 STEM 到校課程。"
+	keywords="聯絡我們, STEM課程查詢, AI課程, 到校服務, 10教育"
+>
+	<!-- Hero Section - Image and text side by side -->
+	<section class="py-16 lg:py-24">
+		<div class="container mx-auto px-4">
+			<div class="max-w-6xl mx-auto">
+				<div class="grid lg:grid-cols-2 gap-12 items-center">
+					<!-- Text Content -->
+					<div class="space-y-6">
+						<!-- Heading -->
+						<h2 class="text-3xl lg:text-4xl font-bold text-gray-900">
+							STEM到校課程查詢
+						</h2>
+						
+						<!-- Text Content -->
+						<div class="space-y-4 text-gray-700">
+							<p>如果您有興趣讓學生學習人工智能，我們專業課程教學團隊可以提供不同的 STEM 到校課程。</p>
+							<p>我們經驗豐富的團隊提供創新及完整的 STEM 課程。我們利用日常生活中的例子作解釋，而且在課程中讓同學動手做實驗，令同學更容易理解人工智能及在未來的重要性，並學習如何將其應用到現實生活中。</p>
+							<p>請填寫以下表格，我們的同事會在3個工作日內與您聯繫。</p>
+							<p>目前，我們僅服務於以下地點：香港</p>
+						</div>
+					</div>
+					
+					<!-- Hero Image -->
+					<div class="rounded-2xl overflow-hidden shadow-2xl">
+						<Image 
+							src={contactHero} 
+							alt="STEM課程教學場景" 
+							class="w-full h-auto"
+							width={800}
+							height={600}
+						/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact Form Section -->
+	<section class="py-16 lg:py-24">
+		<div class="container mx-auto px-4">
+			<div class="max-w-4xl mx-auto">				
+				<!-- Contact Form -->
+				<div class="bg-gray-50 rounded-2xl p-8 lg:p-12 shadow-lg">
+					<ContactSection />
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.container {
+		max-width: 1200px;
+	}
+</style>

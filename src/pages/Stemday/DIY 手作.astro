@@ -1,0 +1,211 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+
+// Import images
+import heroImage from '../../assets/images/Stemday/DIY 手作/hero-image.png';
+import rubberBandCar from '../../assets/images/Stemday/DIY 手作/rubber-band-car.png';
+import starProjector from '../../assets/images/Stemday/DIY 手作/star-projector.png';
+import vacuumCleaner from '../../assets/images/Stemday/DIY 手作/vacuum-cleaner.png';
+import basketballShooter from '../../assets/images/Stemday/DIY 手作/basketball-shooter.png';
+
+// Import gallery images
+import gallery1 from '../../assets/images/Stemday/DIY 手作/gallery-1.jpg';
+import gallery2 from '../../assets/images/Stemday/DIY 手作/gallery-2.jpg';
+import gallery3 from '../../assets/images/Stemday/DIY 手作/gallery-3.jpg';
+import gallery4 from '../../assets/images/Stemday/DIY 手作/gallery-4.jpg';
+import gallery5 from '../../assets/images/Stemday/DIY 手作/gallery-5.jpg';
+import gallery6 from '../../assets/images/Stemday/DIY 手作/gallery-6.jpg';
+import gallery7 from '../../assets/images/Stemday/DIY 手作/gallery-7.jpg';
+import gallery8 from '../../assets/images/Stemday/DIY 手作/gallery-8.jpg';
+import gallery9 from '../../assets/images/Stemday/DIY 手作/gallery-9.jpg';
+import gallery10 from '../../assets/images/Stemday/DIY 手作/gallery-10.jpg';
+
+const galleryImages = [
+  gallery1, gallery2, gallery3, gallery4, gallery5,
+  gallery6, gallery7, gallery8, gallery9, gallery10
+];
+
+const title = "DIY 手作";
+const description = "學生將探索不同科學原理和概念，學習如何將科學融入日常生活中。不僅能夠激發學生對科學的興趣，還能提高他們的問題解決能力和實踐動手能力。通過 DIY 活動，學生將培養出創造力、邏輯思維和實驗設計的能力，激發對身邊事物的好奇心。";
+
+const faqs = [
+  {
+    question: "有更多手作選擇嗎？",
+    answer: "暫時只提供以上四款手作。\n學校可同時選擇其他 STEM Day 活動課程。"
+  },
+  {
+    question: "如何安排活動導師的人數？",
+    answer: "我們盡量各課室安排一位活動導師，建議學校同時各課室安排一位協助老師。\n若活動導師人手不足，我們可於活動前到校向在校老師簡介活動內容及人手安排。\n建議先填寫下方表格或電郵至 info@10botics.com 向同事溝通學校期望的活動安排。"
+  },
+  {
+    question: "活動提供多少材料包？",
+    answer: "材料包數量按參與學生計算，每位學生一份。"
+  },
+  {
+    question: "有工作紙提供嗎？",
+    answer: "每項手作都提供工作紙。"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <div class="container mx-auto px-4 py-8">
+    <!-- Hero Section -->
+    <div class="mb-12">
+      <div class="bg-gradient-to-r from-blue-50 to-indigo-100 rounded-lg p-8">
+        <div class="max-w-4xl mx-auto">
+          <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h1 class="text-4xl font-bold text-gray-900 mb-4">{title}</h1>
+              <p class="text-lg text-gray-700 mb-6">{description}</p>
+              <div class="flex items-center space-x-4 text-sm text-gray-600">
+                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">Science 科學</span>
+                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full">初小</span>
+                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full">高小</span>
+              </div>
+            </div>
+            <div class="flex justify-center">
+              <Image 
+                src={heroImage} 
+                alt="DIY 手作活動" 
+                class="rounded-lg shadow-lg max-w-md"
+                width={573}
+                height={382}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video Section -->
+    <div class="mb-12">
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="aspect-video">
+          <iframe 
+            src="https://www.youtube.com/embed/RnXkr22Sf9o" 
+            title="DIY 手作介紹影片"
+            class="w-full h-full"
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Activity Content Section -->
+    <div class="mb-12">
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">活動內容</h2>
+        <div class="mb-6">
+          <p class="text-lg text-gray-700 mb-2">1 至 2 小時</p>
+          <p class="text-sm text-gray-500">* 可根據學校需要調整</p>
+        </div>
+
+        <!-- DIY Projects Grid -->
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Rubber Band Car -->
+          <div class="bg-gray-50 rounded-lg p-6">
+            <Image 
+              src={rubberBandCar} 
+              alt="橡筋衝鋒車" 
+              class="w-full h-48 object-cover rounded-lg mb-4"
+              width={800}
+              height={448}
+            />
+            <h3 class="text-xl font-bold text-gray-900 mb-2">橡筋衝鋒車</h3>
+            <p class="text-gray-600 mb-2">製作難度：★☆☆☆</p>
+            <p class="text-gray-700">科學原理/概念：彈力, 摩擦力</p>
+          </div>
+
+          <!-- Star Projector -->
+          <div class="bg-gray-50 rounded-lg p-6">
+            <Image 
+              src={starProjector} 
+              alt="星像儀星空燈" 
+              class="w-full h-48 object-cover rounded-lg mb-4"
+              width={800}
+              height={444}
+            />
+            <h3 class="text-xl font-bold text-gray-900 mb-2">星像儀星空燈</h3>
+            <p class="text-gray-600 mb-2">製作難度：★★☆☆</p>
+            <p class="text-gray-700">科學原理/概念：電路, 星座</p>
+          </div>
+
+          <!-- Vacuum Cleaner -->
+          <div class="bg-gray-50 rounded-lg p-6">
+            <Image 
+              src={vacuumCleaner} 
+              alt="吸塵機" 
+              class="w-full h-48 object-cover rounded-lg mb-4"
+              width={800}
+              height={451}
+            />
+            <h3 class="text-xl font-bold text-gray-900 mb-2">吸塵機</h3>
+            <p class="text-gray-600 mb-2">製作難度：★★★☆ (建議學校自備膠樽)</p>
+            <p class="text-gray-700">科學原理/概念：伯努利定律</p>
+          </div>
+
+          <!-- Basketball Shooter -->
+          <div class="bg-gray-50 rounded-lg p-6">
+            <Image 
+              src={basketballShooter} 
+              alt="投籃器" 
+              class="w-full h-48 object-cover rounded-lg mb-4"
+              width={800}
+              height={449}
+            />
+            <h3 class="text-xl font-bold text-gray-900 mb-2">投籃器</h3>
+            <p class="text-gray-600 mb-2">製作難度：★★☆☆</p>
+            <p class="text-gray-700">科學原理/概念：槓桿原理, 摩擦力</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <div class="mb-12">
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">精選照片</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {galleryImages.map((image, index) => (
+            <div class="aspect-square overflow-hidden rounded-lg">
+              <Image 
+                src={image} 
+                alt={`DIY 手作活動照片 ${index + 1}`}
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                width={300}
+                height={300}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <QnASection 
+      title="常見問題"
+      subtitle="FAQ"
+      description="關於DIY手作活動的常見問題"
+      faqs={faqs}
+      variant="accordion"
+      className="bg-white"
+    />
+
+    <!-- Contact Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">聯絡我們</h2>
+        <ContactSection subtitle="歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
+      </div>
+    </section>
+  </div>
+
+
+</Layout> 

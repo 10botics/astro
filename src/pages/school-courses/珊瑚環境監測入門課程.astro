@@ -3,7 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import DualCourseContent from '../../components/course/DualCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
-import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
 import { Image } from 'astro:assets';
 
 // Import course images
@@ -22,7 +23,7 @@ import img1499 from '../../assets/images/school-courses/珊瑚環境監測入門
 export const courseData = {
   title: "珊瑚環境監測入門課程",
   subtitle: "從生物、化學的角度探索海洋環境，學習IoT監察系統和自動化系統",
-  tags: ["Arduino", "IoT", "Microbit", "Programming 編程", "初中", "海洋環境", "高中", "高小"],
+  tags: ["Arduino", "IoT", "Microbit", "Programming 編程", "海洋環境", "高小", "初中", "高中"],
   videoId: "your-video-id-here",
   description: "本課程會從生物、化學的角度與同學探索海洋環境，除了了解不同海洋生物的生理結構外，還會科學的方式製作和監控一個海洋生存環境。",
   detailedDescription: "本課程會從生物、化學的角度與同學探索海洋環境，除了了解不同海洋生物的生理結構外，還會科學的方式製作和監控一個海洋生存環境。課程會用到Microbit及Arduino去設置IoT監察系統和自動化系統，配合 IoT 平台將收集到的數據整理然後上傳至雲端，再通過自動化方式全天候紀錄和管理珊瑚缸的狀況。",
@@ -274,6 +275,28 @@ const { title, subtitle, tags, description, detailedDescription, heroImage } = c
       </div>
     </section>
 
+    <!-- Course Gallery -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <GalleryCarousel 
+          title="課程實況照片"
+          images={[
+            featuredImage,
+            img1676,
+            img1671,
+            img1639,
+            img1437,
+            img1506,
+            img1592,
+            img1754,
+            img1685,
+            img1499
+          ]}
+          intervalMs={4500}
+        />
+      </div>
+    </section>
+
     <!-- Learning Outcomes -->
     <section class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
@@ -334,13 +357,6 @@ const { title, subtitle, tags, description, detailedDescription, heroImage } = c
     <QnASection faqs={faqData} />
 
     <!-- Contact Form -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center">
-          <h2 class="text-4xl font-bold mb-8">聯絡我們</h2>
-          <PaperformEmbed formId="qhmoqcvc" />
-        </div>
-      </div>
-    </section>
+    <ContactSection subtitle="想了解更多關於珊瑚環境監測入門課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
   </main>
 </Layout> 

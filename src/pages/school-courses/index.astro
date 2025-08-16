@@ -36,7 +36,7 @@ const astroCourses = Object.entries(courseFiles)
       'AI數碼動畫展': 'ai-digital-animation-exhibition',
       'Blockchain 區塊鏈課程': 'blockchain',
       'CoDrone無人機課程': 'codrone',
-      'Delightex 遊戲設計課程': 'Delightex',
+      'Delightex 遊戲設計課程': 'delightex-game-design',
       'Donkey Car 無人車課程': 'donkey-car',
       'Dobot 智能機械手臂': 'dobot',
       'ksp太空計劃課程': 'ksp',
@@ -51,7 +51,9 @@ const astroCourses = Object.entries(courseFiles)
       'SwiftPlaygrounds編程課程': 'swiftplaygrounds',
       'Tello 無人機課程': 'tello',
       '珊瑚環境監測入門課程': 'coral-environment-monitoring',
-      'Unity 課程': 'unity'
+      'Unity 課程': 'unity',
+      '自然生物探究手作課程': 'natural-bio-sciences',
+      'Python 初階遊戲編程': 'python-game-dev-beginner'
     };
     
     // Extract courseData from frontmatter (now accessible via import.meta.glob)
@@ -160,7 +162,7 @@ const pageKeywords = "STEM課程總覽, AI課程列表, 編程課程, 機器人�
                 {course.heroImage && (
                   <div class="course-image-container bg-gray-100 overflow-hidden aspect-video">
                     {typeof course.heroImage === 'string' ? (
-                      <img 
+                      <Image 
                         src={course.heroImage} 
                         alt={course.title}
                         width={600}
@@ -211,6 +213,7 @@ const pageKeywords = "STEM課程總覽, AI課程列表, 編程課程, 機器人�
                           '高中': 'senior-secondary', 
                           '高小': 'upper-primary',
                           '初小': 'lower-primary',
+                          '小學': 'primary',
                           '遊戲開發': 'game-development',
                           '網頁遊戲': 'web-games',
                           '無人機': 'drone',
@@ -219,15 +222,55 @@ const pageKeywords = "STEM課程總覽, AI課程列表, 編程課程, 機器人�
                           '創意': 'creativity',
                           '繪畫': 'drawing',
                           '虛擬實境': 'virtual-reality',
+                          'VR 虛擬實境': 'vr-virtual-reality',
+                          'AR 擴增實境': 'ar-augmented-reality',
                           '動畫創作': 'animation-creation',
                           '互動體驗': 'interactive-experience',
-                          'AI 人工智能': 'ai-artificial-intelligence',
+                          'AI 人工智能': 'ai',
                           'Programming 編程': 'programming',
                           'Block Coding 方塊編程': 'block-coding',
                           'Arts 藝術': 'arts',
                           'Engineering 工程': 'engineering',
                           'Science 科學': 'science',
-                          'STEM Day': 'stem-day'
+                          '科學': 'science',
+                          'STEM Day': 'stem-day',
+                          // Technology and platform specific tags
+                          'ChatGPT': 'chatgpt',
+                          'Leonardo AI': 'leonardo-ai',
+                          'Delightex': 'delightex',
+                          'Metaverse 元宇宙': 'metaverse',
+                          '元宇宙': 'metaverse',
+                          'Microbit': 'microbit',
+                          'Micro:bit': 'microbit',
+                          'Blockchain 區塊鏈': 'blockchain',
+                          'Dobot': 'dobot',
+                          'KSP': 'ksp',
+                          'Lego': 'lego',
+                          'Robotics 機械人': 'robotics',
+                          'Coral': 'coral',
+                          'Python': 'python',
+                          'Raspberry Pi': 'raspberry-pi',
+                          'Tensorflow': 'tensorflow',
+                          'Swift Playground': 'swift-playground',
+                          '3D 建模': '3d-modeling',
+                          'C#': 'csharp',
+                          'Unity': 'unity',
+                          '故事開發': 'story-development',
+                          '編程': 'programming',
+                          '手作': 'hands-on',
+                          'IoT': 'iot',
+                          '海洋環境': 'marine-environment',
+                          'Arduino': 'arduino',
+                          'Tello': 'tello',
+                          'Scratch': 'scratch',
+                          'Procreate': 'procreate',
+                          'Donkey Car': 'donkey-car',
+                          'CoDrone': 'codrone',
+                          'Minecraft': 'minecraft',
+                          // Additional mappings for broader categories
+                          'AI': 'ai',
+                          '藝術': 'arts',
+                          '其他': 'others'
                         };
 
                         return sortedTags.map((tagName: string) => {
