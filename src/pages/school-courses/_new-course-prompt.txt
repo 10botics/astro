@@ -9,7 +9,7 @@ Create the website in astro file under src/pages/school-courses/ and the name of
 **CRITICAL CONTENT ORGANIZATION REQUIREMENT:**
 - ALL text content must be defined as objects at the top of the file
 - Create separate objects for each section's content
-- Use descriptive object names like `heroContent`, `focusContent`, etc.
+- Use descriptive object names
 - Reference these objects in the JSX/HTML sections
 - This makes content maintenance and updates much easier
 - ONLY create content objects for sections that are actually included in the page

@@ -1,0 +1,199 @@
+---
+export interface Props {
+  firstTitle: string;
+  secondTitle: string;
+  thirdTitle: string;
+  firstItems: Array<{
+    title: string;
+    content: string[];
+  }>;
+  secondItems: Array<{
+    title: string;
+    content: string[];
+  }>;
+  thirdItems: Array<{
+    title: string;
+    content: string[];
+  }>;
+  firstHours?: string;
+  secondHours?: string;
+  thirdHours?: string;
+}
+
+const { 
+  firstTitle, 
+  secondTitle, 
+  thirdTitle,
+  firstItems, 
+  secondItems,
+  thirdItems,
+  firstHours = "10 小時",
+  secondHours = "10 小時",
+  thirdHours = "10 小時"
+} = Astro.props;
+---
+
+<section class="bg-white py-16">
+  <div class="container mx-auto px-4 max-w-6xl">
+    <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">課程內容</h2>
+    <p class="text-lg text-gray-700 text-center mb-8">* 可根據學校需要調整</p>
+    
+    <div class="grid lg:grid-cols-3 gap-8">
+      <!-- First Course -->
+      <div class="bg-white border border-gray-200 rounded-lg p-8">
+        <h3 class="text-2xl font-bold text-gray-900 mb-6">{firstTitle} (共 {firstHours})</h3>
+        
+        <div class="space-y-4">
+          {firstItems.map((item, index) => (
+            <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden">
+              <button 
+                class="accordion-header w-full text-left p-4 bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center"
+                data-target={`first-accordion-${index}`}
+              >
+                <span class="font-semibold text-gray-900">{item.title}</span>
+                <div class="accordion-icon transition-transform duration-200">
+                  <i class="fas fa-plus text-gray-600"></i>
+                </div>
+              </button>
+              <div 
+                id={`first-accordion-${index}`}
+                class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+              >
+                <div class="p-4 bg-white border-t border-gray-200">
+                  <ul class="space-y-3">
+                    {item.content.map((point) => (
+                      <li class="flex items-start space-x-3">
+                        <div class="text-cyan-500 mt-1">
+                          <i class="fas fa-chevron-right text-sm"></i>
+                        </div>
+                        <span class="text-gray-700">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Second Course -->
+      <div class="bg-white border border-gray-200 rounded-lg p-8">
+        <h3 class="text-2xl font-bold text-gray-900 mb-6">{secondTitle} (共 {secondHours})</h3>
+        
+        <div class="space-y-4">
+          {secondItems.map((item, index) => (
+            <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden">
+              <button 
+                class="accordion-header w-full text-left p-4 bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center"
+                data-target={`second-accordion-${index}`}
+              >
+                <span class="font-semibold text-gray-900">{item.title}</span>
+                <div class="accordion-icon transition-transform duration-200">
+                  <i class="fas fa-plus text-gray-600"></i>
+                </div>
+              </button>
+              <div 
+                id={`second-accordion-${index}`}
+                class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+              >
+                <div class="p-4 bg-white border-t border-gray-200">
+                  <ul class="space-y-3">
+                    {item.content.map((point) => (
+                      <li class="flex items-start space-x-3">
+                        <div class="text-cyan-500 mt-1">
+                          <i class="fas fa-chevron-right text-sm"></i>
+                        </div>
+                        <span class="text-gray-700">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Third Course -->
+      <div class="bg-white border border-gray-200 rounded-lg p-8">
+        <h3 class="text-2xl font-bold text-gray-900 mb-6">{thirdTitle} (共 {thirdHours})</h3>
+        
+        <div class="space-y-4">
+          {thirdItems.map((item, index) => (
+            <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden">
+              <button 
+                class="accordion-header w-full text-left p-4 bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center"
+                data-target={`third-accordion-${index}`}
+              >
+                <span class="font-semibold text-gray-900">{item.title}</span>
+                <div class="accordion-icon transition-transform duration-200">
+                  <i class="fas fa-plus text-gray-600"></i>
+                </div>
+              </button>
+              <div 
+                id={`third-accordion-${index}`}
+                class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+              >
+                <div class="p-4 bg-white border-t border-gray-200">
+                  <ul class="space-y-3">
+                    {item.content.map((point) => (
+                      <li class="flex items-start space-x-3">
+                        <div class="text-cyan-500 mt-1">
+                          <i class="fas fa-chevron-right text-sm"></i>
+                        </div>
+                        <span class="text-gray-700">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Accordion functionality for course content
+  document.addEventListener('DOMContentLoaded', function() {
+    const headers = document.querySelectorAll('.accordion-header');
+    
+    headers.forEach(header => {
+      header.addEventListener('click', function(this: HTMLElement) {
+        const target = this.getAttribute('data-target');
+        if (!target) return;
+        
+        const content = document.getElementById(target);
+        const icon = this.querySelector('.accordion-icon i') as HTMLElement;
+        
+        if (content && icon) {
+          // Toggle current accordion
+          if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+            content.style.maxHeight = '0px';
+            icon.className = 'fas fa-plus text-gray-600';
+          } else {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            icon.className = 'fas fa-minus text-gray-600';
+          }
+        }
+      });
+    });
+
+    // Open all accordions by default
+    headers.forEach(header => {
+      const target = header.getAttribute('data-target');
+      if (!target) return;
+      
+      const content = document.getElementById(target);
+      const icon = header.querySelector('.accordion-icon i') as HTMLElement | null;
+      
+      if (content && icon) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        icon.className = 'fas fa-minus text-gray-600';
+      }
+    });
+  });
+</script>

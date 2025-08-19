@@ -1,14 +1,14 @@
 # CSV Integration Instructions for Astro
 
 ## Goal
-Integrate CSV data directly into an Astro page using the astro-csv package.
+Integrate CSV data directly into an Astro page using the csv-parse package.
 
 ## Required Steps (in order)
-1. **Verify astro-csv is installed** - Check package.json and astro.config.mjs
-2. **Place CSV file in `src/data/` directory** - This is the standard location for astro-csv
-3. **Use astro-csv import syntax** - Import CSV directly: `import data from '../../data/your-file.csv'`
+1. **Verify csv-parse is installed** - Check package.json and astro.config.mjs
+2. **Place CSV file in `src/data/` directory** - This is the standard location for csv-parse
+3. **Use csv-parse import syntax** - Import CSV directly: `import data from '../../data/your-file.csv'`
 4. **Access data directly** - Use `data.default` to get the parsed data
-5. **No manual parsing needed** - astro-csv handles CSV parsing automatically
+5. **No manual parsing needed** - csv-parse handles CSV parsing automatically
 
 ## Fraction to Rating Conversion
 When displaying rating data that contains fractions, convert them to visual representations:
@@ -43,7 +43,7 @@ const dataWithRatings = allData.map(item => ({
 
 ## Key Points
 - ✅ Use `src/data/` directory (not `src/content/`)
-- ✅ Import CSV directly with astro-csv
+- ✅ Import CSV directly with csv-parse
 - ✅ Convert fractions to visual ratings using appropriate symbols
 - ✅ No need for `fs`, `readFileSync`, or manual parsing
 - ✅ Data is automatically parsed and typed
