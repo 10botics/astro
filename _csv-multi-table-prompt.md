@@ -5,17 +5,17 @@ Integrate CSV data into an Astro page and distribute it into multiple tables bas
 
 ## Required Steps (in order)
 
-### 1. **Verify astro-csv Installation**
-- Check `package.json` for `astro-csv` dependency
+### 1. **Verify csv-parse Installation**
+- Check `package.json` for `csv-parse` dependency
 - Verify `astro.config.mjs` has proper configuration
-- Install if missing: `npm install astro-csv`
+- Install if missing: `npm install csv-parse`
 
 ### 2. **Place CSV File in `src/data/` Directory**
 - Standard location: `src/data/your-file.csv`
 - Ensure CSV has a category column for separating data
 - CSV structure should include your desired columns
 
-### 3. **Import CSV Using astro-csv**
+### 3. **Import CSV Using csv-parse**
 ```astro
 ---
 import Layout from '../layouts/Layout.astro';
@@ -230,7 +230,7 @@ const grandTotal = totalCategory1 + totalCategory2;
 
 ### **✅ Do's:**
 - Use `src/data/` directory for CSV files
-- Import CSV directly with astro-csv: `import data from '../../data/file.csv'`
+- Import CSV directly with csv-parse: `import data from '../../data/file.csv'`
 - Access data with `data.default`
 - Filter data by category column values
 - Sort data within each category
