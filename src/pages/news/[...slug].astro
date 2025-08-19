@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import { generateExcerpt } from '../../utils/excerpt';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
 
 export async function getStaticPaths() {
   const newsArticles = await getCollection('news');
@@ -263,6 +264,13 @@ if (article.data.featuredImage) {
         </div>
       </section>
     )}
+
+    <!-- Related School Courses -->
+    <RelatedCourses 
+      newsTags={article.data.tags}
+      newsTitle={article.data.title}
+      maxResults={9}
+    />
 
     <!-- Back to News -->
     <section class="py-8">

@@ -24,7 +24,7 @@ import Index from './index.astro';
 import Stem2024List from './2024 STEM 比賽名單.astro';
 import Stem2025Results from './2025-中小學-stem-比賽清單.astro';
 import SchoolCoursesIndex from './school-courses/index.astro';
-import StemdayIndex from './stemday/index.astro';
+import stemdayIndex from './stemday/index.astro';
 import StaffDevIndex from './staff-development-day/index.astro';
 import FundingIndex from './funding-application/index.astro';
 import NewsIndex from './news/index.astro';
@@ -55,7 +55,7 @@ const componentMap = {
   '2024 STEM 比賽名單.astro': Stem2024List,
   '2025-中小學-stem-比賽清單.astro': Stem2025Results,
   'school-courses/index.astro': SchoolCoursesIndex,
-  'stemday/index.astro': StemdayIndex,
+  'stemday/index.astro': stemdayIndex,
   'staff-development-day/index.astro': StaffDevIndex,
   'funding-application/index.astro': FundingIndex,
   'news/index.astro': NewsIndex,
@@ -84,7 +84,9 @@ if (!componentInfo) {
 }
 
 // Get the pre-imported component
-const ChineseComponent = componentMap[componentInfo.filename];
+const ChineseComponent = componentInfo.filename in componentMap 
+  ? componentMap[componentInfo.filename as keyof typeof componentMap]
+  : null;
 
 if (!ChineseComponent) {
   throw new Error(`Component not found for filename: ${componentInfo.filename}`);

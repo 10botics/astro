@@ -5,7 +5,8 @@ import CourseFeatures from '../../components/course/CourseFeatures.astro';
 import AccordionSection from '../../components/course/AccordionSection.astro';
 import DualCourseContent from '../../components/course/DualCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
-import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -19,7 +20,7 @@ import scratchGameDesignHero from '../../assets/images/school-courses/Scratch遊
 export const courseData = {
   title: "Scratch 遊戲設計課程",
   subtitle: "掌握 Scratch 遊戲設計的藝術 - 釋放你的創造力",
-  tags: ["Block Coding 方塊編程", "Programming 編程", "Scratch", "初中", "遊戲開發", "高中", "高小"],
+  tags: ["Block Coding 方塊編程", "Programming 編程", "Scratch", "遊戲開發", "高小", "初中", "高中"],
   videoId: "_qE5v6RRDOI",
   description: "透過 Scratch 編程引導學生進入遊戲開發領域的有趣且適合初學者的課程。與學生一同製作簡單的遊戲及程式，讓學生能從零開始認識 Scratch 的基本操作和介面，並設計及開發和分享自己的獨特遊戲作品，啟蒙創造力及邏輯思維。",
   detailedDescription: "學習如何在 Scratch 設計和編碼自己的互動遊戲，探索角色控制、遊戲機制、關卡設計、得分系統和視覺效果等關鍵概念。學生將在創造沉浸式遊戲體驗的過程中培養解決問題和計算思維能力，激發他們在遊戲開發領域繼續探索的熱情。",
@@ -278,17 +279,11 @@ const studentWorkExamples = [
   </section>
 
   <QnASection faqs={faqItems} />
+  <!-- Related News Section -->
+  <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
+
+
 
   <!-- Contact Section -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">聯絡我們</h2>
-      <div class="bg-white rounded-lg p-8 shadow-lg">
-        <div class="text-center">
-          <p class="text-lg text-gray-700 mb-6">想了解更多關於 Scratch 遊戲設計課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。</p>
-          <PaperformEmbed />
-        </div>
-      </div>
-    </div>
-  </section>
+  <ContactSection subtitle="想了解更多關於 Scratch 遊戲設計課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
 </Layout> 

@@ -1,43 +1,16 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "framework": "astro",
   "installCommand": "npm install",
-  "devCommand": "npm run dev",
-  "headers": [
+  "framework": "astro",
+  "rewrites": [
     {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        }
-      ]
+      "source": "/sitemap.xml",
+      "destination": "/sitemap-index.xml"
     },
     {
-      "source": "/assets/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
+      "source": "/sitemap-index.xml",
+      "destination": "/sitemap-index.xml"
     }
-  ],
-  "redirects": [
-    {
-      "source": "/school-courses",
-      "destination": "/school-courses/",
-      "permanent": true
-    }
-  ],
-  "alias": ["staging.10botics.com"]
-} 
+  ]
+}

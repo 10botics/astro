@@ -1,17 +1,17 @@
 ---
-// Dynamic route to handle English URLs while using Chinese-named components
+// Dynamic route to handle URL mapping for STEM day activities
 import { getStaticPathsForFolder, getComponentForSlug } from '../../utils/urlAliases.js';
 
 // Pre-import all components to avoid Unicode issues in dynamic imports
 import StrawBridge from './飲管橋.astro';
-import DIYHandcraft from './DIY 手作.astro';
-import MatatalbProgramming from './Matatalab 入門編程課程.astro';
+import DIY from './DIY 手作.astro';
+import Matatalab from './Matatalab 入門編程課程.astro';
 
 // Component mapping
 const componentMap = {
   '飲管橋.astro': StrawBridge,
-  'DIY 手作.astro': DIYHandcraft,
-  'Matatalab 入門編程課程.astro': MatatalbProgramming
+  'DIY 手作.astro': DIY,
+  'Matatalab 入門編程課程.astro': Matatalab
 };
 
 export async function getStaticPaths() {
@@ -24,15 +24,17 @@ const { slug } = Astro.params;
 const componentInfo = getComponentForSlug('stemday', slug);
 
 if (!componentInfo) {
-  throw new Error(`Unknown slug: ${slug}`);
+  throw new Error(`Unknown STEM day slug: ${slug}`);
 }
 
 // Get the pre-imported component
-const ChineseComponent = componentMap[componentInfo.filename];
+const stemdayComponent = componentInfo.filename in componentMap 
+  ? componentMap[componentInfo.filename as keyof typeof componentMap]
+  : null;
 
-if (!ChineseComponent) {
+if (!stemdayComponent) {
   throw new Error(`Component not found for filename: ${componentInfo.filename}`);
 }
 ---
 
-<ChineseComponent /> 
+<stemdayComponent /> 

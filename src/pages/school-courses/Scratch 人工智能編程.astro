@@ -4,7 +4,8 @@ import HeroSection from '../../components/course/HeroSection.astro';
 import CourseFeatures from '../../components/course/CourseFeatures.astro';
 import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
-import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -32,15 +33,15 @@ const courseFeatures = {
   aiExamples: [
     {
       title: "人面識別",
-      image: "https://lwfiles.mycourse.app/10botics-public/bf6bae32bf18a9afffdf2ef18615f8f9.gif"
+      image: "/src/assets/images/school-courses/Scratch 人工智能編程/scratch-ai-1.gif"
     },
     {
       title: "手勢識別",
-      image: "https://lwfiles.mycourse.app/10botics-public/c98ce8ccb7da82373fec7c244b34a9b3.gif"
+      image: "/src/assets/images/school-courses/Scratch 人工智能編程/scratch-ai-2.gif"
     },
     {
       title: "姿勢識別",
-      image: "https://lwfiles.mycourse.app/10botics-public/fa5eab50642474658210ee6ba7029e31.gif"
+      image: "/src/assets/images/school-courses/Scratch 人工智能編程/scratch-ai-3.gif"
     }
   ]
 };
@@ -65,7 +66,7 @@ const faqItems = [
 export const courseData = {
   title: "Scratch 人工智能編程",
   subtitle: "結合 Scratch 與 AI，創造智能遊戲體驗",
-  tags: ["Block Coding 方塊編程", "Programming 編程", "Scratch", "AI 人工智能", "初中", "遊戲開發", "高中", "高小"],
+  tags: ["AI 人工智能", "Block Coding 方塊編程", "Programming 編程", "Scratch", "高小", "初中"],
   videoId: "your-video-id-here",
   description: "Scratch 人工智能編程結合了傳統的 Scratch 編程與現代的人工智能技術，讓學生在學習基礎編程概念的同時，也能體驗 AI 技術的應用。",
   detailedDescription: "Scratch 人工智能編程結合了傳統的 Scratch 編程與現代的人工智能技術，讓學生在學習基礎編程概念的同時，也能體驗 AI 技術的應用。",
@@ -193,10 +194,12 @@ const curriculumItems = [
 
         <!-- Image Section - Right side -->
         <div class="flex justify-center">
-          <img 
+          <Image 
             src="/src/assets/images/school-courses/Scratch 人工智能編程/scratch-interface.png" 
             alt="Scratch AI Interface"
             class="w-full max-w-md h-auto"
+            width="600"
+            height="400"
           />
         </div>
       </div>
@@ -268,10 +271,12 @@ const curriculumItems = [
       
       <!-- Featured Image -->
       <div class="flex justify-center mb-12">
-        <img 
+        <Image 
           src="/src/assets/images/school-courses/Scratch 人工智能編程/course-activity.jpg" 
           alt="課程實況"
           class="max-w-lg w-full h-auto rounded-lg shadow-md"
+          width="600"
+          height="400"
         />
       </div>
     </div>
@@ -324,7 +329,7 @@ const curriculumItems = [
         <!-- Machine Learning Training -->
         <div class="text-center">
           <div class="mb-6">
-            <Image src={machineLearningTraining} alt="機器學習訓練" class="w-full h-48 object-cover rounded-lg" />
+            <Image src={machineLearningTraining} alt="機器學習訓練" class="w-full h-48 object-cover rounded-lg" width="600" height="400" />
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-3">訓練機器學習模型</h3>
           <p class="text-gray-600">透過 Teachable Machine 訓練不同類型的人工智能模型</p>
@@ -361,6 +366,9 @@ const curriculumItems = [
 
   <QnASection faqs={faqItems} variant="details" />
 
+  <!-- Related News Section -->
+  <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
+
   <!-- Contact Section -->
   <section class="bg-white py-16">
     <div class="container mx-auto px-4 max-w-6xl">
@@ -369,7 +377,7 @@ const curriculumItems = [
         <p class="text-lg text-gray-600">想了解更多關於 Scratch 人工智能編程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。</p>
       </div>
       <div class="max-w-4xl mx-auto">
-        <PaperformEmbed />
+        <ContactSection subtitle="想了解更多關於 Scratch 人工智能編程課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
       </div>
     </div>
   </section>

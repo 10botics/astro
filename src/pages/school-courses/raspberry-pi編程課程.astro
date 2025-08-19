@@ -2,9 +2,10 @@
 import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import CourseFeatures from '../../components/course/CourseFeatures.astro';
-import DualCourseContent from '../../components/course/DualCourseContent.astro';
+import TripleCourseContent from '../../components/course/TripleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
-import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -81,6 +82,47 @@ const beginnerCurriculumItems = [
       "介紹 GPIO",
       "連接並控制 OLED 螢幕及超聲波感應器",
       "執行測距器程式"
+    ]
+  }
+];
+
+// Course curriculum - LED 課程
+const ledCurriculumItems = [
+  {
+    title: "LED 按鈕入門 [2 節]",
+    content: [
+      "連接 Raspberry Pi 與按鈕",
+      "使用 RPi.GPIO 模組偵測按鈕輸入",
+      "編寫程式偵測按鈕按壓和釋放狀態",
+      "製作按鈕次數計數器"
+    ]
+  },
+  {
+    title: "LED 按鈕控制 [2 節]",
+    content: [
+      "連接 Raspberry Pi 與按鈕燈泡",
+      "瞭解 GPIO 輸出/輸入、電路接法與燈泡正負極",
+      "編寫按鈕控制 LED 開關的程式",
+      "製作反應遊戲 (倒數到時按按鈕)"
+    ]
+  },
+  {
+    title: "LED 燈帶入門 [2 節]",
+    content: [
+      "接線並供電給 WS2812 LED 燈帶",
+      "控制單一 LED 燈顯示紅綠藍",
+      "控制不同 LED 燈顯示不同顏色",
+      "製作動態燈光規律和動畫 (呼吸燈，彩虹)"
+    ]
+  },
+  {
+    title: "LED 拍拍燈遊戲 [2 節]",
+    content: [
+      "連接 Raspberry Pi ，按鈕與 LED 燈帶",
+      "設定三顆按鈕分別對應三位玩家",
+      "建立時間限制",
+      "設定勝利判定",
+      "整合所有功能，製作可自動重啟的拍拍燈遊戲"
     ]
   }
 ];
@@ -211,7 +253,7 @@ const advancedCurriculumItems = [
         <!-- 縮時攝影機 -->
         <div class="text-center">
           <div class="mb-6">
-            <img src="https://lwfiles.mycourse.app/10botics-public/0e5fea39e8ed293269a77b52fcfd9969.gif" alt="縮時攝影機" class="w-full h-48 object-cover rounded-lg">
+            <Image src="/src/assets/images/school-courses/raspberry-pi編程課程/timelapse-camera.gif" alt="縮時攝影機" class="w-full h-48 object-cover rounded-lg" width="600" height="400">
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-3">縮時攝影機</h3>
           <p class="text-gray-600">認識如何從 GitHub 中複製一個項目下來</p>
@@ -220,7 +262,7 @@ const advancedCurriculumItems = [
         <!-- 測距器 -->
         <div class="text-center">
           <div class="mb-6">
-            <img src="https://lwfiles.mycourse.app/10botics-public/eb27302266f46cb79173778ca64b0bcc.gif" alt="測距器" class="w-full h-48 object-cover rounded-lg">
+            <Image src="/src/assets/images/school-courses/raspberry-pi編程課程/distance-sensor.gif" alt="測距器" class="w-full h-48 object-cover rounded-lg" width="600" height="400">
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-3">測距器</h3>
           <p class="text-gray-600">認識數位輸入和輸出</p>
@@ -229,7 +271,7 @@ const advancedCurriculumItems = [
         <!-- 復古遊戲機 RetroPie -->
         <div class="text-center">
           <div class="mb-6">
-            <img src="https://lwfiles.mycourse.app/10botics-public/ad9e102947b39eb2f171d269d2dfa1d1.gif" alt="復古遊戲機" class="w-full h-48 object-cover rounded-lg">
+            <Image src="/src/assets/images/school-courses/raspberry-pi編程課程/retro-gaming.gif" alt="復古遊戲機" class="w-full h-48 object-cover rounded-lg" width="600" height="400">
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-3">復古遊戲機 RetroPie</h3>
           <p class="text-gray-600">認識如何燒錄 OS 到 SD 卡</p>
@@ -239,13 +281,16 @@ const advancedCurriculumItems = [
   </section>
 
   <!-- Course Content Section -->
-  <DualCourseContent 
-    beginnerTitle="入門課程"
-    advancedTitle="AI 深蹲計數器"
-    beginnerItems={beginnerCurriculumItems}
-    advancedItems={advancedCurriculumItems}
-    beginnerHours="15 小時"
-    advancedHours="15 小時"
+  <TripleCourseContent 
+    firstTitle="入門課程"
+    secondTitle="LED 課程"
+    thirdTitle="AI 深蹲計數器"
+    firstItems={beginnerCurriculumItems}
+    secondItems={ledCurriculumItems}
+    thirdItems={advancedCurriculumItems}
+    firstHours="15 小時"
+    secondHours="12 小時"
+    thirdHours="15 小時"
   />
 
   <!-- AI Integration Video Section -->
@@ -343,6 +388,10 @@ const advancedCurriculumItems = [
   </section>
 
   <QnASection faqs={faqItems} variant="details" />
+  <!-- Related News Section -->
+  <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
+
+
 
   <!-- Contact Section -->
   <section class="bg-white py-16">
@@ -352,7 +401,7 @@ const advancedCurriculumItems = [
         <p class="text-lg text-gray-600">想了解更多關於 Raspberry Pi 編程課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。</p>
       </div>
       <div class="max-w-4xl mx-auto">
-        <PaperformEmbed />
+        <ContactSection subtitle="想了解更多關於 Raspberry Pi 編程課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
       </div>
     </div>
   </section>

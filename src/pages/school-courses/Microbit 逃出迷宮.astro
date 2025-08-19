@@ -3,7 +3,9 @@ import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
-import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
+import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -21,7 +23,7 @@ import carousel2 from '../../assets/images/school-courses/Microbit 逃出迷宮/
 export const courseData = {
   title: "Micro:bit 小車：逃出迷宮",
   subtitle: "簡易編程模擬自動駕駛",
-  tags: ["AI 人工智能", "Block Coding 方塊編程", "Engineering 工程", "Micro:bit", "Programming 編程", "Robotics 機械人", "初中", "高小"],
+  tags: ["AI 人工智能", "Block Coding 方塊編程", "Engineering 工程", "Micro:bit", "Programming 編程", "Robotics 機械人", "高小", "初中"],
   videoId: "XLQIvRbNIBA",
   description: "構建和編程自動駕駛 Micro:bit 車，以逃脫迷宮 - 學習內容針對高小學生的校本需求，再加以延伸，提供有趣和互動的學習體驗。學生將學習使用不同技術設計能夠自主逃脫迷宮的 Micro:bit 擴展車，啟發學生的創造力和解難能力。",
   detailedDescription: "學習內容啟發於高小學生的校本需求，利用 Micro:bit 製作遙控車逃出迷宮。再加以延伸，學習使用不同傳感器及人工智能設計能夠自主逃脫迷宮的 Micro:bit 擴展車，啟發學生的創造力和解難能力。",
@@ -163,23 +165,27 @@ const galleryImages = [
     <!-- What is Micro:bit Section -->
     <section class="bg-gray-50 py-16">
       <div class="container mx-auto px-4">
-        <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div class="grid md:grid-cols-2 gap-8 items-start">
           <div>
             <h3 class="text-2xl font-bold mb-4">什麼是Micro:bit？</h3>
-            <Image 
-              src={microbitCard} 
-              alt="Micro:bit card" 
-              class="w-full rounded-lg mb-4"
-            />
+            <div class="flex justify-center mb-4">
+              <Image 
+                src={microbitCard} 
+                alt="Micro:bit card" 
+                class="w-48 h-32 object-contain rounded-lg"
+              />
+            </div>
             <p class="text-gray-700">使用拖放式編程，適合初學者。亦支援其他編程語言（包括Python、JavaScript）。能結合不同擴展，製作不同項目。</p>
           </div>
           <div>
             <h3 class="text-2xl font-bold mb-4">什麼是Tiny:bit？</h3>
-            <Image 
-              src={tinybitScreenshot} 
-              alt="Tiny:bit screenshot" 
-              class="w-full rounded-lg mb-4"
-            />
+            <div class="flex justify-center mb-4">
+              <Image 
+                src={tinybitScreenshot} 
+                alt="Tiny:bit screenshot" 
+                class="w-48 h-32 object-contain rounded-lg"
+              />
+            </div>
             <p class="text-gray-700">Tiny:bit是其中一款Micro:bit的擴展智能小車，體積小巧，組裝簡單。並配備各種感應器應用，包括避障感應器、追線感應器等。</p>
           </div>
         </div>
@@ -286,16 +292,11 @@ const galleryImages = [
     <!-- Gallery Section -->
     <section class="py-16">
       <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12">精選照片</h2>
-        <div class="grid md:grid-cols-3 gap-6">
-          {galleryImages.map((image) => (
-            <Image 
-              src={image} 
-              alt="Course gallery" 
-              class="w-full rounded-lg shadow-lg"
-            />
-          ))}
-        </div>
+        <GalleryCarousel 
+          title="精選照片"
+          images={galleryImages}
+          intervalMs={5000}
+        />
       </div>
     </section>
 
@@ -303,6 +304,10 @@ const galleryImages = [
     <QnASection faqs={faqItems} />
 
     <!-- Contact Form -->
-    <PaperformEmbed />
+  <!-- Related News Section -->
+  <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
+
+
+          <ContactSection subtitle="想了解更多關於 Microbit 逃出迷宮課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
   </main>
 </Layout> 

@@ -3,7 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import DualCourseContent from '../../components/course/DualCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
-import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
 import { Image } from 'astro:assets';
 
 // Import course image
@@ -13,7 +14,7 @@ import featuredImage from '../../assets/images/school-courses/AI啟蒙與藝術�
 export const courseData = {
   title: "AI啟蒙與藝術創作課程",
   subtitle: "探索人工智能在視覺藝術領域的應用及創作",
-  tags: ["AI 人工智能", "Arts 藝術", "ChatGPT", "Leonardo AI", "初中", "初小", "高小"],
+  tags: ["AI 人工智能", "Arts 藝術", "ChatGPT", "Leonardo AI", "初小", "高小", "初中"],
   videoId: "your-video-id-here",
   description: "課程將引導學生深入探索人工智能（AI）在視覺藝術領域的應用及進行創作。學生將探索AI圖像生成平台上不同的功能，利用所學技巧，通過文字指令生成圖像。",
   detailedDescription: "課程將引導學生深入探索人工智能（AI）在視覺藝術領域的應用及進行創作。學生將探索AI圖像生成平台上不同的功能，利用所學技巧，通過文字指令生成圖像。其後，學生更需以ChatGPT創作故事內容，並以AI圖像生成平台完成插畫製作。最後更製成故事繪本，並進行匯報，展示成果。",
@@ -282,13 +283,16 @@ const courseHighlights = [
       answer: item.answer.join('\n')
     }))} />
 
+    <!-- Related News Section -->
+    <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
+
     <!-- Contact Section -->
     <section class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
         <div class="text-center mb-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">聯絡我們</h2>
         </div>
-        <PaperformEmbed formId="qhmoqcvc" />
+        <ContactSection subtitle="想了解更多關於 AI 啟蒙與藝術創作課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
       </div>
     </section>
   </main>

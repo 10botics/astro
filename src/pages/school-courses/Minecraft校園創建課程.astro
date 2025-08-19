@@ -4,7 +4,8 @@ import HeroSection from '../../components/course/HeroSection.astro';
 import CourseFeatures from '../../components/course/CourseFeatures.astro';
 import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
-import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -24,7 +25,7 @@ import landmark4 from '../../assets/images/school-courses/Minecraft校園創建�
 export const courseData = {
   title: "Minecraft 校園創建課程",
   subtitle: "在 Minecraft 世界中學習編程，創造無限可能",
-  tags: ["Programming 編程", "Minecraft", "遊戲開發", "初中", "高中"],
+  tags: ["Arts 藝術", "Programming 編程", "遊戲開發", "高小", "初中", "高中"],
   videoId: "your-video-id-here",
   description: "Minecraft 校園創建課程讓學生在熟悉的遊戲環境中學習編程概念，通過創建模組和自動化系統來掌握編程技能。",
   detailedDescription: "Minecraft 校園創建課程讓學生在熟悉的遊戲環境中學習編程概念，通過創建模組和自動化系統來掌握編程技能。",
@@ -322,6 +323,10 @@ const faqItems = [
   </section>
 
   <QnASection faqs={faqItems} />
+  <!-- Related News Section -->
+  <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
+
+
 
   <!-- Contact Section -->
   <section class="bg-white py-16">
@@ -334,7 +339,7 @@ const faqItems = [
           想了解更多關於 Minecraft 校園創建課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。
         </p>
       </div>
-      <PaperformEmbed />
+      <ContactSection subtitle="想了解更多關於 Minecraft 校園創建課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
     </div>
   </section>
 </Layout>

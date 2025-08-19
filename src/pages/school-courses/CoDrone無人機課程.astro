@@ -4,7 +4,8 @@ import HeroSection from '../../components/course/HeroSection.astro';
 import CourseFeatures from '../../components/course/CourseFeatures.astro';
 import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
-import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -18,7 +19,7 @@ import relatedInfoBg from '../../assets/images/school-courses/CoDrone無人機�
 export const courseData = {
   title: "CoDrone無人機課程",
   subtitle: "讓學生飛向STEM的新高度",
-  tags: ["Programming 編程", "Scratch", "初中", "無人機", "高中", "高小"],
+  tags: ["Microbit", "Programming 編程", "Scratch", "無人機", "高小", "初中", "高中"],
   videoId: "your-video-id-here",
   description: "本課程旨在引導中學生探索無人機技術與Blockly/Python編程的結合，讓學員通過不同練習完成各種任務，並應用於日常生活中。",
   detailedDescription: "本課程旨在引導中學生探索無人機技術與Blockly/Python編程的結合，讓學員通過不同練習完成各種任務，並應用於日常生活中。學習過程中，學生將掌握程式編寫、飛行路線和空中花色動作等技能。從基礎的飛行控制到高級編程挑戰，課程將逐步提升學生的無人機技能，並培養解決問題的能力、邏輯思維和創新靈感。準備好與Codrone無人機一起展翅高飛，開啟這段充滿挑戰的學習之旅吧！",
@@ -205,19 +206,19 @@ const relatedCourses = [
   {
     title: "AI啟蒙與藝術創作課程",
     description: "課程將引導學生深入探索人工智能（AI）在視覺藝術領",
-    image: "https://10botics.com/wp-content/uploads/2023/09/mj100_a_captivating_web_featured_image_that_delves_deep_into_th_83bb5e4a-9e38-49e9-9b65-1f5d9851d71b-768x578.png",
+    image: "/src/assets/images/school-courses/CoDrone無人機課程/ai-course.png",
     link: "/school-courses/ai-enrichment-course/"
   },
   {
     title: "AI數碼動畫展",
     description: "AI數碼動畫展是一個簡單有趣的 STEM Day 活動，學生可按主題設計喜歡的圖案/角色，通過人工智能把圖案轉換成栩栩如生的動畫，呈現在學校LED Wall或螢幕上面跳舞，讓學生能以輕鬆有趣的方式體驗生成式AI技術。",
-    image: "https://10botics.com/wp-content/uploads/2024/01/background-05-1.jpg",
+    image: "/src/assets/images/school-courses/CoDrone無人機課程/ai-digital-animation.jpg",
     link: "/stem-day/ai-digital-animation-exhibition/"
   },
   {
     title: "Blockchain 區塊鏈課程",
     description: "本課程旨在引領學生進入Web3.0的世界，瞭解在w",
-    image: "https://10botics.com/wp-content/uploads/2023/09/112-768x577.png",
+    image: "/src/assets/images/school-courses/CoDrone無人機課程/blockchain-course.png",
     link: "/school-courses/blockchain/"
   }
 ];
@@ -353,7 +354,11 @@ const relatedCourses = [
   <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">聯絡我們</h2>
-      <PaperformEmbed formId="qhmoqcvc" />
+  <!-- Related News Section -->
+  <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
+
+
+      <ContactSection subtitle="想了解更多關於 CoDrone 無人機課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
     </div>
   </section>
 
@@ -366,7 +371,7 @@ const relatedCourses = [
         {relatedCourses.map((course) => (
           <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
             <a href={course.link} class="block">
-              <img src={course.image} alt={course.title} class="w-full h-48 object-cover" />
+              <Image src={course.image} alt={course.title} class="w-full h-48 object-cover" width="800" height="320" />
               <div class="p-6">
                 <h4 class="text-xl font-semibold mb-2 text-gray-800 hover:text-blue-600">
                   {course.title}

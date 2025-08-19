@@ -3,18 +3,36 @@ Create the website in astro file under src/pages/school-courses/ and the name of
 **CRITICAL URL REQUIREMENTS:**
 - The filename MUST be in traditional Chinese 
 - The URL slug MUST be in English 
-- Add the Chinese filename to English slug mapping in both:
-  - `src/pages/school-courses/index.astro` (in the slugMapping object)
-  - `src/pages/school-courses/[slug].astro` (in the slugMapping object)
+- The Chinese filename to English slug mapping will be automatically added to `src/utils/urlAliases.js`
 - This ensures the course is accessible via English URLs while maintaining Chinese filenames
 
 **CRITICAL CONTENT ORGANIZATION REQUIREMENT:**
 - ALL text content must be defined as objects at the top of the file
 - Create separate objects for each section's content
-- Use descriptive object names like `heroContent`, `focusContent`, etc.
+- Use descriptive object names
 - Reference these objects in the JSX/HTML sections
 - This makes content maintenance and updates much easier
 - ONLY create content objects for sections that are actually included in the page
+
+**COURSE DATA AND HERO SECTION DEFINITION**
+-example of courseData:
+export const courseData = {
+  title: "AI啟蒙與藝術創作課程",
+  subtitle: "探索人工智能在視覺藝術領域的應用及創作",
+  tags: ["AI 人工智能", "Arts 藝術", "ChatGPT", "Leonardo AI", "初小", "高小", "初中"],
+  videoId: "your-video-id-here",
+  description: "課程將引導學生深入探索人工智能（AI）在視覺藝術領域的應用及進行創作。學生將探索AI圖像生成平台上不同的功能，利用所學技巧，通過文字指令生成圖像。",
+  detailedDescription: "課程將引導學生深入探索人工智能（AI）在視覺藝術領域的應用及進行創作。學生將探索AI圖像生成平台上不同的功能，利用所學技巧，通過文字指令生成圖像。其後，學生更需以ChatGPT創作故事內容，並以AI圖像生成平台完成插畫製作。最後更製成故事繪本，並進行匯報，展示成果。",
+  heroImage: featuredImage
+};
+-and the definition of Hero section should be
+<HeroSection 
+      title={courseData.title}
+      subtitle={courseData.subtitle}
+      description={courseData.detailedDescription}
+      heroImage={courseData.heroImage}
+      tags={courseData.tags}
+    />
 
 **CRITICAL COURSE CURRICULUM SEPARATION REQUIREMENT:**
 - When a course has more than one levels, ALWAYS create separate curriculum arrays

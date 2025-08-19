@@ -31,16 +31,27 @@ export async function getStaticPaths() {
       // Map Chinese filenames to English URLs
       const slugMapping: Record<string, string> = {
         '人工智能遊戲編程課程': 'ai-game-coding',
+        'AI啟蒙與藝術創作課程': 'ai-enrichment-course',
         'AI數碼動畫展': 'ai-digital-animation-exhibition',
-        'Delightex 遊戲設計課程': 'Delightex',
+        'Blockchain 區塊鏈課程': 'blockchain',
+        'CoDrone無人機課程': 'codrone',
+        'Delightex 遊戲設計課程': 'delightex-game-design',
+        'Donkey Car 無人車課程': 'donkey-car',
+        'Dobot 智能機械手臂': 'dobot',
         'ksp太空計劃課程': 'ksp',
+        'Lego Spike Prime 機器人技術大師班': 'lego-spike-prime',
         'Minecraft校園創建課程': 'minecraft',
+        'Microbit 降落傘課程': 'microbit-parachute',
+        'Microbit 逃出迷宮': 'microbit-maze',
         'Procreate數位藝術課程': 'procreate',
         'raspberry-pi編程課程': 'raspberry-pi',
         'Scratch 人工智能編程': 'scratch-ai-programming',
         'Scratch遊戲設計課程': 'scratch-game-design',
         'SwiftPlaygrounds編程課程': 'swiftplaygrounds',
-        'Tello 無人機課程': 'tello'
+        'Tello 無人機課程': 'tello',
+        '珊瑚環境監測入門課程': 'coral-environment-monitoring',
+        'Unity 課程': 'unity',
+        '自然生物探究手作課程': 'natural-bio-sciences'
       };
       
       // Extract courseData from frontmatter
@@ -105,6 +116,7 @@ export async function getStaticPaths() {
     '高中': 'senior-secondary', 
     '高小': 'upper-primary',
     '初小': 'lower-primary',
+    '小學': 'primary',
     '遊戲開發': 'game-development',
     '網頁遊戲': 'web-games',
     '無人機': 'drone',
@@ -113,19 +125,59 @@ export async function getStaticPaths() {
     '創意': 'creativity',
     '繪畫': 'drawing',
     '虛擬實境': 'virtual-reality',
+    'VR 虛擬實境': 'vr-virtual-reality',
+    'AR 擴增實境': 'ar-augmented-reality',
     '動畫創作': 'animation-creation',
     '互動體驗': 'interactive-experience',
-    'AI 人工智能': 'ai-artificial-intelligence',
+    'AI 人工智能': 'ai',
     'Programming 編程': 'programming',
     'Block Coding 方塊編程': 'block-coding',
     'Arts 藝術': 'arts',
     'Engineering 工程': 'engineering',
     'Science 科學': 'science',
-    'STEM Day': 'stem-day'
+    '科學': 'science',
+    'STEM Day': 'stem-day',
+    // Technology and platform specific tags
+    'ChatGPT': 'chatgpt',
+    'Leonardo AI': 'leonardo-ai',
+    'Delightex': 'delightex',
+    'Metaverse 元宇宙': 'metaverse',
+    '元宇宙': 'metaverse',
+    'Microbit': 'microbit',
+    'Micro:bit': 'microbit',
+    'Blockchain 區塊鏈': 'blockchain',
+    'Dobot': 'dobot',
+    'KSP': 'ksp',
+    'Lego': 'lego',
+    'Robotics 機械人': 'robotics',
+    'Coral': 'coral',
+    'Python': 'python',
+    'Raspberry Pi': 'raspberry-pi',
+    'Tensorflow': 'tensorflow',
+    'Swift Playground': 'swift-playground',
+    '3D 建模': '3d-modeling',
+    'C#': 'csharp',
+    'Unity': 'unity',
+    '故事開發': 'story-development',
+    '編程': 'programming',
+    '手作': 'hands-on',
+    'IoT': 'iot',
+    '海洋環境': 'marine-environment',
+    'Arduino': 'arduino',
+    'Tello': 'tello',
+    'Scratch': 'scratch',
+    'Procreate': 'procreate',
+    'Donkey Car': 'donkey-car',
+    'CoDrone': 'codrone',
+    'Minecraft': 'minecraft',
+    // Additional mappings for broader categories
+    'AI': 'ai',
+    '藝術': 'arts',
+    '其他': 'others'
   };
 
   // Create paths for each tag
-  return Array.from(allTags)
+  const tagPaths = Array.from(allTags)
     .filter(tag => tag && tag.trim())
     .map(tag => {
       // Check if we have a mapping for this tag
@@ -148,6 +200,21 @@ export async function getStaticPaths() {
       return null;
     })
     .filter(Boolean);
+
+  // Add the new category tags
+  const categoryTags = [
+    { tag: 'ai', originalTag: 'AI 人工智能' },
+    { tag: 'programming', originalTag: 'Programming 編程' },
+    { tag: 'arts', originalTag: 'Arts 藝術' },
+    { tag: 'others', originalTag: 'Others 其他' }
+  ];
+
+  const categoryPaths = categoryTags.map(({ tag, originalTag }) => ({
+    params: { tag },
+    props: { tag, originalTag }
+  }));
+
+  return [...tagPaths, ...categoryPaths];
 }
 
 // Get the tag from props
@@ -165,16 +232,27 @@ const astroCourses = Object.entries(courseFiles)
     // Map Chinese filenames to English URLs
     const slugMapping: Record<string, string> = {
       '人工智能遊戲編程課程': 'ai-game-coding',
+      'AI啟蒙與藝術創作課程': 'ai-enrichment-course',
       'AI數碼動畫展': 'ai-digital-animation-exhibition',
-      'Delightex 遊戲設計課程': 'Delightex',
+      'Blockchain 區塊鏈課程': 'blockchain',
+      'CoDrone無人機課程': 'codrone',
+      'Delightex 遊戲設計課程': 'delightex-game-design',
+      'Donkey Car 無人車課程': 'donkey-car',
+      'Dobot 智能機械手臂': 'dobot',
       'ksp太空計劃課程': 'ksp',
+      'Lego Spike Prime 機器人技術大師班': 'lego-spike-prime',
       'Minecraft校園創建課程': 'minecraft',
+      'Microbit 降落傘課程': 'microbit-parachute',
+      'Microbit 逃出迷宮': 'microbit-maze',
       'Procreate數位藝術課程': 'procreate',
       'raspberry-pi編程課程': 'raspberry-pi',
       'Scratch 人工智能編程': 'scratch-ai-programming',
       'Scratch遊戲設計課程': 'scratch-game-design',
       'SwiftPlaygrounds編程課程': 'swiftplaygrounds',
-      'Tello 無人機課程': 'tello'
+      'Tello 無人機課程': 'tello',
+      '珊瑚環境監測入門課程': 'coral-environment-monitoring',
+      'Unity 課程': 'unity',
+      '自然生物探究手作課程': 'natural-bio-sciences'
     };
     
     // Extract courseData from frontmatter
@@ -205,13 +283,14 @@ const astroCourses = Object.entries(courseFiles)
     } as Course;
   });
 
-// Tag mapping for Chinese to English URLs (same as above)
+// Tag mapping for Chinese to English URLs (redefined for main component scope)
 const tagMapping = {
   // Chinese tags to English equivalents
   '初中': 'junior-secondary',
   '高中': 'senior-secondary', 
   '高小': 'upper-primary',
   '初小': 'lower-primary',
+  '小學': 'primary',
   '遊戲開發': 'game-development',
   '網頁遊戲': 'web-games',
   '無人機': 'drone',
@@ -220,33 +299,101 @@ const tagMapping = {
   '創意': 'creativity',
   '繪畫': 'drawing',
   '虛擬實境': 'virtual-reality',
+  'VR 虛擬實境': 'vr-virtual-reality',
+  'AR 擴增實境': 'ar-augmented-reality',
   '動畫創作': 'animation-creation',
   '互動體驗': 'interactive-experience',
-  'AI 人工智能': 'ai-artificial-intelligence',
+  'AI 人工智能': 'ai',
   'Programming 編程': 'programming',
   'Block Coding 方塊編程': 'block-coding',
   'Arts 藝術': 'arts',
   'Engineering 工程': 'engineering',
   'Science 科學': 'science',
-  'STEM Day': 'stem-day'
+  '科學': 'science',
+  'STEM Day': 'stem-day',
+  // Technology and platform specific tags
+  'ChatGPT': 'chatgpt',
+  'Leonardo AI': 'leonardo-ai',
+  'Delightex': 'delightex',
+  'Metaverse 元宇宙': 'metaverse',
+  '元宇宙': 'metaverse',
+  'Microbit': 'microbit',
+  'Micro:bit': 'microbit',
+  'Blockchain 區塊鏈': 'blockchain',
+  'Dobot': 'dobot',
+  'KSP': 'ksp',
+  'Lego': 'lego',
+  'Robotics 機械人': 'robotics',
+  'Coral': 'coral',
+  'Python': 'python',
+  'Raspberry Pi': 'raspberry-pi',
+  'Tensorflow': 'tensorflow',
+  'Swift Playground': 'swift-playground',
+  '3D 建模': '3d-modeling',
+  'C#': 'csharp',
+  'Unity': 'unity',
+  '故事開發': 'story-development',
+  '編程': 'programming',
+  '手作': 'hands-on',
+  'IoT': 'iot',
+  '海洋環境': 'marine-environment',
+  'Arduino': 'arduino',
+  'Tello': 'tello',
+  'Scratch': 'scratch',
+  'Procreate': 'procreate',
+  'Donkey Car': 'donkey-car',
+  'CoDrone': 'codrone',
+  'Minecraft': 'minecraft',
+  // Additional mappings for broader categories
+  'AI': 'ai',
+  '藝術': 'arts',
+  '其他': 'others'
 };
 
 // Filter courses by the current tag
-const filteredCourses = astroCourses.filter(course => 
-  course.tags.some(courseTag => {
-    // Check if we have a mapping for this tag
-    const mappedTag = (tagMapping as any)[courseTag] || courseTag;
-    
-    // Use the same slug generation logic for comparison
-    const courseTagSlug = mappedTag
-      .toLowerCase()
-      .replace(/\s+/g, '-')
-      .replace(/[^\w-]/g, '') // Remove all non-word characters except hyphens
-      .replace(/-+$/, '');
-    
-    return courseTagSlug === tag || courseTag === originalTag;
-  })
-);
+const filteredCourses = astroCourses.filter(course => {
+  // Special handling for the new category tags
+  if (tag === 'ai') {
+    return course.tags.some(courseTag => 
+      courseTag.includes('AI') || courseTag.includes('人工智能') || courseTag.includes('ai')
+    );
+  } else if (tag === 'programming') {
+    return course.tags.some(courseTag => 
+      courseTag.includes('Programming') || courseTag.includes('編程') || courseTag.includes('C#') || courseTag.includes('Unity') || courseTag.includes('Swift')
+    );
+  } else if (tag === 'arts') {
+    return course.tags.some(courseTag => 
+      courseTag.includes('Arts') || courseTag.includes('藝術') || courseTag.includes('Procreate') || courseTag.includes('繪畫') || courseTag.includes('創意')
+    );
+  } else if (tag === 'others') {
+    // Courses that don't fit into AI, Programming, or Arts categories
+    const hasAITag = course.tags.some(courseTag => 
+      courseTag.includes('AI') || courseTag.includes('人工智能') || courseTag.includes('ai')
+    );
+    const hasProgrammingTag = course.tags.some(courseTag => 
+      courseTag.includes('Programming') || courseTag.includes('編程') || courseTag.includes('C#') || courseTag.includes('Unity') || courseTag.includes('Swift')
+    );
+    const hasArtsTag = course.tags.some(courseTag => 
+      courseTag.includes('Arts') || courseTag.includes('藝術') || courseTag.includes('Procreate') || courseTag.includes('繪畫') || courseTag.includes('創意')
+    );
+    return !hasAITag && !hasProgrammingTag && !hasArtsTag;
+  } else {
+    // Original filtering logic for other tags
+    return course.tags.some(courseTag => {
+      // Check if we have a mapping for this tag
+      const mappedTag = (tagMapping as any)[courseTag] || courseTag;
+      
+      // Use the same slug generation logic for comparison
+      const courseTagSlug = mappedTag
+        .toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(/[^\w-]/g, '') // Remove all non-word characters except hyphens
+        .replace(/-+$/, '');
+      
+      return courseTagSlug === tag || courseTag === originalTag;
+    });
+  }
+});
 
 // Sort courses by publication date (newest first)
 const sortedCourses = filteredCourses.sort((a, b) => 
