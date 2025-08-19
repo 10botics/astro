@@ -1,30 +1,39 @@
 ---
+import { getStaticPathsForFolder, getComponentForSlug } from '../../utils/urlAliases.js';
+
 // Dynamic route to handle English URLs while using Chinese-named components
 export async function getStaticPaths() {
-  return [
-    { params: { slug: 'straw-bridge' } },
-    { params: { slug: 'diy' } },
-    { params: { slug: 'matatalab-入門編程課程' } }
-  ];
+  return getStaticPathsForFolder('stemday');
 }
 
 const { slug } = Astro.params;
 
-// Import the Chinese-named component using a switch statement
+// Get the component filename for this slug
+const componentInfo = getComponentForSlug('stemday', slug);
+
+if (!componentInfo) {
+  throw new Error(`Unknown slug: ${slug}`);
+}
+
+if (componentInfo.isRedirect) {
+  return Astro.redirect(componentInfo.redirect);
+}
+
+// Import the Chinese-named component
 let ChineseComponent;
-switch (slug) {
-  case 'straw-bridge':
+switch (componentInfo.filename) {
+  case '飲管橋.astro':
     ChineseComponent = await import('./飲管橋.astro');
     break;
-  case 'diy':
+  case 'DIY 手作.astro':
     ChineseComponent = await import('./DIY 手作.astro');
     break;
-  case 'matatalab-入門編程課程':
+  case 'Matatalab 入門編程課程.astro':
     ChineseComponent = await import('./Matatalab 入門編程課程.astro');
     break;
   default:
-    throw new Error(`Unknown slug: ${slug}`);
+    throw new Error(`Unknown component: ${componentInfo.filename}`);
 }
 ---
 
-<ChineseComponent.default /> 
+{ChineseComponent && <ChineseComponent.default />} 
