@@ -84,7 +84,9 @@ if (!componentInfo) {
 }
 
 // Get the pre-imported component
-const ChineseComponent = componentMap[componentInfo.filename];
+const ChineseComponent = componentInfo.filename in componentMap 
+  ? componentMap[componentInfo.filename as keyof typeof componentMap]
+  : null;
 
 if (!ChineseComponent) {
   throw new Error(`Component not found for filename: ${componentInfo.filename}`);

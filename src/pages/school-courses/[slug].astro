@@ -1,114 +1,92 @@
 ---
-// Dynamic route to handle English URLs while using Chinese-named components
+// Dynamic route to handle URL mapping for school courses
+import { getStaticPathsForFolder, getComponentForSlug } from '../../utils/urlAliases.js';
+
+// Pre-import all components to avoid Unicode issues in dynamic imports
+import AiGameCoding from './人工智能遊戲編程課程.astro';
+import AiEnrichmentCourse from './AI啟蒙與藝術創作課程.astro';
+import AiDigitalAnimation from './AI數碼動畫展.astro';
+import Blockchain from './Blockchain 區塊鏈課程.astro';
+import CoDrone from './CoDrone無人機課程.astro';
+import Delightex from './Delightex 遊戲設計課程.astro';
+import DonkeyCar from './Donkey Car 無人車課程.astro';
+import Dobot from './Dobot 智能機械手臂.astro';
+import KSP from './ksp太空計劃課程.astro';
+import LegoSpikePrime from './Lego Spike Prime 機器人技術大師班.astro';
+import Minecraft from './Minecraft校園創建課程.astro';
+import MinecraftCompetition2024 from '../Minecraft 校園創建計劃 2024.astro';
+import MicrobitParachute from './Microbit 降落傘課程.astro';
+import MicrobitMaze from './Microbit 逃出迷宮.astro';
+import Procreate from './Procreate數位藝術課程.astro';
+import PythonGameDev from './Python 初階遊戲編程.astro';
+import RaspberryPi from './raspberry-pi編程課程.astro';
+import ScratchAi from './Scratch 人工智能編程.astro';
+import ScratchGameDesign from './Scratch遊戲設計課程.astro';
+import SwiftPlaygrounds from './SwiftPlaygrounds編程課程.astro';
+import Tello from './Tello 無人機課程.astro';
+import CoralEnvironment from './珊瑚環境監測入門課程.astro';
+import Unity from './Unity 課程.astro';
+import NaturalBioSciences from './自然生物探究手作課程.astro';
+
+// Component mapping
+const componentMap = {
+  '人工智能遊戲編程課程.astro': AiGameCoding,
+  'AI啟蒙與藝術創作課程.astro': AiEnrichmentCourse,
+  'AI數碼動畫展.astro': AiDigitalAnimation,
+  'Blockchain 區塊鏈課程.astro': Blockchain,
+  'CoDrone無人機課程.astro': CoDrone,
+  'Delightex 遊戲設計課程.astro': Delightex,
+  'Donkey Car 無人車課程.astro': DonkeyCar,
+  'Dobot 智能機械手臂.astro': Dobot,
+  'ksp太空計劃課程.astro': KSP,
+  'Lego Spike Prime 機器人技術大師班.astro': LegoSpikePrime,
+  'Minecraft校園創建課程.astro': Minecraft,
+  '../Minecraft 校園創建計劃 2024.astro': MinecraftCompetition2024,
+  'Microbit 降落傘課程.astro': MicrobitParachute,
+  'Microbit 逃出迷宮.astro': MicrobitMaze,
+  'Procreate數位藝術課程.astro': Procreate,
+  'Python 初階遊戲編程.astro': PythonGameDev,
+  'raspberry-pi編程課程.astro': RaspberryPi,
+  'Scratch 人工智能編程.astro': ScratchAi,
+  'Scratch遊戲設計課程.astro': ScratchGameDesign,
+  'SwiftPlaygrounds編程課程.astro': SwiftPlaygrounds,
+  'Tello 無人機課程.astro': Tello,
+  '珊瑚環境監測入門課程.astro': CoralEnvironment,
+  'Unity 課程.astro': Unity,
+  '自然生物探究手作課程.astro': NaturalBioSciences
+};
+
 export async function getStaticPaths() {
-  return [
-    { params: { slug: 'ai-game-coding' } },
-    { params: { slug: 'ai-enrichment-course' } },
-    { params: { slug: 'ai-digital-animation-exhibition' } },
-    { params: { slug: 'blockchain' } },
-    { params: { slug: 'codrone' } },
-    { params: { slug: 'Delightex' } },
-    { params: { slug: 'donkey-car' } },
-    { params: { slug: 'dobot' } },
-    { params: { slug: 'ksp' } },
-    { params: { slug: 'lego-spike-prime' } },
-    { params: { slug: 'minecraft' } },
-    { params: { slug: 'minecraft-2024' } },
-    { params: { slug: 'microbit-parachute' } },
-    { params: { slug: 'microbit-maze' } },
-    { params: { slug: 'procreate' } },
-    { params: { slug: 'python-game-dev-beginner' } },
-    { params: { slug: 'raspberry-pi' } },
-    { params: { slug: 'scratch-ai-programming' } },
-    { params: { slug: 'scratch-game-design' } },
-    { params: { slug: 'swiftplaygrounds' } },
-    { params: { slug: 'tello' } },
-    { params: { slug: 'coral-environment-monitoring'} },
-    { params: { slug: 'unity' } },
-    { params: { slug: 'natural-bio-sciences' } }
-  ];
+  return getStaticPathsForFolder('school-courses');
 }
 
 const { slug } = Astro.params;
 
-// Import the Chinese-named component using a switch statement
-let ChineseComponent;
-switch (slug) {
-  case 'ai-game-coding':
-    ChineseComponent = await import('./人工智能遊戲編程課程.astro');
-    break;
-  case 'ai-enrichment-course':
-    ChineseComponent = await import('./AI啟蒙與藝術創作課程.astro');
-    break;
-  case 'ai-digital-animation-exhibition':
-    ChineseComponent = await import('./AI數碼動畫展.astro');
-    break;
-  case 'blockchain':
-    ChineseComponent = await import('./Blockchain 區塊鏈課程.astro');
-    break;
-  case 'codrone':
-    ChineseComponent = await import('./CoDrone無人機課程.astro');
-    break;
-  case 'Delightex':
-    ChineseComponent = await import('./Delightex 遊戲設計課程.astro');
-    break;
-  case 'donkey-car':
-    ChineseComponent = await import('./Donkey Car 無人車課程.astro');
-    break;
-  case 'dobot':
-    ChineseComponent = await import('./Dobot 智能機械手臂.astro');
-    break;
-  case 'ksp':
-    ChineseComponent = await import('./ksp太空計劃課程.astro');
-    break;
-  case 'lego-spike-prime':
-    ChineseComponent = await import('./Lego Spike Prime 機器人技術大師班.astro');
-    break;
-  case 'minecraft':
-    ChineseComponent = await import('./Minecraft校園創建課程.astro');
-    break;
-  case 'minecraft-2024':
-    ChineseComponent = await import('../Minecraft 校園創建計劃 2024.astro');
-    break;
-  case 'microbit-parachute':
-    ChineseComponent = await import('./Microbit 降落傘課程.astro');
-    break;
-  case 'microbit-maze':
-    ChineseComponent = await import('./Microbit 逃出迷宮.astro');
-    break;
-  case 'procreate':
-    ChineseComponent = await import('./Procreate數位藝術課程.astro');
-    break;
-  case 'python-game-dev-beginner':
-    ChineseComponent = await import('./Python 初階遊戲編程.astro');
-    break;
-  case 'raspberry-pi':
-    ChineseComponent = await import('./raspberry-pi編程課程.astro');
-    break;
-  case 'scratch-ai-programming':
-    ChineseComponent = await import('./Scratch 人工智能編程.astro');
-    break;
-  case 'scratch-game-design':
-    ChineseComponent = await import('./Scratch遊戲設計課程.astro');
-    break;
-  case 'swiftplaygrounds':
-    ChineseComponent = await import('./SwiftPlaygrounds編程課程.astro');
-    break;
-  case 'tello':
-    ChineseComponent = await import('./Tello 無人機課程.astro');
-    break;
-  case 'coral-environment-monitoring':
-    ChineseComponent = await import('./珊瑚環境監測入門課程.astro');
-    break;
-  case 'unity':
-    ChineseComponent = await import('./Unity 課程.astro');
-    break;
-  case 'natural-bio-sciences':
-    ChineseComponent = await import('./自然生物探究手作課程.astro');
-    break;
-  default:
-    throw new Error(`Unknown slug: ${slug}`);
+// Handle special redirects first
+if (slug === 'ai-courses') {
+  return Astro.redirect('/school-courses/scratch-ai-programming');
+}
+
+// Get component info from global alias configuration
+const componentInfo = getComponentForSlug('school-courses', slug);
+
+if (!componentInfo) {
+  throw new Error(`Unknown school course slug: ${slug}`);
+}
+
+// Handle redirects
+if (componentInfo.isRedirect && componentInfo.redirect) {
+  return Astro.redirect(componentInfo.redirect);
+}
+
+// Get the pre-imported component
+const SchoolCourseComponent = componentInfo.filename in componentMap 
+  ? componentMap[componentInfo.filename as keyof typeof componentMap]
+  : null;
+
+if (!SchoolCourseComponent) {
+  throw new Error(`Component not found for filename: ${componentInfo.filename}`);
 }
 ---
 
-<ChineseComponent.default /> 
+<SchoolCourseComponent /> 

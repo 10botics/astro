@@ -24,7 +24,9 @@ if (!componentInfo) {
 }
 
 // Get the pre-imported component
-const Component = componentMap[componentInfo.filename];
+const Component = componentInfo.filename in componentMap 
+  ? componentMap[componentInfo.filename as keyof typeof componentMap]
+  : null;
 
 if (!Component) {
   throw new Error(`Component not found for filename: ${componentInfo.filename}`);
