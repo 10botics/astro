@@ -1,27 +1,38 @@
 ---
 // Dynamic route to handle URL mapping for funding application pages
+import { getStaticPathsForFolder, getComponentForSlug } from '../../utils/urlAliases.js';
+
+// Pre-import all components to avoid Unicode issues in dynamic imports
+import ITInnovationLab from './IT創新實驗室計劃.astro';
+import KnowingMoreAboutIT from './奇趣IT識多啲計劃.astro';
+
+// Component mapping
+const componentMap = {
+  'IT創新實驗室計劃.astro': ITInnovationLab,
+  '奇趣IT識多啲計劃.astro': KnowingMoreAboutIT
+};
+
 export async function getStaticPaths() {
-  return [
-    { params: { slug: 'it-innovation-lab' } },
-    { params: { slug: 'knowing-more-about-it' } },
-    // Add more funding application slugs here as needed
-  ];
+  return getStaticPathsForFolder('funding-application');
 }
 
 const { slug } = Astro.params;
 
-// Import the appropriate component based on the slug
-let FundingComponent;
-switch (slug) {
-  case 'it-innovation-lab':
-    FundingComponent = await import('./IT創新實驗室計劃.astro');
-    break;
-  case 'knowing-more-about-it':
-    FundingComponent = await import('./奇趣IT識多啲計劃.astro');
-    break;
-  default:
-    throw new Error(`Unknown funding application slug: ${slug}`);
+// Get component info from global alias configuration
+const componentInfo = getComponentForSlug('funding-application', slug);
+
+if (!componentInfo) {
+  throw new Error(`Unknown funding application slug: ${slug}`);
+}
+
+// Get the pre-imported component
+const FundingComponent = componentInfo.filename in componentMap 
+  ? componentMap[componentInfo.filename as keyof typeof componentMap]
+  : null;
+
+if (!FundingComponent) {
+  throw new Error(`Component not found for filename: ${componentInfo.filename}`);
 }
 ---
 
-<FundingComponent.default />
+<FundingComponent />
