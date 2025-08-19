@@ -1,0 +1,222 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
+import { Image } from 'astro:assets';
+import ContactSection from '../../components/ContactSection.astro';
+// Import images
+import strawBridgeHero from '../../assets/images/stemday/飲管橋/hero-image.jpg';
+import activityImage1 from '../../assets/images/stemday/飲管橋/activity-image-1.jpg';
+import activityImage2 from '../../assets/images/stemday/飲管橋/activity-image-2.jpeg';
+import gallery1 from '../../assets/images/stemday/飲管橋/gallery-1.jpeg';
+import gallery2 from '../../assets/images/stemday/飲管橋/gallery-2.jpeg';
+import gallery3 from '../../assets/images/stemday/飲管橋/gallery-3.jpg';
+import gallery4 from '../../assets/images/stemday/飲管橋/gallery-4.jpeg';
+import gallery5 from '../../assets/images/stemday/飲管橋/gallery-5.jpeg';
+import gallery6 from '../../assets/images/stemday/飲管橋/gallery-6.jpeg';
+import gallery7 from '../../assets/images/stemday/飲管橋/gallery-7.jpg';
+import gallery8 from '../../assets/images/stemday/飲管橋/gallery-8.jpg';
+
+// Activity data
+const activityData: {
+  title: string;
+  subtitle: string;
+  tags: string[];
+  videoId: string;
+  description: string;
+  heroImageAsset: any;
+} = {
+  title: "飲管橋",
+  subtitle: "想要激發您的學生對工程師職業的興趣嗎？想要向您的學生展示橋梁是如何建造的，以及它們的優缺點是什麼嗎？",
+  tags: ["工程", "STEM", "物理", "設計", "團隊合作", "初中", "高小"],
+  videoId: "C9nv9BgHDnw",
+  description: "透過建造橋梁，學生將學習結構設計、物理力學概念，並培養創造解決問題的能力。這項活動不僅教導建構穩固結構的原則，也讓學生實際應用工程學知識解決挑戰，同時激發他們的創造思維。",
+  heroImageAsset: strawBridgeHero
+};
+
+// Activity features
+const activityFeatures = [
+  {
+    icon: "fas fa-hands-helping",
+    title: "實踐與學習結合",
+    description: "通過親身參與建造橋梁的過程，學生將在實際操作中學習結構設計、物理力學等重要知識，讓抽象的概念變得更具體可見。"
+  },
+  {
+    icon: "fas fa-lightbulb",
+    title: "培養創造力",
+    description: "學生在面對各種橋梁設計挑戰時，將被鼓勵提出新穎的解決方案，培養他們的創造力和創新思維。"
+  },
+  {
+    icon: "fas fa-users",
+    title: "團隊合作與溝通",
+    description: "這個活動將促進學生的團隊合作能力，他們需要共同討論、計劃和執行橋梁的建造，並學習有效溝通與協調。"
+  },
+  {
+    icon: "fas fa-cogs",
+    title: "實際應用工程原則",
+    description: "學生不僅學習工程學的基本原則，還將實際應用這些知識解決實際的建造問題，培養他們將理論轉化為實際技能的能力。"
+  }
+];
+
+// Activity schedule
+const activitySchedule = [
+  {
+    title: "簡介與前導 [5分鐘]",
+    content: [
+      "引導學生進入課程主題，介紹橋梁的不同結構和重要性。",
+      "說明活動目標和預期學習成果。"
+    ]
+  },
+  {
+    title: "結構與設計原則 [5分鐘]",
+    content: [
+      "簡要介紹結構的基本原則，如強度、支撐方式和負載分佈。",
+      "示範不同類型的橋梁結構，並討論其特點。"
+    ]
+  },
+  {
+    title: "團隊建造橋梁 [35分鐘]",
+    content: [
+      "將學生分成小組，每個小組設計和建造自己的吸管橋梁。",
+      "鼓勵團隊成員共同討論和計劃，並分工合作完成建造任務。"
+    ]
+  },
+  {
+    title: "展示和評估 [15分鐘]",
+    content: [
+      "每個小組將把他們的橋梁帶到測試站，將重物放置在橋梁上，並記錄所放置的重量。",
+      "能夠承受最多重量的橋梁將成為獲勝者。"
+    ]
+  }
+];
+
+// FAQ data
+const faqData = [
+  {
+    question: "這項活動適合什麼年級的同學參與？",
+    answer: "這項活動適合高小至初中學生。"
+  },
+  {
+    question: "學校需要準備什麼？",
+    answer: "我們可以根據學校的需要，提供物資、人手及獎品。亦可為學校提供英語教學、帶安排學生分組匯報等增值服務。\n\n建議先致電+852 6554-1506 或電郵至 info@10botics.com 向同事溝通學校期望的活動內容及成果，同事將就學校所需提供建議。"
+  }
+];
+
+const { title, subtitle, tags, videoId, description, heroImageAsset: heroImage } = activityData;
+---
+
+<Layout title={title} description={description}>
+  <main>
+    <!-- Hero Section -->
+    <HeroSection 
+      title={title}
+      subtitle={subtitle}
+      tags={tags}
+      videoId={videoId}
+      description={description}
+      heroImage={heroImage}
+    />
+
+    <!-- Activity Features -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold mb-4">活動特色</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {activityFeatures.map((feature) => (
+            <div class="text-center">
+              <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class={`${feature.icon} text-white text-2xl`}></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p class="text-gray-600">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Activity Content -->
+    <SingleCourseContent 
+      items={activitySchedule}
+      hours="約1小時"
+      images={[
+        { src: activityImage1, alt: "飲管橋活動照片1" },
+        { src: activityImage2, alt: "飲管橋活動照片2" }
+      ]}
+    />
+
+    <!-- Gallery Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <GalleryCarousel 
+          title="精選照片"
+          images={[
+            gallery1,
+            gallery2,
+            gallery3,
+            gallery4,
+            gallery5,
+            gallery6,
+            gallery7,
+            gallery8
+          ]}
+          intervalMs={4000}
+        />
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <QnASection faqs={faqData} />
+
+    <!-- Contact Form -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">聯絡我們</h2>
+        <ContactSection subtitle="  歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Accordion functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.accordion-header').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.parentElement;
+          if (!item) return;
+          
+          const isActive = item.classList.contains('active');
+          
+          // Close all accordion items
+          document.querySelectorAll('.accordion-item').forEach(accordionItem => {
+            accordionItem.classList.remove('active');
+          });
+          
+          // Open clicked item if it wasn't active
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+
+  <style>
+    .accordion-content {
+      display: none;
+    }
+    .accordion-item.active .accordion-content {
+      display: block;
+    }
+    .accordion-item.active .accordion-header i {
+      transform: rotate(45deg);
+    }
+  </style>
+</Layout> 

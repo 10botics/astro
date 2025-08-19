@@ -1,0 +1,94 @@
+---
+// Dynamic route to handle URL mapping between English URLs and Chinese filename components
+import { getStaticPathsForFolder, getComponentForSlug } from '../utils/urlAliases.js';
+
+// Pre-import all components to avoid Unicode issues in dynamic imports
+import AboutUs from './關於我們.astro';
+import AiArtCompetition2024 from './校際AI藝術創作大賽 2024.astro';
+import AiArtCompetition2025 from './第三屆 校際AI藝術創作大賽.astro';
+import AiArtCompetitionResult from './第三屆校際AI藝術創作大賽《智畫神話》result.astro';
+import DroneCompetition2024 from './學界無人機救援挑戰賽.astro';
+import DroneCompetitionList from './學界無人機救援挑戰賽-比賽名單.astro';
+import KSPCompetition2022 from './香港航天電競大賽 2022.astro';
+import MinecraftCompetition2021 from './Minecraft 校園創建計劃 2021.astro';
+import MinecraftCompetition2022 from './Minecraft 校園創建計劃 2022.astro';
+import MinecraftCompetition2023 from './Minecraft 校園創建計劃 2023.astro';
+import MinecraftCompetition2024 from './Minecraft 校園創建計劃 2024.astro';
+import ContactUs from './聯絡我們.astro';
+import JoinUs from './加入我們.astro';
+import TermsConditions from './條款及細則.astro';
+import PrivacyPolicy from './隱私政策.astro';
+import CookiePolicy from './Cookie政策.astro';
+import GrassNation from './草原國度.astro';
+import Index from './index.astro';
+import Stem2024List from './2024 STEM 比賽名單.astro';
+import Stem2025Results from './2025-中小學-stem-比賽清單.astro';
+import SchoolCoursesIndex from './school-courses/index.astro';
+import StemdayIndex from './stemday/index.astro';
+import StaffDevIndex from './staff-development-day/index.astro';
+import FundingIndex from './funding-application/index.astro';
+import NewsIndex from './news/index.astro';
+import DonkeyCarCourse from './school-courses/Donkey Car 無人車課程.astro';
+import DroneCompetitionPreliminaryResults from './competition-drone2024/初賽結果.astro';
+import DroneCompetitionFinalTeamlist from './competition-drone2024/決賽隊伍名單及時間表.astro';
+
+// Component mapping
+const componentMap = {
+  '關於我們.astro': AboutUs,
+  '校際AI藝術創作大賽 2024.astro': AiArtCompetition2024,
+  '第三屆 校際AI藝術創作大賽.astro': AiArtCompetition2025,
+  '第三屆校際AI藝術創作大賽《智畫神話》result.astro': AiArtCompetitionResult,
+  '學界無人機救援挑戰賽.astro': DroneCompetition2024,
+  '學界無人機救援挑戰賽-比賽名單.astro': DroneCompetitionList,
+  '香港航天電競大賽 2022.astro': KSPCompetition2022,
+  'Minecraft 校園創建計劃 2021.astro': MinecraftCompetition2021,
+  'Minecraft 校園創建計劃 2022.astro': MinecraftCompetition2022,
+  'Minecraft 校園創建計劃 2023.astro': MinecraftCompetition2023,
+  'Minecraft 校園創建計劃 2024.astro': MinecraftCompetition2024,
+  '聯絡我們.astro': ContactUs,
+  '加入我們.astro': JoinUs,
+  '條款及細則.astro': TermsConditions,
+  '隱私政策.astro': PrivacyPolicy,
+  'Cookie政策.astro': CookiePolicy,
+  '草原國度.astro': GrassNation,
+  'index.astro': Index,
+  '2024 STEM 比賽名單.astro': Stem2024List,
+  '2025-中小學-stem-比賽清單.astro': Stem2025Results,
+  'school-courses/index.astro': SchoolCoursesIndex,
+  'stemday/index.astro': StemdayIndex,
+  'staff-development-day/index.astro': StaffDevIndex,
+  'funding-application/index.astro': FundingIndex,
+  'news/index.astro': NewsIndex,
+  'school-courses/Donkey Car 無人車課程.astro': DonkeyCarCourse,
+  'Donkey Car 無人車課程.astro': DonkeyCarCourse,
+  'competition-drone2024/初賽結果.astro': DroneCompetitionPreliminaryResults,
+  'competition-drone2024/決賽隊伍名單及時間表.astro': DroneCompetitionFinalTeamlist
+};
+
+export async function getStaticPaths() {
+  return getStaticPathsForFolder('root');
+}
+
+const { slug } = Astro.params;
+
+// Handle special external redirects first
+if (slug === 'timesheet_submission_form') {
+  return Astro.redirect('https://otfxid9w.paperform.co');
+}
+
+// Get component info from global alias configuration
+const componentInfo = getComponentForSlug('root', slug);
+
+if (!componentInfo) {
+  throw new Error(`Unknown slug: ${slug}`);
+}
+
+// Get the pre-imported component
+const ChineseComponent = componentMap[componentInfo.filename];
+
+if (!ChineseComponent) {
+  throw new Error(`Component not found for filename: ${componentInfo.filename}`);
+}
+---
+
+<ChineseComponent /> 

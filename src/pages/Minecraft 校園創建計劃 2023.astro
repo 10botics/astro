@@ -1,0 +1,658 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+// Import images
+import minecraftLogo from '../assets/images/competition/Minecraft 校園創建計劃 2023/minecraftLogo-768x183.png';
+import raimondiCollege from '../assets/images/competition/Minecraft 校園創建計劃 2023/raimondi-college-8.png';
+import competitionImage from '../assets/images/competition/Minecraft 校園創建計劃 2023/2023-08-31_12.44.45-1.png';
+import mainBuilding from '../assets/images/competition/Minecraft 校園創建計劃 2023/main-building-1.png';
+import secondPlace from '../assets/images/competition/Minecraft 校園創建計劃 2023/2023-08-31_12.56.51-1.png';
+import thirdPlace from '../assets/images/competition/Minecraft 校園創建計劃 2023/2023-08-26_05.24.07-1.png';
+import onSiteChampion from '../assets/images/competition/Minecraft 校園創建計劃 2023/2023-08-31_12.44.45-1-2.png';
+import onSiteSecond from '../assets/images/competition/Minecraft 校園創建計劃 2023/2023-08-31_13.01.57-1.png';
+import onSiteThird from '../assets/images/competition/Minecraft 校園創建計劃 2023/2023-08-31_12.53.11-1.png';
+import whatsappImage from '../assets/images/competition/Minecraft 校園創建計劃 2023/whatsapp-image-2023-08-30.jpeg';
+import minecraftScreenshot from '../assets/images/competition/Minecraft 校園創建計劃 2023/minecraft-1.12.2-17_8_2023-17_55_45.png';
+
+const title = "Minecraft 校園創建計劃 2023 - 10教育";
+const description = "參與校園Minecraft創建比賽，建立你的夢想校園！我們誠摯邀請所有Minecraft愛好者和創意大師參加我們的校園創建比賽。這是一個讓你展現創造力、建造理想校園的絕佳機會。";
+---
+
+<Layout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-green-50 to-blue-50 py-16">
+    <div class="container mx-auto px-4 text-center">
+      <div class="max-w-4xl mx-auto">
+        <Image 
+          src={minecraftLogo} 
+          alt="Minecraft Logo" 
+          class="mx-auto mb-8 max-w-md"
+        />
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+          校園創建計劃 2023
+        </h1>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button class="bg-gray-600 text-white px-6 py-3 rounded-lg font-medium">
+            比賽已經完滿結束，感謝各位支持
+          </button>
+          <a href="#minecraft2023winner" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+            得獎名單
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Competition Introduction -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">比賽簡介</h2>
+        <div class="prose prose-lg mx-auto text-gray-700">
+          <p class="mb-6">
+            元宇宙就聽得多，你有沒有想過學生都有能力成為元宇宙建築工程師的一員? 上年度，一共 10多 間學校接受了創建校園及週邊社區的挑戰，參賽的學生都獲益不少。最近，我地更將他們的作品加載至 10Botics 的元宇宙!
+          </p>
+          <p>
+            今年度，我們將再次舉辦 Minecraft 校園創建計劃 2023，希望同學可以繼續運用創意於 Minecraft 興建學校及週邊社區。
+          </p>
+        </div>
+        
+        <!-- YouTube Video -->
+        <div class="mt-12">
+          <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg">
+            <iframe 
+              src="https://www.youtube.com/embed/_djE2lvcrXI?rel=0&modestbranding=1" 
+              title="Minecraft 校園創建計劃 2023 宣傳片"
+              class="w-full h-full"
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowfullscreen
+              loading="lazy"
+              sandbox="allow-same-origin allow-scripts allow-presentation allow-popups allow-popups-to-escape-sandbox"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What is Minecraft -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">甚麼是Minecraft?</h2>
+            <h3 class="text-xl text-gray-700 leading-relaxed">
+              Minecraft 是一款沙盒遊戲。玩家可以通過拆除或放置遊戲方塊(blocks) 改變遊戲環境，興建屬於自己的建築物。
+            </h3>
+          </div>
+          <div class="text-center">
+            <Image 
+              src={minecraftLogo} 
+              alt="Minecraft Logo" 
+              class="max-w-sm mx-auto"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Learn Minecraft -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-800 mb-12 text-center">為甚麼要學Minecraft?</h2>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Creativity -->
+          <div class="text-center p-6 bg-white rounded-lg shadow-lg">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-pencil-alt text-2xl text-blue-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">發揮創意</h3>
+            <p class="text-gray-600">
+              學生可以天馬行空地創造其想像的世界，例如：建製作遊戲，興建現實建築物，興建理想中的社區。
+            </p>
+          </div>
+
+          <!-- Immersive Learning -->
+          <div class="text-center p-6 bg-white rounded-lg shadow-lg">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-shapes text-2xl text-green-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">沉浸式學習</h3>
+            <p class="text-gray-600">
+              學生以第一身角度探索及建立想像中的世界，甚至可以將現實的項目帶入 Minecraft, 並透過具創意的形式介紹其項目，使參觀者更有代入感。
+            </p>
+          </div>
+
+          <!-- Team Spirit -->
+          <div class="text-center p-6 bg-white rounded-lg shadow-lg">
+            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-flag text-2xl text-purple-600"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">培養團隊精神</h3>
+            <p class="text-gray-600">
+              校園創建計劃以小組形式進行，能增強學生的溝通能力和團隊合作性。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Part 1: Campus Creation -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">部分一：校園創建組</h2>
+        
+        <div class="prose prose-lg mx-auto text-gray-700 mb-8">
+          <p class="mb-4">
+            以 1:1 的方式於 Minecraft 重現學校，並用創新方式向校外人分享學生心中的校園生活，呈現型式包括但不限於:
+          </p>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>學校外觀</li>
+            <li>校園故事</li>
+            <li>學校背景</li>
+            <li>運用 NPC 重現日常校園生活</li>
+          </ul>
+        </div>
+
+        <div class="mb-8">
+          <Image 
+            src={raimondiCollege} 
+            alt="Raimondi College Minecraft Build" 
+            class="w-full rounded-lg shadow-lg"
+          />
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-2xl font-semibold text-gray-800 mb-4">參賽要求</h3>
+            <p class="text-gray-600">
+              參賽者需要於賽前遞交校園創建作品介紹，包括一段不長於1分鐘之影片，介紹其作品特色
+            </p>
+          </div>
+          
+          <div>
+            <h3 class="text-2xl font-semibold text-gray-800 mb-4">作品要求</h3>
+            <ul class="list-disc pl-6 space-y-2 text-gray-600">
+              <li>以 1:1 的方式 ，於Minecraft世界製作自己的校園及週邊社區</li>
+              <li>參賽者需使用Minecraft Java版本</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Part 2: On-site Competition -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">部分二：現場比賽</h2>
+        
+        <div class="prose prose-lg mx-auto text-gray-700 mb-8">
+          <p>
+            比賽中各隊伍會賦予一塊空置用地，學生需要在限時內按有關用地的建築物用途及要求發揮創意完成建築。
+          </p>
+        </div>
+
+        <div class="mb-8">
+          <Image 
+            src={competitionImage} 
+            alt="On-site Competition" 
+            class="w-full rounded-lg shadow-lg"
+          />
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-2xl font-semibold text-gray-800 mb-4">參賽要求</h3>
+            <p class="text-gray-600">
+              參賽者需已經提交打卡校園創建作品並確認出席成果發佈會
+            </p>
+          </div>
+          
+          <div>
+            <h3 class="text-2xl font-semibold text-gray-800 mb-4">作品要求</h3>
+            <p class="text-gray-600">參賽者需使用Minecraft Java版本</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results Sharing Session -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">成果分享會</h2>
+        
+        <div class="prose prose-lg mx-auto text-gray-700 mb-8">
+          <p class="mb-6">
+            2023年8月28日當日，Minecraft 校園創建計劃 2023即場城市建設挑戰賽暨成果分享會將會係香港科學園舉行。
+          </p>
+          <div class="bg-white p-6 rounded-lg">
+            <p class="mb-2"><strong>日期：</strong>2023 年 8 月 28 日</p>
+            <p class="mb-2"><strong>時間：</strong>上午 9 時 30 分至下午 4 時正</p>
+            <p><strong>地點：</strong>香港科學園 Conference Hall 4-7</p>
+          </div>
+        </div>
+
+        <h3 class="text-2xl font-semibold text-gray-800 mb-8 text-center">同學當日將會進行：</h3>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- On-site Challenge -->
+          <div class="text-center p-6 bg-white rounded-lg shadow-lg">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-pencil-alt text-2xl text-blue-600"></i>
+            </div>
+            <h4 class="text-lg font-semibold text-gray-800 mb-4">即場城市建設挑戰賽</h4>
+            <p class="text-gray-600">
+              各隊伍會賦予一塊空置用地，學生需要在限時內按有關用地的建築物用途及要求發揮創意完成建築。
+            </p>
+          </div>
+
+          <!-- Group Presentation -->
+          <div class="text-center p-6 bg-white rounded-lg shadow-lg">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-shapes text-2xl text-green-600"></i>
+            </div>
+            <h4 class="text-lg font-semibold text-gray-800 mb-4">小組匯報</h4>
+            <p class="text-gray-600">
+              參賽隊伍播放成果影片，並分享興建 Minecraft校園和社區的成果，及相關的背景和歷史故事。
+            </p>
+          </div>
+
+          <!-- Award Ceremony -->
+          <div class="text-center p-6 bg-white rounded-lg shadow-lg">
+            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-flag text-2xl text-purple-600"></i>
+            </div>
+            <h4 class="text-lg font-semibold text-gray-800 mb-4">頒獎典禮</h4>
+            <p class="text-gray-600">
+              經過為期一個半月的暑期課程後，參賽隊伍付出過的努力值得被嘉許。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Winners List -->
+  <section id="minecraft2023winner" class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-800 mb-12 text-center">得獎名單</h2>
+        
+        <!-- Campus Creation Winners -->
+        <div class="mb-12">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center">校園創建</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full bg-white rounded-lg shadow-lg">
+              <tbody>
+                <tr class="border-b">
+                  <th class="px-6 py-4 text-left bg-gray-50 font-semibold">我最喜愛校園人氣獎</th>
+                  <td class="px-6 py-4">高主教書院<br>香港中文大學校友會聯會陳震夏中學</td>
+                </tr>
+                <tr class="border-b">
+                  <th class="px-6 py-4 text-left bg-gray-50 font-semibold">最佳影片獎</th>
+                  <td class="px-6 py-4">南亞路德會沐恩中學<br>瑪利諾神父教會學校</td>
+                </tr>
+                <tr class="border-b">
+                  <th class="px-6 py-4 text-left bg-gray-50 font-semibold">最佳匯報獎</th>
+                  <td class="px-6 py-4">香港中文大學校友會聯會陳震夏中學</td>
+                </tr>
+                <tr class="border-b">
+                  <th class="px-6 py-4 text-left bg-gray-50 font-semibold">冠軍</th>
+                  <td class="px-6 py-4">中華基督教會蒙民偉書院</td>
+                </tr>
+                <tr class="border-b">
+                  <th class="px-6 py-4 text-left bg-gray-50 font-semibold">亞軍</th>
+                  <td class="px-6 py-4">高主教書院</td>
+                </tr>
+                <tr>
+                  <th class="px-6 py-4 text-left bg-gray-50 font-semibold">季軍</th>
+                  <td class="px-6 py-4">東涌天主教學校</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- On-site Competition Winners -->
+        <div class="mb-12">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center">即場城市建設</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full bg-white rounded-lg shadow-lg">
+              <tbody>
+                <tr class="border-b">
+                  <th class="px-6 py-4 text-left bg-gray-50 font-semibold">冠軍</th>
+                  <td class="px-6 py-4">五旬節聖潔會永光書院 第一組</td>
+                </tr>
+                <tr class="border-b">
+                  <th class="px-6 py-4 text-left bg-gray-50 font-semibold">亞軍</th>
+                  <td class="px-6 py-4">高主教書院</td>
+                </tr>
+                <tr>
+                  <th class="px-6 py-4 text-left bg-gray-50 font-semibold">季軍</th>
+                  <td class="px-6 py-4">香港中文大學校友會聯會陳震夏中學</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Overall Winners -->
+        <div>
+          <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center">總分</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full bg-white rounded-lg shadow-lg">
+              <tbody>
+                <tr class="border-b">
+                  <th class="px-6 py-4 text-left bg-gray-50 font-semibold">最佳團隊合作獎</th>
+                  <td class="px-6 py-4">瑪利諾神父教會學校</td>
+                </tr>
+                <tr class="border-b">
+                  <th class="px-6 py-4 text-left bg-gray-50 font-semibold">全場總冠軍</th>
+                  <td class="px-6 py-4">高主教書院</td>
+                </tr>
+                <tr class="border-b">
+                  <th class="px-6 py-4 text-left bg-gray-50 font-semibold">全場總亞軍</th>
+                  <td class="px-6 py-4">五旬節聖潔會永光書院 第一組</td>
+                </tr>
+                <tr>
+                  <th class="px-6 py-4 text-left bg-gray-50 font-semibold">全場總季軍</th>
+                  <td class="px-6 py-4">香港中文大學校友會聯會陳震夏中學</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Winning Works -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-800 mb-12 text-center">得獎作品</h2>
+        
+        <!-- Campus Creation Works -->
+        <div class="mb-12">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-8 text-center">校園創建計劃</h3>
+          
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Champion -->
+            <div class="text-center">
+              <Image 
+                src={mainBuilding} 
+                alt="Champion - 中華基督教會蒙民偉書院" 
+                class="w-full rounded-lg shadow-lg mb-4"
+              />
+              <h4 class="text-lg font-semibold text-gray-800">冠軍-中華基督教會蒙民偉書院</h4>
+            </div>
+
+            <!-- Second Place -->
+            <div class="text-center">
+              <Image 
+                src={secondPlace} 
+                alt="Second Place - 高主教書院" 
+                class="w-full rounded-lg shadow-lg mb-4"
+              />
+              <h4 class="text-lg font-semibold text-gray-800">亞軍-高主教書院</h4>
+            </div>
+
+            <!-- Third Place -->
+            <div class="text-center">
+              <Image 
+                src={thirdPlace} 
+                alt="Third Place - 東涌天主教學校" 
+                class="w-full rounded-lg shadow-lg mb-4"
+              />
+              <h4 class="text-lg font-semibold text-gray-800">季軍-東涌天主教學校</h4>
+            </div>
+          </div>
+        </div>
+
+        <!-- Best Videos -->
+        <div class="mb-12">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-8 text-center">最佳影片</h3>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- First Best Video -->
+            <div class="text-center">
+              <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg mb-4">
+                <iframe 
+                  src="https://www.youtube.com/embed/videoseries?list=PLo-JR4LW4slHrCUFBw4aypMFlsEwRdmZd&index=1&rel=0&modestbranding=1" 
+                  title="南亞路德會沐恩中學 - Minecraft 校園創建計劃 2023"
+                  class="w-full h-full"
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  allowfullscreen
+                  loading="lazy"
+                  sandbox="allow-same-origin allow-scripts allow-presentation allow-popups allow-popups-to-escape-sandbox"
+                ></iframe>
+              </div>
+              <h4 class="text-lg font-semibold text-gray-800">南亞路德會沐恩中學</h4>
+            </div>
+
+            <!-- Second Best Video -->
+            <div class="text-center">
+              <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg mb-4">
+                <iframe 
+                  src="https://www.youtube.com/embed/videoseries?list=PLo-JR4LW4slHrCUFBw4aypMFlsEwRdmZd&index=2&rel=0&modestbranding=1" 
+                  title="瑪利諾神父教會學校 - Minecraft 校園創建計劃 2023"
+                  class="w-full h-full"
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  allowfullscreen
+                  loading="lazy"
+                  sandbox="allow-same-origin allow-scripts allow-presentation allow-popups allow-popups-to-escape-sandbox"
+                ></iframe>
+              </div>
+              <h4 class="text-lg font-semibold text-gray-800">瑪利諾神父教會學校</h4>
+            </div>
+          </div>
+        </div>
+
+        <!-- On-site Competition Works -->
+        <div class="mb-12">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-8 text-center">即場城市建設</h3>
+          
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- On-site Champion -->
+            <div class="text-center">
+              <Image 
+                src={onSiteChampion} 
+                alt="On-site Champion - 五旬節聖潔會永光書院 第一組" 
+                class="w-full rounded-lg shadow-lg mb-4"
+              />
+              <h4 class="text-lg font-semibold text-gray-800">冠軍-五旬節聖潔會永光書院 第一組</h4>
+              <p class="text-gray-600">題目：打卡聖地</p>
+            </div>
+
+            <!-- On-site Second Place -->
+            <div class="text-center">
+              <Image 
+                src={onSiteSecond} 
+                alt="On-site Second Place - 高主教書院" 
+                class="w-full rounded-lg shadow-lg mb-4"
+              />
+              <h4 class="text-lg font-semibold text-gray-800">亞軍-高主教書院</h4>
+              <p class="text-gray-600">題目：碼頭</p>
+            </div>
+
+            <!-- On-site Third Place -->
+            <div class="text-center">
+              <Image 
+                src={onSiteThird} 
+                alt="On-site Third Place - 香港中文大學校友會聯會陳震夏中學" 
+                class="w-full rounded-lg shadow-lg mb-4"
+              />
+              <h4 class="text-lg font-semibold text-gray-800">季軍-香港中文大學校友會聯會陳震夏中學</h4>
+              <p class="text-gray-600">題目：墳場</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Overall Winners -->
+        <div>
+          <h3 class="text-2xl font-semibold text-gray-800 mb-8 text-center">總分</h3>
+          
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Overall Champion -->
+            <div class="text-center">
+              <Image 
+                src={secondPlace} 
+                alt="Overall Champion - 高主教書院" 
+                class="w-full rounded-lg shadow-lg mb-4"
+              />
+              <h4 class="text-lg font-semibold text-gray-800">全場總冠軍-高主教書院</h4>
+              <p class="text-gray-600">總分：8.30分</p>
+            </div>
+
+            <!-- Overall Second Place -->
+            <div class="text-center">
+              <Image 
+                src={whatsappImage} 
+                alt="Overall Second Place - 五旬節聖潔會永光書院 第一組" 
+                class="w-full rounded-lg shadow-lg mb-4"
+              />
+              <h4 class="text-lg font-semibold text-gray-800">全場總亞軍-<br>五旬節聖潔會永光書院 第一組</h4>
+              <p class="text-gray-600">總分：8.15分</p>
+            </div>
+
+            <!-- Overall Third Place -->
+            <div class="text-center">
+              <Image 
+                src={minecraftScreenshot} 
+                alt="Overall Third Place - 香港中文大學校友會聯會陳震夏中學" 
+                class="w-full rounded-lg shadow-lg mb-4"
+              />
+              <h4 class="text-lg font-semibold text-gray-800">全場總季軍-香港中文大學校友會聯會陳震夏中學</h4>
+              <p class="text-gray-600">總分：7.70分</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- YouTube Link -->
+        <div class="text-center mt-12">
+          
+          <!-- Inline Video Player -->
+          <div class="max-w-4xl mx-auto mb-8">
+            <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg">
+              <iframe 
+                src="https://www.youtube.com/embed/videoseries?list=PLo-JR4LW4slHrCUFBw4aypMFlsEwRdmZd&index=1&rel=0&modestbranding=1" 
+                title="Minecraft 校園創建計劃 2023 - 各比賽學校宣傳片段"
+                class="w-full h-full"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen
+                loading="lazy"
+                sandbox="allow-same-origin allow-scripts allow-presentation allow-popups allow-popups-to-escape-sandbox"
+              ></iframe>
+            </div>
+          </div>
+          
+          <a 
+            href="https://www.youtube.com/playlist?list=PLo-JR4LW4slHrCUFBw4aypMFlsEwRdmZd" 
+            target="_blank" 
+            class="inline-flex items-center bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+          >
+            <i class="fab fa-youtube mr-2"></i>
+            前往 YouTube 觀看完整播放清單
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Building Archives -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8">校園創建建築存檔</h2>
+        
+        <div class="prose prose-lg mx-auto text-gray-700 mb-8">
+          <p>
+            我們為參賽同學作品製作成了Minecraft建築存檔，方便老師及同學日後展示之用，如果大家想欣賞其他同學作品，都歡迎大家下載。大家可根據建築存檔載入方法手冊內的步驟將作品載入Minecraft遊戲內。
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="https://drive.google.com/drive/folders/1Y6-gzTTdpK8IpRhpcKs4hzuiJVtcjcOo?usp=share_link" 
+            target="_blank"
+            class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+          >
+            校園創建建築存檔
+          </a>
+          <a 
+            href="https://drive.google.com/file/d/1sD-cpvhkx1NEvBfu3oVF8ZK9tOaZfpFB/view?usp=sharing" 
+            target="_blank"
+            class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+          >
+            建築存檔載入方法手冊
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Participate -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8">如何參加？</h2>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="https://ofpd3jzg.paperform.co" 
+            target="_blank"
+            class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+          >
+            參加校園創建計劃課程
+          </a>
+          <a 
+            href="/school-courses/" 
+            class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+          >
+            其他課程
+          </a>
+          <a 
+            href="/contact-us/" 
+            class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+          >
+            聯絡我們
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Terms and Conditions -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">條款及細則</h2>
+        
+        <div class="bg-white rounded-lg shadow-lg p-8">
+          <ul class="list-disc pl-6 space-y-3 text-gray-700">
+            <li>Minecraft 軟件為主辦機構擁有，並在課程期間提供予學生使用。</li>
+            <li>活動結束將會以網上課堂及導師面授課堂完結作為標準。比賽則會按照政府的防疫為準則，主辦機構將會保留最終決定權。</li>
+            <li>主辦機構有權使用所有參加學校作品作宣傳及展示之用，而毋須通知參加學校。</li>
+            <li>主辦機構保留權利更改、取消活動內容及細則，而毋須作另行通知。</li>
+            <li>如有任何爭議，主辦機構保留最後決定權。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

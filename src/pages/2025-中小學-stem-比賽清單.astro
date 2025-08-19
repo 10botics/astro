@@ -1,0 +1,148 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { readFileSync } from 'fs';
+import { parse } from 'csv-parse/sync';
+import path from 'path';
+
+// Read and parse the CSV file directly
+const csvPath = path.join(process.cwd(), 'src/data/competitions-2025.csv');
+const csvContent = readFileSync(csvPath, 'utf-8');
+
+// Parse CSV content
+const competitions = parse(csvContent, {
+  columns: true,
+  skipEmptyLines: true,
+  trim: true
+});
+
+// Convert popularity fractions to star ratings
+const convertToStars = (popularity: string) => {
+  if (!popularity.includes('/')) return popularity;
+  const [full, total] = popularity.split('/').map(Number);
+  const empty = total - full;
+  return '★'.repeat(full) + '☆'.repeat(empty);
+};
+
+// Separate primary and secondary competitions based on the "級別" column
+const primaryCompetitions = competitions.filter((comp: any) => 
+  comp['級別'] === '小學'
+);
+
+const secondaryCompetitions = competitions.filter((comp: any) => 
+  comp['級別'] === '中學'
+);
+
+// Sort competitions by date
+const sortByDate = (a: any, b: any) => {
+  const dateA = new Date(a['比賽日期'].replace(/年|月|日/g, '/'));
+  const dateB = new Date(b['比賽日期'].replace(/年|月|日/g, '/'));
+  return dateA.getTime() - dateB.getTime();
+};
+
+primaryCompetitions.sort(sortByDate);
+secondaryCompetitions.sort(sortByDate);
+
+// Calculate totals
+const totalCompetitions = primaryCompetitions.length + secondaryCompetitions.length;
+---
+
+<Layout title="2025 中小學 STEM 比賽清單">
+  <div class="container mx-auto px-4 py-8">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-gray-800 mb-4">2025 中小學 STEM 比賽清單</h1>
+      <p class="text-lg text-gray-600">探索2025年中小學STEM比賽的最新清單，包括AI、機械人、編程和創新科技等多個領域</p>
+    </div>
+
+    <!-- 小學比賽清單 -->
+    <div class="bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+      <div class="px-6 py-4 bg-blue-50 border-b border-blue-200">
+        <h2 class="text-2xl font-bold text-blue-800">小學組比賽清單</h2>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">比賽日期</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">比賽名稱</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">關鍵字</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">受歡迎程度</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">比賽連結</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            {primaryCompetitions.map((competition: any) => (
+            <tr class="hover:bg-gray-50">
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{competition['比賽日期']}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{competition['比賽名稱']}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{competition['關鍵字']}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{convertToStars(competition['受歡迎程度'])}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  <a href={competition['比賽連結'] || "#"} class="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">點擊進入</a>
+                </td>
+            </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 中學比賽清單 -->
+    <div class="bg-white shadow-lg rounded-lg overflow-hidden mb-8">
+      <div class="px-6 py-4 bg-green-50 border-b border-green-200">
+        <h2 class="text-2xl font-bold text-green-800">中學組比賽清單</h2>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">比賽日期</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">比賽名稱</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">關鍵字</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">受歡迎程度</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">比賽連結</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            {secondaryCompetitions.map((competition: any) => (
+            <tr class="hover:bg-gray-50">
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{competition['比賽日期']}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{competition['比賽名稱']}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{competition['關鍵字']}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{convertToStars(competition['受歡迎程度'])}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  <a href={competition['比賽連結'] || "#"} class="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">點擊進入</a>
+                </td>
+            </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 統計資訊 -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div class="bg-blue-50 p-6 rounded-lg text-center">
+        <h3 class="text-2xl font-bold text-blue-800">{primaryCompetitions.length}</h3>
+        <p class="text-blue-600">小學比賽</p>
+      </div>
+      <div class="bg-green-50 p-6 rounded-lg text-center">
+        <h3 class="text-2xl font-bold text-green-800">{secondaryCompetitions.length}</h3>
+        <p class="text-green-600">中學比賽</p>
+      </div>
+      <div class="bg-purple-50 p-6 rounded-lg text-center">
+        <h3 class="text-2xl font-bold text-purple-800">{totalCompetitions}</h3>
+        <p class="text-purple-600">總比賽數</p>
+      </div>
+    </div>
+    
+    <div class="bg-blue-50 p-6 rounded-lg mb-8">
+      <h3 class="text-xl font-semibold text-gray-800 mb-4">關於 STEM 比賽</h3>
+      <p class="text-gray-700 leading-relaxed">
+        我們的課程是由專業 STEM 團隊共同開發，旨在使孩子、老師和父母可以通過現實生活的例子中學習到課程複雜、深奧的概念，令學習變得輕鬆及有趣。
+      </p>
+      <p class="text-gray-700 leading-relaxed mt-4">
+        無論將來從事任何職業或使用任何工具學習，我們都可以通過課程中所學的知識為未來帶來光明，並令我們的下一代為未來發展做好準備。
+      </p>
+    </div>
+  </div>
+</Layout>

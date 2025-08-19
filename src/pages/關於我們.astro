@@ -1,0 +1,370 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactSection from '../components/ContactSection.astro';
+import { Image } from 'astro:assets';
+import logo from '../assets/images/關於我們/logo.png';
+import mainImage from '../assets/images/關於我們/IMG_3821.jpg';
+
+// Import all partner images
+// Primary Schools
+import worldDragon from '../assets/images/關於我們/世界龍岡劉德容紀念小學.jpg';
+import cccKeiFat from '../assets/images/關於我們/中華基督教會基法小學油塘.jpg';
+import kcbHoiNien from '../assets/images/關於我們/九龍城浸信會禧年恩平小學.jpg';
+import kttGovernment from '../assets/images/關於我們/九龍塘官立小學.jpg';
+import islamicSchool from '../assets/images/關於我們/伊斯蘭學校.png';
+import plkTinKaPing from '../assets/images/關於我們/保良局田家炳小學.jpg';
+import plkChanShuYan from '../assets/images/關於我們/保良局陳守仁小學.jpg';
+import ylGovernment from '../assets/images/關於我們/元朗官立小學.png';
+import lizhiLiangLi from '../assets/images/關於我們/勵志會梁李秀娛紀念小學.png';
+import catholicLingTao from '../assets/images/關於我們/天主教領島學校.png';
+import tswCatholic from '../assets/images/關於我們/天水圍天主教小學.png';
+import chiHang from '../assets/images/關於我們/慈航學校.png';
+import twghTsangHin from '../assets/images/關於我們/東華三院曾憲備小學.jpg';
+import ltsLeungKui from '../assets/images/關於我們/樂善堂梁銶琚學校分校.jpg';
+import lionsHo from '../assets/images/關於我們/獅子會何德心小學.jpg';
+import chunTok from '../assets/images/關於我們/真鐸學校.png';
+import skhYanLap from '../assets/images/關於我們/聖公會仁立小學.png';
+import skhLuiMing from '../assets/images/關於我們/聖公會呂明才紀念小學.jpg';
+import skhHolyCross from '../assets/images/關於我們/聖公會聖十架小學.jpg';
+import skhStPeter from '../assets/images/關於我們/聖公會聖彼得小學.png';
+import hkktCcc from '../assets/images/關於我們/香港九龍塘基督教中華宣道會陳元喜小學.jpg';
+
+// Secondary Schools/Universities
+import cccKeiTo from '../assets/images/關於我們/中華基督教會基道中學.jpg';
+import cccMongMan from '../assets/images/關於我們/中華基督教會蒙民偉書院.png';
+import cccYwca from '../assets/images/關於我們/中華基督教青年會中學.jpg';
+import wahYanKowloon from '../assets/images/關於我們/九龍華仁書院-.png';
+import phcWingKwang from '../assets/images/關於我們/五旬節聖潔會永光書院.png';
+import ngYuk from '../assets/images/關於我們/五育中學.jpg';
+import yanChai from '../assets/images/關於我們/仁濟醫院羅陳楚思中學.jpg';
+import buddhistYip from '../assets/images/關於我們/佛教葉紀南紀念中學.png';
+import buddhistKwok from '../assets/images/關於我們/佛教覺光法師中學.png';
+import plkChuKing from '../assets/images/關於我們/保良局朱敬文中學.png';
+import plkWuChung from '../assets/images/關於我們/保良局胡忠中學.jpg';
+import hoDao from '../assets/images/關於我們/可道中學嗇色園主辦.jpg';
+import lasalle from '../assets/images/關於我們/喇沙書院.jpg';
+import yuenYuen from '../assets/images/關於我們/圓玄學院妙法寺內明陳呂重德紀念中學.jpg';
+import catholicKwok from '../assets/images/關於我們/天主教郭得勝中學.png';
+import catholicMingYuen from '../assets/images/關於我們/天主教鳴遠中學.png';
+import tsungTsin from '../assets/images/關於我們/崇真書院.png';
+import cmc from '../assets/images/關於我們/廠商會中學.jpg';
+import cheungChuShan from '../assets/images/關於我們/張祝珊英文中學.png';
+import methodist from '../assets/images/關於我們/循道中學.jpg';
+import newLife from '../assets/images/關於我們/新生命教育協會呂郭碧鳳中學.png';
+import caritasStJoseph from '../assets/images/關於我們/明愛聖若瑟中學.png';
+import caritasMaOnShan from '../assets/images/關於我們/明愛馬鞍山中學.jpg';
+import lamTaiFai from '../assets/images/關於我們/林大輝中學.png';
+import ltsYuKing from '../assets/images/關於我們/樂善堂余近卿中學.png';
+import ltsWongChung from '../assets/images/關於我們/樂善堂王仲銘中學.png';
+import ltsKooChiu from '../assets/images/關於我們/樂善堂顧超文中學.png';
+import stwWu from '../assets/images/關於我們/沙田圍胡素貞博士紀念學校.jpg';
+import stPuiYing from '../assets/images/關於我們/沙田培英中學.png';
+import pms from '../assets/images/關於我們/獻主會聖母院書院.jpg';
+import marymount from '../assets/images/關於我們/瑪利曼中學.png';
+import maryknoll from '../assets/images/關於我們/瑪利諾中學.jpg';
+import maryknollConvent from '../assets/images/關於我們/瑪利諾修院學校（中學部）.png';
+import maryknollFathers from '../assets/images/關於我們/瑪利諾神父教會學校.png';
+import sauvin from '../assets/images/關於我們/秀茂坪何明華會督中學.jpg';
+import skhTsang from '../assets/images/關於我們/聖公會曾肇添中學.png';
+import skhLiPing from '../assets/images/關於我們/聖公會李炳中學.jpg';
+import skhLiFuk from '../assets/images/關於我們/聖公會李福慶中學.png';
+import stLouis from '../assets/images/關於我們/聖類斯中學.png';
+import kingGeorge from '../assets/images/關於我們/英皇書院.png';
+import manKwan from '../assets/images/關於我們/萬鈞匯知中學.png';
+import jockeyClub from '../assets/images/關於我們/賽馬會萬鈞毅智書院.png';
+import carmel from '../assets/images/關於我們/迦密唐賓南紀念中學.png';
+import tang from '../assets/images/關於我們/鄧兆棠中學.jpg';
+import heungHoi from '../assets/images/關於我們/香海正覺蓮社佛教正覺中學.jpg';
+import cuhkaa from '../assets/images/關於我們/香港中文大學校友會聯會陳震夏中學.png';
+import hksh from '../assets/images/關於我們/香港神托會培敦中學.png';
+import maKam from '../assets/images/關於我們/馬錦明慈善基金馬可賓紀念中學.png';
+import rosaryhill from '../assets/images/關於我們/高主教書院.png';
+import koLui from '../assets/images/關於我們/高雷中學.jpg';
+import cuhk from '../assets/images/關於我們/香港港中文大學CUHK_-300x300-1.png';
+import hkbu from '../assets/images/關於我們/香港浸會大學.png';
+import hkbu2 from '../assets/images/關於我們/香港浸會大學-1.png';
+
+// Educational Institutions
+import cuhkJockey from '../assets/images/關於我們/中大賽馬會智為未來計劃-300x300-1.png';
+import hkage from '../assets/images/關於我們/香港資優學院.jpg';
+import hkce from '../assets/images/關於我們/香港電腦教育學會.jpg';
+import hkyouth from '../assets/images/關於我們/香港青年計劃.png';
+import claptech from '../assets/images/關於我們/鼓掌-–創新教育歷程CLAPTECH-300x300-1.png';
+import saveChildren from '../assets/images/關於我們/救助兒童會.jpg';
+import hksp from '../assets/images/關於我們/香港科學園.png';
+
+// Create arrays for each category
+const primarySchools = [
+  { name: "世界龍岡劉德容紀念小學", image: worldDragon },
+  { name: "中華基督教會基法小學(油塘)", image: cccKeiFat },
+  { name: "九龍城浸信會禧年(恩平)小學", image: kcbHoiNien },
+  { name: "九龍塘官立小學", image: kttGovernment },
+  { name: "伊斯蘭學校", image: islamicSchool },
+  { name: "保良局田家炳小學", image: plkTinKaPing },
+  { name: "保良局陳守仁小學", image: plkChanShuYan },
+  { name: "元朗官立小學", image: ylGovernment },
+  { name: "勵志會梁李秀娛紀念小學", image: lizhiLiangLi },
+  { name: "天主教領島學校", image: catholicLingTao },
+  { name: "天水圍天主教小學", image: tswCatholic },
+  { name: "慈航學校", image: chiHang },
+  { name: "東華三院曾憲備小學", image: twghTsangHin },
+  { name: "樂善堂梁銶琚學校(分校)", image: ltsLeungKui },
+  { name: "獅子會何德心小學", image: lionsHo },
+  { name: "真鐸學校", image: chunTok },
+  { name: "聖公會仁立小學", image: skhYanLap },
+  { name: "聖公會呂明才紀念小學", image: skhLuiMing },
+  { name: "聖公會聖十架小學", image: skhHolyCross },
+  { name: "聖公會聖彼得小學", image: skhStPeter },
+  { name: "香港九龍塘基督教中華宣道會陳元喜小學", image: hkktCcc }
+];
+
+const secondarySchools = [
+  { name: "中華基督教會基道中學", image: cccKeiTo },
+  { name: "中華基督教會蒙民偉書院", image: cccMongMan },
+  { name: "中華基督教青年會中學", image: cccYwca },
+  { name: "九龍華仁書院", image: wahYanKowloon },
+  { name: "五旬節聖潔會永光書院", image: phcWingKwang },
+  { name: "五育中學", image: ngYuk },
+  { name: "仁濟醫院羅陳楚思中學", image: yanChai },
+  { name: "佛教葉紀南紀念中學", image: buddhistYip },
+  { name: "佛教覺光法師中學", image: buddhistKwok },
+  { name: "保良局朱敬文中學", image: plkChuKing },
+  { name: "保良局胡忠中學", image: plkWuChung },
+  { name: "可道中學(嗇色園主辦)", image: hoDao },
+  { name: "喇沙書院", image: lasalle },
+  { name: "圓玄學院妙法寺內明陳呂重德紀念中學", image: yuenYuen },
+  { name: "天主教郭得勝中學", image: catholicKwok },
+  { name: "天主教鳴遠中學", image: catholicMingYuen },
+  { name: "崇真書院", image: tsungTsin },
+  { name: "廠商會中學", image: cmc },
+  { name: "張祝珊英文中學", image: cheungChuShan },
+  { name: "循道中學", image: methodist },
+  { name: "新生命教育協會呂郭碧鳳中學", image: newLife },
+  { name: "明愛聖若瑟中學", image: caritasStJoseph },
+  { name: "明愛馬鞍山中學", image: caritasMaOnShan },
+  { name: "林大輝中學", image: lamTaiFai },
+  { name: "樂善堂余近卿中學", image: ltsYuKing },
+  { name: "樂善堂王仲銘中學", image: ltsWongChung },
+  { name: "樂善堂顧超文中學", image: ltsKooChiu },
+  { name: "沙田圍胡素貞博士紀念學校", image: stwWu },
+  { name: "沙田培英中學", image: stPuiYing },
+  { name: "獻主會聖母院書院", image: pms },
+  { name: "瑪利曼中學", image: marymount },
+  { name: "瑪利諾中學", image: maryknoll },
+  { name: "瑪利諾修院學校（中學部）", image: maryknollConvent },
+  { name: "瑪利諾神父教會學校", image: maryknollFathers },
+  { name: "秀茂坪何明華會督中學", image: sauvin },
+  { name: "聖公會曾肇添中學", image: skhTsang },
+  { name: "聖公會李炳中學", image: skhLiPing },
+  { name: "聖公會李福慶中學", image: skhLiFuk },
+  { name: "聖類斯中學", image: stLouis },
+  { name: "英皇書院", image: kingGeorge },
+  { name: "萬鈞匯知中學", image: manKwan },
+  { name: "賽馬會萬鈞毅智書院", image: jockeyClub },
+  { name: "迦密唐賓南紀念中學", image: carmel },
+  { name: "鄧兆棠中學", image: tang },
+  { name: "香海正覺蓮社佛教正覺中學", image: heungHoi },
+  { name: "香港中文大學校友會聯會陳震夏中學", image: cuhkaa },
+  { name: "香港神托會培敦中學", image: hksh },
+  { name: "馬錦明慈善基金馬可賓紀念中學", image: maKam },
+  { name: "高主教書院", image: rosaryhill },
+  { name: "高雷中學", image: koLui },
+  { name: "香港中文大學", image: cuhk },
+  { name: "香港浸會大學", image: hkbu }
+];
+
+const institutions = [
+  { name: "中大賽馬會智為未來計劃", image: cuhkJockey },
+  { name: "香港資優學院", image: hkage },
+  { name: "香港電腦教育學會", image: hkce },
+  { name: "香港青年計劃", image: hkyouth },
+  { name: "鼓掌-–創新教育歷程", image: claptech },
+  { name: "救助兒童會", image: saveChildren },
+  { name: "香港科學園", image: hksp }
+];
+---
+
+<Layout title="關於我們 - 10教育" showCompanyInfo={false}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-blue-600 to-purple-700 text-white py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-black opacity-20"></div>
+    <div class="container mx-auto px-4 relative z-10 text-center">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">關於10BOTICS​</h1>
+      <p class="text-xl md:text-2xl">為孩子的未來而學習</p>
+    </div>
+    <!-- Decorative shapes -->
+    <div class="absolute top-0 left-0 w-full h-32 bg-white opacity-10 transform -skew-y-3"></div>
+    <div class="absolute bottom-0 right-0 w-full h-32 bg-white opacity-10 transform skew-y-3"></div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="container mx-auto px-4 py-16">
+    <!-- Company Introduction -->
+    <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
+      <div>
+        <h2 class="text-4xl font-bold text-gray-800 mb-6">10Botics</h2>
+        <div class="space-y-4 text-lg text-gray-600 leading-relaxed">
+          <p>10Botics 是香港科學園初創公司, 過去與 50 多間學校和教育機構合作。我們的使命是利用人工智能知識為下一代做好準備, 並專注於 STEM 課程的研發及教學，使孩子們可以更容易地學習人工智能（AI）。</p>
+          <p>我們的學習工具及課程是由專業 STEM 團隊共同開發，旨在使孩子、老師和父母可以通過現實生活的例子中學習到課程複雜、深奧的概念，令學習變得輕鬆及有趣。</p>
+          <p>無論將來從事任何職業或使用任何工具學習，我們都可以通過課程中所學的知識為未來帶來光明，並令我們的下一代為未來發展做好準備。</p>
+        </div>
+      </div>
+      <div class="relative">
+        <Image 
+          src={mainImage} 
+          alt="10Botics team and activities" 
+          class="rounded-lg shadow-2xl"
+          width={800}
+          height={600}
+        />
+      </div>
+    </div>
+
+    <!-- Mission Section -->
+    <div class="bg-gray-50 rounded-2xl p-12 mb-20">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-gray-800 mb-6">我們的使命</h2>
+      </div>
+      <div class="max-w-4xl mx-auto space-y-6 text-lg text-gray-600 leading-relaxed">
+        <p>現在的世界與我們成長的時代不同。人工智能（AI）在可預見的未來影響著每個行業和每個人。作為教師和父母，我們的使命是利用人工智能知識為下一代做好準備。</p>
+        <p>僅通過教科書學習人工智能可能既緩慢又困難。這就是為什麼10Botics通過現實生活中的示例和交互式媒體集成了一種創新而有效的方式，以更好地理解困難的概念。</p>
+        <p>我們專門製作基於 STEM 的教育工具，使孩子們可以更容易學習人工智能（AI）。我們的工具和內容是由專業老師設計，旨在使孩子，老師和父母可以通過現實生活中的例子學習困難的概念。最重要的是，我們使學習變得輕鬆而有趣。</p>
+        <p>無論將來從事何種職業，無論通過何種工具學習，通過我們的工具所學到的知識都可以帶來更光明的未來，並使我們的下一代為現實世界做好準備。</p>
+      </div>
+    </div>
+
+    <!-- Partners Section -->
+    <div class="mb-20">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-gray-800 mb-6">客戶及合作機構</h2>
+        <p class="text-xl text-gray-600">10botics致力為每個客戶和機構提供STEM Day活動與校內課程，全力支持您的需求。</p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="flex justify-center mb-8 space-x-4">
+        <button class="filter-btn active px-6 py-3 rounded-full bg-blue-600 text-white font-medium transition-all hover:bg-blue-700" data-filter="all">全部</button>
+        <button class="filter-btn px-6 py-3 rounded-full bg-gray-200 text-gray-700 font-medium transition-all hover:bg-gray-300" data-filter="primary">小學</button>
+        <button class="filter-btn px-6 py-3 rounded-full bg-gray-200 text-gray-700 font-medium transition-all hover:bg-gray-300" data-filter="secondary">中學/大學</button>
+        <button class="filter-btn px-6 py-3 rounded-full bg-gray-200 text-gray-700 font-medium transition-all hover:bg-gray-300" data-filter="institution">教育機構</button>
+      </div>
+
+      <!-- Partners Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4" id="partners-grid">
+        <!-- Primary Schools -->
+        {primarySchools.map((school) => (
+          <div class="partner-item" data-category="primary">
+            <div class="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow text-center">
+              <div class="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
+                <Image 
+                  src={school.image} 
+                  alt={school.name}
+                  class="w-full h-full object-contain rounded-lg"
+                  width={64}
+                  height={64}
+                />
+              </div>
+              <p class="text-xs text-gray-600 leading-tight">{school.name}</p>
+            </div>
+          </div>
+        ))}
+
+        <!-- Secondary Schools -->
+        {secondarySchools.map((school) => (
+          <div class="partner-item" data-category="secondary">
+            <div class="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow text-center">
+              <div class="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
+                <Image 
+                  src={school.image} 
+                  alt={school.name}
+                  class="w-full h-full object-contain rounded-lg"
+                  width={64}
+                  height={64}
+                />
+              </div>
+              <p class="text-xs text-gray-600 leading-tight">{school.name}</p>
+            </div>
+          </div>
+        ))}
+
+        <!-- Educational Institutions -->
+        {institutions.map((institution) => (
+          <div class="partner-item" data-category="institution">
+            <div class="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow text-center">
+              <div class="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
+                <Image 
+                  src={institution.image} 
+                  alt={institution.name}
+                  class="w-full h-full object-contain rounded-lg"
+                  width={64}
+                  height={64}
+                />
+              </div>
+              <p class="text-xs text-gray-600 leading-tight">{institution.name}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="bg-gradient-to-r from-blue-600 to-purple-700 rounded-2xl p-12 text-center text-white mb-20">
+      <h2 class="text-4xl font-bold mb-6">歡迎查詢詳細資訊</h2>
+      <p class="text-xl mb-8">填寫下方表格聯絡我們</p>
+      <a href="#contact" class="inline-block bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors">
+        聯絡我們
+      </a>
+    </div>
+   <div>
+    <div>
+      <div class="max-w-2xl mx-auto">
+        <ContactSection />
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Filter functionality for partners
+  document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn') as NodeListOf<HTMLButtonElement>;
+    const partnerItems = document.querySelectorAll('.partner-item') as NodeListOf<HTMLElement>;
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', (event) => {
+        const target = event.currentTarget as HTMLButtonElement;
+        
+        // Remove active class from all buttons
+        filterBtns.forEach(b => b.classList.remove('active', 'bg-blue-600', 'text-white'));
+        filterBtns.forEach(b => b.classList.add('bg-gray-200', 'text-gray-700'));
+        
+        // Add active class to clicked button
+        target.classList.remove('bg-gray-200', 'text-gray-700');
+        target.classList.add('active', 'bg-blue-600', 'text-white');
+        
+        const filter = target.getAttribute('data-filter');
+        
+        partnerItems.forEach(item => {
+          if (filter === 'all' || item.getAttribute('data-category') === filter) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>
+
+<style>
+  .filter-btn.active {
+    @apply bg-blue-600 text-white;
+  }
+  
+  .partner-item {
+    transition: all 0.3s ease;
+  }
+  
+  .partner-item:hover {
+    transform: translateY(-5px);
+  }
+</style>

@@ -1,0 +1,225 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import { Image } from 'astro:assets';
+
+// Course data
+export const courseData = {
+  title: "減震裝置——STEM科學手作，動手製作減震裝置，探索彈性與彈力的奧秘，學習彈力的基本概念和作用。",
+  subtitle: "Stem到校課程，提供不同範疇科學手作課程，可配合不同年級而選擇。旨在讓學生從探索不同科學原理和概念，透過動手製作而理解相關的概念，從更有趣生動的方式吸收新的知識。",
+  tags: ["STEM教育", "科學手作", "物理學", "初小", "高小", "中學", "彈性與彈力"],
+  videoId: "your-video-id-here",
+  description: "透過製作減震裝置，學生將學習彈性與彈力的基本概念，探索日常生活中的彈力例子，並了解能量傳遞和吸收的原理。",
+  detailedDescription: "此課程旨在讓學生透過動手製作減震裝置，深入理解彈性與彈力的基本概念和作用。學生將學習彈力的基本概念、日常生活中的彈力例子，並親手製作減震裝置來驗證所學理論。課程還將探討科學與科技的發展在日常生活的應用及其對日常生活的影響，讓學生認識能量的不同形式和傳遞，培養科學思維和實踐能力。",
+  heroImage: null // Will use placeholder for now
+};
+
+// Course features
+const courseFeatures = [
+  {
+    icon: "fas fa-cogs",
+    title: "動手製作減震裝置",
+    description: "學生將親手組裝減震裝置，透過實踐操作理解彈性原理和能量吸收機制。"
+  },
+  {
+    icon: "fas fa-graduation-cap",
+    title: "適合不同年級學生",
+    description: "課程內容可配合不同年級調整深淺，從小學到中學都能參與學習。"
+  },
+  {
+    icon: "fas fa-lightbulb",
+    title: "科學理論結合實踐",
+    description: "結合科學理論與動手製作，讓學生在有趣生動的方式中吸收新知識。"
+  }
+];
+
+// Course curriculum
+const courseCurriculum = [
+  {
+    title: "彈性與彈力的概念 [20分鐘]",
+    content: [
+      "介紹彈性與彈力的基本概念",
+      "了解彈力的產生原理",
+      "認識彈性材料的特性"
+    ]
+  },
+  {
+    title: "日常生活中的彈力例子 [20分鐘]",
+    content: [
+      "探索汽車減震器的應用",
+      "了解彈簧床墊的原理",
+      "認識運動器材中的彈性設計"
+    ]
+  },
+  {
+    title: "製作減震裝置 [20分鐘]",
+    content: [
+      "組裝減震裝置材料",
+      "測試減震效果",
+      "調整彈性參數"
+    ]
+  }
+];
+
+// Course highlights
+const courseHighlights = [
+  {
+    title: "彈力的應用",
+    description: "探索彈力在日常生活和工程中的實際應用，如汽車減震器、彈簧等。",
+    icon: "fas fa-industry"
+  },
+  {
+    title: "能量傳遞與吸收",
+    description: "透過實際操作理解能量的不同形式和傳遞過程。",
+    icon: "fas fa-bolt"
+  },
+  {
+    title: "科學思維培養",
+    description: "培養觀察、分析、推理的科學思維能力。",
+    icon: "fas fa-brain"
+  }
+];
+
+// Learning objectives
+const learningObjectives = [
+  "理解彈性與彈力的基本概念和原理",
+  "認識日常生活中的彈力例子和應用",
+  "掌握減震裝置的製作和操作",
+  "了解能量的不同形式和傳遞過程",
+  "認識科學與科技發展對日常生活的影響",
+  "培養科學探究精神和實踐能力"
+];
+
+// Materials provided
+const materialsProvided = [
+  "減震裝置材料包",
+  "減震裝置PPT",
+  "減震裝置工作紙"
+];
+
+// Related courses
+const relatedCourses = [
+  {
+    title: "滑輪測力器",
+    description: "動手製作滑輪測力器，學習力的基本概念，探索力的世界",
+    link: "/stem/滑輪測力器"
+  },
+  {
+    title: "胡克滾輪",
+    description: "體驗胡克定律，學習彈性力和彈簧常數的關係",
+    link: "/stem/胡克滾輪"
+  }
+];
+
+// FAQ data
+const faqs = [
+  {
+    question: "這個課程適合什麼年級的學生？",
+    answer: "此課程適合小學三年級至中學三年級的學生，課程內容會根據學生年級調整深淺程度。"
+  },
+  {
+    question: "學生需要具備什麼基礎知識？",
+    answer: "學生不需要具備特殊的基礎知識，課程會從基本概念開始講解，適合初學者。"
+  },
+  {
+    question: "課程會提供什麼材料？",
+    answer: "我們會提供完整的減震裝置材料包、PPT教材和工作紙，學生可以帶回家繼續學習。"
+  },
+  {
+    question: "課程時長是多久？",
+    answer: "標準課程時長為1小時，可根據學校需要調整為45分鐘或90分鐘。"
+  },
+  {
+    question: "最多可以容納多少學生？",
+    answer: "建議每班15-25名學生，以確保每位學生都能得到充分的指導和實踐機會。"
+  }
+];
+
+// SEO and metadata
+const seoData = {
+  title: "減震裝置 - STEM科學手作課程 | 10教育",
+  description: "動手製作減震裝置，探索彈性與彈力的奧秘，學習彈力的基本概念和作用。Stem到校課程，提供不同範疇科學手作課程，可配合不同年級而選擇。",
+  keywords: "10Botics, 10教育, STEM教育, 減震裝置, 彈性與彈力, 科學手作, Stem手作, 日常生活中的彈力",
+  ogImage: "/images/stem/shock-absorber-og.jpg"
+};
+---
+
+<Layout 
+  title={seoData.title}
+  description={seoData.description}
+  keywords={seoData.keywords}
+  ogImage={seoData.ogImage}
+>
+  <main>
+    <!-- Hero Section -->
+    <HeroSection 
+      title="減震裝置"
+      subtitle="STEM科學手作，動手製作減震裝置，探索彈性與彈力的奧秘，學習彈力的基本概念和作用"
+      tags={courseData.tags}
+      description="Stem到校課程，提供不同範疇科學手作課程，可配合不同年級而選擇。旨在讓學生從探索不同科學原理和概念，透過動手製作而理解相關的概念，從更有趣生動的方式吸收新的知識。"
+      heroImage={courseData.heroImage}
+    />
+
+    <!-- Course Content -->
+    <SingleCourseContent 
+      items={courseCurriculum}
+      hours="1 小時"
+    />
+
+    <!-- Materials Section -->
+    <section class="py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-800 mb-4">材料提供</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            我們將為每位學生提供完整的學習材料，確保學習效果
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {materialsProvided.map((material, index) => (
+            <div class="bg-white rounded-lg p-6 text-center shadow-lg">
+              <div class="text-4xl text-blue-600 mb-4">
+                {index === 0 ? "📦" : index === 1 ? "📊" : "📝"}
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800">{material}</h3>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Courses Section -->
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-800 mb-4">相關手作內容</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            探索更多STEM科學手作項目，培養科學思維和實踐能力
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {relatedCourses.map((course) => (
+            <div class="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow">
+              <h3 class="text-xl font-bold text-gray-800 mb-3">{course.title}</h3>
+              <p class="text-gray-600 mb-4">{course.description}</p>
+              <a href={course.link} class="text-blue-600 hover:text-blue-800 font-semibold">
+                了解更多 →
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Q&A Section -->
+    <QnASection faqs={faqs} />
+
+    <!-- Contact Section -->
+    <ContactSection />
+  </main>
+</Layout>

@@ -1,0 +1,396 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactSection from '../components/ContactSection.astro';
+
+// Competition results data organized into objects
+const competitionData = {
+  title: "2025 校際AI藝術創作大賽 -《智畫神話》得獎名單",
+  description: "小學組 初中組 高中組 特殊學校組",
+  
+  primarySchool: [
+    { school: "中華基督教會基慧小學", student: "陳亦詩", award: "一等獎、最佳文字指令獎" },
+    { school: "中華基督教會基慧小學", student: "廖信韻", award: "二等獎" },
+    { school: "中華基督教會基慧小學", student: "彭望", award: "二等獎" },
+    { school: "保良局陸慶濤小學", student: "黃樂禧", award: "二等獎" },
+    { school: "保良局陸慶濤小學", student: "KO QIAN YU", award: "優異獎" },
+    { school: "保良局陸慶濤小學", student: "Zhang hao hao", award: "優異獎" },
+    { school: "保良局陸慶濤小學", student: "李肇頤", award: "優異獎" },
+    { school: "保良局陸慶濤小學", student: "胡湘瑜", award: "優異獎" },
+    { school: "保良局陸慶濤小學", student: "陳亦晴", award: "優異獎" },
+    { school: "保良局陸慶濤小學", student: "黎紫萱", award: "優異獎" },
+    { school: "保良局陸慶濤小學", student: "hung wai kiu holly", award: "卓越表現獎" },
+    { school: "保良局陸慶濤小學", student: "周樂賢", award: "卓越表現獎" },
+    { school: "保良局陸慶濤小學", student: "蔡紫森", award: "卓越表現獎" },
+    { school: "坪石天主教小學", student: "張子琦", award: "一等獎" },
+    { school: "坪石天主教小學", student: "李芷凝", award: "一等獎、最佳文字指令獎" },
+    { school: "坪石天主教小學", student: "胡楚彤", award: "一等獎、最佳神話再現獎" },
+    { school: "坪石天主教小學", student: "陸昊琛", award: "一等獎" },
+    { school: "坪石天主教小學", student: "余金潼", award: "二等獎" },
+    { school: "坪石天主教小學", student: "張智軒", award: "二等獎" },
+    { school: "坪石天主教小學", student: "王思晴", award: "二等獎" },
+    { school: "坪石天主教小學", student: "王穎寶", award: "二等獎" },
+    { school: "坪石天主教小學", student: "陳裕熙", award: "二等獎" },
+    { school: "坪石天主教小學", student: "余彩嵐", award: "三等獎" },
+    { school: "坪石天主教小學", student: "司徒亦軒", award: "三等獎" },
+    { school: "坪石天主教小學", student: "李昕澤", award: "三等獎" },
+    { school: "坪石天主教小學", student: "江楚炘", award: "三等獎" },
+    { school: "坪石天主教小學", student: "賴晴行", award: "三等獎" },
+    { school: "坪石天主教小學", student: "龔靜茹", award: "三等獎" },
+    { school: "坪石天主教小學", student: "區芷菁", award: "優異獎" },
+    { school: "坪石天主教小學", student: "吳盺琳", award: "優異獎" },
+    { school: "坪石天主教小學", student: "廖梓妍", award: "優異獎" },
+    { school: "坪石天主教小學", student: "楊凱晴", award: "優異獎" },
+    { school: "坪石天主教小學", student: "胡芯喬", award: "優異獎" },
+    { school: "坪石天主教小學", student: "邵穎怡", award: "優異獎" },
+    { school: "坪石天主教小學", student: "陸昊霖", award: "優異獎" },
+    { school: "聖公會青衣主恩小學", student: "黎穎然", award: "卓越表現獎" },
+    { school: "聖安當小學", student: "張迦悠", award: "一等獎" },
+    { school: "聖安當小學", student: "胡雪晴", award: "一等獎" },
+    { school: "聖安當小學", student: "張博容", award: "二等獎" },
+    { school: "聖安當小學", student: "鍾珈樂", award: "二等獎" },
+    { school: "聖安當小學", student: "關皓晉", award: "二等獎" },
+    { school: "聖安當小學", student: "林欣悅", award: "優異獎" },
+    { school: "聖安當小學", student: "許恩怡", award: "優異獎" },
+    { school: "聖文德天主教小學", student: "朱珈誼", award: "二等獎" },
+    { school: "聖文德天主教小學", student: "卓巧喬", award: "優異獎" },
+    { school: "聖文德天主教小學", student: "林靖喬", award: "優異獎" },
+    { school: "聖文德天主教小學", student: "連栩晴", award: "優異獎" },
+    { school: "聖文德天主教小學", student: "譚善之", award: "卓越表現獎" },
+    { school: "聖文德天主教小學", student: "黎心怡", award: "卓越表現獎" },
+    { school: "聖若瑟英文小學", student: "林軒浚", award: "二等獎" },
+    { school: "聖若瑟英文小學", student: "鄧璟謙", award: "二等獎" },
+    { school: "聖若瑟英文小學", student: "鄧醴文", award: "二等獎" },
+    { school: "聖若瑟英文小學", student: "何偉齊", award: "優異獎" },
+    { school: "聖若瑟英文小學", student: "Yuen Man Tin Bowman", award: "卓越表現獎" },
+    { school: "聖若瑟英文小學", student: "彭敖暉", award: "卓越表現獎" },
+    { school: "聖若瑟英文小學", student: "彭梓臻", award: "卓越表現獎" },
+    { school: "聖若瑟英文小學", student: "諸啟楠", award: "卓越表現獎" },
+    { school: "聖若瑟英文小學", student: "杜卓衡", award: "卓越表現獎" },
+    { school: "聖若瑟英文小學", student: "舒雍齊", award: "卓越表現獎" },
+    { school: "荃灣潮州公學", student: "胡清怡", award: "二等獎" },
+    { school: "荃灣潮州公學", student: "張梓歆", award: "三等獎" },
+    { school: "荃灣潮州公學", student: "鄭詩晴 Cheng Sze Ching", award: "三等獎" },
+    { school: "荃灣潮州公學", student: "李宇昊", award: "優異獎" },
+    { school: "荃灣潮州公學", student: "林嘉蕙", award: "優異獎" },
+    { school: "荃灣潮州公學", student: "黃昌筠", award: "優異獎" },
+    { school: "荃灣潮州公學", student: "余星林", award: "卓越表現獎" },
+    { school: "荃灣潮州公學", student: "呂慧瑜", award: "卓越表現獎" },
+    { school: "荃灣潮州公學", student: "譚可琪", award: "卓越表現獎" },
+    { school: "荃灣潮州公學", student: "鄭桂芮", award: "卓越表現獎" },
+    { school: "荃灣潮州公學", student: "黃嘉儀", award: "卓越表現獎" },
+    { school: "順德聯誼總會梁潔華小學", student: "莫穎潼", award: "三等獎" },
+    { school: "順德聯誼總會梁潔華小學", student: "盧芷瑩", award: "卓越表現獎" },
+    { school: "順德聯誼總會梁潔華小學", student: "陳悅晴", award: "卓越表現獎" },
+    { school: "順德聯誼總會梁潔華小學", student: "黎詠恩", award: "卓越表現獎" },
+    { school: "順德聯誼總會梁潔華小學", student: "凌逸瞳", award: "卓越表現獎" }
+  ],
+
+  juniorSecondary: [
+    { school: "Tak Sun Secondary School", student: "陰濯序", award: "卓越表現獎" },
+    { school: "中華基督教青年會中學", student: "梁宇廷", award: "卓越表現獎" },
+    { school: "中華基督教青年會中學", student: "歐陽鋑", award: "卓越表現獎" },
+    { school: "中華基督教青年會中學", student: "莫尹銦", award: "卓越表現獎" },
+    { school: "中華基督教青年會中學", student: "鄺紹朗", award: "卓越表現獎" },
+    { school: "中華基督教青年會中學", student: "方乘軒", award: "卓越表現獎" },
+    { school: "中華聖潔會靈風中學", student: "蘇凱晴", award: "優異獎" },
+    { school: "中華聖潔會靈風中學", student: "唐黛妮", award: "卓越表現獎" },
+    { school: "中華聖潔會靈風中學", student: "莫俊希", award: "卓越表現獎" },
+    { school: "中華聖潔會靈風中學", student: "許星悅", award: "卓越表現獎" },
+    { school: "中華聖潔會靈風中學", student: "高梓賢", award: "卓越表現獎" },
+    { school: "五旬節聖潔會永光書院", student: "劉佩芸", award: "一等獎、最佳文字指令獎" },
+    { school: "五旬節聖潔會永光書院", student: "許樂澄", award: "一等獎" },
+    { school: "五旬節聖潔會永光書院", student: "曾梓穎", award: "二等獎" },
+    { school: "五旬節聖潔會永光書院", student: "葉穎茵", award: "二等獎" },
+    { school: "五旬節聖潔會永光書院", student: "許熹敏", award: "二等獎" },
+    { school: "五旬節聖潔會永光書院", student: "馬泳敏", award: "二等獎" },
+    { school: "五旬節聖潔會永光書院", student: "馬潔瑩", award: "二等獎" },
+    { school: "佛教茂峰法師紀念中學", student: "陳盈茵", award: "一等獎" },
+    { school: "佛教茂峰法師紀念中學", student: "李詩琳", award: "卓越表現獎、創意故事獎" },
+    { school: "佛教覺光法師中學", student: "黃熙哲", award: "二等獎" },
+    { school: "佛教覺光法師中學", student: "關希妍", award: "卓越表現獎" },
+    { school: "佛教覺光法師中學", student: "關綽霆", award: "卓越表現獎" },
+    { school: "佛教覺光法師中學", student: "戴頌妍", award: "卓越表現獎" },
+    { school: "佛教覺光法師中學", student: "陳朗", award: "卓越表現獎" },
+    { school: "元朗公立中學校友會鄧兆棠中學", student: "藍智鵬", award: "卓越表現獎、創意故事獎" },
+    { school: "元朗公立中學校友會鄧兆棠中學", student: "陳晉傑", award: "卓越表現獎、創意故事獎" },
+    { school: "元朗公立中學校友會鄧兆棠中學", student: "陳皓譽", award: "卓越表現獎、創意故事獎" },
+    { school: "嘉諾撒培德書院", student: "劉倩怡", award: "卓越表現獎" },
+    { school: "嘉諾撒培德書院", student: "李彥菁", award: "卓越表現獎" },
+    { school: "嘉諾撒培德書院", student: "潘靖宜", award: "卓越表現獎" },
+    { school: "嘉諾撒培德書院", student: "鄭日晴", award: "卓越表現獎" },
+    { school: "嘉諾撒培德書院", student: "黃樂頤", award: "卓越表現獎" },
+    { school: "圓玄學院妙法寺內明陳呂重德紀念中學", student: "張逸言", award: "卓越表現獎" },
+    { school: "圓玄學院妙法寺內明陳呂重德紀念中學", student: "李澤亨", award: "卓越表現獎" },
+    { school: "圓玄學院妙法寺內明陳呂重德紀念中學", student: "潘孝喬", award: "卓越表現獎" },
+    { school: "圓玄學院妙法寺內明陳呂重德紀念中學", student: "王善婷", award: "卓越表現獎" },
+    { school: "圓玄學院妙法寺內明陳呂重德紀念中學", student: "邱嘉希", award: "卓越表現獎" },
+    { school: "圓玄學院妙法寺內明陳呂重德紀念中學", student: "鄧心慈", award: "卓越表現獎" },
+    { school: "圓玄學院妙法寺內明陳呂重德紀念中學", student: "陳天柔", award: "卓越表現獎" },
+    { school: "圓玄學院妙法寺內明陳呂重德紀念中學", student: "蘇泳之", award: "卓越表現獎" },
+    { school: "圓玄學院妙法寺內明陳呂重德紀念中學", student: "鄧斯允", award: "卓越表現獎" },
+    { school: "天主教伍華中學", student: "胡永健", award: "二等獎" },
+    { school: "天主教伍華中學", student: "陳卓曦", award: "二等獎" },
+    { school: "天主教伍華中學", student: "顏梓軒", award: "二等獎" },
+    { school: "天主教伍華中學", student: "張卓軒", award: "三等獎" },
+    { school: "天主教伍華中學", student: "張燁", award: "優異獎" },
+    { school: "天主教伍華中學", student: "戴子樂", award: "優異獎" },
+    { school: "天主教伍華中學", student: "陳泳希", award: "優異獎" },
+    { school: "天主教伍華中學", student: "江駿熙", award: "卓越表現獎" },
+    { school: "廠商會中學", student: "湯卓麗", award: "三等獎" },
+    { school: "廠商會中學", student: "區正如", award: "卓越表現獎" },
+    { school: "廠商會中學", student: "李永晴", award: "卓越表現獎" },
+    { school: "廠商會中學", student: "湯卓美", award: "卓越表現獎" },
+    { school: "廠商會中學", student: "黄沛持", award: "卓越表現獎" },
+    { school: "張振興伉儷書院", student: "嚴凱瑩", award: "一等獎、最佳神話再現獎" },
+    { school: "張振興伉儷書院", student: "郭瀚林", award: "二等獎" },
+    { school: "香港真光中學", student: "葉亦萱", award: "一等獎" },
+    { school: "香港真光中學", student: "吳彥彤", award: "二等獎" }
+  ],
+
+  seniorSecondary: [
+    { school: "Tak Sun Secondary School", student: "Chan Hon Yin", award: "二等獎" },
+    { school: "Tak Sun Secondary School", student: "謝昊錦", award: "三等獎" },
+    { school: "Tak Sun Secondary School", student: "周進業", award: "優異獎" },
+    { school: "中華基督教會基元中學", student: "張樂兒", award: "二等獎" },
+    { school: "中華基督教會基元中學", student: "曾卓生", award: "二等獎" },
+    { school: "中華基督教會基元中學", student: "黃子謙", award: "三等獎" },
+    { school: "中華基督教會基元中學", student: "陳凱晉", award: "優異獎" },
+    { school: "中華基督教會基元中學", student: "陳智傑", award: "優異獎" },
+    { school: "中華基督教會基元中學", student: "冼慧華", award: "卓越表現獎" },
+    { school: "中華聖潔會靈風中學", student: "張雅婷", award: "優異獎" },
+    { school: "中華聖潔會靈風中學", student: "黃綺鏵", award: "優異獎" },
+    { school: "中華聖潔會靈風中學", student: "黃鈺珊", award: "優異獎" },
+    { school: "中華聖潔會靈風中學", student: "周燦穎", award: "卓越表現獎" },
+    { school: "中華聖潔會靈風中學", student: "梁巧澄", award: "卓越表現獎" },
+    { school: "中華聖潔會靈風中學", student: "葉桐欣", award: "卓越表現獎" },
+    { school: "五旬節聖潔會永光書院", student: "劉嘉俊", award: "一等獎" },
+    { school: "五旬節聖潔會永光書院", student: "林澤欣", award: "一等獎、最佳神話再現獎、最佳文字指令獎" },
+    { school: "五旬節聖潔會永光書院", student: "梁溢曦", award: "一等獎" },
+    { school: "五旬節聖潔會永光書院", student: "鄧楚穎", award: "一等獎" },
+    { school: "五旬節聖潔會永光書院", student: "陳曦晴", award: "一等獎" },
+    { school: "五旬節聖潔會永光書院", student: "鄭仲怡", award: "二等獎" },
+    { school: "五旬節聖潔會永光書院", student: "黄種炫", award: "二等獎" },
+    { school: "五旬節聖潔會永光書院", student: "徐斯朗", award: "三等獎" },
+    { school: "五旬節聖潔會永光書院", student: "梁子聰", award: "三等獎" },
+    { school: "五旬節聖潔會永光書院", student: "聶晋皓", award: "優異獎" },
+    { school: "佛教何南金中學", student: "黃婥縈", award: "卓越表現獎" },
+    { school: "元朗公立中學校友會鄧兆棠中學", student: "WAN Chun Hei", award: "優異獎、創意故事獎" },
+    { school: "元朗公立中學校友會鄧兆棠中學", student: "林家羽", award: "優異獎、創意故事獎" },
+    { school: "荃灣官立中學", student: "Chan Tsz Hei", award: "優異獎" }
+  ],
+
+  specialSchool: [
+    { school: "路德會救主學校", student: "江政森", award: "一等獎" },
+    { school: "路德會救主學校", student: "陳君霖", award: "一等獎" },
+    { school: "路德會救主學校", student: "陳栢軒", award: "一等獎、最佳神話再現獎" },
+    { school: "路德會救主學校", student: "梁桓正", award: "二等獎" },
+    { school: "路德會救主學校", student: "鍾稼富", award: "二等獎" },
+    { school: "路德會救主學校", student: "伍藝華", award: "三等獎" },
+    { school: "路德會救主學校", student: "李凱軒", award: "三等獎" },
+    { school: "路德會救主學校", student: "葉卓橋", award: "三等獎" },
+    { school: "路德會救主學校", student: "陳俊軒", award: "三等獎" }
+  ]
+};
+
+const { title, description, primarySchool, juniorSecondary, seniorSecondary, specialSchool } = competitionData;
+---
+
+<Layout title={title} description={description}>
+  <main class="min-h-screen bg-gray-50">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-20">
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">{title}</h1>
+        <p class="text-xl md:text-2xl opacity-90">{description}</p>
+      </div>
+    </section>
+
+    <!-- Results Content -->
+    <section class="py-16">
+      <div class="container mx-auto px-4 max-w-6xl">
+        
+        <!-- Primary School Section -->
+        <div class="mb-16">
+          <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">小學組</h2>
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead class="bg-blue-600 text-white">
+                  <tr>
+                    <th class="px-6 py-4 text-left font-semibold">學校名稱</th>
+                    <th class="px-6 py-4 text-left font-semibold">參賽者姓名</th>
+                    <th class="px-6 py-4 text-left font-semibold">獎項</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                  {primarySchool.map((entry, index) => (
+                    <tr class={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
+                      <td class="px-6 py-4 text-gray-800">{entry.school}</td>
+                      <td class="px-6 py-4 text-gray-800">{entry.student}</td>
+                      <td class="px-6 py-4">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                          {entry.award}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Junior Secondary Section -->
+        <div class="mb-16">
+          <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">初中組</h2>
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead class="bg-green-600 text-white">
+                  <tr>
+                    <th class="px-6 py-4 text-left font-semibold">學校名稱</th>
+                    <th class="px-6 py-4 text-left font-semibold">參賽者姓名</th>
+                    <th class="px-6 py-4 text-left font-semibold">獎項</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                  {juniorSecondary.map((entry, index) => (
+                    <tr class={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
+                      <td class="px-6 py-4 text-gray-800">{entry.school}</td>
+                      <td class="px-6 py-4 text-gray-800">{entry.student}</td>
+                      <td class="px-6 py-4">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                          {entry.award}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Senior Secondary Section -->
+        <div class="mb-16">
+          <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">高中組</h2>
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead class="bg-purple-600 text-white">
+                  <tr>
+                    <th class="px-6 py-4 text-left font-semibold">學校名稱</th>
+                    <th class="px-6 py-4 text-left font-semibold">參賽者姓名</th>
+                    <th class="px-6 py-4 text-left font-semibold">獎項</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                  {seniorSecondary.map((entry, index) => (
+                    <tr class={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
+                      <td class="px-6 py-4 text-gray-800">{entry.school}</td>
+                      <td class="px-6 py-4 text-gray-800">{entry.student}</td>
+                      <td class="px-6 py-4">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800">
+                          {entry.award}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Special School Section -->
+        <div class="mb-16">
+          <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">特殊學校組</h2>
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead class="bg-orange-600 text-white">
+                  <tr>
+                    <th class="px-6 py-4 text-left font-semibold">學校名稱</th>
+                    <th class="px-6 py-4 text-left font-semibold">參賽者姓名</th>
+                    <th class="px-6 py-4 text-left font-semibold">獎項</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                  {specialSchool.map((entry, index) => (
+                    <tr class={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
+                      <td class="px-6 py-4 text-gray-800">{entry.school}</td>
+                      <td class="px-6 py-4 text-gray-800">{entry.student}</td>
+                      <td class="px-6 py-4">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-orange-100 text-orange-800">
+                          {entry.award}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Congratulations Message -->
+        <div class="text-center py-12">
+          <div class="bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg p-8 text-white">
+            <h3 class="text-2xl font-bold mb-4">恭喜所有得獎者！</h3>
+            <p class="text-lg opacity-90">
+              感謝所有參賽學校和同學的參與，你們的創意和努力讓我們看到了AI藝術的無限可能。
+              期待在未來的比賽中再次見到你們的精彩作品！
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <ContactSection />
+  </main>
+</Layout>
+
+<style>
+  /* Custom table styles */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  th {
+    font-weight: 600;
+    background-color: #2563eb;
+    color: white;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9fafb;
+  }
+  
+  tr:hover {
+    background-color: #f3f4f6;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    table {
+      font-size: 0.875rem;
+    }
+    
+    th, td {
+      padding: 0.75rem 1rem;
+    }
+  }
+</style> 

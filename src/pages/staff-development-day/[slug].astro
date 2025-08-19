@@ -1,0 +1,34 @@
+---
+// Dynamic route to handle English URLs while using Chinese-named components
+import { getStaticPathsForFolder, getComponentForSlug } from '../../utils/urlAliases.js';
+
+// Pre-import all components to avoid Unicode issues in dynamic imports
+import StaffDevIndex from './index.astro';
+
+// Component mapping
+const componentMap = {
+  'index.astro': StaffDevIndex
+};
+
+export async function getStaticPaths() {
+  return getStaticPathsForFolder('staff-development-day');
+}
+
+const { slug } = Astro.params;
+
+// Get component info from global alias configuration
+const componentInfo = getComponentForSlug('staff-development-day', slug);
+
+if (!componentInfo) {
+  throw new Error(`Unknown slug: ${slug}`);
+}
+
+// Get the pre-imported component
+const Component = componentMap[componentInfo.filename];
+
+if (!Component) {
+  throw new Error(`Component not found for filename: ${componentInfo.filename}`);
+}
+---
+
+<Component /> 
