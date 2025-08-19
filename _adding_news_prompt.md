@@ -52,22 +52,38 @@ readingTime: [number]
 
 ## Image Management
 
+### 🚨 CRITICAL: Image File Existence Rule
+**NEVER reference images that don't physically exist in the assets folder!**
+This will cause build failures and must be avoided at all costs.
+
 ### Image Folder Structure
 For each article, create a corresponding image folder:
 ```
 src/assets/images/news/[article-date-and-title]/
-├── image1.jpg (or .png, .jpeg)
-├── image2.jpg
+├── featured.jpg (or .png, .jpeg) - REQUIRED
+├── image1.jpg (optional)
+├── image2.jpg (optional)
 └── ...
 ```
 
-### Featured Image
-- Always include a featured image in the frontmatter
-- Use relative path: `"../../assets/images/news/[folder]/[image]"`
+### Featured Image Requirements
+- **MANDATORY**: Always include a featured image in the frontmatter
+- **VERIFICATION**: Ensure the featured image file actually exists before referencing
+- Use relative path: `"../../assets/images/news/[folder]/[image-file]"`
+- Recommended naming: `featured.jpg`, `featured.png`, or `featured.jpeg`
 
 ### Images in Content
+- **EXISTENCE CHECK**: Verify every image file exists before adding markdown references
 - Reference images using: `![](../../assets/images/news/[folder]/[image])`
 - Add descriptive alt text when appropriate
+- **RULE**: Only reference images that are physically present in the assets folder
+
+### Image Management Best Practices
+1. **Create the image folder first** before writing the markdown file
+2. **Upload all images** to the assets folder before adding references
+3. **Use consistent naming**: `featured.jpg` for main image, `image1.jpg`, `image2.jpg` for additional images
+4. **Verify paths**: Double-check that the path in frontmatter matches the actual file location
+5. **Test locally**: Run `npm run build` locally to catch image reference errors before deployment
 
 ## Tag Guidelines
 
@@ -154,18 +170,81 @@ Examples:
 - 2 minutes: ~300-400 words
 - 3 minutes: ~450-600 words
 
+## 🔧 Build Troubleshooting
+
+### Common Build Errors and Solutions
+
+#### Image Not Found Errors
+**Error**: `ImageNotFound: Could not find requested image ../../assets/images/news/[...]/image1.jpg`
+
+**Solutions**:
+1. **Check file existence**: Verify the image file actually exists in the specified path
+2. **Check file naming**: Ensure the filename in markdown matches the actual file (case-sensitive)
+3. **Clear cache**: Delete `.astro` folder and run `npm run build` again
+4. **Check path**: Verify the relative path is correct (`../../assets/images/news/[folder]/[file]`)
+
+#### Prevention Steps
+1. Always create the assets folder structure first
+2. Upload images before writing markdown
+3. Use consistent naming conventions
+4. Test build locally before committing
+
+## 📋 Recommended Workflow
+
+### Step-by-Step Process to Avoid Image Issues
+
+1. **Plan the Article**
+   - Decide on the article title and date
+   - Determine what images you'll need
+
+2. **Create Directory Structure FIRST**
+   ```bash
+   mkdir "src/assets/images/news/YYYY-MM-DD-[article-title]"
+   ```
+
+3. **Upload Images to Assets Folder**
+   - Place all images in the created directory
+   - Use consistent naming: `featured.jpg`, `image1.jpg`, `image2.jpg`, etc.
+   - Verify files are actually saved (not just planned)
+
+4. **Create Markdown File**
+   - Create the `.md` file in `src/content/news/`
+   - Add frontmatter with correct image paths
+   - Only reference images that exist in step 3
+
+5. **Verify Image References**
+   - Double-check that featuredImage path matches actual file
+   - Ensure all `![](...)` references point to existing files
+   - Check spelling and case sensitivity
+
+6. **Local Build Test**
+   ```bash
+   npm run build
+   ```
+   - If build fails with image errors, fix before proceeding
+   - Never commit if local build fails
+
+7. **Final Check**
+   - Review the generated output
+   - Ensure all images display correctly
+   - Commit only after successful build
+
 ## Quality Checklist
 
 Before publishing, ensure:
 - [ ] Filename follows YYYY-MM-DD-[title] format
 - [ ] All frontmatter fields are properly filled
+- [ ] **🚨 CRITICAL**: All referenced images physically exist in assets folder
+- [ ] **🚨 CRITICAL**: Image paths in frontmatter and content are correct
 - [ ] Featured image exists and path is correct
 - [ ] Tags are relevant and follow guidelines
 - [ ] Content includes engaging opening and educational value
-- [ ] Images are properly referenced
+- [ ] All images are properly referenced (not just featured image)
 - [ ] Reading time estimate is reasonable
 - [ ] External link is properly formatted
 - [ ] Content promotes 10教育's educational mission
+- [ ] **🚨 CRITICAL**: Local build test passes (`npm run build`)
+- [ ] No console errors related to missing assets
 
 ## Example Template
 
@@ -173,7 +252,7 @@ Before publishing, ensure:
 ---
 title: "[Event Title] - [School Name] [Activity Type]"
 publishDate: YYYY-MM-DD
-featuredImage: "../../assets/images/news/YYYY-MM-DD-[slug]/image1.jpg"
+featuredImage: "../../assets/images/news/YYYY-MM-DD-[slug]/featured.jpg"
 category: "過往活動"
 tags: ["[Primary Tag]", "[Education Level]", "[Technology]", "[School Name]"]
 author: "[author-name]"
@@ -184,7 +263,7 @@ wpDate: "YYYY/MM/DD"
 readingTime: [estimate]
 ---
 
-![](../../assets/images/news/YYYY-MM-DD-[slug]/image1.jpg)
+![](../../assets/images/news/YYYY-MM-DD-[slug]/featured.jpg)
 
 「[Engaging opening quote]」
 
@@ -200,3 +279,16 @@ readingTime: [estimate]
 
 [Closing paragraph about future collaboration and 10教育's mission]
 ```
+
+## 🚨 FINAL REMINDER
+
+**Before creating any news article:**
+
+1. ✅ Create the image folder: `src/assets/images/news/YYYY-MM-DD-[title]/`
+2. ✅ Upload the `featured.jpg` (and any other images) to this folder
+3. ✅ Verify files exist using file explorer
+4. ✅ Create the markdown file with correct image paths
+5. ✅ Run `npm run build` locally to test
+6. ✅ Only commit if build succeeds
+
+**The #1 cause of build failures is referencing non-existent images. Always verify image files exist before referencing them!**
