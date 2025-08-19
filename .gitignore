@@ -412,3 +412,4 @@ venv.bak/
 .dmypy.json
 dmypy.json
 .vercel
+.what
