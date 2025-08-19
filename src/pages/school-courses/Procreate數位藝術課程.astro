@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
-import PaperformEmbed from '../../components/PaperformEmbed.astro';
+import ContactSection from '../../components/ContactSection.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -18,7 +18,7 @@ import procreateCourseImage from '../../assets/images/school-courses/Procreate�
 export const courseData = {
   title: "Procreate電繪課程",
   subtitle: "輕鬆畫你所想，探索數位藝術的無限可能！",
-  tags: ["Arts 藝術", "Procreate", "數位藝術", "創意", "繪畫"],
+  tags: ["Arts 藝術", "Procreate"],
   description: "從介紹Procreate界面和工具開始，課程幫助學生並探索Procreate繪畫技巧、色彩應用。學習分層、合併元素，提高創作效率和繪製並匯出多種畫作。",
   detailedDescription: "課程將從基礎開始介紹 Procreate 的界面和工具，幫助學生熟悉軟件的操作。並探索各種繪畫技巧，包括繪畫、畫筆和色彩應用等。此外，學生還會學習如何利用 Procreate 的分層功能和選項，以及如何將不同的元素合併為一個完整的藝術作品，從而幫助學生提高創作效率和藝術表現力。課程過後，學生能運用學習過的知識，繪畫出一幅完整的畫作， 並能將其導出成不同的檔案模式。",
   heroImage: procreateCourseImage
@@ -286,8 +286,7 @@ const ogImage = procreateThumbnail.src;
       
       <div class="bg-white border border-gray-200 rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
         <div class="text-center">
-          <p class="text-lg text-gray-700 mb-6">想了解更多關於 Procreate 電繪課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。</p>
-          <PaperformEmbed />
+          <ContactSection subtitle="想了解更多關於 Procreate 電繪課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
         </div>
       </div>
     </div>

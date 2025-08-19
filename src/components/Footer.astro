@@ -1,38 +1,45 @@
 ---
+interface Props {
+  showCompanyInfo?: boolean;
+}
+
+const { showCompanyInfo = true } = Astro.props;
 const currentYear = new Date().getFullYear();
 ---
 
 <footer class="bg-gray-800 text-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <!-- Main Footer Content -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
-      <!-- Company Info -->
-      <div>
-        <h2 class="text-2xl font-bold mb-4">關於我們</h2>
-        <h3 class="text-xl font-semibold mb-4">10Botics</h3>
-        <div class="text-gray-300 space-y-4">
-          <p>
-            10Botics 是香港科學園初創公司, 過去與 50 多間學校和教育機構合作。我們的使命是利用人工智能知識為下一代做好準備, 
-            並專注於 STEM 課程的研發及教學，使孩子們可以更容易地學習人工智能（AI）。
-          </p>
-          <p>
-            我們的學習工具及課程是由專業 STEM 團隊共同開發，旨在使孩子、老師和父母可以通過現實生活的例子中學習到課程複雜、深奧的概念，令學習變得輕鬆及有趣。
-          </p>
-          <p>
-            無論將來從事任何職業或使用任何工具學習，我們都可以通過課程中所學的知識為未來帶來光明，並令我們的下一代為未來發展做好準備。
-          </p>
+    {showCompanyInfo && (
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
+        <!-- Company Info -->
+        <div>
+          <h2 class="text-2xl font-bold mb-4">關於我們</h2>
+          <h3 class="text-xl font-semibold mb-4">10Botics</h3>
+          <div class="text-gray-300 space-y-4">
+            <p>
+              10Botics 是香港科學園初創公司, 過去與 50 多間學校和教育機構合作。我們的使命是利用人工智能知識為下一代做好準備, 
+              並專注於 STEM 課程的研發及教學，使孩子們可以更容易地學習人工智能（AI）。
+            </p>
+            <p>
+              我們的學習工具及課程是由專業 STEM 團隊共同開發，旨在使孩子、老師和父母可以通過現實生活的例子中學習到課程複雜、深奧的概念，令學習變得輕鬆及有趣。
+            </p>
+            <p>
+              無論將來從事任何職業或使用任何工具學習，我們都可以通過課程中所學的知識為未來帶來光明，並令我們的下一代為未來發展做好準備。
+            </p>
+          </div>
+        </div>
+        
+        <!-- Company Image -->
+        <div class="flex justify-center lg:justify-end">
+          <img 
+            src="/images/IMG_3821-scaled.jpg" 
+            alt="10Botics Office" 
+            class="w-full max-w-md h-auto rounded-lg shadow-lg"
+          />
         </div>
       </div>
-      
-      <!-- Company Image -->
-      <div class="flex justify-center lg:justify-end">
-        <img 
-          src="/images/IMG_3821-scaled.jpg" 
-          alt="10Botics Office" 
-          class="w-full max-w-md h-auto rounded-lg shadow-lg"
-        />
-      </div>
-    </div>
+    )}
     
     <!-- Bottom Footer -->
     <div class="border-t border-gray-700 pt-8">
