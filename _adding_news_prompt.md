@@ -9,7 +9,7 @@ YYYY-MM-DD-[descriptive-title-in-chinese].md
 ```
 The date should be the date of edit
 Examples:
-- `2025-08-19-可立中學ai藝術創作stem-day精彩回顧.md`
+- `2025-07-19-可立中學ai藝術創作stem-day精彩回顧.md`
 - `2025-04-16-活動回顧10教育成功在順德聯誼總會李金小學舉辦國家安全講座.md`
 - `2024-06-20-無人機初體驗寶血會嘉靈學校-無人機stem-day.md`
 

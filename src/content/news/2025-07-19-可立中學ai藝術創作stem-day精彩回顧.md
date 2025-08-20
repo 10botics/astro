@@ -1,18 +1,18 @@
 ---
 title: "🎨AI藝術創作｜STEM Day 精彩回顧 - 可立中學 AI教育體驗"
-publishDate: 2025-08-19
-featuredImage: "../../assets/images/news/2025-08-19-可立中學ai藝術創作stem-day精彩回顧/featured.jpg"
+publishDate: 2025-07-19
+featuredImage: "../../assets/images/news/2025-07-19-可立中學ai藝術創作stem-day精彩回顧/featured.jpg"
 category: "過往活動"
 tags: ["可立中學", "AI藝術創作", "STEM Day", "中學", "AI教育", "提示工程"]
 author: "admin"
 isFeatured: false
-externalLink: "https://10botics.com/past-activities/2025/08/19/ho-lap-college-ai-art-stem-day/"
+externalLink: "https://10botics.com/past-activities/2025/07/19/ho-lap-college-ai-art-stem-day/"
 wpSlug: "可立中學ai藝術創作stem-day精彩回顧"
-wpDate: "2025/08/19"
+wpDate: "2025/07/19"
 readingTime: 3
 ---
 
-![](../../assets/images/news/2025-08-19-可立中學ai藝術創作stem-day精彩回顧/featured.jpg)
+![](../../assets/images/news/2025-07-19-可立中學ai藝術創作stem-day精彩回顧/featured.jpg)
 
 「只用一句話，AI就能畫出你的想像！」
 
