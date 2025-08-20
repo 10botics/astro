@@ -1,0 +1,127 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SERPPreview from '../../components/SERPPreview.astro';
+import GoogleSearchParser from '../../components/GoogleSearchParser.astro';
+
+const title = "SERP Preview Tool - SEO Title & Meta Description Tester";
+const description = "Test how your page titles and meta descriptions will appear in Google search results. Real-time preview with character count validation and current SERP analysis.";
+---
+
+<Layout title={title} description={description}>
+  <main class="min-h-screen bg-gray-50 py-12">
+    <div class="container mx-auto px-4">
+      <!-- Header Section -->
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">
+          SERP Preview Tool
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          Optimize your page titles and meta descriptions for better search engine visibility. 
+          See exactly how your content will appear in Google search results and compare with your current SERP performance.
+        </p>
+      </div>
+
+      <!-- SERP Preview Component -->
+      <SERPPreview />
+
+      <!-- Current SERP Analysis -->
+      <div class="mt-16">
+        <GoogleSearchParser />
+      </div>
+
+      <!-- Information Section -->
+      <div class="mt-16 max-w-4xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg p-8">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">
+            Why Use a SERP Preview Tool?
+          </h2>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-3">
+                📏 Optimize Length
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Ensure your titles and descriptions fit within Google's display limits. 
+                Titles should be 50-60 characters, descriptions 150-160 characters.
+              </p>
+            </div>
+            
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-3">
+                🎯 Improve Click-Through Rates
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Craft compelling titles and descriptions that encourage users to click 
+                on your search results over competitors.
+              </p>
+            </div>
+            
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-3">
+                ✅ Real-Time Validation
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Get instant feedback with character counters and visual warnings 
+                when your content exceeds recommended limits.
+              </p>
+            </div>
+            
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-3">
+                👀 Visual Preview
+              </h3>
+              <p class="text-gray-600 mb-4">
+                See exactly how your page will appear in Google search results 
+                before publishing your content.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Best Practices Section -->
+      <div class="mt-12 max-w-4xl mx-auto">
+        <div class="bg-blue-50 rounded-lg border border-blue-200 p-8">
+          <h2 class="text-2xl font-bold text-blue-900 mb-6">
+            SEO Best Practices
+          </h2>
+          
+          <div class="space-y-6">
+            <div>
+              <h3 class="text-lg font-semibold text-blue-800 mb-2">
+                Page Titles
+              </h3>
+              <ul class="list-disc list-inside text-blue-700 space-y-1">
+                <li>Keep titles between 50-60 characters</li>
+                <li>Include your primary keyword near the beginning</li>
+                <li>Make it descriptive and compelling</li>
+                <li>Avoid keyword stuffing</li>
+                <li>Each page should have a unique title</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 class="text-lg font-semibold text-blue-800 mb-2">
+                Meta Descriptions
+              </h3>
+              <ul class="list-disc list-inside text-blue-700 space-y-1">
+                <li>Aim for 150-160 characters</li>
+                <li>Write compelling copy that encourages clicks</li>
+                <li>Include relevant keywords naturally</li>
+                <li>Summarize the page content accurately</li>
+                <li>Use action-oriented language when appropriate</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .container {
+    max-width: 1400px;
+  }
+</style>
