@@ -1,0 +1,272 @@
+---
+export interface Props {
+  title?: string;
+  url?: string;
+  description?: string;
+}
+
+const { title = "", url = "", description = "" } = Astro.props;
+---
+
+<div class="serp-preview-container">
+  <div class="serp-preview-form">
+    <h2 class="text-2xl font-bold mb-6 text-gray-800">SERP Preview Tool</h2>
+    
+    <div class="form-group">
+      <label for="serp-title" class="block text-sm font-medium text-gray-700 mb-2">
+        Page Title
+        <span class="title-counter text-sm text-gray-500 ml-2">(0/60)</span>
+      </label>
+      <input
+        type="text"
+        id="serp-title"
+        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        placeholder="Enter your page title..."
+        value={title}
+        maxlength="100"
+      />
+      <div class="text-xs text-gray-500 mt-1">Recommended: 50-60 characters</div>
+    </div>
+
+    <div class="form-group">
+      <label for="serp-url" class="block text-sm font-medium text-gray-700 mb-2">
+        URL
+      </label>
+      <input
+        type="url"
+        id="serp-url"
+        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        placeholder="https://example.com/page"
+        value={url}
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="serp-description" class="block text-sm font-medium text-gray-700 mb-2">
+        Meta Description
+        <span class="description-counter text-sm text-gray-500 ml-2">(0/160)</span>
+      </label>
+      <textarea
+        id="serp-description"
+        rows="3"
+        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+        placeholder="Enter your meta description..."
+        maxlength="300"
+      >{description}</textarea>
+      <div class="text-xs text-gray-500 mt-1">Recommended: 150-160 characters</div>
+    </div>
+  </div>
+
+  <div class="serp-preview-display">
+    <h3 class="text-lg font-semibold mb-4 text-gray-800">Optimized Preview</h3>
+    
+    <div class="google-preview">
+      <div class="google-url">
+        <span class="url-display text-sm text-green-700">
+          example.com
+        </span>
+      </div>
+      
+      <h3 class="google-title">
+        <a href="#" class="title-display text-xl text-blue-600 hover:underline">
+          Your Page Title Will Appear Here
+        </a>
+      </h3>
+      
+      <p class="google-description text-sm text-gray-600 leading-relaxed">
+        <span class="description-display">
+          Your meta description will appear here. This is what users see in search results to understand what your page is about.
+        </span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .serp-preview-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    transition: all 0.2s ease;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  .serp-preview-display {
+    background: #f9fafb;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border-left: 4px solid #3b82f6;
+  }
+
+  .google-preview {
+    font-family: arial, sans-serif;
+    max-width: 600px;
+  }
+
+  .google-url {
+    margin-bottom: 0.25rem;
+  }
+
+  .url-display {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  .google-title {
+    margin-bottom: 0.25rem;
+  }
+
+  .title-display {
+    font-size: 20px;
+    line-height: 1.3;
+    text-decoration: none;
+    word-wrap: break-word;
+  }
+
+  .title-display:hover {
+    text-decoration: underline;
+  }
+
+  .google-description {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #4d5156;
+  }
+
+  .description-display {
+    word-wrap: break-word;
+  }
+
+  .title-counter.warning,
+  .description-counter.warning {
+    color: #f59e0b;
+    font-weight: 600;
+  }
+
+  .title-counter.error,
+  .description-counter.error {
+    color: #ef4444;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .serp-preview-container {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding: 1rem;
+    }
+
+    .google-preview {
+      max-width: 100%;
+    }
+  }
+</style>
+
+<script>
+  const titleInput = document.getElementById('serp-title') as HTMLInputElement;
+  const urlInput = document.getElementById('serp-url') as HTMLInputElement;
+  const descriptionInput = document.getElementById('serp-description') as HTMLTextAreaElement;
+  
+  const titleDisplay = document.querySelector('.title-display') as HTMLElement;
+  const urlDisplay = document.querySelector('.url-display') as HTMLElement;
+  const descriptionDisplay = document.querySelector('.description-display') as HTMLElement;
+  
+  const titleCounter = document.querySelector('.title-counter') as HTMLElement;
+  const descriptionCounter = document.querySelector('.description-counter') as HTMLElement;
+
+  function updateTitlePreview() {
+    const title = titleInput.value.trim();
+    const length = title.length;
+    
+    titleDisplay.textContent = title || 'Your Page Title Will Appear Here';
+    titleCounter.textContent = `(${length}/60)`;
+    
+    // Update counter styling based on length
+    titleCounter.className = 'title-counter text-sm ml-2';
+    if (length > 60) {
+      titleCounter.classList.add('error');
+    } else if (length > 50) {
+      titleCounter.classList.add('warning');
+    } else {
+      titleCounter.classList.add('text-gray-500');
+    }
+    
+    // Truncate display if too long
+    if (length > 60) {
+      titleDisplay.textContent = title.substring(0, 60) + '...';
+    }
+  }
+
+  function updateUrlPreview() {
+    const url = urlInput.value.trim();
+    let displayUrl = 'example.com';
+    
+    if (url) {
+      try {
+        const urlObj = new URL(url);
+        displayUrl = urlObj.hostname + urlObj.pathname;
+        if (displayUrl.length > 50) {
+          displayUrl = displayUrl.substring(0, 47) + '...';
+        }
+      } catch (e) {
+        displayUrl = url.replace(/^https?:\/\//, '');
+        if (displayUrl.length > 50) {
+          displayUrl = displayUrl.substring(0, 47) + '...';
+        }
+      }
+    }
+    
+    urlDisplay.textContent = displayUrl;
+  }
+
+  function updateDescriptionPreview() {
+    const description = descriptionInput.value.trim();
+    const length = description.length;
+    
+    descriptionDisplay.textContent = description || 'Your meta description will appear here. This is what users see in search results to understand what your page is about.';
+    descriptionCounter.textContent = `(${length}/160)`;
+    
+    // Update counter styling based on length
+    descriptionCounter.className = 'description-counter text-sm ml-2';
+    if (length > 160) {
+      descriptionCounter.classList.add('error');
+    } else if (length > 150) {
+      descriptionCounter.classList.add('warning');
+    } else {
+      descriptionCounter.classList.add('text-gray-500');
+    }
+    
+    // Truncate display if too long
+    if (length > 160) {
+      descriptionDisplay.textContent = description.substring(0, 160) + '...';
+    }
+  }
+
+  // Initialize counters
+  updateTitlePreview();
+  updateUrlPreview();
+  updateDescriptionPreview();
+
+  // Add event listeners
+  titleInput.addEventListener('input', updateTitlePreview);
+  urlInput.addEventListener('input', updateUrlPreview);
+  descriptionInput.addEventListener('input', updateDescriptionPreview);
+</script>
