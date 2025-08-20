@@ -4,6 +4,7 @@ import HeroSection from '../../components/course/HeroSection.astro';
 import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
 import { Image } from 'astro:assets';
 
 // Import student work images
@@ -424,6 +425,10 @@ const faqItems = [
   />
 
   <QnASection faqs={faqItems} />
+  <!-- Related News Section -->
+  <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
+
+
 
   <!-- Contact section -->
   <ContactSection subtitle="想了解更多關於人工智能網頁遊戲編程工作坊的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />

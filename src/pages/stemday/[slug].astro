@@ -28,13 +28,12 @@ if (!componentInfo) {
 }
 
 // Get the pre-imported component
-const StemdayComponent = componentInfo.filename in componentMap 
+const stemdayComponent = componentInfo.filename in componentMap 
   ? componentMap[componentInfo.filename as keyof typeof componentMap]
   : null;
 
-if (!StemdayComponent) {
+if (!stemdayComponent) {
   throw new Error(`Component not found for filename: ${componentInfo.filename}`);
 }
 ---
-
-<StemdayComponent /> 
+<stemdayComponent /> 

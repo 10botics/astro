@@ -1,0 +1,385 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  newsTags: string[];
+  newsTitle?: string;
+  maxResults?: number;
+}
+
+const { newsTags = [], newsTitle = '', maxResults = 9 } = Astro.props;
+
+// Auto-discover .astro course files (same approach as index.astro)
+const courseFiles = await import.meta.glob('../../pages/school-courses/*.astro', { eager: true });
+
+// Convert .astro files to course data (excluding index and dynamic routes)
+const astroCourses = Object.entries(courseFiles)
+  .filter(([path]) => !path.includes('./index.astro') && !path.includes('./[slug].astro'))
+  .map(([path, module]: [string, any]) => {
+    const filename = path.replace('../../pages/school-courses/', '').replace('.astro', '');
+    
+    // Map Chinese filenames to English URLs (same mapping as index.astro)
+    const slugMapping: Record<string, string> = {
+      '人工智能遊戲編程課程': 'ai-game-coding',
+      'AI啟蒙與藝術創作課程': 'ai-enrichment-course',
+      'AI數碼動畫展': 'ai-digital-animation-exhibition',
+      'Blockchain 區塊鏈課程': 'blockchain',
+      'CoDrone無人機課程': 'codrone',
+      'Delightex 遊戲設計課程': 'delightex-game-design',
+      'Donkey Car 無人車課程': 'donkey-car',
+      'Dobot 智能機械手臂': 'dobot',
+      'ksp太空計劃課程': 'ksp',
+      'Lego Spike Prime 機器人技術大師班': 'lego-spike-prime',
+      'Minecraft校園創建課程': 'minecraft',
+      'Microbit 降落傘課程': 'microbit-parachute',
+      'Microbit 逃出迷宮': 'microbit-maze',
+      'Procreate數位藝術課程': 'procreate',
+      'raspberry-pi編程課程': 'raspberry-pi',
+      'Scratch 人工智能編程': 'scratch-ai-programming',
+      'Scratch遊戲設計課程': 'scratch-game-design',
+      'SwiftPlaygrounds編程課程': 'swiftplaygrounds',
+      'Tello 無人機課程': 'tello',
+      '珊瑚環境監測入門課程': 'coral-environment-monitoring',
+      'Unity 課程': 'unity',
+      '自然生物探究手作課程': 'natural-bio-sciences',
+      'Python 初階遊戲編程': 'python-game-dev-beginner'
+    };
+    
+    // Extract courseData from frontmatter (now accessible via import.meta.glob)
+    const courseData = module.courseData || {
+      title: filename,
+      description: `${filename} 課程頁面`,
+      tags: [filename.replace('-', ' ')]
+    };
+    
+    return {
+      slug: slugMapping[filename] || filename,
+      filename: `${filename}.astro`,
+      title: courseData.title,
+      subtitle: courseData.subtitle || '',
+      description: courseData.description,
+      tags: courseData.tags || [],
+      heroImage: courseData.heroImage,
+      source: 'astro'
+    };
+  });
+
+const schoolCourses = astroCourses;
+
+// Function to calculate tag similarity score
+function calculateTagSimilarity(courseTags: string[], newsTags: string[]): number {
+  if (!courseTags || !newsTags) return 0;
+  
+  const courseTagsLower = courseTags.map(tag => tag.toLowerCase().trim());
+  const newsTagsLower = newsTags.map(tag => tag.toLowerCase().trim());
+  
+  // Count matching tags (exact and partial matches)
+  let score = 0;
+  
+  for (const newsTag of newsTagsLower) {
+    for (const courseTag of courseTagsLower) {
+      if (newsTag === courseTag) {
+        score += 5; // Exact match gets highest score
+      } else if (newsTag.includes(courseTag) || courseTag.includes(newsTag)) {
+        score += 2; // Partial match gets medium score
+      } else {
+        // Check for key Chinese phrases and concepts
+        const keywordMatches = checkKeywordMatches(newsTag, courseTag);
+        if (keywordMatches > 0) {
+          score += keywordMatches;
+        }
+      }
+    }
+  }
+  
+  return score;
+}
+
+// Helper function to check for keyword matches
+function checkKeywordMatches(newsTag: string, courseTag: string): number {
+  let matches = 0;
+  
+  // AI related terms
+  if ((newsTag.includes('ai') || newsTag.includes('人工智能') || newsTag.includes('ai教育') || newsTag.includes('ai藝術')) 
+      && (courseTag.includes('ai') || courseTag.includes('人工智能'))) {
+    matches += 3;
+  }
+  
+  // Programming related terms
+  if ((newsTag.includes('编程') || newsTag.includes('程式') || newsTag.includes('coding'))
+      && (courseTag.includes('programming') || courseTag.includes('编程') || courseTag.includes('程式'))) {
+    matches += 2;
+  }
+  
+  // Art related terms
+  if ((newsTag.includes('藝術') || newsTag.includes('艺术') || newsTag.includes('創作') || newsTag.includes('创作'))
+      && (courseTag.includes('arts') || courseTag.includes('藝術') || courseTag.includes('艺术') || courseTag.includes('創作') || courseTag.includes('创作'))) {
+    matches += 2;
+  }
+  
+  // Drone related terms
+  if ((newsTag.includes('無人機') || newsTag.includes('无人机') || newsTag.includes('drone'))
+      && (courseTag.includes('無人機') || courseTag.includes('无人机') || courseTag.includes('drone') || courseTag.includes('tello'))) {
+    matches += 3;
+  }
+  
+  // Robotics related terms
+  if ((newsTag.includes('機器人') || newsTag.includes('机器人') || newsTag.includes('robot'))
+      && (courseTag.includes('機器人') || courseTag.includes('机器人') || courseTag.includes('robot'))) {
+    matches += 2;
+  }
+  
+  // Game development related terms
+  if ((newsTag.includes('遊戲') || newsTag.includes('游戏') || newsTag.includes('game'))
+      && (courseTag.includes('遊戲') || courseTag.includes('游戏') || courseTag.includes('game'))) {
+    matches += 2;
+  }
+  
+  // STEM related terms
+  if ((newsTag.includes('stem') || newsTag.includes('科學') || newsTag.includes('科学') || newsTag.includes('工程'))
+      && (courseTag.includes('stem') || courseTag.includes('科學') || courseTag.includes('科学') || courseTag.includes('工程'))) {
+    matches += 1;
+  }
+  
+  // Education level matches
+  if ((newsTag.includes('中學') || newsTag.includes('中学') || newsTag.includes('初中') || newsTag.includes('高中'))
+      && (courseTag.includes('中學') || courseTag.includes('中学') || courseTag.includes('初中') || courseTag.includes('高中'))) {
+    matches += 1;
+  }
+  
+  if ((newsTag.includes('小學') || newsTag.includes('小学') || newsTag.includes('高小'))
+      && (courseTag.includes('小學') || courseTag.includes('小学') || courseTag.includes('高小'))) {
+    matches += 1;
+  }
+  
+  return matches;
+}
+
+// Filter and sort school courses
+const relatedCourses = schoolCourses
+  .map(course => {
+    const similarity = calculateTagSimilarity(course.tags || [], newsTags);
+    return {
+      ...course,
+      similarity
+    };
+  })
+  .filter(course => course.similarity > 0) // Only include courses with tag matches
+  .sort((a, b) => {
+    // Sort by similarity score (descending)
+    return b.similarity - a.similarity;
+  })
+  .slice(0, maxResults);
+---
+
+{relatedCourses.length > 0 && (
+  <section class="py-16 bg-gradient-to-br from-blue-50 to-cyan-50">
+    <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">相關課程推薦</h2>
+        <p class="text-lg text-gray-600">
+          基於{newsTitle ? `「${newsTitle}」` : '此新聞'}的內容，為您推薦相關的學校課程
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {relatedCourses.map((course) => (
+          <article class="course-card bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+            {/* Hero Image */}
+            {course.heroImage && (
+              <div class="course-image-container bg-gray-100 overflow-hidden aspect-video">
+                {typeof course.heroImage === 'string' ? (
+                  <Image 
+                    src={course.heroImage} 
+                    alt={course.title}
+                    width={600}
+                    height={400}
+                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                ) : (
+                  <Image 
+                    src={course.heroImage} 
+                    alt={course.title}
+                    width={600}
+                    height={400}
+                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                )}
+              </div>
+            )}
+            {!course.heroImage && (
+              <div class="h-48 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-600/20"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="text-white text-center p-4">
+                    <div class="text-3xl mb-2">📚</div>
+                    <div class="text-sm font-medium opacity-90">課程封面</div>
+                  </div>
+                </div>
+              </div>
+            )}
+            
+            <div class="p-6">
+              {/* Course Header */}
+              <div class="mb-4">
+                <div class="flex items-center justify-between mb-2">
+                  <h3 class="text-xl font-bold text-gray-800 line-clamp-2">
+                    <a href={`/school-courses/${course.slug}`} 
+                       class="hover:text-blue-600 transition-colors">
+                      {course.title}
+                    </a>
+                  </h3>
+                  <div class="flex items-center text-yellow-500 ml-2">
+                  </div>
+                </div>
+                
+                {course.description && (
+                  <p class="text-gray-600 text-sm line-clamp-3 mb-4">
+                    {course.description}
+                  </p>
+                )}
+              </div>
+              
+              {/* Tags */}
+              <div class="mb-4">
+                <div class="flex flex-wrap gap-1">
+                  {(() => {
+                    const targetAudienceTags = ['初小', '高小', '初中', '高中'];
+                    const otherTags = course.tags.filter(tag => !targetAudienceTags.includes(tag));
+                    const audienceTags = course.tags.filter(tag => targetAudienceTags.includes(tag));
+                    const sortedTags = [...otherTags, ...audienceTags];
+                    
+                    // Tag mapping for Chinese to English URLs (same as index.astro)
+                    const chineseToEnglishMapping = {
+                      // Chinese tags to English equivalents
+                      '初中': 'junior-secondary',
+                      '高中': 'senior-secondary', 
+                      '高小': 'upper-primary',
+                      '初小': 'lower-primary',
+                      '小學': 'primary',
+                      '遊戲開發': 'game-development',
+                      '網頁遊戲': 'web-games',
+                      '無人機': 'drone',
+                      '軟件開發': 'software-development',
+                      '數位藝術': 'digital-art',
+                      '創意': 'creativity',
+                      '繪畫': 'drawing',
+                      '虛擬實境': 'virtual-reality',
+                      'VR 虛擬實境': 'vr-virtual-reality',
+                      'AR 擴增實境': 'ar-augmented-reality',
+                      '動畫創作': 'animation-creation',
+                      '互動體驗': 'interactive-experience',
+                      'AI 人工智能': 'ai',
+                      'Programming 編程': 'programming',
+                      'Block Coding 方塊編程': 'block-coding',
+                      'Arts 藝術': 'arts',
+                      'Engineering 工程': 'engineering',
+                      'Science 科學': 'science',
+                      '科學': 'science',
+                      'STEM Day': 'stem-day',
+                      // Technology and platform specific tags
+                      'ChatGPT': 'chatgpt',
+                      'Leonardo AI': 'leonardo-ai',
+                      'Delightex': 'delightex',
+                      'Metaverse 元宇宙': 'metaverse',
+                      '元宇宙': 'metaverse',
+                      'Microbit': 'microbit',
+                      'Micro:bit': 'microbit',
+                      'Blockchain 區塊鏈': 'blockchain',
+                      'Dobot': 'dobot',
+                      'KSP': 'ksp',
+                      'Lego': 'lego',
+                      'Robotics 機械人': 'robotics',
+                      'Coral': 'coral',
+                      'Python': 'python',
+                      'Raspberry Pi': 'raspberry-pi',
+                      'Tensorflow': 'tensorflow',
+                      'Swift Playground': 'swift-playground',
+                      '3D 建模': '3d-modeling',
+                      'C#': 'csharp',
+                      'Unity': 'unity',
+                      '故事開發': 'story-development',
+                      '編程': 'programming',
+                      '手作': 'hands-on',
+                      'IoT': 'iot',
+                      '海洋環境': 'marine-environment',
+                      'Arduino': 'arduino',
+                      'Tello': 'tello',
+                      'Scratch': 'scratch',
+                      'Procreate': 'procreate',
+                      'Donkey Car': 'donkey-car',
+                      'CoDrone': 'codrone',
+                      'Minecraft': 'minecraft',
+                      // Additional mappings for broader categories
+                      'AI': 'ai',
+                      '藝術': 'arts',
+                      '其他': 'others'
+                    };
+
+                    return sortedTags.map((tagName: string) => {
+                      // Check if we have a mapping for this tag
+                      const mappedTag = (chineseToEnglishMapping as any)[tagName] || tagName;
+                      
+                      // Create a more robust slug that handles Chinese characters
+                      const tagSlug = mappedTag
+                        .toLowerCase()
+                        .replace(/\s+/g, '-')
+                        .replace(/[^\w-]/g, '') // Remove all non-word characters except hyphens
+                        .replace(/-+$/, '');
+                      
+                      return (
+                        <a href={`/school-courses/tag/${tagSlug}`}
+                           class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium hover:bg-blue-200 transition-colors">
+                          {tagName}
+                        </a>
+                      );
+                    });
+                  })()}
+                </div>
+              </div>
+              
+              {/* Action Button */}
+              <div class="mt-auto">
+                <a href={`/school-courses/${course.slug}`}
+                   class="inline-block w-full text-center bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors text-sm font-medium">
+                  查看課程詳情
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      {/* Show More Link */}
+      {relatedCourses.length >= maxResults && (
+        <div class="text-center mt-12">
+          <a 
+            href="/school-courses" 
+            class="inline-flex items-center bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-3 rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+          >
+            瀏覽所有課程
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+      )}
+    </div>
+  </section>
+)}
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

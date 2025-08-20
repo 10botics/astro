@@ -1,0 +1,185 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import { generateExcerpt } from '../../utils/excerpt';
+
+interface Props {
+  courseTags: string[];
+  courseTitle?: string;
+  maxResults?: number;
+}
+
+const { courseTags = [], courseTitle = '', maxResults = 9 } = Astro.props;
+
+// Get all news articles
+const allNews = await getCollection('news');
+
+// Function to calculate tag similarity score
+function calculateTagSimilarity(newsTags: string[], courseTags: string[]): number {
+  if (!newsTags || !courseTags) return 0;
+  
+  const newsTagsLower = newsTags.map(tag => tag.toLowerCase());
+  const courseTagsLower = courseTags.map(tag => tag.toLowerCase());
+  
+  // Count matching tags (exact and partial matches)
+  let score = 0;
+  
+  for (const courseTag of courseTagsLower) {
+    for (const newsTag of newsTagsLower) {
+      if (courseTag === newsTag) {
+        score += 3; // Exact match gets higher score
+      } else if (courseTag.includes(newsTag) || newsTag.includes(courseTag)) {
+        score += 1; // Partial match gets lower score
+      }
+    }
+  }
+  
+  return score;
+}
+
+// Filter and sort news articles
+const relatedNews = allNews
+  .map(article => {
+    const similarity = calculateTagSimilarity(article.data.tags || [], courseTags);
+    return {
+      ...article,
+      similarity,
+      data: {
+        ...article.data,
+        excerpt: article.data.excerpt || generateExcerpt(article.body, 150)
+      }
+    };
+  })
+  .filter(article => article.similarity > 0) // Only include articles with tag matches
+  .sort((a, b) => {
+    // First sort by similarity score (descending)
+    if (a.similarity !== b.similarity) {
+      return b.similarity - a.similarity;
+    }
+    // Then sort by publication date (descending)
+    return new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime();
+  })
+  .slice(0, maxResults);
+
+// Format date for display
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('zh-TW', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+---
+
+{relatedNews.length > 0 && (
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">相關新聞</h2>
+        <p class="text-lg text-gray-600">
+          探索更多與{courseTitle || '此課程'}相關的教育資訊與活動回顧
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {relatedNews.map((article) => (
+          <article class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow group">
+            {/* Featured Image */}
+            {article.data.featuredImage && (
+              <div class="aspect-video overflow-hidden">
+                <Image
+                  src={article.data.featuredImage}
+                  alt={article.data.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+              </div>
+            )}
+            
+            <div class="p-6">
+              {/* Category and Date */}
+              <div class="flex items-center justify-between text-sm text-gray-500 mb-3">
+                <span class="bg-cyan-100 text-cyan-800 px-2 py-1 rounded-full text-xs font-medium">
+                  {article.data.category}
+                </span>
+                <time datetime={article.data.publishDate.toISOString()}>
+                  {formatDate(article.data.publishDate)}
+                </time>
+              </div>
+
+              {/* Title */}
+              <h3 class="text-lg font-semibold text-gray-900 mb-3 line-clamp-2 group-hover:text-cyan-600 transition-colors">
+                <a href={`/news/${article.slug}`} class="hover:underline">
+                  {article.data.title}
+                </a>
+              </h3>
+
+              {/* Excerpt */}
+              <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                {article.data.excerpt}
+              </p>
+
+              {/* Tags */}
+              {article.data.tags && article.data.tags.length > 0 && (
+                <div class="flex flex-wrap gap-2 mb-4">
+                  {article.data.tags.slice(0, 3).map((tag) => (
+                    <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">
+                      {tag}
+                    </span>
+                  ))}
+                  {article.data.tags.length > 3 && (
+                    <span class="text-gray-500 text-xs">
+                      +{article.data.tags.length - 3}
+                    </span>
+                  )}
+                </div>
+              )}
+
+              {/* Read More Link */}
+              <a 
+                href={`/news/${article.slug}`}
+                class="inline-flex items-center text-cyan-600 hover:text-cyan-700 font-medium text-sm group-hover:underline"
+              >
+                閱讀更多
+                <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      {/* Show More Link */}
+      {relatedNews.length >= maxResults && (
+        <div class="text-center mt-12">
+          <a 
+            href="/news" 
+            class="inline-flex items-center bg-cyan-600 text-white px-6 py-3 rounded-lg hover:bg-cyan-700 transition-colors font-medium"
+          >
+            查看更多新聞
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+      )}
+    </div>
+  </section>
+)}
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

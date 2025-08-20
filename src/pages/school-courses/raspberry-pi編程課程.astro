@@ -5,6 +5,7 @@ import CourseFeatures from '../../components/course/CourseFeatures.astro';
 import TripleCourseContent from '../../components/course/TripleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -387,6 +388,10 @@ const advancedCurriculumItems = [
   </section>
 
   <QnASection faqs={faqItems} variant="details" />
+  <!-- Related News Section -->
+  <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
+
+
 
   <!-- Contact Section -->
   <section class="bg-white py-16">

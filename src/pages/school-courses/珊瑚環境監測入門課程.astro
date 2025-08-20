@@ -5,6 +5,7 @@ import DualCourseContent from '../../components/course/DualCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
 import { Image } from 'astro:assets';
 
 // Import course images
@@ -355,6 +356,9 @@ const { title, subtitle, tags, description, detailedDescription, heroImage } = c
 
     <!-- FAQ Section -->
     <QnASection faqs={faqData} />
+
+    <!-- Related News Section -->
+    <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
 
     <!-- Contact Form -->
     <ContactSection subtitle="想了解更多關於珊瑚環境監測入門課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />

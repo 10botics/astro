@@ -5,8 +5,8 @@ import CourseFeatures from '../../components/course/CourseFeatures.astro';
 import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
 import { Image } from 'astro:assets';
-
 // Import images
 import machineLearningTraining from '../../assets/images/school-courses/Scratch 人工智能編程/machine-learning-training.gif';
 import faceRecognition from '../../assets/images/school-courses/Scratch 人工智能編程/face-recognition.gif';
@@ -364,6 +364,9 @@ const curriculumItems = [
   </section>
 
   <QnASection faqs={faqItems} variant="details" />
+
+  <!-- Related News Section -->
+  <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
 
   <!-- Contact Section -->
   <section class="bg-white py-16">

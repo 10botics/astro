@@ -5,6 +5,7 @@ import CourseFeatures from '../../components/course/CourseFeatures.astro';
 import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -288,6 +289,10 @@ const studentWorkExamples = [
   </section>
 
   <QnASection faqs={faqItems} />
+  <!-- Related News Section -->
+  <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
+
+
 
   <!-- Contact Section -->
   <section class="bg-gray-50 py-16">

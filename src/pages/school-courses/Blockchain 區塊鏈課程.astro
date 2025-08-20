@@ -5,6 +5,7 @@ import CourseFeatureGrid from '../../components/course/CourseFeatureGrid.astro';
 import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
 import { Image } from 'astro:assets';
 import heroImage from '../../assets/images/school-courses/Blockchain 區塊鏈課程/hero-image.png';
 import instructorImage from '../../assets/images/school-courses/Blockchain 區塊鏈課程/instructor-louis-li.jpg';
@@ -196,6 +197,8 @@ const faqs = [
     faqs={faqs}
     variant="details"
   />
+  <!-- Related News Section -->
+  <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
 
   <!-- Contact Section -->
   <section class="py-16 bg-gray-50">

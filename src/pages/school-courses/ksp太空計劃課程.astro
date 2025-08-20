@@ -4,6 +4,7 @@ import HeroSection from '../../components/course/HeroSection.astro';
 import DualCourseContent from '../../components/course/DualCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -434,6 +435,10 @@ const ogImage = kspMain.src;
   </section>
 
   <QnASection faqs={faqItems} />
+  <!-- Related News Section -->
+  <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
+
+
 
   <!-- Contact section -->
   <section class="py-16 bg-white">

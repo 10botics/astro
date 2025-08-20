@@ -4,6 +4,7 @@ import HeroSection from '../../components/course/HeroSection.astro';
 import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
 import { Image } from 'astro:assets';
 
 // Import course images
@@ -295,6 +296,9 @@ const faqData = [
 
   <!-- FAQ Section -->
   <QnASection faqs={faqData} />
+
+  <!-- Related News Section -->
+  <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
 
   <!-- Contact Section -->
   <ContactSection />

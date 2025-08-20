@@ -4,6 +4,7 @@ import HeroSection from '../../components/course/HeroSection.astro';
 import DualCourseContent from '../../components/course/DualCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
 import { Image } from 'astro:assets';
 
 // Import course image
@@ -281,6 +282,9 @@ const courseHighlights = [
       question: item.question,
       answer: item.answer.join('\n')
     }))} />
+
+    <!-- Related News Section -->
+    <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
 
     <!-- Contact Section -->
     <section class="py-16 bg-gray-50">
