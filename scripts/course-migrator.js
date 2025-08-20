@@ -287,12 +287,14 @@ function determineCourseType(categories = [], tags = []) {
 }
 
 /**
- * Determine target audience from tags
+ * Determine target audience from tags and return separately from other tags
  */
 function determineTargetAudience(tags = []) {
+  const targetAudienceTags = ['初小', '高小', '初中', '高中'];
   const audienceTerms = [];
   
   tags.forEach(tag => {
+    if (tag.includes('初小')) audienceTerms.push('初小');
     if (tag.includes('高小')) audienceTerms.push('高小');
     if (tag.includes('初中')) audienceTerms.push('初中');
     if (tag.includes('高中')) audienceTerms.push('高中');
@@ -301,6 +303,22 @@ function determineTargetAudience(tags = []) {
   });
   
   return audienceTerms.join(', ') || '小學至中學';
+}
+
+/**
+ * Extract target audience tags from all tags
+ */
+function extractTargetAudienceTags(tags = []) {
+  const targetAudienceTags = ['初小', '高小', '初中', '高中'];
+  return tags.filter(tag => targetAudienceTags.includes(tag));
+}
+
+/**
+ * Filter out target audience tags from regular tags
+ */
+function filterNonAudienceTags(tags = []) {
+  const targetAudienceTags = ['初小', '高小', '初中', '高中'];
+  return tags.filter(tag => !targetAudienceTags.includes(tag));
 }
 
 /**
