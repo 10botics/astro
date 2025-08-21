@@ -1,329 +1,264 @@
 ---
+import { extractSERPData } from '../utils/serpDataExtractor.ts';
+
 export interface Props {
   domain?: string;
 }
 
 const { domain = "" } = Astro.props;
+
+// Extract real data from the codebase
+const websitePages = await extractSERPData();
 ---
 
 <div class="google-search-parser">
   <div class="search-form">
-    <h3 class="text-xl font-semibold mb-4 text-gray-800">Current SERP Results</h3>
+    <h3 class="text-xl font-semibold mb-4 text-gray-800">Website Content Search</h3>
     <p class="text-gray-600 mb-4">
-      Enter your domain to see how your pages currently appear in Google search results.
+      Search for content from this website. Enter domain names, keywords, or content types to see relevant pages and their SERP-optimized information.
     </p>
     
     <div class="search-input-group">
       <label for="domain-input" class="block text-sm font-medium text-gray-700 mb-2">
-        Website Domain
+        Search Query
       </label>
-      <div class="flex gap-2">
-        <input
-          type="text"
-          id="domain-input"
-          class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          placeholder="example.com"
-          value={domain}
-        />
-        <button
-          id="search-btn"
-          class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
-        >
-          Search
-        </button>
-      </div>
-      <div class="text-xs text-gray-500 mt-1">
-        Enter domain without "https://" (e.g., "example.com")
-      </div>
-    </div>
-  </div>
-
-  <div id="search-results" class="search-results hidden">
-    <div class="results-header mb-4">
-      <h4 class="text-lg font-semibold text-gray-800">Live SERP Results</h4>
-      <p class="text-sm text-gray-600">Current search appearance for your domain</p>
+      <input
+        type="text"
+        id="domain-input"
+        placeholder="Enter search terms (e.g., AI, Minecraft, 無人機, 課程)"
+        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      />
     </div>
     
+    <button
+      onclick="searchPages()"
+      class="mt-4 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+    >
+      Search Pages
+    </button>
+  </div>
+
+  <div class="search-results mt-8">
+    <h4 class="text-lg font-semibold mb-4 text-gray-800">Search Results</h4>
     <div id="results-container" class="space-y-4">
       <!-- Results will be populated here -->
-    </div>
-    
-    <div id="loading-state" class="loading-state hidden">
-      <div class="flex items-center justify-center py-8">
-        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-        <span class="ml-3 text-gray-600">Searching...</span>
-      </div>
-    </div>
-    
-    <div id="no-results" class="no-results hidden">
-      <div class="text-center py-8 text-gray-500">
-        <svg class="mx-auto h-12 w-12 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.29-1.045-5.709-2.709M15 6.39A7.962 7.962 0 0112 5c-2.34 0-4.29 1.045-5.709 2.709"></path>
-        </svg>
-        <p class="text-lg font-medium">No results found</p>
-        <p class="text-sm">Try searching for a different domain or check if the website is indexed by Google.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="comparison-view hidden" id="comparison-view">
-    <div class="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-      <h4 class="text-lg font-semibold text-blue-900 mb-2">💡 Optimization Tips</h4>
-      <div id="optimization-tips" class="text-sm text-blue-800 space-y-1">
-        <!-- Tips will be populated dynamically -->
-      </div>
     </div>
   </div>
 </div>
 
-<style>
-  .search-results {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background: #f9fafb;
-    border-radius: 8px;
-    border: 1px solid #e5e7eb;
-  }
-
-  .serp-result {
-    background: white;
-    border-radius: 6px;
-    padding: 1rem;
-    border: 1px solid #e5e7eb;
-    font-family: arial, sans-serif;
-  }
-
-  .serp-result-url {
-    color: #1a73e8;
-    font-size: 14px;
-    line-height: 1.3;
-    margin-bottom: 0.25rem;
-  }
-
-  .serp-result-title {
-    color: #1a0dab;
-    font-size: 20px;
-    line-height: 1.3;
-    margin-bottom: 0.25rem;
-    text-decoration: none;
-    word-wrap: break-word;
-  }
-
-  .serp-result-title:hover {
-    text-decoration: underline;
-  }
-
-  .serp-result-description {
-    color: #4d5156;
-    font-size: 14px;
-    line-height: 1.4;
-    word-wrap: break-word;
-  }
-
-  .result-stats {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 0.5rem;
-    font-size: 12px;
-    color: #6b7280;
-  }
-
-  .stat-item {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-  }
-
-  .status-indicator {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-  }
-
-  .status-good { background-color: #10b981; }
-  .status-warning { background-color: #f59e0b; }
-  .status-error { background-color: #ef4444; }
-</style>
-
 <script>
-  const domainInput = document.getElementById('domain-input') as HTMLInputElement;
-  const searchBtn = document.getElementById('search-btn') as HTMLButtonElement;
-  const searchResults = document.getElementById('search-results') as HTMLElement;
-  const resultsContainer = document.getElementById('results-container') as HTMLElement;
-  const loadingState = document.getElementById('loading-state') as HTMLElement;
-  const noResults = document.getElementById('no-results') as HTMLElement;
-  const comparisonView = document.getElementById('comparison-view') as HTMLElement;
-  const optimizationTips = document.getElementById('optimization-tips') as HTMLElement;
-
-  interface SERPResult {
-    title: string;
-    url: string;
-    description: string;
-    position: number;
-  }
-
-  // Mock function to simulate Google search results
-  // In a real implementation, you'd use a proper search API
-  async function fetchSERPResults(domain: string): Promise<SERPResult[]> {
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 1500));
+  const websitePages = JSON.parse('{JSON.stringify(websitePages)}');
+  
+  // Debug: Log the data when the page loads
+  console.log('Website pages loaded:', websitePages.length);
+  console.log('First few pages:', websitePages.slice(0, 3));
+  
+  function searchPages() {
+    const query = document.getElementById('domain-input').value.trim();
+    const resultsContainer = document.getElementById('results-container');
     
-    // Mock data - in reality, you'd call a search API like SerpAPI, ScrapingBee, etc.
-    const mockResults: SERPResult[] = [
-      {
-        title: `${domain} - Official Website`,
-        url: `https://${domain}`,
-        description: `Official website of ${domain}. Learn more about our services, products, and company information. Contact us for more details.`,
-        position: 1
-      },
-      {
-        title: `About Us - ${domain}`,
-        url: `https://${domain}/about`,
-        description: `Learn about ${domain}'s history, mission, and team. We've been serving customers since 2020 with quality products and services.`,
-        position: 2
-      },
-      {
-        title: `Contact ${domain} - Get in Touch`,
-        url: `https://${domain}/contact`,
-        description: `Contact ${domain} for inquiries, support, or business opportunities. Multiple ways to reach us including phone, email, and contact form.`,
-        position: 3
-      }
-    ];
-
-    // Sometimes return empty results to demonstrate no-results state
-    if (domain.includes('test') || domain.includes('fake')) {
-      return [];
-    }
-
-    return mockResults;
-  }
-
-  function analyzeResults(results: SERPResult[]) {
-    const tips: string[] = [];
-    
-    results.forEach((result, index) => {
-      const titleLength = result.title.length;
-      const descLength = result.description.length;
-      
-      if (titleLength > 60) {
-        tips.push(`Result ${index + 1}: Title is ${titleLength} characters (recommended: 50-60). Consider shortening.`);
-      }
-      
-      if (descLength > 160) {
-        tips.push(`Result ${index + 1}: Description is ${descLength} characters (recommended: 150-160). Consider shortening.`);
-      }
-      
-      if (titleLength < 30) {
-        tips.push(`Result ${index + 1}: Title might be too short (${titleLength} chars). Consider adding more descriptive keywords.`);
-      }
-      
-      if (descLength < 120) {
-        tips.push(`Result ${index + 1}: Description could be longer (${descLength} chars). Add more compelling details.`);
-      }
-    });
-
-    if (tips.length === 0) {
-      tips.push('✅ Your current SERP results look well-optimized!');
-    }
-
-    return tips;
-  }
-
-  function getStatusClass(length: number, type: 'title' | 'description'): string {
-    if (type === 'title') {
-      if (length <= 60) return 'status-good';
-      if (length <= 70) return 'status-warning';
-      return 'status-error';
-    } else {
-      if (length <= 160) return 'status-good';
-      if (length <= 180) return 'status-warning';
-      return 'status-error';
-    }
-  }
-
-  function renderResults(results: SERPResult[]) {
-    resultsContainer.innerHTML = results.map(result => `
-      <div class="serp-result">
-        <div class="serp-result-url">${result.url}</div>
-        <h5 class="serp-result-title">${result.title}</h5>
-        <p class="serp-result-description">${result.description}</p>
-        <div class="result-stats">
-          <div class="stat-item">
-            <span class="status-indicator ${getStatusClass(result.title.length, 'title')}"></span>
-            <span>Title: ${result.title.length} chars</span>
-          </div>
-          <div class="stat-item">
-            <span class="status-indicator ${getStatusClass(result.description.length, 'description')}"></span>
-            <span>Description: ${result.description.length} chars</span>
-          </div>
-          <div class="stat-item">
-            <span>Position: #${result.position}</span>
-          </div>
-        </div>
-      </div>
-    `).join('');
-
-    // Show optimization tips
-    const tips = analyzeResults(results);
-    optimizationTips.innerHTML = tips.map(tip => `<div>• ${tip}</div>`).join('');
-    comparisonView.classList.remove('hidden');
-  }
-
-  async function performSearch() {
-    const domain = domainInput.value.trim();
-    
-    if (!domain) {
-      alert('Please enter a domain name');
+    if (!query) {
+      resultsContainer.innerHTML = '<p class="text-gray-500">Please enter a search query.</p>';
       return;
     }
-
-    // Clean domain input
-    const cleanDomain = domain.replace(/^https?:\/\//, '').replace(/\/$/, '');
     
-    // Show loading state
-    searchResults.classList.remove('hidden');
-    loadingState.classList.remove('hidden');
-    resultsContainer.innerHTML = '';
-    noResults.classList.add('hidden');
-    comparisonView.classList.add('hidden');
+    // Debug: Log the search query and some sample URLs
+    console.log('Search query:', query);
+    console.log('Total pages in data:', websitePages.length);
+    console.log('Sample URLs in data:', websitePages.slice(0, 3).map(p => ({ title: p.title, url: p.url, category: p.category })));
+    console.log('All categories in data:', [...new Set(websitePages.map(p => p.category))]);
+    console.log('School course pages:', websitePages.filter(p => p.category === 'courses').map(p => ({ title: p.title, url: p.url })));
     
-    searchBtn.disabled = true;
-    searchBtn.textContent = 'Searching...';
-
-    try {
-      const results = await fetchSERPResults(cleanDomain);
-      
-      loadingState.classList.add('hidden');
-      
-      if (results.length === 0) {
-        noResults.classList.remove('hidden');
-      } else {
-        renderResults(results);
-      }
-    } catch (error) {
-      console.error('Search error:', error);
-      loadingState.classList.add('hidden');
-      noResults.classList.remove('hidden');
-    } finally {
-      searchBtn.disabled = false;
-      searchBtn.textContent = 'Search';
+    const results = searchSERPData(websitePages, query);
+    
+    if (results.length === 0) {
+      resultsContainer.innerHTML = '<p class="text-gray-500">No results found for your search query.</p>';
+      return;
     }
+    
+    const resultsHTML = results.map(page => `
+      <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
+        <div class="flex items-start justify-between mb-2">
+          <span class="text-xs text-gray-500">#${page.position}</span>
+        </div>
+        
+        <h5 class="font-semibold text-gray-900 mb-2">
+          <a href="${page.url}" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 transition-colors">
+            ${page.metaTitle || page.title}
+          </a>
+        </h5>
+        
+        <p class="text-sm text-gray-600 mb-3">
+          ${page.metaDescription || page.description}
+        </p>
+        
+        ${page.tags && page.tags.length > 0 ? `
+          <div class="mt-3 pt-3 border-t border-gray-100">
+            <div class="flex flex-wrap gap-1">
+              ${page.tags.map(tag => `
+                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-gray-100 text-gray-800">
+                  ${tag}
+                </span>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+        
+        ${page.publishDate ? `
+          <div class="mt-3 text-xs text-gray-500">
+            Published: ${new Date(page.publishDate).toLocaleDateString()}
+          </div>
+        ` : ''}
+      </div>
+    `).join('');
+    
+    resultsContainer.innerHTML = resultsHTML;
   }
-
-  // Event listeners
-  searchBtn.addEventListener('click', performSearch);
   
-  domainInput.addEventListener('keypress', (e) => {
+  function searchSERPData(data, query) {
+    const cleanQuery = query.toLowerCase().trim();
+    
+    if (!cleanQuery) {
+      return data.slice(0, 8);
+    }
+
+    // If searching for domain, return main pages
+    if (cleanQuery.includes('10botics') || cleanQuery.includes('10education') || cleanQuery === '10botics.com') {
+      return data.slice(0, 8);
+    }
+
+    // Search by keywords in title, description, meta tags, tags, and URL
+    const results = data.filter(page => {
+      const titleMatch = page.title.toLowerCase().includes(cleanQuery);
+      const descMatch = page.description.toLowerCase().includes(cleanQuery);
+      const categoryMatch = page.category.toLowerCase().includes(cleanQuery);
+      const tagMatch = page.tags?.some(tag => tag.toLowerCase().includes(cleanQuery));
+      const metaTitleMatch = page.metaTitle?.toLowerCase().includes(cleanQuery);
+      const metaDescMatch = page.metaDescription?.toLowerCase().includes(cleanQuery);
+      const metaKeywordsMatch = page.metaKeywords?.toLowerCase().includes(cleanQuery);
+      
+      // URL matching - handle both full URLs and path segments
+      let urlMatch = false;
+      if (page.url) {
+        const cleanUrl = page.url.toLowerCase();
+        // Check if query matches the full URL
+        urlMatch = cleanUrl.includes(cleanQuery);
+        // Also check if query matches just the path part (after domain)
+        if (!urlMatch && cleanQuery.startsWith('/')) {
+          const urlPath = cleanUrl.split('10botics.com')[1] || cleanUrl.split('10education.com')[1] || '';
+          urlMatch = urlPath.includes(cleanQuery);
+        }
+        // Check if query matches just the slug part
+        if (!urlMatch) {
+          const urlSlug = cleanUrl.split('/').pop() || '';
+          urlMatch = urlSlug.includes(cleanQuery.replace(/^\/+|\/+$/g, ''));
+        }
+      }
+      
+      // Debug logging for URL search
+      if (cleanQuery.includes('school-courses') || cleanQuery.includes('ai-enrichment')) {
+        console.log('Page being checked:', {
+          title: page.title,
+          url: page.url,
+          category: page.category,
+          urlMatch,
+          cleanQuery
+        });
+      }
+      
+      return titleMatch || descMatch || categoryMatch || tagMatch || 
+             metaTitleMatch || metaDescMatch || metaKeywordsMatch || urlMatch;
+    });
+
+    // If no direct matches, try partial matches for common terms
+    if (results.length === 0) {
+      const partialResults = data.filter(page => {
+        if (cleanQuery.includes('ai') || cleanQuery.includes('人工智能')) {
+          return page.title.includes('AI') || page.title.includes('人工智能') || 
+                 page.description.includes('AI') || page.description.includes('人工智能') ||
+                 page.metaTitle?.includes('AI') || page.metaTitle?.includes('人工智能') ||
+                 page.metaDescription?.includes('AI') || page.metaDescription?.includes('人工智能');
+        }
+        if (cleanQuery.includes('minecraft')) {
+          return page.title.includes('Minecraft') || 
+                 page.description.includes('Minecraft') ||
+                 page.metaTitle?.includes('Minecraft') ||
+                 page.metaDescription?.includes('Minecraft');
+        }
+        if (cleanQuery.includes('drone') || cleanQuery.includes('無人機')) {
+          return page.title.includes('無人機') || page.title.includes('CoDrone') ||
+                 page.description.includes('無人機') || page.description.includes('drone') ||
+                 page.metaTitle?.includes('無人機') || page.metaTitle?.includes('drone') ||
+                 page.metaDescription?.includes('無人機') || page.metaDescription?.includes('drone');
+        }
+        if (cleanQuery.includes('course') || cleanQuery.includes('課程')) {
+          return page.category === 'courses';
+        }
+        if (cleanQuery.includes('competition') || cleanQuery.includes('比賽')) {
+          return page.category === 'competition';
+        }
+        return false;
+      });
+      return partialResults.slice(0, 6);
+    }
+
+    return results.slice(0, 8);
+  }
+  
+  // Add event listener for Enter key
+  document.getElementById('domain-input').addEventListener('keypress', function(e) {
     if (e.key === 'Enter') {
-      performSearch();
+      searchPages();
     }
   });
-
-  // Auto-detect current domain if possible
-  if (typeof window !== 'undefined') {
-    const currentDomain = window.location.hostname;
-    if (currentDomain && currentDomain !== 'localhost') {
-      domainInput.value = currentDomain;
-    }
-  }
 </script>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .google-search-parser {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  .search-form {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+  }
+  
+  .search-input-group input {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .search-input-group input:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+  }
+  
+  .search-results {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+  }
+  
+  .all-pages {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+  }
+</style>
