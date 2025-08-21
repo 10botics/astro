@@ -3,6 +3,7 @@ title: "嶄新無人機體驗 - 全新無人機 CoDrone EDU 引領中小學STEM�
 publishDate: 2024-07-29
 description: "美國Robolink研發的CoDrone EDU無人機正式登陸香港，具備簡單配對、安全耐用、多功能編程等特點，已在多間學校開展無人機課程及STEM Day活動。"
 featuredImage: "../../assets/images/news/2024-07-29-嶄新無人機體驗-全新無人機-codrone-edu-引領中小學stem教育新風潮/image1.png"
+SEOImage: "../../assets/images/news/2024-07-29-嶄新無人機體驗-全新無人機-codrone-edu-引領中小學stem教育新風潮/image1.png"
 category: "過往活動"
 tags: ["CoDrone", "STEM Day", "初中", "小學", "高中"]
 author: "sukileung"

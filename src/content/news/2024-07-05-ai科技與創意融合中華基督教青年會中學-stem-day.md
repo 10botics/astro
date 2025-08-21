@@ -3,6 +3,7 @@ title: "【AI科技與創意融合】中華基督教青年會中學 STEM Day"
 publishDate: 2024-07-05
 description: "中華基督教青年會中學350名中一中二學生參與STEM Day，體驗Donkey Car無人車技術和AI數碼動畫展，運用AI圖像生成技術創作動畫角色，激發科技與藝術融合潛能。"
 featuredImage: "../../assets/images/news/2024-07-05-ai科技與創意融合中華基督教青年會中學-stem-day/image1.jpeg"
+SEOImage: "../../assets/images/news/2024-07-05-ai科技與創意融合中華基督教青年會中學-stem-day/image1.jpeg"
 category: "過往活動"
 tags: ["AI 人工智能", "AI數碼動畫展", "STEM Day", "中學"]
 author: "sukileung"
