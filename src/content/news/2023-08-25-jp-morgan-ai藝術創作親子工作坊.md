@@ -1,6 +1,7 @@
 ---
 title: "J.P. Morgan AI藝術創作親子工作坊"
 publishDate: 2023-08-25
+metadescription: "10教育與J.P. Morgan合作舉辦AI藝術創作親子工作坊，學生學習使用AI機械人創作個性化藝術作品，家長參與互動合作，體驗科技與藝術的融合。"
 featuredImage: "../../assets/images/news/2023-08-25-jp-morgan-ai藝術創作親子工作坊/image1.jpeg"
 category: "過往活動"
 tags: ["AI 人工智能", "Arts 藝術", "STEM Day"]

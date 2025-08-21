@@ -1,6 +1,7 @@
 ---
-title: "Microbit x 智能小車 逃出迷宮任務 "
+title: "Microbit x 智能小車 逃出迷宮任務 "
 publishDate: 2023-08-30
+metadescription: "文理書院(九龍)準中一學生參與五小時STEM Day迎新活動，學習Micro:bit智能小車編程和逃出迷宮比賽，體驗編程樂趣，培養團隊合作和問題解決能力。"
 featuredImage: "../../assets/images/news/2023-08-30-microbit-x-智能小車-逃出迷宮任務/image1.jpeg"
 category: "過往活動"
 tags: ["AI 人工智能", "Micro:bit", "Programming 編程", "STEM Day", "初中"]
