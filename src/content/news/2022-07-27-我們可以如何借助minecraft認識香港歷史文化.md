@@ -1,7 +1,7 @@
 ---
 title: "我們可以如何借助Minecraft認識香港歷史文化？"
 publishDate: 2022-07-27
-metadescription: "探討如何運用Minecraft遊戲平台讓學生認識香港歷史文化，特別是瀕臨絕滅的非物質文化遺產，通過互動式學習提高學習動機，培養香港人身份認同感。"
+description: "探討如何運用Minecraft遊戲平台讓學生認識香港歷史文化，特別是瀕臨絕滅的非物質文化遺產，通過互動式學習提高學習動機，培養香港人身份認同感。"
 featuredImage: "../../assets/images/news/2022-07-27-我們可以如何借助minecraft認識香港歷史文化/image1.png"
 category: "文章"
 tags: []

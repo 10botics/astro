@@ -1,7 +1,7 @@
 ---
 title: "點樣用Raspberry Pi 係校內教授 Python？"
 publishDate: 2021-11-13
-metadescription: "10Botics與15位老師分享如何利用Raspberry Pi在校內教授Python，老師們親身體驗Jupyter Lab操作，學習解決問題，籌劃課堂應用，為中學生提供Raspberry Pi入門課程。"
+description: "10Botics與15位老師分享如何利用Raspberry Pi在校內教授Python，老師們親身體驗Jupyter Lab操作，學習解決問題，籌劃課堂應用，為中學生提供Raspberry Pi入門課程。"
 featuredImage: "../../assets/images/news/2021-11-13-點樣用raspberry-pi-係校內教授-python/image1.jpeg"
 category: "文章"
 tags: []

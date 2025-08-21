@@ -1,7 +1,7 @@
 ---
 title: "🎨AI藝術創作｜STEM Day 精彩回顧 - 可立中學 AI教育體驗"
 publishDate: 2025-07-19
-metadescription: "可立中學STEM Day舉辦AI藝術創作體驗活動，10教育傳授提示工程技巧，學生學習與AI對話創作藝術作品，培養未來AI協作能力與創意思維。"
+description: "可立中學STEM Day舉辦AI藝術創作體驗活動，10教育傳授提示工程技巧，學生學習與AI對話創作藝術作品，培養未來AI協作能力與創意思維。"
 featuredImage: "../../assets/images/news/2025-07-19-可立中學ai藝術創作stem-day精彩回顧/featured.jpg"
 category: "過往活動"
 tags: ["可立中學", "AI藝術創作", "STEM Day", "中學", "AI教育", "提示工程"]
