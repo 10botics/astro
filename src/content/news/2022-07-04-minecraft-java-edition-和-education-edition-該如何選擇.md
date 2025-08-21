@@ -1,6 +1,7 @@
 ---
 title: "Minecraft Java Edition 和 Education Edition 該如何選擇？"
 publishDate: 2022-07-04
+metadescription: "分析Minecraft Java Edition與Education Edition在教育應用中的差異，探討Java Edition的創造自由度與社群支持如何更好地激發學生學習興趣，提供教育主題設計建議。"
 featuredImage: "../../assets/images/news/2022-07-04-minecraft-java-edition-和-education-edition-該如何選擇/image1.png"
 category: "文章"
 tags: []
@@ -53,4 +54,4 @@ Minecraft: Education Edition確實在原有玩法的基礎上額外增加了用�
 
 ## 總結
 
-Minecraft Java Edition 提供了足夠的自由度讓學生自由發揮，但工具本身也是中性的，需要我們努力去建立更多有意義的主題才能完成學習目標。水能載舟，亦能覆舟，Minecraft 是一個十分自由開放的世界，沒有清𥇦的目標就會令學生流於玩樂，失去焦點。
+Minecraft Java Edition 提供了足夠的自由度讓學生自由發揮，但工具本身也是中性的，需要我們努力去建立更多有意義的主題才能完成學習目標。水能載舟，亦能覆舟，Minecraft 是一個十分自由開放的世界，沒有清��的目標就會令學生流於玩樂，失去焦點。
