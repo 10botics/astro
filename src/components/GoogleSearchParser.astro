@@ -1,215 +1,227 @@
 ---
-import { extractSERPData } from '../utils/serpDataExtractor.ts';
-
-export interface Props {
-  domain?: string;
-}
-
-const { domain = "" } = Astro.props;
-
-// Extract real data from the codebase
-const websitePages = await extractSERPData();
+// GoogleSearchParser component to fetch and display meta tags from URLs
 ---
 
-<div class="google-search-parser">
-  <div class="search-form">
-    <h3 class="text-xl font-semibold mb-4 text-gray-800">Website Content Search</h3>
-    <p class="text-gray-600 mb-4">
-      Search for content from this website. Enter domain names, keywords, or content types to see relevant pages and their SERP-optimized information.
-    </p>
-    
-    <div class="search-input-group">
-      <label for="domain-input" class="block text-sm font-medium text-gray-700 mb-2">
-        Search Query
+<div class="bg-white rounded-lg shadow-lg p-6">
+  <h2 class="text-2xl font-bold text-gray-900 mb-6">
+    Current SERP Analysis
+  </h2>
+  
+  <div class="space-y-4">
+    <div>
+      <label for="url-input" class="block text-sm font-medium text-gray-700 mb-2">
+        Enter URL to analyze:
       </label>
-      <input
-        type="text"
-        id="domain-input"
-        placeholder="Enter search terms (e.g., AI, Minecraft, 無人機, 課程)"
-        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-      />
+      <div class="flex gap-2">
+        <input 
+          type="url" 
+          id="url-input"
+          placeholder="https://example.com/page"
+          class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        />
+        <button 
+          id="analyze-btn"
+          class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+        >
+          Analyze
+        </button>
+      </div>
+      <div class="mt-2 space-y-1">
+        <p class="text-sm text-gray-500">
+          <strong>For local testing:</strong> Use the full URL after building (e.g., http://localhost:4321/school-courses/ai-enrichment-course/)
+        </p>
+        <p class="text-sm text-gray-500">
+          <strong>For production:</strong> Use the live URL (e.g., https://10botics.com/school-courses/ai-enrichment-course/)
+        </p>
+      </div>
     </div>
     
-    <button
-      onclick="searchPages()"
-      class="mt-4 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
-    >
-      Search Pages
-    </button>
-  </div>
+    <div id="results" class="hidden">
+      <div class="border border-gray-200 rounded-lg p-4 bg-gray-50">
+        <div id="serp-preview" class="max-w-2xl">
+          <!-- SERP preview will be inserted here -->
+        </div>
+      </div>
+      
+      <div class="mt-4 grid md:grid-cols-2 gap-4">
+        <div class="bg-blue-50 p-4 rounded-lg">
+          <h3 class="font-semibold text-blue-900 mb-2">Meta Tags Found:</h3>
+          <div id="meta-tags" class="text-sm text-blue-800 space-y-1">
+            <!-- Meta tags will be listed here -->
+          </div>
+        </div>
+        
+        <div class="bg-green-50 p-4 rounded-lg">
+          <h3 class="font-semibold text-green-900 mb-2">SEO Analysis:</h3>
+          <div id="seo-analysis" class="text-sm text-green-800 space-y-1">
+            <!-- SEO analysis will be shown here -->
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="loading" class="hidden text-center py-8">
+      <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+      <p class="mt-2 text-gray-600">Analyzing URL...</p>
+    </div>
+    
+    <div id="error" class="hidden bg-red-50 border border-red-200 rounded-lg p-4">
+      <p id="error-message" class="text-red-800"></p>
+    </div>
 
-  <div class="search-results mt-8">
-    <h4 class="text-lg font-semibold mb-4 text-gray-800">Search Results</h4>
-    <div id="results-container" class="space-y-4">
-      <!-- Results will be populated here -->
+    <!-- Quick Test Section -->
+    <div class="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+      <h3 class="font-semibold text-yellow-900 mb-2">Quick Test URLs:</h3>
+      <div class="space-y-2">
+        <button 
+          onclick="testUrl('http://localhost:4321/school-courses/ai-enrichment-course/')"
+          class="block w-full text-left px-3 py-2 bg-yellow-100 hover:bg-yellow-200 rounded text-sm text-yellow-800 transition-colors"
+        >
+          🏠 Local: /school-courses/ai-enrichment-course/
+        </button>
+        <button 
+          onclick="testUrl('https://10botics.com/school-courses/ai-enrichment-course/')"
+          class="block w-full text-left px-3 py-2 bg-yellow-100 hover:bg-yellow-200 rounded text-sm text-yellow-800 transition-colors"
+        >
+          🌐 Production: https://10botics.com/school-courses/ai-enrichment-course/
+        </button>
+      </div>
     </div>
   </div>
 </div>
 
 <script>
-  const websitePages = JSON.parse('{JSON.stringify(websitePages)}');
-  
-  // Debug: Log the data when the page loads
-  console.log('Website pages loaded:', websitePages.length);
-  console.log('First few pages:', websitePages.slice(0, 3));
-  
-  function searchPages() {
-    const query = document.getElementById('domain-input').value.trim();
-    const resultsContainer = document.getElementById('results-container');
-    
-    if (!query) {
-      resultsContainer.innerHTML = '<p class="text-gray-500">Please enter a search query.</p>';
+  document.addEventListener('DOMContentLoaded', function() {
+    const urlInput = document.getElementById('url-input') as HTMLInputElement;
+    const analyzeBtn = document.getElementById('analyze-btn') as HTMLButtonElement;
+    const results = document.getElementById('results') as HTMLDivElement;
+    const loading = document.getElementById('loading') as HTMLDivElement;
+    const error = document.getElementById('error') as HTMLDivElement;
+    const errorMessage = document.getElementById('error-message') as HTMLParagraphElement;
+    const serpPreview = document.getElementById('serp-preview') as HTMLDivElement;
+    const metaTags = document.getElementById('meta-tags') as HTMLDivElement;
+    const seoAnalysis = document.getElementById('seo-analysis') as HTMLDivElement;
+
+    // Check if all elements exist
+    if (!urlInput || !analyzeBtn || !results || !loading || !error || !errorMessage || !serpPreview || !metaTags || !seoAnalysis) {
+      console.error('Required DOM elements not found');
       return;
     }
-    
-    // Debug: Log the search query and some sample URLs
-    console.log('Search query:', query);
-    console.log('Total pages in data:', websitePages.length);
-    console.log('Sample URLs in data:', websitePages.slice(0, 3).map(p => ({ title: p.title, url: p.url, category: p.category })));
-    console.log('All categories in data:', [...new Set(websitePages.map(p => p.category))]);
-    console.log('School course pages:', websitePages.filter(p => p.category === 'courses').map(p => ({ title: p.title, url: p.url })));
-    
-    const results = searchSERPData(websitePages, query);
-    
-    if (results.length === 0) {
-      resultsContainer.innerHTML = '<p class="text-gray-500">No results found for your search query.</p>';
-      return;
-    }
-    
-    const resultsHTML = results.map(page => `
-      <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
-        <div class="flex items-start justify-between mb-2">
-          <span class="text-xs text-gray-500">#${page.position}</span>
-        </div>
-        
-        <h5 class="font-semibold text-gray-900 mb-2">
-          <a href="${page.url}" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 transition-colors">
-            ${page.metaTitle || page.title}
-          </a>
-        </h5>
-        
-        <p class="text-sm text-gray-600 mb-3">
-          ${page.metaDescription || page.description}
-        </p>
-        
-        ${page.tags && page.tags.length > 0 ? `
-          <div class="mt-3 pt-3 border-t border-gray-100">
-            <div class="flex flex-wrap gap-1">
-              ${page.tags.map(tag => `
-                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-gray-100 text-gray-800">
-                  ${tag}
-                </span>
-              `).join('')}
-            </div>
-          </div>
-        ` : ''}
-        
-        ${page.publishDate ? `
-          <div class="mt-3 text-xs text-gray-500">
-            Published: ${new Date(page.publishDate).toLocaleDateString()}
-          </div>
-        ` : ''}
-      </div>
-    `).join('');
-    
-    resultsContainer.innerHTML = resultsHTML;
-  }
-  
-  function searchSERPData(data, query) {
-    const cleanQuery = query.toLowerCase().trim();
-    
-    if (!cleanQuery) {
-      return data.slice(0, 8);
-    }
 
-    // If searching for domain, return main pages
-    if (cleanQuery.includes('10botics') || cleanQuery.includes('10education') || cleanQuery === '10botics.com') {
-      return data.slice(0, 8);
-    }
+    // Set default URL for testing - use localhost for development
+    urlInput.value = 'http://localhost:4321/school-courses/ai-enrichment-course/';
 
-    // Search by keywords in title, description, meta tags, tags, and URL
-    const results = data.filter(page => {
-      const titleMatch = page.title.toLowerCase().includes(cleanQuery);
-      const descMatch = page.description.toLowerCase().includes(cleanQuery);
-      const categoryMatch = page.category.toLowerCase().includes(cleanQuery);
-      const tagMatch = page.tags?.some(tag => tag.toLowerCase().includes(cleanQuery));
-      const metaTitleMatch = page.metaTitle?.toLowerCase().includes(cleanQuery);
-      const metaDescMatch = page.metaDescription?.toLowerCase().includes(cleanQuery);
-      const metaKeywordsMatch = page.metaKeywords?.toLowerCase().includes(cleanQuery);
-      
-      // URL matching - handle both full URLs and path segments
-      let urlMatch = false;
-      if (page.url) {
-        const cleanUrl = page.url.toLowerCase();
-        // Check if query matches the full URL
-        urlMatch = cleanUrl.includes(cleanQuery);
-        // Also check if query matches just the path part (after domain)
-        if (!urlMatch && cleanQuery.startsWith('/')) {
-          const urlPath = cleanUrl.split('10botics.com')[1] || cleanUrl.split('10education.com')[1] || '';
-          urlMatch = urlPath.includes(cleanQuery);
-        }
-        // Check if query matches just the slug part
-        if (!urlMatch) {
-          const urlSlug = cleanUrl.split('/').pop() || '';
-          urlMatch = urlSlug.includes(cleanQuery.replace(/^\/+|\/+$/g, ''));
-        }
+    // Global function for quick test buttons
+    (window as any).testUrl = function(url: string) {
+      urlInput.value = url;
+      analyzeBtn.click();
+    };
+
+    analyzeBtn.addEventListener('click', async function() {
+      const url = urlInput.value.trim();
+      if (!url) {
+        showError('Please enter a valid URL');
+        return;
       }
-      
-      // Debug logging for URL search
-      if (cleanQuery.includes('school-courses') || cleanQuery.includes('ai-enrichment')) {
-        console.log('Page being checked:', {
-          title: page.title,
-          url: page.url,
-          category: page.category,
-          urlMatch,
-          cleanQuery
-        });
+
+      // Show loading state
+      hideAll();
+      loading.classList.remove('hidden');
+
+      try {
+        // Ensure we have a full URL
+        let fullUrl = url;
+        if (url.startsWith('/')) {
+          // For relative URLs, construct full URL from current origin
+          fullUrl = window.location.origin + url;
+        } else if (!url.startsWith('http')) {
+          // If it's not a full URL and not relative, assume it's a path
+          fullUrl = window.location.origin + '/' + url.replace(/^\/+/, '');
+        }
+
+        console.log('Fetching from:', fullUrl);
+
+        const response = await fetch(fullUrl);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+
+        // Extract meta tags
+        const title = doc.querySelector('title')?.textContent || 'No title found';
+        const description = doc.querySelector('meta[name="description"]')?.getAttribute('content') || 'No description found';
+        const keywords = doc.querySelector('meta[name="keywords"]')?.getAttribute('content') || 'No keywords found';
+        const ogTitle = doc.querySelector('meta[property="og:title"]')?.getAttribute('content') || title;
+        const ogDescription = doc.querySelector('meta[property="og:description"]')?.getAttribute('content') || description;
+        const ogImage = doc.querySelector('meta[property="og:image"]')?.getAttribute('content') || 'No OG image found';
+        const canonical = doc.querySelector('link[rel="canonical"]')?.getAttribute('href') || fullUrl;
+
+        // Display SERP preview
+        serpPreview.innerHTML = `
+          <div class="mb-3">
+            <div class="text-sm text-gray-500 mb-1">${new URL(fullUrl).hostname}</div>
+            <div class="text-blue-600 text-lg font-medium hover:underline cursor-pointer">${title}</div>
+            <div class="text-sm text-gray-600">${description}</div>
+          </div>
+        `;
+
+        // Display meta tags
+        metaTags.innerHTML = `
+          <div><strong>Title:</strong> ${title}</div>
+          <div><strong>Description:</strong> ${description}</div>
+          <div><strong>Keywords:</strong> ${keywords}</div>
+          <div><strong>OG Title:</strong> ${ogTitle}</div>
+          <div><strong>OG Description:</strong> ${ogDescription}</div>
+          <div><strong>OG Image:</strong> ${ogImage}</div>
+          <div><strong>Canonical:</strong> ${canonical}</div>
+        `;
+
+        // SEO Analysis
+        const titleLength = title.length;
+        const descLength = description.length;
+        const titleStatus = titleLength >= 50 && titleLength <= 60 ? '✅' : '⚠️';
+        const descStatus = descLength >= 150 && descLength <= 160 ? '✅' : '⚠️';
+
+        seoAnalysis.innerHTML = `
+          <div><strong>Title Length:</strong> ${titleStatus} ${titleLength}/60 characters</div>
+          <div><strong>Description Length:</strong> ${descStatus} ${descLength}/160 characters</div>
+          <div><strong>Has Keywords:</strong> ${keywords !== 'No keywords found' ? '✅' : '⚠️'}</div>
+          <div><strong>Has OG Tags:</strong> ${ogTitle !== title || ogDescription !== description ? '✅' : '⚠️'}</div>
+          <div><strong>Has Canonical:</strong> ${canonical !== fullUrl ? '✅' : '⚠️'}</div>
+        `;
+
+        // Show results
+        hideAll();
+        results.classList.remove('hidden');
+
+      } catch (err: unknown) {
+        console.error('Error analyzing URL:', err);
+        const errorMessage = err instanceof Error ? err.message : 'Unknown error occurred';
+        showError(`Failed to analyze URL: ${errorMessage}`);
       }
-      
-      return titleMatch || descMatch || categoryMatch || tagMatch || 
-             metaTitleMatch || metaDescMatch || metaKeywordsMatch || urlMatch;
     });
 
-    // If no direct matches, try partial matches for common terms
-    if (results.length === 0) {
-      const partialResults = data.filter(page => {
-        if (cleanQuery.includes('ai') || cleanQuery.includes('人工智能')) {
-          return page.title.includes('AI') || page.title.includes('人工智能') || 
-                 page.description.includes('AI') || page.description.includes('人工智能') ||
-                 page.metaTitle?.includes('AI') || page.metaTitle?.includes('人工智能') ||
-                 page.metaDescription?.includes('AI') || page.metaDescription?.includes('人工智能');
-        }
-        if (cleanQuery.includes('minecraft')) {
-          return page.title.includes('Minecraft') || 
-                 page.description.includes('Minecraft') ||
-                 page.metaTitle?.includes('Minecraft') ||
-                 page.metaDescription?.includes('Minecraft');
-        }
-        if (cleanQuery.includes('drone') || cleanQuery.includes('無人機')) {
-          return page.title.includes('無人機') || page.title.includes('CoDrone') ||
-                 page.description.includes('無人機') || page.description.includes('drone') ||
-                 page.metaTitle?.includes('無人機') || page.metaTitle?.includes('drone') ||
-                 page.metaDescription?.includes('無人機') || page.metaDescription?.includes('drone');
-        }
-        if (cleanQuery.includes('course') || cleanQuery.includes('課程')) {
-          return page.category === 'courses';
-        }
-        if (cleanQuery.includes('competition') || cleanQuery.includes('比賽')) {
-          return page.category === 'competition';
-        }
-        return false;
-      });
-      return partialResults.slice(0, 6);
+    function showError(message: string): void {
+      hideAll();
+      errorMessage.textContent = message;
+      error.classList.remove('hidden');
     }
 
-    return results.slice(0, 8);
-  }
-  
-  // Add event listener for Enter key
-  document.getElementById('domain-input').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-      searchPages();
+    function hideAll(): void {
+      results.classList.add('hidden');
+      loading.classList.add('hidden');
+      error.classList.add('hidden');
     }
+
+    // Auto-analyze on Enter key
+    urlInput.addEventListener('keypress', function(e: KeyboardEvent) {
+      if (e.key === 'Enter') {
+        analyzeBtn.click();
+      }
+    });
   });
 </script>
 
