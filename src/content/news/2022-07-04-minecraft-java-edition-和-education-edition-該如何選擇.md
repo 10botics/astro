@@ -1,7 +1,7 @@
 ---
 title: "Minecraft Java Edition 和 Education Edition 該如何選擇？"
 publishDate: 2022-07-04
-metadescription: "分析Minecraft Java Edition與Education Edition在教育應用中的差異，探討Java Edition的創造自由度與社群支持如何更好地激發學生學習興趣，提供教育主題設計建議。"
+description: "分析Minecraft Java Edition與Education Edition在教育應用中的差異，探討Java Edition的創造自由度與社群支持如何更好地激發學生學習興趣，提供教育主題設計建議。"
 featuredImage: "../../assets/images/news/2022-07-04-minecraft-java-edition-和-education-edition-該如何選擇/image1.png"
 category: "文章"
 tags: []
