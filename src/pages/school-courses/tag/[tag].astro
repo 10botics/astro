@@ -1,399 +1,36 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
-
-// Course interface
-interface Course {
-  slug: string;
-  filename: string;
-  title: string;
-  description: string;
-  courseType: string;
-  targetAudience: string;
-  duration: string;
-  tags: string[];
-  heroImage?: string | any;
-  publishDate: string;
-  source: string;
-}
+import { 
+  discoverCourses, 
+  filterCoursesByTag, 
+  getAllUniqueTags, 
+  generateTagPaths, 
+  generateTagSlug,
+  AUDIENCE_TAG_MAPPING,
+  type Course 
+} from '../../../utils/courseMappings';
 
 // Get the tag from the URL parameter
 export async function getStaticPaths() {
-  // Auto-discover .astro course files
-  const courseFiles = await import.meta.glob('../*.astro', { eager: true });
-
-  // Convert .astro files to course data (excluding index and dynamic routes)
-  const astroCourses = Object.entries(courseFiles)
-    .filter(([path]) => !path.includes('../index.astro') && !path.includes('../[slug].astro'))
-    .map(([path, module]: [string, any]) => {
-      const filename = path.replace('../', '').replace('.astro', '');
-      
-      // Map Chinese filenames to English URLs
-      const slugMapping: Record<string, string> = {
-        '人工智能遊戲編程課程': 'ai-game-coding',
-        'AI啟蒙與藝術創作課程': 'ai-enrichment-course',
-        'AI數碼動畫展': 'ai-digital-animation-exhibition',
-        'Blockchain 區塊鏈課程': 'blockchain',
-        'CoDrone無人機課程': 'codrone',
-        'Delightex 遊戲設計課程': 'delightex-game-design',
-        'Donkey Car 無人車課程': 'donkey-car',
-        'Dobot 智能機械手臂': 'dobot',
-        'ksp太空計劃課程': 'ksp',
-        'Lego Spike Prime 機器人技術大師班': 'lego-spike-prime',
-        'Minecraft校園創建課程': 'minecraft',
-        'Microbit 降落傘課程': 'microbit-parachute',
-        'Microbit 逃出迷宮': 'microbit-maze',
-        'Procreate數位藝術課程': 'procreate',
-        'raspberry-pi編程課程': 'raspberry-pi',
-        'Scratch 人工智能編程': 'scratch-ai-programming',
-        'Scratch遊戲設計課程': 'scratch-game-design',
-        'SwiftPlaygrounds編程課程': 'swiftplaygrounds',
-        'Tello 無人機課程': 'tello',
-        '珊瑚環境監測入門課程': 'coral-environment-monitoring',
-        'Unity 課程': 'unity',
-        '自然生物探究手作課程': 'natural-bio-sciences'
-      };
-      
-      // Extract courseData from frontmatter
-      const courseData = module.courseData || {
-        title: filename,
-        description: `${filename} 課程頁面`,
-        tags: [filename.replace('-', ' ')]
-      };
-      
-      const courseTitle = courseData.title;
-      const courseDescription = courseData.description;
-      const courseTags = courseData.tags;
-      const courseHeroImage = courseData.heroImage;
-      const courseTargetAudience = '待定';
-      const courseDuration = '待定';
-      
-      // Simple course type mapping inline
-      const typeMapping: Record<string, string> = {
-        'ai': 'AI', 'scratch': 'AI', 'arduino': 'Hardware',
-        'raspberry': 'Hardware', 'donkey-car': 'Robotics',
-        'coral': 'Hardware', 'demo': 'Demo', 'example': 'Demo',
-        'ksp': 'Creative', 'unity': 'Programming', 'roblox': 'Programming'
-      };
-      
-      let courseType = 'Other';
-      for (const [key, type] of Object.entries(typeMapping)) {
-        if (filename.toLowerCase().includes(key)) {
-          courseType = type;
-          break;
-        }
-      }
-      
-      return {
-        slug: slugMapping[filename] || filename,
-        filename: `${filename}.astro`,
-        title: courseTitle,
-        description: courseDescription,
-        courseType: courseType,
-        targetAudience: courseTargetAudience,
-        duration: courseDuration,
-        tags: courseTags,
-        heroImage: courseHeroImage,
-        publishDate: new Date().toISOString().split('T')[0],
-        source: 'astro'
-      } as Course;
-    });
-
+  // Auto-discover courses using shared utility
+  const astroCourses = await discoverCourses('../', ['../index.astro', '../[slug].astro']);
+  
   // Get all unique tags from all courses
-  const allTags = new Set<string>();
-  astroCourses.forEach(course => {
-    course.tags.forEach(tag => {
-      if (tag && tag.trim()) {
-        allTags.add(tag);
-      }
-    });
-  });
-
-  // Tag mapping for Chinese to English URLs
-  const tagMapping = {
-    // Chinese tags to English equivalents
-    '初中': 'junior-secondary',
-    '高中': 'senior-secondary', 
-    '高小': 'upper-primary',
-    '初小': 'lower-primary',
-    '小學': 'primary',
-    '遊戲開發': 'game-development',
-    '網頁遊戲': 'web-games',
-    '無人機': 'drone',
-    '軟件開發': 'software-development',
-    '數位藝術': 'digital-art',
-    '創意': 'creativity',
-    '繪畫': 'drawing',
-    '虛擬實境': 'virtual-reality',
-    'VR 虛擬實境': 'vr-virtual-reality',
-    'AR 擴增實境': 'ar-augmented-reality',
-    '動畫創作': 'animation-creation',
-    '互動體驗': 'interactive-experience',
-    'AI 人工智能': 'ai',
-    'Programming 編程': 'programming',
-    'Block Coding 方塊編程': 'block-coding',
-    'Arts 藝術': 'arts',
-    'Engineering 工程': 'engineering',
-    'Science 科學': 'science',
-    '科學': 'science',
-    'STEM Day': 'stem-day',
-    // Technology and platform specific tags
-    'ChatGPT': 'chatgpt',
-    'Leonardo AI': 'leonardo-ai',
-    'Delightex': 'delightex',
-    'Metaverse 元宇宙': 'metaverse',
-    '元宇宙': 'metaverse',
-    'Microbit': 'microbit',
-    'Micro:bit': 'microbit',
-    'Blockchain 區塊鏈': 'blockchain',
-    'Dobot': 'dobot',
-    'KSP': 'ksp',
-    'Lego': 'lego',
-    'Robotics 機械人': 'robotics',
-    'Coral': 'coral',
-    'Python': 'python',
-    'Raspberry Pi': 'raspberry-pi',
-    'Tensorflow': 'tensorflow',
-    'Swift Playground': 'swift-playground',
-    '3D 建模': '3d-modeling',
-    'C#': 'csharp',
-    'Unity': 'unity',
-    '故事開發': 'story-development',
-    '編程': 'programming',
-    '手作': 'hands-on',
-    'IoT': 'iot',
-    '海洋環境': 'marine-environment',
-    'Arduino': 'arduino',
-    'Tello': 'tello',
-    'Scratch': 'scratch',
-    'Procreate': 'procreate',
-    'Donkey Car': 'donkey-car',
-    'CoDrone': 'codrone',
-    'Minecraft': 'minecraft',
-    // Additional mappings for broader categories
-    'AI': 'ai',
-    '藝術': 'arts',
-    '其他': 'others'
-  };
-
-  // Create paths for each tag
-  const tagPaths = Array.from(allTags)
-    .filter(tag => tag && tag.trim())
-    .map(tag => {
-      // Check if we have a mapping for this tag
-      const mappedTag = (tagMapping as any)[tag] || tag;
-      
-      // Use the same slug generation logic as in index.astro
-      const tagSlug = mappedTag
-        .toLowerCase()
-        .replace(/\s+/g, '-')
-        .replace(/[^\w-]/g, '') // Remove all non-word characters except hyphens
-        .replace(/-+$/, '');
-      
-      // Only create paths for non-empty slugs
-      if (tagSlug && tagSlug.trim()) {
-        return {
-          params: { tag: tagSlug },
-          props: { tag: tagSlug, originalTag: tag }
-        };
-      }
-      return null;
-    })
-    .filter(Boolean);
-
-  // Add the new category tags
-  const categoryTags = [
-    { tag: 'ai', originalTag: 'AI 人工智能' },
-    { tag: 'programming', originalTag: 'Programming 編程' },
-    { tag: 'arts', originalTag: 'Arts 藝術' },
-    { tag: 'others', originalTag: 'Others 其他' }
-  ];
-
-  const categoryPaths = categoryTags.map(({ tag, originalTag }) => ({
-    params: { tag },
-    props: { tag, originalTag }
-  }));
-
-  return [...tagPaths, ...categoryPaths];
+  const allTags = getAllUniqueTags(astroCourses);
+  
+  // Generate tag paths using shared utility
+  return generateTagPaths(allTags);
 }
 
 // Get the tag from props
 const { tag, originalTag } = Astro.props;
 
-// Auto-discover .astro course files
-const courseFiles = await import.meta.glob('../*.astro', { eager: true });
+// Auto-discover courses using shared utility
+const astroCourses = await discoverCourses('../', ['../index.astro', '../[slug].astro']);
 
-// Convert .astro files to course data (excluding index and dynamic routes)
-const astroCourses = Object.entries(courseFiles)
-  .filter(([path]) => !path.includes('../index.astro') && !path.includes('../[slug].astro'))
-  .map(([path, module]: [string, any]) => {
-    const filename = path.replace('../', '').replace('.astro', '');
-    
-    // Map Chinese filenames to English URLs
-    const slugMapping: Record<string, string> = {
-      '人工智能遊戲編程課程': 'ai-game-coding',
-      'AI啟蒙與藝術創作課程': 'ai-enrichment-course',
-      'AI數碼動畫展': 'ai-digital-animation-exhibition',
-      'Blockchain 區塊鏈課程': 'blockchain',
-      'CoDrone無人機課程': 'codrone',
-      'Delightex 遊戲設計課程': 'delightex-game-design',
-      'Donkey Car 無人車課程': 'donkey-car',
-      'Dobot 智能機械手臂': 'dobot',
-      'ksp太空計劃課程': 'ksp',
-      'Lego Spike Prime 機器人技術大師班': 'lego-spike-prime',
-      'Minecraft校園創建課程': 'minecraft',
-      'Microbit 降落傘課程': 'microbit-parachute',
-      'Microbit 逃出迷宮': 'microbit-maze',
-      'Procreate數位藝術課程': 'procreate',
-      'raspberry-pi編程課程': 'raspberry-pi',
-      'Scratch 人工智能編程': 'scratch-ai-programming',
-      'Scratch遊戲設計課程': 'scratch-game-design',
-      'SwiftPlaygrounds編程課程': 'swiftplaygrounds',
-      'Tello 無人機課程': 'tello',
-      '珊瑚環境監測入門課程': 'coral-environment-monitoring',
-      'Unity 課程': 'unity',
-      '自然生物探究手作課程': 'natural-bio-sciences'
-    };
-    
-    // Extract courseData from frontmatter
-    const courseData = module.courseData || {
-      title: filename,
-      description: `${filename} 課程頁面`,
-      tags: [filename.replace('-', ' ')]
-    };
-    
-    const courseTitle = courseData.title;
-    const courseDescription = courseData.description;
-    const courseTags = courseData.tags;
-    const courseHeroImage = courseData.heroImage;
-    const courseTargetAudience = '待定';
-    const courseDuration = '待定';
-    
-    return {
-      slug: slugMapping[filename] || filename,
-      filename: `${filename}.astro`,
-      title: courseTitle,
-      description: courseDescription,
-      targetAudience: courseTargetAudience,
-      duration: courseDuration,
-      tags: courseTags,
-      heroImage: courseHeroImage,
-      publishDate: new Date().toISOString().split('T')[0],
-      source: 'astro'
-    } as Course;
-  });
-
-// Tag mapping for Chinese to English URLs (redefined for main component scope)
-const tagMapping = {
-  // Chinese tags to English equivalents
-  '初中': 'junior-secondary',
-  '高中': 'senior-secondary', 
-  '高小': 'upper-primary',
-  '初小': 'lower-primary',
-  '小學': 'primary',
-  '遊戲開發': 'game-development',
-  '網頁遊戲': 'web-games',
-  '無人機': 'drone',
-  '軟件開發': 'software-development',
-  '數位藝術': 'digital-art',
-  '創意': 'creativity',
-  '繪畫': 'drawing',
-  '虛擬實境': 'virtual-reality',
-  'VR 虛擬實境': 'vr-virtual-reality',
-  'AR 擴增實境': 'ar-augmented-reality',
-  '動畫創作': 'animation-creation',
-  '互動體驗': 'interactive-experience',
-  'AI 人工智能': 'ai',
-  'Programming 編程': 'programming',
-  'Block Coding 方塊編程': 'block-coding',
-  'Arts 藝術': 'arts',
-  'Engineering 工程': 'engineering',
-  'Science 科學': 'science',
-  '科學': 'science',
-  'STEM Day': 'stem-day',
-  // Technology and platform specific tags
-  'ChatGPT': 'chatgpt',
-  'Leonardo AI': 'leonardo-ai',
-  'Delightex': 'delightex',
-  'Metaverse 元宇宙': 'metaverse',
-  '元宇宙': 'metaverse',
-  'Microbit': 'microbit',
-  'Micro:bit': 'microbit',
-  'Blockchain 區塊鏈': 'blockchain',
-  'Dobot': 'dobot',
-  'KSP': 'ksp',
-  'Lego': 'lego',
-  'Robotics 機械人': 'robotics',
-  'Coral': 'coral',
-  'Python': 'python',
-  'Raspberry Pi': 'raspberry-pi',
-  'Tensorflow': 'tensorflow',
-  'Swift Playground': 'swift-playground',
-  '3D 建模': '3d-modeling',
-  'C#': 'csharp',
-  'Unity': 'unity',
-  '故事開發': 'story-development',
-  '編程': 'programming',
-  '手作': 'hands-on',
-  'IoT': 'iot',
-  '海洋環境': 'marine-environment',
-  'Arduino': 'arduino',
-  'Tello': 'tello',
-  'Scratch': 'scratch',
-  'Procreate': 'procreate',
-  'Donkey Car': 'donkey-car',
-  'CoDrone': 'codrone',
-  'Minecraft': 'minecraft',
-  // Additional mappings for broader categories
-  'AI': 'ai',
-  '藝術': 'arts',
-  '其他': 'others'
-};
-
-// Filter courses by the current tag
-const filteredCourses = astroCourses.filter(course => {
-  // Special handling for the new category tags
-  if (tag === 'ai') {
-    return course.tags.some(courseTag => 
-      courseTag.includes('AI') || courseTag.includes('人工智能') || courseTag.includes('ai')
-    );
-  } else if (tag === 'programming') {
-    return course.tags.some(courseTag => 
-      courseTag.includes('Programming') || courseTag.includes('編程') || courseTag.includes('C#') || courseTag.includes('Unity') || courseTag.includes('Swift')
-    );
-  } else if (tag === 'arts') {
-    return course.tags.some(courseTag => 
-      courseTag.includes('Arts') || courseTag.includes('藝術') || courseTag.includes('Procreate') || courseTag.includes('繪畫') || courseTag.includes('創意')
-    );
-  } else if (tag === 'others') {
-    // Courses that don't fit into AI, Programming, or Arts categories
-    const hasAITag = course.tags.some(courseTag => 
-      courseTag.includes('AI') || courseTag.includes('人工智能') || courseTag.includes('ai')
-    );
-    const hasProgrammingTag = course.tags.some(courseTag => 
-      courseTag.includes('Programming') || courseTag.includes('編程') || courseTag.includes('C#') || courseTag.includes('Unity') || courseTag.includes('Swift')
-    );
-    const hasArtsTag = course.tags.some(courseTag => 
-      courseTag.includes('Arts') || courseTag.includes('藝術') || courseTag.includes('Procreate') || courseTag.includes('繪畫') || courseTag.includes('創意')
-    );
-    return !hasAITag && !hasProgrammingTag && !hasArtsTag;
-  } else {
-    // Original filtering logic for other tags
-    return course.tags.some(courseTag => {
-      // Check if we have a mapping for this tag
-      const mappedTag = (tagMapping as any)[courseTag] || courseTag;
-      
-      // Use the same slug generation logic for comparison
-      const courseTagSlug = mappedTag
-        .toLowerCase()
-        .replace(/\s+/g, '-')
-        .replace(/[^\w-]/g, '') // Remove all non-word characters except hyphens
-        .replace(/-+$/, '');
-      
-      return courseTagSlug === tag || courseTag === originalTag;
-    });
-  }
-});
+// Filter courses by the current tag using shared utility
+const filteredCourses = filterCoursesByTag(astroCourses, tag, originalTag);
 
 // Sort courses by publication date (newest first)
 const sortedCourses = filteredCourses.sort((a, b) => 
@@ -491,15 +128,7 @@ const pageKeywords = `${originalTag}, STEM課程, AI課程, 編程課程, 機器
                               <div class="flex flex-wrap gap-1 items-center">
                                 <span class="text-xs font-medium text-gray-600 mr-1">適合對象:</span>
                                 {audienceTags.map(tag => {
-                                  // Tag mapping for target audience tags
-                                  const audienceTagMapping = {
-                                    '初小': 'lower-primary',
-                                    '高小': 'upper-primary', 
-                                    '初中': 'junior-secondary',
-                                    '高中': 'senior-secondary'
-                                  };
-                                  
-                                  const tagSlug = audienceTagMapping[tag] || tag.toLowerCase().replace(/\s+/g, '-');
+                                  const tagSlug = AUDIENCE_TAG_MAPPING[tag] || tag.toLowerCase().replace(/\s+/g, '-');
                                   
                                   return (
                                     <a href={`/school-courses/tag/${tagSlug}`} class="bg-cyan-100 text-cyan-800 px-2 py-1 rounded text-xs font-medium hover:bg-cyan-200 transition-colors">
@@ -514,15 +143,8 @@ const pageKeywords = `${originalTag}, STEM課程, AI課程, 編程課程, 機器
                             {otherTags.length > 0 && (
                               <div class="flex flex-wrap gap-1">
                                 {otherTags.map((tag: string) => {
-                                  // Check if we have a mapping for this tag
-                                  const mappedTag = (tagMapping as any)[tag] || tag;
-                                  
-                                  // Create a more robust slug that handles Chinese characters
-                                  const tagSlug = mappedTag
-                                    .toLowerCase()
-                                    .replace(/\s+/g, '-')
-                                    .replace(/[^\w-]/g, '') // Remove all non-word characters except hyphens
-                                    .replace(/-+$/, '');
+                                  // Generate tag slug using shared utility
+                                  const tagSlug = generateTagSlug(tag);
                                   
                                   return (
                                     <a href={`/school-courses/tag/${tagSlug}`}

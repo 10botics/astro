@@ -355,6 +355,13 @@ export const urlAliases = {
     },
     "main": "natural-bio-sciences"
   },
+  "Apple Vision Pro 遊戲開發課程.astro": {
+    "tags": {
+      "school-courses": ["apple-vision-pro-game-dev"],
+      "course": ["apple-vision-pro-game-dev"]
+    },
+    "main": "apple-vision-pro-game-dev"
+  },
 
   // STEM Day activities
   "飲管橋.astro": {
