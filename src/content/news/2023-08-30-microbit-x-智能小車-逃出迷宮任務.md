@@ -7,11 +7,6 @@ SEOImage: "../../assets/images/news/2023-08-30-microbit-x-智能小車-逃出迷
 category: "過往活動"
 tags: ["AI 人工智能", "Micro:bit", "Programming 編程", "STEM Day", "初中"]
 author: "sukileung"
-isFeatured: false
-externalLink: "https://10botics.com/past-activities/2023/08/30/microbit-cckln/"
-wpSlug: "microbit-x-智能小車-逃出迷宮任務"
-wpDate: "2023/08/30"
-readingTime: 1
 ---
 
 ![](../../assets/images/news/2023-08-30-microbit-x-智能小車-逃出迷宮任務/image2.jpeg)
