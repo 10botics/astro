@@ -5,7 +5,7 @@ import SingleCourseContent from '../../components/course/SingleCourseContent.ast
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
-import RelatedCoursesForCourses from '../../components/course/RelatedCoursesForCourses.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
 import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
 import { Image } from 'astro:assets';
 
@@ -307,7 +307,7 @@ const galleryImages = [
     <!-- Contact Form -->
 
     <!-- Related Courses Section -->
-    <RelatedCoursesForCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="microbit-maze" />
+    <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="microbit-maze" / context="course">
 
     <!-- Related News Section -->
     <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />

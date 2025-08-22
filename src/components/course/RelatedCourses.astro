@@ -2,12 +2,35 @@
 import { Image } from 'astro:assets';
 
 interface Props {
-  newsTags: string[];
+  // For news-to-courses context
+  newsTags?: string[];
   newsTitle?: string;
+  
+  // For course-to-courses context  
+  courseTags?: string[];
+  courseTitle?: string;
+  currentCourseSlug?: string;
+  
+  // Common props
   maxResults?: number;
+  context?: 'news' | 'course'; // Determines styling and behavior
 }
 
-const { newsTags = [], newsTitle = '', maxResults = 9 } = Astro.props;
+const { 
+  newsTags = [], 
+  newsTitle = '', 
+  courseTags = [], 
+  courseTitle = '', 
+  currentCourseSlug = '', 
+  maxResults, 
+  context = 'news' 
+} = Astro.props;
+
+// Determine the actual tags and settings based on context
+const tags = context === 'news' ? newsTags : courseTags;
+const title = context === 'news' ? newsTitle : courseTitle;
+const defaultMaxResults = context === 'news' ? 9 : 6;
+const finalMaxResults = maxResults ?? defaultMaxResults;
 
 // Auto-discover .astro course files (same approach as index.astro)
 const courseFiles = await import.meta.glob('../../pages/school-courses/*.astro', { eager: true });
@@ -67,24 +90,24 @@ const astroCourses = Object.entries(courseFiles)
 const schoolCourses = astroCourses;
 
 // Function to calculate tag similarity score
-function calculateTagSimilarity(courseTags: string[], newsTags: string[]): number {
-  if (!courseTags || !newsTags) return 0;
+function calculateTagSimilarity(courseTags: string[], inputTags: string[]): number {
+  if (!courseTags || !inputTags) return 0;
   
   const courseTagsLower = courseTags.map(tag => tag.toLowerCase().trim());
-  const newsTagsLower = newsTags.map(tag => tag.toLowerCase().trim());
+  const inputTagsLower = inputTags.map(tag => tag.toLowerCase().trim());
   
   // Count matching tags (exact and partial matches)
   let score = 0;
   
-  for (const newsTag of newsTagsLower) {
+  for (const inputTag of inputTagsLower) {
     for (const courseTag of courseTagsLower) {
-      if (newsTag === courseTag) {
+      if (inputTag === courseTag) {
         score += 5; // Exact match gets highest score
-      } else if (newsTag.includes(courseTag) || courseTag.includes(newsTag)) {
+      } else if (inputTag.includes(courseTag) || courseTag.includes(inputTag)) {
         score += 2; // Partial match gets medium score
       } else {
         // Check for key Chinese phrases and concepts
-        const keywordMatches = checkKeywordMatches(newsTag, courseTag);
+        const keywordMatches = checkKeywordMatches(inputTag, courseTag);
         if (keywordMatches > 0) {
           score += keywordMatches;
         }
@@ -96,58 +119,58 @@ function calculateTagSimilarity(courseTags: string[], newsTags: string[]): numbe
 }
 
 // Helper function to check for keyword matches
-function checkKeywordMatches(newsTag: string, courseTag: string): number {
+function checkKeywordMatches(inputTag: string, courseTag: string): number {
   let matches = 0;
   
   // AI related terms
-  if ((newsTag.includes('ai') || newsTag.includes('人工智能') || newsTag.includes('ai教育') || newsTag.includes('ai藝術')) 
+  if ((inputTag.includes('ai') || inputTag.includes('人工智能') || inputTag.includes('ai教育') || inputTag.includes('ai藝術')) 
       && (courseTag.includes('ai') || courseTag.includes('人工智能'))) {
     matches += 3;
   }
   
   // Programming related terms
-  if ((newsTag.includes('编程') || newsTag.includes('程式') || newsTag.includes('coding'))
-      && (courseTag.includes('programming') || courseTag.includes('编程') || courseTag.includes('程式'))) {
+  if ((inputTag.includes('编程') || inputTag.includes('程式') || inputTag.includes('coding') || inputTag.includes('programming'))
+      && (courseTag.includes('programming') || courseTag.includes('编程') || courseTag.includes('程式') || courseTag.includes('coding'))) {
     matches += 2;
   }
   
   // Art related terms
-  if ((newsTag.includes('藝術') || newsTag.includes('艺术') || newsTag.includes('創作') || newsTag.includes('创作'))
+  if ((inputTag.includes('藝術') || inputTag.includes('艺术') || inputTag.includes('創作') || inputTag.includes('创作'))
       && (courseTag.includes('arts') || courseTag.includes('藝術') || courseTag.includes('艺术') || courseTag.includes('創作') || courseTag.includes('创作'))) {
     matches += 2;
   }
   
   // Drone related terms
-  if ((newsTag.includes('無人機') || newsTag.includes('无人机') || newsTag.includes('drone'))
+  if ((inputTag.includes('無人機') || inputTag.includes('无人机') || inputTag.includes('drone'))
       && (courseTag.includes('無人機') || courseTag.includes('无人机') || courseTag.includes('drone') || courseTag.includes('tello'))) {
     matches += 3;
   }
   
   // Robotics related terms
-  if ((newsTag.includes('機器人') || newsTag.includes('机器人') || newsTag.includes('robot'))
+  if ((inputTag.includes('機器人') || inputTag.includes('机器人') || inputTag.includes('robot'))
       && (courseTag.includes('機器人') || courseTag.includes('机器人') || courseTag.includes('robot'))) {
     matches += 2;
   }
   
   // Game development related terms
-  if ((newsTag.includes('遊戲') || newsTag.includes('游戏') || newsTag.includes('game'))
+  if ((inputTag.includes('遊戲') || inputTag.includes('游戏') || inputTag.includes('game'))
       && (courseTag.includes('遊戲') || courseTag.includes('游戏') || courseTag.includes('game'))) {
     matches += 2;
   }
   
   // STEM related terms
-  if ((newsTag.includes('stem') || newsTag.includes('科學') || newsTag.includes('科学') || newsTag.includes('工程'))
+  if ((inputTag.includes('stem') || inputTag.includes('科學') || inputTag.includes('科学') || inputTag.includes('工程'))
       && (courseTag.includes('stem') || courseTag.includes('科學') || courseTag.includes('科学') || courseTag.includes('工程'))) {
     matches += 1;
   }
   
   // Education level matches
-  if ((newsTag.includes('中學') || newsTag.includes('中学') || newsTag.includes('初中') || newsTag.includes('高中'))
+  if ((inputTag.includes('中學') || inputTag.includes('中学') || inputTag.includes('初中') || inputTag.includes('高中'))
       && (courseTag.includes('中學') || courseTag.includes('中学') || courseTag.includes('初中') || courseTag.includes('高中'))) {
     matches += 1;
   }
   
-  if ((newsTag.includes('小學') || newsTag.includes('小学') || newsTag.includes('高小'))
+  if ((inputTag.includes('小學') || inputTag.includes('小学') || inputTag.includes('高小'))
       && (courseTag.includes('小學') || courseTag.includes('小学') || courseTag.includes('高小'))) {
     matches += 1;
   }
@@ -157,8 +180,15 @@ function checkKeywordMatches(newsTag: string, courseTag: string): number {
 
 // Filter and sort school courses
 const relatedCourses = schoolCourses
+  .filter(course => {
+    // For course context, exclude the current course
+    if (context === 'course' && currentCourseSlug && course.slug === currentCourseSlug) {
+      return false;
+    }
+    return true;
+  })
   .map(course => {
-    const similarity = calculateTagSimilarity(course.tags || [], newsTags);
+    const similarity = calculateTagSimilarity(course.tags || [], tags);
     return {
       ...course,
       similarity
@@ -169,16 +199,32 @@ const relatedCourses = schoolCourses
     // Sort by similarity score (descending)
     return b.similarity - a.similarity;
   })
-  .slice(0, maxResults);
+  .slice(0, finalMaxResults);
+
+// Determine styling and content based on context
+const colorScheme = context === 'news' 
+  ? { bg: 'from-blue-50 to-cyan-50', button: 'bg-blue-600 hover:bg-blue-700', tag: 'bg-blue-100 text-blue-800 hover:bg-blue-200', gradient: 'from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700', hover: 'hover:text-blue-600' }
+  : { bg: 'from-green-50 to-emerald-50', button: 'bg-green-600 hover:bg-green-700', tag: 'bg-green-100 text-green-800 hover:bg-green-200', gradient: 'from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700', hover: 'hover:text-green-600' };
+
+const audienceColorScheme = context === 'news'
+  ? { tag: 'bg-cyan-100 text-cyan-800 hover:bg-cyan-200' }
+  : { tag: 'bg-emerald-100 text-emerald-800 hover:bg-emerald-200' };
+
+const sectionTitle = context === 'news' ? '相關課程推薦' : '相關課程推薦';
+const sectionDescription = context === 'news' 
+  ? `基於${title ? `「${title}」` : '此新聞'}的內容，為您推薦相關的學校課程`
+  : `基於${title ? `「${title}」` : '此課程'}的內容，為您推薦其他相關課程`;
+
+const shouldLimitTags = context === 'course';
 ---
 
 {relatedCourses.length > 0 && (
-  <section class="py-16 bg-gradient-to-br from-blue-50 to-cyan-50">
+  <section class={`py-16 bg-gradient-to-br ${colorScheme.bg}`}>
     <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">相關課程推薦</h2>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">{sectionTitle}</h2>
         <p class="text-lg text-gray-600">
-          基於{newsTitle ? `「${newsTitle}」` : '此新聞'}的內容，為您推薦相關的學校課程
+          {sectionDescription}
         </p>
       </div>
 
@@ -208,8 +254,8 @@ const relatedCourses = schoolCourses
               </div>
             )}
             {!course.heroImage && (
-              <div class="h-48 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 relative overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-600/20"></div>
+              <div class={`h-48 bg-gradient-to-r ${context === 'news' ? 'from-blue-400 via-cyan-400 to-blue-500' : 'from-green-400 via-emerald-400 to-green-500'} relative overflow-hidden`}>
+                <div class={`absolute inset-0 bg-gradient-to-r ${context === 'news' ? 'from-blue-600/20 to-cyan-600/20' : 'from-green-600/20 to-emerald-600/20'}`}></div>
                 <div class="absolute inset-0 flex items-center justify-center">
                   <div class="text-white text-center p-4">
                     <div class="text-3xl mb-2">📚</div>
@@ -225,7 +271,7 @@ const relatedCourses = schoolCourses
                 <div class="flex items-center justify-between mb-2">
                   <h3 class="text-xl font-bold text-gray-800 line-clamp-2">
                     <a href={`/school-courses/${course.slug}`} 
-                       class="hover:text-blue-600 transition-colors">
+                       class={`${colorScheme.hover} transition-colors`}>
                       {course.title}
                     </a>
                   </h3>
@@ -265,7 +311,7 @@ const relatedCourses = schoolCourses
                             const tagSlug = audienceTagMapping[tag] || tag.toLowerCase().replace(/\s+/g, '-');
                             
                             return (
-                              <a href={`/school-courses/tag/${tagSlug}`} class="bg-cyan-100 text-cyan-800 px-2 py-1 rounded text-xs font-medium hover:bg-cyan-200 transition-colors">
+                              <a href={`/school-courses/tag/${tagSlug}`} class={`${audienceColorScheme.tag} px-2 py-1 rounded text-xs font-medium transition-colors`}>
                                 {tag}
                               </a>
                             );
@@ -276,7 +322,7 @@ const relatedCourses = schoolCourses
                       {/* Other Tags */}
                       {otherTags.length > 0 && (
                         <div class="flex flex-wrap gap-1">
-                          {otherTags.map((tag: string) => {
+                          {(shouldLimitTags ? otherTags.slice(0, 3) : otherTags).map((tag: string) => {
                             // Tag mapping for Chinese to English URLs (same as index.astro)
                             const chineseToEnglishMapping = {
                       // Chinese tags to English equivalents
@@ -356,11 +402,16 @@ const relatedCourses = schoolCourses
                             
                             return (
                               <a href={`/school-courses/tag/${tagSlug}`}
-                                 class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium hover:bg-blue-200 transition-colors">
+                                 class={`${colorScheme.tag} px-2 py-1 rounded text-xs font-medium transition-colors`}>
                                 {tag}
                               </a>
                             );
                           })}
+                          {shouldLimitTags && otherTags.length > 3 && (
+                            <span class="text-xs text-gray-500 px-2 py-1">
+                              +{otherTags.length - 3} 更多
+                            </span>
+                          )}
                         </div>
                       )}
                     </div>
@@ -371,7 +422,7 @@ const relatedCourses = schoolCourses
               {/* Action Button */}
               <div class="mt-auto">
                 <a href={`/school-courses/${course.slug}`}
-                   class="inline-block w-full text-center bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors text-sm font-medium">
+                   class={`inline-block w-full text-center ${colorScheme.button} text-white px-4 py-2 rounded transition-colors text-sm font-medium`}>
                   查看課程詳情
                 </a>
               </div>
@@ -381,11 +432,11 @@ const relatedCourses = schoolCourses
       </div>
 
       {/* Show More Link */}
-      {relatedCourses.length >= maxResults && (
+      {relatedCourses.length >= finalMaxResults && (
         <div class="text-center mt-12">
           <a 
             href="/school-courses" 
-            class="inline-flex items-center bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-3 rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            class={`inline-flex items-center bg-gradient-to-r ${colorScheme.gradient} text-white px-8 py-3 rounded-lg transition-all duration-300 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5`}
           >
             瀏覽所有課程
             <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

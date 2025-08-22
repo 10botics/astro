@@ -6,7 +6,7 @@ import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
-import CourseRelatedCourses from '../../components/course/CourseRelatedCourses.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
 import { Image } from 'astro:assets';
 
 // Import course images
@@ -359,7 +359,7 @@ const { title, subtitle, tags, description, detailedDescription, heroImage } = c
     <QnASection faqs={faqData} />
 
     <!-- Related Courses Section -->
-    <CourseRelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="coral-environment-monitoring" />
+    <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="coral-environment-monitoring" context="course" />
 
     <!-- Related News Section -->
     <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
