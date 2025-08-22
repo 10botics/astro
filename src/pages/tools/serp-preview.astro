@@ -11,11 +11,20 @@ if (isProduction) {
   return Astro.redirect('/');
 }
 
-const title = "SERP Preview Tool - SEO Title & Meta Description Tester";
-const description = "Test how your page titles and meta descriptions will appear in Google search results. Real-time preview with character count validation and current SERP analysis.";
+// Get URL parameters for pre-populating the form
+const url = Astro.url;
+const searchParams = url.searchParams;
+
+const title = searchParams.get('title') || "";
+const description = searchParams.get('description') || "";
+const imageUrl = searchParams.get('image') || "";
+const pageUrl = searchParams.get('url') || "";
+
+const pageTitle = "SERP Preview Tool - SEO Title & Meta Description Tester";
+const pageDescription = "Test how your page titles and meta descriptions will appear in Google search results. Real-time preview with character count validation and current SERP analysis.";
 ---
 
-<Layout title={title} description={description}>
+<Layout title={pageTitle} description={pageDescription}>
   <main class="min-h-screen bg-gray-50 py-12">
     <div class="container mx-auto px-4">
       <!-- Header Section -->
@@ -29,8 +38,23 @@ const description = "Test how your page titles and meta descriptions will appear
         </p>
       </div>
 
-      <!-- SERP Preview Component -->
-      <SERPPreview />
+      <!-- SERP Preview Component with pre-populated data -->
+      <SERPPreview 
+        title={title}
+        description={description}
+        imageUrl={imageUrl}
+        url={pageUrl}
+      />
+
+      <!-- Quick Load Example Button -->
+      <div class="mt-8 text-center">
+        <button 
+          id="load-example-btn"
+          class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-200"
+        >
+          Load News Article Example
+        </button>
+      </div>
 
       <!-- Current SERP Analysis -->
       <div class="mt-16">
@@ -67,6 +91,16 @@ const description = "Test how your page titles and meta descriptions will appear
             
             <div>
               <h3 class="text-lg font-semibold text-gray-800 mb-3">
+                🖼️ Featured Images
+              </h3>
+              <p class="text-gray-600 mb-4">
+                See how your featured images will appear in Google search results. 
+                Images can significantly improve click-through rates and visual appeal.
+              </p>
+            </div>
+            
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-3">
                 ✅ Real-Time Validation
               </h3>
               <p class="text-gray-600 mb-4">
@@ -82,6 +116,16 @@ const description = "Test how your page titles and meta descriptions will appear
               <p class="text-gray-600 mb-4">
                 See exactly how your page will appear in Google search results 
                 before publishing your content.
+              </p>
+            </div>
+            
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-3">
+                🔍 Complete SERP Analysis
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Analyze current search results and compare with your optimized 
+                content to identify improvement opportunities.
               </p>
             </div>
           </div>
@@ -121,12 +165,131 @@ const description = "Test how your page titles and meta descriptions will appear
                 <li>Use action-oriented language when appropriate</li>
               </ul>
             </div>
+            
+            <div>
+              <h3 class="text-lg font-semibold text-blue-800 mb-2">
+                Featured Images
+              </h3>
+              <ul class="list-disc list-inside text-blue-700 space-y-1">
+                <li>Use high-quality, relevant images (1200x630px recommended)</li>
+                <li>Ensure images are properly optimized for web</li>
+                <li>Include descriptive alt text for accessibility</li>
+                <li>Use Open Graph and Twitter Card meta tags</li>
+                <li>Images should represent your content accurately</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Example Images Section -->
+      <div class="mt-12 max-w-4xl mx-auto">
+        <div class="bg-green-50 rounded-lg border border-green-200 p-8">
+          <h2 class="text-2xl font-bold text-green-900 mb-6">
+            Test with Example Images
+          </h2>
+          <p class="text-green-700 mb-4">
+            Try these example image URLs to see how featured images appear in Google search results:
+          </p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-white p-4 rounded border">
+              <p class="text-sm font-medium text-green-800 mb-2">Nature Image:</p>
+              <code class="text-xs text-green-600 break-all">
+                https://picsum.photos/1200/630?random=1
+              </code>
+              <button class="mt-2 w-full bg-green-600 hover:bg-green-700 text-white text-xs py-1 px-2 rounded transition-colors" onclick="testImage('https://picsum.photos/1200/630?random=1')">
+                Test This Image
+              </button>
+            </div>
+            <div class="bg-white p-4 rounded border">
+              <p class="text-sm font-medium text-green-800 mb-2">Technology Image:</p>
+              <code class="text-xs text-green-600 break-all">
+                https://picsum.photos/1200/630?random=2
+              </code>
+              <button class="mt-2 w-full bg-green-600 hover:bg-green-700 text-white text-xs py-1 px-2 rounded transition-colors" onclick="testImage('https://picsum.photos/1200/630?random=2')">
+                Test This Image
+              </button>
+            </div>
+            <div class="bg-white p-4 rounded border">
+              <p class="text-sm font-medium text-green-800 mb-2">Education Image:</p>
+              <code class="text-xs text-green-600 break-all">
+                https://picsum.photos/1200/630?random=3
+              </code>
+              <button class="mt-2 w-full bg-green-600 hover:bg-green-700 text-white text-xs py-1 px-2 rounded transition-colors" onclick="testImage('https://picsum.photos/1200/630?random=3')">
+                Test This Image
+              </button>
+            </div>
+            <div class="bg-white p-4 rounded border">
+              <p class="text-sm font-medium text-green-800 mb-2">Science Image:</p>
+              <code class="text-xs text-green-600 break-all">
+                https://picsum.photos/1200/630?random=4
+              </code>
+              <button class="mt-2 w-full bg-green-600 hover:bg-green-700 text-white text-xs py-1 px-2 rounded transition-colors" onclick="testImage('https://picsum.photos/1200/630?random=4')">
+                Test This Image
+              </button>
+            </div>
+            <div class="bg-white p-4 rounded border">
+              <p class="text-sm font-medium text-green-800 mb-2">AI & Robotics:</p>
+              <code class="text-xs text-green-600 break-all">
+                https://picsum.photos/1200/630?random=5
+              </code>
+              <button class="mt-2 w-full bg-green-600 hover:bg-green-700 text-white text-xs py-1 px-2 rounded transition-colors" onclick="testImage('https://picsum.photos/1200/630?random=5')">
+                Test This Image
+              </button>
+            </div>
+            <div class="bg-white p-4 rounded border">
+              <p class="text-sm font-medium text-green-800 mb-2">STEM Education:</p>
+              <code class="text-xs text-green-600 break-all">
+                https://picsum.photos/1200/630?random=6
+              </code>
+              <button class="mt-2 w-full bg-green-600 hover:bg-green-700 text-white text-xs py-1 px-2 rounded transition-colors" onclick="testImage('https://picsum.photos/1200/630?random=6')">
+                Test This Image
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </main>
 </Layout>
+
+<script>
+  // Load Example button functionality
+  const loadExampleBtn = document.getElementById('load-example-btn');
+  
+  if (loadExampleBtn) {
+    loadExampleBtn.addEventListener('click', () => {
+      // Get the form inputs
+      const titleInput = document.getElementById('serp-title') as HTMLInputElement;
+      const urlInput = document.getElementById('serp-url') as HTMLInputElement;
+      const imageInput = document.getElementById('serp-image') as HTMLInputElement;
+      const descriptionInput = document.getElementById('serp-description') as HTMLTextAreaElement;
+      
+      if (titleInput && urlInput && imageInput && descriptionInput) {
+        // Set the news article data
+        titleInput.value = "活動回顧：10教育在保良局方王錦全小學為家長講解AI教育及提示工程技巧";
+        urlInput.value = "http://localhost:4325/news/2025-05-30-活動回顧10教育在保良局方王錦全小學為家長講解ai教育及提示工程技巧";
+        imageInput.value = "https://picsum.photos/1200/630?random=1";
+        descriptionInput.value = "保良局方王錦全小學舉辦家長STEAM教育講座，10教育傳授AI教育與提示工程技巧，95%家長滿意度，幫助家長運用AI協助子女學習，掌握COSTAR框架。";
+        
+        // Trigger the input events to update the preview
+        titleInput.dispatchEvent(new Event('input'));
+        urlInput.dispatchEvent(new Event('input'));
+        imageInput.dispatchEvent(new Event('input'));
+        descriptionInput.dispatchEvent(new Event('input'));
+      }
+    });
+  }
+
+  // Test Image function for quick testing
+  (window as any).testImage = function(imageUrl: string) {
+    const imageInput = document.getElementById('serp-image') as HTMLInputElement;
+    if (imageInput) {
+      imageInput.value = imageUrl;
+      imageInput.dispatchEvent(new Event('input'));
+    }
+  };
+</script>
 
 <style>
   .container {

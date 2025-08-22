@@ -74,7 +74,7 @@
       <h3 class="font-semibold text-yellow-900 mb-2">Quick Test URLs:</h3>
       <div class="space-y-2">
         <button 
-          onclick="testUrl('http://localhost:4321/school-courses/ai-enrichment-course/')"
+          onclick="testUrl('http://localhost:4325/school-courses/ai-enrichment-course/')"
           class="block w-full text-left px-3 py-2 bg-yellow-100 hover:bg-yellow-200 rounded text-sm text-yellow-800 transition-colors"
         >
           🏠 Local: /school-courses/ai-enrichment-course/
@@ -109,7 +109,7 @@
     }
 
     // Set default URL for testing - use localhost for development
-    urlInput.value = 'http://localhost:4321/school-courses/ai-enrichment-course/';
+    urlInput.value = 'http://localhost:4325/school-courses/ai-enrichment-course/';
 
     // Global function for quick test buttons
     (window as any).testUrl = function(url: string) {
@@ -156,15 +156,43 @@
         const keywords = doc.querySelector('meta[name="keywords"]')?.getAttribute('content') || 'No keywords found';
         const ogTitle = doc.querySelector('meta[property="og:title"]')?.getAttribute('content') || title;
         const ogDescription = doc.querySelector('meta[property="og:description"]')?.getAttribute('content') || description;
-        const ogImage = doc.querySelector('meta[property="og:image"]')?.getAttribute('content') || 'No OG image found';
+        let ogImage = doc.querySelector('meta[property="og:image"]')?.getAttribute('content') || 'No OG image found';
         const canonical = doc.querySelector('link[rel="canonical"]')?.getAttribute('href') || fullUrl;
 
+        // Convert relative image URLs to absolute URLs
+        if (ogImage !== 'No OG image found' && ogImage.startsWith('/')) {
+          const urlObj = new URL(fullUrl);
+          ogImage = urlObj.origin + ogImage;
+        } else if (ogImage !== 'No OG image found' && !ogImage.startsWith('http')) {
+          const urlObj = new URL(fullUrl);
+          ogImage = urlObj.origin + '/' + ogImage.replace(/^\/+/, '');
+        }
+
         // Display SERP preview
+        console.log('OG Image found:', ogImage);
         serpPreview.innerHTML = `
           <div class="mb-3">
             <div class="text-sm text-gray-500 mb-1">${new URL(fullUrl).hostname}</div>
-            <div class="text-blue-600 text-lg font-medium hover:underline cursor-pointer">${title}</div>
-            <div class="text-sm text-gray-600">${description}</div>
+            <div class="flex gap-3">
+              <div class="flex-1">
+                <div class="text-blue-600 text-lg font-medium hover:underline cursor-pointer">${title}</div>
+                <div class="text-sm text-gray-600">${description}</div>
+              </div>
+              ${ogImage !== 'No OG image found' ? `
+                <div class="flex-shrink-0">
+                  <img 
+                    src="${ogImage}" 
+                    alt="Featured image" 
+                    class="w-20 h-15 object-cover rounded border" 
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block'; console.log('Image failed to load:', '${ogImage}');" 
+                    onload="console.log('Image loaded successfully:', '${ogImage}'); this.nextElementSibling.style.display='none';"
+                  />
+                  <div class="w-20 h-15 bg-gray-100 border border-gray-300 rounded flex items-center justify-center text-xs text-gray-500" style="display: none;">
+                    Image<br/>Unavailable
+                  </div>
+                </div>
+              ` : '<div class="flex-shrink-0 text-xs text-gray-400">No image</div>'}
+            </div>
           </div>
         `;
 
@@ -175,7 +203,7 @@
           <div><strong>Keywords:</strong> ${keywords}</div>
           <div><strong>OG Title:</strong> ${ogTitle}</div>
           <div><strong>OG Description:</strong> ${ogDescription}</div>
-          <div><strong>OG Image:</strong> ${ogImage}</div>
+          <div><strong>OG Image:</strong> ${ogImage !== 'No OG image found' ? ogImage : 'No OG image found'}</div>
           <div><strong>Canonical:</strong> ${canonical}</div>
         `;
 
@@ -184,12 +212,15 @@
         const descLength = description.length;
         const titleStatus = titleLength >= 50 && titleLength <= 60 ? '✅' : '⚠️';
         const descStatus = descLength >= 150 && descLength <= 160 ? '✅' : '⚠️';
+        const hasImage = ogImage !== 'No OG image found';
+        const imageStatus = hasImage ? '✅' : '⚠️';
 
         seoAnalysis.innerHTML = `
           <div><strong>Title Length:</strong> ${titleStatus} ${titleLength}/60 characters</div>
           <div><strong>Description Length:</strong> ${descStatus} ${descLength}/160 characters</div>
           <div><strong>Has Keywords:</strong> ${keywords !== 'No keywords found' ? '✅' : '⚠️'}</div>
           <div><strong>Has OG Tags:</strong> ${ogTitle !== title || ogDescription !== description ? '✅' : '⚠️'}</div>
+          <div><strong>Has Featured Image:</strong> ${imageStatus} ${hasImage ? 'Image found' : 'No image found'}</div>
           <div><strong>Has Canonical:</strong> ${canonical !== fullUrl ? '✅' : '⚠️'}</div>
         `;
 
@@ -272,5 +303,30 @@
     padding: 1.5rem;
     border-radius: 8px;
     border: 1px solid #e2e8f0;
+  }
+  
+  /* SERP Preview Image Styling */
+  .serp-preview img {
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .serp-preview img:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Responsive image sizing */
+  @media (max-width: 640px) {
+    .serp-preview .flex {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .serp-preview img {
+      width: 100%;
+      height: auto;
+      max-height: 120px;
+    }
   }
 </style>

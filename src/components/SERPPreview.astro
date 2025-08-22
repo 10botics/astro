@@ -3,9 +3,10 @@ export interface Props {
   title?: string;
   url?: string;
   description?: string;
+  imageUrl?: string;
 }
 
-const { title = "", url = "", description = "" } = Astro.props;
+const { title = "", url = "", description = "", imageUrl = "" } = Astro.props;
 ---
 
 <div class="serp-preview-container">
@@ -42,6 +43,21 @@ const { title = "", url = "", description = "" } = Astro.props;
     </div>
 
     <div class="form-group">
+      <label for="serp-image" class="block text-sm font-medium text-gray-700 mb-2">
+        Featured Image URL
+        <span class="text-xs text-gray-500">(Optional)</span>
+      </label>
+      <input
+        type="url"
+        id="serp-image"
+        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        placeholder="https://example.com/image.jpg"
+        value={imageUrl}
+      />
+      <div class="text-xs text-gray-500 mt-1">Add an image URL to see how it appears in search results</div>
+    </div>
+
+    <div class="form-group">
       <label for="serp-description" class="block text-sm font-medium text-gray-700 mb-2">
         Meta Description
         <span class="description-counter text-sm text-gray-500 ml-2">(0/160)</span>
@@ -58,7 +74,7 @@ const { title = "", url = "", description = "" } = Astro.props;
   </div>
 
   <div class="serp-preview-display">
-    <h3 class="text-lg font-semibold mb-4 text-gray-800">Optimized Preview</h3>
+    <h3 class="text-lg font-semibold mb-4 text-gray-800">Google Search Result Preview</h3>
     
     <div class="google-preview">
       <div class="google-url">
@@ -67,17 +83,34 @@ const { title = "", url = "", description = "" } = Astro.props;
         </span>
       </div>
       
-      <h3 class="google-title">
-        <a href="#" class="title-display text-xl text-blue-600 hover:underline">
-          Your Page Title Will Appear Here
-        </a>
-      </h3>
-      
-      <p class="google-description text-sm text-gray-600 leading-relaxed">
-        <span class="description-display">
-          Your meta description will appear here. This is what users see in search results to understand what your page is about.
-        </span>
-      </p>
+      <div class="google-result-content">
+        <div class="google-text-content">
+          <h3 class="google-title">
+            <a href="#" class="title-display text-xl text-blue-600 hover:underline">
+              {title || 'Your Page Title Will Appear Here'}
+            </a>
+          </h3>
+          
+          <p class="google-description text-sm text-gray-600 leading-relaxed">
+            <span class="description-display">
+              {description || 'Your meta description will appear here. This is what users see in search results to understand what your page is about.'}
+            </span>
+          </p>
+        </div>
+        
+        <div class="google-image-container">
+          <img 
+            id="preview-image" 
+            class="google-featured-image" 
+            src=""
+            alt="Featured image preview"
+            style="display: none;"
+          />
+          <div id="image-placeholder" class="w-full h-full bg-gray-100 border border-gray-300 rounded flex items-center justify-center text-xs text-gray-500" style="display: block;">
+            No image
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -130,6 +163,17 @@ const { title = "", url = "", description = "" } = Astro.props;
     line-height: 1.3;
   }
 
+  .google-result-content {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .google-text-content {
+    flex: 1;
+    min-width: 0;
+  }
+
   .google-title {
     margin-bottom: 0.25rem;
   }
@@ -155,6 +199,23 @@ const { title = "", url = "", description = "" } = Astro.props;
     word-wrap: break-word;
   }
 
+  .google-image-container {
+    flex-shrink: 0;
+    width: 120px;
+    height: 90px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+  }
+
+  .google-featured-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
   .title-counter.warning,
   .description-counter.warning {
     color: #f59e0b;
@@ -177,20 +238,38 @@ const { title = "", url = "", description = "" } = Astro.props;
     .google-preview {
       max-width: 100%;
     }
+
+    .google-result-content {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .google-image-container {
+      width: 100%;
+      height: 120px;
+    }
   }
 </style>
 
 <script>
   const titleInput = document.getElementById('serp-title') as HTMLInputElement;
   const urlInput = document.getElementById('serp-url') as HTMLInputElement;
+  const imageInput = document.getElementById('serp-image') as HTMLInputElement;
   const descriptionInput = document.getElementById('serp-description') as HTMLTextAreaElement;
   
   const titleDisplay = document.querySelector('.title-display') as HTMLElement;
   const urlDisplay = document.querySelector('.url-display') as HTMLElement;
   const descriptionDisplay = document.querySelector('.description-display') as HTMLElement;
+  const previewImage = document.getElementById('preview-image') as HTMLImageElement;
+  const imagePlaceholder = document.getElementById('image-placeholder') as HTMLElement;
   
   const titleCounter = document.querySelector('.title-counter') as HTMLElement;
   const descriptionCounter = document.querySelector('.description-counter') as HTMLElement;
+
+  // Debug: Check if elements exist
+  console.log('previewImage element:', previewImage);
+  console.log('titleInput element:', titleInput);
+  console.log('imageInput element:', imageInput);
 
   function updateTitlePreview() {
     const title = titleInput.value.trim();
@@ -237,6 +316,49 @@ const { title = "", url = "", description = "" } = Astro.props;
     urlDisplay.textContent = displayUrl;
   }
 
+  function updateImagePreview() {
+    const imageUrl = imageInput.value.trim();
+    
+    console.log('updateImagePreview called with:', imageUrl);
+    console.log('previewImage element:', previewImage);
+    console.log('imagePlaceholder element:', imagePlaceholder);
+    
+    if (imageUrl && previewImage && imagePlaceholder) {
+      console.log('Setting image src to:', imageUrl);
+      
+      // Hide placeholder and show image
+      imagePlaceholder.style.display = 'none';
+      previewImage.style.display = 'block';
+      
+      // Set the image source
+      previewImage.src = imageUrl;
+      
+      // Handle image load errors
+      previewImage.onerror = () => {
+        console.error('Failed to load image:', imageUrl);
+        previewImage.style.display = 'none';
+        imagePlaceholder.style.display = 'block';
+        imagePlaceholder.textContent = 'Image Unavailable';
+        console.log('Image failed to load, showing placeholder');
+      };
+      
+      previewImage.onload = () => {
+        console.log('Image loaded successfully:', imageUrl);
+        previewImage.style.display = 'block';
+        imagePlaceholder.style.display = 'none';
+      };
+    } else {
+      console.log('No image URL provided, showing placeholder');
+      if (previewImage) {
+        previewImage.style.display = 'none';
+      }
+      if (imagePlaceholder) {
+        imagePlaceholder.style.display = 'block';
+        imagePlaceholder.textContent = 'No image';
+      }
+    }
+  }
+
   function updateDescriptionPreview() {
     const description = descriptionInput.value.trim();
     const length = description.length;
@@ -260,13 +382,18 @@ const { title = "", url = "", description = "" } = Astro.props;
     }
   }
 
-  // Initialize counters
+  // Initialize counters and previews with pre-populated data
+  console.log('Initializing with props from Astro');
+  
+  // Set initial values from props (these are already set in the HTML)
   updateTitlePreview();
   updateUrlPreview();
+  updateImagePreview();
   updateDescriptionPreview();
 
   // Add event listeners
   titleInput.addEventListener('input', updateTitlePreview);
   urlInput.addEventListener('input', updateUrlPreview);
+  imageInput.addEventListener('input', updateImagePreview);
   descriptionInput.addEventListener('input', updateDescriptionPreview);
 </script>
