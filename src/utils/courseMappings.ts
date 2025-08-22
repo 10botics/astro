@@ -29,7 +29,8 @@ export const COURSE_SLUG_MAPPING: Record<string, string> = {
   'Unity 課程': 'unity',
   '自然生物探究手作課程': 'natural-bio-sciences',
   'Python 初階遊戲編程': 'python-game-dev-beginner',
-  'Apple Vision Pro 遊戲開發課程': 'apple-vision-pro-game-dev'
+  'Apple Vision Pro 遊戲開發課程': 'apple-vision-pro-game-dev',
+  '3D Micro_bit 機械人創作課程': '3d-microbit-robot-creation'
 };
 
 // Map Chinese tags to English URL slugs
@@ -93,6 +94,14 @@ export const TAG_MAPPING: Record<string, string> = {
   'Donkey Car': 'donkey-car',
   'CoDrone': 'codrone',
   'Minecraft': 'minecraft',
+  // 3D and robotics specific tags
+  '3D 打印': '3d-printing',
+  '3D打印': '3d-printing',
+  '3D Printing': '3d-printing',
+  '機械人': 'robotics',
+  'Robot': 'robotics',
+  'Robotics': 'robotics',
+  '機械人創作': 'robot-creation',
   // Additional mappings for broader categories
   'AI': 'ai',
   '藝術': 'arts',
