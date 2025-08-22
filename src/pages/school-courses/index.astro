@@ -12,7 +12,7 @@ import {
 const contentCourses: any[] = [];
 
 // Auto-discover courses using shared utility
-const astroCourses = await discoverCourses('', ['/index.astro', '/[slug].astro']);
+const astroCourses = await discoverCourses('../school-courses/', ['index.astro', '[slug].astro']);
 
 // Convert content collection courses to same format
 const mdCourses = contentCourses.map(course => ({

@@ -174,16 +174,21 @@ export async function discoverCourses(
   basePath: string = '../school-courses/', 
   exclusions: string[] = ['index.astro', '[slug].astro']
 ): Promise<Course[]> {
-  // Auto-discover .astro course files - always use the same pattern
-  const courseFiles = await import.meta.glob('../school-courses/*.astro', { eager: true });
+  // Auto-discover .astro course files - use a pattern that works from the project root
+  const courseFiles = await import.meta.glob('/src/pages/school-courses/*.astro', { eager: true });
 
   // Convert .astro files to course data (excluding specified files)
   return Object.entries(courseFiles)
     .filter(([path]) => {
-      return !exclusions.some(exclusion => path.includes(exclusion));
+      const filename = path.split('/').pop() || '';
+      // Check exclusions by filename, not full path
+      return !exclusions.some(exclusion => {
+        const exclusionFilename = exclusion.replace(/^\.\.?\//g, '');
+        return filename === exclusionFilename;
+      });
     })
     .map(([path, module]: [string, any]) => {
-      const filename = path.replace('../school-courses/', '').replace('.astro', '');
+      const filename = path.replace('/src/pages/school-courses/', '').replace('.astro', '');
       
       // Extract courseData from frontmatter
       const courseData = module.courseData || {

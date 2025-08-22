@@ -14,7 +14,7 @@ import {
 // Get the tag from the URL parameter
 export async function getStaticPaths() {
   // Auto-discover courses using shared utility
-  const astroCourses = await discoverCourses('../', ['../index.astro', '../[slug].astro']);
+  const astroCourses = await discoverCourses('../school-courses/', ['index.astro', '[slug].astro']);
   
   // Get all unique tags from all courses
   const allTags = getAllUniqueTags(astroCourses);
@@ -27,7 +27,7 @@ export async function getStaticPaths() {
 const { tag, originalTag } = Astro.props;
 
 // Auto-discover courses using shared utility
-const astroCourses = await discoverCourses('../', ['../index.astro', '../[slug].astro']);
+const astroCourses = await discoverCourses('../school-courses/', ['index.astro', '[slug].astro']);
 
 // Filter courses by the current tag using shared utility
 const filteredCourses = filterCoursesByTag(astroCourses, tag, originalTag);
