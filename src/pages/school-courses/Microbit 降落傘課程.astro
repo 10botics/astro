@@ -5,6 +5,7 @@ import SingleCourseContent from '../../components/course/SingleCourseContent.ast
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCoursesForCourses from '../../components/course/RelatedCoursesForCourses.astro';
 import { Image } from 'astro:assets';
 // Import course images
 import heroImage from '../../assets/images/school-courses/Microbit降落傘課程/hero-image.png';
@@ -272,10 +273,11 @@ const faqItems = [
       question: item.question,
       answer: item.answer.join('\n')
     }))} />
+  <!-- Related Courses Section -->
+  <RelatedCoursesForCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="microbit-parachute" />
+
   <!-- Related News Section -->
   <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
-
-
 
     <!-- Contact Section -->
     <section class="py-16 bg-gray-50">

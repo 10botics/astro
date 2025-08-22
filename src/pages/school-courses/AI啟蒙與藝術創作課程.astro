@@ -5,6 +5,7 @@ import DualCourseContent from '../../components/course/DualCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCoursesForCourses from '../../components/course/RelatedCoursesForCourses.astro';
 import { Image } from 'astro:assets';
 
 // Import course image
@@ -283,6 +284,8 @@ const courseHighlights = [
       answer: item.answer.join('\n')
     }))} />
 
+    <!-- Related Courses Section -->
+    <RelatedCoursesForCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="ai-enrichment-course" />
     <!-- Related News Section -->
     <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
 

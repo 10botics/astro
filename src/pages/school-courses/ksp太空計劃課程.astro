@@ -5,6 +5,7 @@ import DualCourseContent from '../../components/course/DualCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCoursesForCourses from '../../components/course/RelatedCoursesForCourses.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -435,6 +436,8 @@ const ogImage = kspMain.src;
   </section>
 
   <QnASection faqs={faqItems} />
+  <!-- Related Courses Section -->
+  <RelatedCoursesForCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="ksp" />
   <!-- Related News Section -->
   <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
 

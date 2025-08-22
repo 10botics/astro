@@ -6,6 +6,7 @@ import SingleCourseContent from '../../components/course/SingleCourseContent.ast
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCoursesForCourses from '../../components/course/RelatedCoursesForCourses.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -289,6 +290,8 @@ const studentWorkExamples = [
   </section>
 
   <QnASection faqs={faqItems} />
+  <!-- Related Courses Section -->
+  <RelatedCoursesForCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="delightex-game-design" />
   <!-- Related News Section -->
   <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
 

@@ -5,6 +5,7 @@ import SingleCourseContent from '../../components/course/SingleCourseContent.ast
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCoursesForCourses from '../../components/course/RelatedCoursesForCourses.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -291,6 +292,8 @@ const ogImage = swiftPlaygroundsHero.src;
   </section>
 
   <QnASection faqs={faqItems} />
+  <!-- Related Courses Section -->
+  <RelatedCoursesForCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="swiftplaygrounds" />
   <!-- Related News Section -->
   <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
 
