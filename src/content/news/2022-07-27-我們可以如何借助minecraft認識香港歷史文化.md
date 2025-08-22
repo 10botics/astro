@@ -7,11 +7,6 @@ SEOImage: "../../assets/images/news/2022-07-27-我們可以如何借助minecraft
 category: "文章"
 tags: []
 author: "jacksonchan"
-isFeatured: false
-externalLink: "https://10botics.com/blog/2022/07/27/intangible-cultural-heritage/"
-wpSlug: "我們可以如何借助minecraft認識香港歷史文化"
-wpDate: "2022/07/27"
-readingTime: 1
 ---
 
 ![](https://staging.10botics.com/wp-content/uploads/2022/07/Fire-Dragon-Master-Fai-Gor-shares-his-tale-of-being-a-Tai-Hang-boy-Hong-Kong-Free-Press-HKFP.jpeg)

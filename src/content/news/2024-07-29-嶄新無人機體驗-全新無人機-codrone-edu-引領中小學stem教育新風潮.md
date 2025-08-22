@@ -7,11 +7,6 @@ SEOImage: "../../assets/images/news/2024-07-29-嶄新無人機體驗-全新無�
 category: "過往活動"
 tags: ["CoDrone", "STEM Day", "初中", "小學", "高中"]
 author: "sukileung"
-isFeatured: false
-externalLink: "https://10botics.com/past-activities/2024/07/29/brand-new-drone-experience/"
-wpSlug: "嶄新無人機體驗-全新無人機-codrone-edu-引領中小學stem教育新風潮"
-wpDate: "2024/07/29"
-readingTime: 1
 ---
 
 ![](../../assets/images/news/2024-07-29-嶄新無人機體驗-全新無人機-codrone-edu-引領中小學stem教育新風潮/image1.png)
