@@ -156,4 +156,8 @@ Before any commit:
 - [ ] 📁 Folder structure follows naming conventions
 - [ ] 🏷️ All required frontmatter fields are present
 
+
+###STEP 4:Add external links
+If the user forgets to add external links, please add the external links for the schools automatically
+
 ## REMEMBER: The #1 cause of build failures is image reference errors. Always verify, never assume!
