@@ -32,8 +32,44 @@ const pageTitle = `${article.data.title} - 10教育`;
 const pageDescription = article.data.description || excerpt;
 const pageKeywords = (article.data.tags || []).join(', ');
 
-// Use SEOImage if available, otherwise fall back to default
-const ogImage = article.data.SEOImage || "/images/og-default.jpg";
+// Handle OG Image - convert asset path to public URL or use default
+let ogImage = "/images/logo_website_700x200-300x86.png"; // Default to logo
+
+if (article.data.SEOImage) {
+  if (typeof article.data.SEOImage === 'string') {
+    // Convert asset path to public path
+    if (article.data.SEOImage.startsWith('../../assets/images/')) {
+      // Convert ../../assets/images/news/... to /images/news/...
+      ogImage = article.data.SEOImage.replace('../../assets/images/', '/images/');
+    } else if (article.data.SEOImage.startsWith('/images/')) {
+      // Already a public path
+      ogImage = article.data.SEOImage;
+    } else {
+      // Handle imported asset
+      ogImage = article.data.SEOImage.src || article.data.SEOImage;
+    }
+  } else {
+    // Handle imported asset object
+    ogImage = article.data.SEOImage.src;
+  }
+} else if (article.data.featuredImage) {
+  if (typeof article.data.featuredImage === 'string') {
+    // Convert asset path to public path
+    if (article.data.featuredImage.startsWith('../../assets/images/')) {
+      // Convert ../../assets/images/news/... to /images/news/...
+      ogImage = article.data.featuredImage.replace('../../assets/images/', '/images/');
+    } else if (article.data.featuredImage.startsWith('/images/')) {
+      // Already a public path
+      ogImage = article.data.featuredImage;
+    } else {
+      // Handle imported asset
+      ogImage = article.data.featuredImage.src || article.data.featuredImage;
+    }
+  } else {
+    // Handle imported asset object
+    ogImage = article.data.featuredImage.src;
+  }
+}
 
 // Article Schema for structured data
 const articleSchema: any = {
@@ -61,12 +97,11 @@ const articleSchema: any = {
   }
 };
 
-if (article.data.SEOImage || article.data.featuredImage) {
-  // Use SEOImage for structured data if available, otherwise use featuredImage
-  const schemaImage = article.data.SEOImage || article.data.featuredImage;
+// Add image to schema if available
+if (ogImage && ogImage !== "/images/logo_website_700x200-300x86.png") {
   articleSchema.image = {
     "@type": "ImageObject",
-    "url": `https://10botics.com${schemaImage}`,
+    "url": `https://10botics.com${ogImage}`,
     "width": 1200,
     "height": 630
   };

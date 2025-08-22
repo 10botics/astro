@@ -27,9 +27,9 @@
         </button>
       </div>
       <div class="mt-2 space-y-1">
-        <p class="text-sm text-gray-500">
-          <strong>For local testing:</strong> Use the full URL after building (e.g., http://localhost:4321/school-courses/ai-enrichment-course/)
-        </p>
+                 <p class="text-sm text-gray-500">
+           <strong>For local testing:</strong> Use the full URL after building (e.g., http://localhost:4322/school-courses/ai-enrichment-course/)
+         </p>
         <p class="text-sm text-gray-500">
           <strong>For production:</strong> Use the live URL (e.g., https://10botics.com/school-courses/ai-enrichment-course/)
         </p>
@@ -73,12 +73,12 @@
     <div class="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
       <h3 class="font-semibold text-yellow-900 mb-2">Quick Test URLs:</h3>
       <div class="space-y-2">
-        <button 
-          onclick="testUrl('http://localhost:4325/school-courses/ai-enrichment-course/')"
-          class="block w-full text-left px-3 py-2 bg-yellow-100 hover:bg-yellow-200 rounded text-sm text-yellow-800 transition-colors"
-        >
-          🏠 Local: /school-courses/ai-enrichment-course/
-        </button>
+                 <button 
+           onclick="testUrl('http://localhost:4322/school-courses/ai-enrichment-course/')"
+           class="block w-full text-left px-3 py-2 bg-yellow-100 hover:bg-yellow-200 rounded text-sm text-yellow-800 transition-colors"
+         >
+           🏠 Local: /school-courses/ai-enrichment-course/
+         </button>
         <button 
           onclick="testUrl('https://10botics.com/school-courses/ai-enrichment-course/')"
           class="block w-full text-left px-3 py-2 bg-yellow-100 hover:bg-yellow-200 rounded text-sm text-yellow-800 transition-colors"
@@ -108,8 +108,8 @@
       return;
     }
 
-    // Set default URL for testing - use localhost for development
-    urlInput.value = 'http://localhost:4325/school-courses/ai-enrichment-course/';
+         // Set default URL for testing - use localhost for development
+     urlInput.value = 'http://localhost:4322/school-courses/ai-enrichment-course/';
 
     // Global function for quick test buttons
     (window as any).testUrl = function(url: string) {
@@ -159,17 +159,105 @@
         let ogImage = doc.querySelector('meta[property="og:image"]')?.getAttribute('content') || 'No OG image found';
         const canonical = doc.querySelector('link[rel="canonical"]')?.getAttribute('href') || fullUrl;
 
+        // COMPREHENSIVE OG IMAGE TESTING AND DEBUGGING
+        console.log('=== OG IMAGE DEBUG START ===');
+        console.log('Raw ogImage extracted:', ogImage);
+        console.log('ogImage type:', typeof ogImage);
+        console.log('ogImage length:', ogImage ? ogImage.length : 'null/undefined');
+        console.log('Current page origin:', window.location.origin);
+        console.log('Target URL origin:', new URL(fullUrl).origin);
+        
+        // Test if ogImage is valid
+        let ogImageValidation = {
+          exists: ogImage !== 'No OG image found',
+          isString: typeof ogImage === 'string',
+          hasContent: ogImage && ogImage.trim().length > 0,
+          startsWithSlash: ogImage && ogImage.startsWith('/'),
+          startsWithHttp: ogImage && ogImage.startsWith('http'),
+          isInternal: false,
+          finalUrl: ogImage
+        };
+
         // Convert relative image URLs to absolute URLs
         if (ogImage !== 'No OG image found' && ogImage.startsWith('/')) {
           const urlObj = new URL(fullUrl);
           ogImage = urlObj.origin + ogImage;
+          ogImageValidation.finalUrl = ogImage;
+          console.log('Converted relative path to absolute:', ogImage);
         } else if (ogImage !== 'No OG image found' && !ogImage.startsWith('http')) {
           const urlObj = new URL(fullUrl);
           ogImage = urlObj.origin + '/' + ogImage.replace(/^\/+/, '');
+          ogImageValidation.finalUrl = ogImage;
+          console.log('Converted non-http path to absolute:', ogImage);
         }
 
-        // Display SERP preview
-        console.log('OG Image found:', ogImage);
+                 // Check if image is internal
+         if (ogImage !== 'No OG image found') {
+           try {
+             const imageUrl = new URL(ogImage);
+             const pageUrl = new URL(fullUrl);
+             
+             // Consider these domains as "internal":
+             // - Same origin as the page
+             // - 10botics.com domains (staging, production)
+             // - localhost domains
+             const internalDomains = [
+               'localhost',
+               '10botics.com',
+               'staging.10botics.com',
+               '127.0.0.1'
+             ];
+             
+             const imageHostname = imageUrl.hostname;
+             const pageHostname = pageUrl.hostname;
+             
+             ogImageValidation.isInternal = 
+               imageUrl.origin === pageUrl.origin || // Same origin
+               internalDomains.some(domain => imageHostname.includes(domain)) || // Internal domains
+               pageHostname === 'localhost' || pageHostname === '127.0.0.1'; // Local development
+               
+             console.log('Image URL origin:', imageUrl.origin);
+             console.log('Image hostname:', imageHostname);
+             console.log('Page URL origin:', pageUrl.origin);
+             console.log('Page hostname:', pageHostname);
+             console.log('Is internal image:', ogImageValidation.isInternal);
+           } catch (e) {
+             console.error('Error parsing image URL:', e);
+             ogImageValidation.isInternal = false;
+           }
+         }
+
+        console.log('OG Image Validation Results:', ogImageValidation);
+        console.log('=== OG IMAGE DEBUG END ===');
+
+                 // Test image accessibility and determine if we should show it
+         let shouldShowImage = false;
+         
+         const testImageLoad = async (imageUrl: string) => {
+           return new Promise((resolve) => {
+             const testImg = new Image();
+             testImg.onload = () => {
+               console.log('✅ Image loads successfully:', imageUrl);
+               resolve(true);
+             };
+             testImg.onerror = () => {
+               console.log('❌ Image failed to load:', imageUrl);
+               resolve(false);
+             };
+             testImg.src = imageUrl;
+           });
+         };
+
+         // Test the image if it's internal and decide whether to show it
+         if (ogImageValidation.isInternal && ogImageValidation.finalUrl !== 'No OG image found') {
+           console.log('Testing image load for:', ogImageValidation.finalUrl);
+           shouldShowImage = await testImageLoad(ogImageValidation.finalUrl);
+         }
+
+         // Display SERP preview
+         console.log('Final ogImage for display:', ogImage);
+         console.log('Should show image?', shouldShowImage);
+        
         serpPreview.innerHTML = `
           <div class="mb-3">
             <div class="text-sm text-gray-500 mb-1">${new URL(fullUrl).hostname}</div>
@@ -178,20 +266,17 @@
                 <div class="text-blue-600 text-lg font-medium hover:underline cursor-pointer">${title}</div>
                 <div class="text-sm text-gray-600">${description}</div>
               </div>
-              ${ogImage !== 'No OG image found' ? `
-                <div class="flex-shrink-0">
-                  <img 
-                    src="${ogImage}" 
-                    alt="Featured image" 
-                    class="w-20 h-15 object-cover rounded border" 
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block'; console.log('Image failed to load:', '${ogImage}');" 
-                    onload="console.log('Image loaded successfully:', '${ogImage}'); this.nextElementSibling.style.display='none';"
-                  />
-                  <div class="w-20 h-15 bg-gray-100 border border-gray-300 rounded flex items-center justify-center text-xs text-gray-500" style="display: none;">
-                    Image<br/>Unavailable
-                  </div>
-                </div>
-              ` : '<div class="flex-shrink-0 text-xs text-gray-400">No image</div>'}
+                             ${shouldShowImage ? `
+                 <div class="flex-shrink-0">
+                   <img
+                     src="${ogImage}" 
+                     alt="Featured image" 
+                     class="w-20 h-15 object-cover rounded border" 
+                     onerror="this.parentElement.style.display='none'; console.log('❌ Image failed to load after validation:', '${ogImage}');" 
+                     onload="console.log('✅ Image displayed successfully:', '${ogImage}');"
+                   />
+                 </div>
+               ` : ''}
             </div>
           </div>
         `;
