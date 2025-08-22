@@ -1,0 +1,159 @@
+# 🚨 Critical Error Prevention Guide for Adding News Articles
+
+## TOP CRITICAL RULES - NEVER VIOLATE THESE:
+
+### 1. 🚫 NEVER REFERENCE NON-EXISTENT IMAGES
+- **ERROR**: Referencing image files that don't physically exist in the assets folder
+- **CONSEQUENCE**: Build failure, deployment failure
+- **PREVENTION**: ALWAYS verify image files exist before adding references
+- **CHECK**: Use file explorer to confirm `src/assets/images/news/[folder]/[image]` exists
+
+### 2. 🚫 NEVER CREATE MARKDOWN BEFORE IMAGES
+- **ERROR**: Writing markdown file before uploading images to assets folder
+- **CONSEQUENCE**: Broken image references, build failures
+- **PREVENTION**: Upload all images FIRST, then create markdown
+- **ORDER**: Images → Verify existence → Write markdown
+
+### 3. 🚫 NEVER SKIP BUILD VERIFICATION
+- **ERROR**: Committing without running `npm run build` locally
+- **CONSEQUENCE**: Production build failures
+- **PREVENTION**: ALWAYS run `npm run build` and verify success before committing
+
+## MANDATORY PRE-CREATION CHECKLIST:
+
+### Phase 1: Image Preparation (CRITICAL)
+- [ ] 🎯 Create directory: `src/assets/images/news/YYYY-MM-DD-[title]/`
+- [ ] 📁 Upload ALL required images to this directory
+- [ ] ✅ Verify files exist using file explorer (not just memory)
+- [ ] 📷 Ensure featured image exists (usually `image.jpg` or `featuredimage.jpg`)
+- [ ] 🔍 Check file names are exactly as they'll be referenced (case-sensitive)
+
+### Phase 2: Markdown Creation
+- [ ] 📝 Create markdown file: `src/content/news/YYYY-MM-DD-[title].md`
+- [ ] 🏷️ Add complete frontmatter with ALL required fields
+- [ ] 🖼️ Set featuredImage path to EXISTING image file
+- [ ] 🖼️ Set SEOImage path to EXISTING image file (if different)
+- [ ] 📸 Only reference images that physically exist in content body
+
+### Phase 3: Verification (MANDATORY)
+- [ ] 🔨 Run `npm run build` locally
+- [ ] ✅ Verify build completes without errors
+- [ ] 🚫 DO NOT COMMIT if build fails
+- [ ] 🔍 Check for any image-related error messages
+
+## COMMON ERROR PATTERNS TO AVOID:
+
+### A. Image Path Errors
+❌ **WRONG**: `featuredImage: "image.jpg"` (missing full path)
+✅ **CORRECT**: `featuredImage: "../../assets/images/news/2025-07-22-[title]/image.jpg"`
+
+❌ **WRONG**: Case mismatch: `Image.JPG` vs actual `image.jpg`
+✅ **CORRECT**: Exact case match with actual filename
+
+❌ **WRONG**: Assuming image exists without verification
+✅ **CORRECT**: Physically check file exists before referencing
+
+### B. Directory Structure Errors
+❌ **WRONG**: Creating markdown in wrong location
+✅ **CORRECT**: Always use `src/content/news/` for news articles
+
+❌ **WRONG**: Using inconsistent folder naming
+✅ **CORRECT**: `YYYY-MM-DD-[descriptive-title]` format
+
+### C. Build Process Errors
+❌ **WRONG**: Committing without local build test
+✅ **CORRECT**: Always run `npm run build` before commit
+
+❌ **WRONG**: Ignoring build error messages
+✅ **CORRECT**: Fix all errors before proceeding
+
+## FRONTMATTER REQUIRED FIELDS:
+
+```yaml
+---
+title: "Article Title"                    # REQUIRED
+publishDate: YYYY-MM-DD                   # REQUIRED - ISO date format
+description: "Brief description"          # REQUIRED
+featuredImage: "../../assets/images/news/[folder]/[image]"  # REQUIRED - must exist
+SEOImage: "../../assets/images/news/[folder]/[image]"       # REQUIRED - must exist
+category: "過往活動"                      # REQUIRED
+tags: ["tag1", "tag2"]                   # REQUIRED - array format
+author: "author_name"                    # REQUIRED
+---
+```
+
+## FILE NAMING RULES:
+
+### News Article Files:
+- **Format**: `YYYY-MM-DD-descriptive-title.md`
+- **Location**: `src/content/news/`
+- **Example**: `2025-07-22-活動回顧-香港中學教師ai培訓實錄-donkey-car-x-raspberry-pi.md`
+
+### Image Folder:
+- **Format**: `YYYY-MM-DD-descriptive-title/`
+- **Location**: `src/assets/images/news/`
+- **Example**: `2025-07-22-香港中學教師ai培訓實錄-donkey-car-raspberry-pi/`
+
+## IMAGE REFERENCE PATTERNS:
+
+### In Frontmatter:
+```yaml
+featuredImage: "../../assets/images/news/[folder]/image.jpg"
+SEOImage: "../../assets/images/news/[folder]/featuredimage.jpg"
+```
+
+### In Content Body:
+```markdown
+![](../../assets/images/news/[folder]/image.jpg)
+```
+
+## EMERGENCY ERROR RECOVERY:
+
+### If Build Fails Due to Missing Images:
+1. 🛑 **STOP** - Do not commit
+2. 🔍 **IDENTIFY** - Check error message for missing image path
+3. 📁 **VERIFY** - Check if image actually exists in assets folder
+4. ✅ **FIX** - Either upload missing image OR remove reference
+5. 🔨 **TEST** - Run `npm run build` again
+6. ✅ **CONFIRM** - Only proceed if build succeeds
+
+### If Path is Wrong:
+1. 🔍 **CHECK** - Verify exact file path and name
+2. ✏️ **CORRECT** - Update markdown to match actual file location
+3. 🔨 **TEST** - Run build again
+
+## WORKFLOW ENFORCEMENT:
+
+### STEP 1: Images First (Non-negotiable)
+```bash
+# Create directory
+mkdir "src/assets/images/news/YYYY-MM-DD-title"
+
+# Upload images
+# Verify files exist in file explorer
+```
+
+### STEP 2: Markdown Second
+```bash
+# Create markdown file
+# Reference ONLY existing images
+```
+
+### STEP 3: Build Test (Mandatory)
+```bash
+npm run build
+# Must succeed before committing
+```
+
+## FINAL VALIDATION CHECKLIST:
+
+Before any commit:
+- [ ] 🔍 All image files physically exist in assets folder
+- [ ] 📝 All image paths in frontmatter are correct
+- [ ] 📸 All image references in content body point to existing files
+- [ ] 🔨 Local `npm run build` completes successfully
+- [ ] ✅ No error messages in build output
+- [ ] 📁 Folder structure follows naming conventions
+- [ ] 🏷️ All required frontmatter fields are present
+
+## REMEMBER: The #1 cause of build failures is image reference errors. Always verify, never assume!
