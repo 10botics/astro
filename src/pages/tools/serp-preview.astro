@@ -1,6 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import SERPPreview from '../../components/SERPPreview.astro';
 import GoogleSearchParser from '../../components/GoogleSearchParser.astro';
 
 // Check if we're in production/deployment mode
@@ -38,23 +37,9 @@ const pageDescription = "Test how your page titles and meta descriptions will ap
         </p>
       </div>
 
-      <!-- SERP Preview Component with pre-populated data -->
-      <SERPPreview 
-        title={title}
-        description={description}
-        imageUrl={imageUrl}
-        url={pageUrl}
-      />
 
-      <!-- Quick Load Example Button -->
-      <div class="mt-8 text-center">
-        <button 
-          id="load-example-btn"
-          class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-200"
-        >
-          Load News Article Example
-        </button>
-      </div>
+
+
 
       <!-- Current SERP Analysis -->
       <div class="mt-16">
@@ -254,33 +239,6 @@ const pageDescription = "Test how your page titles and meta descriptions will ap
 </Layout>
 
 <script>
-  // Load Example button functionality
-  const loadExampleBtn = document.getElementById('load-example-btn');
-  
-  if (loadExampleBtn) {
-    loadExampleBtn.addEventListener('click', () => {
-      // Get the form inputs
-      const titleInput = document.getElementById('serp-title') as HTMLInputElement;
-      const urlInput = document.getElementById('serp-url') as HTMLInputElement;
-      const imageInput = document.getElementById('serp-image') as HTMLInputElement;
-      const descriptionInput = document.getElementById('serp-description') as HTMLTextAreaElement;
-      
-      if (titleInput && urlInput && imageInput && descriptionInput) {
-        // Set the news article data
-        titleInput.value = "活動回顧：10教育在保良局方王錦全小學為家長講解AI教育及提示工程技巧";
-        urlInput.value = "http://localhost:4325/news/2025-05-30-活動回顧10教育在保良局方王錦全小學為家長講解ai教育及提示工程技巧";
-        imageInput.value = "https://picsum.photos/1200/630?random=1";
-        descriptionInput.value = "保良局方王錦全小學舉辦家長STEAM教育講座，10教育傳授AI教育與提示工程技巧，95%家長滿意度，幫助家長運用AI協助子女學習，掌握COSTAR框架。";
-        
-        // Trigger the input events to update the preview
-        titleInput.dispatchEvent(new Event('input'));
-        urlInput.dispatchEvent(new Event('input'));
-        imageInput.dispatchEvent(new Event('input'));
-        descriptionInput.dispatchEvent(new Event('input'));
-      }
-    });
-  }
-
   // Test Image function for quick testing
   (window as any).testImage = function(imageUrl: string) {
     const imageInput = document.getElementById('serp-image') as HTMLInputElement;
