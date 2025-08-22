@@ -202,27 +202,7 @@ const faqItems = [
   }
 ];
 
-// Related courses
-const relatedCourses = [
-  {
-    title: "AI啟蒙與藝術創作課程",
-    description: "課程將引導學生深入探索人工智能（AI）在視覺藝術領",
-    image: "/src/assets/images/school-courses/CoDrone無人機課程/ai-course.png",
-    link: "/school-courses/ai-enrichment-course/"
-  },
-  {
-    title: "AI數碼動畫展",
-    description: "AI數碼動畫展是一個簡單有趣的 STEM Day 活動，學生可按主題設計喜歡的圖案/角色，通過人工智能把圖案轉換成栩栩如生的動畫，呈現在學校LED Wall或螢幕上面跳舞，讓學生能以輕鬆有趣的方式體驗生成式AI技術。",
-    image: "/src/assets/images/school-courses/CoDrone無人機課程/ai-digital-animation.jpg",
-    link: "/stem-day/ai-digital-animation-exhibition/"
-  },
-  {
-    title: "Blockchain 區塊鏈課程",
-    description: "本課程旨在引領學生進入Web3.0的世界，瞭解在w",
-    image: "/src/assets/images/school-courses/CoDrone無人機課程/blockchain-course.png",
-    link: "/school-courses/blockchain/"
-  }
-];
+
 ---
 
 <Layout title={courseData.title} description={courseData.description}>
@@ -359,27 +339,5 @@ const relatedCourses = [
   <!-- Contact Form -->
   <ContactSection subtitle="想了解更多關於 CoDrone 無人機課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
 
-  <!-- Related Courses -->
-  <section class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">其他課程</h2>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {relatedCourses.map((course) => (
-          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-            <a href={course.link} class="block">
-              <Image src={course.image} alt={course.title} class="w-full h-48 object-cover" width="800" height="320" />
-              <div class="p-6">
-                <h4 class="text-xl font-semibold mb-2 text-gray-800 hover:text-blue-600">
-                  {course.title}
-                </h4>
-                <p class="text-gray-600 mb-4">{course.description}</p>
-                <span class="text-blue-600 hover:text-blue-700 font-medium">Read More »</span>
-              </div>
-            </a>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
+
 </Layout> 
