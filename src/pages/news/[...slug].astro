@@ -29,15 +29,54 @@ const relatedArticles = allNews
 
 // SEO optimized page data
 const pageTitle = `${article.data.title} - 10教育`;
-const pageDescription = excerpt;
-const pageKeywords = article.data.tags.join(', ');
+const pageDescription = article.data.description || excerpt;
+const pageKeywords = (article.data.tags || []).join(', ');
+
+// Handle OG Image - convert asset path to public URL or use default
+let ogImage = "/images/logo_website_700x200-300x86.png"; // Default to logo
+
+if (article.data.SEOImage) {
+  if (typeof article.data.SEOImage === 'string') {
+    // Convert asset path to public path
+    if (article.data.SEOImage.startsWith('../../assets/images/')) {
+      // Convert ../../assets/images/news/... to /images/news/...
+      ogImage = article.data.SEOImage.replace('../../assets/images/', '/images/');
+    } else if (article.data.SEOImage.startsWith('/images/')) {
+      // Already a public path
+      ogImage = article.data.SEOImage;
+    } else {
+      // Handle imported asset
+      ogImage = article.data.SEOImage.src || article.data.SEOImage;
+    }
+  } else {
+    // Handle imported asset object
+    ogImage = article.data.SEOImage.src;
+  }
+} else if (article.data.featuredImage) {
+  if (typeof article.data.featuredImage === 'string') {
+    // Convert asset path to public path
+    if (article.data.featuredImage.startsWith('../../assets/images/')) {
+      // Convert ../../assets/images/news/... to /images/news/...
+      ogImage = article.data.featuredImage.replace('../../assets/images/', '/images/');
+    } else if (article.data.featuredImage.startsWith('/images/')) {
+      // Already a public path
+      ogImage = article.data.featuredImage;
+    } else {
+      // Handle imported asset
+      ogImage = article.data.featuredImage.src || article.data.featuredImage;
+    }
+  } else {
+    // Handle imported asset object
+    ogImage = article.data.featuredImage.src;
+  }
+}
 
 // Article Schema for structured data
-const articleSchema = {
+const articleSchema: any = {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": article.data.title,
-  "description": excerpt,
+  "description": article.data.description || excerpt,
   "author": {
     "@type": "Organization",
     "name": article.data.author || "10教育"
@@ -58,12 +97,11 @@ const articleSchema = {
   }
 };
 
-if (article.data.featuredImage) {
-  // For og:image, we'll use a default image since we can't use public directory
-  // The featured image will still work in the component display
+// Add image to schema if available
+if (ogImage && ogImage !== "/images/logo_website_700x200-300x86.png") {
   articleSchema.image = {
     "@type": "ImageObject",
-    "url": "https://10botics.com/images/og-default.jpg",
+    "url": `https://10botics.com${ogImage}`,
     "width": 1200,
     "height": 630
   };
@@ -74,7 +112,7 @@ if (article.data.featuredImage) {
   title={pageTitle}
   description={pageDescription}
   keywords={pageKeywords}
-  ogImage="/images/og-default.jpg"
+  ogImage={ogImage}
 >
   <!-- Article Schema -->
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
@@ -133,14 +171,7 @@ if (article.data.featuredImage) {
               </div>
             )}
 
-            {article.data.school && (
-              <div class="flex items-center">
-                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4zm0 2h12v8H4V6z" clip-rule="evenodd" />
-                </svg>
-                {article.data.school}
-              </div>
-            )}
+            {/* Remove school property check since it's not in the schema */}
           </div>
 
 
@@ -162,13 +193,13 @@ if (article.data.featuredImage) {
     </article>
 
     <!-- Tags -->
-    {article.data.tags.length > 0 && (
+    {(article.data.tags || []).length > 0 && (
       <section class="py-8 border-t border-gray-200">
         <div class="container mx-auto px-4">
           <div class="max-w-4xl mx-auto">
             <h3 class="text-lg font-semibold text-gray-900 mb-4">相關標籤</h3>
             <div class="flex flex-wrap gap-2">
-              {article.data.tags.map((tag) => (
+              {(article.data.tags || []).map((tag) => (
                 <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">
                   {tag}
                 </span>
@@ -223,7 +254,7 @@ if (article.data.featuredImage) {
                   {relatedArticle.data.featuredImage && (
                     <div class="aspect-video bg-gray-200 overflow-hidden">
                       <Image 
-                        src={relatedArticle.data.featuredImage} 
+                        src={relatedArticle.data.featuredImage as any} 
                         alt={relatedArticle.data.title}
                         class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                         loading="lazy"
@@ -267,7 +298,7 @@ if (article.data.featuredImage) {
 
     <!-- Related School Courses -->
     <RelatedCourses 
-      newsTags={article.data.tags}
+      newsTags={article.data.tags || []}
       newsTitle={article.data.title}
       maxResults={9}
     />

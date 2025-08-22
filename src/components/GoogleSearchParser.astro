@@ -1,0 +1,417 @@
+---
+// GoogleSearchParser component to fetch and display meta tags from URLs
+---
+
+<div class="bg-white rounded-lg shadow-lg p-6">
+  <h2 class="text-2xl font-bold text-gray-900 mb-6">
+    Current SERP Analysis
+  </h2>
+  
+  <div class="space-y-4">
+    <div>
+      <label for="url-input" class="block text-sm font-medium text-gray-700 mb-2">
+        Enter URL to analyze:
+      </label>
+      <div class="flex gap-2">
+        <input 
+          type="url" 
+          id="url-input"
+          placeholder="https://example.com/page"
+          class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        />
+        <button 
+          id="analyze-btn"
+          class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+        >
+          Analyze
+        </button>
+      </div>
+      <div class="mt-2 space-y-1">
+                 <p class="text-sm text-gray-500">
+           <strong>For local testing:</strong> Use the full URL after building (e.g., http://localhost:4322/school-courses/ai-enrichment-course/)
+         </p>
+        <p class="text-sm text-gray-500">
+          <strong>For production:</strong> Use the live URL (e.g., https://10botics.com/school-courses/ai-enrichment-course/)
+        </p>
+      </div>
+    </div>
+    
+    <div id="results" class="hidden">
+      <div class="border border-gray-200 rounded-lg p-4 bg-gray-50">
+        <div id="serp-preview" class="max-w-2xl">
+          <!-- SERP preview will be inserted here -->
+        </div>
+      </div>
+      
+      <div class="mt-4 grid md:grid-cols-2 gap-4">
+        <div class="bg-blue-50 p-4 rounded-lg">
+          <h3 class="font-semibold text-blue-900 mb-2">Meta Tags Found:</h3>
+          <div id="meta-tags" class="text-sm text-blue-800 space-y-1">
+            <!-- Meta tags will be listed here -->
+          </div>
+        </div>
+        
+        <div class="bg-green-50 p-4 rounded-lg">
+          <h3 class="font-semibold text-green-900 mb-2">SEO Analysis:</h3>
+          <div id="seo-analysis" class="text-sm text-green-800 space-y-1">
+            <!-- SEO analysis will be shown here -->
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="loading" class="hidden text-center py-8">
+      <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+      <p class="mt-2 text-gray-600">Analyzing URL...</p>
+    </div>
+    
+    <div id="error" class="hidden bg-red-50 border border-red-200 rounded-lg p-4">
+      <p id="error-message" class="text-red-800"></p>
+    </div>
+
+    <!-- Quick Test Section -->
+    <div class="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+      <h3 class="font-semibold text-yellow-900 mb-2">Quick Test URLs:</h3>
+      <div class="space-y-2">
+                 <button 
+           onclick="testUrl('http://localhost:4322/school-courses/ai-enrichment-course/')"
+           class="block w-full text-left px-3 py-2 bg-yellow-100 hover:bg-yellow-200 rounded text-sm text-yellow-800 transition-colors"
+         >
+           🏠 Local: /school-courses/ai-enrichment-course/
+         </button>
+        <button 
+          onclick="testUrl('https://10botics.com/school-courses/ai-enrichment-course/')"
+          class="block w-full text-left px-3 py-2 bg-yellow-100 hover:bg-yellow-200 rounded text-sm text-yellow-800 transition-colors"
+        >
+          🌐 Production: https://10botics.com/school-courses/ai-enrichment-course/
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const urlInput = document.getElementById('url-input') as HTMLInputElement;
+    const analyzeBtn = document.getElementById('analyze-btn') as HTMLButtonElement;
+    const results = document.getElementById('results') as HTMLDivElement;
+    const loading = document.getElementById('loading') as HTMLDivElement;
+    const error = document.getElementById('error') as HTMLDivElement;
+    const errorMessage = document.getElementById('error-message') as HTMLParagraphElement;
+    const serpPreview = document.getElementById('serp-preview') as HTMLDivElement;
+    const metaTags = document.getElementById('meta-tags') as HTMLDivElement;
+    const seoAnalysis = document.getElementById('seo-analysis') as HTMLDivElement;
+
+    // Check if all elements exist
+    if (!urlInput || !analyzeBtn || !results || !loading || !error || !errorMessage || !serpPreview || !metaTags || !seoAnalysis) {
+      console.error('Required DOM elements not found');
+      return;
+    }
+
+         // Set default URL for testing - use localhost for development
+     urlInput.value = 'http://localhost:4322/school-courses/ai-enrichment-course/';
+
+    // Global function for quick test buttons
+    (window as any).testUrl = function(url: string) {
+      urlInput.value = url;
+      analyzeBtn.click();
+    };
+
+    analyzeBtn.addEventListener('click', async function() {
+      const url = urlInput.value.trim();
+      if (!url) {
+        showError('Please enter a valid URL');
+        return;
+      }
+
+      // Show loading state
+      hideAll();
+      loading.classList.remove('hidden');
+
+      try {
+        // Ensure we have a full URL
+        let fullUrl = url;
+        if (url.startsWith('/')) {
+          // For relative URLs, construct full URL from current origin
+          fullUrl = window.location.origin + url;
+        } else if (!url.startsWith('http')) {
+          // If it's not a full URL and not relative, assume it's a path
+          fullUrl = window.location.origin + '/' + url.replace(/^\/+/, '');
+        }
+
+        console.log('Fetching from:', fullUrl);
+
+        const response = await fetch(fullUrl);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+
+        // Extract meta tags
+        const title = doc.querySelector('title')?.textContent || 'No title found';
+        const description = doc.querySelector('meta[name="description"]')?.getAttribute('content') || 'No description found';
+        const keywords = doc.querySelector('meta[name="keywords"]')?.getAttribute('content') || 'No keywords found';
+        const ogTitle = doc.querySelector('meta[property="og:title"]')?.getAttribute('content') || title;
+        const ogDescription = doc.querySelector('meta[property="og:description"]')?.getAttribute('content') || description;
+        let ogImage = doc.querySelector('meta[property="og:image"]')?.getAttribute('content') || 'No OG image found';
+        const canonical = doc.querySelector('link[rel="canonical"]')?.getAttribute('href') || fullUrl;
+
+        // COMPREHENSIVE OG IMAGE TESTING AND DEBUGGING
+        console.log('=== OG IMAGE DEBUG START ===');
+        console.log('Raw ogImage extracted:', ogImage);
+        console.log('ogImage type:', typeof ogImage);
+        console.log('ogImage length:', ogImage ? ogImage.length : 'null/undefined');
+        console.log('Current page origin:', window.location.origin);
+        console.log('Target URL origin:', new URL(fullUrl).origin);
+        
+        // Test if ogImage is valid
+        let ogImageValidation = {
+          exists: ogImage !== 'No OG image found',
+          isString: typeof ogImage === 'string',
+          hasContent: ogImage && ogImage.trim().length > 0,
+          startsWithSlash: ogImage && ogImage.startsWith('/'),
+          startsWithHttp: ogImage && ogImage.startsWith('http'),
+          isInternal: false,
+          finalUrl: ogImage
+        };
+
+        // Convert relative image URLs to absolute URLs
+        if (ogImage !== 'No OG image found' && ogImage.startsWith('/')) {
+          const urlObj = new URL(fullUrl);
+          ogImage = urlObj.origin + ogImage;
+          ogImageValidation.finalUrl = ogImage;
+          console.log('Converted relative path to absolute:', ogImage);
+        } else if (ogImage !== 'No OG image found' && !ogImage.startsWith('http')) {
+          const urlObj = new URL(fullUrl);
+          ogImage = urlObj.origin + '/' + ogImage.replace(/^\/+/, '');
+          ogImageValidation.finalUrl = ogImage;
+          console.log('Converted non-http path to absolute:', ogImage);
+        }
+
+                 // Check if image is internal
+         if (ogImage !== 'No OG image found') {
+           try {
+             const imageUrl = new URL(ogImage);
+             const pageUrl = new URL(fullUrl);
+             
+             // Consider these domains as "internal":
+             // - Same origin as the page
+             // - 10botics.com domains (staging, production)
+             // - localhost domains
+             const internalDomains = [
+               'localhost',
+               '10botics.com',
+               'staging.10botics.com',
+               '127.0.0.1'
+             ];
+             
+             const imageHostname = imageUrl.hostname;
+             const pageHostname = pageUrl.hostname;
+             
+             ogImageValidation.isInternal = 
+               imageUrl.origin === pageUrl.origin || // Same origin
+               internalDomains.some(domain => imageHostname.includes(domain)) || // Internal domains
+               pageHostname === 'localhost' || pageHostname === '127.0.0.1'; // Local development
+               
+             console.log('Image URL origin:', imageUrl.origin);
+             console.log('Image hostname:', imageHostname);
+             console.log('Page URL origin:', pageUrl.origin);
+             console.log('Page hostname:', pageHostname);
+             console.log('Is internal image:', ogImageValidation.isInternal);
+           } catch (e) {
+             console.error('Error parsing image URL:', e);
+             ogImageValidation.isInternal = false;
+           }
+         }
+
+        console.log('OG Image Validation Results:', ogImageValidation);
+        console.log('=== OG IMAGE DEBUG END ===');
+
+                 // Test image accessibility and determine if we should show it
+         let shouldShowImage = false;
+         
+         const testImageLoad = async (imageUrl: string) => {
+           return new Promise((resolve) => {
+             const testImg = new Image();
+             testImg.onload = () => {
+               console.log('✅ Image loads successfully:', imageUrl);
+               resolve(true);
+             };
+             testImg.onerror = () => {
+               console.log('❌ Image failed to load:', imageUrl);
+               resolve(false);
+             };
+             testImg.src = imageUrl;
+           });
+         };
+
+         // Test the image if it's internal and decide whether to show it
+         if (ogImageValidation.isInternal && ogImageValidation.finalUrl !== 'No OG image found') {
+           console.log('Testing image load for:', ogImageValidation.finalUrl);
+           shouldShowImage = await testImageLoad(ogImageValidation.finalUrl);
+         }
+
+         // Display SERP preview
+         console.log('Final ogImage for display:', ogImage);
+         console.log('Should show image?', shouldShowImage);
+        
+        serpPreview.innerHTML = `
+          <div class="mb-3">
+            <div class="text-sm text-gray-500 mb-1">${new URL(fullUrl).hostname}</div>
+            <div class="flex gap-3">
+              <div class="flex-1">
+                <div class="text-blue-600 text-lg font-medium hover:underline cursor-pointer">${title}</div>
+                <div class="text-sm text-gray-600">${description}</div>
+              </div>
+                             ${shouldShowImage ? `
+                 <div class="flex-shrink-0">
+                   <img
+                     src="${ogImage}" 
+                     alt="Featured image" 
+                     class="w-20 h-15 object-cover rounded border" 
+                     onerror="this.parentElement.style.display='none'; console.log('❌ Image failed to load after validation:', '${ogImage}');" 
+                     onload="console.log('✅ Image displayed successfully:', '${ogImage}');"
+                   />
+                 </div>
+               ` : ''}
+            </div>
+          </div>
+        `;
+
+        // Display meta tags
+        metaTags.innerHTML = `
+          <div><strong>Title:</strong> ${title}</div>
+          <div><strong>Description:</strong> ${description}</div>
+          <div><strong>Keywords:</strong> ${keywords}</div>
+          <div><strong>OG Title:</strong> ${ogTitle}</div>
+          <div><strong>OG Description:</strong> ${ogDescription}</div>
+          <div><strong>OG Image:</strong> ${ogImage !== 'No OG image found' ? ogImage : 'No OG image found'}</div>
+          <div><strong>Canonical:</strong> ${canonical}</div>
+        `;
+
+        // SEO Analysis
+        const titleLength = title.length;
+        const descLength = description.length;
+        const titleStatus = titleLength >= 50 && titleLength <= 60 ? '✅' : '⚠️';
+        const descStatus = descLength >= 150 && descLength <= 160 ? '✅' : '⚠️';
+        const hasImage = ogImage !== 'No OG image found';
+        const imageStatus = hasImage ? '✅' : '⚠️';
+
+        seoAnalysis.innerHTML = `
+          <div><strong>Title Length:</strong> ${titleStatus} ${titleLength}/60 characters</div>
+          <div><strong>Description Length:</strong> ${descStatus} ${descLength}/160 characters</div>
+          <div><strong>Has Keywords:</strong> ${keywords !== 'No keywords found' ? '✅' : '⚠️'}</div>
+          <div><strong>Has OG Tags:</strong> ${ogTitle !== title || ogDescription !== description ? '✅' : '⚠️'}</div>
+          <div><strong>Has Featured Image:</strong> ${imageStatus} ${hasImage ? 'Image found' : 'No image found'}</div>
+          <div><strong>Has Canonical:</strong> ${canonical !== fullUrl ? '✅' : '⚠️'}</div>
+        `;
+
+        // Show results
+        hideAll();
+        results.classList.remove('hidden');
+
+      } catch (err: unknown) {
+        console.error('Error analyzing URL:', err);
+        const errorMessage = err instanceof Error ? err.message : 'Unknown error occurred';
+        showError(`Failed to analyze URL: ${errorMessage}`);
+      }
+    });
+
+    function showError(message: string): void {
+      hideAll();
+      errorMessage.textContent = message;
+      error.classList.remove('hidden');
+    }
+
+    function hideAll(): void {
+      results.classList.add('hidden');
+      loading.classList.add('hidden');
+      error.classList.add('hidden');
+    }
+
+    // Auto-analyze on Enter key
+    urlInput.addEventListener('keypress', function(e: KeyboardEvent) {
+      if (e.key === 'Enter') {
+        analyzeBtn.click();
+      }
+    });
+  });
+</script>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .google-search-parser {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  .search-form {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+  }
+  
+  .search-input-group input {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .search-input-group input:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+  }
+  
+  .search-results {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+  }
+  
+  .all-pages {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+  }
+  
+  /* SERP Preview Image Styling */
+  .serp-preview img {
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .serp-preview img:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Responsive image sizing */
+  @media (max-width: 640px) {
+    .serp-preview .flex {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .serp-preview img {
+      width: 100%;
+      height: auto;
+      max-height: 120px;
+    }
+  }
+</style>

@@ -1,7 +1,9 @@
 ---
 title: "同 Teachable Machine 猜包剪揼"
 publishDate: 2023-08-18
+description: "介紹如何使用Teachable Machine訓練圖像分類模型玩猜包剪揼遊戲，AI分析手勢特徵進行預測，展示機器學習在圖像識別領域的應用和訓練過程。"
 featuredImage: "../../assets/images/news/2023-08-18-同-teachable-machine-猜包剪揼/image1.png"
+SEOImage: "../../assets/images/news/2023-08-18-同-teachable-machine-猜包剪揼/image1.png"
 category: "文章"
 tags: []
 author: "kingsumcheung"

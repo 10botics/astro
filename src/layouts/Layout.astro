@@ -25,8 +25,10 @@ import SpeedInsights from '@vercel/speed-insights/astro';
 // Generate canonical URL
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-// Generate absolute OG image URL
-const ogImageURL = new URL(ogImage, Astro.site);
+// Generate absolute OG image URL - handle both relative and absolute paths
+const ogImageURL = ogImage && typeof ogImage === 'string' && ogImage.startsWith('http') 
+  ? new URL(ogImage) 
+  : new URL(ogImage || '/images/og-default.jpg', Astro.site);
 
 // Structured data for organization
 const organizationSchema = {

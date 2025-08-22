@@ -242,15 +242,43 @@ const relatedCourses = schoolCourses
               
               {/* Tags */}
               <div class="mb-4">
-                <div class="flex flex-wrap gap-1">
-                  {(() => {
-                    const targetAudienceTags = ['初小', '高小', '初中', '高中'];
-                    const otherTags = course.tags.filter(tag => !targetAudienceTags.includes(tag));
-                    const audienceTags = course.tags.filter(tag => targetAudienceTags.includes(tag));
-                    const sortedTags = [...otherTags, ...audienceTags];
-                    
-                    // Tag mapping for Chinese to English URLs (same as index.astro)
-                    const chineseToEnglishMapping = {
+                {(() => {
+                  const targetAudienceTags = ['初小', '高小', '初中', '高中'];
+                  const otherTags = course.tags.filter((tag: string) => !targetAudienceTags.includes(tag));
+                  const audienceTags = course.tags.filter((tag: string) => targetAudienceTags.includes(tag));
+                  
+                  return (
+                    <div class="space-y-2">
+                      {/* Target Audience */}
+                      {audienceTags.length > 0 && (
+                        <div class="flex flex-wrap gap-1 items-center">
+                          <span class="text-xs font-medium text-gray-600 mr-1">適合對象:</span>
+                          {audienceTags.map((tag: string) => {
+                            // Tag mapping for target audience tags
+                            const audienceTagMapping = {
+                              '初小': 'lower-primary',
+                              '高小': 'upper-primary', 
+                              '初中': 'junior-secondary',
+                              '高中': 'senior-secondary'
+                            };
+                            
+                            const tagSlug = audienceTagMapping[tag] || tag.toLowerCase().replace(/\s+/g, '-');
+                            
+                            return (
+                              <a href={`/school-courses/tag/${tagSlug}`} class="bg-cyan-100 text-cyan-800 px-2 py-1 rounded text-xs font-medium hover:bg-cyan-200 transition-colors">
+                                {tag}
+                              </a>
+                            );
+                          })}
+                        </div>
+                      )}
+                      
+                      {/* Other Tags */}
+                      {otherTags.length > 0 && (
+                        <div class="flex flex-wrap gap-1">
+                          {otherTags.map((tag: string) => {
+                            // Tag mapping for Chinese to English URLs (same as index.astro)
+                            const chineseToEnglishMapping = {
                       // Chinese tags to English equivalents
                       '初中': 'junior-secondary',
                       '高中': 'senior-secondary', 
@@ -316,26 +344,28 @@ const relatedCourses = schoolCourses
                       '其他': 'others'
                     };
 
-                    return sortedTags.map((tagName: string) => {
-                      // Check if we have a mapping for this tag
-                      const mappedTag = (chineseToEnglishMapping as any)[tagName] || tagName;
-                      
-                      // Create a more robust slug that handles Chinese characters
-                      const tagSlug = mappedTag
-                        .toLowerCase()
-                        .replace(/\s+/g, '-')
-                        .replace(/[^\w-]/g, '') // Remove all non-word characters except hyphens
-                        .replace(/-+$/, '');
-                      
-                      return (
-                        <a href={`/school-courses/tag/${tagSlug}`}
-                           class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium hover:bg-blue-200 transition-colors">
-                          {tagName}
-                        </a>
-                      );
-                    });
-                  })()}
-                </div>
+                            // Check if we have a mapping for this tag
+                            const mappedTag = (chineseToEnglishMapping as any)[tag] || tag;
+                            
+                            // Create a more robust slug that handles Chinese characters
+                            const tagSlug = mappedTag
+                              .toLowerCase()
+                              .replace(/\s+/g, '-')
+                              .replace(/[^\w-]/g, '') // Remove all non-word characters except hyphens
+                              .replace(/-+$/, '');
+                            
+                            return (
+                              <a href={`/school-courses/tag/${tagSlug}`}
+                                 class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium hover:bg-blue-200 transition-colors">
+                                {tag}
+                              </a>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })()}
               </div>
               
               {/* Action Button */}
