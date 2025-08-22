@@ -4,6 +4,9 @@ import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import { generateExcerpt } from '../../utils/excerpt';
 
+// Import background image
+import newsHeroBackground from '../../assets/images/news/news-hero-background.jpg';
+
 // Get all news articles
 const allNews = await getCollection('news');
 
@@ -37,8 +40,12 @@ const pageKeywords = "10教育最新消息, STEM教育活動, AI教師培訓, �
 >
   <main class="news-listing">
     <!-- Header -->
-    <header class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
-      <div class="container mx-auto px-4">
+    <header class="relative text-white py-16 overflow-hidden">
+      <div class="absolute inset-0">
+        <Image src={newsHeroBackground} alt="最新消息背景" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+      </div>
+      <div class="relative container mx-auto px-4">
         <div class="max-w-4xl mx-auto text-center">
           <h1 class="text-5xl font-bold mb-6">最新消息</h1>
           <p class="text-xl opacity-90 mb-8">
