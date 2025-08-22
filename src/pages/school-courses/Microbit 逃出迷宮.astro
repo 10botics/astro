@@ -5,6 +5,7 @@ import SingleCourseContent from '../../components/course/SingleCourseContent.ast
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCoursesForCourses from '../../components/course/RelatedCoursesForCourses.astro';
 import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
 import { Image } from 'astro:assets';
 
@@ -305,7 +306,12 @@ const galleryImages = [
 
     <!-- Contact Form -->
 
+    <!-- Related Courses Section -->
+    <RelatedCoursesForCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="microbit-maze" />
+
+    <!-- Related News Section -->
     <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
-          <ContactSection subtitle="想了解更多關於 Microbit 逃出迷宮課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
+
+    <ContactSection subtitle="想了解更多關於 Microbit 逃出迷宮課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
   </main>
 </Layout> 

@@ -6,6 +6,7 @@ import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
+import CourseRelatedCourses from '../../components/course/CourseRelatedCourses.astro';
 import { Image } from 'astro:assets';
 
 // Import course images
@@ -356,6 +357,9 @@ const { title, subtitle, tags, description, detailedDescription, heroImage } = c
 
     <!-- FAQ Section -->
     <QnASection faqs={faqData} />
+
+    <!-- Related Courses Section -->
+    <CourseRelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="coral-environment-monitoring" />
 
     <!-- Related News Section -->
     <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
