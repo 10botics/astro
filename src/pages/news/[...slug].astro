@@ -86,14 +86,14 @@ const articleSchema: any = {
     "name": "10教育",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://10botics.com/images/logo_website_700x200-300x86.png"
+      "url": "/images/logo_website_700x200-300x86.png"
     }
   },
   "datePublished": article.data.publishDate.toISOString(),
   "dateModified": article.data.publishDate.toISOString(),
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": `https://10botics.com/news/${article.slug}`
+    "@id": `/news/${article.slug}`
   }
 };
 
@@ -101,7 +101,7 @@ const articleSchema: any = {
 if (ogImage && ogImage !== "/images/logo_website_700x200-300x86.png") {
   articleSchema.image = {
     "@type": "ImageObject",
-    "url": `https://10botics.com${ogImage}`,
+    "url": ogImage,
     "width": 1200,
     "height": 630
   };
@@ -217,7 +217,7 @@ if (ogImage && ogImage !== "/images/logo_website_700x200-300x86.png") {
           <h3 class="text-lg font-semibold text-gray-900 mb-4">分享文章</h3>
           <div class="flex space-x-4">
             <a 
-              href={`https://www.facebook.com/sharer/sharer.php?u=https://10botics.com/news/${article.slug}`}
+              href={`https://www.facebook.com/sharer/sharer.php?u=${Astro.url.origin}/news/${article.slug}`}
               target="_blank"
               rel="noopener noreferrer"
               class="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
