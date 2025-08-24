@@ -7,11 +7,6 @@ SEOImage: "../../assets/images/news/2021-11-13-點樣用raspberry-pi-係校內�
 category: "文章"
 tags: []
 author: "jacksonchan"
-isFeatured: false
-externalLink: "https://10botics.com/school-courses/stem-teacher-workshop-raspberry-pi/"
-wpSlug: "點樣用raspberry-pi-係校內教授-python"
-wpDate: "2021/11/13"
-readingTime: 1
 ---
 
 ![](https://staging.10botics.com/wp-content/uploads/2023/08/bee141c4423da838d988f1472d1f558e-1024x768.jpeg)

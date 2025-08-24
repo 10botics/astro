@@ -7,11 +7,6 @@ SEOImage: "../../assets/images/news/2025-07-19-可立中學ai藝術創作stem-da
 category: "過往活動"
 tags: ["可立中學", "AI藝術創作", "STEM Day", "中學", "AI教育", "提示工程"]
 author: "admin"
-isFeatured: false
-externalLink: "https://10botics.com/past-activities/2025/07/19/ho-lap-college-ai-art-stem-day/"
-wpSlug: "可立中學ai藝術創作stem-day精彩回顧"
-wpDate: "2025/07/19"
-readingTime: 3
 ---
 
 ![](../../assets/images/news/2025-07-19-可立中學ai藝術創作stem-day精彩回顧/featured.jpg)

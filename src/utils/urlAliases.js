@@ -355,6 +355,20 @@ export const urlAliases = {
     },
     "main": "natural-bio-sciences"
   },
+  "Apple Vision Pro 遊戲開發課程.astro": {
+    "tags": {
+      "school-courses": ["apple-vision-pro-game-dev"],
+      "course": ["apple-vision-pro-game-dev"]
+    },
+    "main": "apple-vision-pro-game-dev"
+  },
+  "3D Micro_bit 機械人創作課程.astro": {
+    "tags": {
+      "school-courses": ["3d-microbit-robot-creation"],
+      "course": ["3d-microbit-robot-creation"]
+    },
+    "main": "3d-microbit-robot-creation"
+  },
 
   // STEM Day activities
   "飲管橋.astro": {

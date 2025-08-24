@@ -5,6 +5,7 @@ import SingleCourseContent from '../../components/course/SingleCourseContent.ast
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
 import { Image } from 'astro:assets';
 
 // Import course images
@@ -297,6 +298,8 @@ const faqData = [
   <!-- FAQ Section -->
   <QnASection faqs={faqData} />
 
+  <!-- Related Courses Section -->
+  <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="natural-bio-sciences" context="course" />
   <!-- Related News Section -->
   <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
 
@@ -327,3 +330,4 @@ const faqData = [
     }
   }
 </style>
+

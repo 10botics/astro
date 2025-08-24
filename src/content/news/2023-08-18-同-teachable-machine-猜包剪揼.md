@@ -7,11 +7,6 @@ SEOImage: "../../assets/images/news/2023-08-18-同-teachable-machine-猜包剪�
 category: "文章"
 tags: []
 author: "kingsumcheung"
-isFeatured: false
-externalLink: "https://10botics.com/blog/2023/08/16/teachable-machine/"
-wpSlug: "同-teachable-machine-猜包剪揼"
-wpDate: "2023/08/18"
-readingTime: 1
 ---
 
 ## 玩法

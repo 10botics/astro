@@ -1,4 +1,5 @@
 import { getCollection } from 'astro:content';
+import { COURSE_SLUG_MAPPING } from './courseMappings';
 
 export interface SERPPageData {
   title: string;
@@ -340,7 +341,7 @@ function generateDescriptionFromFilename(filename: string, category?: string): s
 }
 
 function generateUrlFromFilename(filename: string, category?: string): string {
-  // Map Chinese filenames to English URLs
+  // Map Chinese filenames to English URLs - combine static pages with course mappings
   const urlMapping: Record<string, string> = {
     '關於我們': 'about',
     '聯絡我們': 'contact',
@@ -349,29 +350,7 @@ function generateUrlFromFilename(filename: string, category?: string): string {
     '隱私政策': 'privacy-policy',
     'Cookie政策': 'cookie-policy',
     '草原國度': 'grass-nation',
-    '人工智能遊戲編程課程': 'ai-game-coding',
-    'AI啟蒙與藝術創作課程': 'ai-enrichment-course',
-    'AI數碼動畫展': 'ai-digital-animation-exhibition',
-    'Blockchain 區塊鏈課程': 'blockchain',
-    'CoDrone無人機課程': 'codrone',
-    'Delightex 遊戲設計課程': 'delightex-game-design',
-    'Donkey Car 無人車課程': 'donkey-car',
-    'Dobot 智能機械手臂': 'dobot',
-    'ksp太空計劃課程': 'ksp',
-    'Lego Spike Prime 機器人技術大師班': 'lego-spike-prime',
-    'Minecraft校園創建課程': 'minecraft',
-    'Microbit 降落傘課程': 'microbit-parachute',
-    'Microbit 逃出迷宮': 'microbit-maze',
-    'Procreate數位藝術課程': 'procreate',
-    'raspberry-pi編程課程': 'raspberry-pi',
-    'Scratch 人工智能編程': 'scratch-ai-programming',
-    'Scratch遊戲設計課程': 'scratch-game-design',
-    'SwiftPlaygrounds編程課程': 'swiftplaygrounds',
-    'Tello 無人機課程': 'tello',
-    '珊瑚環境監測入門課程': 'coral-environment-monitoring',
-    'Unity 課程': 'unity',
-    '自然生物探究手作課程': 'natural-bio-sciences',
-    'Python 初階遊戲編程': 'python-game-dev-beginner'
+    ...COURSE_SLUG_MAPPING
   };
 
   const mappedSlug = urlMapping[filename] || filename.toLowerCase().replace(/[^a-z0-9]/g, '-');
