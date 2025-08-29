@@ -43,7 +43,6 @@ export default defineConfig({
     // Internal redirects
     '/course/:slug': '/school-courses/:slug',
     '/ai-courses': '/school-courses/scratch-ai-programming',
-    '/tools/serp-preview': '/',
   },
   integrations: [
     tailwind({
