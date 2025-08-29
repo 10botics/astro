@@ -41,7 +41,7 @@ export default defineConfig({
     '/minecraft-2023-registration': 'https://ofpd3jzg.paperform.co',
     
     // Internal redirects
-    '/course/:slug': '/school-courses/:slug',
+    '/courses/:slug': '/school-courses/:slug',
     '/ai-courses': '/school-courses/scratch-ai-programming',
   },
   integrations: [
