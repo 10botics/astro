@@ -24,6 +24,12 @@ import galleryImage4 from '../assets/images/index/gallery/image4.jpeg';
 import galleryImage5 from '../assets/images/index/gallery/image5.jpeg';
 import galleryImage6 from '../assets/images/index/gallery/image6.jpeg';
 
+// Import course hero images
+import donkeyCarHero from '../assets/images/school-courses/Donkey Car 無人車課程/donkey-car-intro.jpeg';
+import kspHero from '../assets/images/school-courses/ksp太空計劃課程/ksp-hero.png';
+import raspberryPiHero from '../assets/images/school-courses/raspberry-pi編程課程/admin-ajax.png';
+import minecraftHero from '../assets/images/school-courses/Minecraft校園創建課程/featured-image.png';
+
 // Get latest 3 news articles
 const allNews = await getCollection('news');
 const latestNews = allNews
@@ -103,6 +109,118 @@ const pageKeywords = "STEM教育, AI課程, 人工智能, 到校課程, STEM Day
             <div class="bg-white p-8 rounded-lg shadow-lg">
               <div class="text-4xl font-bold text-blue-600 mb-2" data-count="5">0</div>
               <p class="text-gray-600">年經驗</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Courses Section -->
+    <section class="py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">精選課程</h2>
+          
+          <!-- Course Carousel -->
+          <div class="relative">
+            <div class="course-carousel overflow-hidden rounded-lg shadow-xl">
+              <div class="course-track flex transition-transform duration-500 ease-in-out" id="courseTrack">
+                <!-- Course 1: Donkey Car -->
+                <div class="course-slide min-w-full relative h-[500px] rounded-lg overflow-hidden">
+                  <div class="absolute inset-0">
+                    <Image src={donkeyCarHero} alt="Donkey Car 無人車課程" class="w-full h-full object-cover" />
+                    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                  </div>
+                  <div class="relative z-10 flex items-center justify-center h-full p-8">
+                    <div class="max-w-3xl mx-auto text-center text-white">
+                      <h3 class="text-2xl font-bold mb-4">Donkey Car 無人車入門課程</h3>
+                      <p class="text-lg mb-6 opacity-90 leading-relaxed">
+                        通過實作無人駕駛與自動駕駛，培養學生對AI和資訊科技的興趣。課程包括深度學習、卷積神經網路，使用Python和Tensorflow控制無人車，培訓自駕模組並測試。課程末段學生將組建可應對多種路況的智能小車
+                      </p>
+                      <a href="/school-courses/donkey-car/" class="inline-block bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                        了解更多
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Course 2: KSP -->
+                <div class="course-slide min-w-full relative h-[500px] rounded-lg overflow-hidden">
+                  <div class="absolute inset-0">
+                    <Image src={kspHero} alt="KSP 太空計劃課程" class="w-full h-full object-cover" />
+                    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                  </div>
+                  <div class="relative z-10 flex items-center justify-center h-full p-8">
+                    <div class="max-w-3xl mx-auto text-center text-white">
+                      <h3 class="text-2xl font-bold mb-4">Kerbal Space Program 太空任務設計證書課程</h3>
+                      <p class="text-lg mb-6 opacity-90 leading-relaxed">
+                        學生將進入迷人的太空科學世界，建構火箭、掌握推力、軌道、重力等核心概念。他們將學習如何計劃和執行成功的發射任務。
+                      </p>
+                      <a href="/school-courses/ksp/" class="inline-block bg-white text-orange-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                        了解更多
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Course 3: Raspberry Pi -->
+                <div class="course-slide min-w-full relative h-[500px] rounded-lg overflow-hidden">
+                  <div class="absolute inset-0">
+                    <Image src={raspberryPiHero} alt="Raspberry Pi 編程課程" class="w-full h-full object-cover" />
+                    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                  </div>
+                  <div class="relative z-10 flex items-center justify-center h-full p-8">
+                    <div class="max-w-3xl mx-auto text-center text-white">
+                      <h3 class="text-2xl font-bold mb-4">Raspberry Pi 入門課程</h3>
+                      <p class="text-lg mb-6 opacity-90 leading-relaxed">
+                        課程旨在幫助學生掌握 Raspberry Pi 及 Python 編程的基礎知識，以致配合機器學習和人工智慧，進行人體姿態檢測等。
+                      </p>
+                      <a href="/school-courses/raspberry-pi/" class="inline-block bg-white text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                        了解更多
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Course 4: Minecraft -->
+                <div class="course-slide min-w-full relative h-[500px] rounded-lg overflow-hidden">
+                  <div class="absolute inset-0">
+                    <Image src={minecraftHero} alt="Minecraft 校園創建課程" class="w-full h-full object-cover" />
+                    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                  </div>
+                  <div class="relative z-10 flex items-center justify-center h-full p-8">
+                    <div class="max-w-3xl mx-auto text-center text-white">
+                      <h3 class="text-2xl font-bold mb-4">Minecraft 校園創建課程</h3>
+                      <p class="text-lg mb-6 opacity-90 leading-relaxed">
+                        課程讓學生運用地理、數學、藝術等知識，學習Minecraft編程，完成校園及社區建築。融入遊戲提升學習興趣，達致自主學習。
+                      </p>
+                      <a href="/school-courses/minecraft/" class="inline-block bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                        了解更多
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <button class="course-nav-btn course-prev absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 text-gray-800 p-3 rounded-full shadow-lg transition-all duration-300 z-10" aria-label="Previous slide">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+              </svg>
+            </button>
+            <button class="course-nav-btn course-next absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 text-gray-800 p-3 rounded-full shadow-lg transition-all duration-300 z-10" aria-label="Next slide">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </button>
+
+            <!-- Pagination Dots -->
+            <div class="course-pagination flex justify-center mt-8 space-x-3">
+              <button class="course-dot w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors course-dot-active" data-slide="0" aria-label="Go to slide 1"></button>
+              <button class="course-dot w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors" data-slide="1" aria-label="Go to slide 2"></button>
+              <button class="course-dot w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors" data-slide="2" aria-label="Go to slide 3"></button>
+              <button class="course-dot w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors" data-slide="3" aria-label="Go to slide 4"></button>
             </div>
           </div>
         </div>
@@ -522,6 +640,121 @@ const pageKeywords = "STEM教育, AI課程, 人工智能, 到校課程, STEM Day
     if (statsSection) {
       observer.observe(statsSection);
     }
+
+    // Course Carousel functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const courseTrack = document.getElementById('courseTrack');
+      const courseSlides = document.querySelectorAll('.course-slide');
+      const prevBtn = document.querySelector('.course-prev');
+      const nextBtn = document.querySelector('.course-next');
+      const dots = document.querySelectorAll('.course-dot');
+      
+      let currentSlide = 0;
+      let autoplayInterval;
+      const totalSlides = courseSlides.length;
+      
+      // Initialize carousel
+      function initCarousel() {
+        updateCarousel();
+        startAutoplay();
+        setupEventListeners();
+      }
+      
+      // Update carousel position
+      function updateCarousel() {
+        const slideWidth = 100;
+        courseTrack.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('course-dot-active', index === currentSlide);
+        });
+      }
+      
+      // Go to specific slide
+      function goToSlide(index) {
+        currentSlide = Math.max(0, Math.min(index, totalSlides - 1));
+        updateCarousel();
+      }
+      
+      // Next slide
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+      }
+      
+      // Previous slide
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+      }
+      
+      // Start autoplay
+      function startAutoplay() {
+        autoplayInterval = setInterval(nextSlide, 5000);
+      }
+      
+      // Stop autoplay
+      function stopAutoplay() {
+        if (autoplayInterval) {
+          clearInterval(autoplayInterval);
+        }
+      }
+      
+      // Setup event listeners
+      function setupEventListeners() {
+        // Navigation buttons
+        if (prevBtn) {
+          prevBtn.addEventListener('click', () => {
+            prevSlide();
+            stopAutoplay();
+            startAutoplay();
+          });
+        }
+        
+        if (nextBtn) {
+          nextBtn.addEventListener('click', () => {
+            nextSlide();
+            stopAutoplay();
+            startAutoplay();
+          });
+        }
+        
+        // Dot navigation
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            goToSlide(index);
+            stopAutoplay();
+            startAutoplay();
+          });
+        });
+        
+        // Pause autoplay on hover
+        const carousel = document.querySelector('.course-carousel');
+        if (carousel) {
+          carousel.addEventListener('mouseenter', stopAutoplay);
+          carousel.addEventListener('mouseleave', startAutoplay);
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') {
+            prevSlide();
+            stopAutoplay();
+            startAutoplay();
+          } else if (e.key === 'ArrowRight') {
+            nextSlide();
+            stopAutoplay();
+            startAutoplay();
+          }
+        });
+      }
+      
+      // Initialize if elements exist
+      if (courseTrack && courseSlides.length > 0) {
+        initCarousel();
+      }
+    });
   </script>
 
   <style>
