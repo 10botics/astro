@@ -125,17 +125,17 @@ export const urlAliases = {
     },
     "main": "home"
   },
-  "2024 STEM 比賽名單.astro": {
+  "2024 中小學 STEM 比賽清單.astro": {
     "tags": {
-      "root": ["2024-stem-competition-list"]
+      "root": ["2024competitions", "2024 中小學 STEM 比賽名單"]
     },
-    "main": "2024-stem-competition-list"
+    "main": "2024competitions"
   },
-  "2025-中小學-stem-比賽清單.astro": {
+  "2025 中小學 STEM 比賽清單.astro": {
     "tags": {
-      "root": ["2025-stem-competition-results"]
+      "root": ["2025competitions", "2025 中小學 STEM 比賽名單"]
     },
-    "main": "2025-stem-competition-results"
+    "main": "2025competitions"
   },
 
   // Index pages for different sections

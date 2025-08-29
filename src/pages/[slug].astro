@@ -20,9 +20,9 @@ import TermsConditions from './條款及細則.astro';
 import PrivacyPolicy from './隱私政策.astro';
 import CookiePolicy from './Cookie政策.astro';
 import GrassNation from './草原國度.astro';
-import Index from './index.astro';
-import Stem2024List from './2024 STEM 比賽名單.astro';
-import Stem2025Results from './2025-中小學-stem-比賽清單.astro';
+import Index from './index.astro';  
+import Stem2024List from './2024 中小學 STEM 比賽清單.astro';
+import Stem2025List from './2025 中小學 STEM 比賽清單.astro';
 import SchoolCoursesIndex from './school-courses/index.astro';
 import stemdayIndex from './stemday/index.astro';
 import StaffDevIndex from './staff-development-day/index.astro';
@@ -52,8 +52,8 @@ const componentMap = {
   'Cookie政策.astro': CookiePolicy,
   '草原國度.astro': GrassNation,
   'index.astro': Index,
-  '2024 STEM 比賽名單.astro': Stem2024List,
-  '2025-中小學-stem-比賽清單.astro': Stem2025Results,
+  '2024 中小學 STEM 比賽清單.astro': Stem2024List,
+  '2025 中小學 STEM 比賽清單.astro': Stem2025List,
   'school-courses/index.astro': SchoolCoursesIndex,
   'stemday/index.astro': stemdayIndex,
   'staff-development-day/index.astro': StaffDevIndex,
@@ -82,6 +82,8 @@ const componentInfo = getComponentForSlug('root', slug);
 if (!componentInfo) {
   throw new Error(`Unknown slug: ${slug}`);
 }
+
+
 
 // Get the pre-imported component
 const ChineseComponent = componentInfo.filename in componentMap 
