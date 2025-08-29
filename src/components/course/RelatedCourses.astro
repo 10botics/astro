@@ -156,12 +156,12 @@ const relatedCourses = schoolCourses
 
 // Determine styling and content based on context
 const colorScheme = context === 'news' 
-  ? { bg: 'from-blue-50 to-cyan-50', button: 'bg-blue-600 hover:bg-blue-700', tag: 'bg-blue-100 text-blue-800 hover:bg-blue-200', gradient: 'from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700', hover: 'hover:text-blue-600' }
-  : { bg: 'from-green-50 to-emerald-50', button: 'bg-green-600 hover:bg-green-700', tag: 'bg-green-100 text-green-800 hover:bg-green-200', gradient: 'from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700', hover: 'hover:text-green-600' };
+  ? { bg: 'bg-gray-50', button: 'bg-cyan-600 hover:bg-cyan-700', tag: 'bg-cyan-100 text-cyan-800 hover:bg-cyan-200', gradient: 'from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700', hover: 'hover:text-cyan-600' }
+  : { bg: 'bg-gray-50', button: 'bg-cyan-600 hover:bg-cyan-700', tag: 'bg-cyan-100 text-cyan-800 hover:bg-cyan-200', gradient: 'from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700', hover: 'hover:text-cyan-600' };
 
 const audienceColorScheme = context === 'news'
   ? { tag: 'bg-cyan-100 text-cyan-800 hover:bg-cyan-200' }
-  : { tag: 'bg-emerald-100 text-emerald-800 hover:bg-emerald-200' };
+  : { tag: 'bg-cyan-100 text-cyan-800 hover:bg-cyan-200' };
 
 const sectionTitle = context === 'news' ? '相關課程推薦' : '相關課程推薦';
 const sectionDescription = context === 'news' 
@@ -207,8 +207,8 @@ const shouldLimitTags = context === 'course';
               </div>
             )}
             {!course.heroImage && (
-              <div class={`h-48 bg-gradient-to-r ${context === 'news' ? 'from-blue-400 via-cyan-400 to-blue-500' : 'from-green-400 via-emerald-400 to-green-500'} relative overflow-hidden`}>
-                <div class={`absolute inset-0 bg-gradient-to-r ${context === 'news' ? 'from-blue-600/20 to-cyan-600/20' : 'from-green-600/20 to-emerald-600/20'}`}></div>
+              <div class={`h-48 bg-gradient-to-r ${context === 'news' ? 'from-cyan-400 via-blue-400 to-cyan-500' : 'from-cyan-400 via-blue-400 to-cyan-500'} relative overflow-hidden`}>
+                <div class={`absolute inset-0 bg-gradient-to-r ${context === 'news' ? 'from-cyan-600/20 to-blue-600/20' : 'from-cyan-600/20 to-blue-600/20'}`}></div>
                 <div class="absolute inset-0 flex items-center justify-center">
                   <div class="text-white text-center p-4">
                     <div class="text-3xl mb-2">📚</div>

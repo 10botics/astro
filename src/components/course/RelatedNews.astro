@@ -83,15 +83,16 @@ function formatDate(date: Date): string {
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {relatedNews.map((article) => (
-          <article class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow group">
+          <article class="bg-white border border-cyan-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow group hover:border-cyan-300">
             {/* Featured Image */}
             {article.data.featuredImage && (
               <div class="aspect-video overflow-hidden">
                 <Image
                   src={article.data.featuredImage}
                   alt={article.data.title}
+                  width="600"
+                  height="400"
                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  loading="lazy"
                 />
               </div>
             )}
@@ -123,12 +124,12 @@ function formatDate(date: Date): string {
               {article.data.tags && article.data.tags.length > 0 && (
                 <div class="flex flex-wrap gap-2 mb-4">
                   {article.data.tags.slice(0, 3).map((tag) => (
-                    <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">
+                    <span class="bg-cyan-100 text-cyan-700 px-2 py-1 rounded text-xs hover:bg-cyan-200 transition-colors">
                       {tag}
                     </span>
                   ))}
                   {article.data.tags.length > 3 && (
-                    <span class="text-gray-500 text-xs">
+                    <span class="text-cyan-500 text-xs">
                       +{article.data.tags.length - 3}
                     </span>
                   )}
@@ -155,7 +156,7 @@ function formatDate(date: Date): string {
         <div class="text-center mt-12">
           <a 
             href="/news" 
-            class="inline-flex items-center bg-cyan-600 text-white px-6 py-3 rounded-lg hover:bg-cyan-700 transition-colors font-medium"
+            class="inline-flex items-center bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white px-8 py-3 rounded-lg transition-all duration-300 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
           >
             查看更多新聞
             <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
