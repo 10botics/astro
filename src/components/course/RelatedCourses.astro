@@ -34,7 +34,7 @@ const {
 // Determine the actual tags and settings based on context
 const tags = context === 'news' ? newsTags : courseTags;
 const title = context === 'news' ? newsTitle : courseTitle;
-const defaultMaxResults = context === 'news' ? 9 : 6;
+const defaultMaxResults = context === 'news' ? 6 : 6;
 const finalMaxResults = maxResults ?? defaultMaxResults;
 
 // Auto-discover courses using shared utility

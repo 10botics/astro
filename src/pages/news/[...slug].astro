@@ -4,6 +4,7 @@ import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import { generateExcerpt } from '../../utils/excerpt';
 import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
 
 export async function getStaticPaths() {
   const newsArticles = await getCollection('news');
@@ -25,7 +26,7 @@ const allNews = await getCollection('news');
 const relatedArticles = allNews
   .filter(a => a.slug !== article.slug && a.data.category === article.data.category)
   .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime())
-  .slice(0, 3);
+  .slice(0, 6);
 
 // SEO optimized page data
 const pageTitle = `${article.data.title} - 10教育`;
@@ -45,12 +46,12 @@ if (article.data.SEOImage) {
       // Already a public path
       ogImage = article.data.SEOImage;
     } else {
-      // Handle imported asset
-      ogImage = article.data.SEOImage.src || article.data.SEOImage;
+      // Handle imported asset - this shouldn't happen for strings, but just in case
+      ogImage = article.data.SEOImage;
     }
   } else {
     // Handle imported asset object
-    ogImage = article.data.SEOImage.src;
+    ogImage = (article.data.SEOImage as any).src;
   }
 } else if (article.data.featuredImage) {
   if (typeof article.data.featuredImage === 'string') {
@@ -62,12 +63,12 @@ if (article.data.SEOImage) {
       // Already a public path
       ogImage = article.data.featuredImage;
     } else {
-      // Handle imported asset
-      ogImage = article.data.featuredImage.src || article.data.featuredImage;
+      // Handle imported asset - this shouldn't happen for strings, but just in case
+      ogImage = article.data.featuredImage;
     }
   } else {
     // Handle imported asset object
-    ogImage = article.data.featuredImage.src;
+    ogImage = (article.data.featuredImage as any).src;
   }
 }
 
@@ -242,65 +243,21 @@ if (ogImage && ogImage !== "/images/logo_website_700x200-300x86.png") {
       </div>
     </section>
 
-    <!-- Related Articles -->
-    {relatedArticles.length > 0 && (
-      <section class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-          <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">相關文章</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-              {relatedArticles.map((relatedArticle) => (
-                <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                  {relatedArticle.data.featuredImage && (
-                    <div class="aspect-video bg-gray-200 overflow-hidden">
-                      <Image 
-                        src={relatedArticle.data.featuredImage as any} 
-                        alt={relatedArticle.data.title}
-                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        loading="lazy"
-                        width={400}
-                        height={225}
-                      />
-                    </div>
-                  )}
-                  
-                  <div class="p-6">
-                    <div class="mb-3">
-                      <span class="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded-full">
-                        {relatedArticle.data.category}
-                      </span>
-                    </div>
-                    
-                    <h3 class="text-lg font-bold mb-2 line-clamp-2">
-                      <a 
-                        href={`/news/${relatedArticle.slug}`}
-                        class="hover:text-blue-600 transition-colors"
-                      >
-                        {relatedArticle.data.title}
-                      </a>
-                    </h3>
-                    
-                    <p class="text-gray-600 text-sm line-clamp-3 mb-4">
-                      {relatedArticle.data.excerpt}
-                    </p>
-                    
-                    <div class="text-xs text-gray-500">
-                      {new Date(relatedArticle.data.publishDate).toLocaleDateString('zh-HK')}
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    )}
+    <!-- Related News -->
+    <RelatedNews 
+      newsTags={article.data.tags || []}
+      newsTitle={article.data.title}
+      currentNewsSlug={article.slug}
+      context="news"
+      maxResults={6}
+    />
 
     <!-- Related School Courses -->
     <RelatedCourses 
       newsTags={article.data.tags || []}
       newsTitle={article.data.title}
-      maxResults={9}
+      context="news"
+      maxResults={6}
     />
 
     <!-- Back to News -->
