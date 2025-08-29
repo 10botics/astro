@@ -6,7 +6,7 @@ import path from 'path';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://staging.10botics.com',
+  site: 'https://10botics.com',
   output: 'static', // Static output for static website
   build: {
     assets: '_astro', // Ensure consistent asset naming
