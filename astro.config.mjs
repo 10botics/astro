@@ -30,6 +30,21 @@ export default defineConfig({
       }
     }
   },
+  redirects: {
+    // External redirects
+    '/timesheet_submission_form': 'https://otfxid9w.paperform.co',
+    '/contact-form': 'https://or0uzdua.paperform.co',
+    '/formula-ai': 'https://formula-ai.racing',
+    '/ai-art-competition-2023': 'https://art.10botics.com',
+    '/course-overview': 'https://or0uzdua.paperform.co',
+    '/minecraft-2024-registration': 'https://exgj8uei.paperform.co',
+    '/minecraft-2023-registration': 'https://ofpd3jzg.paperform.co',
+    
+    // Internal redirects
+    '/course/:slug': '/school-courses/:slug',
+    '/ai-courses': '/school-courses/scratch-ai-programming',
+    '/tools/serp-preview': '/',
+  },
   integrations: [
     tailwind({
       // Apply TailwindCSS to all files

@@ -72,9 +72,7 @@ export async function getStaticPaths() {
 const { slug } = Astro.params;
 
 // Handle special external redirects first
-if (slug === 'timesheet_submission_form') {
-  return Astro.redirect('https://otfxid9w.paperform.co');
-}
+// Note: timesheet_submission_form redirect is now handled in astro.config.mjs
 
 // Get component info from global alias configuration
 const componentInfo = getComponentForSlug('root', slug);
