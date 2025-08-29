@@ -959,9 +959,9 @@ const description = "冇無人機都可以參加嘅無人機比賽！學界無�
     </section>
 
     <script>
-      function toggleFAQ(button: HTMLButtonElement) {
-        const content = button.nextElementSibling as HTMLElement;
-        const icon = button.querySelector('svg') as SVGElement;
+      function toggleFAQ(button) {
+        const content = button.nextElementSibling;
+        const icon = button.querySelector('svg');
         const isExpanded = button.getAttribute('aria-expanded') === 'true';
         
         // Toggle content visibility
