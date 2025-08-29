@@ -3,6 +3,12 @@ import Layout from '../../layouts/Layout.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
 import { Image } from 'astro:assets';
+import { 
+  discoverCourses, 
+  generateTagSlug,
+  AUDIENCE_TAG_MAPPING,
+  type Course 
+} from '../../utils/courseMappings';
 
 // Import images
 import bannerImage from '../../assets/images/funding-application/奇趣IT識多啲計劃/edm-01-scaled.jpg';
@@ -19,6 +25,14 @@ import icon4 from '../../assets/images/funding-application/奇趣IT識多啲計�
 
 const title = "奇趣IT識多啲 - 10教育";
 const description = "奇趣IT識多啲計劃 爲了透過課外活動啟發小學生對資訊科技的興趣、認識及應用，政府由2021/22到2023/24三個學年，爲每所小學提供最高共40萬元的一次性撥款資助。";
+
+// Auto-discover courses using shared utility
+const astroCourses = await discoverCourses('../school-courses/', ['index.astro', '[slug].astro']);
+
+// Sort courses by publication date (newest first)
+const sortedCourses = astroCourses.sort((a, b) => 
+  new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
+);
 ---
 
 <Layout title={title} description={description}>
@@ -311,6 +325,113 @@ const description = "奇趣IT識多啲計劃 爲了透過課外活動啟發小�
             <p class="text-gray-700">收到申請後大約一個月或以上，視乎申請是否完整、當時收到的申請數目和評審委員會的會議次數而定</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {sortedCourses.map((course) => (
+          <article class="course-card bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+            <!-- Hero Image -->
+            {course.heroImage && (
+              <div class="course-image-container bg-gray-100 overflow-hidden aspect-video">
+                {typeof course.heroImage === 'string' ? (
+                  <Image 
+                    src={course.heroImage} 
+                    alt={course.title}
+                    width={600}
+                    height={400}
+                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                ) : (
+                  <Image 
+                    src={course.heroImage} 
+                    alt={course.title}
+                    width={600}
+                    height={400}
+                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                )}
+              </div>
+            )}
+            <div class="p-6">
+              <!-- Course Header -->
+              <div class="mb-4">
+                <h3 class="text-xl font-bold mb-2 text-gray-800 line-clamp-2">
+                  <a href={`/school-courses/${course.slug}`} 
+                     class="hover:text-blue-600 transition-colors">
+                    {course.title}
+                  </a>
+                </h3>
+                
+                {course.description && (
+                  <p class="text-gray-600 text-sm line-clamp-3 mb-4">
+                    {course.description}
+                  </p>
+                )}
+              </div>
+              
+              <!-- Tags -->
+              <div class="mb-4">
+                {(() => {
+                  const targetAudienceTags = ['初小', '高小', '初中', '高中'];
+                  const otherTags = course.tags.filter(tag => !targetAudienceTags.includes(tag));
+                  const audienceTags = course.tags.filter(tag => targetAudienceTags.includes(tag));
+                  
+                  return (
+                    <div class="space-y-2">
+                      {/* Target Audience */}
+                      {audienceTags.length > 0 && (
+                        <div class="flex flex-wrap gap-1 items-center">
+                          <span class="text-xs font-medium text-gray-600 mr-1">適合對象:</span>
+                          {audienceTags.map(tag => {
+                            const tagSlug = AUDIENCE_TAG_MAPPING[tag] || tag.toLowerCase().replace(/\s+/g, '-');
+                            
+                            return (
+                              <a href={`/school-courses/tag/${tagSlug}`} class="bg-cyan-100 text-cyan-800 px-2 py-1 rounded text-xs font-medium hover:bg-cyan-200 transition-colors">
+                                {tag}
+                              </a>
+                            );
+                          })}
+                        </div>
+                      )}
+                      
+                      {/* Other Tags */}
+                      {otherTags.length > 0 && (
+                        <div class="flex flex-wrap gap-1">
+                          {otherTags.map(tag => {
+                            // Generate tag slug using shared utility
+                            const tagSlug = generateTagSlug(tag);
+                            
+                            return (
+                              <a href={`/school-courses/tag/${tagSlug}`}
+                                 class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium hover:bg-blue-200 transition-colors">
+                                {tag}
+                              </a>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })()}
+              </div>
+              
+              <!-- Action Button -->
+              <div class="mt-auto">
+                <a href={`/school-courses/${course.slug}`}
+                   class="inline-block w-full text-center bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors text-sm font-medium">
+                  查看課程詳情
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="/school-courses/" class="inline-block bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors font-semibold">
+          查看所有課程
+        </a>
       </div>
     </div>
   </section>

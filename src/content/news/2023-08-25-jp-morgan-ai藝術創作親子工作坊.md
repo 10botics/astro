@@ -7,11 +7,6 @@ SEOImage: "../../assets/images/news/2023-08-25-jp-morgan-ai藝術創作親子工
 category: "過往活動"
 tags: ["AI 人工智能", "Arts 藝術", "STEM Day"]
 author: "sukileung"
-isFeatured: false
-externalLink: "https://10botics.com/past-activities/2023/08/25/jpmorgan-ai-generative-art-workshop/"
-wpSlug: "jp-morgan-ai藝術創作親子工作坊"
-wpDate: "2023/08/25"
-readingTime: 1
 ---
 
 ![J.P. Morgan AI Generative Art Workshop](../../assets/images/news/2023-08-25-jp-morgan-ai藝術創作親子工作坊/image1.jpeg)

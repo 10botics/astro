@@ -21,11 +21,6 @@ const newsCollection = defineCollection({
     ]).default('過往活動'),
     tags: z.array(z.string()).optional(),
     author: z.string().default('admin'),
-    isFeatured: z.boolean().default(false),
-    externalLink: z.string().url().optional(),
-    wpSlug: z.string().optional(),
-    wpDate: z.string().optional(),
-    readingTime: z.number().optional(),
   }),
 });
 

@@ -28,7 +28,7 @@
       </div>
       <div class="mt-2 space-y-1">
                  <p class="text-sm text-gray-500">
-           <strong>For local testing:</strong> Use the full URL after building (e.g., http://localhost:4322/school-courses/ai-enrichment-course/)
+           <strong>For local testing:</strong> Use the full URL after building (e.g., http://localhost:4321/school-courses/ai-enrichment-course/)
          </p>
         <p class="text-sm text-gray-500">
           <strong>For production:</strong> Use the live URL (e.g., https://10botics.com/school-courses/ai-enrichment-course/)
@@ -74,7 +74,7 @@
       <h3 class="font-semibold text-yellow-900 mb-2">Quick Test URLs:</h3>
       <div class="space-y-2">
                  <button 
-           onclick="testUrl('http://localhost:4322/school-courses/ai-enrichment-course/')"
+           onclick="testUrl('http://localhost:4321/school-courses/ai-enrichment-course/')"
            class="block w-full text-left px-3 py-2 bg-yellow-100 hover:bg-yellow-200 rounded text-sm text-yellow-800 transition-colors"
          >
            🏠 Local: /school-courses/ai-enrichment-course/
@@ -109,7 +109,7 @@
     }
 
          // Set default URL for testing - use localhost for development
-     urlInput.value = 'http://localhost:4322/school-courses/ai-enrichment-course/';
+     urlInput.value = 'http://localhost:4321/school-courses/ai-enrichment-course/';
 
     // Global function for quick test buttons
     (window as any).testUrl = function(url: string) {

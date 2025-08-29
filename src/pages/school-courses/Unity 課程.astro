@@ -7,6 +7,7 @@ import DualCourseContent from '../../components/course/DualCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -219,7 +220,7 @@ const unityExamples = [
     subtitle={courseData.subtitle}
     tags={courseData.tags}
     videoId={courseData.videoId}
-    description={courseData.description}
+    description={courseData.detailedDescription}
   />
 
   <!-- Unity Introduction Section -->
@@ -468,6 +469,8 @@ const unityExamples = [
   </section>
 
   <QnASection faqs={faqItems} />
+  <!-- Related Courses Section -->
+  <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="unity" context="course" />
   <!-- Related News Section -->
   <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
 

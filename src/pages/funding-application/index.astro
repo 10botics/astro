@@ -1,12 +1,26 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import { 
+  discoverCourses, 
+  generateTagSlug,
+  AUDIENCE_TAG_MAPPING,
+  type Course 
+} from '../../utils/courseMappings';
 
 // Import images
 import itLabBanner from '../../assets/images/funding-application/IT創新實驗室計劃/it_lab_main_page_banner_tc-1024x439.jpg';
 
 const title = "資助申請 - 10教育";
 const description = "了解各種教育資助計劃，包括IT創新實驗室計劃等，協助學校獲得資金支持。";
+
+// Auto-discover courses using shared utility
+const astroCourses = await discoverCourses('../school-courses/', ['index.astro', '[slug].astro']);
+
+// Sort courses by publication date (newest first)
+const sortedCourses = astroCourses.sort((a, b) => 
+  new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
+);
 ---
 
 <Layout title={title} description={description}>
@@ -52,7 +66,7 @@ const description = "了解各種教育資助計劃，包括IT創新實驗室計
                 <span class="font-semibold text-green-600">最高資助：</span>100萬元
               </div>
               <a 
-                href="/it-innovation-lab" 
+                href="/funding-application/it-innovation-lab" 
                 class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
               >
                 了解詳情
@@ -146,13 +160,13 @@ const description = "了解各種教育資助計劃，包括IT創新實驗室計
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a 
-          href="/funding-application/it-innovation-lab" 
+          href="/funding-application/IT創新實驗室計劃" 
           class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
         >
           IT創新實驗室計劃
         </a>
         <a 
-          href="/funding-application/knowing-more-about-it" 
+          href="/funding-application/奇趣IT識多啲計劃" 
           class="bg-white text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
         >
           奇趣IT識多啲計劃
@@ -162,6 +176,122 @@ const description = "了解各種教育資助計劃，包括IT創新實驗室計
           class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
         >
           聯絡我們
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Available Courses -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">可選課程清單</h2>
+      <p class="text-lg text-gray-700 text-center mb-8 max-w-4xl mx-auto">
+        以下課程均符合各項資助計劃要求，可協助學校提升資訊科技設備和設施，以及舉辦與資訊科技相關的課外活動
+      </p>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {sortedCourses.map((course) => (
+          <article class="course-card bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+            <!-- Hero Image -->
+            {course.heroImage && (
+              <div class="course-image-container bg-gray-100 overflow-hidden aspect-video">
+                {typeof course.heroImage === 'string' ? (
+                  <Image 
+                    src={course.heroImage} 
+                    alt={course.title}
+                    width={600}
+                    height={400}
+                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                ) : (
+                  <Image 
+                    src={course.heroImage} 
+                    alt={course.title}
+                    width={600}
+                    height={400}
+                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                )}
+              </div>
+            )}
+            <div class="p-6">
+              <!-- Course Header -->
+              <div class="mb-4">
+                <h3 class="text-xl font-bold mb-2 text-gray-800 line-clamp-2">
+                  <a href={`/school-courses/${course.slug}`} 
+                     class="hover:text-blue-600 transition-colors">
+                    {course.title}
+                  </a>
+                </h3>
+                
+                {course.description && (
+                  <p class="text-gray-600 text-sm line-clamp-3 mb-4">
+                    {course.description}
+                  </p>
+                )}
+              </div>
+              
+              <!-- Tags -->
+              <div class="mb-4">
+                {(() => {
+                  const targetAudienceTags = ['初小', '高小', '初中', '高中'];
+                  const otherTags = course.tags.filter(tag => !targetAudienceTags.includes(tag));
+                  const audienceTags = course.tags.filter(tag => targetAudienceTags.includes(tag));
+                  
+                  return (
+                    <div class="space-y-2">
+                      {/* Target Audience */}
+                      {audienceTags.length > 0 && (
+                        <div class="flex flex-wrap gap-1 items-center">
+                          <span class="text-xs font-medium text-gray-600 mr-1">適合對象:</span>
+                          {audienceTags.map(tag => {
+                            const tagSlug = AUDIENCE_TAG_MAPPING[tag] || tag.toLowerCase().replace(/\s+/g, '-');
+                            
+                            return (
+                              <a href={`/school-courses/tag/${tagSlug}`} class="bg-cyan-100 text-cyan-800 px-2 py-1 rounded text-xs font-medium hover:bg-cyan-200 transition-colors">
+                                {tag}
+                              </a>
+                            );
+                          })}
+                        </div>
+                      )}
+                      
+                      {/* Other Tags */}
+                      {otherTags.length > 0 && (
+                        <div class="flex flex-wrap gap-1">
+                          {otherTags.map(tag => {
+                            // Generate tag slug using shared utility
+                            const tagSlug = generateTagSlug(tag);
+                            
+                            return (
+                              <a href={`/school-courses/tag/${tagSlug}`}
+                                 class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium hover:bg-blue-200 transition-colors">
+                                {tag}
+                              </a>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })()}
+              </div>
+              
+              <!-- Action Button -->
+              <div class="mt-auto">
+                <a href={`/school-courses/${course.slug}`}
+                   class="inline-block w-full text-center bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors text-sm font-medium">
+                  查看課程詳情
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="/school-courses/" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+          查看所有課程
         </a>
       </div>
     </div>

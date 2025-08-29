@@ -145,17 +145,15 @@ const description = "冇無人機都可以參加嘅無人機比賽！學界無�
             </p>
             
             <!-- Video Section -->
-            <div class="aspect-video bg-gray-200 rounded-lg flex items-center justify-center mb-8">
-              <div class="text-center">
-                <p class="text-gray-600 mb-4">比賽介紹影片</p>
-                <a 
-                  href="https://www.youtube.com/watch?v=Wsiz4ZkPn18"
-                  target="_blank"
-                  class="inline-block bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-300"
-                >
-                  觀看影片
-                </a>
-              </div>
+            <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden mb-8">
+              <iframe 
+                src="https://www.youtube.com/embed/Wsiz4ZkPn18" 
+                title="比賽介紹影片"
+                class="w-full h-full"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+              </iframe>
             </div>
           </div>
         </div>
@@ -324,6 +322,56 @@ const description = "冇無人機都可以參加嘅無人機比賽！學界無�
       </div>
     </section>
 
+    <!-- Awards Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">獎項</h2>
+        <div class="max-w-4xl mx-auto">
+          <p class="text-lg text-gray-700 mb-6 text-center">
+            初賽與決賽均設有以下獎項:
+          </p>
+          
+          <div class="bg-gray-50 p-6 rounded-lg mb-8">
+            <table class="w-full border-collapse border border-gray-300 bg-white shadow-lg rounded-lg overflow-hidden">
+              <thead class="bg-blue-600 text-white">
+                <tr>
+                  <th class="border border-gray-300 px-6 py-4 text-center font-semibold">特等獎</th>
+                  <th class="border border-gray-300 px-6 py-4 text-center font-semibold">一等獎</th>
+                  <th class="border border-gray-300 px-6 py-4 text-center font-semibold">二等獎</th>
+                  <th class="border border-gray-300 px-6 py-4 text-center font-semibold">優異獎</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="hover:bg-gray-50">
+                  <td class="border border-gray-300 px-6 py-4 text-center">頒發給該任務中得分最高的隊伍</td>
+                  <td class="border border-gray-300 px-6 py-4 text-center">達到一等獎所需分數</td>
+                  <td class="border border-gray-300 px-6 py-4 text-center">達到二等獎所需分數</td>
+                  <td class="border border-gray-300 px-6 py-4 text-center">達到優異獎所需分數</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="bg-blue-50 p-6 rounded-lg">
+            <ul class="list-disc list-inside space-y-2 text-gray-700">
+              <li>獲得<strong>優異獎或以上的隊伍</strong>將同時獲得進入決賽的資格</li>
+              <li>初賽獲獎者將收到電子版證書</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Difficulty Chart -->
+    <section class="py-16 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">任務難度表</h2>
+        <div class="max-w-4xl mx-auto">
+          <Image src={DifficultyChart} alt="任務難度表" class="w-full rounded-lg shadow-lg" />
+        </div>
+      </div>
+    </section>
+
     <!-- Task Details -->
     <section class="py-16 bg-gray-100">
       <div class="container mx-auto px-4">
@@ -332,55 +380,133 @@ const description = "冇無人機都可以參加嘅無人機比賽！學界無�
         <div class="max-w-6xl mx-auto space-y-12">
           <!-- Task 1 -->
           <div class="bg-white p-8 rounded-lg shadow-lg">
-            <h3 class="text-2xl font-bold text-gray-800 mb-6">任務一：摩斯密碼搜救信號</h3>
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">任務一：飛行搜救密碼</h3>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               <div>
-                <p class="text-lg text-gray-700 mb-4">
-                  參賽者需要編程無人機，使其能夠通過燈光發出摩斯密碼信號來進行搜救。這項任務考驗學生的編程能力和對摩斯密碼的理解。
+                <h4 class="text-xl font-bold text-gray-800 mb-4">拯救失落的探險隊</h4>
+                <p class="text-lg text-gray-700 mb-6">
+                  一支探險隊在遠離人煙的神秘山谷中失去了聯繫，他們的設備損壞，無法發送完整的求救信號。作為無人機救援隊的一員，你的任務是操控無人機，進行測量，並發送 <strong>SOS</strong> 信號給外界。
                 </p>
-                <div class="bg-blue-50 p-4 rounded-lg">
-                  <h4 class="font-semibold text-gray-800 mb-2">任務要求：</h4>
-                  <ul class="list-disc list-inside text-gray-700 space-y-1">
-                    <li>無人機必須能夠準確發出摩斯密碼信號</li>
-                    <li>信號必須清晰可見</li>
-                    <li>完成指定的搜救序列</li>
-                  </ul>
-                </div>
-                <div class="bg-green-50 p-4 rounded-lg mt-4">
-                  <h4 class="font-semibold text-gray-800 mb-2">評分標準：</h4>
-                  <div class="grid grid-cols-2 gap-4 text-sm">
-                    <div>
-                      <strong>特等獎：</strong>成績最高的隊伍
+                
+                <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                  <h4 class="font-semibold text-gray-800 mb-3">*必須完成項目*</h4>
+                  <div class="space-y-3">
+                    <div class="flex items-start space-x-3">
+                      <span class="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
+                      <div>
+                        <strong>高度測量</strong>
+                        <p class="text-sm text-gray-600 mt-1">滿分 30 分，每誤差 ± 1 厘米 扣 1 分</p>
+                      </div>
                     </div>
-                    <div>
-                      <strong>一等獎：</strong>90分以上
-                    </div>
-                    <div>
-                      <strong>二等獎：</strong>75分 – 89分
-                    </div>
-                    <div>
-                      <strong>優異獎：</strong>60分 – 74分
+                    <div class="flex items-start space-x-3">
+                      <span class="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
+                      <div>
+                        <strong>SOS信號發送</strong>
+                        <p class="text-sm text-gray-600 mt-1">完整發送信號得 30 分，信號不完整得 0 分</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="space-y-4">
-                <Image src={Task1Overview} alt="任務一概述" class="w-full rounded-lg shadow-md" />
-                <div class="grid grid-cols-3 gap-2">
-                  <Image src={Task1Screenshot1} alt="任務一截圖1" class="w-full rounded-lg" />
-                  <Image src={Task1Screenshot2} alt="任務一截圖2" class="w-full rounded-lg" />
-                  <Image src={Task1Screenshot3} alt="任務一截圖3" class="w-full rounded-lg" />
+
+                <div class="bg-green-50 p-4 rounded-lg mb-4">
+                  <h4 class="font-semibold text-gray-800 mb-3">額外加分項目</h4>
+                  <div class="space-y-3">
+                    <div class="flex items-start space-x-3">
+                      <span class="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
+                      <div>
+                        <strong>區域範圍測量</strong>
+                        <p class="text-sm text-gray-600 mt-1">滿分 30 分，每誤差 ± 10,000 立方厘米 扣 1 分</p>
+                      </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                      <span class="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">4</span>
+                      <div>
+                        <strong>水平距離測量</strong>
+                        <p class="text-sm text-gray-600 mt-1">滿分 30 分，每誤差 ± 1 厘米 扣 1 分</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
+                <div class="bg-yellow-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-gray-800 mb-3">評分標準</h4>
+                  <div class="space-y-2 text-sm">
+                    <div><strong>特等獎：</strong>成績最高的隊伍</div>
+                    <div><strong>一等獎：</strong>110分以上</div>
+                    <div><strong>二等獎：</strong>96分 – 110分</div>
+                    <div><strong>優異獎：</strong>80分 – 95分</div>
+                  </div>
+                </div>
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-gray-800 mb-3">詳細評分規則</h4>
+                  <table class="w-full border-collapse border border-gray-300 bg-white text-sm">
+                    <thead class="bg-blue-600 text-white">
+                      <tr>
+                        <th class="border border-gray-300 px-3 py-2 text-center">任務</th>
+                        <th class="border border-gray-300 px-3 py-2 text-center">得分規則</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="hover:bg-gray-50">
+                        <td class="border border-gray-300 px-3 py-2 text-center">高度測量</td>
+                        <td class="border border-gray-300 px-3 py-2">滿分 30 分，每誤差 ± 1 厘米 扣 1 分</td>
+                      </tr>
+                      <tr class="hover:bg-gray-50">
+                        <td class="border border-gray-300 px-3 py-2 text-center">SOS信號發送</td>
+                        <td class="border border-gray-300 px-3 py-2">完整發送信號得 30 分，信號不完整得 0 分</td>
+                      </tr>
+                      <tr class="hover:bg-gray-50">
+                        <td class="border border-gray-300 px-3 py-2 text-center">區域範圍測量</td>
+                        <td class="border border-gray-300 px-3 py-2">滿分 30 分，每誤差 ± 10,000 立方厘米 扣 1 分</td>
+                      </tr>
+                      <tr class="hover:bg-gray-50">
+                        <td class="border border-gray-300 px-3 py-2 text-center">水平距離測量</td>
+                        <td class="border border-gray-300 px-3 py-2">滿分 30 分，每誤差 ± 1 厘米 扣 1 分</td>
+                      </tr>
+                      <tr class="hover:bg-gray-50">
+                        <td class="border border-gray-300 px-3 py-2 text-center">時間加分</td>
+                        <td class="border border-gray-300 px-3 py-2">在 90 秒內完成得 30 分，每超過 1 秒扣 1 分</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="mt-4 text-center">
+                  <a 
+                    href="https://drive.google.com/file/d/1yElAdCXLEC8q-23-xxko7JagtYEL4TJA/view?usp=share_link"
+                    target="_blank"
+                    class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300"
+                  >
+                    按此瀏覽 任務一規則說明
+                  </a>
+                </div>
+              </div>
+              
+              <div class="space-y-4">
+                <div class="grid grid-cols-1 gap-4">
+                  <Image src={Task1Screenshot1} alt="高度測量" class="w-full rounded-lg shadow-md" />
+                  <Image src={Task1Screenshot2} alt="SOS信號發送" class="w-full rounded-lg shadow-md" />
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                  <Image src={Task1Screenshot2} alt="區域範圍測量" class="w-full rounded-lg shadow-md" />
+                  <Image src={Task1Screenshot3} alt="水平距離測量" class="w-full rounded-lg shadow-md" />
+                </div>
+
                 <!-- Video Section -->
                 <div class="bg-blue-50 p-4 rounded-lg">
-                  <h4 class="font-semibold text-gray-800 mb-3">任務一影片介紹</h4>
-                  <a 
-                    href="https://youtu.be/AViMApJXpXk"
-                    target="_blank"
-                    class="inline-block bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-300"
-                  >
-                    觀看任務一影片
-                  </a>
+                  <h4 class="font-semibold text-gray-800 mb-3">任務一 影片介紹</h4>
+                  <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
+                    <iframe 
+                      src="https://www.youtube.com/embed/AViMApJXpXk?t=3s" 
+                      title="任務一影片介紹"
+                      class="w-full h-full"
+                      frameborder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowfullscreen>
+                    </iframe>
+                  </div>
                 </div>
               </div>
             </div>
@@ -391,48 +517,111 @@ const description = "冇無人機都可以參加嘅無人機比賽！學界無�
             <h3 class="text-2xl font-bold text-gray-800 mb-6">任務二：物資空投任務</h3>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               <div>
-                <p class="text-lg text-gray-700 mb-4">
-                  參賽者需要編程無人機完成精確的物資空投任務。這項任務考驗學生的精確控制能力和空間感知能力。
+                <h4 class="text-xl font-bold text-gray-800 mb-4">緊急物資空投</h4>
+                <p class="text-lg text-gray-700 mb-6">
+                  一支探險隊在偏遠山區失聯，並遭遇裝備故障，無法獲得外界的幫助。作為無人機救援隊的一員，你的任務是操作無人機完成兩個區域的物資投放，以協助探險隊隊脫險。
                 </p>
-                <div class="bg-green-50 p-4 rounded-lg">
-                  <h4 class="font-semibold text-gray-800 mb-2">任務要求：</h4>
-                  <ul class="list-disc list-inside text-gray-700 space-y-1">
-                    <li>無人機必須能夠準確定位到指定空投點</li>
-                    <li>物資必須安全準確地投放到目標區域</li>
-                    <li>完成多個空投點的任務</li>
-                  </ul>
-                </div>
-                <div class="bg-blue-50 p-4 rounded-lg mt-4">
-                  <h4 class="font-semibold text-gray-800 mb-2">評分標準：</h4>
-                  <div class="grid grid-cols-2 gap-4 text-sm">
-                    <div>
-                      <strong>特等獎：</strong>成績最高的隊伍
-                    </div>
-                    <div>
-                      <strong>一等獎：</strong>85分以上
-                    </div>
-                    <div>
-                      <strong>二等獎：</strong>70分 – 84分
-                    </div>
-                    <div>
-                      <strong>優異獎：</strong>55分 – 69分
+                
+                <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                  <h4 class="font-semibold text-gray-800 mb-3">*必須完成項目*</h4>
+                  <div class="space-y-3">
+                    <div class="flex items-start space-x-3">
+                      <span class="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
+                      <div>
+                        <strong>區域 1. 迷宮物資運送</strong>
+                        <p class="text-sm text-gray-600 mt-1">投放準確度分數：靶心（黃色範圍）：30分，第二環（紅色範圍）：25分，第三環（藍色範圍）：20分，第四環（黑色範圍）：15分，投放在靶外：0分</p>
+                      </div>
                     </div>
                   </div>
                 </div>
+
+                <div class="bg-green-50 p-4 rounded-lg mb-4">
+                  <h4 class="font-semibold text-gray-800 mb-3">額外加分項目</h4>
+                  <div class="space-y-3">
+                    <div class="flex items-start space-x-3">
+                      <span class="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
+                      <div>
+                        <strong>區域 2. 多點救援</strong>
+                        <p class="text-sm text-gray-600 mt-1">時間加分：在 40 秒內完成迷宮物資運送得 30 分，每超過 1 秒扣 1 分</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-yellow-50 p-4 rounded-lg mb-4">
+                  <h4 class="font-semibold text-gray-800 mb-3">評分標準</h4>
+                  <div class="space-y-2 text-sm">
+                    <div><strong>初賽：</strong></div>
+                    <div><strong>特等獎：</strong>成績最高的隊伍</div>
+                    <div><strong>一等獎：</strong>85分或以上</div>
+                    <div><strong>二等獎：</strong>70分 – 84分</div>
+                    <div><strong>優異獎：</strong>50分 – 69分</div>
+                    <div class="mt-2"><strong>決賽：</strong></div>
+                    <div><strong>特等獎：</strong>成績最高的隊伍</div>
+                    <div><strong>一等獎：</strong>55分以上</div>
+                    <div><strong>二等獎：</strong>45分 – 54分</div>
+                    <div><strong>優異獎：</strong>44分 – 35分</div>
+                  </div>
+                </div>
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-gray-800 mb-3">詳細評分規則</h4>
+                  <table class="w-full border-collapse border border-gray-300 bg-white text-sm">
+                    <thead class="bg-green-600 text-white">
+                      <tr>
+                        <th class="border border-gray-300 px-3 py-2 text-center">得分項目</th>
+                        <th class="border border-gray-300 px-3 py-2 text-center">得分規則</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="hover:bg-gray-50">
+                        <td class="border border-gray-300 px-3 py-2 text-center">投放準確度分數</td>
+                        <td class="border border-gray-300 px-3 py-2">
+                          靶心（黃色範圍）：30分<br />
+                          第二環（紅色範圍）：25分<br />
+                          第三環（藍色範圍）：20分<br />
+                          第四環（黑色範圍）：15分<br />
+                          投放在靶外：0分
+                        </td>
+                      </tr>
+                      <tr class="hover:bg-gray-50">
+                        <td class="border border-gray-300 px-3 py-2 text-center">時間加分</td>
+                        <td class="border border-gray-300 px-3 py-2">在 40 秒內完成迷宮物資運送得 30 分，每超過 1 秒扣 1 分</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="mt-4 text-center">
+                  <a 
+                    href="https://drive.google.com/file/d/1Mu_xva-7E8vImUx6BAB6PZ0Ur12FTbPJ/view?usp=drive_link"
+                    target="_blank"
+                    class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors duration-300"
+                  >
+                    按此瀏覽 任務二規則說明
+                  </a>
+                </div>
               </div>
+              
               <div class="space-y-4">
-                <Image src={Task2Screenshot1} alt="任務二截圖1" class="w-full rounded-lg shadow-md" />
-                <Image src={Task2Screenshot2} alt="任務二截圖2" class="w-full rounded-lg shadow-md" />
+                <div class="grid grid-cols-1 gap-4">
+                  <Image src={Task2Screenshot1} alt="迷宮物資運送" class="w-full rounded-lg shadow-md" />
+                  <Image src={Task2Screenshot2} alt="多點救援" class="w-full rounded-lg shadow-md" />
+                </div>
+
                 <!-- Video Section -->
                 <div class="bg-green-50 p-4 rounded-lg">
-                  <h4 class="font-semibold text-gray-800 mb-3">任務二影片介紹</h4>
-                  <a 
-                    href="https://youtu.be/8Tw3H1bXVEU"
-                    target="_blank"
-                    class="inline-block bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-300"
-                  >
-                    觀看任務二影片
-                  </a>
+                  <h4 class="font-semibold text-gray-800 mb-3">任務二 影片介紹</h4>
+                  <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
+                    <iframe 
+                      src="https://www.youtube.com/embed/8Tw3H1bXVEU" 
+                      title="任務二影片介紹"
+                      class="w-full h-full"
+                      frameborder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowfullscreen>
+                    </iframe>
+                  </div>
                 </div>
               </div>
             </div>
@@ -443,15 +632,23 @@ const description = "冇無人機都可以參加嘅無人機比賽！學界無�
             <h3 class="text-2xl font-bold text-gray-800 mb-6">任務三：救援音樂回響</h3>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               <div>
-                <p class="text-lg text-gray-700 mb-4">
-                  參賽者需要編程無人機完成救援音樂回響任務。這項任務結合了音樂和技術，考驗學生的創意和技術實現能力。
+                <p class="text-lg text-gray-700 mb-6">
+                  任務三 「救援音樂回響」 要求參賽者編程無人機發出音樂信號，指引救援隊並提振士氣，傳遞希望。無人機需在指定位置起飛，並播放1段30秒至1分鐘救援音樂，展現獨特的創意設計、清晰的音樂結構和符合救援主題的情感表達。
                 </p>
-                <div class="bg-yellow-50 p-4 rounded-lg">
-                  <h4 class="font-semibold text-gray-800 mb-2">評分標準：</h4>
+                
+                <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                  <h4 class="font-semibold text-gray-800 mb-3">必須完成項目*</h4>
+                  <p class="text-sm text-gray-700">
+                    無人機需在指定位置起飛，並播放1段30秒至1分鐘救援音樂
+                  </p>
+                </div>
+
+                <div class="bg-yellow-50 p-4 rounded-lg mb-4">
+                  <h4 class="font-semibold text-gray-800 mb-3">評分標準</h4>
                   <div class="space-y-3">
                     <div class="border-b border-yellow-200 pb-2">
                       <strong>創意與原創性（50分）：</strong>
-                      <ul class="list-disc list-inside text-gray-700 mt-1 space-y-1">
+                      <ul class="list-disc list-inside text-gray-700 mt-1 space-y-1 text-sm">
                         <li>獨特且新穎</li>
                         <li>明顯原創元素</li>
                         <li>無使用預設音效或模板</li>
@@ -459,7 +656,7 @@ const description = "冇無人機都可以參加嘅無人機比賽！學界無�
                     </div>
                     <div class="border-b border-yellow-200 pb-2">
                       <strong>音樂結構與流暢性（30分）：</strong>
-                      <ul class="list-disc list-inside text-gray-700 mt-1 space-y-1">
+                      <ul class="list-disc list-inside text-gray-700 mt-1 space-y-1 text-sm">
                         <li>結構完整</li>
                         <li>開頭、中間、結尾銜接流暢</li>
                         <li>無不必要停頓</li>
@@ -467,43 +664,51 @@ const description = "冇無人機都可以參加嘅無人機比賽！學界無�
                     </div>
                     <div>
                       <strong>與主題的契合度（20分）：</strong>
-                      <ul class="list-disc list-inside text-gray-700 mt-1 space-y-1">
+                      <ul class="list-disc list-inside text-gray-700 mt-1 space-y-1 text-sm">
                         <li>與救援主題高度契合</li>
                         <li>強烈情感表達</li>
                       </ul>
                     </div>
                   </div>
                 </div>
-                <div class="bg-green-50 p-4 rounded-lg mt-4">
-                  <h4 class="font-semibold text-gray-800 mb-2">評分標準：</h4>
-                  <div class="grid grid-cols-2 gap-4 text-sm">
-                    <div>
-                      <strong>特等獎：</strong>成績最高的隊伍
-                    </div>
-                    <div>
-                      <strong>一等獎：</strong>80分以上
-                    </div>
-                    <div>
-                      <strong>二等獎：</strong>65分 -79分
-                    </div>
-                    <div>
-                      <strong>優異獎：</strong>50分 – 64分
-                    </div>
+
+                <div class="bg-green-50 p-4 rounded-lg mb-4">
+                  <h4 class="font-semibold text-gray-800 mb-3">評分標準</h4>
+                  <div class="space-y-2 text-sm">
+                    <div><strong>特等獎：</strong>成績最高的隊伍</div>
+                    <div><strong>一等獎：</strong>80分以上</div>
+                    <div><strong>二等獎：</strong>65分 -79分</div>
+                    <div><strong>優異獎：</strong>50分 – 64分</div>
                   </div>
                 </div>
+
+                <div class="mt-4 text-center">
+                  <a 
+                    href="https://drive.google.com/file/d/1AwzvfFvEqoX-Tf_kvzicp3lAjS1gBBVU/view?usp=drive_link"
+                    target="_blank"
+                    class="inline-block bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors duration-300"
+                  >
+                    按此瀏覽 任務三規則說明
+                  </a>
+                </div>
               </div>
+              
               <div>
                 <Image src={Task3Screenshot} alt="任務三截圖" class="w-full rounded-lg shadow-md" />
+                
                 <!-- Video Section -->
                 <div class="bg-yellow-50 p-4 rounded-lg mt-4">
-                  <h4 class="font-semibold text-gray-800 mb-3">任務三影片介紹</h4>
-                  <a 
-                    href="https://youtu.be/6-j-it1BpZE"
-                    target="_blank"
-                    class="inline-block bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-300"
-                  >
-                    觀看任務三影片
-                  </a>
+                  <h4 class="font-semibold text-gray-800 mb-3">任務三 影片介紹</h4>
+                  <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
+                    <iframe 
+                      src="https://www.youtube.com/embed/6-j-it1BpZE?list=PLo-JR4LW4slEUkrIw6Ay-QAMu6KAioUz7&index=6" 
+                      title="任務三影片介紹"
+                      class="w-full h-full"
+                      frameborder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowfullscreen>
+                    </iframe>
+                  </div>
                 </div>
               </div>
             </div>
@@ -514,78 +719,129 @@ const description = "冇無人機都可以參加嘅無人機比賽！學界無�
             <h3 class="text-2xl font-bold text-gray-800 mb-6">任務四：救援障礙飛行</h3>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               <div>
-                <p class="text-lg text-gray-700 mb-4">
+                <p class="text-lg text-gray-700 mb-6">
                   任務四「無人機救援障礙飛行」要求參賽者編程操控無人機穿越障礙物，並降落於箭靶式停機坪。不同的著陸位置和障礙物會獲得不同分數，你需要在有限時間內平衡速度與精準度，爭取最高分數！
                 </p>
-                <div class="bg-purple-50 p-4 rounded-lg">
-                  <h4 class="font-semibold text-gray-800 mb-2">必須完成項目＊</h4>
+                
+                <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                  <h4 class="font-semibold text-gray-800 mb-3">必須完成項目＊</h4>
                   <div class="space-y-3">
-                    <div class="border-b border-purple-200 pb-2">
-                      <strong>障礙物分數：</strong>每通過一個障礙物即可獲得10分
+                    <div class="flex items-start space-x-3">
+                      <span class="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
+                      <div>
+                        <strong>障礙物分數</strong>
+                        <p class="text-sm text-gray-600 mt-1">每通過一個障礙物即可獲得10分</p>
+                      </div>
                     </div>
-                    <div class="border-b border-purple-200 pb-2">
-                      <strong>著陸準確度分數：</strong>
-                      <ul class="list-disc list-inside text-gray-700 mt-1 space-y-1">
-                        <li>靶心（黃色範圍）：30分</li>
-                        <li>第二環（紅色範圍）：25分</li>
-                        <li>第三環（藍色範圍）：20分</li>
-                        <li>第四環（黑色範圍）：15分</li>
-                        <li>降落在靶外：0分</li>
-                      </ul>
-                      <p class="text-sm text-gray-600 mt-1">必須降落在箭靶式停機坪內，任務方視為完成</p>
+                    <div class="flex items-start space-x-3">
+                      <span class="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
+                      <div>
+                        <strong>著陸準確度分數</strong>
+                        <ul class="list-disc list-inside text-gray-700 mt-1 space-y-1 text-sm">
+                          <li>靶心（黃色範圍）：30分</li>
+                          <li>第二環（紅色範圍）：25分</li>
+                          <li>第三環（藍色範圍）：20分</li>
+                          <li>第四環（黑色範圍）：15分</li>
+                          <li>降落在靶外：0分</li>
+                        </ul>
+                        <p class="text-sm text-gray-600 mt-1">必須降落在箭靶式停機坪內，任務方視為完成</p>
+                      </div>
                     </div>
-                    <div class="border-b border-purple-200 pb-2">
-                      <strong>時間加分：</strong>在 60 秒內完成得 30 分，每超過 1 秒扣 1 分
+                    <div class="flex items-start space-x-3">
+                      <span class="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
+                      <div>
+                        <strong>時間加分</strong>
+                        <p class="text-sm text-gray-600 mt-1">在 60 秒內完成得 30 分，每超過 1 秒扣 1 分</p>
+                      </div>
                     </div>
-                    <div>
-                      <strong>撞擊扣分：</strong>無人機每撞到障礙物1次會扣1分
+                    <div class="flex items-start space-x-3">
+                      <span class="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">4</span>
+                      <div>
+                        <strong>撞擊扣分</strong>
+                        <p class="text-sm text-gray-600 mt-1">無人機每撞到障礙物1次會扣1分</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="bg-green-50 p-4 rounded-lg mt-4">
-                  <h4 class="font-semibold text-gray-800 mb-2">評分標準：</h4>
-                  <div class="grid grid-cols-2 gap-4 text-sm">
-                    <div>
-                      <strong>特等獎：</strong>成績最高的隊伍
-                    </div>
-                    <div>
-                      <strong>一等獎：</strong>95分以上
-                    </div>
-                    <div>
-                      <strong>二等獎：</strong>80分 – 94分
-                    </div>
-                    <div>
-                      <strong>優異獎：</strong>65分 – 79分
-                    </div>
+
+                <div class="bg-green-50 p-4 rounded-lg mb-4">
+                  <h4 class="font-semibold text-gray-800 mb-3">評分標準</h4>
+                  <div class="space-y-2 text-sm">
+                    <div><strong>特等獎：</strong>成績最高的隊伍</div>
+                    <div><strong>一等獎：</strong>95分以上</div>
+                    <div><strong>二等獎：</strong>80分 – 94分</div>
+                    <div><strong>優異獎：</strong>65分 – 79分</div>
                   </div>
+                </div>
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-gray-800 mb-3">詳細評分規則</h4>
+                  <table class="w-full border-collapse border border-gray-300 bg-white text-sm">
+                    <thead class="bg-purple-600 text-white">
+                      <tr>
+                        <th class="border border-gray-300 px-3 py-2 text-center">得分項目</th>
+                        <th class="border border-gray-300 px-3 py-2 text-center">得分規則</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="hover:bg-gray-50">
+                        <td class="border border-gray-300 px-3 py-2 text-center">障礙物分數</td>
+                        <td class="border border-gray-300 px-3 py-2">每通過一個障礙物即可獲得10分</td>
+                      </tr>
+                      <tr class="hover:bg-gray-300">
+                        <td class="border border-gray-300 px-3 py-2 text-center">著陸準確度分數</td>
+                        <td class="border border-gray-300 px-3 py-2">
+                          靶心（黃色範圍）：30分<br />
+                          第二環（紅色範圍）：25分<br />
+                          第三環（藍色範圍）：20分<br />
+                          第四環（黑色範圍）：15分<br />
+                          降落在靶外:0分<br />
+                          必須降落在箭靶式停機坪內，任務方視為完成
+                        </td>
+                      </tr>
+                      <tr class="hover:bg-gray-50">
+                        <td class="border border-gray-300 px-3 py-2 text-center">時間加分</td>
+                        <td class="border border-gray-300 px-3 py-2">在 60 秒內完成得 30 分，每超過 1 秒扣 1 分</td>
+                      </tr>
+                      <tr class="hover:bg-gray-50">
+                        <td class="border border-gray-300 px-3 py-2 text-center">撞擊扣分</td>
+                        <td class="border border-gray-300 px-3 py-2">無人機每撞到障礙物1次會扣1分</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="mt-4 text-center">
+                  <a 
+                    href="https://drive.google.com/file/d/1mCu_5fzgMxuBl_zQrhndgSubj3EuH_0k/view?usp=drive_link"
+                    target="_blank"
+                    class="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors duration-300"
+                  >
+                    按此瀏覽 任務四規則說明
+                  </a>
                 </div>
               </div>
+              
               <div>
                 <Image src={Task4Screenshot} alt="任務四截圖" class="w-full rounded-lg shadow-md" />
+                
                 <!-- Video Section -->
                 <div class="bg-purple-50 p-4 rounded-lg mt-4">
-                  <h4 class="font-semibold text-gray-800 mb-3">任務四影片介紹</h4>
-                  <a 
-                    href="https://youtu.be/H6RFaY9TLEw"
-                    target="_blank"
-                    class="inline-block bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-300"
-                  >
-                    觀看任務四影片
-                  </a>
+                  <h4 class="font-semibold text-gray-800 mb-3">任務四 影片介紹</h4>
+                  <div class="aspect-video bg-gray-200 rounded-lg overflow-hidden">
+                    <iframe 
+                      src="https://www.youtube.com/embed/H6RFaY9TLEw" 
+                      title="任務四影片介紹"
+                      class="w-full h-full"
+                      frameborder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowfullscreen>
+                    </iframe>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Difficulty Chart -->
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">任務難度表</h2>
-        <div class="max-w-4xl mx-auto">
-          <Image src={DifficultyChart} alt="任務難度表" class="w-full rounded-lg shadow-lg" />
         </div>
       </div>
     </section>
@@ -608,5 +864,117 @@ const description = "冇無人機都可以參加嘅無人機比賽！學界無�
         </div>
       </div>
     </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">常見問題</h2>
+        
+        <div class="max-w-4xl mx-auto space-y-4">
+          <!-- FAQ Item 1 -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <button 
+              class="w-full px-6 py-4 text-left bg-blue-50 hover:bg-blue-100 transition-colors duration-200 flex items-center justify-between"
+              onclick="toggleFAQ(this)"
+              aria-expanded="false"
+              aria-controls="faq-content-1"
+            >
+              <span class="font-semibold text-gray-800">Q: 有什麼比賽訓練資源?</span>
+              <span class="text-blue-600 transform transition-transform duration-200">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </span>
+            </button>
+            <div id="faq-content-1" class="hidden px-6 py-4 bg-white border-t border-gray-200">
+              <p class="text-gray-700">
+                A: <a href="https://learn.robolink.com/course/blockly-with-codrone-edu/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">Robolink basecamp</a> (免費)
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 2 -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <button 
+              class="w-full px-6 py-4 text-left bg-green-50 hover:bg-green-100 transition-colors duration-200 flex items-center justify-between"
+              onclick="toggleFAQ(this)"
+              aria-expanded="false"
+              aria-controls="faq-content-2"
+            >
+              <span class="font-semibold text-gray-800">Q: 即使獲得決賽資格，可否不參加決賽?</span>
+              <span class="text-green-600 transform transition-transform duration-200">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </span>
+            </button>
+            <div id="faq-content-2" class="hidden px-6 py-4 bg-white border-t border-gray-200">
+              <p class="text-gray-700">A: 可以</p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 3 -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <button 
+              class="w-full px-6 py-4 text-left bg-yellow-50 hover:bg-yellow-100 transition-colors duration-200 flex items-center justify-between"
+              onclick="toggleFAQ(this)"
+              aria-expanded="false"
+              aria-controls="faq-content-3"
+            >
+              <span class="font-semibold text-gray-800">Q: 參賽人數有變動, 怎辦?</span>
+              <span class="text-yellow-600 transform transition-transform duration-200">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </span>
+            </button>
+            <div id="faq-content-3" class="hidden px-6 py-4 bg-white border-t border-gray-200">
+              <p class="text-gray-700">A: 以隊伍登記為準</p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 4 -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <button 
+              class="w-full px-6 py-4 text-left bg-purple-50 hover:bg-purple-100 transition-colors duration-200 flex items-center justify-between"
+              onclick="toggleFAQ(this)"
+              aria-expanded="false"
+              aria-controls="faq-content-4"
+            >
+              <span class="font-semibold text-gray-800">Q: 比賽後學校還可以使用模擬器進行教學嗎?</span>
+              <span class="text-purple-600 transform transition-transform duration-200">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </span>
+            </button>
+            <div id="faq-content-4" class="hidden px-6 py-4 bg-white border-t border-gray-200">
+              <p class="text-gray-700">
+                A: 可以。如有興趣在校內使用，請向我們取得正式授權。授權以每學年批出，暫時為免費。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function toggleFAQ(button) {
+        const content = button.nextElementSibling;
+        const icon = button.querySelector('svg');
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        
+        // Toggle content visibility
+        if (isExpanded) {
+          content.classList.add('hidden');
+          button.setAttribute('aria-expanded', 'false');
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          content.classList.remove('hidden');
+          button.setAttribute('aria-expanded', 'true');
+          icon.style.transform = 'rotate(180deg)';
+        }
+      }
+    </script>
   </div>
 </Layout> 

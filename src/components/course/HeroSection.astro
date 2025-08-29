@@ -95,17 +95,7 @@ const { title, subtitle, tags, videoId, description, featuredImage, heroImage } 
     <div class="grid lg:grid-cols-2 gap-12 items-start">
       <!-- Video/Image Section - exact positioning as original -->
       <div class="order-1">
-        {heroImage ? (
-          <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg">
-            <Image 
-              src={heroImage} 
-              alt={title}
-              width={600}
-              height={400}
-              class="w-full h-full object-cover"
-            />
-          </div>
-        ) : videoId ? (
+        {videoId ? (
           <div class="aspect-video bg-black rounded-lg overflow-hidden shadow-lg">
             <iframe 
               src={`https://www.youtube.com/embed/${videoId}?controls=1&rel=0`}
@@ -114,6 +104,16 @@ const { title, subtitle, tags, videoId, description, featuredImage, heroImage } 
               allowfullscreen
               title="課程簡介影片">
             </iframe>
+          </div>
+        ) : heroImage ? (
+          <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg">
+            <Image 
+              src={heroImage} 
+              alt={title}
+              width={600}
+              height={400}
+              class="w-full h-full object-cover"
+            />
           </div>
         ) : null}
       </div>

@@ -6,7 +6,7 @@ import path from 'path';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://staging.10botics.com',
+  site: 'https://10botics.com',
   output: 'static', // Static output for static website
   build: {
     assets: '_astro', // Ensure consistent asset naming
@@ -29,6 +29,17 @@ export default defineConfig({
         ]
       }
     }
+  },
+  redirects: {
+    // External redirects
+    '/timesheet_submission_form': 'https://otfxid9w.paperform.co',
+    '/contact-form': 'https://or0uzdua.paperform.co',
+    '/formula-ai': 'https://formula-ai.racing',
+    '/ai-art-competition-2023': 'https://art.10botics.com',
+    '/course-overview': 'https://or0uzdua.paperform.co',
+    '/minecraft-2024-registration': 'https://exgj8uei.paperform.co',
+    '/minecraft-2023-registration': 'https://ofpd3jzg.paperform.co',
+    '/ai-courses': '/school-courses/scratch-ai-programming',
   },
   integrations: [
     tailwind({

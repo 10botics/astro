@@ -5,6 +5,7 @@ import DualCourseContent from '../../components/course/DualCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
 import { Image } from 'astro:assets';
 
 // Import course image
@@ -283,17 +284,12 @@ const courseHighlights = [
       answer: item.answer.join('\n')
     }))} />
 
+    <!-- Related Courses Section -->
+    <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="ai-enrichment-course" context="course" />
     <!-- Related News Section -->
     <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
 
     <!-- Contact Section -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">聯絡我們</h2>
-        </div>
-        <ContactSection subtitle="想了解更多關於 AI 啟蒙與藝術創作課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
-      </div>
-    </section>
+    <ContactSection subtitle="想了解更多關於 AI 啟蒙與藝術創作課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
   </main>
 </Layout> 

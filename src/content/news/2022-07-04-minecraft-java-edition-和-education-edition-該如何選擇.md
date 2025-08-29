@@ -7,11 +7,6 @@ SEOImage: "../../assets/images/news/2022-07-04-minecraft-java-edition-和-educat
 category: "文章"
 tags: []
 author: "jacksonchan"
-isFeatured: false
-externalLink: "https://10botics.com/blog/2022/07/04/java-edition/"
-wpSlug: "minecraft-java-edition-和-education-edition-該如何選擇"
-wpDate: "2022/07/04"
-readingTime: 1
 ---
 
 ![](https://staging.10botics.com/wp-content/uploads/2023/08/Minecraft-en-image.-Photo-prise-via-Internet-1.webp)
