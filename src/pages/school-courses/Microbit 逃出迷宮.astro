@@ -7,6 +7,7 @@ import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
 import RelatedCourses from '../../components/course/RelatedCourses.astro';
 import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
+import ShopSection from '../../components/course/ShopSection.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -303,6 +304,16 @@ const galleryImages = [
 
     <!-- FAQ Section -->
     <QnASection faqs={faqItems} />
+
+    <!-- Shop Section -->
+    <ShopSection 
+      title="購買 Tinybit 小車"
+      description="獲取 Tinybit 智能小車套件，開始你的 Micro:bit 編程和機器人學習之旅"
+      shopLink="https://shop.10botics.com/Tinybit-Xiao-Che-c185813832"
+      buttonText="購買 Tinybit 小車"
+      imageSrc={microbitTinybit.src}
+      imageAlt="Tinybit 智能小車套件"
+    />
 
     <!-- Contact Form -->
 

@@ -8,6 +8,7 @@ import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
 import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import ShopSection from '../../components/course/ShopSection.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -422,6 +423,16 @@ const courseArrangement = [
       </div>
     </div>
   </section>
+
+  <!-- Shop Section -->
+  <ShopSection 
+    title="購買 Donkey Car 無人車"
+    description="獲取 Donkey Car 無人車套件及相關配件，開始你的 AI 自駕學習之旅"
+    shopLink="https://shop.10botics.com/Donkey-Car-c185813831"
+    buttonText="購買 Donkey Car"
+    imageSrc={donkeyCarMain.src}
+    imageAlt="Donkey Car 無人車套件"
+  />
 
   <!-- FAQ Section -->
   <QnASection faqs={faqData} />

@@ -7,6 +7,7 @@ import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
 import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import ShopSection from '../../components/course/ShopSection.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -330,6 +331,16 @@ const faqItems = [
 
   <!-- FAQ Section -->
   <QnASection faqs={faqItems} />
+
+  <!-- Shop Section -->
+  <ShopSection 
+    title="購買 CoDrone EDU 無人機"
+    description="獲取 CoDrone EDU 無人機套件及相關配件，開始你的無人機編程學習之旅"
+    shopLink="https://shop.10botics.com/Codrone-EDU-c185818059"
+    buttonText="購買 CoDrone EDU"
+    imageSrc={heroImage.src}
+    imageAlt="CoDrone EDU 無人機套件"
+  />
 
   <!-- Related Courses Section -->
   <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="codrone" context="course" />

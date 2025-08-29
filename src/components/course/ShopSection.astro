@@ -1,0 +1,80 @@
+---
+// Shop Section Component for School Courses
+interface Props {
+  title?: string;
+  description?: string;
+  shopLink: string;
+  buttonText?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  backgroundColor?: string;
+  textColor?: string;
+}
+
+const { 
+  title = "購買課程相關產品",
+  description = "探索與本課程相關的硬件和工具，讓學習更加完整",
+  shopLink,
+  buttonText = "立即購買",
+  imageSrc,
+  imageAlt,
+  backgroundColor = "bg-gradient-to-r from-blue-50 to-cyan-50",
+  textColor = "text-gray-900"
+} = Astro.props;
+---
+
+<section class={`${backgroundColor} py-16`}>
+  <div class="container mx-auto px-4 max-w-6xl">
+    <div class="text-center mb-12">
+      <h2 class={`text-4xl font-bold mb-6 ${textColor}`}>{title}</h2>
+      <p class={`text-xl ${textColor} opacity-80 max-w-3xl mx-auto`}>{description}</p>
+    </div>
+    
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Left side: Image or Product Info -->
+      <div class="flex justify-center">
+        {imageSrc ? (
+          <img 
+            src={imageSrc}
+            alt={imageAlt || "課程相關產品"}
+            class="w-full h-auto max-w-md rounded-lg shadow-lg"
+          />
+        ) : (
+          <div class="w-full max-w-md h-64 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-lg flex items-center justify-center">
+            <div class="text-center">
+              <i class="fas fa-shopping-cart text-6xl text-blue-400 mb-4"></i>
+              <p class="text-blue-600 font-semibold">課程相關產品</p>
+            </div>
+          </div>
+        )}
+      </div>
+      
+      <!-- Right side: Shop Link and CTA -->
+      <div class="text-center lg:text-left">
+        <div class="bg-white rounded-xl p-8 shadow-lg border border-gray-100">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">準備好開始學習了嗎？</h3>
+          <p class="text-gray-600 mb-6">
+            獲取課程所需的硬件設備和工具，讓你的學習之旅更加順利。
+          </p>
+          
+          <div class="space-y-4">
+            <a 
+              href={shopLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-blue-700 hover:to-cyan-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              <i class="fas fa-external-link-alt mr-2"></i>
+              {buttonText}
+            </a>
+            
+            <p class="text-sm text-gray-500">
+              <i class="fas fa-info-circle mr-1"></i>
+              點擊按鈕將在新視窗中打開商店頁面
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
