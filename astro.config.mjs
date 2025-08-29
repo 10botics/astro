@@ -39,9 +39,6 @@ export default defineConfig({
     '/course-overview': 'https://or0uzdua.paperform.co',
     '/minecraft-2024-registration': 'https://exgj8uei.paperform.co',
     '/minecraft-2023-registration': 'https://ofpd3jzg.paperform.co',
-    
-    // Internal redirects
-    '/courses/:slug': '/school-courses/:slug',
     '/ai-courses': '/school-courses/scratch-ai-programming',
   },
   integrations: [
