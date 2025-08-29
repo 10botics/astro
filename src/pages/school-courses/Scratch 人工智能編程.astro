@@ -13,6 +13,9 @@ import machineLearningTraining from '../../assets/images/school-courses/Scratch 
 import faceRecognition from '../../assets/images/school-courses/Scratch 人工智能編程/face-recognition.gif';
 import scratchAiHero from '../../assets/images/school-courses/Scratch 人工智能編程/scratch-ai-hero.jpg';
 import scratchprofie from '../../assets/images/school-courses/Scratch 人工智能編程/scratch-thumbnail.png';
+import scratchAi1 from '../../assets/images/school-courses/Scratch 人工智能編程/scratch-ai-1.gif';
+import scratchAi2 from '../../assets/images/school-courses/Scratch 人工智能編程/scratch-ai-2.gif';
+import scratchAi3 from '../../assets/images/school-courses/Scratch 人工智能編程/scratch-ai-3.gif';
 
 // Course features data
 const courseFeatures = {
@@ -33,15 +36,15 @@ const courseFeatures = {
   aiExamples: [
     {
       title: "人面識別",
-      image: "/src/assets/images/school-courses/Scratch 人工智能編程/scratch-ai-1.gif"
+      image: scratchAi1.src
     },
     {
       title: "手勢識別",
-      image: "/src/assets/images/school-courses/Scratch 人工智能編程/scratch-ai-2.gif"
+      image: scratchAi2.src
     },
     {
       title: "姿勢識別",
-      image: "/src/assets/images/school-courses/Scratch 人工智能編程/scratch-ai-3.gif"
+      image: scratchAi3.src
     }
   ]
 };
@@ -67,7 +70,7 @@ export const courseData = {
   title: "Scratch 人工智能編程",
   subtitle: "結合 Scratch 與 AI，創造智能遊戲體驗",
   tags: ["AI 人工智能", "Block Coding 方塊編程", "Programming 編程", "Scratch", "高小", "初中"],
-  videoId: "your-video-id-here",
+  videoId: "sYg36jF-PTA",
   description: "Scratch 人工智能編程結合了傳統的 Scratch 編程與現代的人工智能技術，讓學生在學習基礎編程概念的同時，也能體驗 AI 技術的應用。",
   detailedDescription: "Scratch 人工智能編程結合了傳統的 Scratch 編程與現代的人工智能技術，讓學生在學習基礎編程概念的同時，也能體驗 AI 技術的應用。",
   heroImage: scratchprofie
@@ -140,7 +143,7 @@ const curriculumItems = [
     subtitle={courseData.subtitle}
     tags={courseData.tags}
     videoId={courseData.videoId}
-    description={courseData.description}
+    description={courseData.detailedDescription}
     heroImage={courseData.heroImage}
   />
 
@@ -259,16 +262,6 @@ const curriculumItems = [
 
   <!-- Course Features Section -->
   <CourseFeatures features={courseFeatures} />
-
-  <!-- Course Content Section -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-4xl font-bold text-gray-900 mb-8 text-center course-heading">課程內容</h2>
-      <div class="text-center mb-12">
-        <p class="text-gray-600 text-lg mb-2">共 10 小時</p>
-        <p class="text-gray-500 text-sm italic">*可根據學校需要調整</p>
-      </div>
-      
       <!-- Featured Image -->
       <div class="flex justify-center mb-12">
         <Image 
@@ -285,7 +278,7 @@ const curriculumItems = [
   <!-- Course Curriculum Accordion -->
           <SingleCourseContent 
           items={curriculumItems} 
-          hours="15 小時"
+          hours="10 小時"
         />
 
   <!-- Course Arrangements -->
