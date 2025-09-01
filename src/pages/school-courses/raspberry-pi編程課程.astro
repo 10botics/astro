@@ -6,7 +6,7 @@ import TripleCourseContent from '../../components/course/TripleCourseContent.ast
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
-import RelatedCoursesForCourses from '../../components/course/RelatedCoursesForCourses.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -15,6 +15,9 @@ import raspberryPiCoding from '../../assets/images/school-courses/raspberry-pi�
 import raspberryPiScreen from '../../assets/images/school-courses/raspberry-pi編程課程/raspberry-pi-screen.jpg';
 import raspberryPiWiring from '../../assets/images/school-courses/raspberry-pi編程課程/raspberry-pi-wiring.jpg';
 import raspberryPiThumbnail from '../../assets/images/school-courses/raspberry-pi編程課程/admin-ajax.png';
+import distanceSensorGif from '../../assets/images/school-courses/raspberry-pi編程課程/distance-sensor.gif';
+import retroGamingGif from '../../assets/images/school-courses/raspberry-pi編程課程/retro-gaming.gif';
+import timelapseCameraGif from '../../assets/images/school-courses/raspberry-pi編程課程/timelapse-camera.gif';
 
 // FAQ items
 const faqItems = [
@@ -177,19 +180,10 @@ const advancedCurriculumItems = [
     subtitle={courseData.subtitle}
     tags={courseData.tags}
     videoId={courseData.videoId}
-    description={courseData.description}
+    description={courseData.detailedDescription}
   />
 
-  <!-- Course Description Section -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12">
-        <p class="text-gray-600 text-lg leading-relaxed">
-          Raspberry Pi 是一個廣泛應用於各種領域的單板電腦，其獨特的特點和功能使其成為學習和開發嵌入式系統和物聯網應用的理想工具。課程旨在幫助學生掌握Raspberry Pi及Python編程的基礎知識，理解Raspberry Pi的基本應用，以致配合機器學習和人工智慧，進行人體姿態檢測，為進一步學習機器學習和人工智慧理論打下堅實基礎。
-        </p>
-      </div>
-    </div>
-  </section>
+
 
   <!-- Course Features Section -->
   <section class="bg-gray-50 py-16">
@@ -254,7 +248,7 @@ const advancedCurriculumItems = [
         <!-- 縮時攝影機 -->
         <div class="text-center">
           <div class="mb-6">
-            <Image src="/src/assets/images/school-courses/raspberry-pi編程課程/timelapse-camera.gif" alt="縮時攝影機" class="w-full h-48 object-cover rounded-lg" width="600" height="400">
+            <Image src={timelapseCameraGif} alt="縮時攝影機" class="w-full h-48 object-cover rounded-lg" width="600" height="400">
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-3">縮時攝影機</h3>
           <p class="text-gray-600">認識如何從 GitHub 中複製一個項目下來</p>
@@ -263,7 +257,7 @@ const advancedCurriculumItems = [
         <!-- 測距器 -->
         <div class="text-center">
           <div class="mb-6">
-            <Image src="/src/assets/images/school-courses/raspberry-pi編程課程/distance-sensor.gif" alt="測距器" class="w-full h-48 object-cover rounded-lg" width="600" height="400">
+            <Image src={distanceSensorGif} alt="測距器" class="w-full h-48 object-cover rounded-lg" width="600" height="400">
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-3">測距器</h3>
           <p class="text-gray-600">認識數位輸入和輸出</p>
@@ -272,7 +266,7 @@ const advancedCurriculumItems = [
         <!-- 復古遊戲機 RetroPie -->
         <div class="text-center">
           <div class="mb-6">
-            <Image src="/src/assets/images/school-courses/raspberry-pi編程課程/retro-gaming.gif" alt="復古遊戲機" class="w-full h-48 object-cover rounded-lg" width="600" height="400">
+            <Image src={retroGamingGif} alt="復古遊戲機" class="w-full h-48 object-cover rounded-lg" width="600" height="400">
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-3">復古遊戲機 RetroPie</h3>
           <p class="text-gray-600">認識如何燒錄 OS 到 SD 卡</p>
@@ -390,22 +384,12 @@ const advancedCurriculumItems = [
 
   <QnASection faqs={faqItems} variant="details" />
   <!-- Related Courses Section -->
-  <RelatedCoursesForCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="raspberry-pi" />
+  <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="raspberry-pi" context="course" />
   <!-- Related News Section -->
   <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
 
 
 
   <!-- Contact Section -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-4xl font-bold text-gray-900 mb-8 text-center course-heading">聯絡我們</h2>
-      <div class="text-center mb-8">
-        <p class="text-lg text-gray-600">想了解更多關於 Raspberry Pi 編程課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。</p>
-      </div>
-      <div class="max-w-4xl mx-auto">
-        <ContactSection subtitle="想了解更多關於 Raspberry Pi 編程課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
-      </div>
-    </div>
-  </section>
+  <ContactSection subtitle="想了解更多關於 Raspberry Pi 編程課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
 </Layout> 

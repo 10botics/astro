@@ -3,6 +3,12 @@ import Layout from '../../layouts/Layout.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
 import { Image } from 'astro:assets';
+import { 
+  discoverCourses, 
+  generateTagSlug,
+  AUDIENCE_TAG_MAPPING,
+  type Course 
+} from '../../utils/courseMappings';
 
 // Import images
 import bannerImage from '../../assets/images/funding-application/IT創新實驗室計劃/it_lab_main_page_banner_tc-1024x439.jpg';
@@ -16,6 +22,14 @@ import carouselImage6 from '../../assets/images/funding-application/IT創新實�
 
 const title = "IT創新實驗室 - 10教育";
 const description = "IT創新實驗室計劃 資科辦在現行的「中學資訊科技增潤計劃」下推行「中學IT創新實驗室」計劃，在新一輪的2023/24至2025/26這3個學年中，向公帑資助的中學每所提供最高100萬元的資助。";
+
+// Auto-discover courses using shared utility
+const astroCourses = await discoverCourses('../school-courses/', ['index.astro', '[slug].astro']);
+
+// Sort courses by publication date (newest first)
+const sortedCourses = astroCourses.sort((a, b) => 
+  new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
+);
 ---
 
 <Layout title={title} description={description}>
@@ -241,50 +255,6 @@ const description = "IT創新實驗室計劃 資科辦在現行的「中學資�
     </div>
   </section>
 
-  <!-- Featured Courses -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">更多中學精選課程</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="p-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">CoDrone無人機課程</h3>
-            <p class="text-gray-600">學習無人機編程和操作</p>
-          </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="p-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">Blockchain 區塊鏈課程</h3>
-            <p class="text-gray-600">了解區塊鏈技術和應用</p>
-          </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="p-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">AI啟蒙與藝術創作課程</h3>
-            <p class="text-gray-600">探索AI藝術創作的可能性</p>
-          </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="p-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">珊瑚環境監測入門課程</h3>
-            <p class="text-gray-600">學習環境監測技術</p>
-          </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="p-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">Micro:bit 小車：逃出迷宮</h3>
-            <p class="text-gray-600">編程控制小車完成任務</p>
-          </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="p-6">
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">Donkey Car 無人車課程</h3>
-            <p class="text-gray-600">AI無人車編程與控制</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Latest News -->
   <section class="bg-white py-16">
@@ -332,6 +302,122 @@ const description = "IT創新實驗室計劃 資科辦在現行的「中學資�
     <div class="container mx-auto px-4 max-w-6xl text-center">
       <h2 class="text-3xl font-bold text-white mb-6">已經準備好申請？</h2>
       <p class="text-blue-100 mb-8">填寫下方表格聯絡我們，我們會為您提供詳細的申請協助</p>
+    </div>
+  </section>
+
+  <!-- Available Courses -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">可選課程清單</h2>
+      <p class="text-lg text-gray-700 text-center mb-8 max-w-4xl mx-auto">
+        以下課程均符合IT創新實驗室計劃要求，可協助學校提升資訊科技設備和設施，以及舉辦與資訊科技相關的課外活動
+      </p>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {sortedCourses.map((course) => (
+          <article class="course-card bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+            <!-- Hero Image -->
+            {course.heroImage && (
+              <div class="course-image-container bg-gray-100 overflow-hidden aspect-video">
+                {typeof course.heroImage === 'string' ? (
+                  <Image 
+                    src={course.heroImage} 
+                    alt={course.title}
+                    width={600}
+                    height={400}
+                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                ) : (
+                  <Image 
+                    src={course.heroImage} 
+                    alt={course.title}
+                    width={600}
+                    height={400}
+                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                )}
+              </div>
+            )}
+            <div class="p-6">
+              <!-- Course Header -->
+              <div class="mb-4">
+                <h3 class="text-xl font-bold mb-2 text-gray-800 line-clamp-2">
+                  <a href={`/school-courses/${course.slug}`} 
+                     class="hover:text-blue-600 transition-colors">
+                    {course.title}
+                  </a>
+                </h3>
+                
+                {course.description && (
+                  <p class="text-gray-600 text-sm line-clamp-3 mb-4">
+                    {course.description}
+                  </p>
+                )}
+              </div>
+              
+              <!-- Tags -->
+              <div class="mb-4">
+                {(() => {
+                  const targetAudienceTags = ['初小', '高小', '初中', '高中'];
+                  const otherTags = course.tags.filter(tag => !targetAudienceTags.includes(tag));
+                  const audienceTags = course.tags.filter(tag => targetAudienceTags.includes(tag));
+                  
+                  return (
+                    <div class="space-y-2">
+                      {/* Target Audience */}
+                      {audienceTags.length > 0 && (
+                        <div class="flex flex-wrap gap-1 items-center">
+                          <span class="text-xs font-medium text-gray-600 mr-1">適合對象:</span>
+                          {audienceTags.map(tag => {
+                            const tagSlug = AUDIENCE_TAG_MAPPING[tag] || tag.toLowerCase().replace(/\s+/g, '-');
+                            
+                            return (
+                              <a href={`/school-courses/tag/${tagSlug}`} class="bg-cyan-100 text-cyan-800 px-2 py-1 rounded text-xs font-medium hover:bg-cyan-200 transition-colors">
+                                {tag}
+                              </a>
+                            );
+                          })}
+                        </div>
+                      )}
+                      
+                      {/* Other Tags */}
+                      {otherTags.length > 0 && (
+                        <div class="flex flex-wrap gap-1">
+                          {otherTags.map(tag => {
+                            // Generate tag slug using shared utility
+                            const tagSlug = generateTagSlug(tag);
+                            
+                            return (
+                              <a href={`/school-courses/tag/${tagSlug}`}
+                                 class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium hover:bg-blue-200 transition-colors">
+                                {tag}
+                              </a>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })()}
+              </div>
+              
+              <!-- Action Button -->
+              <div class="mt-auto">
+                <a href={`/school-courses/${course.slug}`}
+                   class="inline-block w-full text-center bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors text-sm font-medium">
+                  查看課程詳情
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="/school-courses/" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+          查看所有課程
+        </a>
+      </div>
     </div>
   </section>
 

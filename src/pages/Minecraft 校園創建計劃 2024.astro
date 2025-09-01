@@ -6,6 +6,21 @@ import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
 import QnASection from '../components/course/QnASection.astro';
 import {Image} from 'astro:assets';
 
+// Import local images
+import minecraftLogo from '../assets/images/competition/Minecraft校園創建計劃/minecraft-logo.png';
+import teacherTestimonial from '../assets/images/competition/Minecraft校園創建計劃/teacher-testimonial.jpg';
+import redCrossCenter from '../assets/images/competition/Minecraft校園創建計劃/red-cross-center.jpg';
+import minecraftBuilding from '../assets/images/competition/Minecraft校園創建計劃/minecraft-building.png';
+import minecraftGame from '../assets/images/competition/Minecraft校園創建計劃/minecraft-game.png';
+import competitionPoster from '../assets/images/competition/Minecraft校園創建計劃/competition-poster.jpg';
+import winnerChenChunHa from '../assets/images/competition/Minecraft校園創建計劃/winner-chen-chun-ha.jpg';
+import winnerHoTao from '../assets/images/competition/Minecraft校園創建計劃/winner-ho-tao.jpg';
+import winnerHoTaoGame from '../assets/images/competition/Minecraft校園創建計劃/winner-ho-tao-game.jpg';
+import winnerRedCross from '../assets/images/competition/Minecraft校園創建計劃/winner-red-cross.jpg';
+import winnerStAnthony from '../assets/images/competition/Minecraft校園創建計劃/winner-st-anthony.jpg';
+import winnerStAnthonyGame from '../assets/images/competition/Minecraft校園創建計劃/winner-st-anthony-game.jpg';
+import winnerTinPoMin from '../assets/images/competition/Minecraft校園創建計劃/winner-tin-po-min.jpg';
+
 const title = "Minecraft 校園創建計劃2024 - 10教育";
 const description = "參與「Minecraft 校園創建計劃2024」比賽日有感，本校同學於本學年參加了由「10教育」舉辦的「Minecraft校園創建計劃2024 —— 共融大世界」活動。";
 
@@ -57,7 +72,7 @@ const faqData = [
 						decoding="async" 
 						width="800" 
 						height="200" 
-						src="https://10botics.com/wp-content/uploads/2023/05/minecraftLogo-768x183.png" 
+						src={minecraftLogo} 
 						class="mx-auto mb-8 max-w-md" 
 						alt="Minecraft Logo" 
 					/>
@@ -105,7 +120,7 @@ const faqData = [
 									decoding="async" 
 									width="800" 
 									height="600" 
-									src="https://10botics.com/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-04-at-17.19.14-1024x768.jpeg" 
+									src={teacherTestimonial} 
 									class="mx-auto max-w-full h-auto rounded-lg shadow-lg" 
 									alt="Teacher testimonial image" 
 								/>
@@ -121,7 +136,7 @@ const faqData = [
 										decoding="async" 
 										width="768" 
 										height="576" 
-										src="https://10botics.com/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-04-at-17.19.16-768x576.jpeg" 
+										src={redCrossCenter} 
 										class="w-full h-auto rounded-lg shadow-lg" 
 										alt="Second teacher testimonial image" 
 									/>
@@ -156,7 +171,7 @@ const faqData = [
 									<Image 
 										decoding="async" 
 										class="w-full h-96 object-cover" 
-										src="https://10botics.com/wp-content/uploads/2024/09/0825_Mincraft-158.jpg" 
+										src={minecraftBuilding} 
 										alt="Minecraft competition photo 1" 
 										width="800"
 										height="384"
@@ -166,7 +181,7 @@ const faqData = [
 									<Image 
 										decoding="async" 
 										class="w-full h-96 object-cover" 
-										src="https://10botics.com/wp-content/uploads/2024/09/0825_Mincraft-141.jpg" 
+										src={minecraftGame} 
 										alt="Minecraft competition photo 2" 
 										width="800"
 										height="384"
@@ -176,7 +191,7 @@ const faqData = [
 									<Image 
 										decoding="async" 
 										class="w-full h-96 object-cover" 
-										src="https://10botics.com/wp-content/uploads/2024/09/0825_Mincraft-138.jpg" 
+										src={teacherTestimonial} 
 										alt="Minecraft competition photo 3" 
 										width="800"
 										height="384"
@@ -186,7 +201,7 @@ const faqData = [
 									<Image 
 										decoding="async" 
 										class="w-full h-96 object-cover" 
-										src="https://10botics.com/wp-content/uploads/2024/09/0825_Mincraft-23.jpg" 
+										src={redCrossCenter} 
 										alt="Minecraft competition photo 4" 
 										width="800"
 										height="384"
@@ -196,7 +211,7 @@ const faqData = [
 									<Image 
 										decoding="async" 
 										class="w-full h-96 object-cover" 
-										src="https://10botics.com/wp-content/uploads/2024/09/0825_Mincraft-30.jpg" 
+										src={winnerTinPoMin} 
 										alt="Minecraft competition photo 5" 
 										width="800"
 										height="384"
@@ -247,7 +262,7 @@ const faqData = [
 								decoding="async" 
 								width="1448" 
 								height="2048" 
-								src="https://10botics.com/wp-content/uploads/2024/02/minecraft-posterrgb-02-1448x2048.jpg" 
+								src={competitionPoster} 
 								class="mx-auto max-w-full h-auto rounded-lg shadow-lg" 
 								alt="Minecraft competition poster" 
 							/>
@@ -274,7 +289,7 @@ const faqData = [
 									decoding="async" 
 									width="768" 
 									height="183" 
-									src="https://10botics.com/wp-content/uploads/2023/05/minecraftLogo-768x183.png" 
+									src={minecraftLogo} 
 									class="mx-auto max-w-md" 
 									alt="Minecraft Logo" 
 								/>
@@ -406,7 +421,7 @@ const faqData = [
 								decoding="async" 
 								width="800" 
 								height="498" 
-								src="https://10botics.com/wp-content/uploads/2023/08/2023-08-26_05.24.07-1-1024x637.png" 
+								src={minecraftBuilding} 
 								class="mx-auto max-w-full h-auto rounded-lg shadow-lg" 
 								alt="Minecraft building phase" 
 							/>
@@ -457,7 +472,7 @@ const faqData = [
 								decoding="async" 
 								width="800" 
 								height="455" 
-								src="https://10botics.com/wp-content/uploads/2023/08/2023-08-31_13.01.57-1-1024x583.png" 
+								src={minecraftGame} 
 								class="mx-auto max-w-full h-auto rounded-lg shadow-lg" 
 								alt="Minecraft game design phase" 
 							/>
@@ -537,7 +552,7 @@ const faqData = [
 								decoding="async" 
 								width="800" 
 								height="498" 
-								src="https://10botics.com/wp-content/uploads/2023/08/2023-08-26_05.24.07-1-1024x637.png" 
+								src={minecraftBuilding} 
 								class="mx-auto max-w-full h-auto rounded-lg shadow-lg" 
 								alt="Minecraft competition day" 
 							/>
@@ -675,7 +690,7 @@ const faqData = [
 								<div class="text-center">
 									<Image 
 										decoding="async" 
-										src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-12.42.34-PM-qt9dc91g6ki88t6cfz3lq9i6ufiymbqohq74zgtry0.jpeg" 
+										src={winnerTinPoMin} 
 										title="WhatsApp Image 2024-08-28 at 12.42.34 PM" 
 										alt="WhatsApp Image 2024-08-28 at 12.42.34 PM" 
 										loading="lazy" 
@@ -688,7 +703,7 @@ const faqData = [
 								<div class="text-center">
 									<Image 
 										decoding="async" 
-										src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-12.42.59-PM-qt9ddga0wy5f2vfjfhsfwyle65lugeibzo7h271nzs.jpeg" 
+										src={winnerRedCross} 
 										title="WhatsApp Image 2024-08-28 at 12.42.59 PM" 
 										alt="WhatsApp Image 2024-08-28 at 12.42.59 PM" 
 										loading="lazy" 
@@ -707,7 +722,7 @@ const faqData = [
 							<div class="text-center">
 								<Image 
 									decoding="async" 
-									src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-1.27.06-PM-qt9dgwcpz2v9nefbazf723a8l0maog6wgqbkepxp6g.jpeg" 
+									src={winnerStAnthony} 
 									title="WhatsApp Image 2024-08-28 at 1.27.06 PM" 
 									alt="WhatsApp Image 2024-08-28 at 1.27.06 PM" 
 									loading="lazy" 
@@ -725,7 +740,7 @@ const faqData = [
 							<div class="text-center">
 								<Image 
 									decoding="async" 
-									src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-12.41.29-PM-qt9d8jkd83fig6k83dekw76qhpsu9b0sndk6u6bohk.jpeg" 
+									src={winnerHoTao} 
 									title="WhatsApp Image 2024-08-28 at 12.41.29 PM" 
 									alt="WhatsApp Image 2024-08-28 at 12.41.29 PM" 
 									loading="lazy" 
@@ -743,7 +758,7 @@ const faqData = [
 							<div class="text-center">
 								<Image 
 									decoding="async" 
-									src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-12.39.13-PM-qt9d4gxjlxus50h7vm0s386ttlvkwiuo37sfz0d3g8.jpeg" 
+									src={winnerStAnthonyGame} 
 									title="WhatsApp Image 2024-08-28 at 12.39.13 PM" 
 									alt="WhatsApp Image 2024-08-28 at 12.39.13 PM" 
 									loading="lazy" 
@@ -762,7 +777,7 @@ const faqData = [
 								<div class="text-center">
 									<Image 
 										decoding="async" 
-										src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-12.37.25-PM-qt9c0gwsrr3i2ekxgbkbzbknrb19c81vx8ckr3o88o.jpeg" 
+										src={winnerHoTaoGame} 
 										title="WhatsApp Image 2024-08-28 at 12.37.25 PM" 
 										alt="WhatsApp Image 2024-08-28 at 12.37.25 PM" 
 										loading="lazy" 
@@ -775,227 +790,7 @@ const faqData = [
 								<div class="text-center">
 									<Image 
 										decoding="async" 
-										src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-12.40.28-PM-qt9c47bpx27i6n5onfnzdvnkpemqwxvi3pn0do4xiw.jpeg" 
-										title="WhatsApp Image 2024-08-28 at 12.40.28 PM" 
-										alt="WhatsApp Image 2024-08-28 at 12.40.28 PM" 
-										loading="lazy" 
-										class="w-full h-auto rounded-lg shadow-lg mb-4"
-										width="800"
-										height="600"
-									/>
-									<h4 class="text-xl font-bold text-gray-900">二等獎 - 可道中學(嗇色園主辦)</h4>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- Winners List Section -->
-			<div class="bg-white py-16">
-				<div class="container mx-auto px-4">
-					<div class="max-w-6xl mx-auto">
-						<h2 class="text-3xl font-bold text-center text-gray-900 mb-12">得獎名單</h2>
-						
-						<!-- Campus Creation Awards -->
-						<div class="mb-12">
-							<h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">校園創建</h3>
-							<div class="overflow-x-auto">
-								<table class="w-full border-collapse border border-gray-300 bg-white shadow-lg rounded-lg overflow-hidden">
-									<tbody class="divide-y divide-gray-200">
-										<tr class="hover:bg-gray-50">
-											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">非主流學校組 最佳影片獎</td>
-											<td class="px-6 py-4 text-gray-700">三水同鄉會劉本章學校</td>
-										</tr>
-										<tr class="hover:bg-gray-50 bg-gray-50">
-											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">主流學校組 最佳影片獎</td>
-											<td class="px-6 py-4 text-gray-700">聖安多尼學校</td>
-										</tr>
-										<tr class="hover:bg-gray-50">
-											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">最佳聯校合作獎</td>
-											<td class="px-6 py-4 text-gray-700">聖安多尼學校</td>
-										</tr>
-										<tr class="hover:bg-gray-50 bg-gray-50">
-											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900"></td>
-											<td class="px-6 py-4 text-gray-700">紅十字會甘迺迪中心</td>
-										</tr>
-										<tr class="hover:bg-gray-50">
-											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">非主流學校組 一等獎</td>
-											<td class="px-6 py-4 text-gray-700">天保民學校</td>
-										</tr>
-										<tr class="hover:bg-gray-50 bg-gray-50">
-											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">非主流學校組 二等獎</td>
-											<td class="px-6 py-4 text-gray-700">紅十字會雅麗珊郡主學校</td>
-										</tr>
-										<tr class="hover:bg-gray-50">
-											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">小學組 一等獎</td>
-											<td class="px-6 py-4 text-gray-700">聖安多尼學校</td>
-										</tr>
-										<tr class="hover:bg-gray-50 bg-gray-50">
-											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">中學組 一等獎</td>
-											<td class="px-6 py-4 text-gray-700">可道中學(嗇色園主辦)</td>
-										</tr>
-										<tr class="hover:bg-gray-50">
-											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">傑出學生獎</td>
-											<td class="px-6 py-4 text-gray-700">紅十字會雅麗珊郡主學校 陳宇禧同學</td>
-										</tr>
-										<tr class="hover:bg-gray-50 bg-gray-50">
-											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900"></td>
-											<td class="px-6 py-4 text-gray-700">天保民學校 鍾嘉俊同學</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-
-						<!-- Game Design Awards -->
-						<div>
-							<h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">遊戲設計</h3>
-							<div class="overflow-x-auto">
-								<table class="w-full border-collapse border border-gray-300 bg-white shadow-lg rounded-lg overflow-hidden">
-									<tbody class="divide-y divide-gray-200">
-										<tr class="hover:bg-gray-50">
-											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">卓越匯報與海報展示大獎</td>
-											<td class="px-6 py-4 text-gray-700">香港中文大學校友會聯會陳震夏中學</td>
-										</tr>
-										<tr class="hover:bg-gray-50 bg-gray-50">
-											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">遊戲體驗投入大獎</td>
-											<td class="px-6 py-4 text-gray-700">天保民學校</td>
-										</tr>
-										<tr class="hover:bg-gray-50">
-											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">小學組 一等獎</td>
-											<td class="px-6 py-4 text-gray-700">聖安多尼學校</td>
-										</tr>
-										<tr class="hover:bg-gray-50 bg-gray-50">
-											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">中學組 一等獎</td>
-											<td class="px-6 py-4 text-gray-700">香港中文大學校友會聯會陳震夏中學</td>
-										</tr>
-										<tr class="hover:bg-gray-50">
-											<td class="px-6 py-4 border-r border-gray-300 font-medium text-gray-900">中學組 二等獎</td>
-											<td class="px-6 py-4 text-gray-700">可道中學(嗇色園主辦)</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- Award-winning Works Section -->
-			<div class="bg-gray-50 py-16">
-				<div class="container mx-auto px-4">
-					<div class="max-w-6xl mx-auto">
-						<h2 class="text-3xl font-bold text-center text-gray-900 mb-12">得獎作品</h2>
-						
-						<!-- Campus Creation Non-mainstream Schools -->
-						<div class="mb-12">
-							<h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">校園創建 非主流學校組</h3>
-							<div class="grid md:grid-cols-2 gap-8">
-								<div class="text-center">
-									<Image 
-										decoding="async" 
-										src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-12.42.34-PM-qt9dc91g6ki88t6cfz3lq9i6ufiymbqohq74zgtry0.jpeg" 
-										title="WhatsApp Image 2024-08-28 at 12.42.34 PM" 
-										alt="WhatsApp Image 2024-08-28 at 12.42.34 PM" 
-										loading="lazy" 
-										class="w-full h-auto rounded-lg shadow-lg mb-4"
-										width="800"
-										height="600"
-									/>
-									<h4 class="text-xl font-bold text-gray-900">一等獎 - 天保民學校</h4>
-								</div>
-								<div class="text-center">
-									<Image 
-										decoding="async" 
-										src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-12.42.59-PM-qt9ddga0wy5f2vfjfhsfwyle65lugeibzo7h271nzs.jpeg" 
-										title="WhatsApp Image 2024-08-28 at 12.42.59 PM" 
-										alt="WhatsApp Image 2024-08-28 at 12.42.59 PM" 
-										loading="lazy" 
-										class="w-full h-auto rounded-lg shadow-lg mb-4"
-										width="800"
-										height="600"
-									/>
-									<h4 class="text-xl font-bold text-gray-900">二等獎 - 紅十字會雅麗珊郡主學校</h4>
-								</div>
-							</div>
-						</div>
-
-						<!-- Campus Creation Primary Schools -->
-						<div class="mb-12">
-							<h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">校園創建 小學組</h3>
-							<div class="text-center">
-								<Image 
-									decoding="async" 
-									src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-1.27.06-PM-qt9dgwcpz2v9nefbazf723a8l0maog6wgqbkepxp6g.jpeg" 
-									title="WhatsApp Image 2024-08-28 at 1.27.06 PM" 
-									alt="WhatsApp Image 2024-08-28 at 1.27.06 PM" 
-									loading="lazy" 
-									class="mx-auto max-w-md h-auto rounded-lg shadow-lg mb-4"
-									width="800"
-									height="600"
-								/>
-								<h4 class="text-xl font-bold text-gray-900">一等獎 - 聖安多尼學校</h4>
-							</div>
-						</div>
-
-						<!-- Campus Creation Secondary Schools -->
-						<div class="mb-12">
-							<h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">校園創建 中學組</h3>
-							<div class="text-center">
-								<Image 
-									decoding="async" 
-									src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-12.41.29-PM-qt9d8jkd83fig6k83dekw76qhpsu9b0sndk6u6bohk.jpeg" 
-									title="WhatsApp Image 2024-08-28 at 12.41.29 PM" 
-									alt="WhatsApp Image 2024-08-28 at 12.41.29 PM" 
-									loading="lazy" 
-									class="mx-auto max-w-md h-auto rounded-lg shadow-lg mb-4"
-									width="800"
-									height="600"
-								/>
-								<h4 class="text-xl font-bold text-gray-900">一等獎 - 可道中學(嗇色園主辦)</h4>
-							</div>
-						</div>
-
-						<!-- Game Design Primary Schools -->
-						<div class="mb-12">
-							<h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">遊戲設計 小學組</h3>
-							<div class="text-center">
-								<Image 
-									decoding="async" 
-									src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-12.39.13-PM-qt9d4gxjlxus50h7vm0s386ttlvkwiuo37sfz0d3g8.jpeg" 
-									title="WhatsApp Image 2024-08-28 at 12.39.13 PM" 
-									alt="WhatsApp Image 2024-08-28 at 12.39.13 PM" 
-									loading="lazy" 
-									class="mx-auto max-w-md h-auto rounded-lg shadow-lg mb-4"
-									width="800"
-									height="600"
-								/>
-								<h4 class="text-xl font-bold text-gray-900">一等獎 - 聖安多尼學校</h4>
-							</div>
-						</div>
-
-						<!-- Game Design Secondary Schools -->
-						<div class="mb-12">
-							<h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">遊戲設計 中學組</h3>
-							<div class="grid md:grid-cols-2 gap-8">
-								<div class="text-center">
-									<Image 
-										decoding="async" 
-										src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-12.37.25-PM-qt9c0gwsrr3i2ekxgbkbzbknrb19c81vx8ckr3o88o.jpeg" 
-										title="WhatsApp Image 2024-08-28 at 12.37.25 PM" 
-										alt="WhatsApp Image 2024-08-28 at 12.37.25 PM" 
-										loading="lazy" 
-										class="w-full h-auto rounded-lg shadow-lg mb-4"
-										width="800"
-										height="600"
-									/>
-									<h4 class="text-xl font-bold text-gray-900">一等獎 - 香港中文大學校友會聯會陳震夏中學</h4>
-								</div>
-								<div class="text-center">
-									<Image 
-										decoding="async" 
-										src="https://10botics.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2024-08-28-at-12.40.28-PM-qt9c47bpx27i6n5onfnzdvnkpemqwxvi3pn0do4xiw.jpeg" 
+										src={winnerChenChunHa} 
 										title="WhatsApp Image 2024-08-28 at 12.40.28 PM" 
 										alt="WhatsApp Image 2024-08-28 at 12.40.28 PM" 
 										loading="lazy" 
@@ -1090,13 +885,13 @@ const faqData = [
 								參加校園創建計劃課程
 							</a>
 							<a 
-								href="https://10botics.com/school-courses/" 
+								href="/school-courses/" 
 								class="inline-block bg-gray-600 hover:bg-gray-700 text-white px-8 py-4 rounded-lg text-lg font-medium transition-colors duration-200"
 							>
 								其他課程
 							</a>
 							<a 
-								href="https://10botics.com/contact-us/" 
+								href="/contact-us/" 
 								class="inline-block bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-medium transition-colors duration-200"
 							>
 								聯絡我們

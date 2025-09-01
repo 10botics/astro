@@ -15,7 +15,15 @@ import judgeLiangPeiyun from '../assets/images/competition/校際AI藝術創作�
 import judgeZhangLing from '../assets/images/competition/校際AI藝術創作大賽 2024/judge-zhang-ling.jpg';
 import judgeChengZhongshan from '../assets/images/competition/校際AI藝術創作大賽 2024/judge-cheng-zhongshan.jpg';
 import judgeTKH from '../assets/images/competition/校際AI藝術創作大賽 2024/judge-tkh.png';
-import hkceeLogo from '../assets/images/competition/校際AI藝術創作大賽 2024/hkcee-logo.jpg';
+
+// Import organization logos
+import hkceeLogo from '../assets/images/competition/校際AI藝術創作大賽 2024/香港電腦教育學會.jpg';
+import logo1 from '../assets/images/competition/校際AI藝術創作大賽 2024/logo1.png';
+import logo2 from '../assets/images/competition/校際AI藝術創作大賽 2024/logo2.jpg';
+import logo3 from '../assets/images/competition/校際AI藝術創作大賽 2024/logo3.jpg';
+import logo4 from '../assets/images/competition/校際AI藝術創作大賽 2024/logo4.png';
+import logo5 from '../assets/images/competition/校際AI藝術創作大賽 2024/logo5.webp';
+import advisorySchool from '../assets/images/competition/校際AI藝術創作大賽 2024/永光書院-logo.png';
 import logo10botics from '../assets/images/competition/校際AI藝術創作大賽 2024/10botics-logo.png';
 
 const title = "校際AI藝術創作大賽 2024 《數碼詠古》";
@@ -89,7 +97,7 @@ const description = "校際AI藝術創作大賽 2024 《數碼詠古》 - 重現
             </div>
             
             <div class="text-center">
-              <a href="past-activities/2024/04/15/ai-art-ceremony-exhibition/" 
+              <a href="/news/2024-04-15-ai-x-中華文化-x-視覺藝術校際ai藝術創作大賽-2024數碼詠古完滿落幕/" 
                  class="inline-block bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
                 活動回顧及花絮
               </a>
@@ -558,18 +566,21 @@ const description = "校際AI藝術創作大賽 2024 《數碼詠古》 - 重現
           <!-- Supporting Organizations -->
           <div class="text-center">
             <h3 class="text-2xl font-bold text-gray-900 mb-6">支持機構</h3>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 items-center">
+            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8 items-center">
               <div class="flex justify-center">
-                <Image src="https://10botics.com/wp-content/uploads/2023/11/cropped-Screenshot-2019-04-08-at-11.53.28-AM-1.png" alt="Supporting Organization 1" class="h-20 object-contain" width="200" height="80" />
+                <Image src={logo1} alt="Supporting Organization 1" class="h-20 object-contain" width="200" height="80" />
               </div>
               <div class="flex justify-center">
-                <Image src="https://10botics.com/wp-content/uploads/2023/11/logo_7.jpg" alt="Supporting Organization 2" class="h-20 object-contain" width="200" height="80" />
+                <Image src={logo2} alt="Supporting Organization 2" class="h-20 object-contain" width="200" height="80" />
               </div>
               <div class="flex justify-center">
-                <Image src="https://10botics.com/wp-content/uploads/2023/11/logo.jpg" alt="Supporting Organization 3" class="h-20 object-contain" width="200" height="80" />
+                <Image src={logo3} alt="Supporting Organization 3" class="h-20 object-contain" width="200" height="80" />
               </div>
               <div class="flex justify-center">
-                <Image src="https://10botics.com/wp-content/uploads/2023/11/logo_jsit-1200x800-1-1024x683.png" alt="Supporting Organization 4" class="h-20 object-contain" width="200" height="80" />
+                <Image src={logo4} alt="Supporting Organization 4" class="h-20 object-contain" width="200" height="80" />
+              </div>
+              <div class="flex justify-center">
+                <Image src={logo5} alt="Supporting Organization 5" class="h-20 object-contain" width="200" height="80" />
               </div>
             </div>
           </div>
@@ -578,7 +589,7 @@ const description = "校際AI藝術創作大賽 2024 《數碼詠古》 - 重現
           <div class="text-center">
             <h3 class="text-2xl font-bold text-gray-900 mb-6">顧問學校</h3>
             <div class="flex justify-center">
-              <Image src="https://10botics.com/wp-content/uploads/2023/08/五旬節聖潔會永光書院.png" alt="五旬節聖潔會永光書院" class="h-24 object-contain" width="200" height="96" />
+              <Image src={advisorySchool} alt="五旬節聖潔會永光書院" class="h-24 object-contain" width="200" height="96" />
             </div>
           </div>
 
@@ -741,18 +752,7 @@ const description = "校際AI藝術創作大賽 2024 《數碼詠古》 - 重現
     />
 
     <!-- Contact Section -->
-    <section class="py-16 bg-gray-100">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">聯絡我們</h2>
-          <p class="text-lg text-gray-700">想了解更多關於校際AI藝術創作大賽的資訊？歡迎聯絡我們</p>
-        </div>
-        
-        <div class="max-w-4xl mx-auto">
-          <ContactSection subtitle="想了解更多關於校際AI藝術創作大賽的資訊？歡迎聯絡我們，我們會為您提供詳細的比賽安排和報名資訊。" />
-        </div>
-      </div>
-    </section>
+    <ContactSection subtitle="想了解更多關於校際AI藝術創作大賽的資訊？歡迎聯絡我們，我們會為您提供詳細的比賽安排和報名資訊。" />
   </div>
 
   <script>
@@ -772,12 +772,14 @@ const description = "校際AI藝術創作大賽 2024 《數碼詠古》 - 重現
       updateCarousel();
     }
 
-    function goToImage(index) {
+    function goToImage(index: number) {
       currentImageIndex = index;
       updateCarousel();
     }
 
     function updateCarousel() {
+      if (!carousel) return;
+      
       const translateX = -currentImageIndex * (100 / totalImages);
       carousel.style.transform = `translateX(${translateX}%)`;
       
@@ -795,8 +797,6 @@ const description = "校際AI藝術創作大賽 2024 《數碼詠古》 - 重現
 
     // Auto-advance carousel
     setInterval(nextImage, 5000);
-
-
 
     // Initialize carousel
     document.addEventListener('DOMContentLoaded', function() {

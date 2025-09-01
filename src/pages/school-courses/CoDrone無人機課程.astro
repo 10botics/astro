@@ -6,7 +6,8 @@ import SingleCourseContent from '../../components/course/SingleCourseContent.ast
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
-import RelatedCoursesForCourses from '../../components/course/RelatedCoursesForCourses.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import ShopSection from '../../components/course/ShopSection.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -202,27 +203,7 @@ const faqItems = [
   }
 ];
 
-// Related courses
-const relatedCourses = [
-  {
-    title: "AI啟蒙與藝術創作課程",
-    description: "課程將引導學生深入探索人工智能（AI）在視覺藝術領",
-    image: "/src/assets/images/school-courses/CoDrone無人機課程/ai-course.png",
-    link: "/school-courses/ai-enrichment-course/"
-  },
-  {
-    title: "AI數碼動畫展",
-    description: "AI數碼動畫展是一個簡單有趣的 STEM Day 活動，學生可按主題設計喜歡的圖案/角色，通過人工智能把圖案轉換成栩栩如生的動畫，呈現在學校LED Wall或螢幕上面跳舞，讓學生能以輕鬆有趣的方式體驗生成式AI技術。",
-    image: "/src/assets/images/school-courses/CoDrone無人機課程/ai-digital-animation.jpg",
-    link: "/stem-day/ai-digital-animation-exhibition/"
-  },
-  {
-    title: "Blockchain 區塊鏈課程",
-    description: "本課程旨在引領學生進入Web3.0的世界，瞭解在w",
-    image: "/src/assets/images/school-courses/CoDrone無人機課程/blockchain-course.png",
-    link: "/school-courses/blockchain/"
-  }
-];
+
 ---
 
 <Layout title={courseData.title} description={courseData.description}>
@@ -340,7 +321,7 @@ const relatedCourses = [
       <div class="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg max-w-2xl mx-auto text-center">
         <h2 class="text-3xl font-bold mb-4 text-gray-800">相關資料</h2>
         <p class="text-gray-600 mb-6">嶄新無人機體驗 – 全新無人機 CoDrone EDU 引領中小學STEM教育新風潮</p>
-        <a href="https://10botics.com/past-activities/2024/07/29/brand-new-drone-experience/" 
+        <a href="/past-activities/2024/07/29/brand-new-drone-experience/" 
            class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
           查看更多
         </a>
@@ -351,39 +332,23 @@ const relatedCourses = [
   <!-- FAQ Section -->
   <QnASection faqs={faqItems} />
 
-  <!-- Contact Form -->
-  <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">聯絡我們</h2>
+  <!-- Shop Section -->
+  <ShopSection 
+    title="購買 CoDrone EDU 無人機"
+    description="獲取 CoDrone EDU 無人機套件及相關配件，開始你的無人機編程學習之旅"
+    shopLink="https://shop.10botics.com/Codrone-EDU-c185818059"
+    buttonText="購買 CoDrone EDU"
+    imageSrc={heroImage.src}
+    imageAlt="CoDrone EDU 無人機套件"
+  />
+
   <!-- Related Courses Section -->
-  <RelatedCoursesForCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="codrone" />
+  <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="codrone" context="course" />
   <!-- Related News Section -->
   <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
-      <ContactSection subtitle="想了解更多關於 CoDrone 無人機課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
-    </div>
-  </section>
 
-  <!-- Related Courses -->
-  <section class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">其他課程</h2>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {relatedCourses.map((course) => (
-          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-            <a href={course.link} class="block">
-              <Image src={course.image} alt={course.title} class="w-full h-48 object-cover" width="800" height="320" />
-              <div class="p-6">
-                <h4 class="text-xl font-semibold mb-2 text-gray-800 hover:text-blue-600">
-                  {course.title}
-                </h4>
-                <p class="text-gray-600 mb-4">{course.description}</p>
-                <span class="text-blue-600 hover:text-blue-700 font-medium">Read More »</span>
-              </div>
-            </a>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
+  <!-- Contact Form -->
+  <ContactSection subtitle="想了解更多關於 CoDrone 無人機課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
+
+
 </Layout> 

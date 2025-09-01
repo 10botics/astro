@@ -6,7 +6,7 @@ import SingleCourseContent from '../../components/course/SingleCourseContent.ast
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
-import RelatedCoursesForCourses from '../../components/course/RelatedCoursesForCourses.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -96,7 +96,7 @@ const courseArrangement = [
   <HeroSection 
     title={courseData.title}
     subtitle={courseData.subtitle}
-    description={courseData.description}
+    description={courseData.detailedDescription}
     videoId={courseData.videoId}
     tags={courseData.tags}
   />
@@ -267,7 +267,7 @@ const courseArrangement = [
 
   <!-- Contact Form -->
   <!-- Related Courses Section -->
-  <RelatedCoursesForCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="dobot" />
+  <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="dobot" context="course" />
   <!-- Related News Section -->
   <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
   <ContactSection subtitle="想了解更多關於 Dobot 智能機械手臂課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />

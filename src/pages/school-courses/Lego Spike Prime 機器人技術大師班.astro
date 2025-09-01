@@ -6,7 +6,7 @@ import SingleCourseContent from '../../components/course/SingleCourseContent.ast
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
-import RelatedCoursesForCourses from '../../components/course/RelatedCoursesForCourses.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -142,7 +142,7 @@ const courseFeatures = [
   <HeroSection 
     title={courseData.title}
     subtitle={courseData.subtitle}
-    description={courseData.description}
+    description={courseData.detailedDescription}
     videoId={courseData.videoId}
     tags={courseData.tags}
   />
@@ -244,7 +244,7 @@ const courseFeatures = [
   <QnASection faqs={faqData} />
 
 
-  <RelatedCoursesForCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="lego-spike-prime" />
+  <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="lego-spike-prime" context="course" />
   <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
   <ContactSection subtitle="想了解更多關於 Lego Spike Prime 機器人技術大師班的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
 </Layout> 

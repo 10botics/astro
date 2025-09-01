@@ -5,7 +5,7 @@ import AccordionSection from '../../components/course/AccordionSection.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
-import RelatedCoursesForCourses from '../../components/course/RelatedCoursesForCourses.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -188,7 +188,7 @@ const completeCourseFeatures = [
     subtitle={courseData.subtitle}
     tags={courseData.tags}
     heroImage={courseData.heroImage}
-    description={courseData.description}
+    description={courseData.detailedDescription}
   />
 
   <!-- Video section -->
@@ -198,17 +198,15 @@ const completeCourseFeatures = [
         <h2 class="text-3xl font-bold text-gray-900 mb-4">活動介紹影片</h2>
         <p class="text-lg text-gray-700">觀看我們的 AI 數碼動畫展活動介紹</p>
       </div>
-      <div class="max-w-4xl mx-auto">
-        <div class="aspect-w-16 aspect-h-9 bg-gray-100 rounded-lg overflow-hidden shadow-lg">
+      <div class="w-full">
+        <div class="relative w-full bg-gray-100 rounded-lg overflow-hidden shadow-lg" style="aspect-ratio: 16/9;">
           <iframe 
-            width="100%" 
-            height="400" 
             src="https://www.youtube.com/embed/LE8NNIhNHP0" 
             title="AI數碼動畫展介紹"
             frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
             allowfullscreen
-            class="w-full h-full"
+            class="absolute top-0 left-0 w-full h-full"
           ></iframe>
         </div>
       </div>
@@ -369,24 +367,12 @@ const completeCourseFeatures = [
 
   <QnASection faqs={faqItems} />
   <!-- Related Courses Section -->
-  <RelatedCoursesForCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="ai-digital-animation-exhibition" />
+  <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="ai-digital-animation-exhibition" context="course" />
   <!-- Related News Section -->
   <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
 
 
 
   <!-- Contact section -->
-  <section class="py-16 bg-gray-50">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">
-          聯絡我們
-        </h2>
-        <p class="text-lg text-gray-600">
-          想了解更多關於 AI 數碼動畫展活動的資訊？歡迎聯絡我們，我們會為您提供詳細的活動安排和報名資訊。
-        </p>
-      </div>
-      <ContactSection subtitle="想了解更多關於 AI 數碼動畫展的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
-    </div>
-  </section>
+  <ContactSection subtitle="想了解更多關於 AI 數碼動畫展的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
 </Layout> 

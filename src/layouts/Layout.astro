@@ -36,8 +36,8 @@ const organizationSchema = {
 	"@type": "Organization",
 	"name": "10教育",
 	"alternateName": "10Botics",
-	"url": "https://10botics.com",
-	"logo": "https://10botics.com/images/logo_website_700x200-300x86.png",
+	"url": "/",
+	"logo": "/images/logo_website_700x200-300x86.png",
 	"description": "專業STEM及人工智能教育機構，提供到校課程服務",
 	"address": {
 		"@type": "PostalAddress",
@@ -84,11 +84,18 @@ const organizationSchema = {
 		
 		<!-- Google Tag Manager -->
 		<script>
-			(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-			})(window,document,'script','dataLayer','GTM-N5D4J5V');
+			(function(w: any, d: any, s: any, l: any, i: any) {
+				w[l] = w[l] || [];
+				w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+				var f = d.getElementsByTagName(s)[0],
+					j = d.createElement(s) as HTMLScriptElement,
+					dl = l != 'dataLayer' ? '&l=' + l : '';
+				j.async = true;
+				j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+				if (f.parentNode) {
+					f.parentNode.insertBefore(j, f);
+				}
+			})(window, document, 'script', 'dataLayer', 'GTM-N5D4J5V');
 		</script>
 		
 		<!-- DNS Prefetch for Performance -->

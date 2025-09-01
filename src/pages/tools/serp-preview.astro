@@ -2,14 +2,6 @@
 import Layout from '../../layouts/Layout.astro';
 import GoogleSearchParser from '../../components/GoogleSearchParser.astro';
 
-// Check if we're in production/deployment mode
-const isProduction = import.meta.env.PROD;
-
-// If in production, redirect to home page or show error
-if (isProduction) {
-  return Astro.redirect('/');
-}
-
 // Get URL parameters for pre-populating the form
 const url = Astro.url;
 const searchParams = url.searchParams;

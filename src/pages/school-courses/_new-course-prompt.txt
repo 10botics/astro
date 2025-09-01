@@ -3,7 +3,7 @@ Create the website in astro file under src/pages/school-courses/ and the name of
 **CRITICAL URL REQUIREMENTS:**
 - The filename MUST be in traditional Chinese 
 - The URL slug MUST be in English 
-- The Chinese filename to English slug mapping will be automatically added to `src/utils/urlAliases.js`
+- The Chinese filename to English slug mapping will be automatically added to `src/utils/urlAliases.js` and `src/utils/courseMappings.ys`
 - This ensures the course is accessible via English URLs while maintaining Chinese filenames
 
 **CRITICAL CONTENT ORGANIZATION REQUIREMENT:**

@@ -5,7 +5,7 @@ import SingleCourseContent from '../../components/course/SingleCourseContent.ast
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
-import RelatedCoursesForCourses from '../../components/course/RelatedCoursesForCourses.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -125,27 +125,7 @@ const faqItems = [
   }
 ];
 
-// Related courses
-const relatedCourses = [
-  {
-    title: "AI啟蒙與藝術創作課程",
-    description: "課程將引導學生深入探索人工智能（AI）在視覺藝術領域的應用...",
-    link: "/school-courses/ai-enrichment-course",
-    gradient: "from-blue-400 to-blue-600"
-  },
-  {
-    title: "AI數碼動畫展",
-    description: "AI數碼動畫展是一個簡單有趣的 STEM Day 活動，學生可按主題設計喜歡的圖案/角色...",
-    link: "/stem-day/ai-digital-animation-exhibition",
-    gradient: "from-green-400 to-green-600"
-  },
-  {
-    title: "Blockchain 區塊鏈課程",
-    description: "本課程旨在引領學生進入Web3.0的世界，瞭解在web3.0時代下...",
-    link: "/school-courses/blockchain",
-    gradient: "from-orange-400 to-orange-600"
-  }
-];
+
 
 // SEO metadata
 const title = "Procreate電繪課程 - 10教育";
@@ -161,7 +141,7 @@ const ogImage = procreateThumbnail.src;
     subtitle={courseData.subtitle}
     tags={courseData.tags}
     heroImage={courseData.heroImage}
-    description={courseData.description}
+    description={courseData.detailedDescription}
   />
 
   <!-- Why Procreate section -->
@@ -281,46 +261,16 @@ const ogImage = procreateThumbnail.src;
 
   <QnASection faqs={faqItems} />
   <!-- Related Courses Section -->
-  <RelatedCoursesForCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="procreate" />
+  <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="procreate" context="course" />
   <!-- Related News Section -->
   <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
 
 
 
   <!-- Contact Section -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">聯絡我們</h2>
-      
-      <div class="bg-white border border-gray-200 rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
-        <div class="text-center">
-          <ContactSection subtitle="想了解更多關於 Procreate 電繪課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
-        </div>
-      </div>
-    </div>
-  </section>
+  <ContactSection subtitle="想了解更多關於 Procreate 電繪課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
 
-  <!-- Related Courses -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">其他課程</h2>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {relatedCourses.map((course) => (
-          <div class="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-            <div class={`h-48 bg-gradient-to-br ${course.gradient}`}></div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold text-gray-900 mb-2">{course.title}</h3>
-              <p class="text-gray-600 mb-4">{course.description}</p>
-              <a href={course.link} class="text-cyan-600 hover:text-cyan-700 font-semibold">
-                了解更多 »
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+
 </Layout>
 
  

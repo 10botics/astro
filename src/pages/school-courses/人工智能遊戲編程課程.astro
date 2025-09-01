@@ -5,7 +5,7 @@ import SingleCourseContent from '../../components/course/SingleCourseContent.ast
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
-import RelatedCoursesForCourses from '../../components/course/RelatedCoursesForCourses.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
 import { Image } from 'astro:assets';
 
 // Import student work images
@@ -159,7 +159,7 @@ const faqItems = [
     subtitle={courseData.subtitle}
     tags={courseData.tags}
     heroImage={courseData.heroImage}
-    description={courseData.description}
+    description={courseData.detailedDescription}
   />
 
   <!-- Hero image and description section -->
@@ -427,7 +427,7 @@ const faqItems = [
 
   <QnASection faqs={faqItems} />
   <!-- Related Courses Section -->
-  <RelatedCoursesForCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="ai-game-coding" />
+  <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="ai-game-coding" context="course" />
   <!-- Related News Section -->
   <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
 
@@ -436,5 +436,6 @@ const faqItems = [
   <!-- Contact section -->
   <ContactSection subtitle="想了解更多關於人工智能網頁遊戲編程工作坊的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
 </Layout>
+
 
 

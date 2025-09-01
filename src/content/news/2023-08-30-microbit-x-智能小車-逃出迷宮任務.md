@@ -7,16 +7,11 @@ SEOImage: "../../assets/images/news/2023-08-30-microbit-x-智能小車-逃出迷
 category: "過往活動"
 tags: ["AI 人工智能", "Micro:bit", "Programming 編程", "STEM Day", "初中"]
 author: "sukileung"
-isFeatured: false
-externalLink: "https://10botics.com/past-activities/2023/08/30/microbit-cckln/"
-wpSlug: "microbit-x-智能小車-逃出迷宮任務"
-wpDate: "2023/08/30"
-readingTime: 1
 ---
 
 ![](../../assets/images/news/2023-08-30-microbit-x-智能小車-逃出迷宮任務/image2.jpeg)
 
-中一迎新日就一定係坐定定聽講座？唔一定嘅！好似文理書院 (九龍) 既準中一同學仔咁，佢哋今日玩足五個鐘頭Micro:bit智能小車同埋逃出迷宮比賽！🛞🏍️
+中一迎新日就一定係坐定定聽講座？唔一定嘅！好似[文理書院 (九龍)](https://www.klc.edu.hk/)既準中一同學仔咁，佢哋今日玩足五個鐘頭Micro:bit智能小車同埋逃出迷宮比賽！🛞🏍️
 
 於今次STEM Day迎新活動中，同學們首先學習如何編程操控Tiny:bit小車，控制小車的移動和轉向，並在迷宮中尋找出口的路徑。隨後，學生們進一步探索如何應用不同的傳感器和人工智能來設計車輛，令它能夠自主逃脫迷宮。
 
