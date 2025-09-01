@@ -2,7 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import YouTubeEmbed from '../components/homepage/YouTubeEmbed.astro';
 import FeatureList from '../components/homepage/FeatureList.astro';
-import CTAWithImage from '../components/homepage/CTAWithImage.astro';
 
 // YouTube video data from the original page
 const videoData = {
@@ -27,20 +26,7 @@ const showroomFeatures = [
   }
 ];
 
-// CTA data
-const ctaData = {
-  title: "準備好探索我們的線上STEM SHOWROOM了嗎？",
-  description: "立即進入我們的虛擬STEM空間，體驗創新科技教育的魅力，看看學生們的精彩作品和學習成果。",
-  primaryButton: {
-    text: "立即探索",
-    link: "#showroom-link" // This would link to the actual VR/3D showroom
-  },
-  secondaryButton: {
-    text: "聯絡我們",
-    link: "/contact"
-  },
-  image: "/images/stem-showroom-virtual.jpg"
-};
+
 ---
 
 <Layout 
