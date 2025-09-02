@@ -97,19 +97,31 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
       
       <!-- Tabs -->
       <div class="max-w-4xl mx-auto">
-        <div class="flex flex-wrap justify-center mb-8">
-          <button class="tab-button active px-6 py-3 bg-blue-600 text-white rounded-t-lg mx-1 transition-all duration-200" data-tab="1">
-            面授課堂
-          </button>
-          <button class="tab-button px-6 py-3 bg-gray-200 text-gray-700 rounded-t-lg mx-1 transition-all duration-200" data-tab="2">
-            Project Period
-          </button>
-          <button class="tab-button px-6 py-3 bg-gray-200 text-gray-700 rounded-t-lg mx-1 transition-all duration-200" data-tab="3">
-            遞交作品
-          </button>
-          <button class="tab-button px-6 py-3 bg-gray-200 text-gray-700 rounded-t-lg mx-1 transition-all duration-200" data-tab="4">
-            Buildathon
-          </button>
+        <div class="mb-8">
+          <table class="w-full max-w-2xl mx-auto border border-gray-300 bg-white rounded-lg overflow-hidden shadow-lg">
+            <tr>
+              <td class="border-r border-gray-300">
+                <button class="tab-button active w-full px-6 py-4 bg-blue-600 text-white font-medium transition-all duration-200 hover:bg-blue-700" data-tab="1">
+                  面授課堂
+                </button>
+              </td>
+              <td class="border-r border-gray-300">
+                <button class="tab-button w-full px-6 py-4 bg-gray-100 text-gray-700 font-medium transition-all duration-200 hover:bg-gray-200" data-tab="2">
+                  Project Period
+                </button>
+              </td>
+              <td class="border-r border-gray-300">
+                <button class="tab-button w-full px-6 py-4 bg-gray-100 text-gray-700 font-medium transition-all duration-200 hover:bg-gray-200" data-tab="3">
+                  遞交作品
+                </button>
+              </td>
+              <td>
+                <button class="tab-button w-full px-6 py-4 bg-gray-100 text-gray-700 font-medium transition-all duration-200 hover:bg-gray-200" data-tab="4">
+                  Buildathon
+                </button>
+              </td>
+            </tr>
+          </table>
         </div>
 
         <!-- Tab Content -->
@@ -755,7 +767,7 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
       const firstTabContent = document.querySelector('.tab-content[data-tab="1"]');
       if (firstTabButton && firstTabContent) {
         firstTabButton.classList.add('active', 'bg-blue-600', 'text-white');
-        firstTabButton.classList.remove('bg-gray-200', 'text-gray-700');
+        firstTabButton.classList.remove('bg-gray-100', 'text-gray-700');
         firstTabContent.classList.add('active');
       }
       
@@ -767,7 +779,7 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
           // Remove active class from all buttons and contents
           tabButtons.forEach((btn) => {
             btn.classList.remove('active', 'bg-blue-600', 'text-white');
-            btn.classList.add('bg-gray-200', 'text-gray-700');
+            btn.classList.add('bg-gray-100', 'text-gray-700');
           });
           
           tabContents.forEach(content => {
@@ -776,7 +788,7 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
           
           // Add active class to clicked button and corresponding content
           btn.classList.add('active', 'bg-blue-600', 'text-white');
-          btn.classList.remove('bg-gray-200', 'text-gray-700');
+          btn.classList.remove('bg-gray-100', 'text-gray-700');
           
           const targetContent = document.querySelector(`.tab-content[data-tab="${tabNumber}"]`);
           if (targetContent) {

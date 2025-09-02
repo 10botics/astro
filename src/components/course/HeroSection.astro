@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import { generateTagSlug, AUDIENCE_TAG_MAPPING } from '../../utils/courseMappings';
 
 export interface Props {
   title: string;
@@ -45,15 +46,7 @@ const { title, subtitle, tags, videoId, description, featuredImage, heroImage } 
                 <i class="fas fa-users text-cyan-400 mr-2"></i>
                 <span class="text-sm font-medium text-gray-700 mr-2">適合對象:</span>
                 {audienceTags.map((tag, index) => {
-                  // Tag mapping for target audience tags
-                  const audienceTagMapping = {
-                    '初小': 'lower-primary',
-                    '高小': 'upper-primary', 
-                    '初中': 'junior-secondary',
-                    '高中': 'senior-secondary'
-                  };
-                  
-                  const tagSlug = audienceTagMapping[tag] || tag.toLowerCase().replace(/\s+/g, '-');
+                  const tagSlug = AUDIENCE_TAG_MAPPING[tag as keyof typeof AUDIENCE_TAG_MAPPING] || tag.toLowerCase().replace(/\s+/g, '-');
                   
                   return (
                     <span class="text-sm">
@@ -71,15 +64,19 @@ const { title, subtitle, tags, videoId, description, featuredImage, heroImage } 
             {otherTags.length > 0 && (
               <div class="flex flex-wrap gap-1 items-center">
                 <i class="fas fa-tags text-cyan-400 mr-2"></i>
-                {otherTags.map((tag, index) => (
-                  <span class="text-sm">
-                    <a href={`/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`} 
-                       class="text-cyan-400 hover:text-cyan-600 transition-colors">
-                      {tag}
-                    </a>
-                    {index < otherTags.length - 1 && <span class="text-gray-400 mx-1">,</span>}
-                  </span>
-                ))}
+                {otherTags.map((tag, index) => {
+                  const tagSlug = generateTagSlug(tag);
+                  
+                  return (
+                    <span class="text-sm">
+                      <a href={`/tag/${tagSlug}`} 
+                         class="text-cyan-400 hover:text-cyan-600 transition-colors">
+                        {tag}
+                      </a>
+                      {index < otherTags.length - 1 && <span class="text-gray-400 mx-1">,</span>}
+                    </span>
+                  );
+                })}
               </div>
             )}
           </div>

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Minecraft Java Edition 和 Education Edition 該如何選擇？"
 publishDate: 2022-07-04
 description: "分析Minecraft Java Edition與Education Edition在教育應用中的差異，探討Java Edition的創造自由度與社群支持如何更好地激發學生學習興趣，提供教育主題設計建議。"
@@ -9,7 +9,7 @@ tags: []
 author: "jacksonchan"
 ---
 
-![](https://staging.10botics.com/wp-content/uploads/2023/08/Minecraft-en-image.-Photo-prise-via-Internet-1.webp)
+![](../../assets/images/news/2022-07-04-minecraft-java-edition-和-education-edition-該如何選擇/image1.png)
 
 ## Minecraft是甚麼？
 
@@ -21,13 +21,13 @@ Minecraft: Java Edition是Minecraft系列的第一個作品。同時也是目前
 
 遊戲有多種模式可供選擇，比如在「生存模式」可以自行蒐集材料，在Minecraft中生存；如果玩家想盡情發揮創意，則可以使用「創造模式」在大世界中隨意建造(或破壞)。除此以外，用戶更可以下載由社群製作的各種地圖遊玩。「模組(Mods)」的出現更使Minecraft的玩法更多元化，透過模組，用戶可以增加額外功能到Minecraft中，從而衍生出各種不同的玩法、小遊戲地圖、甚至出現了具有可編程的模組供用戶設計遊戲。
 
-![](https://staging.10botics.com/wp-content/uploads/2023/08/d2f0597de811924aa991c0a5663fe242-1024x618.png)
+![](../../assets/images/news/2022-07-04-minecraft-java-edition-和-education-edition-該如何選擇/d2f0597de811924aa991c0a5663fe242-1024x618.png)
 
 大部分玩家在剛開始玩Minecraft時都會選擇「生存模式」，自行蒐集材料，在Minecraft中生存；有一批玩家則喜歡發揮創意，使用「創造模式」在大世界中隨意建造(或破壞)地形或建築，或者加入多人遊玩模式，其中包括較為受歡迎的 Hypixel 伺服器(mc.hypixel.net)，玩家在這種伺服器中可參與不同的 Party game 如Bedwar 及 Build Battle 等活動。除此以外，用戶更可以下載由社群製作的各種地圖遊玩。「模組」(Mods)的出現更使Minecraft的玩法更多元化，透過模組，用戶可以增加如更多生物、方塊的額外功能到Minecraft中，從而衍生出各種不同的玩法、小遊戲地圖、甚至出現了具有可編程的模組供用戶設計遊戲。
 
 ## Minecraft: Education Edition
 
-![](https://staging.10botics.com/wp-content/uploads/2023/08/f9474491bcad629fd5d1058acb3f60ab-1024x578.png)
+![](../../assets/images/news/2022-07-04-minecraft-java-edition-和-education-edition-該如何選擇/f9474491bcad629fd5d1058acb3f60ab-1024x578.png)
 
 ## 所以我應該選擇...？
 

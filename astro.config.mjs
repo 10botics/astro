@@ -11,6 +11,15 @@ export default defineConfig({
   build: {
     assets: '_astro', // Ensure consistent asset naming
   },
+  image: {
+    domains: ["10botics.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**.10botics.com",
+      }
+    ]
+  },
   vite: {
     resolve: {
       alias: {

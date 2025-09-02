@@ -12,8 +12,6 @@ import { Image } from 'astro:assets';
 import swiftPlaygroundsHero from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-hero.png';
 import swiftPlaygroundsCoding from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-coding.jpg';
 import swiftPlaygroundsTesting from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-testing.jpg';
-import swiftPlaygroundsPlaying from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-playing.png';
-import swiftPlaygroundsLearning from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-learning.jpg';
 import swiftPlaygroundsThinking from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-thinking.jpg';
 import swiftPlaygroundsTrying from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-trying.jpg';
 import swiftPlaygroundsDoing from '../../assets/images/school-courses/SwiftPlaygrounds編程課程/swift-playgrounds-doing.jpg';
@@ -183,25 +181,6 @@ const ogImage = swiftPlaygroundsHero.src;
     heroImage={courseData.heroImage}
   />
 
-  <!-- Why Swift Playgrounds section -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <div class="rounded-lg overflow-hidden shadow-lg">
-            <Image 
-              src={swiftPlaygroundsCoding} 
-              alt="Swift Playgrounds 編程" 
-              width={600}
-              height={400}
-              class="w-full h-auto"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Course requirements section -->
   <section class="bg-white py-16">
     <div class="container mx-auto px-4 max-w-6xl">
@@ -282,7 +261,6 @@ const ogImage = swiftPlaygroundsHero.src;
       <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">精選照片</h2>
 
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-        <Image src={swiftPlaygroundsLearning} alt="Swift Playgrounds learning" class="w-full h-32 object-cover rounded-lg shadow-md" />
         <Image src={swiftPlaygroundsThinking} alt="Swift Playgrounds thinking" class="w-full h-32 object-cover rounded-lg shadow-md" />
         <Image src={swiftPlaygroundsTrying} alt="Swift Playgrounds trying" class="w-full h-32 object-cover rounded-lg shadow-md" />
         <Image src={swiftPlaygroundsDoing} alt="Swift Playgrounds doing" class="w-full h-32 object-cover rounded-lg shadow-md" />
