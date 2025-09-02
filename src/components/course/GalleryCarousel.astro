@@ -42,32 +42,80 @@ if (import.meta.env.DEV) {
         <!-- Carousel Track -->
         <div 
           class="carousel-track flex transition-transform duration-500 ease-in-out"
-          style={`width: ${normalizedImages.length * (100/3)}%`}
         >
-          {normalizedImages.map((img, index) => (
+          {/* Create clones for seamless circular scrolling - clone last few images at beginning */}
+          {normalizedImages.length > 3 && normalizedImages.slice(-3).map((img, index) => (
             <div 
-              class="carousel-slide flex-shrink-0"
-              style={`width: ${100 / normalizedImages.length}%`}
+              class="carousel-slide flex-shrink-0 w-full lg:w-1/3 md:w-1/2 px-2"
+              data-clone="start"
             >
               {img.isRemote ? (
-                <!-- For remote/string URLs, use regular img tag -->
                 <img 
                   src={img.src as string} 
                   alt={img.alt}
-                  class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-lg"
+                  class="w-full h-auto object-contain rounded-lg"
                   loading="lazy"
                   decoding="async"
                 />
               ) : (
-                <!-- For ImageMetadata objects, use Astro's Image component -->
                 <Image 
                   src={img.src as ImageMetadata} 
                   alt={img.alt}
-                  class="w-full h-64 md:h-80 lg:h-96 object-cover rounded-lg"
+                  class="w-full h-auto object-contain rounded-lg"
                   loading="lazy"
                   decoding="async"
-                  width={400}
-                  height={300}
+                />
+              )}
+            </div>
+          ))}
+
+          {/* Original images */}
+          {normalizedImages.map((img, index) => (
+            <div 
+              class="carousel-slide flex-shrink-0 w-full lg:w-1/3 md:w-1/2 px-2"
+              data-original-index={index}
+            >
+              {img.isRemote ? (
+                <img 
+                  src={img.src as string} 
+                  alt={img.alt}
+                  class="w-full h-auto object-contain rounded-lg"
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <Image 
+                  src={img.src as ImageMetadata} 
+                  alt={img.alt}
+                  class="w-full h-auto object-contain rounded-lg"
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
+            </div>
+          ))}
+
+          {/* Create clones for seamless circular scrolling - clone first few images at end */}
+          {normalizedImages.length > 3 && normalizedImages.slice(0, 3).map((img, index) => (
+            <div 
+              class="carousel-slide flex-shrink-0 w-full lg:w-1/3 md:w-1/2 px-2"
+              data-clone="end"
+            >
+              {img.isRemote ? (
+                <img 
+                  src={img.src as string} 
+                  alt={img.alt}
+                  class="w-full h-auto object-contain rounded-lg"
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <Image 
+                  src={img.src as ImageMetadata} 
+                  alt={img.alt}
+                  class="w-full h-auto object-contain rounded-lg"
+                  loading="lazy"
+                  decoding="async"
                 />
               )}
             </div>
@@ -95,7 +143,7 @@ if (import.meta.env.DEV) {
 
         <!-- Dots -->
         <div class="carousel-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
-          {Array.from({ length: Math.max(1, Math.ceil(normalizedImages.length / 3)) }, (_, i) => (
+          {normalizedImages.map((_, i) => (
             <button 
               class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white transition-colors duration-200"
               aria-label={`Go to slide ${i + 1}`}
@@ -114,15 +162,23 @@ if (import.meta.env.DEV) {
 
 <style>
   .gallery-carousel {
-    --per-view: 3;
+    --per-view: 1;
+  }
+  
+  @media (min-width: 768px) {
+    .gallery-carousel {
+      --per-view: 2;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .gallery-carousel {
+      --per-view: 3;
+    }
   }
   
   .carousel-track {
     transform: translateX(0);
-  }
-  
-  .carousel-slide {
-    padding: 0 0.5rem;
   }
 </style>
 
@@ -131,12 +187,14 @@ if (import.meta.env.DEV) {
     private container: HTMLElement;
     private track: HTMLElement;
     private slides: NodeListOf<Element>;
+    private originalSlides: NodeListOf<Element>;
     private prevBtn: HTMLElement | null;
     private nextBtn: HTMLElement | null;
     private dots: NodeListOf<Element>;
     private currentIndex: number;
     private perView: number;
-    private totalGroups: number;
+    private totalSlides: number;
+    private cloneOffset: number;
     private autoplayInterval: ReturnType<typeof setInterval> | null;
     private intervalMs: number;
 
@@ -144,13 +202,15 @@ if (import.meta.env.DEV) {
       this.container = container;
       this.track = container.querySelector('.carousel-track') as HTMLElement;
       this.slides = container.querySelectorAll('.carousel-slide');
+      this.originalSlides = container.querySelectorAll('[data-original-index]');
       this.prevBtn = container.querySelector('.carousel-prev') as HTMLElement | null;
       this.nextBtn = container.querySelector('.carousel-next') as HTMLElement | null;
       this.dots = container.querySelectorAll('.carousel-dot');
       
-      this.currentIndex = 0;
-      this.perView = this.getPerView(); // Get responsive perView
-      this.totalGroups = Math.max(1, this.slides.length - this.perView + 1);
+      this.totalSlides = this.originalSlides.length;
+      this.cloneOffset = this.totalSlides > 3 ? 3 : 0; // Number of cloned slides at the beginning
+      this.currentIndex = this.cloneOffset; // Start at the first real slide
+      this.perView = this.getPerView();
       this.autoplayInterval = null;
       this.intervalMs = parseInt(container.dataset.intervalMs || '4000');
       
@@ -159,7 +219,7 @@ if (import.meta.env.DEV) {
     
     getPerView(): number {
       if (window.innerWidth >= 1024) return 3; // lg
-      if (window.innerWidth >= 640) return 2;  // md
+      if (window.innerWidth >= 768) return 2;  // md
       return 1; // sm
     }
     
@@ -167,8 +227,8 @@ if (import.meta.env.DEV) {
       const newPerView = this.getPerView();
       if (newPerView !== this.perView) {
         this.perView = newPerView;
-        this.totalGroups = Math.max(1, this.slides.length - this.perView + 1);
-        this.currentIndex = Math.min(this.currentIndex, this.totalGroups - 1);
+        // Clamp current index to valid range
+        this.currentIndex = Math.min(this.currentIndex, this.totalSlides - 1);
         this.updateTrack();
         this.updateDots();
       }
@@ -179,6 +239,7 @@ if (import.meta.env.DEV) {
       this.startAutoplay();
       this.updateDots();
       this.updateButtons();
+      this.updateTrack();
     }
     
     bindEvents() {
@@ -209,14 +270,28 @@ if (import.meta.env.DEV) {
     }
     
     updateTrack() {
-      // Move by 1 image at a time - each image is (100 / total_images)% of track width
-      const slideWidth = 100 / this.slides.length;
-      const translateX = -(this.currentIndex * slideWidth);
-      this.track.style.transform = `translateX(${translateX}%)`;
+  const imageWidth = 100 / this.perView; // Width of one image in the current view
+  const translateX = -(this.currentIndex * imageWidth);
+  this.track.style.transform = `translateX(${translateX}%)`;
     }
     
     prev() {
-      this.currentIndex = this.currentIndex > 0 ? this.currentIndex - 1 : this.totalGroups - 1;
+      this.currentIndex--;
+      
+      // Check if we need to wrap around
+      if (this.cloneOffset > 0 && this.currentIndex < this.cloneOffset) {
+        // We're before the first real slide, jump to the end without animation
+        this.track.style.transition = 'none';
+        this.currentIndex = this.cloneOffset + this.totalSlides - 1;
+        this.updateTrack();
+        // Re-enable animation after a brief delay
+        setTimeout(() => {
+          this.track.style.transition = 'transform 500ms ease-in-out';
+        }, 10);
+      } else if (this.cloneOffset === 0 && this.currentIndex < 0) {
+        this.currentIndex = this.totalSlides - 1;
+      }
+      
       this.updateTrack();
       this.updateDots();
       this.updateButtons();
@@ -224,7 +299,22 @@ if (import.meta.env.DEV) {
     }
     
     next() {
-      this.currentIndex = this.currentIndex < this.totalGroups - 1 ? this.currentIndex + 1 : 0;
+      this.currentIndex++;
+      
+      // Check if we need to wrap around
+      if (this.cloneOffset > 0 && this.currentIndex >= this.cloneOffset + this.totalSlides) {
+        // We're past the last real slide, jump to the beginning without animation
+        this.track.style.transition = 'none';
+        this.currentIndex = this.cloneOffset;
+        this.updateTrack();
+        // Re-enable animation after a brief delay
+        setTimeout(() => {
+          this.track.style.transition = 'transform 500ms ease-in-out';
+        }, 10);
+      } else if (this.cloneOffset === 0 && this.currentIndex >= this.totalSlides) {
+        this.currentIndex = 0;
+      }
+      
       this.updateTrack();
       this.updateDots();
       this.updateButtons();
@@ -232,7 +322,8 @@ if (import.meta.env.DEV) {
     }
     
     goToSlide(slideIndex: number) {
-      this.currentIndex = slideIndex;
+      // Convert dot index to actual slide index (accounting for clones)
+      this.currentIndex = this.cloneOffset + slideIndex;
       this.updateTrack();
       this.updateDots();
       this.updateButtons();
@@ -240,8 +331,11 @@ if (import.meta.env.DEV) {
     }
     
     updateDots() {
+      // Calculate which original slide we're currently viewing
+      const activeOriginalIndex = this.currentIndex - this.cloneOffset;
+      
       this.dots.forEach((dot: Element, index: number) => {
-        if (index === this.currentIndex) {
+        if (index === activeOriginalIndex) {
           dot.classList.add('bg-white');
           dot.classList.remove('bg-white/60');
           dot.setAttribute('aria-selected', 'true');

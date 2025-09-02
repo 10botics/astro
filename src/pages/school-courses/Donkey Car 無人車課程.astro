@@ -267,43 +267,60 @@ const courseArrangement = [
       <div class="max-w-6xl mx-auto">
         <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程特色</h2>
         
-        <div class="grid md:grid-cols-2 gap-8 mb-8">
-          <div class="flex items-center space-x-4">
-            <div class="flex-shrink-0">
-              <Image src={pythonControl} alt="Python Control" class="w-32 h-32 rounded-lg" />
-            </div>
-            <div>
-              <h3 class="text-xl font-semibold mb-2">編寫 Python 控制 Donkey Car</h3>
-            </div>
+        <!-- Python Control Section -->
+        <div class="flex flex-col md:flex-row items-center gap-8 mb-16">
+          <div class="w-full md:w-1/2">
+            <Image 
+              src={pythonControl} 
+              alt="Python Control Interface" 
+              class="w-full h-auto rounded-lg shadow-lg"
+            />
           </div>
-          
-          <div class="flex items-center space-x-4">
-            <div class="flex-shrink-0">
-              <Image src={coralDetection} alt="Coral Detection" class="w-32 h-32 rounded-lg" />
-            </div>
-            <div>
-              <h3 class="text-xl font-semibold mb-2">借助 Google Coral 加速器進行路牌辨識</h3>
-            </div>
+          <div class="w-full md:w-1/2">
+            <h3 class="text-2xl font-bold mb-4 text-gray-800">編寫 Python 控制 Donkey Car</h3>
           </div>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-8 mb-8">
-          <div class="flex items-center space-x-4">
-            <div class="flex-shrink-0">
-              <h3 class="text-xl font-semibold mb-2">Google Colab 訓練自動駕駛的AI 模型</h3>
-            </div>
-            <div>
-              <Image src={colabTraining} alt="Colab Training" class="w-32 h-32 rounded-lg" />
-            </div>
+        <!-- Coral Detection Section -->
+        <div class="flex flex-col md:flex-row items-center gap-8 mb-16">
+          <div class="w-full md:w-1/2 md:order-1">
+            <Image 
+              src={coralDetection} 
+              alt="Coral Detection Road Sign Recognition" 
+              class="w-full h-auto rounded-lg shadow-lg"
+            />
           </div>
+          <div class="w-full md:w-1/2 md:order-2">
+            <h3 class="text-2xl font-bold mb-4 text-gray-800">借助 Google Coral 加速器進行路牌辨識</h3>
+          </div>
+        </div>
+
+        <!-- Google Colab Training Section -->
+        <div class="flex flex-col md:flex-row items-center gap-8 mb-16">
+          <div class="w-full md:w-1/2">
+            <Image 
+              src={colabTraining} 
+              alt="Google Colab AI Model Training" 
+              class="w-full h-auto rounded-lg shadow-lg"
+            />
+          </div>
+          <div class="w-full md:w-1/2">
+            <h3 class="text-2xl font-bold mb-4 text-gray-800">Google Colab 訓練自動駕駛的AI 模型</h3>
+          </div>
+        </div>
+
+        <!-- Lap Timer Section -->
+        <div class="flex flex-col md:flex-row items-center gap-8 mb-16">
           
-          <div class="flex items-center space-x-4">
-            <div class="flex-shrink-0">
-              <h3 class="text-xl font-semibold mb-2">開發 Donkey Car 新功能：偵測終點線及記錄圈速</h3>
-            </div>
-            <div>
-              <Image src={lapTimer} alt="Lap Timer" class="w-32 h-32 rounded-lg" />
-            </div>
+          <div class="w-full md:w-1/2 md:order-1">
+            <Image 
+              src={lapTimer} 
+              alt="Lap Timer Finish Line Detection" 
+              class="w-full h-auto rounded-lg shadow-lg"
+            />
+          </div>
+          <div class="w-full md:w-1/2 md:order-2">
+            <h3 class="text-2xl font-bold mb-4 text-gray-800">開發 Donkey Car 新功能：偵測終點線及記錄圈速</h3>
           </div>
         </div>
 

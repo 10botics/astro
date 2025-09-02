@@ -16,6 +16,9 @@ import scratchprofie from '../../assets/images/school-courses/Scratch 人工智�
 import scratchAi1 from '../../assets/images/school-courses/Scratch 人工智能編程/scratch-ai-1.gif';
 import scratchAi2 from '../../assets/images/school-courses/Scratch 人工智能編程/scratch-ai-2.gif';
 import scratchAi3 from '../../assets/images/school-courses/Scratch 人工智能編程/scratch-ai-3.gif';
+import scratchInterface from '../../assets/images/school-courses/Scratch 人工智能編程/scratch-interface.png';
+import courseActivity from '../../assets/images/school-courses/Scratch 人工智能編程/course-activity.jpg';
+import aiFiveConcepts from '../../assets/images/school-courses/Scratch 人工智能編程/ai-five-concepts.webp';
 
 // Course features data
 const courseFeatures = {
@@ -27,7 +30,7 @@ const courseFeatures = {
     "讓學生體驗與 AI 互動"
   ],
   aiConceptsLink: "https://medium.com/10botics/ai-%E5%9F%BA%E7%A4%8E%E4%BA%94%E5%A4%A7%E7%90%86%E5%BF%B5-%E7%B5%A6k12%E5%AD%A9%E7%AB%A5%E7%9A%84ai%E6%95%99%E8%82%B2-44a4aafc03fb",
-  infographicImage: "/src/assets/images/school-courses/Scratch 人工智能編程/ai-five-concepts.webp",
+  infographicImage: aiFiveConcepts.src,
   demoVideo: {
     videoId: "OoTX6U_aVto",
     title: "Scratch AI Project - Mask Detector",
@@ -198,7 +201,7 @@ const curriculumItems = [
         <!-- Image Section - Right side -->
         <div class="flex justify-center">
           <Image 
-            src="/src/assets/images/school-courses/Scratch 人工智能編程/scratch-interface.png" 
+            src={scratchInterface} 
             alt="Scratch AI Interface"
             class="w-full max-w-md h-auto"
             width="600"
@@ -265,7 +268,7 @@ const curriculumItems = [
       <!-- Featured Image -->
       <div class="flex justify-center mb-12">
         <Image 
-          src="/src/assets/images/school-courses/Scratch 人工智能編程/course-activity.jpg" 
+          src={courseActivity} 
           alt="課程實況"
           class="max-w-lg w-full h-auto rounded-lg shadow-md"
           width="600"

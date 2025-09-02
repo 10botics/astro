@@ -1,9 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import CTAButton from '../../components/CTAButton.astro';
 
 // Import images
 import heroImage from '../../assets/images/staff-development-day/mainpage/hero-image.jpeg';
+import heroBackground from '../../assets/images/staff-development-day/mainpage/hero-background.jpeg';
 import chatgptWorkshop from '../../assets/images/staff-development-day/mainpage/chatgpt-workshop.jpg';
 import aiWorkshop from '../../assets/images/staff-development-day/mainpage/ai-workshop.jpg';
 import telloDrone from '../../assets/images/staff-development-day/mainpage/tello-drone.png';
@@ -22,23 +24,26 @@ const description = "教師每天面臨大量的教學準備和管理工作，�
 
 <Layout title={title} description={description} ogImage={heroImage.src}>
 	<!-- Hero Section -->
-	<section class="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white py-20 overflow-hidden">
-		<!-- Background Shape -->
+	<section class="relative text-white py-20 overflow-hidden">
+		<!-- Background Image -->
 		<div class="absolute inset-0">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2600 131.1" preserveAspectRatio="none" class="absolute bottom-0 w-full h-auto">
-				<path class="fill-white opacity-10" d="M0 0L2600 0 2600 69.1 0 0z"/>
-				<path class="fill-white opacity-5" d="M0 0L2600 0 2600 69.1 0 69.1z"/>
-				<path class="fill-white opacity-25" d="M2600 0L0 0 0 130.1 2600 69.1z"/>
-			</svg>
+			<Image 
+				src={heroBackground} 
+				alt="教師發展日背景" 
+				class="w-full h-full object-cover"
+				width={1920}
+				height={1080}
+			/>
+			<div class="absolute inset-0 bg-black bg-opacity-30"></div>
 		</div>
 		
 		<div class="container mx-auto px-4 relative z-10">
 			<div class="text-center max-w-4xl mx-auto">
 				<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
 					教師發展日<br>
-					<span class="text-blue-200">Staff Development Day</span>
+					<span class="text-gray-200">Staff Development Day</span>
 				</h1>
-				<p class="text-xl md:text-2xl text-blue-100 leading-relaxed">
+				<p class="text-xl md:text-2xl text-gray-100 leading-relaxed">
 					10Botics 定期舉辦教師工作坊，為教師提供STEM培訓<br>
 					亦曾與知創空間、學與教博覽2021合作，向老師們分享如何在校內教授STEM
 				</p>
@@ -383,13 +388,20 @@ const description = "教師每天面臨大量的教學準備和管理工作，�
 			<p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
 				加入我們的教師發展計劃，掌握最新的AI和STEM教學技術，為您的學生帶來更豐富的學習體驗。
 			</p>
-			<div class="flex flex-col sm:flex-row gap-4 justify-center">
-				<a href="/contact" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors duration-300">
-					聯絡我們
-				</a>
-				<a href="/school-courses" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-300">
-					查看課程
-				</a>
+			<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+				<CTAButton 
+					href="/contact"
+					text="聯絡我們"
+					variant="white"
+					size="lg"
+				/>
+				<CTAButton 
+					href="/school-courses"
+					text="查看課程"
+					variant="outline"
+					size="lg"
+					class="border-2 border-white text-white hover:bg-white hover:text-blue-600"
+				/>
 			</div>
 		</div>
 	</section>

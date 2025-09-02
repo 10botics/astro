@@ -1,5 +1,5 @@
 ---
-title: "【深度探索Delightex VR&amp;AR】浸信會天虹小學 STEM Day"
+title: "【深度探索Delightex VR&AR】浸信會天虹小學 STEM Day"
 publishDate: 2024-07-10
 description: "浸信會天虹小學200名小四小五學生參與Delightex AR及VR課程，體驗VR頭戴設備和AR MergeCube編程，深入學習虛擬和擴增實境技術原理。"
 featuredImage: "../../assets/images/news/2024-07-10-深度探索Delightex-vrampar浸信會天虹小學-stem-day/image1.png"

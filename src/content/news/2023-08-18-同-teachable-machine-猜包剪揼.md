@@ -11,7 +11,16 @@ author: "kingsumcheung"
 
 ## 玩法
 
-https://youtu.be/lF95T47pKuA
+<div class="aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg my-8">
+  <iframe 
+    src="https://www.youtube.com/embed/lF95T47pKuA" 
+    title="同 Teachable Machine 猜包剪揼 - 遊戲玩法"
+    class="w-full h-full"
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen
+  ></iframe>
+</div>
 
 1. 按啟動鏡頭
 2. 按 玩一回合
@@ -26,7 +35,16 @@ https://youtu.be/lF95T47pKuA
 
 ## 訓練自訂模型
 
-https://youtu.be/fTCuxVqy7kg
+<div class="aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg my-8">
+  <iframe 
+    src="https://www.youtube.com/embed/fTCuxVqy7kg" 
+    title="訓練自訂模型"
+    class="w-full h-full"
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen
+  ></iframe>
+</div>
 
 1. 到 Teachable Machine 訓練一個 4個類別的圖像分類模型，需按以下名稱分類 ( 0 = 揼 / 1 = 包 / 2 = 剪 / None = 沒有任何指示)
 2. 按 Export Model, 選 upload
