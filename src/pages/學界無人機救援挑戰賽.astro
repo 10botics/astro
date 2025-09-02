@@ -1,6 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import CTAButton from '../components/CTAButton.astro';
+import QnASection from '../components/course/QnASection.astro';
+import heroImage from '../assets/images/hero-images/drone-rescue-hero.jpg';
 import DifficultyChart from '../assets/images/competition/學界無人機救援挑戰賽/難度表-2.jpg';
 import Task1Overview from '../assets/images/competition/學界無人機救援挑戰賽/3-1.png';
 import Task1Screenshot1 from '../assets/images/competition/學界無人機救援挑戰賽/螢幕擷取畫面-2024-10-16-114515.png';
@@ -13,13 +16,41 @@ import Task4Screenshot from '../assets/images/competition/學界無人機救援�
 
 const title = "學界無人機救援挑戰賽";
 const description = "冇無人機都可以參加嘅無人機比賽！學界無人機救援挑戰賽，為響應學界透過無人機提升學生編程能力，10教育將於2024-2025學年舉辦學界無人機救援挑戰賽。";
+
+const faqs = [
+  {
+    question: "Q: 有什麼比賽訓練資源?",
+    answer: "A: Robolink basecamp (免費)\n連結：https://learn.robolink.com/course/blockly-with-codrone-edu/"
+  },
+  {
+    question: "Q: 即使獲得決賽資格，可否不參加決賽?",
+    answer: "A: 可以"
+  },
+  {
+    question: "Q: 參賽人數有變動, 怎辦?",
+    answer: "A: 以隊伍登記為準"
+  },
+  {
+    question: "Q: 比賽後學校還可以使用模擬器進行教學嗎?",
+    answer: "A: 可以。如有興趣在校內使用，請向我們取得正式授權。授權以每學年批出，暫時為免費。"
+  }
+];
 ---
 
 <Layout title={title} description={description}>
   <div class="min-h-screen bg-gray-50">
     <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
-      <div class="container mx-auto px-4 text-center">
+    <section class="relative bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
+      <div class="absolute inset-0 z-0">
+        <Image 
+          src={heroImage} 
+          alt="學界無人機救援挑戰賽" 
+          class="w-full h-full object-cover opacity-40"
+          width="1920"
+          height="400"
+        />
+      </div>
+      <div class="relative z-10 container mx-auto px-4 text-center">
         <h2 class="text-2xl md:text-3xl font-bold mb-4">冇無人機都可以參加嘅無人機比賽！</h2>
         <h1 class="text-4xl md:text-6xl font-bold mb-4">學界無人機救援</h1>
         <h3 class="text-2xl md:text-3xl font-bold mb-8">挑戰賽</h3>
@@ -104,12 +135,13 @@ const description = "冇無人機都可以參加嘅無人機比賽！學界無�
           <div class="bg-yellow-50 p-8 rounded-lg border-l-4 border-yellow-500">
             <p class="text-lg text-gray-700 mb-6">參賽名單現已更新，詳細資料請瀏覽以下連結。</p>
             <div class="text-center">
-                              <a 
-                    href="competition-drone-competitionlist"
-                    class="inline-block bg-yellow-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-yellow-700 transition-colors duration-300"
-              >
-                參賽名單
-              </a>
+              <CTAButton 
+                href="competition-drone-competitionlist"
+                text="參賽名單"
+                variant="primary"
+                size="lg"
+                class="bg-yellow-600 hover:bg-yellow-700"
+              />
             </div>
           </div>
 
@@ -118,13 +150,14 @@ const description = "冇無人機都可以參加嘅無人機比賽！學界無�
             <h4 class="text-xl font-bold text-gray-800 mb-4">網上簡介會</h4>
             <p class="text-lg text-gray-700 mb-6">簡介會已完結，詳情可觀看影片回放。</p>
             <div class="text-center">
-              <a 
+              <CTAButton 
                 href="https://www.youtube.com/watch?v=d7UvGR0n-bo&list=PLo-JR4LW4slEUkrIw6Ay-QAMu6KAioUz7"
+                text="簡介會回放"
+                variant="primary"
+                size="lg"
                 target="_blank"
-                class="inline-block bg-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-purple-700 transition-colors duration-300"
-              >
-                簡介會回放
-              </a>
+                class="bg-purple-600 hover:bg-purple-700"
+              />
             </div>
           </div>
         </div>
@@ -854,127 +887,24 @@ const description = "冇無人機都可以參加嘅無人機比賽！學界無�
           立即報名參加學界無人機救援挑戰賽，展現你的編程才華和團隊合作精神！
         </p>
         <div class="space-y-4">
-          <a 
+          <CTAButton 
             href="https://or0uzdua.paperform.co"
+            text="索取課程總覽"
+            variant="white"
+            size="lg"
             target="_blank"
-            class="inline-block bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105"
-          >
-            索取課程總覽
-          </a>
+            class="rounded-full transform hover:scale-105"
+          />
         </div>
       </div>
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">常見問題</h2>
-        
-        <div class="max-w-4xl mx-auto space-y-4">
-          <!-- FAQ Item 1 -->
-          <div class="bg-white rounded-lg shadow-md overflow-hidden">
-            <button 
-              class="w-full px-6 py-4 text-left bg-blue-50 hover:bg-blue-100 transition-colors duration-200 flex items-center justify-between"
-              onclick="toggleFAQ(this)"
-              aria-expanded="false"
-              aria-controls="faq-content-1"
-            >
-              <span class="font-semibold text-gray-800">Q: 有什麼比賽訓練資源?</span>
-              <span class="text-blue-600 transform transition-transform duration-200">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-              </span>
-            </button>
-            <div id="faq-content-1" class="hidden px-6 py-4 bg-white border-t border-gray-200">
-              <p class="text-gray-700">
-                A: <a href="https://learn.robolink.com/course/blockly-with-codrone-edu/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">Robolink basecamp</a> (免費)
-              </p>
-            </div>
-          </div>
-
-          <!-- FAQ Item 2 -->
-          <div class="bg-white rounded-lg shadow-md overflow-hidden">
-            <button 
-              class="w-full px-6 py-4 text-left bg-green-50 hover:bg-green-100 transition-colors duration-200 flex items-center justify-between"
-              onclick="toggleFAQ(this)"
-              aria-expanded="false"
-              aria-controls="faq-content-2"
-            >
-              <span class="font-semibold text-gray-800">Q: 即使獲得決賽資格，可否不參加決賽?</span>
-              <span class="text-green-600 transform transition-transform duration-200">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-              </span>
-            </button>
-            <div id="faq-content-2" class="hidden px-6 py-4 bg-white border-t border-gray-200">
-              <p class="text-gray-700">A: 可以</p>
-            </div>
-          </div>
-
-          <!-- FAQ Item 3 -->
-          <div class="bg-white rounded-lg shadow-md overflow-hidden">
-            <button 
-              class="w-full px-6 py-4 text-left bg-yellow-50 hover:bg-yellow-100 transition-colors duration-200 flex items-center justify-between"
-              onclick="toggleFAQ(this)"
-              aria-expanded="false"
-              aria-controls="faq-content-3"
-            >
-              <span class="font-semibold text-gray-800">Q: 參賽人數有變動, 怎辦?</span>
-              <span class="text-yellow-600 transform transition-transform duration-200">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-              </span>
-            </button>
-            <div id="faq-content-3" class="hidden px-6 py-4 bg-white border-t border-gray-200">
-              <p class="text-gray-700">A: 以隊伍登記為準</p>
-            </div>
-          </div>
-
-          <!-- FAQ Item 4 -->
-          <div class="bg-white rounded-lg shadow-md overflow-hidden">
-            <button 
-              class="w-full px-6 py-4 text-left bg-purple-50 hover:bg-purple-100 transition-colors duration-200 flex items-center justify-between"
-              onclick="toggleFAQ(this)"
-              aria-expanded="false"
-              aria-controls="faq-content-4"
-            >
-              <span class="font-semibold text-gray-800">Q: 比賽後學校還可以使用模擬器進行教學嗎?</span>
-              <span class="text-purple-600 transform transition-transform duration-200">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-              </span>
-            </button>
-            <div id="faq-content-4" class="hidden px-6 py-4 bg-white border-t border-gray-200">
-              <p class="text-gray-700">
-                A: 可以。如有興趣在校內使用，請向我們取得正式授權。授權以每學年批出，暫時為免費。
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <script>
-      function toggleFAQ(button) {
-        const content = button.nextElementSibling;
-        const icon = button.querySelector('svg');
-        const isExpanded = button.getAttribute('aria-expanded') === 'true';
-        
-        // Toggle content visibility
-        if (isExpanded) {
-          content.classList.add('hidden');
-          button.setAttribute('aria-expanded', 'false');
-          icon.style.transform = 'rotate(0deg)';
-        } else {
-          content.classList.remove('hidden');
-          button.setAttribute('aria-expanded', 'true');
-          icon.style.transform = 'rotate(180deg)';
-        }
-      }
-    </script>
+    <QnASection 
+      title="常見問題"
+      description="關於學界無人機救援挑戰賽的常見問題"
+      faqs={faqs}
+      variant="accordion"
+    />
   </div>
 </Layout> 
