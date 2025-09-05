@@ -224,8 +224,8 @@ export const urlAliases = {
   },
   "Delightex 遊戲設計課程.astro": {
     "tags": {
-      "school-courses": ["Delightex", "delightex-game-design"],
-      "course": ["Delightex", "delightex-game-design"]
+      "school-courses": ["Delightex", "delightex-game-design", "cospace", "delightex"],
+      "course": ["Delightex", "delightex-game-design", "cospace", "delightex"]
     },
     "main": "Delightex"
   },
