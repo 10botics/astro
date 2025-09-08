@@ -8,6 +8,7 @@
 export const COURSE_SLUG_MAPPING: Record<string, string> = {
   '人工智能遊戲編程課程': 'ai-game-coding',
   'AI啟蒙與藝術創作課程': 'ai-enrichment-course',
+  'AI啟蒙課程': 'ai-enlightenment',
   'AI數碼動畫展': 'ai-digital-animation-exhibition',
   'Blockchain 區塊鏈課程': 'blockchain',
   'CoDrone無人機課程': 'codrone',

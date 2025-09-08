@@ -201,6 +201,13 @@ export const urlAliases = {
     },
     "main": "ai-enrichment-course"
   },
+  "AI啟蒙課程.astro": {
+    "tags": {
+      "school-courses": ["ai-enlightenment"],
+      "course": ["ai-enlightenment"]
+    },
+    "main": "ai-enlightenment"
+  },
   "AI數碼動畫展.astro": {
     "tags": {
       "school-courses": ["ai-digital-animation-exhibition"],
