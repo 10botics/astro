@@ -22,30 +22,6 @@ export const courseData = {
   heroImage: featuredImage
 };
 
-// Course highlights
-const courseHighlights = [
-  {
-    icon: "fas fa-video",
-    title: "完整視頻製作流程",
-    description: "學習從劇本創作到最終視頻輸出的完整製作流程，掌握AI視頻製作的核心技術"
-  },
-  {
-    icon: "fas fa-microphone",
-    title: "AI語音生成技術",
-    description: "掌握AI語音生成技術，為視頻添加自然流暢的配音效果"
-  },
-  {
-    icon: "fas fa-palette",
-    title: "角色設計與風格化",
-    description: "學習使用AI工具進行角色創作和風格化設計，打造獨特的視覺效果"
-  },
-  {
-    icon: "fas fa-sync",
-    title: "口型同步技術",
-    description: "掌握先進的口型同步技術，讓角色說話更加自然逼真"
-  }
-];
-
 // Course features
 const courseFeatures = [
   {
@@ -241,30 +217,6 @@ const faqItems = [
       heroImage={courseData.heroImage}
       tags={courseData.tags}
     />
-
-    <!-- Course Highlights Section -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">課程亮點</h2>
-        </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {courseHighlights.map((item) => (
-            <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
-              <div class="flex items-start">
-                <div class="text-3xl text-cyan-500 mr-4">
-                  <i class={item.icon}></i>
-                </div>
-                <div>
-                  <h3 class="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
-                  <p class="text-gray-600">{item.description}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
 
     <!-- Course Features Section -->
     <section class="py-16 bg-white">
