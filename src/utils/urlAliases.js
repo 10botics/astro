@@ -376,6 +376,13 @@ export const urlAliases = {
     },
     "main": "3d-microbit-robot-creation"
   },
+  "AI視頻製作課程.astro": {
+    "tags": {
+      "school-courses": ["ai-video-production"],
+      "course": ["ai-video-production"]
+    },
+    "main": "ai-video-production"
+  },
 
   // STEM Day activities
   "飲管橋.astro": {

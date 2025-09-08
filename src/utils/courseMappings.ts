@@ -31,7 +31,8 @@ export const COURSE_SLUG_MAPPING: Record<string, string> = {
   '自然生物探究手作課程': 'natural-bio-sciences',
   'Python 初階遊戲編程': 'python-game-dev-beginner',
   'Apple Vision Pro 遊戲開發課程': 'apple-vision-pro-game-dev',
-  '3D Micro_bit 機械人創作課程': '3d-microbit-robot-creation'
+  '3D Micro_bit 機械人創作課程': '3d-microbit-robot-creation',
+  'AI視頻製作課程': 'ai-video-production'
 };
 
 // Map Chinese tags to English URL slugs

@@ -1,0 +1,315 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import { Image } from 'astro:assets';
+
+// Import course images
+import featuredImage from '../../assets/images/school-courses/AI啟蒙課程/ai-2d-video.png';
+
+// Course data
+export const courseData = {
+  title: "AI視頻製作課程",
+  subtitle: "從劇本創作到口型同步，掌握AI視頻製作全流程",
+  tags: ["AI 人工智能", "Video 視頻製作", "Animation 動畫", "Creative 創意", "初小", "高小", "初中"],
+  videoId: "your-video-id-here",
+  description: "課程將引導學生學習AI視頻製作的完整流程，從劇本創作、角色設計到最終的口型同步視頻製作。學生將掌握多種AI工具的使用技巧，創作出專業級的視頻作品。",
+  detailedDescription: "課程將引導學生學習AI視頻製作的完整流程，從劇本創作、角色設計到最終的口型同步視頻製作。學生將掌握多種AI工具的使用技巧，包括文字轉圖像、圖像轉視頻、語音生成等技術，並學會如何將這些技術整合應用，創作出專業級的視頻作品。課程注重實踐操作，讓學生在學習過程中完成自己的主題項目。",
+  heroImage: featuredImage
+};
+
+// Course highlights
+const courseHighlights = [
+  {
+    icon: "fas fa-video",
+    title: "完整視頻製作流程",
+    description: "學習從劇本創作到最終視頻輸出的完整製作流程，掌握AI視頻製作的核心技術"
+  },
+  {
+    icon: "fas fa-microphone",
+    title: "AI語音生成技術",
+    description: "掌握AI語音生成技術，為視頻添加自然流暢的配音效果"
+  },
+  {
+    icon: "fas fa-palette",
+    title: "角色設計與風格化",
+    description: "學習使用AI工具進行角色創作和風格化設計，打造獨特的視覺效果"
+  },
+  {
+    icon: "fas fa-sync",
+    title: "口型同步技術",
+    description: "掌握先進的口型同步技術，讓角色說話更加自然逼真"
+  }
+];
+
+// Course features
+const courseFeatures = [
+  {
+    icon: "fas fa-file-alt",
+    title: "劇本創作與構思",
+    description: "學習如何構思和創作吸引人的視頻劇本，掌握故事結構和情節設計技巧"
+  },
+  {
+    icon: "fas fa-image",
+    title: "文字轉圖像技術",
+    description: "掌握AI圖像生成技術，將文字描述轉化為精美的視覺圖像"
+  },
+  {
+    icon: "fas fa-user-tie",
+    title: "角色創作與設計",
+    description: "學習使用AI工具進行角色設計，包括外觀、服裝、表情等細節設計"
+  },
+  {
+    icon: "fas fa-paint-brush",
+    title: "角色風格化",
+    description: "掌握角色風格化技巧，為角色添加獨特的視覺風格和個性特徵"
+  },
+  {
+    icon: "fas fa-film",
+    title: "圖像轉視頻技術",
+    description: "學習將靜態圖像轉化為動態視頻的AI技術，創造流暢的動畫效果"
+  },
+  {
+    icon: "fas fa-microphone-alt",
+    title: "語音生成與配音",
+    description: "掌握AI語音生成技術，為視頻添加自然流暢的配音和音效"
+  },
+  {
+    icon: "fas fa-lips",
+    title: "口型同步技術",
+    description: "學習先進的口型同步技術，讓角色說話更加自然逼真"
+  },
+  {
+    icon: "fas fa-project-diagram",
+    title: "主題項目製作",
+    description: "完成個人主題項目，整合所學技術創作出完整的視頻作品"
+  }
+];
+
+// Course curriculum
+const courseCurriculum = [
+  {
+    title: "AI視頻製作入門",
+    content: [
+      "AI視頻製作概述",
+      "相關工具介紹",
+      "製作流程講解",
+      "項目規劃方法",
+      "創意構思技巧"
+    ]
+  },
+  {
+    title: "劇本創作與構思展示",
+    content: [
+      "故事結構設計",
+      "角色設定技巧",
+      "情節發展方法",
+      "劇本寫作規範",
+      "創意展示技巧"
+    ]
+  },
+  {
+    title: "AI語音生成技術",
+    content: [
+      "語音生成工具使用",
+      "聲音參數調整",
+      "語音風格選擇",
+      "多語言配音技巧",
+      "音質優化方法"
+    ]
+  },
+  {
+    title: "文字轉圖像技術",
+    content: [
+      "提示詞寫作技巧",
+      "圖像風格選擇",
+      "角色外觀設計",
+      "場景構圖方法",
+      "圖像質量優化"
+    ]
+  },
+  {
+    title: "角色創作與設計",
+    content: [
+      "角色外觀設計",
+      "服裝風格選擇",
+      "表情動作設計",
+      "個性特徵塑造",
+      "角色一致性保持"
+    ]
+  },
+  {
+    title: "角色風格化技巧",
+    content: [
+      "視覺風格選擇",
+      "色彩搭配技巧",
+      "線條風格設計",
+      "質感表現方法",
+      "整體風格統一"
+    ]
+  },
+  {
+    title: "圖像轉視頻技術",
+    content: [
+      "動畫生成原理",
+      "動作設計技巧",
+      "過渡效果製作",
+      "時間軸控制",
+      "流暢度優化"
+    ]
+  },
+  {
+    title: "口型同步技術",
+    content: [
+      "口型同步原理",
+      "語音分析技巧",
+      "口型匹配方法",
+      "自然度優化",
+      "同步精度調整"
+    ]
+  },
+  {
+    title: "主題項目製作",
+    content: [
+      "項目主題選擇",
+      "製作計劃制定",
+      "技術整合應用",
+      "作品完善優化",
+      "成果展示準備"
+    ]
+  }
+];
+
+
+// FAQ section
+const faqItems = [
+  {
+    question: "什麼年級的學生適合？",
+    answer: [
+      "該課程一般適合任何初小至初中學生。",
+      "如學生具備基本電腦操作更好（如打字）。"
+    ]
+  },
+  {
+    question: "學校需要什麼設備？",
+    answer: [
+      "學校需準備以下項目：",
+      "1）iPad / 手提電腦 / 電腦",
+      "2）學生Gmail 賬號（以登入相關AI平台）",
+      "3）穩定的網絡連接",
+      "建議先致電+852 6554-1506 或電郵至 info@10botics.com向同事溝通學校期望的教學內容，同事將就教學所需設備提供建議。"
+    ]
+  },
+  {
+    question: "課程包含哪些AI工具？",
+    answer: [
+      "課程涵蓋多個AI平台：",
+      "• ChatGPT - 劇本創作與構思",
+      "• Leonardo AI - 圖像生成",
+      "• Runway ML - 視頻生成",
+      "• ElevenLabs - 語音生成",
+      "• D-ID - 口型同步",
+      "• 其他相關AI工具"
+    ]
+  },
+  {
+    question: "學生需要具備什麼基礎？",
+    answer: [
+      "學生需要具備：",
+      "• 基本電腦操作能力",
+      "• 基本的文字輸入能力",
+      "• 創意思維和想像力",
+      "• 對視頻製作有興趣"
+    ]
+  }
+];
+---
+
+<Layout title={courseData.title} description={courseData.description}>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <main>
+    <!-- Hero Section -->
+    <HeroSection 
+      title={courseData.title}
+      subtitle={courseData.subtitle}
+      description={courseData.detailedDescription}
+      heroImage={courseData.heroImage}
+      tags={courseData.tags}
+    />
+
+    <!-- Course Highlights Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">課程亮點</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {courseHighlights.map((item) => (
+            <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+              <div class="flex items-start">
+                <div class="text-3xl text-cyan-500 mr-4">
+                  <i class={item.icon}></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
+                  <p class="text-gray-600">{item.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Features Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">課程特色</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {courseFeatures.map((item) => (
+            <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+              <div class="flex items-start">
+                <div class="text-3xl text-cyan-500 mr-4">
+                  <i class={item.icon}></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
+                  <p class="text-gray-600">{item.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Content Section -->
+    <SingleCourseContent 
+      items={courseCurriculum}
+      hours="3-5 小時"
+    />
+
+
+    <!-- FAQ Section -->
+    <QnASection faqs={faqItems.map(item => ({
+      question: item.question,
+      answer: item.answer.join('\n')
+    }))} />
+
+    <!-- Related Courses Section -->
+    <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="ai-video-production" context="course" />
+    
+    <!-- Related News Section -->
+    <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
+
+    <!-- Contact Section -->
+    <ContactSection subtitle="想了解更多關於 AI 視頻製作課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
+  </main>
+</Layout>
