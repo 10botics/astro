@@ -1,0 +1,26 @@
+---
+export interface Props {
+  id: string | string[];
+  domain?: string;
+}
+
+const { 
+  id, 
+  domain = 'https://www.googletagmanager.com'
+} = Astro.props;
+
+// Ensure id is always an array
+const gtmIds = Array.isArray(id) ? id : [id];
+---
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+  {gtmIds.map(gtmId => (
+    <iframe 
+      src={`${domain}/ns.html?id=${gtmId}`}
+      height="0" 
+      width="0" 
+      style="display:none;visibility:hidden"
+    ></iframe>
+  ))}
+</noscript>

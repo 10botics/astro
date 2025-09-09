@@ -194,12 +194,19 @@ export const urlAliases = {
     },
     "main": "ai-game-coding"
   },
-  "AI啟蒙與藝術創作課程.astro": {
+  "AI藝術創作課程.astro": {
     "tags": {
       "school-courses": ["ai-enrichment-course"],
       "course": ["ai-enrichment-course"]
     },
     "main": "ai-enrichment-course"
+  },
+  "AI啟蒙課程.astro": {
+    "tags": {
+      "school-courses": ["ai-enlightenment"],
+      "course": ["ai-enlightenment"]
+    },
+    "main": "ai-enlightenment"
   },
   "AI數碼動畫展.astro": {
     "tags": {
@@ -224,8 +231,8 @@ export const urlAliases = {
   },
   "Delightex 遊戲設計課程.astro": {
     "tags": {
-      "school-courses": ["Delightex", "delightex-game-design"],
-      "course": ["Delightex", "delightex-game-design"]
+      "school-courses": ["Delightex", "delightex-game-design", "cospace", "delightex"],
+      "course": ["Delightex", "delightex-game-design", "cospace", "delightex"]
     },
     "main": "Delightex"
   },
@@ -368,6 +375,13 @@ export const urlAliases = {
       "course": ["3d-microbit-robot-creation"]
     },
     "main": "3d-microbit-robot-creation"
+  },
+  "AI影片製作課程.astro": {
+    "tags": {
+      "school-courses": ["ai-video-production"],
+      "course": ["ai-video-production"]
+    },
+    "main": "ai-video-production"
   },
 
   // STEM Day activities

@@ -1,9 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ContactSection from '../components/ContactSection.astro';
+import QnASection from '../components/course/QnASection.astro';
+import CTAButton from '../components/CTAButton.astro';
 import { Image } from 'astro:assets';
 import Screenshot1 from '../assets/images/competition/第三屆校際AI藝術創作大賽《智畫神話》/Screenshot_2024-11-28_155140-removebg-preview.png';
 import Screenshot2 from '../assets/images/competition/第三屆校際AI藝術創作大賽《智畫神話》/Screenshot_2024-11-28_155147-removebg-preview-1.png';
 import Screenshot3 from '../assets/images/competition/第三屆校際AI藝術創作大賽《智畫神話》/Screenshot_2024-11-28_155153-removebg-preview-1.png';
+import heroImage from "../assets/images/hero-images/ai-art-contest-2024-hero.jpg";
 
 const title = "第三屆校際AI藝術創作大賽《智畫神話》";
 const description = "第三屆校際AI藝術創作大賽《智畫神話》 衷心感謝各位對第三屆校際AI藝術創作大賽 -《智畫神話》的熱烈參與及支持，比賽結果現已公佈!";
@@ -11,27 +15,69 @@ const description = "第三屆校際AI藝術創作大賽《智畫神話》 衷�
 
 <Layout title={title} description={description}>
   <div class="min-h-screen bg-gray-50">
+    <!-- Hero Image -->
+    <div class="w-full">
+      <Image 
+        src={heroImage} 
+        alt="第三屆校際AI藝術創作大賽《智畫神話》" 
+        class="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover"
+        width="1920"
+        height="400"
+      />
+    </div>
+
     <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
+    <section class="text-gray-800 py-20">
       <div class="container mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-6xl font-bold mb-6">{title}</h1>
+        <h1 class="text-5xl md:text-6xl font-bold mb-6">{title}</h1>
         <p class="text-xl md:text-2xl mb-8 max-w-4xl mx-auto">
           衷心感謝各位對第三屆校際AI藝術創作大賽 -《智畫神話》的熱烈參與及支持，比賽結果現已公佈!
         </p>
-        <a 
-          href='/ai-art-competition-result/'
-          target="_blank"
-          class="inline-block bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105"
-        >
-          比賽結果
-        </a>
+        <div class="flex flex-col sm:flex-row justify-center gap-4 items-center">
+          <CTAButton 
+            href="#latest-news"
+            text="最新消息"
+            variant="primary"
+            size="lg"
+            class="rounded-full"
+          />
+          <CTAButton 
+            href="#competition-details"
+            text="比賽詳情"
+            variant="outline"
+            size="lg"
+            class="rounded-full"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest News Section -->
+    <section id="latest-news" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">最新消息</h2>
+        </div>
+        <div class="max-w-4xl mx-auto text-center">
+          <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+            衷心感謝各位對第三屆校際AI藝術創作大賽《智畫神話》的熱烈參與及支持，比賽結果現已公佈!
+          </p>
+          <CTAButton 
+            href="/第三屆校際AI藝術創作大賽《智畫神話》result"
+            text="比賽結果"
+            variant="primary"
+            size="lg"
+          />
+        </div>
       </div>
     </section>
 
     <!-- Competition Details -->
-    <section class="py-16 bg-white">
+    <section id="competition-details" class="py-16 bg-gray-100">
       <div class="container mx-auto px-4">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">比賽詳情</h2>
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">比賽詳情</h2>
+        </div>
         
         <div class="max-w-4xl mx-auto space-y-8">
           <!-- Theme -->

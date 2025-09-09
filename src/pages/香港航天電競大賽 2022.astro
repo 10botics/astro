@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import heroImage from '../assets/images/hero-images/space-esports-2022-hero.png';
 import ComputerEdu3 from '../assets/images/competition/香港航天電競大賽 2022/Computer-Edu3.png';
 import IMG3821 from '../assets/images/competition/香港航天電競大賽 2022/IMG_3821-scaled.jpg';
 import LogoWebsite from '../assets/images/competition/香港航天電競大賽 2022/logo_website_700x200.png';
@@ -12,8 +13,17 @@ import SpaceMiningBg from '../assets/images/competition/香港航天電競大賽
 <Layout title="香港航天電競大賽 2022 - 10教育">
   <div class="min-h-screen bg-gray-50">
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white py-20">
-      <div class="container mx-auto px-4 text-center">
+    <section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white py-20">
+      <div class="absolute inset-0 z-0">
+        <Image 
+          src={heroImage} 
+          alt="香港航天電競大賽 2022" 
+          class="w-full h-full object-cover opacity-40"
+          width="1920"
+          height="400"
+        />
+      </div>
+      <div class="relative z-10 container mx-auto px-4 text-center">
         <h1 class="text-5xl md:text-6xl font-bold mb-6">香港航天電競大賽 2022</h1>
         <p class="text-xl md:text-2xl mb-8">Kerbal Space Program 校際創科比賽</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -177,46 +187,49 @@ import SpaceMiningBg from '../assets/images/competition/香港航天電競大賽
               class="absolute inset-0 w-full h-full object-cover"
             />
             <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-            <div class="relative z-10 h-full flex flex-col justify-center p-8 text-white">
-              <h2 class="text-4xl font-bold mb-6">載人登月</h2>
-              <p class="text-xl mb-8 opacity-90">下一場太空競賽即將開始。帶上一個枕頭、一些零食和一面旗幟，我們去月球吧！你有足夠的技能贏得下一場太空競賽嗎？</p>
+            <div class="relative z-10 h-full flex flex-col justify-center p-4 md:p-8 text-white">
+              <h2 class="text-2xl md:text-4xl font-bold mb-4 md:mb-6">載人登月</h2>
+              <p class="text-sm md:text-base mb-4 md:mb-6 opacity-90 leading-relaxed">
+                下一場太空競賽即將開始。帶上一個枕頭、一些零食和一面旗幟，<br class="hidden sm:block">
+                我們去月球吧！你有足夠的技能贏得下一場太空競賽嗎？
+              </p>
               
-              <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6">
                 <div class="text-center">
-                  <div class="w-16 h-16 bg-purple-100 bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 border border-purple-200 border-opacity-30">
-                    <svg class="w-8 h-8 text-purple-200" fill="currentColor" viewBox="0 0 20 20">
+                  <div class="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-purple-100 bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3 border border-purple-200 border-opacity-30">
+                    <svg class="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-purple-200" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
                   </div>
-                  <h3 class="font-semibold text-purple-100">設計航天器</h3>
+                  <h3 class="font-semibold text-purple-100 text-xs md:text-sm lg:text-base leading-tight">設計航天器</h3>
                 </div>
                 <div class="text-center">
-                  <div class="w-16 h-16 bg-purple-100 bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 border border-purple-200 border-opacity-30">
-                    <svg class="w-8 h-8 text-purple-200" fill="currentColor" viewBox="0 0 20 20">
+                  <div class="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-purple-100 bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3 border border-purple-200 border-opacity-30">
+                    <svg class="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-purple-200" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
                   </div>
-                  <h3 class="font-semibold text-purple-100">攜帶三名宇航員</h3>
+                  <h3 class="font-semibold text-purple-100 text-xs md:text-sm lg:text-base leading-tight">攜帶三名<br class="sm:hidden">宇航員</h3>
                 </div>
                 <div class="text-center">
-                  <div class="w-16 h-16 bg-purple-100 bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 border border-purple-200 border-opacity-30">
-                    <svg class="w-8 h-8 text-purple-200" fill="currentColor" viewBox="0 0 20 20">
+                  <div class="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-purple-100 bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3 border border-purple-200 border-opacity-30">
+                    <svg class="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-purple-200" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
                   </div>
-                  <h3 class="font-semibold text-purple-100">動力下降登月</h3>
+                  <h3 class="font-semibold text-purple-100 text-xs md:text-sm lg:text-base leading-tight">動力下降<br class="sm:hidden">登月</h3>
                 </div>
                 <div class="text-center">
-                  <div class="w-16 h-16 bg-purple-100 bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 border border-purple-200 border-opacity-30">
-                    <svg class="w-8 h-8 text-purple-200" fill="currentColor" viewBox="0 0 20 20">
+                  <div class="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-purple-100 bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3 border border-purple-200 border-opacity-30">
+                    <svg class="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-purple-200" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
                   </div>
-                  <h3 class="font-semibold text-purple-100">升空返回地球</h3>
+                  <h3 class="font-semibold text-purple-100 text-xs md:text-sm lg:text-base leading-tight">升空返回<br class="sm:hidden">地球</h3>
                 </div>
               </div>
-              <div class="text-center mt-8">
-                <p class="text-2xl font-bold text-purple-200">第一隊安全著陸勝出</p>
+              <div class="text-center mt-6 md:mt-8">
+                <p class="text-lg md:text-2xl font-bold text-purple-200">第一隊安全著陸勝出</p>
               </div>
             </div>
           </div>
@@ -229,42 +242,46 @@ import SpaceMiningBg from '../assets/images/competition/香港航天電競大賽
               class="absolute inset-0 w-full h-full object-cover"
             />
             <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-            <div class="relative z-10 h-full flex flex-col justify-center p-8 text-white">
-              <h2 class="text-4xl font-bold mb-6">地球行星防御系統</h2>
-              <p class="text-xl mb-8 opacity-90">地球最大的威脅不是一些試圖毀滅地球的邪惡外星人。我們最大的威脅是那些消滅恐龍的流浪小行星！推它，射擊它，核彈它，做你能想到的任何事情。你的任務很簡單... 拯救地球！</p>
+            <div class="relative z-10 h-full flex flex-col justify-center p-4 md:p-8 text-white">
+              <h2 class="text-2xl md:text-4xl font-bold mb-4 md:mb-6">地球行星防御系統</h2>
+              <p class="text-sm md:text-base mb-4 md:mb-6 opacity-90 leading-relaxed">
+                地球最大的威脅不是一些試圖毀滅地球的邪惡外星人。<br class="hidden sm:block">
+                我們最大的威脅是那些消滅恐龍的流浪小行星！推它，射擊它，核彈它，<br class="hidden sm:block">
+                做你能想到的任何事情。你的任務很簡單... 拯救地球！
+              </p>
               
-              <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6">
                 <div class="text-center">
-                  <div class="w-16 h-16 bg-green-100 bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 border border-green-200 border-opacity-30">
-                    <svg class="w-8 h-8 text-green-200" fill="currentColor" viewBox="0 0 20 20">
+                  <div class="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-green-100 bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3 border border-green-200 border-opacity-30">
+                    <svg class="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-green-200" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
                   </div>
-                  <h3 class="font-semibold text-green-100">設計航天器</h3>
+                  <h3 class="font-semibold text-green-100 text-xs md:text-sm lg:text-base leading-tight">設計航天器</h3>
                 </div>
                 <div class="text-center">
-                  <div class="w-16 h-16 bg-green-100 bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 border border-green-200 border-opacity-30">
-                    <svg class="w-8 h-8 text-green-200" fill="currentColor" viewBox="0 0 20 20">
+                  <div class="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-green-100 bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3 border border-green-200 border-opacity-30">
+                    <svg class="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-green-200" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
                   </div>
-                  <h3 class="font-semibold text-green-100">與小行星會合</h3>
+                  <h3 class="font-semibold text-green-100 text-xs md:text-sm lg:text-base leading-tight">與小行星<br class="sm:hidden">會合</h3>
                 </div>
                 <div class="text-center">
-                  <div class="w-16 h-16 bg-green-100 bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 border border-green-200 border-opacity-30">
-                    <svg class="w-8 h-8 text-green-200" fill="currentColor" viewBox="0 0 20 20">
+                  <div class="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-green-100 bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3 border border-green-200 border-opacity-30">
+                    <svg class="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-green-200" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
                   </div>
-                  <h3 class="font-semibold text-green-100">改變小行星軌道</h3>
+                  <h3 class="font-semibold text-green-100 text-xs md:text-sm lg:text-base leading-tight">改變小行星<br class="sm:hidden">軌道</h3>
                 </div>
                 <div class="text-center">
-                  <div class="w-16 h-16 bg-green-100 bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 border border-green-200 border-opacity-30">
-                    <svg class="w-8 h-8 text-green-200" fill="currentColor" viewBox="0 0 20 20">
+                  <div class="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-green-100 bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3 border border-green-200 border-opacity-30">
+                    <svg class="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-green-200" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
                   </div>
-                  <h3 class="font-semibold text-green-100">第一隊確保地球安全勝出</h3>
+                  <h3 class="font-semibold text-green-100 text-xs md:text-sm lg:text-base leading-tight">第一隊確保<br class="sm:hidden">地球安全勝出</h3>
                 </div>
               </div>
             </div>
@@ -278,47 +295,50 @@ import SpaceMiningBg from '../assets/images/competition/香港航天電競大賽
               class="absolute inset-0 w-full h-full object-cover"
             />
             <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-            <div class="relative z-10 h-full flex flex-col justify-center p-8 text-white">
-              <h2 class="text-4xl font-bold mb-6">太空採礦及就地資源利用</h2>
-              <p class="text-xl mb-8 opacity-90">鑽石和其他貴金屬在太空中很常見！水也是如此，有了它，我們可以製造火箭燃料。你能為回家的旅行製造足夠的燃料嗎？</p>
+            <div class="relative z-10 h-full flex flex-col justify-center p-4 md:p-8 text-white">
+              <h2 class="text-2xl md:text-4xl font-bold mb-4 md:mb-6">太空採礦及就地資源利用</h2>
+              <p class="text-sm md:text-base mb-4 md:mb-6 opacity-90 leading-relaxed">
+                鑽石和其他貴金屬在太空中很常見！水也是如此，<br class="hidden sm:block">
+                有了它，我們可以製造火箭燃料。你能為回家的旅行製造足夠的燃料嗎？
+              </p>
               
-              <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6">
                 <div class="text-center">
-                  <div class="w-16 h-16 bg-blue-100 bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 border border-blue-200 border-opacity-30">
-                    <svg class="w-8 h-8 text-blue-200" fill="currentColor" viewBox="0 0 20 20">
+                  <div class="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-blue-100 bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3 border border-blue-200 border-opacity-30">
+                    <svg class="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-blue-200" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
                   </div>
-                  <h3 class="font-semibold text-blue-100">設計航天器</h3>
+                  <h3 class="font-semibold text-blue-100 text-xs md:text-sm lg:text-base leading-tight">設計航天器</h3>
                 </div>
                 <div class="text-center">
-                  <div class="w-16 h-16 bg-blue-100 bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 border border-blue-200 border-opacity-30">
-                    <svg class="w-8 h-8 text-blue-200" fill="currentColor" viewBox="0 0 20 20">
+                  <div class="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-blue-100 bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3 border border-blue-200 border-opacity-30">
+                    <svg class="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-blue-200" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
                   </div>
-                  <h3 class="font-semibold text-blue-100">小行星採礦</h3>
+                  <h3 class="font-semibold text-blue-100 text-xs md:text-sm lg:text-base leading-tight">小行星<br class="sm:hidden">採礦</h3>
                 </div>
                 <div class="text-center">
-                  <div class="w-16 h-16 bg-blue-100 bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 border border-blue-200 border-opacity-30">
-                    <svg class="w-8 h-8 text-blue-200" fill="currentColor" viewBox="0 0 20 20">
+                  <div class="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-blue-100 bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3 border border-blue-200 border-opacity-30">
+                    <svg class="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-blue-200" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
                   </div>
-                  <h3 class="font-semibold text-blue-100">生產火箭燃料</h3>
+                  <h3 class="font-semibold text-blue-100 text-xs md:text-sm lg:text-base leading-tight">生產火箭<br class="sm:hidden">燃料</h3>
                 </div>
                 <div class="text-center">
-                  <div class="w-16 h-16 bg-blue-100 bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 border border-blue-200 border-opacity-30">
-                    <svg class="w-8 h-8 text-blue-200" fill="currentColor" viewBox="0 0 20 20">
+                  <div class="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-blue-100 bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3 border border-blue-200 border-opacity-30">
+                    <svg class="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-blue-200" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
                   </div>
-                  <h3 class="font-semibold text-blue-100">將燃料轉移到主飛船</h3>
+                  <h3 class="font-semibold text-blue-100 text-xs md:text-sm lg:text-base leading-tight">將燃料轉移<br class="sm:hidden">到主飛船</h3>
                 </div>
               </div>
-              <div class="text-center mt-8">
-                <p class="text-2xl font-bold text-blue-200">主飛船返回地球</p>
-                <p class="text-2xl font-bold text-blue-200">第一隊安全著陸勝出</p>
+              <div class="text-center mt-6 md:mt-8">
+                <p class="text-lg md:text-2xl font-bold text-blue-200">主飛船返回地球</p>
+                <p class="text-lg md:text-2xl font-bold text-blue-200">第一隊安全著陸勝出</p>
               </div>
             </div>
           </div>
@@ -431,7 +451,7 @@ import SpaceMiningBg from '../assets/images/competition/香港航天電競大賽
             <Image 
               src={ComputerEdu3} 
               alt="10Botics Logo" 
-              class="mx-auto mb-6 max-w-md"
+              class="mx-auto mb-6 w-full max-w-md h-auto"
             />
           </div>
         </div>
@@ -460,38 +480,6 @@ import SpaceMiningBg from '../assets/images/competition/香港航天電競大賽
             <div class="bg-gray-50 rounded-lg p-6">
               <h3 class="text-lg font-semibold text-gray-800 mb-2">Q 3 學校需自行購買 Kerbal Space Program 軟件嗎？</h3>
               <p class="text-gray-700">需要。學校需自行購買完整版 KSP 遊戲軟件。</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About 10Botics -->
-    <section class="py-16 bg-gradient-to-br from-blue-900 to-indigo-900 text-white">
-      <div class="container mx-auto px-4">
-        <div class="max-w-6xl mx-auto">
-          <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 class="text-3xl font-bold mb-6">關於我們</h2>
-              <h3 class="text-2xl font-semibold mb-4">10Botics</h3>
-              <div class="space-y-4 text-gray-200">
-                <p>
-                  10Botics 是香港科學園初創公司, 過去與 50 多間學校和教育機構合作。我們的使命是利用人工智能知識為下一代做好準備, 並專注於 STEM 課程的研發及教學，使孩子們可以更容易地學習人工智能（AI）。
-                </p>
-                <p>
-                  我們的學習工具及課程是由專業 STEM 團隊共同開發，旨在使孩子、老師和父母可以通過現實生活的例子中學習到課程複雜、深奧的概念，令學習變得輕鬆及有趣。
-                </p>
-                <p>
-                  無論將來從事任何職業或使用任何工具學習，我們都可以通過課程中所學的知識為未來帶來光明，並令我們的下一代為未來發展做好準備。
-                </p>
-              </div>
-            </div>
-            <div class="text-center">
-              <Image 
-                src={IMG3821} 
-                alt="10Botics Team" 
-                class="rounded-lg shadow-lg max-w-full"
-              />
             </div>
           </div>
         </div>

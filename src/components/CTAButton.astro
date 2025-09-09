@@ -1,0 +1,83 @@
+---
+export interface Props {
+  href: string;
+  text: string;
+  variant?: 'primary' | 'secondary' | 'outline' | 'danger' | 'success' | 'white';
+  size?: 'sm' | 'md' | 'lg';
+  target?: '_blank' | '_self';
+  class?: string;
+  icon?: string;
+}
+
+const { 
+  href, 
+  text, 
+  variant = 'primary', 
+  size = 'md',
+  target = '_self',
+  class: className = '',
+  icon
+} = Astro.props;
+
+const baseClasses = 'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-300 text-center whitespace-nowrap';
+
+const variantClasses = {
+  primary: 'bg-blue-600 hover:bg-blue-700 text-white',
+  secondary: 'bg-gray-600 hover:bg-gray-700 text-white',
+  outline: 'border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white',
+  danger: 'bg-red-600 hover:bg-red-700 text-white',
+  success: 'bg-green-600 hover:bg-green-700 text-white',
+  white: 'bg-white text-blue-600 hover:bg-gray-50'
+};
+
+const sizeClasses = {
+  sm: 'px-4 py-2 text-sm',
+  md: 'px-6 py-3 text-base',
+  lg: 'px-8 py-4 text-lg'
+};
+
+const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
+---
+
+<a 
+  href={href} 
+  target={target}
+  class={classes}
+>
+  {icon && <i class={`${icon} mr-2`}></i>}
+  <span class="break-keep">{text}</span>
+</a>
+
+<style>
+  /* Prevent text wrapping on mobile devices */
+  .break-keep {
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow-wrap: normal;
+  }
+  
+  /* For very small screens, allow controlled breaking only at specific points */
+  @media (max-width: 360px) {
+    .break-keep {
+      white-space: normal;
+      word-break: keep-all;
+      line-height: 1.2;
+    }
+  }
+  
+  /* Ensure buttons don't overflow their containers */
+  a {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Add subtle shadow and transform effects */
+  a:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  a:active {
+    transform: translateY(0);
+  }
+</style>
