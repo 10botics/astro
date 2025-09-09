@@ -8,6 +8,12 @@ export const GTM_CONFIG = {
   staging: 'GTM-N5D4J5V', // You can use the same ID or create a separate staging container
 } as const;
 
+// Google Tag (gtag.js) Configuration
+export const GOOGLE_TAG_CONFIG = {
+  // Google Ads conversion tracking ID
+  googleAdsId: 'AW-356769217',
+} as const;
+
 // Get the appropriate GTM ID based on environment
 export function getGTMId(): string {
   const env = import.meta.env.MODE || 'development';
@@ -31,6 +37,20 @@ export function isGTMEnabled(): boolean {
   // If GTM_ENABLED is explicitly set, use that value
   if (gtmEnabled !== undefined) {
     return gtmEnabled === 'true';
+  }
+  
+  // Otherwise, enable for production and staging, disable for development
+  return env === 'production' || env === 'staging';
+}
+
+// Check if Google Tag should be enabled (useful for development)
+export function isGoogleTagEnabled(): boolean {
+  const env = import.meta.env.MODE || 'development';
+  const googleTagEnabled = import.meta.env.GOOGLE_TAG_ENABLED;
+  
+  // If GOOGLE_TAG_ENABLED is explicitly set, use that value
+  if (googleTagEnabled !== undefined) {
+    return googleTagEnabled === 'true';
   }
   
   // Otherwise, enable for production and staging, disable for development

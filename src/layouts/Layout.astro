@@ -23,7 +23,8 @@ import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
 import GoogleTagManager from '../components/GoogleTagManager.astro';
 import GoogleTagManagerNoscript from '../components/GoogleTagManagerNoscript.astro';
-import { getGTMId, isGTMEnabled } from '../utils/gtm-config';
+import GoogleTag from '../components/GoogleTag.astro';
+import { getGTMId, isGTMEnabled, GOOGLE_TAG_CONFIG, isGoogleTagEnabled } from '../utils/gtm-config';
 
 // Generate canonical URL
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -31,6 +32,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 // GTM Configuration
 const gtmId = getGTMId();
 const gtmEnabled = isGTMEnabled();
+
+// Google Tag Configuration
+const googleTagId = GOOGLE_TAG_CONFIG.googleAdsId;
+const googleTagEnabled = isGoogleTagEnabled();
 
 // Generate absolute OG image URL - handle both relative and absolute paths
 const ogImageURL = ogImage && typeof ogImage === 'string' && ogImage.startsWith('http') 
@@ -91,6 +96,9 @@ const organizationSchema = {
 		
 		<!-- Google Tag Manager -->
 		{gtmEnabled && <GoogleTagManager id={gtmId} />}
+		
+		<!-- Google Tag (gtag.js) -->
+		{googleTagEnabled && <GoogleTag id={googleTagId} />}
 		
 		<!-- DNS Prefetch for Performance -->
 		<link rel="dns-prefetch" href="//fonts.googleapis.com" />
