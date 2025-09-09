@@ -3,7 +3,7 @@ Create the website in astro file under src/pages/school-courses/ and the name of
 **CRITICAL URL REQUIREMENTS:**
 - The filename MUST be in traditional Chinese 
 - The URL slug MUST be in English 
-- The Chinese filename to English slug mapping will be automatically added to `src/utils/urlAliases.js`
+- The Chinese filename to English slug mapping will be automatically added to `src/utils/urlAliases.js` and `src/utils/courseMappings.ys`
 - This ensures the course is accessible via English URLs while maintaining Chinese filenames
 
 **CRITICAL CONTENT ORGANIZATION REQUIREMENT:**
@@ -17,7 +17,7 @@ Create the website in astro file under src/pages/school-courses/ and the name of
 **COURSE DATA AND HERO SECTION DEFINITION**
 -example of courseData:
 export const courseData = {
-  title: "AI啟蒙與藝術創作課程",
+  title: "AI藝術創作課程",
   subtitle: "探索人工智能在視覺藝術領域的應用及創作",
   tags: ["AI 人工智能", "Arts 藝術", "ChatGPT", "Leonardo AI", "初小", "高小", "初中"],
   videoId: "your-video-id-here",

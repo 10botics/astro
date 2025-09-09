@@ -1,0 +1,15 @@
+---
+// WhatsApp Intermediate Page
+// This page shows an intermediate screen before redirecting to WhatsApp with a prefilled message
+
+import Layout from '../layouts/Layout.astro';
+import WhatsAppIntermediate from '../components/WhatsAppIntermediate.astro';
+
+// Get title from URL parameters
+const url = new URL(Astro.request.url);
+const title = url.searchParams.get('title') || '課程查詢';
+---
+
+<Layout title="聯絡我們 - WhatsApp">
+  <WhatsAppIntermediate title={title} />
+</Layout>

@@ -7,11 +7,6 @@ SEOImage: "../../assets/images/news/2024-07-05-ai科技與創意融合中華基�
 category: "過往活動"
 tags: ["AI 人工智能", "AI數碼動畫展", "STEM Day", "中學"]
 author: "sukileung"
-isFeatured: false
-externalLink: "https://10botics.com/past-activities/2024/07/05/cymcass-stem-day/"
-wpSlug: "ai科技與創意融合中華基督教青年會中學-stem-day"
-wpDate: "2024/07/05"
-readingTime: 1
 ---
 
 ![](../../assets/images/news/2024-07-05-ai科技與創意融合中華基督教青年會中學-stem-day/image1.jpeg)

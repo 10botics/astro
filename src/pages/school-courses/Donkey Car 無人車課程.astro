@@ -7,6 +7,8 @@ import DualCourseContent from '../../components/course/DualCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import ShopSection from '../../components/course/ShopSection.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -31,7 +33,7 @@ export const courseData = {
   subtitle: "驅動未來，探索Donkey Car智能學習的樂趣與創新",
   tags: ["AI 人工智能", "Donkey Car", "Programming 編程", "Python", "Raspberry Pi", "Tensorflow", "初中", "高中"],
   videoId: "gUhsp-Yq7co",
-  description: "通過 Donkey Car 實作無人駕駛與自動駕駛，培養學生對 AI 和資訊科技的興趣。課程包括深度學習、卷積神經網路，使用 Python 和 Tensorflow 控制無人車，培訓自駕模組並測試。課程末段學生將組建可應對多種路況的智能小車。",
+  description: "學習Donkey Car無人車AI自駕技術，掌握Python編程、深度學習、Tensorflow模型訓練，培養AI與資訊科技能力，適合中學生學習。",
   detailedDescription: "課程由專業導師編寫，學習內容針對中學生的學習需求。課程透過 Donkey Car 無人車認識人工智能（AI）。課程涵蓋基本圖像處理技術，不同的機器學習原理，例如神經網絡（Neural Network）的基礎。學生可以運用課程所學到的知識和原理來訓練具個人駕駛風格的無人車。",
   heroImage: donkeyCarMain,
 };
@@ -212,12 +214,16 @@ const courseArrangement = [
 ];
 ---
 
-<Layout title={courseData.title} description={courseData.description}>
+<Layout 
+  title="Donkey Car 無人車課程" 
+  description={courseData.description}
+  keywords="Donkey Car, 無人車, AI自駕, Python編程, 深度學習, Tensorflow, 人工智能課程, STEM教育"
+>
   <!-- Hero Section -->
   <HeroSection 
     title={courseData.title}
     subtitle={courseData.subtitle}
-    description={courseData.description}
+    description={courseData.detailedDescription}
     videoId={courseData.videoId}
     heroImage={courseData.heroImage}
     tags={courseData.tags}
@@ -261,43 +267,60 @@ const courseArrangement = [
       <div class="max-w-6xl mx-auto">
         <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程特色</h2>
         
-        <div class="grid md:grid-cols-2 gap-8 mb-8">
-          <div class="flex items-center space-x-4">
-            <div class="flex-shrink-0">
-              <Image src={pythonControl} alt="Python Control" class="w-32 h-32 rounded-lg" />
-            </div>
-            <div>
-              <h3 class="text-xl font-semibold mb-2">編寫 Python 控制 Donkey Car</h3>
-            </div>
+        <!-- Python Control Section -->
+        <div class="flex flex-col md:flex-row items-center gap-8 mb-16">
+          <div class="w-full md:w-1/2">
+            <Image 
+              src={pythonControl} 
+              alt="Python Control Interface" 
+              class="w-full h-auto rounded-lg shadow-lg"
+            />
           </div>
-          
-          <div class="flex items-center space-x-4">
-            <div class="flex-shrink-0">
-              <Image src={coralDetection} alt="Coral Detection" class="w-32 h-32 rounded-lg" />
-            </div>
-            <div>
-              <h3 class="text-xl font-semibold mb-2">借助 Google Coral 加速器進行路牌辨識</h3>
-            </div>
+          <div class="w-full md:w-1/2">
+            <h3 class="text-2xl font-bold mb-4 text-gray-800">編寫 Python 控制 Donkey Car</h3>
           </div>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-8 mb-8">
-          <div class="flex items-center space-x-4">
-            <div class="flex-shrink-0">
-              <h3 class="text-xl font-semibold mb-2">Google Colab 訓練自動駕駛的AI 模型</h3>
-            </div>
-            <div>
-              <Image src={colabTraining} alt="Colab Training" class="w-32 h-32 rounded-lg" />
-            </div>
+        <!-- Coral Detection Section -->
+        <div class="flex flex-col md:flex-row items-center gap-8 mb-16">
+          <div class="w-full md:w-1/2 md:order-1">
+            <Image 
+              src={coralDetection} 
+              alt="Coral Detection Road Sign Recognition" 
+              class="w-full h-auto rounded-lg shadow-lg"
+            />
           </div>
+          <div class="w-full md:w-1/2 md:order-2">
+            <h3 class="text-2xl font-bold mb-4 text-gray-800">借助 Google Coral 加速器進行路牌辨識</h3>
+          </div>
+        </div>
+
+        <!-- Google Colab Training Section -->
+        <div class="flex flex-col md:flex-row items-center gap-8 mb-16">
+          <div class="w-full md:w-1/2">
+            <Image 
+              src={colabTraining} 
+              alt="Google Colab AI Model Training" 
+              class="w-full h-auto rounded-lg shadow-lg"
+            />
+          </div>
+          <div class="w-full md:w-1/2">
+            <h3 class="text-2xl font-bold mb-4 text-gray-800">Google Colab 訓練自動駕駛的AI 模型</h3>
+          </div>
+        </div>
+
+        <!-- Lap Timer Section -->
+        <div class="flex flex-col md:flex-row items-center gap-8 mb-16">
           
-          <div class="flex items-center space-x-4">
-            <div class="flex-shrink-0">
-              <h3 class="text-xl font-semibold mb-2">開發 Donkey Car 新功能：偵測終點線及記錄圈速</h3>
-            </div>
-            <div>
-              <Image src={lapTimer} alt="Lap Timer" class="w-32 h-32 rounded-lg" />
-            </div>
+          <div class="w-full md:w-1/2 md:order-1">
+            <Image 
+              src={lapTimer} 
+              alt="Lap Timer Finish Line Detection" 
+              class="w-full h-auto rounded-lg shadow-lg"
+            />
+          </div>
+          <div class="w-full md:w-1/2 md:order-2">
+            <h3 class="text-2xl font-bold mb-4 text-gray-800">開發 Donkey Car 新功能：偵測終點線及記錄圈速</h3>
           </div>
         </div>
 
@@ -422,10 +445,22 @@ const courseArrangement = [
     </div>
   </section>
 
+  <!-- Shop Section -->
+  <ShopSection 
+    title="購買 Donkey Car 無人車"
+    description="獲取 Donkey Car 無人車套件及相關配件，開始你的 AI 自駕學習之旅"
+    shopLink="https://shop.10botics.com/Donkey-Car-c185813831"
+    buttonText="購買 Donkey Car"
+    imageSrc={donkeyCarMain.src}
+    imageAlt="Donkey Car 無人車套件"
+  />
+
   <!-- FAQ Section -->
   <QnASection faqs={faqData} />
 
   <!-- Contact Form -->
+  <!-- Related Courses Section -->
+  <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="donkey-car" context="course" />
   <!-- Related News Section -->
   <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
   <ContactSection subtitle="想了解更多關於 Donkey Car 無人車課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />

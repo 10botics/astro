@@ -21,9 +21,21 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
+import GoogleTagManager from '../components/GoogleTagManager.astro';
+import GoogleTagManagerNoscript from '../components/GoogleTagManagerNoscript.astro';
+import GoogleTag from '../components/GoogleTag.astro';
+import { getGTMIds, isGTMEnabled, GOOGLE_TAG_CONFIG, isGoogleTagEnabled } from '../utils/gtm-config';
 
 // Generate canonical URL
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// GTM Configuration
+const gtmIds = getGTMIds();
+const gtmEnabled = isGTMEnabled();
+
+// Google Tag Configuration
+const googleTagId = GOOGLE_TAG_CONFIG.googleAdsId;
+const googleTagEnabled = isGoogleTagEnabled();
 
 // Generate absolute OG image URL - handle both relative and absolute paths
 const ogImageURL = ogImage && typeof ogImage === 'string' && ogImage.startsWith('http') 
@@ -36,8 +48,8 @@ const organizationSchema = {
 	"@type": "Organization",
 	"name": "10教育",
 	"alternateName": "10Botics",
-	"url": "https://10botics.com",
-	"logo": "https://10botics.com/images/logo_website_700x200-300x86.png",
+	"url": "/",
+	"logo": "/images/logo_website_700x200-300x86.png",
 	"description": "專業STEM及人工智能教育機構，提供到校課程服務",
 	"address": {
 		"@type": "PostalAddress",
@@ -83,13 +95,10 @@ const organizationSchema = {
 		<meta name="generator" content={Astro.generator} />
 		
 		<!-- Google Tag Manager -->
-		<script>
-			(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-			})(window,document,'script','dataLayer','GTM-N5D4J5V');
-		</script>
+		{gtmEnabled && <GoogleTagManager id={gtmIds} />}
+		
+		<!-- Google Tag (gtag.js) -->
+		{googleTagEnabled && <GoogleTag id={googleTagId} />}
 		
 		<!-- DNS Prefetch for Performance -->
 		<link rel="dns-prefetch" href="//fonts.googleapis.com" />
@@ -108,16 +117,14 @@ const organizationSchema = {
 	</head>
 	<body class="font-sans bg-white">
 		<!-- Google Tag Manager (noscript) -->
-		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N5D4J5V"
-		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-		<!-- End Google Tag Manager (noscript) -->
+		{gtmEnabled && <GoogleTagManagerNoscript id={gtmIds} />}
 		
 		<Header />
 		<main>
 			<slot />
 		</main>
 		<Footer showCompanyInfo={showCompanyInfo} />
-		<FloatingWhatsApp />
+		<FloatingWhatsApp title={title} />
 		
 		<!-- Speed Insights with beforeSend function -->
 		<script is:inline>

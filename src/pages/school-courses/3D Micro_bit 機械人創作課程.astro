@@ -1,0 +1,322 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import { Image } from 'astro:assets';
+
+// Import images
+import microbitCard from '../../assets/images/school-courses/Microbit 逃出迷宮/microbit-card.jpg';
+import microbitTinybit from '../../assets/images/school-courses/Microbit 逃出迷宮/microbit-tinybit.jpg';
+import model3d from '../../assets/images/school-courses/Unity 課程/3d-model.png';
+
+// Course data (static) - now in frontmatter
+export const courseData = {
+  title: "3D Micro:bit 機械人創作課程",
+  subtitle: "探索 3D 模型設計和 3D 打印技術的應用",
+  tags: ["機械人", "3D 打印", "Micro:bit", "高小", "初中", "高中"],
+  videoId: "your-video-id-here",
+  description: "學生通過一系列的主題實踐,逐步建立從概念到產品的完整媒體項目,包括設計 3D 模型以及製作以 Micro:bit 為本的機械人,讓學生掌握技術工具,更鼓勵他們在創作過程中發揮創意和批判性思維。",
+  detailedDescription: "學生通過一系列的主題實踐,逐步建立從概念到產品的完整媒體項目,包括設計 3D 模型以及製作以 Micro:bit 為本的機械人,讓學生掌握技術工具,更鼓勵他們在創作過程中發揮創意和批判性思維。本課程適合所有對 3D 打印技術和自主創作感興趣的學生,學習使用 Nomad Sculpt 專業軟件,設計和製作自己的 3D 模型,並把作品以 3D 打印為實物,再結合Micro:bit 微電腦板的基本原理操作,為雕塑注入機械人特性。",
+  heroImage: model3d
+};
+
+// Course curriculum
+const curriculumItems = [
+  {
+    title: "Nomad Sculpt 基礎3D模型創建",
+    content: [
+      "理解基本控制和概念,例如 Gizmo、基本形狀、Remesh",
+      "使用 Nomad Sculpt 建立基礎3D模型",
+      "學習雕塑基本技巧和工具應用"
+    ]
+  },
+  {
+    title: "Nomad Sculpt:創建 Micro:bit 模型機械人",
+    content: [
+      "設計適合 Micro:bit 安裝的 3D 模型外殼",
+      "考慮電子元件的空間需求",
+      "創建具有機械人特色的外觀設計"
+    ]
+  },
+  {
+    title: "Nomad Sculpt:組合,安裝 Micro:bit,著色",
+    content: [
+      "完善 3D 模型的細節設計",
+      "規劃 Micro:bit 和配件的安裝位置",
+      "為模型添加色彩和紋理效果"
+    ]
+  },
+  {
+    title: "3D 打印:基本概念",
+    content: [
+      "了解 3D 打印的基本原理和技術",
+      "認識不同類型的 3D 打印機和材料",
+      "學習 3D 打印的優勢和應用領域"
+    ]
+  },
+  {
+    title: "3D 打印:預備打印的模型",
+    content: [
+      "將 3D 模型轉換為適合打印的格式",
+      "設定打印參數和支撐結構",
+      "進行打印前的最終檢查和準備"
+    ]
+  },
+  {
+    title: "如何結合模型和 Micro:bit",
+    content: [
+      "學習 Micro:bit 微電腦板的基本操作",
+      "了解感應器和執行器的連接方法",
+      "規劃電路設計和程式編寫"
+    ]
+  },
+  {
+    title: "模型後製技巧",
+    content: [
+      "學習 3D 打印作品的後處理技術",
+      "掌握打磨、修整和表面處理方法",
+      "為作品進行上色和裝飾"
+    ]
+  },
+  {
+    title: "實踐在模型機械人中安裝 Micro:bit",
+    content: [
+      "將 Micro:bit 安裝到 3D 打印的模型中",
+      "連接 LED燈和其他硬件元件",
+      "編寫程式為機械人添加互動功能",
+      "測試和調試完整的機械人系統"
+    ]
+  }
+];
+
+// Course highlights
+const courseHighlights = [
+  {
+    icon: "fas fa-cube",
+    title: "3D 雕塑設計",
+    description: "使用 Nomad Sculpt 專業軟件設計獨特的 3D 模型，從基礎形狀到複雜雕塑"
+  },
+  {
+    icon: "fas fa-print",
+    title: "3D 打印實踐",
+    description: "將數位設計轉化為真實物品，體驗從概念到實物的完整製作過程"
+  },
+  {
+    icon: "fas fa-robot",
+    title: "Micro:bit 機械人",
+    description: "結合 Micro:bit 微電腦板和各種感應器，為 3D 模型注入智能特性"
+  },
+  {
+    icon: "fas fa-lightbulb",
+    title: "創意思維培養",
+    description: "鼓勵學生發揮創意和批判性思維，設計獨一無二的機械人作品"
+  },
+  {
+    icon: "fas fa-tools",
+    title: "後製技巧",
+    description: "學習專業的後製技術，包括打磨、上色和組裝，提升作品質量"
+  },
+  {
+    icon: "fas fa-cogs",
+    title: "技術整合",
+    description: "整合 3D 設計、打印技術和電子編程，培養跨領域技能"
+  }
+];
+
+// Learning outcomes
+const learningOutcomes = [
+  {
+    icon: "fas fa-palette",
+    title: "利用AI輔助的 Nomad Sculpt 軟件創建 3D 模型",
+    description: "掌握專業 3D 雕塑軟件，具備數位雕塑設計能力"
+  },
+  {
+    icon: "fas fa-industry",
+    title: "3D 打印出學生設計的作品",
+    description: "了解 3D 打印流程，能夠將設計轉化為實體作品"
+  },
+  {
+    icon: "fas fa-microchip",
+    title: "加入 Micro:bit 以製作獨一無二的機械人",
+    description: "結合電子技術和程式設計，創造具有互動功能的智能機械人"
+  }
+];
+
+// FAQ items
+const faqItems = [
+  {
+    question: "這個課程適合什麼年齡的學生？",
+    answer: "課程適合高小至高中學生參加，我們會根據不同年齡層調整教學內容的深度和複雜度。"
+  },
+  {
+    question: "學生需要有 3D 設計或程式設計基礎嗎？",
+    answer: "不需要！課程從基礎開始教學，適合零基礎學生。我們會循序漸進地引導學生掌握相關技能。"
+  },
+  {
+    question: "課程會提供 3D 打印服務嗎？",
+    answer: "是的，我們會協助學生將設計好的 3D 模型進行打印，讓每位學生都能獲得自己的實體作品。"
+  },
+  {
+    question: "學生需要自備 Micro:bit 嗎？",
+    answer: "課程期間會提供 Micro:bit 和相關配件供學生使用，學生無需自備設備。"
+  },
+  {
+    question: "完成課程後學生可以帶走什麼？",
+    answer: "每位學生可以帶走自己設計和製作的 3D 打印機械人作品，以及學習過程中獲得的設計檔案。"
+  }
+];
+
+---
+
+<Layout title="3D Micro:bit 機械人創作課程">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <HeroSection 
+    title={courseData.title}
+    subtitle={courseData.subtitle}
+    tags={courseData.tags}
+    heroImage={courseData.heroImage}
+    description={courseData.detailedDescription}
+  />
+
+  <!-- Hero image and description section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <Image 
+              src={microbitCard} 
+              alt="Micro:bit 機械人創作" 
+              width={600}
+              height={400}
+              class="w-full h-auto"
+            />
+          </div>
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">創造未來的機械人</h2>
+          <p class="text-lg text-gray-700 leading-relaxed mb-6">
+            在數位製造和智能機械人快速發展的時代，3D 設計和打印技術結合微電腦編程已成為重要的創新技能。本課程讓學生親身體驗從數位設計到實體製作的完整過程，培養創新思維和實作能力。
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-start space-x-3">
+              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <span class="text-gray-700">結合藝術創作與科技應用</span>
+            </div>
+            <div class="flex items-start space-x-3">
+              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <span class="text-gray-700">培養空間想像和設計思維</span>
+            </div>
+            <div class="flex items-start space-x-3">
+              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <span class="text-gray-700">體驗完整的產品開發流程</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course highlights section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程重點</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {courseHighlights.map((highlight) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center mb-4">
+              <i class={`${highlight.icon} text-2xl text-cyan-500 mr-3`}></i>
+              <h3 class="text-lg font-semibold text-gray-900">{highlight.title}</h3>
+            </div>
+            <p class="text-gray-700">{highlight.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Learning outcomes section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">學習成果</h2>
+      
+      <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
+        {learningOutcomes.map((outcome) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow text-center">
+            <div class="flex justify-center mb-4">
+              <i class={`${outcome.icon} text-3xl text-cyan-500`}></i>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">{outcome.title}</h3>
+            <p class="text-gray-700">{outcome.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology showcase section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">所用技術介紹</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+          <div class="flex items-center mb-4">
+            <i class="fas fa-mobile-alt text-3xl text-cyan-500 mr-4"></i>
+            <h3 class="text-xl font-semibold text-gray-900">Nomad Sculpt</h3>
+          </div>
+          <p class="text-gray-700">
+            專業的行動裝置 3D 雕塑軟件，支援 AI 輔助功能，讓學生能夠直觀地創建複雜的 3D 模型。操作簡單易學，適合初學者快速上手。
+          </p>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+          <div class="flex items-center mb-4">
+            <i class="fas fa-microchip text-3xl text-cyan-500 mr-4"></i>
+            <h3 class="text-xl font-semibold text-gray-900">Micro:bit</h3>
+          </div>
+          <p class="text-gray-700">
+            BBC 開發的微電腦板，內建感應器和 LED 顯示器，支援圖形化編程。適合學生學習基礎電子和程式設計概念。
+          </p>
+        </div>
+        
+        <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+          <div class="flex items-center mb-4">
+            <i class="fas fa-print text-3xl text-cyan-500 mr-4"></i>
+            <h3 class="text-xl font-semibold text-gray-900">3D 打印技術</h3>
+          </div>
+          <p class="text-gray-700">
+            運用 FDM (熔融沉積建模) 3D 打印技術，將數位設計轉化為實體作品。學生能親身體驗數位製造的完整流程。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Content Section -->
+  <SingleCourseContent 
+    items={curriculumItems}
+    hours="8-12 小時"
+    images={[
+      { src: microbitTinybit, alt: "Micro:bit 開發板展示" },
+      { src: model3d, alt: "3D 模型設計展示" }
+    ]}
+  />
+
+  <QnASection faqs={faqItems} />
+  
+  <!-- Related Courses Section -->
+  <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="3d-microbit-robot-creation" context="course" />
+  
+  <!-- Related News Section -->
+  <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
+
+  <!-- Contact section -->
+  <ContactSection subtitle="想了解更多關於 3D Micro:bit 機械人創作課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
+</Layout>

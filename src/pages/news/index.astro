@@ -4,6 +4,9 @@ import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import { generateExcerpt } from '../../utils/excerpt';
 
+// Import background image
+import newsHeroBackground from '../../assets/images/news/news-hero-background.jpg';
+
 // Get all news articles
 const allNews = await getCollection('news');
 
@@ -37,8 +40,12 @@ const pageKeywords = "10教育最新消息, STEM教育活動, AI教師培訓, �
 >
   <main class="news-listing">
     <!-- Header -->
-    <header class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
-      <div class="container mx-auto px-4">
+    <header class="relative text-white py-16 overflow-hidden">
+      <div class="absolute inset-0">
+        <Image src={newsHeroBackground} alt="最新消息背景" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+      </div>
+      <div class="relative container mx-auto px-4">
         <div class="max-w-4xl mx-auto text-center">
           <h1 class="text-5xl font-bold mb-6">最新消息</h1>
           <p class="text-xl opacity-90 mb-8">
@@ -167,32 +174,6 @@ const pageKeywords = "10教育最新消息, STEM教育活動, AI教師培訓, �
             <div class="text-gray-500 text-lg">
               沒有找到符合條件的文章
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="bg-blue-50 py-16">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center">
-          <h2 class="text-3xl font-bold mb-6 text-gray-800">了解更多10教育服務</h2>
-          <p class="text-lg text-gray-600 mb-8">
-            想為您的學校帶來創新的STEM教育體驗？立即聯絡我們了解更多服務詳情。
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="/school-courses" 
-              class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-            >
-              瀏覽課程服務
-            </a>
-            <a 
-              href="/contact-us" 
-              class="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors"
-            >
-              聯絡我們
-            </a>
           </div>
         </div>
       </div>

@@ -125,17 +125,17 @@ export const urlAliases = {
     },
     "main": "home"
   },
-  "2024 STEM 比賽名單.astro": {
+  "2024 中小學 STEM 比賽清單.astro": {
     "tags": {
-      "root": ["2024-stem-competition-list"]
+      "root": ["2024competitions", "2024 中小學 STEM 比賽名單"]
     },
-    "main": "2024-stem-competition-list"
+    "main": "2024competitions"
   },
-  "2025-中小學-stem-比賽清單.astro": {
+  "2025 中小學 STEM 比賽清單.astro": {
     "tags": {
-      "root": ["2025-stem-competition-results"]
+      "root": ["2025competitions", "2025 中小學 STEM 比賽名單"]
     },
-    "main": "2025-stem-competition-results"
+    "main": "2025competitions"
   },
 
   // Index pages for different sections
@@ -194,12 +194,19 @@ export const urlAliases = {
     },
     "main": "ai-game-coding"
   },
-  "AI啟蒙與藝術創作課程.astro": {
+  "AI藝術創作課程.astro": {
     "tags": {
       "school-courses": ["ai-enrichment-course"],
       "course": ["ai-enrichment-course"]
     },
     "main": "ai-enrichment-course"
+  },
+  "AI啟蒙課程.astro": {
+    "tags": {
+      "school-courses": ["ai-enlightenment"],
+      "course": ["ai-enlightenment"]
+    },
+    "main": "ai-enlightenment"
   },
   "AI數碼動畫展.astro": {
     "tags": {
@@ -224,8 +231,8 @@ export const urlAliases = {
   },
   "Delightex 遊戲設計課程.astro": {
     "tags": {
-      "school-courses": ["Delightex", "delightex-game-design"],
-      "course": ["Delightex", "delightex-game-design"]
+      "school-courses": ["Delightex", "delightex-game-design", "cospace", "delightex"],
+      "course": ["Delightex", "delightex-game-design", "cospace", "delightex"]
     },
     "main": "Delightex"
   },
@@ -354,6 +361,27 @@ export const urlAliases = {
       "course": ["natural-bio-sciences"]
     },
     "main": "natural-bio-sciences"
+  },
+  "Apple Vision Pro 遊戲開發課程.astro": {
+    "tags": {
+      "school-courses": ["apple-vision-pro-game-dev"],
+      "course": ["apple-vision-pro-game-dev"]
+    },
+    "main": "apple-vision-pro-game-dev"
+  },
+  "3D Micro_bit 機械人創作課程.astro": {
+    "tags": {
+      "school-courses": ["3d-microbit-robot-creation"],
+      "course": ["3d-microbit-robot-creation"]
+    },
+    "main": "3d-microbit-robot-creation"
+  },
+  "AI影片製作課程.astro": {
+    "tags": {
+      "school-courses": ["ai-video-production"],
+      "course": ["ai-video-production"]
+    },
+    "main": "ai-video-production"
   },
 
   // STEM Day activities

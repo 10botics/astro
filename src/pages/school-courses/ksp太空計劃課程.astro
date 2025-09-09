@@ -5,6 +5,7 @@ import DualCourseContent from '../../components/course/DualCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
 import { Image } from 'astro:assets';
 
 // Import images
@@ -208,7 +209,7 @@ const ogImage = kspMain.src;
     subtitle={courseData.subtitle}
     tags={courseData.tags}
     videoId={courseData.videoId}
-    description={courseData.description}
+    description={courseData.detailedDescription}
     heroImage={courseData.heroImage}
   />
 
@@ -435,67 +436,17 @@ const ogImage = kspMain.src;
   </section>
 
   <QnASection faqs={faqItems} />
+  <!-- Related Courses Section -->
+  <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="ksp" context="course" />
   <!-- Related News Section -->
   <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
 
 
 
-  <!-- Contact section -->
-  <section class="py-16 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">
-          聯絡我們
-        </h2>
-        <p class="text-lg text-gray-600">
-          想了解更多關於 KSP 太空任務設計課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。
-        </p>
-      </div>
-      <ContactSection subtitle="想了解更多關於 KSP 太空計劃課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
-    </div>
-  </section>
+  <!-- Contact Section -->
+  <ContactSection subtitle="想了解更多關於 KSP 太空計劃課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
 
-  <!-- Other Courses -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">其他課程</h2>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <Image src="/src/assets/images/school-courses/ksp太空計劃課程/ai-course.png" alt="AI Course" class="w-full h-48 object-cover" width="800" height="578" />
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-gray-900 mb-3">
-              <a href="/school-courses/ai-enrichment-course" class="hover:text-blue-600">AI啟蒙與藝術創作課程</a>
-            </h3>
-            <p class="text-gray-600 mb-4">課程將引導學生深入探索人工智能（AI）在視覺藝術領</p>
-            <a href="/school-courses/ai-enrichment-course" class="text-blue-600 hover:underline font-semibold">了解更多 »</a>
-          </div>
-        </div>
 
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <Image src="/src/assets/images/school-courses/ksp太空計劃課程/ai-digital-animation.jpg" alt="AI Digital Animation" class="w-full h-48 object-cover" width="800" height="578" />
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-gray-900 mb-3">
-              <a href="/stem-day/ai-digital-animation-exhibition" class="hover:text-blue-600">AI數碼動畫展</a>
-            </h3>
-            <p class="text-gray-600 mb-4">AI數碼動畫展是一個簡單有趣的 STEM Day 活動，學生可按主題設計喜歡的圖案/角色，通過人工智能把圖案轉換成栩栩如生的動畫，呈現在學校LED Wall或螢幕上面跳舞，讓學生能以輕鬆有趣的方式體驗生成式AI技術。</p>
-            <a href="/stem-day/ai-digital-animation-exhibition" class="text-blue-600 hover:underline font-semibold">了解更多 »</a>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <Image src="/src/assets/images/school-courses/ksp太空計劃課程/blockchain-course.png" alt="Blockchain Course" class="w-full h-48 object-cover" width="800" height="577" />
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-gray-900 mb-3">
-              <a href="/school-courses/blockchain" class="hover:text-blue-600">Blockchain 區塊鏈課程</a>
-            </h3>
-            <p class="text-gray-600 mb-4">本課程旨在引領學生進入Web3.0的世界，瞭解在w</p>
-            <a href="/school-courses/blockchain" class="text-blue-600 hover:underline font-semibold">了解更多 »</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 </Layout>
 
 <script>

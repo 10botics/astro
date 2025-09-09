@@ -6,6 +6,8 @@ import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import ShopSection from '../../components/course/ShopSection.astro';
 import { Image } from 'astro:assets';
 
 // Import course images
@@ -356,6 +358,19 @@ const { title, subtitle, tags, description, detailedDescription, heroImage } = c
 
     <!-- FAQ Section -->
     <QnASection faqs={faqData} />
+
+    <!-- Shop Section -->
+    <ShopSection 
+      title="購買 Micro:bit 珊瑚水質監察套裝"
+      description="獲取 Micro:bit 珊瑚水質監察套裝，開始你的環境監測學習之旅"
+      shopLink="https://shop.10botics.com/Microbit-Shan-Hu-Shui-Zhi-Jian-Cha-c185813833"
+      buttonText="購買珊瑚水質監察套裝"
+      imageSrc={featuredImage.src}
+      imageAlt="Micro:bit 珊瑚水質監察套裝"
+    />
+
+    <!-- Related Courses Section -->
+    <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="coral-environment-monitoring" context="course" />
 
     <!-- Related News Section -->
     <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />

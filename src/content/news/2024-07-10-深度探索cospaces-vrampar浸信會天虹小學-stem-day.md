@@ -1,5 +1,5 @@
 ---
-title: "【深度探索Delightex VR&amp;AR】浸信會天虹小學 STEM Day"
+title: "【深度探索Delightex VR&AR】浸信會天虹小學 STEM Day"
 publishDate: 2024-07-10
 description: "浸信會天虹小學200名小四小五學生參與Delightex AR及VR課程，體驗VR頭戴設備和AR MergeCube編程，深入學習虛擬和擴增實境技術原理。"
 featuredImage: "../../assets/images/news/2024-07-10-深度探索Delightex-vrampar浸信會天虹小學-stem-day/image1.png"
@@ -7,11 +7,6 @@ SEOImage: "../../assets/images/news/2024-07-10-深度探索Delightex-vrampar浸�
 category: "過往活動"
 tags: ["Delightex", "STEM Day", "小學"]
 author: "sukileung"
-isFeatured: false
-externalLink: "https://10botics.com/past-activities/2024/07/10/rainbow-stem-day/"
-wpSlug: "深度探索Delightex-vrampar浸信會天虹小學-stem-day"
-wpDate: "2024/07/10"
-readingTime: 1
 ---
 
 ![](../../assets/images/news/2024-07-10-深度探索Delightex-vrampar浸信會天虹小學-stem-day/image1.png)

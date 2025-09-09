@@ -5,28 +5,30 @@ import SingleCourseContent from '../../components/course/SingleCourseContent.ast
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import ShopSection from '../../components/course/ShopSection.astro';
 import { Image } from 'astro:assets';
 
 // Import course images
-import heroImage from '../../assets/images/courses/自然生物探究手作課程/hero-image.jpeg';
-import courseImage1 from '../../assets/images/courses/自然生物探究手作課程/course-image-1.jpeg';
-import courseImage2 from '../../assets/images/courses/自然生物探究手作課程/course-image-2.jpeg';
-import lionSilhouette from '../../assets/images/courses/自然生物探究手作課程/lion-silhouette.png';
-import oceanCraft from '../../assets/images/courses/自然生物探究手作課程/ocean-craft.png';
-import birdHouse from '../../assets/images/courses/自然生物探究手作課程/bird-house.jpeg';
-import catDogMask from '../../assets/images/courses/自然生物探究手作課程/cat-dog-mask.png';
-import rabbitLantern from '../../assets/images/courses/自然生物探究手作課程/rabbit-lantern.png';
-import insectScratch from '../../assets/images/courses/自然生物探究手作課程/insect-scratch.png';
-import twistPottedPlant from '../../assets/images/courses/自然生物探究手作課程/twist-potted-plant.png';
-import dinosaurCraft from '../../assets/images/courses/自然生物探究手作課程/dinosaur-craft.png';
-import pandaClay from '../../assets/images/courses/自然生物探究手作課程/panda-clay.jpeg';
-import turtleMoss from '../../assets/images/courses/自然生物探究手作課程/turtle-moss.jpeg';
+import heroImage from '../../assets/images/school-courses/自然生物探究手作課程/hero-image.jpeg';
+import courseImage1 from '../../assets/images/school-courses/自然生物探究手作課程/course-image-1.jpeg';
+import courseImage2 from '../../assets/images/school-courses/自然生物探究手作課程/course-image-2.jpeg';
+import lionSilhouette from '../../assets/images/school-courses/自然生物探究手作課程/lion-silhouette.png';
+import oceanCraft from '../../assets/images/school-courses/自然生物探究手作課程/ocean-craft.png';
+import birdHouse from '../../assets/images/school-courses/自然生物探究手作課程/bird-house.jpeg';
+import catDogMask from '../../assets/images/school-courses/自然生物探究手作課程/cat-dog-mask.png';
+import rabbitLantern from '../../assets/images/school-courses/自然生物探究手作課程/rabbit-lantern.png';
+import insectScratch from '../../assets/images/school-courses/自然生物探究手作課程/insect-scratch.png';
+import twistPottedPlant from '../../assets/images/school-courses/自然生物探究手作課程/twist-potted-plant.png';
+import dinosaurCraft from '../../assets/images/school-courses/自然生物探究手作課程/dinosaur-craft.png';
+import pandaClay from '../../assets/images/school-courses/自然生物探究手作課程/panda-clay.jpeg';
+import turtleMoss from '../../assets/images/school-courses/自然生物探究手作課程/turtle-moss.jpeg';
 
 // Course data
 export const courseData = {
   title: "自然生物探究手作課程",
   subtitle: "探索動物特徵與生活環境，透過互動學習培養觀察力與探究精神",
-  tags: ["Arts 藝術", "科學", "初小", "高小"],
+  tags: ["Arts 藝術", "科學", "手作", "初小", "高小"],
   videoId: "your-video-id-here",
   description: "此課程旨在介紹各種動物的特徵和生活環境。透過互動式學習，學生將探索不同動物的習性，了解它們在自然界中的角色與重要性。",
   detailedDescription: "此課程旨在介紹各種動物的特徵和生活環境。透過互動式學習，學生將探索不同動物的習性，了解它們在自然界中的角色與重要性。課程中，學生不僅能夠學習有關動物的知識，還將親手製作小手作，增強實踐能力和創造力。這個課程將激發學生對自然界的好奇心，並培養他們的觀察力與探究精神。",
@@ -297,6 +299,18 @@ const faqData = [
   <!-- FAQ Section -->
   <QnASection faqs={faqData} />
 
+  <!-- Shop Section -->
+  <ShopSection 
+    title="購買自然生物手作材料"
+    description="獲取自然生物手作課程所需的材料和工具，開始你的創意手作學習之旅"
+    shopLink="http://shop.10botics.com/Zi-Ran-Sheng-Wu-Shou-Zuo-c185850751"
+    buttonText="購買手作材料"
+    imageSrc={courseImage1.src}
+    imageAlt="自然生物手作材料套裝"
+  />
+
+  <!-- Related Courses Section -->
+  <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="natural-bio-sciences" context="course" />
   <!-- Related News Section -->
   <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
 
@@ -327,3 +341,4 @@ const faqData = [
     }
   }
 </style>
+

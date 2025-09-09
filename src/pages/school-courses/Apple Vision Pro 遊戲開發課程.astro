@@ -1,0 +1,248 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import { Image } from 'astro:assets';
+
+// Import hero image
+import visionProHero from '../../assets/images/school-courses/Apple Vision Pro 遊戲開發課程/hero-image.jpg';
+import visionProUI from '../../assets/images/school-courses/Apple Vision Pro 遊戲開發課程/vision-pro-ui.jpg';
+
+// Course data
+export const courseData = {
+  title: "Apple Vision Pro 遊戲開發課程",
+  subtitle: "探索 Vision Pro 遊戲開發的無限可能！",
+  tags: ["Apple Vision Pro", "Unity", "VR", "AR", "遊戲開發", "初中", "高中"],
+  videoId: "your-video-id-here",
+  description: "Apple Vision Pro 是蘋果公司研發的頭戴式裝置，具有強大的空間運算能力，提供沉浸式置身虛擬環境的效果。學員將可以親身體驗使用 Vision Pro，並利用 Unity 平台開發彈弓小遊戲，以掌握 Vision Pro 的獨特技術，如眼球追蹤和手勢追蹤。",
+  detailedDescription: "Apple Vision Pro 是蘋果公司研發的頭戴式裝置，具有強大的空間運算能力，提供沉浸式置身虛擬環境的效果。學員將可以親身體驗使用 Vision Pro，並利用 Unity 平台開發彈弓小遊戲，以掌握 Vision Pro 的獨特技術，如眼球追蹤和手勢追蹤。課程結合理論與實作，讓學生在體驗前沿科技的同時，學習遊戲開發的核心技能。",
+  heroImage: visionProHero
+};
+
+// Course features
+const courseFeatures = [
+  {
+    icon: "fab fa-unity",
+    title: "Unity 編程",
+    description: "利用 Unity 開發適用於 Apple Vision Pro 的遊戲，如設定專案、設計互動功能等"
+  },
+  {
+    icon: "fas fa-eye",
+    title: "空間運算",
+    description: "掌握如何利用眼球追蹤和手勢追蹤等技術"
+  },
+  {
+    icon: "fas fa-gamepad",
+    title: "遊戲開發技巧",
+    description: "利用 Scriptable Objects 和 Prefabs 設計遊戲關卡，設計可重複使用和修改的遊戲元素"
+  },
+  {
+    icon: "fas fa-rocket",
+    title: "發佈作品",
+    description: "發佈到 Vision OS App Store，將關卡整合到主遊戲，試玩和評價同學的關卡設計"
+  }
+];
+
+// Course objectives
+const courseObjectives = [
+  {
+    icon: "fas fa-vr-cardboard",
+    title: "體驗並熟悉 Apple Vision Pro 使用方式",
+    description: "親身體驗最新的空間運算技術，了解 Vision Pro 的操作介面和互動模式"
+  },
+  {
+    icon: "fas fa-code",
+    title: "掌握 Apple Vision Pro 遊戲開發的方法",
+    description: "學習使用 Unity 開發專為 Vision Pro 設計的遊戲應用程式"
+  },
+  {
+    icon: "fas fa-puzzle-piece",
+    title: "整合小遊戲關卡限制與通關條件",
+    description: "設計完整的遊戲體驗，包含關卡設計、遊戲機制和通關系統"
+  }
+];
+
+// Course curriculum
+const curriculumItems = [
+  {
+    title: "體驗使用 Vision Pro 和設定 Vision Pro Unity Project，為 Vision Pro 遊戲開發基本互動功能",
+    content: [
+      "Apple Vision Pro 硬體介紹與體驗",
+      "Vision Pro 操作介面和手勢控制",
+      "Unity for Vision Pro 開發環境設定",
+      "創建第一個 Vision Pro 專案",
+      "基本互動功能實作（手勢識別、眼球追蹤）",
+      "空間錨點和物件定位"
+    ]
+  },
+  {
+    title: "改善互動體驗，設計遊戲關卡，儲存關卡資料",
+    content: [
+      "優化使用者互動體驗",
+      "遊戲關卡設計原理",
+      "Scriptable Objects 應用",
+      "關卡資料結構設計",
+      "本地資料儲存與讀取",
+      "彈弓遊戲核心機制開發"
+    ]
+  },
+  {
+    title: "關卡重置與限制，設計遊戲通關條件",
+    content: [
+      "關卡重置系統實作",
+      "遊戲限制條件設定",
+      "通關條件邏輯設計",
+      "分數系統和計時器",
+      "遊戲狀態管理",
+      "UI 介面設計與實作"
+    ]
+  },
+  {
+    title: "開發關卡列表，製作對話框，分享自己製作的關卡",
+    content: [
+      "關卡選擇介面開發",
+      "動態關卡列表生成",
+      "對話框系統設計",
+      "關卡分享功能實作",
+      "多人遊戲基礎概念",
+      "發佈到 Vision OS App Store 流程",
+      "作品展示與同儕評價"
+    ]
+  }
+];
+
+// FAQ items
+const faqItems = [
+  {
+    question: "需要有 Unity 開發經驗嗎？",
+    answer: "不需要！課程會從基礎開始教學，包含 Unity 的基本操作和 Vision Pro 專用功能。有編程基礎會更有幫助，但不是必須的。"
+  },
+  {
+    question: "學校需要提供 Apple Vision Pro 設備嗎？",
+    answer: "不需要，我們會提供 Apple Vision Pro 設備供課程使用。學生可以在課堂上親身體驗和學習開發。"
+  },
+  {
+    question: "學生需要什麼設備？",
+    answer: "學生需要自備手提電腦，並確保電腦規格符合 Unity 開發需求。我們會在課前提供詳細的硬體需求清單。"
+  },
+  {
+    question: "課程結束後學生能做出什麼作品？",
+    answer: "學生將完成一個完整的 Vision Pro 彈弓遊戲，包含多個自設計關卡、互動系統和分享功能。作品可以在 Vision Pro 上運行並分享給其他人體驗。"
+  },
+  {
+    question: "這門課程適合什麼年齡的學生？",
+    answer: "課程適合初中到高中學生，建議對科技和遊戲開發有興趣的學生參加。課程內容會根據學生程度進行調整。"
+  }
+];
+
+---
+
+<Layout title="Apple Vision Pro 遊戲開發課程">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <HeroSection 
+    title={courseData.title}
+    subtitle={courseData.subtitle}
+    tags={courseData.tags}
+    heroImage={courseData.heroImage}
+    description={courseData.detailedDescription}
+  />
+
+  <!-- Hero image and description section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <Image 
+              src={visionProUI} 
+              alt="Apple Vision Pro UI 介面展示" 
+              width={600}
+              height={400}
+              class="w-full h-auto"
+            />
+          </div>
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">為什麼選擇 Vision Pro 開發？</h2>
+          <p class="text-lg text-gray-700 leading-relaxed mb-6">
+            Apple Vision Pro 代表了空間運算的未來，將數位內容與實體世界無縫融合。本課程讓學生體驗最前沿的 AR/VR 技術，學習為下一代平台開發遊戲的技能。透過實際開發 Vision Pro 應用，學生將掌握空間運算、手勢追蹤和眼球追蹤等革命性技術。
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-start space-x-3">
+              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <span class="text-gray-700">體驗最新空間運算技術</span>
+            </div>
+            <div class="flex items-start space-x-3">
+              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <span class="text-gray-700">學習未來平台開發技能</span>
+            </div>
+            <div class="flex items-start space-x-3">
+              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <span class="text-gray-700">創造沉浸式遊戲體驗</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course features section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程特色</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+        {courseFeatures.map((feature) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center mb-4">
+              <i class={`${feature.icon} text-3xl text-cyan-500 mr-4`}></i>
+              <h3 class="text-xl font-semibold text-gray-900">{feature.title}</h3>
+            </div>
+            <p class="text-gray-700">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course objectives section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程目標</h2>
+      
+      <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
+        {courseObjectives.map((objective) => (
+          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow text-center">
+            <div class="flex justify-center mb-4">
+              <i class={`${objective.icon} text-3xl text-cyan-500`}></i>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">{objective.title}</h3>
+            <p class="text-gray-700">{objective.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Content Section -->
+  <SingleCourseContent 
+    items={curriculumItems}
+    hours="10-12 小時"
+  />
+
+  <QnASection faqs={faqItems} />
+  
+  <!-- Related Courses Section -->
+  <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="apple-vision-pro-game-dev" context="course" />
+  
+  <!-- Related News Section -->
+  <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
+
+  <!-- Contact section -->
+  <ContactSection subtitle="想了解更多關於 Apple Vision Pro 遊戲開發課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
+</Layout>

@@ -1,0 +1,364 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import { Image } from 'astro:assets';
+
+// Import course images
+import featuredImage from '../../assets/images/school-courses/AI藝術創作課程/featured-image.png';
+import aiCourseHero from '../../assets/images/school-courses/AI啟蒙課程/ai-course-hero.png';
+import aiApplication from '../../assets/images/school-courses/AI啟蒙課程/ai-application.png';
+import aiImageGeneration from '../../assets/images/school-courses/AI啟蒙課程/ai-image-generation.png';
+import machineLearning from '../../assets/images/school-courses/AI啟蒙課程/machine-learning.png';
+import ai3dModeling from '../../assets/images/school-courses/AI啟蒙課程/ai-3d-modeling.png';
+import aiProgramming from '../../assets/images/school-courses/AI啟蒙課程/ai-programming.png';
+import courseHighlightsImage from '../../assets/images/school-courses/AI啟蒙課程/course-highlights.png';
+import ai2dVideo from '../../assets/images/school-courses/AI啟蒙課程/ai-2d-video.png';
+import teachableMachine from '../../assets/images/school-courses/AI啟蒙課程/teachable-machine.png';
+import aiStoryCreation from '../../assets/images/school-courses/AI啟蒙課程/ai-story-creation.png';
+import meshyAi from '../../assets/images/school-courses/AI啟蒙課程/meshy-ai.png';
+import replitCoding from '../../assets/images/school-courses/AI啟蒙課程/replit-coding.png';
+
+// Course data
+export const courseData = {
+  title: "AI啟蒙課程",
+  subtitle: "AI課程新視野：從藝術到數位世界全方位掌握！",
+  tags: ["AI 人工智能", "Arts 藝術", "ChatGPT", "Leonardo AI", "初小", "高小", "初中"],
+  videoId: "your-video-id-here",
+  description: "AI藝術創作課程涵蓋多個AI熱門課題，包括AI圖像生成、故事繪本創作、AI語言學習、3D動畫製作和AI編程。課程還會和學生探索語音生成、口型同步和3D建模等進階人工智能科技，讓學生與AI一同探索創作的無限可能！",
+  detailedDescription: "AI藝術創作課程涵蓋多個AI熱門課題，包括AI圖像生成、故事繪本創作、AI語言學習、3D動畫製作和AI編程。課程還會和學生探索語音生成、口型同步和3D建模等進階人工智能科技，讓學生與AI一同探索創作的無限可能！課程除了深受中小學生歡迎外，我們亦曾為J.P. Morgan、HSBC、Aesop、民政事務總署、香港教育局、香港科學館、香港01和香港城市大學等多間機構和企業舉辦相關工作坊，積累了豐富的AI藝術創作課程教學經驗。",
+  heroImage: featuredImage
+};
+
+// Course highlights
+const courseHighlights = [
+  {
+    icon: "fas fa-palette",
+    title: "多元化學習內容",
+    description: "學習如何使用AI工具生成圖像、創作故事及插圖，甚至製作動畫和小遊戲。"
+  },
+  {
+    icon: "fas fa-hands-helping",
+    title: "實踐與展示",
+    description: "掌握AI工具的操作，還能學會如何將創意轉化為數位作品，提升其綜合創意和表達能力。"
+  },
+  {
+    icon: "fas fa-robot",
+    title: "進階人工智能科技",
+    description: "了解語音生成、口型同步和3D建模，讓學生充分體驗AI創作的樂趣和可能性。"
+  }
+];
+
+// Course features
+const courseFeatures = [
+  {
+    icon: "fas fa-brain",
+    title: "人工智能的應用",
+    description: "涵蓋AI的基本概念，歷史及多種應用，包括神經網絡、聊天模型及語音生成技術。透過互動演示與實作，學員將體驗AI如何影響生活，並學習無代碼機器學習的實際應用。",
+    link: null
+  },
+  {
+    icon: "fas fa-image",
+    title: "AI 圖像生成 / 故事繪本課程",
+    description: "深入探索人工智能 (AI) 在視覺藝術領域的應用，並進行創作。學生將學習AI圖像生成平台上的不同功能，運用文字指令生成圖像及創作故事內容。",
+    link: "/school-courses/AI藝術創作課程"
+  },
+  {
+    icon: "fas fa-graduation-cap",
+    title: "機器學習及 Teachable Machine",
+    description: "使用人工智能 (AI)訓練機器，包括執行指令，以及用 Teachable Machine 訓練影像辨別模型等。學員將掌握AI在機器學習的應用，提升邏輯思維與問題解決能力。",
+    link: null
+  },
+  {
+    icon: "fas fa-cube",
+    title: "AI 3D建模及動畫",
+    description: "教授如何利用Meshy AI和Mixamo製作3D模型，解決模型製作過程中的挑戰。學員將學習從文本指令創建3D模型並添加不同細節，亦會為模型製作動畫。",
+    link: null
+  },
+  {
+    icon: "fas fa-code",
+    title: "AI 編程",
+    description: "使用Replit和POE進行AI編程設計井字遊戲，包括如何進行環境識別、難度選擇、自定義功能等，並與同學分享創作體驗。",
+    link: "/school-courses/人工智能遊戲編程課程"
+  },
+  {
+    icon: "fas fa-video",
+    title: "AI 2D影片製作",
+    description: "介紹AI動畫的工作流程，學員將學習如何結合不同AI工具創建動畫影片。從劇本撰寫、角色設計到動畫生成，最終製作口型同步的影片，提升動畫創作能力。",
+    link: "/school-courses/AI影片製作課程"
+  }
+];
+
+// Course curriculum
+const courseCurriculum = [
+  {
+    title: "Gamma AI 教學",
+    content: [
+      "Gamma AI平台介紹",
+      "AI輔助簡報製作",
+      "內容生成與設計",
+      "互動元素添加"
+    ]
+  },
+  {
+    title: "AI動畫製作: 從概念到實現",
+    content: [
+      "動畫概念與規劃",
+      "AI動畫工具使用",
+      "角色設計與建模",
+      "動畫製作流程",
+      "後製與優化"
+    ]
+  },
+  {
+    title: "人工智能簡介",
+    content: [
+      "圖靈測試",
+      "Quick Draw體驗",
+      "自動駕駛技術",
+      "道德問題討論",
+      "法律問題探討"
+    ]
+  },
+  {
+    title: "機器學習及 Teachable Machine",
+    content: [
+      "機器學習基礎概念",
+      "Teachable Machine平台操作",
+      "影像辨別模型訓練",
+      "模型測試與優化",
+      "實際應用案例"
+    ]
+  },
+  {
+    title: "AI藝術創作 一小時講座",
+    content: [
+      "AI藝術創作趨勢",
+      "創意工具介紹",
+      "藝術作品生成",
+      "風格轉換技術",
+      "未來發展方向"
+    ]
+  },
+  {
+    title: "人工智能語音轉文字",
+    content: [
+      "語音轉文字技術",
+      "Elevenlabs平台使用",
+      "多語言支援",
+      "準確度優化",
+      "實際應用場景"
+    ]
+  },
+  {
+    title: "Oracle AI 證書初階課程",
+    content: [
+      "Oracle AI認證準備",
+      "基礎概念複習",
+      "考試重點整理",
+      "練習題解析",
+      "應試技巧分享"
+    ]
+  },
+  {
+    title: "Oracle AI 證書進階課程",
+    content: [
+      "Taking the exam",
+      "進階概念學習",
+      "實戰演練",
+      "考試策略",
+      "認證流程說明"
+    ]
+  },
+  {
+    title: "AI 3D建模及動畫",
+    content: [
+      "Generate 3D AI Model",
+      "Color AI 3D model",
+      "Add Animation to 3D Model",
+      "Blender Combine Animation",
+      "3D模型後製技巧"
+    ]
+  },
+  {
+    title: "AI 編程",
+    content: [
+      "使用 Poe 規劃專案",
+      "使用 Repl.it agent 實作井字棋",
+      "AI輔助編程",
+      "代碼優化建議",
+      "專案管理技巧"
+    ]
+  }
+];
+
+// Course arrangements
+const courseArrangements = [
+  {
+    icon: "fas fa-star",
+    title: "STEM Day 體驗課程 (3 小時)",
+    description: "適合初次接觸AI的學生\n包含AI工具體驗、基礎操作教學\n讓學生快速了解AI創作的魅力"
+  },
+  {
+    icon: "fas fa-star",
+    title: "完整課程 (24 小時)",
+    description: "建議一個學期完成 12 堂課，每節 2 小時\n從零開始學習AI工具與創作技巧\n為AI創作打下堅實基礎"
+  }
+];
+
+// FAQ section
+const faqItems = [
+  {
+    question: "什麼年級的學生適合？",
+    answer: [
+      "該課程一般適合任何初小至初中學生。",
+      "如學生具備基本電腦操作更好（如打字）。"
+    ]
+  },
+  {
+    question: "學校需要什麼設備？",
+    answer: [
+      "學校需準備以下項目：",
+      "1）iPad / 手提電腦 / 電腦",
+      "2）學生Gmail 賬號（以登入相關AI平台）",
+      "建議先致電+852 6554-1506 或電郵至 info@10botics.com向同事溝通學校期望的教學內容，同事將就教學所需設備提供建議。"
+    ]
+  },
+  {
+    question: "課程包含哪些AI工具？",
+    answer: [
+      "課程涵蓋多個AI平台：",
+      "• ChatGPT - 文字生成與故事創作",
+      "• Leonardo AI - 圖像生成",
+      "• Meshy AI - 3D建模",
+      "• Mixamo - 動畫製作",
+      "• Replit - 編程平台",
+      "• Teachable Machine - 機器學習"
+    ]
+  }
+];
+---
+
+<Layout title={courseData.title} description={courseData.description}>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <main>
+    <!-- Hero Section -->
+    <HeroSection 
+      title={courseData.title}
+      subtitle={courseData.subtitle}
+      description={courseData.detailedDescription}
+      heroImage={courseData.heroImage}
+      tags={courseData.tags}
+    />
+
+    <!-- Course Highlights Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">課程亮點</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {courseHighlights.map((item) => (
+            <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+              <div class="flex items-start">
+                <div class="text-3xl text-cyan-500 mr-4">
+                  <i class={item.icon}></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
+                  <p class="text-gray-600">{item.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Course Features Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">課程特色</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {courseFeatures.map((item, index) => {
+            const featureImages = [aiApplication, aiImageGeneration, teachableMachine, meshyAi, replitCoding, ai2dVideo];
+            const featureImage = featureImages[index] || aiApplication;
+            
+            if (item.link) {
+              return (
+                <a href={item.link} class="block hover:scale-105 transition-transform duration-200">
+                  <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+                    <div class="mb-4">
+                      <Image src={featureImage} alt={item.title} class="w-full h-48 object-cover rounded-lg" />
+                    </div>
+                    <div class="flex items-start">
+                      <div class="text-3xl text-cyan-500 mr-4">
+                        <i class={item.icon}></i>
+                      </div>
+                      <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
+                        <p class="text-gray-600">{item.description}</p>
+                        <div class="mt-4">
+                          <span class="inline-flex items-center text-cyan-600 hover:text-cyan-800 font-medium">
+                            了解更多 <i class="fas fa-arrow-right ml-2"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              );
+            } else {
+              return (
+                <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+                  <div class="mb-4">
+                    <Image src={featureImage} alt={item.title} class="w-full h-48 object-cover rounded-lg" />
+                  </div>
+                  <div class="flex items-start">
+                    <div class="text-3xl text-cyan-500 mr-4">
+                      <i class={item.icon}></i>
+                    </div>
+                    <div>
+                      <h3 class="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
+                      <p class="text-gray-600">{item.description}</p>
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+          })}
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Content Section -->
+    <SingleCourseContent 
+      items={courseCurriculum}
+      hours="24 小時"
+    />
+
+
+    <!-- FAQ Section -->
+    <QnASection faqs={faqItems.map(item => ({
+      question: item.question,
+      answer: item.answer.join('\n')
+    }))} />
+
+    <!-- Related Courses Section -->
+    <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="ai-enlightenment" context="course" />
+    
+    <!-- Related News Section -->
+    <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
+
+    <!-- Contact Section -->
+    <ContactSection subtitle="想了解更多關於 AI 啟蒙課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
+  </main>
+</Layout>
