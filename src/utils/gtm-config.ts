@@ -39,8 +39,8 @@ export function isGTMEnabled(): boolean {
     return gtmEnabled === 'true';
   }
   
-  // Otherwise, enable for production and staging, disable for development
-  return env === 'production' || env === 'staging';
+  // Enable for all environments (production, staging, and development)
+  return true;
 }
 
 // Check if Google Tag should be enabled (useful for development)
@@ -53,6 +53,6 @@ export function isGoogleTagEnabled(): boolean {
     return googleTagEnabled === 'true';
   }
   
-  // Otherwise, enable for production and staging, disable for development
-  return env === 'production' || env === 'staging';
+  // Enable for all environments (production, staging, and development)
+  return true;
 }
