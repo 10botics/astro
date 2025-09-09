@@ -52,6 +52,11 @@ const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
         id="whatsapp-link"
         target="_blank"
         class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 inline-block"
+        onclick="gtag('event', 'whatsapp_click', {
+          'event_category': 'engagement',
+          'event_label': 'whatsapp_button',
+          'value': 1
+        });"
       >
         開啟 WhatsApp
       </a>
@@ -72,6 +77,9 @@ const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 </div>
 
 <script>
+  // Access gtag function from window
+  const gtag = (window as any).gtag;
+  
   // Construct WhatsApp URL
   const phoneNumber = '65541506';
   const message = `我想查詢 ${decodeURIComponent(new URLSearchParams(window.location.search).get('title') || '課程查詢')}`;
@@ -79,10 +87,21 @@ const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
   
   // Set the button href
-  document.getElementById('whatsapp-link').href = whatsappUrl;
+  const whatsappLink = document.getElementById('whatsapp-link');
+  if (whatsappLink && 'href' in whatsappLink) {
+    (whatsappLink as HTMLAnchorElement).href = whatsappUrl;
+  }
   
   // Auto-redirect to WhatsApp after 1.5 seconds
   setTimeout(() => {
+    // Track auto-redirect event
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'whatsapp_auto_redirect', {
+        'event_category': 'engagement',
+        'event_label': 'whatsapp_auto_redirect',
+        'value': 1
+      });
+    }
     window.location.href = whatsappUrl;
   }, 1500);
 </script>
