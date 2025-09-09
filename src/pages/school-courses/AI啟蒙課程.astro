@@ -27,7 +27,7 @@ import replitCoding from '../../assets/images/school-courses/AI啟蒙課程/repl
 export const courseData = {
   title: "AI啟蒙課程",
   subtitle: "AI課程新視野：從藝術到數位世界全方位掌握！",
-  tags: ["AI 人工智能", "Arts 藝術", "ChatGPT", "Leonardo AI", "初小", "高小", "初中"],
+  tags: ["AI 人工智能", "Arts 藝術", "Programming 編程", "Animation 動畫", "初小", "高小", "初中"],
   videoId: "your-video-id-here",
   description: "AI藝術創作課程涵蓋多個AI熱門課題，包括AI圖像生成、故事繪本創作、AI語言學習、3D動畫製作和AI編程。課程還會和學生探索語音生成、口型同步和3D建模等進階人工智能科技，讓學生與AI一同探索創作的無限可能！",
   detailedDescription: "AI藝術創作課程涵蓋多個AI熱門課題，包括AI圖像生成、故事繪本創作、AI語言學習、3D動畫製作和AI編程。課程還會和學生探索語音生成、口型同步和3D建模等進階人工智能科技，讓學生與AI一同探索創作的無限可能！課程除了深受中小學生歡迎外，我們亦曾為J.P. Morgan、HSBC、Aesop、民政事務總署、香港教育局、香港科學館、香港01和香港城市大學等多間機構和企業舉辦相關工作坊，積累了豐富的AI藝術創作課程教學經驗。",
@@ -94,9 +94,11 @@ const courseFeatures = [
 ];
 
 // Course curriculum
-const courseCurriculum = [
+const courseCurriculum = { 
+  items: [
   {
     title: "Gamma AI 教學",
+    duration: "1 小時",
     content: [
       "Gamma AI平台介紹",
       "AI輔助簡報製作",
@@ -106,6 +108,7 @@ const courseCurriculum = [
   },
   {
     title: "AI動畫製作: 從概念到實現",
+    duration: "1-3 小時",
     content: [
       "動畫概念與規劃",
       "AI動畫工具使用",
@@ -116,6 +119,7 @@ const courseCurriculum = [
   },
   {
     title: "人工智能簡介",
+    duration: "1 小時",
     content: [
       "圖靈測試",
       "Quick Draw體驗",
@@ -126,6 +130,7 @@ const courseCurriculum = [
   },
   {
     title: "機器學習及 Teachable Machine",
+    duration: "1 小時",
     content: [
       "機器學習基礎概念",
       "Teachable Machine平台操作",
@@ -136,6 +141,7 @@ const courseCurriculum = [
   },
   {
     title: "AI藝術創作 一小時講座",
+    duration: "1 小時",
     content: [
       "AI藝術創作趨勢",
       "創意工具介紹",
@@ -146,6 +152,7 @@ const courseCurriculum = [
   },
   {
     title: "人工智能語音轉文字",
+    duration: "1 小時",
     content: [
       "語音轉文字技術",
       "Elevenlabs平台使用",
@@ -155,37 +162,34 @@ const courseCurriculum = [
     ]
   },
   {
-    title: "Oracle AI 證書初階課程",
+    title: "Oracle AI 證書課程",
+    duration: "2 小時",
     content: [
       "Oracle AI認證準備",
       "基礎概念複習",
       "考試重點整理",
       "練習題解析",
-      "應試技巧分享"
+      "應試技巧分享",
+      "考試重點複習",
+      "模擬考試練習",
+      "應試策略指導",
+      "一同應試"
     ]
   },
   {
-    title: "Oracle AI 證書進階課程",
+    title: "Meshy AI 3D建模及動畫",
+    duration: "1 小時",
     content: [
-      "Taking the exam",
-      "進階概念學習",
-      "實戰演練",
-      "考試策略",
-      "認證流程說明"
-    ]
-  },
-  {
-    title: "AI 3D建模及動畫",
-    content: [
-      "Generate 3D AI Model",
-      "Color AI 3D model",
-      "Add Animation to 3D Model",
-      "Blender Combine Animation",
+      "3D AI模型生成",
+      "3D AI模型著色",
+      "3D模型動畫",
+      "Blender 合成動畫",
       "3D模型後製技巧"
     ]
   },
   {
     title: "AI 編程",
+    duration: "1 小時",
     content: [
       "使用 Poe 規劃專案",
       "使用 Repl.it agent 實作井字棋",
@@ -194,21 +198,9 @@ const courseCurriculum = [
       "專案管理技巧"
     ]
   }
-];
+]
+};
 
-// Course arrangements
-const courseArrangements = [
-  {
-    icon: "fas fa-star",
-    title: "STEM Day 體驗課程 (3 小時)",
-    description: "適合初次接觸AI的學生\n包含AI工具體驗、基礎操作教學\n讓學生快速了解AI創作的魅力"
-  },
-  {
-    icon: "fas fa-star",
-    title: "完整課程 (24 小時)",
-    description: "建議一個學期完成 12 堂課，每節 2 小時\n從零開始學習AI工具與創作技巧\n為AI創作打下堅實基礎"
-  }
-];
 
 // FAQ section
 const faqItems = [
@@ -341,8 +333,9 @@ const faqItems = [
 
     <!-- Course Content Section -->
     <SingleCourseContent 
-      items={courseCurriculum}
-      hours="24 小時"
+      items={courseCurriculum.items}
+      hoursText="可根據學校需要調整時長"
+      showAdjustmentNote={false}
     />
 
 

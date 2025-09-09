@@ -28,11 +28,15 @@ import { Image } from 'astro:assets';
 export interface AccordionItem {
   title: string;
   content: string[];
+  duration?: string;
 }
 
 export interface Props {
   items: AccordionItem[];
   hours?: string;
+  hoursText?: string;
+  adjustmentText?: string;
+  showAdjustmentNote?: boolean;
   images?: Array<{
     src: any;
     alt: string;
@@ -41,7 +45,10 @@ export interface Props {
 
 const { 
   items, 
-  hours = "10 小時",
+  hours = "",
+  hoursText = "共",
+  adjustmentText = "可根據學校需要調整",
+  showAdjustmentNote = true,
   images = []
 } = Astro.props;
 ---
@@ -51,8 +58,10 @@ const {
     <div class="max-w-6xl mx-auto">
       <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">課程內容</h2>
       <div class="text-center mb-8">
-        <p class="text-xl text-gray-600">共 {hours}</p>
-        <p class="text-sm text-gray-500">* 可根據學校需要調整</p>
+        <p class="text-xl text-gray-600">{hoursText} {hours}</p>
+        {showAdjustmentNote && (
+          <p class="text-sm text-gray-500">* {adjustmentText}</p>
+        )}
       </div>
       
       <div class="grid lg:grid-cols-3 gap-8">
@@ -84,7 +93,15 @@ const {
                   class="accordion-header w-full text-left p-6 bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center"
                   data-target={`single-accordion-${index}`}
                 >
-                  <span class="font-semibold text-gray-900">{item.title}</span>
+                  <div class="flex flex-col">
+                    <span class="font-semibold text-gray-900">{item.title}</span>
+                    {item.duration && (
+                      <span class="text-sm text-gray-600 mt-1">
+                        <i class="fas fa-clock mr-1"></i>
+                        {item.duration}
+                      </span>
+                    )}
+                  </div>
                   <div class="accordion-icon transition-transform duration-200">
                     <i class="fas fa-minus text-gray-600"></i>
                   </div>
