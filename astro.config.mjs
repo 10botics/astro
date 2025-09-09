@@ -49,6 +49,9 @@ export default defineConfig({
     '/minecraft-2024-registration': 'https://exgj8uei.paperform.co',
     '/minecraft-2023-registration': 'https://ofpd3jzg.paperform.co',
     '/ai-courses': '/school-courses/scratch-ai-programming',
+    // URL aliases
+    '/2025-中小學-stem-比賽清單': '/2025 中小學 STEM 比賽清單',
+    '/2024-stem-competition-list/': '/2024 中小學 STEM 比賽清單',
   },
   integrations: [
     tailwind({
