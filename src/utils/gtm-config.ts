@@ -1,11 +1,11 @@
 // Google Tag Manager Configuration
 export const GTM_CONFIG = {
   // Production GTM IDs (array to support multiple containers)
-  production: ['GTM-N5D4J5V', 'GTM-NW8S9829'] as string[],
+  production: ['GTM-N5D4J5V'] as string[],
   // Development/Testing GTM IDs (optional)
-  development: ['GTM-N5D4J5V', 'GTM-NW8S9829'] as string[], // You can use the same IDs or create separate test containers
+  development: ['GTM-N5D4J5V'] as string[], // You can use the same IDs or create separate test containers
   // Staging GTM IDs (optional)
-  staging: ['GTM-N5D4J5V', 'GTM-NW8S9829'] as string[], // You can use the same IDs or create separate staging containers
+  staging: ['GTM-N5D4J5V'] as string[], // You can use the same IDs or create separate staging containers
 };
 
 // Google Tag (gtag.js) Configuration
