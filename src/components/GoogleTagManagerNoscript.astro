@@ -1,0 +1,21 @@
+---
+export interface Props {
+  id: string;
+  domain?: string;
+}
+
+const { 
+  id, 
+  domain = 'https://www.googletagmanager.com'
+} = Astro.props;
+---
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+  <iframe 
+    src={`${domain}/ns.html?id=${id}`}
+    height="0" 
+    width="0" 
+    style="display:none;visibility:hidden"
+  ></iframe>
+</noscript>

@@ -21,9 +21,16 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
+import GoogleTagManager from '../components/GoogleTagManager.astro';
+import GoogleTagManagerNoscript from '../components/GoogleTagManagerNoscript.astro';
+import { getGTMId, isGTMEnabled } from '../utils/gtm-config';
 
 // Generate canonical URL
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// GTM Configuration
+const gtmId = getGTMId();
+const gtmEnabled = isGTMEnabled();
 
 // Generate absolute OG image URL - handle both relative and absolute paths
 const ogImageURL = ogImage && typeof ogImage === 'string' && ogImage.startsWith('http') 
@@ -83,20 +90,7 @@ const organizationSchema = {
 		<meta name="generator" content={Astro.generator} />
 		
 		<!-- Google Tag Manager -->
-		<script>
-			(function(w: any, d: any, s: any, l: any, i: any) {
-				w[l] = w[l] || [];
-				w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
-				var f = d.getElementsByTagName(s)[0],
-					j = d.createElement(s) as HTMLScriptElement,
-					dl = l != 'dataLayer' ? '&l=' + l : '';
-				j.async = true;
-				j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-				if (f.parentNode) {
-					f.parentNode.insertBefore(j, f);
-				}
-			})(window, document, 'script', 'dataLayer', 'GTM-N5D4J5V');
-		</script>
+		{gtmEnabled && <GoogleTagManager id={gtmId} />}
 		
 		<!-- DNS Prefetch for Performance -->
 		<link rel="dns-prefetch" href="//fonts.googleapis.com" />
@@ -115,9 +109,7 @@ const organizationSchema = {
 	</head>
 	<body class="font-sans bg-white">
 		<!-- Google Tag Manager (noscript) -->
-		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N5D4J5V"
-		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-		<!-- End Google Tag Manager (noscript) -->
+		{gtmEnabled && <GoogleTagManagerNoscript id={gtmId} />}
 		
 		<Header />
 		<main>
