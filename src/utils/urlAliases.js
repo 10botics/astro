@@ -194,7 +194,7 @@ export const urlAliases = {
     },
     "main": "ai-game-coding"
   },
-  "AI啟蒙與藝術創作課程.astro": {
+  "AI藝術創作課程.astro": {
     "tags": {
       "school-courses": ["ai-enrichment-course"],
       "course": ["ai-enrichment-course"]
@@ -376,7 +376,7 @@ export const urlAliases = {
     },
     "main": "3d-microbit-robot-creation"
   },
-  "AI視頻製作課程.astro": {
+  "AI影片製作課程.astro": {
     "tags": {
       "school-courses": ["ai-video-production"],
       "course": ["ai-video-production"]

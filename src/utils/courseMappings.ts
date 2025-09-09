@@ -7,7 +7,7 @@
 // Map Chinese filenames to English URL slugs
 export const COURSE_SLUG_MAPPING: Record<string, string> = {
   '人工智能遊戲編程課程': 'ai-game-coding',
-  'AI啟蒙與藝術創作課程': 'ai-enrichment-course',
+  'AI藝術創作課程': 'ai-enrichment-course',
   'AI啟蒙課程': 'ai-enlightenment',
   'AI數碼動畫展': 'ai-digital-animation-exhibition',
   'Blockchain 區塊鏈課程': 'blockchain',
@@ -32,7 +32,7 @@ export const COURSE_SLUG_MAPPING: Record<string, string> = {
   'Python 初階遊戲編程': 'python-game-dev-beginner',
   'Apple Vision Pro 遊戲開發課程': 'apple-vision-pro-game-dev',
   '3D Micro_bit 機械人創作課程': '3d-microbit-robot-creation',
-  'AI視頻製作課程': 'ai-video-production'
+  'AI影片製作課程': 'ai-video-production'
 };
 
 // Map Chinese tags to English URL slugs

@@ -19,7 +19,7 @@ For SEO optimization, add internal links to school courses and competitions when
 - **Blockchain** → `/school-courses/Blockchain%20區塊鏈課程/`
 - **AI數碼動畫** → `/school-courses/AI數碼動畫展/`
 - **人工智能遊戲編程** → `/school-courses/人工智能遊戲編程課程/`
-- **AI啟蒙** → `/school-courses/AI啟蒙與藝術創作課程/`
+- **AI啟蒙** → `/school-courses/AI藝術創作課程/`
 - **Dobot機械手臂** → `/school-courses/Dobot%20智能機械手臂/`
 - **Lego Spike** → `/school-courses/Lego%20Spike%20Prime%20機器人技術大師班/`
 - **Procreate** → `/school-courses/Procreate數位藝術課程/`

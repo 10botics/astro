@@ -1,12 +1,12 @@
 // Google Tag Manager Configuration
 export const GTM_CONFIG = {
-  // Production GTM ID
-  production: 'GTM-N5D4J5V',
-  // Development/Testing GTM ID (optional)
-  development: 'GTM-N5D4J5V', // You can use the same ID or create a separate test container
-  // Staging GTM ID (optional)
-  staging: 'GTM-N5D4J5V', // You can use the same ID or create a separate staging container
-} as const;
+  // Production GTM IDs (array to support multiple containers)
+  production: ['GTM-N5D4J5V', 'GTM-NW8S9829'] as string[],
+  // Development/Testing GTM IDs (optional)
+  development: ['GTM-N5D4J5V', 'GTM-NW8S9829'] as string[], // You can use the same IDs or create separate test containers
+  // Staging GTM IDs (optional)
+  staging: ['GTM-N5D4J5V', 'GTM-NW8S9829'] as string[], // You can use the same IDs or create separate staging containers
+};
 
 // Google Tag (gtag.js) Configuration
 export const GOOGLE_TAG_CONFIG = {
@@ -14,8 +14,8 @@ export const GOOGLE_TAG_CONFIG = {
   googleAdsId: 'AW-356769217',
 } as const;
 
-// Get the appropriate GTM ID based on environment
-export function getGTMId(): string {
+// Get the appropriate GTM IDs based on environment
+export function getGTMIds(): string[] {
   const env = import.meta.env.MODE || 'development';
   
   switch (env) {
@@ -27,6 +27,11 @@ export function getGTMId(): string {
     default:
       return GTM_CONFIG.development;
   }
+}
+
+// Get the first GTM ID for backward compatibility
+export function getGTMId(): string {
+  return getGTMIds()[0];
 }
 
 // Check if GTM should be enabled (useful for development)
