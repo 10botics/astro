@@ -15,7 +15,7 @@ const iconMap = {
   dot: "•"
 };
 
-const selectedIcon = iconMap[icon] || iconMap.star;
+const selectedIcon = iconMap[icon as keyof typeof iconMap] || iconMap.star;
 ---
 
 {highlights.length > 0 && (
@@ -26,9 +26,9 @@ const selectedIcon = iconMap[icon] || iconMap.star;
       <div class="max-w-4xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           {highlights.map((highlight) => (
-            <div class="flex items-start space-x-3">
-              <span class="text-xl mt-1 flex-shrink-0">{selectedIcon}</span>
-              <h3 class="text-lg font-semibold text-gray-900 leading-relaxed">{highlight}</h3>
+            <div class="flex items-center justify-center space-x-3">
+              <span class="text-xl flex-shrink-0">{selectedIcon}</span>
+              <h3 class="text-lg font-semibold text-gray-900 leading-relaxed text-center">{highlight}</h3>
             </div>
           ))}
         </div>
