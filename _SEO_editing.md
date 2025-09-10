@@ -1,16 +1,13 @@
 When editing content for a Traditional Chinese website, optimize for SEO by following these rules:
 
-Make the page title 12–18 Traditional Chinese characters (≈250–550 px) and include the main keyword naturally.
-**CRITICAL: Count each Traditional Chinese character individually. Do not exceed 18 characters.**
-
 Write a meta description of EXACTLY 50–80 Traditional Chinese characters (≤1000 px) with clear keywords. 
 **CRITICAL: Count each Traditional Chinese character individually. Do not exceed 80 characters.**
+
+The detaildescription of school courses should exceed 100 Traditional Chinese characters
 
 Ensure at least 600–800 Traditional Chinese characters of useful content.
 
 Keep sentences short and natural; do not artificially extend them.
-
-Use an H1 heading with 12–20 characters including the main keyword; avoid duplicate headings.
 
 Balance the number of headings with the amount of text (not too many for thin content).
 

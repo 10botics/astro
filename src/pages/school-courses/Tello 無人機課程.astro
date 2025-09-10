@@ -24,9 +24,9 @@ export const courseData = {
   title: "Tello 無人機課程",
   subtitle: "翱翔天際，探索無人機編程的無限可能",
   tags: ["Programming 編程", "Scratch", "Tello", "無人機", "高小", "初中", "高中"],
-  videoId: "your-video-id-here",
-  description: "Tello 無人機課程讓學生學習如何通過編程控制無人機，體驗飛行技術與編程的完美結合。",
-  detailedDescription: "Tello 無人機課程讓學生學習如何通過編程控制無人機，體驗飛行技術與編程的完美結合。",
+  videoId: "Rp4HD5kxs5Q",
+  description: "學習通過編程控制Tello無人機，體驗飛行技術與編程的完美結合。使用Scratch編程語言，培養邏輯思維和創意表達能力。",
+  detailedDescription: "本課程為學生提供了一個引人入勝的機會，探索編程與飛行的融合。通過 Tello EDU 無人機，學生將學習如何使用 Scratch 編程語言，將代碼轉化為飛行指令，引領無人機完成各種任務與動作。從基礎的飛行控製到高級的編程挑戰，我們的課程將引導學生逐步掌握無人機技能。不僅如此，學生還將在實踐中培養解決問題的能力、邏輯思維和創新靈感。準備好展翅高飛，與 Tello 無人機一起開啟一段充滿挑戰和成就的學習之旅吧！",
   heroImage: featuredImage,
   featuredImage: featuredImage
 };
@@ -252,7 +252,6 @@ const faqItems = [
     tags={courseData.tags}
     videoId={courseData.videoId}
     description={courseData.detailedDescription}
-    featuredImage={courseData.featuredImage}
   />
 
   <!-- Course Highlights -->
@@ -303,21 +302,18 @@ const faqItems = [
   <section class="py-16">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold text-center mb-12">課程特色</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {courseFeatures.map((feature) => (
-          <div class="flex items-center p-4 bg-white rounded-lg shadow-md">
-            <i class={`${feature.icon} text-2xl text-green-600 mr-4`}></i>
-            <h3 class="font-semibold">{feature.title}</h3>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Additional Video Section -->
-  <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <!-- Features List - Left Side -->
+        <div class="space-y-6">
+          {courseFeatures.map((feature) => (
+            <div class="flex items-center">
+              <i class={`${feature.icon} text-2xl text-blue-600 mr-4`}></i>
+              <h3 class="text-lg font-semibold text-gray-800">{feature.title}</h3>
+            </div>
+          ))}
+        </div>
+        
+        <!-- Video - Right Side -->
         <div class="aspect-video bg-black rounded-lg overflow-hidden shadow-lg">
           <iframe 
             src="https://www.youtube.com/embed/q0JQXZY3wZ4?controls=1&rel=0"
@@ -335,16 +331,34 @@ const faqItems = [
   <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold text-center mb-12">課程目標</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {courseObjectives.map((objective) => (
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <div class="flex items-start mb-4">
-              <i class={`${objective.icon} text-2xl text-green-600 mr-4 mt-1`}></i>
-              <h3 class="text-lg font-semibold">{objective.title}</h3>
+      <div class="max-w-7xl mx-auto">
+        <!-- Top row with 3 cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          {courseObjectives.slice(0, 3).map((objective) => (
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <div class="flex items-start mb-4">
+                <i class={`${objective.icon} text-2xl text-green-600 mr-4 mt-1`}></i>
+                <h3 class="text-lg font-semibold">{objective.title}</h3>
+              </div>
+              <p class="text-gray-600 ml-10">{objective.description}</p>
             </div>
-            <p class="text-gray-600 ml-10">{objective.description}</p>
+          ))}
+        </div>
+        
+        <!-- Bottom row with 2 cards, centered -->
+        <div class="flex justify-center">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
+            {courseObjectives.slice(3, 5).map((objective) => (
+              <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="flex items-start mb-4">
+                  <i class={`${objective.icon} text-2xl text-green-600 mr-4 mt-1`}></i>
+                  <h3 class="text-lg font-semibold">{objective.title}</h3>
+                </div>
+                <p class="text-gray-600 ml-10">{objective.description}</p>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   </section>

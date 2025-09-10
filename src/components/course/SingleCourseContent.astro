@@ -90,10 +90,10 @@ const {
             {items.map((item, index) => (
               <div class="accordion-item border border-gray-200 rounded-lg overflow-hidden">
                 <button 
-                  class="accordion-header w-full text-left p-6 bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center"
+                  class="accordion-header w-full text-center p-6 bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center"
                   data-target={`single-accordion-${index}`}
                 >
-                  <div class="flex flex-col">
+                  <div class="flex flex-col items-center flex-1">
                     <span class="font-semibold text-gray-900">{item.title}</span>
                     {item.duration && (
                       <span class="text-sm text-gray-600 mt-1">
@@ -112,10 +112,10 @@ const {
                   style="max-height: none;"
                 >
                   <div class="p-6 bg-white border-t border-gray-200">
-                    <ul class="space-y-3">
+                    <ul class="space-y-3 text-center">
                       {item.content.map((point) => (
-                        <li class="flex items-start space-x-3">
-                          <div class="text-blue-600 mt-1">
+                        <li class="flex items-center justify-center space-x-3">
+                          <div class="text-blue-600">
                             <i class="fas fa-chevron-right text-sm"></i>
                           </div>
                           <span class="text-gray-700">{point}</span>

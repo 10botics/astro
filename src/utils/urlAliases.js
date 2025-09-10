@@ -399,7 +399,7 @@ export const urlAliases = {
   },
   "Matatalab 入門編程課程.astro": {
     "tags": {
-      "stemday": ["matatalab-programming"]
+      "stemday": ["matatalab-programming","matatalab-入門編程課程", "matatalab"]
     },
     "main": "matatalab-programming"
   },
