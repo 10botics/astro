@@ -1,0 +1,32 @@
+---
+// Dynamic route to handle URL mapping for competition-drone2024 pages
+import PreliminaryResults from './初賽結果.astro';
+import FinalResults from './決賽結果.astro';
+import FinalTeamlist from './決賽隊伍名單及時間表.astro';
+
+// Component mapping for competition-drone2024 pages
+const componentMap = {
+  'preliminary-results': PreliminaryResults,
+  'final-results': FinalResults,
+  'final-teamlist': FinalTeamlist
+};
+
+export async function getStaticPaths() {
+  return [
+    { params: { slug: 'preliminary-results' } },
+    { params: { slug: 'final-results' } },
+    { params: { slug: 'final-teamlist' } }
+  ];
+}
+
+const { slug } = Astro.params;
+
+// Get the component based on the slug
+const CompetitionComponent = componentMap[slug as keyof typeof componentMap];
+
+if (!CompetitionComponent) {
+  throw new Error(`Unknown competition-drone2024 slug: ${slug}`);
+}
+---
+
+<CompetitionComponent />

@@ -6,12 +6,16 @@ import { getStaticPathsForFolder, getComponentForSlug } from '../../utils/urlAli
 import StrawBridge from './飲管橋.astro';
 import DIY from './DIY 手作.astro';
 import Matatalab from './Matatalab 入門編程課程.astro';
+import MicrobitParachute from '../school-courses/Microbit 降落傘課程.astro';
+import Index from './index.astro';
 
 // Component mapping - keys must match exactly what getComponentForSlug returns
 const componentMap = {
   '飲管橋.astro': StrawBridge,
   'DIY 手作.astro': DIY,
-  'Matatalab 入門編程課程.astro': Matatalab
+  'Matatalab 入門編程課程.astro': Matatalab,
+  'Microbit 降落傘課程.astro': MicrobitParachute,
+  'index.astro': Index
 };
 
 export async function getStaticPaths() {

@@ -10,6 +10,9 @@ const url = new URL(Astro.request.url);
 const title = url.searchParams.get('title') || '課程查詢';
 ---
 
-<Layout title="聯絡我們 - WhatsApp">
+<Layout 
+  title="WhatsApp聯絡 - 10教育"
+  description="透過WhatsApp即時聯絡10教育STEM課程顧問，查詢AI人工智能、編程、機械人、無人機等到校課程安排，快速獲得專業教育方案"
+>
   <WhatsAppIntermediate title={title} />
 </Layout>

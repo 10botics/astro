@@ -4,6 +4,7 @@ import CourseHero from './CourseHero.astro';
 import CourseFeatureGrid from './CourseFeatureGrid.astro';
 import CourseHighlights from './CourseHighlights.astro';
 import CourseContent from './CourseContent.astro';
+import ContactSection from '../ContactSection.astro';
 
 export interface CourseData {
   // Basic info
@@ -93,20 +94,5 @@ const { courseData } = Astro.props;
   )}
 
   <!-- Contact Form Section -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">聯絡我們</h2>
-      
-      <div class="max-w-4xl mx-auto">
-        <iframe 
-          src="https://paperform.co/c/qhmoqcvc" 
-          width="100%" 
-          height="600" 
-          frameborder="0" 
-          class="rounded-lg"
-        >
-        </iframe>
-      </div>
-    </div>
-  </section>
+  <ContactSection />
 </Layout> 

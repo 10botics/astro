@@ -24,10 +24,10 @@ import institutionActivity from '../../assets/images/school-courses/AI數碼動�
 export const courseData = {
   title: "AI數碼動畫展",
   subtitle: "AI 驅動的數位動畫創作，讓角色在螢幕上跳舞",
-  tags: ["AI 人工智能", "Arts 藝術"],
+  tags: ["AI 人工智能", "Arts 藝術", "Animation 動畫", "初小", "高小", "初中", "高中"],
   videoId: "LE8NNIhNHP0",
   description: "AI數碼動畫展是一個簡單有趣的 STEM Day 活動，學生可按主題設計喜歡的圖案/角色，通過人工智能把圖案轉換成栩栩如生的動畫，呈現在學校LED Wall或螢幕上面跳舞，讓學生能以輕鬆有趣的方式體驗生成式AI技術。",
-  detailedDescription: "AI數碼動畫展是一個簡單有趣的 STEM Day 活動，學生可按主題設計喜歡的圖案/角色，通過人工智能把圖案轉換成栩栩如生的動畫，呈現在學校LED Wall或螢幕上面跳舞，讓學生能以輕鬆有趣的方式體驗生成式AI技術。",
+  detailedDescription: "AI數碼動畫展是一個簡單有趣的 STEM Day 活動，學生可按主題設計喜歡的圖案/角色，通過人工智能把圖案轉換成栩栩如生的動畫，呈現在學校LED Wall或螢幕上面跳舞，讓學生能以輕鬆有趣的方式體驗生成式AI技術。活動過程中，學生將學習AI圖像生成的基本原理，了解機器學習在創意領域的應用，並透過實際操作體驗人工智能的神奇魅力，激發對科技創新的興趣和想像力。",
   heroImage: heroImage
 };
 
@@ -215,30 +215,74 @@ const completeCourseFeatures = [
 
   <!-- Activity content section -->
   <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
+    <div class="container mx-auto px-4 max-w-7xl">
       <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">活動內容</h2>
       <p class="text-lg text-gray-700 text-center mb-12">工作坊分為三個活動體驗區，讓學生從不同的活動中投入參與：</p>
       
-      <div class="space-y-12">
-        {activitySections.map((activity, index) => (
-          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-            <div class="grid lg:grid-cols-2 gap-8 items-center">
-              <div class="p-8">
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">{activity.title}</h3>
-                <p class="text-gray-700 leading-relaxed">{activity.description}</p>
-              </div>
-              <div class="p-8">
-                <Image 
-                  src={activity.image} 
-                  alt={activity.title}
-                  width={400}
-                  height={300}
-                  class="w-full h-auto rounded-lg"
-                />
-              </div>
-            </div>
+      <!-- Three-column layout with arrows -->
+      <div class="flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-6">
+        <!-- First Activity -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden p-6 w-full lg:w-80">
+          <div class="text-center">
+            <Image 
+              src={activitySections[0].image} 
+              alt={activitySections[0].title}
+              quality={95}
+              format="webp"
+              class="w-full h-auto rounded-lg mb-4"
+            />
+            <h3 class="text-xl font-bold text-gray-900 mb-3">{activitySections[0].title}</h3>
+            <p class="text-gray-700 text-sm">{activitySections[0].description}</p>
           </div>
-        ))}
+        </div>
+
+        <!-- Arrow 1 -->
+        <div class="hidden lg:flex justify-center items-center px-2">
+          <div class="text-cyan-500">
+            <svg class="w-8 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Second Activity -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden p-6 w-full lg:w-80">
+          <div class="text-center">
+            <Image 
+              src={activitySections[1].image} 
+              alt={activitySections[1].title}
+              quality={95}
+              format="webp"
+              class="w-full h-auto rounded-lg mb-4"
+            />
+            <h3 class="text-xl font-bold text-gray-900 mb-3">{activitySections[1].title}</h3>
+            <p class="text-gray-700 text-sm">{activitySections[1].description}</p>
+          </div>
+        </div>
+
+        <!-- Arrow 2 -->
+        <div class="hidden lg:flex justify-center items-center px-2">
+          <div class="text-cyan-500">
+            <svg class="w-8 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Third Activity -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden p-6 w-full lg:w-80">
+          <div class="text-center">
+            <Image 
+              src={activitySections[2].image} 
+              alt={activitySections[2].title}
+              quality={95}
+              format="webp"
+              class="w-full h-auto rounded-lg mb-4"
+            />
+            <h3 class="text-xl font-bold text-gray-900 mb-3">{activitySections[2].title}</h3>
+            <p class="text-gray-700 text-sm">{activitySections[2].description}</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -258,8 +302,8 @@ const completeCourseFeatures = [
               <Image 
                 src={feature.image} 
                 alt={feature.title}
-                width={300}
-                height={200}
+                quality={95}
+                format="webp"
                 class="w-full h-auto rounded-lg mb-4"
               />
               <h3 class="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
@@ -334,8 +378,8 @@ const completeCourseFeatures = [
                 <Image 
                   src={arrangement.image} 
                   alt={arrangement.title}
-                  width={400}
-                  height={300}
+                  quality={95}
+                  format="webp"
                   class="w-full h-auto rounded-lg"
                 />
               </div>

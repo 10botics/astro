@@ -22,10 +22,10 @@ import delightexBowling from '../../assets/images/school-courses/Delightex 遊�
 export const courseData = {
   title: "Delightex 遊戲設計課程",
   subtitle: "創造虛擬世界，體驗 VR 編程的樂趣",
-  tags: ["AR 擴增實境", "Delightex", "Metaverse 元宇宙", "Programming 編程", "VR 虛擬實境", "遊戲開發", "高小", "初中", "高中"],
+  tags: ["AR 擴增實境", "Delightex", "cospaces", "Metaverse 元宇宙", "Programming 編程", "VR 虛擬實境", "遊戲開發", "設計", "高小", "初中", "高中"],
   videoId: "HQkDRxd4pUo",
-  description: "Delightex 遊戲設計課程讓學生學習如何創建虛擬現實環境，通過編程和設計來構建沉浸式的 VR 體驗。",
-  detailedDescription: "Delightex 遊戲設計課程讓學生學習如何創建虛擬現實環境，通過編程和設計來構建沉浸式的 VR 體驗。",
+  description: "學習創建虛擬現實環境，掌握3D場景建模、角色動畫設計等VR開發技能。通過編程和設計構建沉浸式遊戲體驗。",
+  detailedDescription: "Delightex 遊戲設計課程讓學生學習如何創建虛擬現實環境，通過編程和設計來構建沉浸式的 VR 體驗。學生將掌握 3D 場景建模、角色動畫設計、交互邏輯編程等核心技能，並學習如何運用 VR 技術創造引人入勝的虛擬世界。課程注重實踐操作，讓學生能夠從概念設計到最終產品完成整個遊戲開發流程。",
   heroImage: adminAjaxMin
 };
 
@@ -187,7 +187,7 @@ const studentWorkExamples = [
 ];
 ---
 
-<Layout title={courseData.title}>
+<Layout title={courseData.title} description={courseData.description}>
   <HeroSection 
     title={courseData.title}
     subtitle={courseData.subtitle}

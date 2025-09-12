@@ -19,7 +19,7 @@ export const courseData = {
   subtitle: "探索 3D 模型設計和 3D 打印技術的應用",
   tags: ["機械人", "3D 打印", "Micro:bit", "高小", "初中", "高中"],
   videoId: "your-video-id-here",
-  description: "學生通過一系列的主題實踐,逐步建立從概念到產品的完整媒體項目,包括設計 3D 模型以及製作以 Micro:bit 為本的機械人,讓學生掌握技術工具,更鼓勵他們在創作過程中發揮創意和批判性思維。",
+  description: "學習3D模型設計和3D打印技術，結合Micro:bit製作智能機械人。使用Nomad Sculpt專業軟件，培養創意和批判性思維。",
   detailedDescription: "學生通過一系列的主題實踐,逐步建立從概念到產品的完整媒體項目,包括設計 3D 模型以及製作以 Micro:bit 為本的機械人,讓學生掌握技術工具,更鼓勵他們在創作過程中發揮創意和批判性思維。本課程適合所有對 3D 打印技術和自主創作感興趣的學生,學習使用 Nomad Sculpt 專業軟件,設計和製作自己的 3D 模型,並把作品以 3D 打印為實物,再結合Micro:bit 微電腦板的基本原理操作,為雕塑注入機械人特性。",
   heroImage: model3d
 };
@@ -172,7 +172,7 @@ const faqItems = [
 
 ---
 
-<Layout title="3D Micro:bit 機械人創作課程">
+<Layout title={courseData.title} description={courseData.description}>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
   <HeroSection 

@@ -4,7 +4,7 @@ import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import { generateExcerpt } from '../../utils/excerpt';
 import { 
-  discoverCourses, 
+  discoverAllCourses, 
   filterCoursesByTag, 
   getAllUniqueTags, 
   generateTagPaths, 
@@ -18,11 +18,11 @@ import aiCoursesImage from '../../assets/images/index/ai-courses.jpg';
 
 // Get the tag from the URL parameter
 export async function getStaticPaths() {
-  // Auto-discover courses using shared utility
-  const astroCourses = await discoverCourses();
+  // Auto-discover courses using shared utility (includes both school-courses and stemday)
+  const allCourses = await discoverAllCourses();
 
   // Get all unique tags from all courses
-  const allTags = getAllUniqueTags(astroCourses);
+  const allTags = getAllUniqueTags(allCourses);
   
   // Generate tag paths using shared utility
   return generateTagPaths(allTags);
@@ -31,11 +31,11 @@ export async function getStaticPaths() {
 // Get the tag from props
 const { tag, originalTag } = Astro.props;
 
-// Auto-discover courses using shared utility
-const astroCourses = await discoverCourses();
+// Auto-discover courses using shared utility (includes both school-courses and stemday)
+const allCourses = await discoverAllCourses();
 
 // Filter courses by the current tag using shared utility
-const filteredCourses = filterCoursesByTag(astroCourses, tag, originalTag);
+const filteredCourses = filterCoursesByTag(allCourses, tag, originalTag);
 
 // Sort courses by publication date (newest first)
 const sortedCourses = filteredCourses.sort((a, b) => 
@@ -145,7 +145,7 @@ const pageKeywords = `${originalTag}, STEM課程, AI課程, 編程課程, 機器
                     <!-- Course Header -->
                     <div class="mb-4">
                       <h3 class="text-xl font-bold mb-2 text-gray-800 line-clamp-2">
-                        <a href={`/school-courses/${course.slug}`} 
+                        <a href={course.source === 'stemday' ? `/stemday/${course.filename.replace('.astro', '')}` : `/school-courses/${course.slug}`} 
                            class="hover:text-blue-600 transition-colors">
                           {course.title}
                         </a>
@@ -173,9 +173,9 @@ const pageKeywords = `${originalTag}, STEM課程, AI課程, 編程課程, 機器
                                 <span class="text-xs font-medium text-gray-600 mr-1">適合對象:</span>
                                 {audienceTags.map(tag => {
                                   // Tag mapping for target audience tags
-                                  const audienceTagMapping = {
-                                    '初小': 'lower-primary',
-                                    '高小': 'upper-primary', 
+                                  const audienceTagMapping: { [key: string]: string } = {
+                                    '初小': 'junior-primary',
+                                    '高小': 'senior-primary', 
                                     '初中': 'junior-secondary',
                                     '高中': 'senior-secondary'
                                   };
@@ -214,7 +214,7 @@ const pageKeywords = `${originalTag}, STEM課程, AI課程, 編程課程, 機器
                     
                     <!-- Action Button -->
                     <div class="mt-auto">
-                      <a href={`/school-courses/${course.slug}`}
+                      <a href={course.source === 'stemday' ? `/stemday/${course.filename.replace('.astro', '')}` : `/school-courses/${course.slug}`}
                          class="inline-block w-full text-center bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors text-sm font-medium">
                         查看課程詳情
                       </a>
@@ -251,14 +251,25 @@ const pageKeywords = `${originalTag}, STEM課程, AI課程, 編程課程, 機器
                   <!-- Featured Image -->
                   {article.data.featuredImage && (
                     <div class="aspect-video bg-gray-200 overflow-hidden">
-                      <Image 
-                        src={article.data.featuredImage} 
-                        alt={article.data.title}
-                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        loading="lazy"
-                        width={400}
-                        height={225}
-                      />
+                      {typeof article.data.featuredImage === 'string' ? (
+                        <img 
+                          src={article.data.featuredImage} 
+                          alt={article.data.title}
+                          class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
+                          width={400}
+                          height={225}
+                        />
+                      ) : (
+                        <Image 
+                          src={article.data.featuredImage} 
+                          alt={article.data.title}
+                          class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
+                          width={400}
+                          height={225}
+                        />
+                      )}
                     </div>
                   )}
                   <div class="p-6">

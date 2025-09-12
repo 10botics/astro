@@ -1,0 +1,48 @@
+---
+// Handle legacy WordPress-style blog URLs with date structure like /blog/2022/04/22/ai-hardware
+// These should redirect to the corresponding news articles
+
+import { getCollection } from 'astro:content';
+
+// Get all news articles to create a mapping
+const newsArticles = await getCollection('news');
+
+// Create a mapping of date patterns to news article slugs
+const dateToSlugMapping: Record<string, string> = {};
+newsArticles.forEach(article => {
+  const publishDate = new Date(article.data.publishDate);
+  const year = publishDate.getFullYear().toString();
+  const month = (publishDate.getMonth() + 1).toString().padStart(2, '0');
+  const day = publishDate.getDate().toString().padStart(2, '0');
+  
+  const dateKey = `${year}/${month}/${day}`;
+  dateToSlugMapping[dateKey] = article.slug;
+});
+
+// For static generation, handle known blog URLs from the sitemap
+export async function getStaticPaths() {
+  return [
+    { params: { year: '2022', month: '04', day: '22', slug: 'ai-hardware' } },
+    { params: { year: '2022', month: '07', day: '04', slug: 'java-edition' } },
+    { params: { year: '2022', month: '07', day: '27', slug: 'intangible-cultural-heritage' } },
+    { params: { year: '2023', month: '08', day: '16', slug: 'teachable-machine' } },
+    { params: { year: '2023', month: '08', day: '22', slug: 'one-hour-ai-drone-part-1' } },
+    { params: { year: '2023', month: '08', day: '23', slug: 'one-hour-ai-drone-part-2' } }
+  ];
+}
+
+const { year, month, day, slug } = Astro.params;
+
+// Create the date key
+const dateKey = `${year}/${month}/${day}`;
+
+// Check if we have a matching news article for this date
+if (dateToSlugMapping[dateKey]) {
+  return Astro.redirect(`/news/${encodeURIComponent(dateToSlugMapping[dateKey])}`);
+}
+
+// If no exact match found, redirect to news index
+return Astro.redirect('/news');
+---
+
+<!-- This file should never render content as it only handles redirects -->

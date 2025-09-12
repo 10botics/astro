@@ -29,8 +29,8 @@ const galleryImages = [
   gallery6, gallery7, gallery8, gallery9, gallery10
 ];
 
-const title = "DIY 手作";
-const description = "學生將探索不同科學原理和概念，學習如何將科學融入日常生活中。不僅能夠激發學生對科學的興趣，還能提高他們的問題解決能力和實踐動手能力。通過 DIY 活動，學生將培養出創造力、邏輯思維和實驗設計的能力，激發對身邊事物的好奇心。";
+const title = "DIY手作STEM活動";
+const description = "DIY手作STEM Day活動，學生探索科學原理概念學習科學融入日常生活，激發科學興趣提高問題解決實踐動手能力，培養創造力邏輯思維實驗設計";
 
 const faqs = [
   {
@@ -101,8 +101,8 @@ const faqs = [
     <!-- Activity Content Section -->
     <div class="mb-12">
       <div class="bg-white rounded-lg shadow-lg p-8">
-        <h2 class="text-3xl font-bold text-gray-900 mb-6">活動內容</h2>
-        <div class="mb-6">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">活動內容</h2>
+        <div class="mb-6 text-center">
           <p class="text-lg text-gray-700 mb-2">1 至 2 小時</p>
           <p class="text-sm text-gray-500">* 可根據學校需要調整</p>
         </div>
@@ -110,11 +110,11 @@ const faqs = [
         <!-- DIY Projects Grid -->
         <div class="grid md:grid-cols-2 gap-8">
           <!-- Rubber Band Car -->
-          <div class="bg-gray-50 rounded-lg p-6">
+          <div class="bg-gray-50 rounded-lg p-6 text-center">
             <Image 
               src={rubberBandCar} 
               alt="橡筋衝鋒車" 
-              class="w-full h-48 object-cover rounded-lg mb-4"
+              class="w-full h-48 object-cover rounded-lg mb-4 mx-auto"
               width={800}
               height={448}
             />
@@ -124,11 +124,11 @@ const faqs = [
           </div>
 
           <!-- Star Projector -->
-          <div class="bg-gray-50 rounded-lg p-6">
+          <div class="bg-gray-50 rounded-lg p-6 text-center">
             <Image 
               src={starProjector} 
               alt="星像儀星空燈" 
-              class="w-full h-48 object-cover rounded-lg mb-4"
+              class="w-full h-48 object-cover rounded-lg mb-4 mx-auto"
               width={800}
               height={444}
             />
@@ -138,11 +138,11 @@ const faqs = [
           </div>
 
           <!-- Vacuum Cleaner -->
-          <div class="bg-gray-50 rounded-lg p-6">
+          <div class="bg-gray-50 rounded-lg p-6 text-center">
             <Image 
               src={vacuumCleaner} 
               alt="吸塵機" 
-              class="w-full h-48 object-cover rounded-lg mb-4"
+              class="w-full h-48 object-cover rounded-lg mb-4 mx-auto"
               width={800}
               height={451}
             />
@@ -152,11 +152,11 @@ const faqs = [
           </div>
 
           <!-- Basketball Shooter -->
-          <div class="bg-gray-50 rounded-lg p-6">
+          <div class="bg-gray-50 rounded-lg p-6 text-center">
             <Image 
               src={basketballShooter} 
               alt="投籃器" 
-              class="w-full h-48 object-cover rounded-lg mb-4"
+              class="w-full h-48 object-cover rounded-lg mb-4 mx-auto"
               width={800}
               height={449}
             />
@@ -171,7 +171,7 @@ const faqs = [
     <!-- Gallery Section -->
     <div class="mb-12">
       <div class="bg-white rounded-lg shadow-lg p-8">
-        <h2 class="text-3xl font-bold text-gray-900 mb-6">精選照片</h2>
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">精選照片</h2>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {galleryImages.map((image, index) => (
             <div class="aspect-square overflow-hidden rounded-lg">

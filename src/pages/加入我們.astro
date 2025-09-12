@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import PaperformEmbed from '../components/PaperformEmbed.astro';
 import logo from '../assets/images/加入我們/logo_website_700x200.png';
 import mainImage from '../assets/images/加入我們/IMG_3821-scaled.jpg';
 import favicon from '../assets/images/加入我們/favicon-300x300.jpg';
@@ -8,8 +9,8 @@ import heroImage from '../assets/images/加入我們/join-us-hero.jpeg';
 ---
 
 <Layout 
-	title="加入我們 - 10教育" 
-	description="我們很高興收到您的查詢。請填寫此頁面上的表格，我們的同事將在3個工作日內與您聯繫，或者可以瀏覽我們免費的教材及資源。"
+	title="加入我們團隊 - 10教育" 
+	description="加入10教育STEM教學團隊，專業教育工作機會，提供AI人工智能課程教學職位，三個工作日內回覆查詢，歡迎瀏覽免費教材資源"
 	ogImage="/images/og-join-us.jpg"
 	keywords="加入我們, 10教育, 工作機會, 職業發展, STEM教育, AI課程"
 >
@@ -46,15 +47,7 @@ import heroImage from '../assets/images/加入我們/join-us-hero.jpeg';
 						<h3 class="text-xl md:text-2xl font-semibold text-gray-800 mb-6 text-center">
 							聯絡表格
 						</h3>
-						<div class="paperform-container">
-							<iframe 
-								src="https://hf9rnwyu.paperform.co/" 
-								width="100%" 
-								height="600" 
-								frameborder="0" 
-								allowfullscreen>
-							</iframe>
-						</div>
+						<PaperformEmbed formId="hf9rnwyu" />
 					</div>
 				</div>
 			</div>
