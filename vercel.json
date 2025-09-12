@@ -32,19 +32,6 @@
       ]
     }
   ],
-  "redirects": [
-    {
-      "source": "/:path*",
-      "destination": "https://10botics.com/:path*",
-      "permanent": true,
-      "has": [
-        {
-          "type": "host",
-          "value": "www.10botics.com"
-        }
-      ]
-    }
-  ],
   "rewrites": [
     {
       "source": "/sitemap.xml",
