@@ -26,6 +26,9 @@ import GoogleTagManagerNoscript from '../components/GoogleTagManagerNoscript.ast
 import GoogleTag from '../components/GoogleTag.astro';
 import { getGTMIds, isGTMEnabled, GOOGLE_TAG_CONFIG, isGoogleTagEnabled } from '../utils/gtm-config';
 
+// Import global styles
+import '../styles/global.css';
+
 // Generate canonical URL
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
