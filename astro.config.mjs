@@ -4,22 +4,29 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import path from 'path';
 
+import vercel from '@astrojs/vercel';
+
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://10botics.com',
-  output: 'static', // Static output for static website
+  site: 'https://www.10botics.com',
+
+  // Static output for static website
+  output: 'static',
+
   build: {
     assets: '_astro', // Ensure consistent asset naming
   },
+
   image: {
-    domains: ["10botics.com"],
+    domains: ["www.10botics.com"],
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "**.10botics.com",
+        hostname: "**.www.10botics.com",
       }
     ]
   },
+
   vite: {
     resolve: {
       alias: {
@@ -39,12 +46,13 @@ export default defineConfig({
       }
     }
   },
+
   redirects: {
     // External redirects
     '/timesheet_submission_form': 'https://otfxid9w.paperform.co',
     '/contact-form': 'https://or0uzdua.paperform.co',
     '/formula-ai': 'https://formula-ai.racing',
-    '/ai-art-competition-2023': 'https://art.10botics.com',
+    '/ai-art-competition-2023': 'https://art.www.10botics.com',
     '/course-overview': 'https://or0uzdua.paperform.co',
     '/minecraft-2024-registration': 'https://exgj8uei.paperform.co',
     '/minecraft-2023-registration': 'https://ofpd3jzg.paperform.co',
@@ -73,6 +81,7 @@ export default defineConfig({
     '/checkout': '/contact-us',
     '/my-account': '/contact-us',
   },
+
   integrations: [
     tailwind({
       // Apply TailwindCSS to all files
@@ -86,4 +95,6 @@ export default defineConfig({
       filter: (page) => !page.includes('404'),
     }),
   ],
+
+  adapter: vercel(),
 });
