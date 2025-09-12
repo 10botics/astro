@@ -29,7 +29,7 @@ export const courseData = {
   tags: ["Arts 藝術", "Programming 編程", "遊戲開發", "高小", "初中", "高中"],
   videoId: "your-video-id-here",
   description: "Minecraft 校園創建課程讓學生在熟悉的遊戲環境中學習編程概念，通過創建模組和自動化系統來掌握編程技能。",
-  detailedDescription: "Minecraft 校園創建課程讓學生在熟悉的遊戲環境中學習編程概念，通過創建模組和自動化系統來掌握編程技能。",
+  detailedDescription: "Minecraft 校園創建課程讓學生在熟悉的遊戲環境中學習編程概念，通過創建模組和自動化系統來掌握編程技能。學生將學習如何使用 Command Block 指令方塊設計校園建築，並透過 Redstone 紅石電路製作自動化設施。課程結合創意建築與邏輯編程，培養學生的空間思維和問題解決能力，讓學習變得更加有趣和互動。",
   heroImage: featuredImage,
   featuredImage: featuredImage
 };
@@ -173,7 +173,7 @@ const faqItems = [
 ];
 ---
 
-<Layout title={courseData.title}>
+<Layout title={courseData.title} description={courseData.description}>
   <HeroSection 
     title={courseData.title}
     subtitle={courseData.subtitle}

@@ -1,0 +1,54 @@
+---
+// Handle legacy WordPress-style URLs with date structure like /2022/04/22/...
+// This is a catch-all for any 2022 dated URLs
+
+import { getCollection } from 'astro:content';
+
+// Get all news articles to create a mapping
+const newsArticles = await getCollection('news');
+
+// Create a mapping of date patterns to news article slugs
+const dateToSlugMapping: Record<string, string> = {};
+newsArticles.forEach(article => {
+  const publishDate = new Date(article.data.publishDate);
+  const year = publishDate.getFullYear().toString();
+  const month = (publishDate.getMonth() + 1).toString().padStart(2, '0');
+  const day = publishDate.getDate().toString().padStart(2, '0');
+  
+  if (year === '2022') {
+    const dateKey = `${month}/${day}`;
+    dateToSlugMapping[dateKey] = article.slug;
+  }
+});
+
+// For static generation, we can't predict all possible paths, so we'll handle common ones
+export async function getStaticPaths() {
+  return [
+    // 2022 date paths from sitemap
+    { params: { path: '04/22/ai-hardware' } },
+    { params: { path: '07/04/java-edition' } },
+    { params: { path: '07/27/intangible-cultural-heritage' } },
+    { params: { path: '11/25/kings-college' } }
+  ];
+}
+
+const { path } = Astro.params;
+
+// Extract date from path (MM/DD format)
+const dateMatch = path?.match(/^(\d{2})\/(\d{2})\//);
+if (dateMatch) {
+  const month = dateMatch[1];
+  const day = dateMatch[2];
+  const dateKey = `${month}/${day}`;
+  
+  // Check if we have a matching news article for this date
+  if (dateToSlugMapping[dateKey]) {
+    return Astro.redirect(`/news/${encodeURIComponent(dateToSlugMapping[dateKey])}`);
+  }
+}
+
+// Default redirect to news index for any other 2022 URLs
+return Astro.redirect('/news');
+---
+
+<!-- This file should never render content as it only handles redirects -->

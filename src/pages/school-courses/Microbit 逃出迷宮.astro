@@ -28,7 +28,7 @@ export const courseData = {
   tags: ["AI 人工智能", "Block Coding 方塊編程", "Engineering 工程", "Micro:bit", "Programming 編程", "Robotics 機械人", "高小", "初中"],
   videoId: "XLQIvRbNIBA",
   description: "構建和編程自動駕駛 Micro:bit 車，以逃脫迷宮 - 學習內容針對高小學生的校本需求，再加以延伸，提供有趣和互動的學習體驗。學生將學習使用不同技術設計能夠自主逃脫迷宮的 Micro:bit 擴展車，啟發學生的創造力和解難能力。",
-  detailedDescription: "學習內容啟發於高小學生的校本需求，利用 Micro:bit 製作遙控車逃出迷宮。再加以延伸，學習使用不同傳感器及人工智能設計能夠自主逃脫迷宮的 Micro:bit 擴展車，啟發學生的創造力和解難能力。",
+  detailedDescription: "學習內容啟發於高小學生的校本需求，利用 Micro:bit 製作遙控車逃出迷宮。課程延伸學習使用不同傳感器及人工智能技術，設計能夠自主逃脫迷宮的 Micro:bit 擴展車。學生將掌握方塊編程基礎、超聲波感應器應用、自動駕駛邏輯思維等核心技能，透過實際操作啟發創造力和解難能力，培養對工程學和機械人技術的興趣。",
   heroImage: heroImage
 };
 
@@ -153,9 +153,10 @@ const galleryImages = [
 ---
 
 <Layout title={courseData.title} description={courseData.description}>
-  <main>
-    <!-- Hero Section -->
-    <HeroSection 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Hero Section -->
+  <HeroSection 
       title={courseData.title}
       subtitle={courseData.subtitle}
       description={courseData.description}
@@ -166,7 +167,7 @@ const galleryImages = [
 
     <!-- What is Micro:bit Section -->
     <section class="bg-gray-50 py-16">
-      <div class="container mx-auto px-4">
+      <div class="container mx-auto px-4 max-w-6xl">
         <div class="grid md:grid-cols-2 gap-8 items-start">
           <div>
             <h3 class="text-2xl font-bold mb-4">什麼是Micro:bit？</h3>
@@ -196,7 +197,7 @@ const galleryImages = [
 
     <!-- Course Highlights -->
     <section class="py-16">
-      <div class="container mx-auto px-4">
+      <div class="container mx-auto px-4 max-w-6xl">
         <h2 class="text-3xl font-bold text-center mb-12">課程重點</h2>
         <div class="grid md:grid-cols-2 gap-8">
           {courseHighlights.map((highlight) => (
@@ -225,7 +226,7 @@ const galleryImages = [
 
     <!-- Course Features -->
     <section class="py-16">
-      <div class="container mx-auto px-4">
+      <div class="container mx-auto px-4 max-w-6xl">
         <div class="grid md:grid-cols-3 gap-8">
           <div class="text-center">
             <h3 class="text-xl font-bold mb-4">遙控車</h3>
@@ -272,7 +273,7 @@ const galleryImages = [
 
     <!-- Course Arrangements -->
     <section class="bg-gray-50 py-16">
-      <div class="container mx-auto px-4">
+      <div class="container mx-auto px-4 max-w-6xl">
         <h2 class="text-3xl font-bold text-center mb-12">課程安排</h2>
         <div class="grid md:grid-cols-2 gap-8">
           {courseArrangements.map((arrangement) => (
@@ -293,7 +294,7 @@ const galleryImages = [
 
     <!-- Gallery Section -->
     <section class="py-16">
-      <div class="container mx-auto px-4">
+      <div class="container mx-auto px-4 max-w-6xl">
         <GalleryCarousel 
           title="精選照片"
           images={galleryImages}
@@ -324,5 +325,4 @@ const galleryImages = [
     <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
 
     <ContactSection subtitle="想了解更多關於 Microbit 逃出迷宮課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
-  </main>
 </Layout> 

@@ -72,7 +72,8 @@ details[open] summary ~ * {
 /* Course gallery image styles */
 .course-gallery-image {
   width: 100%;
-  height: 32px;
+  height: auto;
+  min-height: 200px;
   object-fit: cover;
   border-radius: 8px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -81,7 +82,8 @@ details[open] summary ~ * {
 /* Course content image styles */
 .course-content-image {
   width: 100%;
-  height: 48px;
+  height: auto;
+  min-height: 250px;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -89,7 +91,8 @@ details[open] summary ~ * {
 /* Course hero image styles */
 .course-hero-image {
   width: 100%;
-  height: 48px;
+  height: auto;
+  min-height: 300px;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -97,7 +100,8 @@ details[open] summary ~ * {
 /* Course feature image styles */
 .course-feature-image {
   width: 100%;
-  height: 48px;
+  height: auto;
+  min-height: 200px;
   object-fit: cover;
   border-radius: 8px;
 } 

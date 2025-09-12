@@ -1,18 +1,22 @@
 ---
-// PaperformEmbed.astro
-// Component for embedding Paperform forms using the official embed method
+export interface Props {
+  formId?: string;
+}
+
+const { formId = "qhmoqcvc" } = Astro.props;
 ---
 
 <div class="paperform-container">
-  <div data-paperform-id="qhmoqcvc"></div>
+  <div data-paperform-id={formId}></div>
 </div>
 
-<script>
+<script is:inline define:vars={{ formId }}>
+  // Load Paperform embed script
   (function(){
     var script = document.createElement('script');
-    script.src = "https://paperform.co/__embed.min.js"; 
+    script.src = "/embed.js"; 
     document.body.appendChild(script);
-  })()
+  })();
 </script>
 
 <style>

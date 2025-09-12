@@ -42,6 +42,7 @@ export const courseData = {
   tags: ["AI 人工智能", "Coral", "Python", "Raspberry Pi", "Tensorflow", "初中", "高中"],
   videoId: "XaLH2D_9ZYk",
   description: "Raspberry Pi 是一個廣泛應用於各種領域的單板電腦。課程旨在幫助學生掌握 Raspberry Pi 及 Python 編程的基礎知識，以致配合機器學習和人工智慧，進行人體姿態檢測，為進一步學習機器學習和人工智慧理論打下堅實基礎。",
+  detailedDescription: "Raspberry Pi 是一個廣泛應用於各種領域的單板電腦。課程旨在幫助學生掌握 Raspberry Pi 及 Python 編程的基礎知識，以致配合機器學習和人工智慧，進行人體姿態檢測，為進一步學習機器學習和人工智慧理論打下堅實基礎。學生將學習設置 Raspberry Pi 系統、編寫 Python 程式、操控傳感器和攝影機模組，並透過實際項目如復古遊戲製作、智能監控系統等，深入了解單板電腦在物聯網和人工智能領域的應用。",
   heroImage: raspberryPiThumbnail
 };
 
@@ -170,7 +171,7 @@ const advancedCurriculumItems = [
 ];
 ---
 
-<Layout title={courseData.title}>
+<Layout title={courseData.title} description={courseData.description}>
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   

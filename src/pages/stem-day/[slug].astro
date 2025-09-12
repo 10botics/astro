@@ -1,0 +1,35 @@
+---
+// Dynamic route to handle redirections from stem-day/ to stemday/
+import { getStaticPathsForFolder, getComponentForSlug } from '../../utils/urlAliases.js';
+
+export async function getStaticPaths() {
+  return getStaticPathsForFolder('stem-day');
+}
+
+const { slug } = Astro.params;
+const stemdayInfo = getComponentForSlug('stem-day', slug);
+
+if (!stemdayInfo) {
+  throw new Error(`Unknown stem-day slug: ${slug}`);
+}
+
+// All stem-day routes should redirect to stemday
+let redirectPath;
+
+if (slug === 'index') {
+  // stem-day/ -> stemday/
+  redirectPath = '/stemday/';
+} else {
+  // Map Chinese URLs to English ones to avoid encoding issues
+  const slugMapping = {
+    '飲管橋': 'straw-bridge',
+    'DIY-手作': 'diy',
+    'matatalab-入門編程課程': 'matatalab-programming'
+  };
+  
+  const targetSlug = slugMapping[slug] || slug;
+  redirectPath = `/stemday/${targetSlug}/`;
+}
+
+return Astro.redirect(redirectPath, 301);
+---
