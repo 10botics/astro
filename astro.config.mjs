@@ -4,13 +4,19 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import path from 'path';
 
+import vercel from '@astrojs/vercel';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.10botics.com',
-  output: 'static', // Static output for static website
+
+  // Static output for static website
+  output: 'static',
+
   build: {
     assets: '_astro', // Ensure consistent asset naming
   },
+
   image: {
     domains: ["www.10botics.com"],
     remotePatterns: [
@@ -20,6 +26,7 @@ export default defineConfig({
       }
     ]
   },
+
   vite: {
     resolve: {
       alias: {
@@ -39,6 +46,7 @@ export default defineConfig({
       }
     }
   },
+
   redirects: {
     // External redirects
     '/timesheet_submission_form': 'https://otfxid9w.paperform.co',
@@ -73,6 +81,7 @@ export default defineConfig({
     '/checkout': '/contact-us',
     '/my-account': '/contact-us',
   },
+
   integrations: [
     tailwind({
       // Apply TailwindCSS to all files
@@ -86,4 +95,6 @@ export default defineConfig({
       filter: (page) => !page.includes('404'),
     }),
   ],
+
+  adapter: vercel(),
 });
