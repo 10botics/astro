@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import { generateExcerpt } from '../../utils/excerpt';
+import { generateTagSlug } from '../../utils/courseMappings';
 import RelatedCourses from '../../components/course/RelatedCourses.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
 
@@ -200,11 +201,15 @@ if (ogImage && ogImage !== "/images/logo_website_700x200-300x86.png") {
           <div class="max-w-4xl mx-auto">
             <h3 class="text-lg font-semibold text-gray-900 mb-4">相關標籤</h3>
             <div class="flex flex-wrap gap-2">
-              {(article.data.tags || []).map((tag) => (
-                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">
-                  {tag}
-                </span>
-              ))}
+              {(article.data.tags || []).map((tag) => {
+                const tagSlug = generateTagSlug(tag);
+                return (
+                  <a href={`/tag/${tagSlug}`}
+                     class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm hover:bg-gray-200 transition-colors duration-200">
+                    {tag}
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>

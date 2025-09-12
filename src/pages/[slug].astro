@@ -7,6 +7,7 @@ import AboutUs from './關於我們.astro';
 import AiArtCompetition2024 from './校際AI藝術創作大賽 2024.astro';
 import AiArtCompetition2025 from './第三屆 校際AI藝術創作大賽.astro';
 import AiArtCompetitionResult from './第三屆校際AI藝術創作大賽《智畫神話》result.astro';
+import AiArtCompetition2024Result from './2024 校際AI藝術創作大賽 -《數碼詠古》得獎名單.astro';
 import DroneCompetition2024 from './學界無人機救援挑戰賽.astro';
 import DroneCompetitionList from './學界無人機救援挑戰賽-比賽名單.astro';
 import KSPCompetition2022 from './香港航天電競大賽 2022.astro';
@@ -18,6 +19,7 @@ import ContactUs from './聯絡我們.astro';
 import JoinUs from './加入我們.astro';
 import TermsConditions from './條款及細則.astro';
 import PrivacyPolicy from './隱私政策.astro';
+import PersonalDataCollection from './個人資料收集.astro';
 import CookiePolicy from './Cookie政策.astro';
 import GrassNation from './草原國度.astro';
 import Index from './index.astro';  
@@ -28,9 +30,12 @@ import stemdayIndex from './stemday/index.astro';
 import StaffDevIndex from './staff-development-day/index.astro';
 import FundingIndex from './funding-application/index.astro';
 import NewsIndex from './news/index.astro';
+import StemShowroom from './stem-showroom.astro';
 import DonkeyCarCourse from './school-courses/Donkey Car 無人車課程.astro';
 import DroneCompetitionPreliminaryResults from './competition-drone2024/初賽結果.astro';
+import DroneCompetitionFinalResults from './competition-drone2024/決賽結果.astro';
 import DroneCompetitionFinalTeamlist from './competition-drone2024/決賽隊伍名單及時間表.astro';
+import CourseBrochure from './course-brochure.astro';
 
 // Component mapping
 const componentMap = {
@@ -38,6 +43,7 @@ const componentMap = {
   '校際AI藝術創作大賽 2024.astro': AiArtCompetition2024,
   '第三屆 校際AI藝術創作大賽.astro': AiArtCompetition2025,
   '第三屆校際AI藝術創作大賽《智畫神話》result.astro': AiArtCompetitionResult,
+  '2024 校際AI藝術創作大賽 -《數碼詠古》得獎名單.astro': AiArtCompetition2024Result,
   '學界無人機救援挑戰賽.astro': DroneCompetition2024,
   '學界無人機救援挑戰賽-比賽名單.astro': DroneCompetitionList,
   '香港航天電競大賽 2022.astro': KSPCompetition2022,
@@ -49,6 +55,7 @@ const componentMap = {
   '加入我們.astro': JoinUs,
   '條款及細則.astro': TermsConditions,
   '隱私政策.astro': PrivacyPolicy,
+  '個人資料收集.astro': PersonalDataCollection,
   'Cookie政策.astro': CookiePolicy,
   '草原國度.astro': GrassNation,
   'index.astro': Index,
@@ -59,10 +66,13 @@ const componentMap = {
   'staff-development-day/index.astro': StaffDevIndex,
   'funding-application/index.astro': FundingIndex,
   'news/index.astro': NewsIndex,
+  'stem-showroom.astro': StemShowroom,
   'school-courses/Donkey Car 無人車課程.astro': DonkeyCarCourse,
   'Donkey Car 無人車課程.astro': DonkeyCarCourse,
   'competition-drone2024/初賽結果.astro': DroneCompetitionPreliminaryResults,
-  'competition-drone2024/決賽隊伍名單及時間表.astro': DroneCompetitionFinalTeamlist
+  'competition-drone2024/決賽結果.astro': DroneCompetitionFinalResults,
+  'competition-drone2024/決賽隊伍名單及時間表.astro': DroneCompetitionFinalTeamlist,
+  'course-brochure.astro': CourseBrochure
 };
 
 export async function getStaticPaths() {
@@ -81,7 +91,10 @@ if (!componentInfo) {
   throw new Error(`Unknown slug: ${slug}`);
 }
 
-
+// Handle redirects
+if (componentInfo.isRedirect && componentInfo.redirect) {
+  return Astro.redirect(componentInfo.redirect);
+}
 
 // Get the pre-imported component
 const ChineseComponent = componentInfo.filename in componentMap 

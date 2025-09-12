@@ -24,6 +24,12 @@ export const urlAliases = {
   },
   "第三屆校際AI藝術創作大賽《智畫神話》result.astro": {
     "tags": {
+      "root": ["ai-art-competition2025-result"]
+    },
+    "main": "ai-art-competition2025-result"
+  },
+  "2024 校際AI藝術創作大賽 -《數碼詠古》得獎名單.astro": {
+    "tags": {
       "root": ["ai-art-competition-result"]
     },
     "main": "ai-art-competition-result"
@@ -107,6 +113,12 @@ export const urlAliases = {
     },
     "main": "privacy-policy"
   },
+  "個人資料收集.astro": {
+    "tags": {
+      "root": ["personal-data-collection"]
+    },
+    "main": "personal-data-collection"
+  },
   "Cookie政策.astro": {
     "tags": {
       "root": ["cookie-policy", "cookies"]
@@ -125,9 +137,15 @@ export const urlAliases = {
     },
     "main": "home"
   },
+  "course-brochure.astro": {
+    "tags": {
+      "root": ["course-brochure"]
+    },
+    "main": "course-brochure"
+  },
   "2024 中小學 STEM 比賽清單.astro": {
     "tags": {
-      "root": ["2024competitions", "2024 中小學 STEM 比賽名單"]
+      "root": ["2024competitions", "2024 中小學 STEM 比賽名單", "2024-stem-competition-list"]
     },
     "main": "2024competitions"
   },
@@ -136,6 +154,12 @@ export const urlAliases = {
       "root": ["2025competitions", "2025 中小學 STEM 比賽名單"]
     },
     "main": "2025competitions"
+  },
+  "stem-showroom.astro": {
+    "tags": {
+      "root": ["elementor-12069"]
+    },
+    "main": "elementor-12069"
   },
 
   // Index pages for different sections
@@ -147,7 +171,8 @@ export const urlAliases = {
   },
   "stemday/index.astro": {
     "tags": {
-      "root": ["stemday"]
+      "root": ["stemday"],
+      "stem-day": ["index"]
     },
     "main": "stemday"
   },
@@ -184,6 +209,12 @@ export const urlAliases = {
       "root": ["competition-drone2024-final-teamlist"]
     },
     "main": "competition-drone2024-final-teamlist"
+  },
+  "competition-drone2024/決賽結果.astro": {
+    "tags": {
+      "root": ["competition-drone2024-final-results", "competition-drone2024/final-results"]
+    },
+    "main": "competition-drone2024-final-results"
   },
 
   // School courses
@@ -231,8 +262,8 @@ export const urlAliases = {
   },
   "Delightex 遊戲設計課程.astro": {
     "tags": {
-      "school-courses": ["Delightex", "delightex-game-design", "cospace", "delightex"],
-      "course": ["Delightex", "delightex-game-design", "cospace", "delightex"]
+      "school-courses": ["Delightex", "delightex-game-design", "cospaces", "delightex", "cospace"],
+      "course": ["Delightex", "delightex-game-design", "cospaces", "delightex", "cospace"]
     },
     "main": "Delightex"
   },
@@ -275,7 +306,9 @@ export const urlAliases = {
   "Microbit 降落傘課程.astro": {
     "tags": {
       "school-courses": ["microbit-parachute"],
-      "course": ["microbit-parachute"]
+      "course": ["microbit-parachute"],
+      "stem-day": ["microbit-parachute"],
+      "stemday": ["microbit-parachute"]
     },
     "main": "microbit-parachute"
   },
@@ -343,8 +376,8 @@ export const urlAliases = {
   },
   "珊瑚環境監測入門課程.astro": {
     "tags": {
-      "school-courses": ["coral-environment-monitoring"],
-      "course": ["coral-environment-monitoring"]
+      "school-courses": ["coral-environment-monitoring","coral"],
+      "course": ["coral-environment-monitoring","coral"]
     },
     "main": "coral-environment-monitoring"
   },
@@ -387,19 +420,22 @@ export const urlAliases = {
   // STEM Day activities
   "飲管橋.astro": {
     "tags": {
-      "stemday": ["straw-bridge"]
+      "stemday": ["straw-bridge"],
+      "stem-day": ["straw-bridge", "飲管橋"]
     },
     "main": "straw-bridge"
   },
   "DIY 手作.astro": {
     "tags": {
-      "stemday": ["diy"]
+      "stemday": ["diy"],
+      "stem-day": ["diy", "DIY-手作"]
     },
     "main": "diy"
   },
   "Matatalab 入門編程課程.astro": {
     "tags": {
-      "stemday": ["matatalab-programming","matatalab-入門編程課程", "matatalab"]
+      "stemday": ["matatalab-programming","matatalab-入門編程課程", "matatalab"],
+      "stem-day": ["matatalab-programming", "matatalab-入門編程課程", "matatalab"]
     },
     "main": "matatalab-programming"
   },

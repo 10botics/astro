@@ -49,9 +49,29 @@ export default defineConfig({
     '/minecraft-2024-registration': 'https://exgj8uei.paperform.co',
     '/minecraft-2023-registration': 'https://ofpd3jzg.paperform.co',
     '/ai-courses': '/school-courses/scratch-ai-programming',
+    // Category redirects (legacy URLs)
+    '/category/blog': '/news',
+    '/category/news': '/news',
+    '/category/past-activities': '/news',
+    '/category/科學知識': '/news',
     // URL aliases
     '/2025-中小學-stem-比賽清單': '/2025 中小學 STEM 比賽清單',
     '/2024-stem-competition-list/': '/2024 中小學 STEM 比賽清單',
+    '/personal-data-collection': '/個人資料收集',
+    // Competition drone 2024 aliases - handled by urlAliases.js
+    // Date-based redirects for live sitemap URLs
+    '/author/admin': '/news',
+    '/author/alanchan': '/news',
+    '/author/cyruslam': '/news',
+    '/author/jacksonchan': '/news',
+    '/author/jennyli': '/news',
+    '/author/karenkwan': '/news',
+    '/author/kingsumcheung': '/news',
+    '/author/mark': '/news',
+    '/author/sukileung': '/news',
+    '/cart': '/contact-us',
+    '/checkout': '/contact-us',
+    '/my-account': '/contact-us',
   },
   integrations: [
     tailwind({

@@ -32,10 +32,10 @@ import heroImage from '../../assets/images/school-courses/Unity 課程/hero-imag
 export const courseData = {
   title: "Unity 課程",
   subtitle: "Unity, 創造, 遊玩, 學習, 改進, 創新！",
-  tags: ["3D 建模", "元宇宙", "AR 擴增實境", "C#", "Unity", "VR 虛擬實境", "故事開發", "編程", "軟件開發", "遊戲開發"],
+  tags: ["3D 建模", "元宇宙", "AR 擴增實境", "C#", "Unity", "VR 虛擬實境", "故事開發", "編程", "軟件開發", "遊戲開發", "初中", "高中"],
   videoId: "mG3jRZtDGAw",
-  description: "學習Unity遊戲開發引擎，創建遊戲、VR虛擬實境和AR擴增實境應用。掌握C#編程和3D建模技術，將創意變成現實。",
-  detailedDescription: "針對初學者的 Unity 課程，遊戲開發，VR 及 AR 軟體開發。Unity 遊戲開發涵蓋基礎 C# 程式編碼和遊戲開發的基本原理。VR 和 AR 的無編碼開發，專注於概念化和設計沉浸式體驗。",
+  description: "學習Unity遊戲開發引擎，創建遊戲、VR虛擬實境和AR擴增實境應用。掌握C#編程、3D建模技術。",
+  detailedDescription: "針對初學者的 Unity 課程，遊戲開發，VR 及 AR 軟體開發。Unity 遊戲開發涵蓋基礎 C# 程式編碼和遊戲開發的基本原理。VR 和 AR 的無編碼開發，專注於概念化和設計沉浸式體驗。學生將學習 3D 建模、物理引擎應用、用戶界面設計等核心技能，並透過實際項目製作完整的遊戲作品。課程結合理論與實踐，培養學生的創意思維和技術能力。",
   heroImage: heroImage,
 };
 
@@ -214,7 +214,7 @@ const unityExamples = [
 ];
 ---
 
-<Layout title={courseData.title}>
+<Layout title={courseData.title} description={courseData.description}>
   <HeroSection 
     title={courseData.title}
     subtitle={courseData.subtitle}
