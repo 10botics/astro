@@ -34,6 +34,12 @@ export const urlAliases = {
     },
     "main": "ai-art-competition-result"
   },
+  "《GEN出你想》香港校際AI生成創作大賽2026.astro": {
+    "tags": {
+      "root": ["ai-art-competition-2026", "gen-ai-competition-2026", "gen-ai-competition"]
+    },
+    "main": "ai-art-competition-2026"
+  },
   "學界無人機救援挑戰賽.astro": {
     "tags": {
       "root": ["competition-drone2024"]

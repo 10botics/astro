@@ -2,19 +2,20 @@
 import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import CTAButton from '../../components/CTAButton.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
 
 // Import images
 import heroImage from '../../assets/images/staff-development-day/mainpage/hero-image.jpeg';
 import heroBackground from '../../assets/images/staff-development-day/mainpage/hero-background.jpeg';
 import chatgptWorkshop from '../../assets/images/staff-development-day/mainpage/chatgpt-workshop.jpg';
 import aiWorkshop from '../../assets/images/staff-development-day/mainpage/ai-workshop.jpg';
-import telloDrone from '../../assets/images/staff-development-day/mainpage/tello-drone.png';
 import raspberryPi from '../../assets/images/staff-development-day/mainpage/raspberry-pi.jpeg';
 import donkeyCar from '../../assets/images/staff-development-day/mainpage/donkey-car.jpeg';
 import gallery1 from '../../assets/images/staff-development-day/mainpage/gallery-1.jpeg';
 import gallery2 from '../../assets/images/staff-development-day/mainpage/gallery-2.jpeg';
 import gallery3 from '../../assets/images/staff-development-day/mainpage/gallery-3.jpeg';
 import gallery4 from '../../assets/images/staff-development-day/mainpage/gallery-4.jpeg';
+import geminiEducator from '../../assets/images/staff-development-day/mainpage/gemini-educator.jpg';
 
 const title = "教師發展日工作坊 - 10教育";
 const description = "定期舉辦教師STEM培訓工作坊，提供AIGC技術協助自動生成教案試題學習資料，節省教師時間精力，獲取整理教學資源使教學流暢高效";
@@ -45,7 +46,6 @@ const description = "定期舉辦教師STEM培訓工作坊，提供AIGC技術協
 				</h1>
 				<p class="text-xl md:text-2xl text-gray-100 leading-relaxed">
 					10Botics 定期舉辦教師工作坊，為教師提供STEM培訓<br>
-					亦曾與知創空間、學與教博覽2021合作，向老師們分享如何在校內教授STEM
 				</p>
 			</div>
 		</div>
@@ -54,10 +54,57 @@ const description = "定期舉辦教師STEM培訓工作坊，提供AIGC技術協
 	<!-- Main Content -->
 	<main class="py-16">
 		<div class="container mx-auto px-4">
+			<!-- Gemini Educator Section -->
+			<section class="mb-20">
+				<div class="grid lg:grid-cols-2 gap-12 items-center">
+					<div>
+						<div class="relative">
+							<Image 
+								src={geminiEducator} 
+								alt="Gemini Educator 特訓班 - 助老師2小時取得Gemini教師認證" 
+								class="w-full h-auto rounded-2xl shadow-2xl"
+								width={800}
+								height={600}
+							/>
+							<div class="absolute bottom-4 left-4 right-4 bg-black bg-opacity-70 text-white p-4 rounded-lg">
+								<p class="text-sm">Gemini Educator 特訓班 - 助老師2小時取得Gemini教師認證</p>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div class="bg-gray-50 rounded-2xl p-8">
+							<h2 class="text-3xl font-bold text-gray-900 mb-6">Gemini Educator 特訓班</h2>
+							<p class="text-lg text-gray-700 leading-relaxed mb-6">
+								助老師2小時取得Google官方Gemini教師認證！認證旨在培養AI時代的教育引導者，驗證教師對生成式AI基礎概念的理解，以及在教育情境中負責任地整合Google AI工具的能力。
+							</p>
+							<p class="text-lg text-gray-700 mb-4">認證考試重點：</p>
+							<ul class="space-y-3 text-gray-700">
+								<li class="flex items-start">
+									<span class="text-blue-600 mr-3 mt-1">•</span>
+									核心工具應用：Gemini引導式學習、Gems自訂指令、深度研究、圖片生成
+								</li>
+								<li class="flex items-start">
+									<span class="text-blue-600 mr-3 mt-1">•</span>
+									NotebookLM個人研究助理：音訊總覽、學習指南、隱私保護
+								</li>
+								<li class="flex items-start">
+									<span class="text-blue-600 mr-3 mt-1">•</span>
+									負責任使用：人工審查、事實查核、學術誠信、AI素養培養
+								</li>
+								<li class="flex items-start">
+									<span class="text-blue-600 mr-3 mt-1">•</span>
+									教學應用：課程設計、差異化教學、行政效率提升
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
 			<!-- ChatGPT Workshop Section -->
 			<section class="mb-20">
 				<div class="grid lg:grid-cols-2 gap-12 items-center">
-					<div class="order-2 lg:order-1">
+					<div class="order-1 lg:order-2">
 						<div class="bg-gray-50 rounded-2xl p-8">
 							<h2 class="text-3xl font-bold text-gray-900 mb-6">ChatGPT在教育行業的運用講座</h2>
 							<p class="text-lg text-gray-700 leading-relaxed mb-6">
@@ -148,67 +195,11 @@ const description = "定期舉辦教師STEM培訓工作坊，提供AIGC技術協
 				</div>
 			</section>
 
-			<!-- Tello Drone Section -->
-			<section class="mb-20">
-				<div class="grid lg:grid-cols-2 gap-12 items-center">
-					<div class="order-2 lg:order-1">
-						<div class="bg-gray-50 rounded-2xl p-8">
-							<h2 class="text-3xl font-bold text-gray-900 mb-6">Tello人工智能編程無人機講座</h2>
-							<p class="text-lg text-gray-700 leading-relaxed mb-6">
-								該講座將向老師介紹人工智能和無人機如何進行交匯，並指導老師如何運用編程技巧來控制無人機。我們將深入探討人工智能在無人機領域的應用，並分享實際操作和編程技巧，讓你能在教學中為學生打開科技的大門。
-							</p>
-							<p class="text-lg text-gray-700 mb-4">講座内容包括：</p>
-							<ul class="space-y-3 text-gray-700">
-								<li class="flex items-start">
-									<span class="text-blue-600 mr-3 mt-1">•</span>
-									了解Tello無人機的編程能力
-								</li>
-								<li class="flex items-start">
-									<span class="text-blue-600 mr-3 mt-1">•</span>
-									如何使用Scratch平台作為Tello無人機編程的工具
-								</li>
-								<li class="flex items-start">
-									<span class="text-blue-600 mr-3 mt-1">•</span>
-									如何將Tello無人機運用在編程教育上各個行業的應用和案例
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="order-1 lg:order-2">
-						<div class="relative">
-							<Image 
-								src={telloDrone} 
-								alt="與教育局合作向老師們分享如何在中學運用人工智能編程控制無人機" 
-								class="w-full h-auto rounded-2xl shadow-2xl"
-								width={782}
-								height={591}
-							/>
-							<div class="absolute bottom-4 left-4 right-4 bg-black bg-opacity-70 text-white p-4 rounded-lg">
-								<p class="text-sm">與教育局合作向老師們分享如何在中學運用人工智能編程控制無人機</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
 
 			<!-- Raspberry Pi Section -->
 			<section class="mb-20">
 				<div class="grid lg:grid-cols-2 gap-12 items-center">
-					<div>
-						<div class="relative">
-							<Image 
-								src={raspberryPi} 
-								alt="與知創空間合作向老師們分享如何利用 Raspberry Pi 在校內教授 Python" 
-								class="w-full h-auto rounded-2xl shadow-2xl"
-								width={800}
-								height={600}
-							/>
-							<div class="absolute bottom-4 left-4 right-4 bg-black bg-opacity-70 text-white p-4 rounded-lg">
-								<p class="text-sm">與知創空間合作向老師們分享如何利用 Raspberry Pi 在校內教授 Python</p>
-							</div>
-						</div>
-					</div>
-					<div>
+					<div class="order-2 lg:order-1">
 						<div class="bg-gray-50 rounded-2xl p-8">
 							<h2 class="text-3xl font-bold text-gray-900 mb-6">Raspberry Pi與Python的運用講座</h2>
 							<p class="text-lg text-gray-700 leading-relaxed mb-6">
@@ -231,13 +222,41 @@ const description = "定期舉辦教師STEM培訓工作坊，提供AIGC技術協
 							</ul>
 						</div>
 					</div>
+					<div class="order-1 lg:order-2">
+						<div class="relative">
+							<Image 
+								src={raspberryPi} 
+								alt="與知創空間合作向老師們分享如何利用 Raspberry Pi 在校內教授 Python" 
+								class="w-full h-auto rounded-2xl shadow-2xl"
+								width={800}
+								height={600}
+							/>
+							<div class="absolute bottom-4 left-4 right-4 bg-black bg-opacity-70 text-white p-4 rounded-lg">
+								<p class="text-sm">與知創空間合作向老師們分享如何利用 Raspberry Pi 在校內教授 Python</p>
+							</div>
+						</div>
+					</div>
 				</div>
 			</section>
 
 			<!-- Donkey Car Section -->
 			<section class="mb-20">
 				<div class="grid lg:grid-cols-2 gap-12 items-center">
-					<div class="order-2 lg:order-1">
+					<div>
+						<div class="relative">
+							<Image 
+								src={donkeyCar} 
+								alt="與賽馬會多元出路計劃「鼓掌 – 創新教育歷程」合作向老師們分享Donkey Car的發展及實際操作" 
+								class="w-full h-auto rounded-2xl shadow-2xl"
+								width={800}
+								height={600}
+							/>
+							<div class="absolute bottom-4 left-4 right-4 bg-black bg-opacity-70 text-white p-4 rounded-lg">
+								<p class="text-sm">與賽馬會多元出路計劃「鼓掌 – 創新教育歷程」合作向老師們分享Donkey Car的發展及實際操作</p>
+							</div>
+						</div>
+					</div>
+					<div>
 						<div class="bg-gray-50 rounded-2xl p-8">
 							<h2 class="text-3xl font-bold text-gray-900 mb-6">Donkey Car無人車發展和應用講座</h2>
 							<p class="text-lg text-gray-700 leading-relaxed mb-6">
@@ -264,22 +283,9 @@ const description = "定期舉辦教師STEM培訓工作坊，提供AIGC技術協
 							</ul>
 						</div>
 					</div>
-					<div class="order-1 lg:order-2">
-						<div class="relative">
-							<Image 
-								src={donkeyCar} 
-								alt="與賽馬會多元出路計劃「鼓掌 – 創新教育歷程」合作向老師們分享Donkey Car的發展及實際操作" 
-								class="w-full h-auto rounded-2xl shadow-2xl"
-								width={800}
-								height={600}
-							/>
-							<div class="absolute bottom-4 left-4 right-4 bg-black bg-opacity-70 text-white p-4 rounded-lg">
-								<p class="text-sm">與賽馬會多元出路計劃「鼓掌 – 創新教育歷程」合作向老師們分享Donkey Car的發展及實際操作</p>
-							</div>
-						</div>
-					</div>
 				</div>
 			</section>
+
 
 			<!-- Gallery Section -->
 			<section class="mb-20">
@@ -353,33 +359,16 @@ const description = "定期舉辦教師STEM培訓工作坊，提供AIGC技術協
 				</div>
 			</section>
 
-			<!-- Past Activities Section -->
-			<section class="mb-20">
-				<div class="bg-gray-50 rounded-2xl p-8">
-					<h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">過往活動記錄</h2>
-					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-						<div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
-							<h3 class="text-xl font-semibold text-gray-900 mb-3">科學手作工作坊</h3>
-							<p class="text-gray-700 mb-4">10教育為聖公會將軍澳基德小學主持的「科學手作教師培訓及體驗工作坊」已圓滿落幕。</p>
-							<div class="text-sm text-gray-500">2025 年 7 月 23 日</div>
-						</div>
-						
-						<div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
-							<h3 class="text-xl font-semibold text-gray-900 mb-3">STEAM AI Donkey Car 工作坊</h3>
-							<p class="text-gray-700 mb-4">為香港教師舉辦的STEAM AI Donkey Car工作坊，深入探討人工智能與無人車技術。</p>
-							<div class="text-sm text-gray-500">2025 年 7 月 22 日</div>
-						</div>
-						
-						<div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
-							<h3 class="text-xl font-semibold text-gray-900 mb-3">AI家長講座</h3>
-							<p class="text-gray-700 mb-4">在保良局學校舉辦的AI家長講座，分享如何運用AI工具提高子女的學習效能。</p>
-							<div class="text-sm text-gray-500">2025 年 5 月 30 日</div>
-						</div>
-					</div>
-				</div>
-			</section>
 		</div>
 	</main>
+
+	<!-- Related News Section -->
+	<RelatedNews 
+		courseTags={["教師培訓", "AI教育", "STEM", "ChatGPT", "人工智能", "Raspberry Pi", "Donkey Car", "教師發展", "工作坊"]}
+		courseTitle="教師發展日工作坊"
+		maxResults={6}
+		context="course"
+	/>
 
 	<!-- CTA Section -->
 	<section class="bg-blue-600 text-white py-16">
