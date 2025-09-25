@@ -26,6 +26,9 @@ import GoogleTagManagerNoscript from '../components/GoogleTagManagerNoscript.ast
 import GoogleTag from '../components/GoogleTag.astro';
 import { getGTMIds, isGTMEnabled, GOOGLE_TAG_CONFIG, isGoogleTagEnabled } from '../utils/gtm-config';
 
+// Import global styles
+import '../styles/global.css';
+
 // Generate canonical URL
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
@@ -85,7 +88,7 @@ const organizationSchema = {
 		<meta property="og:locale" content="zh_HK" />
 		
 		<!-- Favicons -->
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon-300x300.jpg" sizes="any" />
 		<link rel="icon" href="/favicon-100x100.jpg" sizes="32x32" />
 		<link rel="icon" href="/favicon-300x300.jpg" sizes="192x192" />
 		<link rel="apple-touch-icon" href="/favicon-300x300.jpg" />
