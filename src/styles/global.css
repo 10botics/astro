@@ -1,6 +1,6 @@
+/* Import school-courses centralized styles */
+@import './school-courses.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Import school-courses centralized styles */
-@import './school-courses.css';

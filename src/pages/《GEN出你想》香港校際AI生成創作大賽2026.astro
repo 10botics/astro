@@ -1,0 +1,67 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactSection from '../components/ContactSection.astro';
+import { Image } from 'astro:assets';
+import competitionImage from '../assets/images/competition/第四屆校際AI藝術創作大賽/ai-competition-2026.jpg';
+
+const title = "《GEN出你想》香港校際AI生成創作大賽2026 - 10教育";
+const description = "香港校際AI生成創作大賽2026《GEN出你想》，運用人工智能技術創作，展現學生創意才能，更多詳情將於日後釋出，敬請期待。";
+---
+
+<Layout title={title} description={description}>
+  <div class="min-h-screen bg-gray-50">
+    <!-- Title Section -->
+    <section class="text-gray-800 py-12 bg-white">
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900">
+          香港校際AI生成創作大賽2026 《GEN出你想》
+        </h1>
+      </div>
+    </section>
+
+    <!-- Competition Poster -->
+    <section class="py-8 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <Image 
+            src={competitionImage} 
+            alt="《GEN出你想》香港校際AI生成創作大賽2026 比賽海報" 
+            class="w-full h-auto rounded-lg shadow-lg"
+            width="1920"
+            height="1920"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <div class="bg-blue-50 p-8 rounded-lg border-l-4 border-blue-500">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">敬請期待</h2>
+            <p class="text-lg text-gray-700 mb-6">
+              香港校際AI生成創作大賽2026《GEN出你想》即將開始！
+            </p>
+            <p class="text-lg text-gray-700">
+              比賽詳情、報名方式及相關資訊將於日後公佈，請密切留意我們的最新消息。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stay Updated Section -->
+    <section class="py-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8">緊貼最新消息</h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto">
+          關注我們的網站和社交媒體，第一時間獲取比賽最新資訊！
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <ContactSection />
+  </div>
+</Layout>
