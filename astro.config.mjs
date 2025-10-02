@@ -62,12 +62,6 @@ export default defineConfig({
     '/category/news': '/news',
     '/category/past-activities': '/news',
     '/category/科學知識': '/news',
-    // URL aliases
-    '/2025-中小學-stem-比賽清單': '/2025 中小學 STEM 比賽清單',
-    '/2024-stem-competition-list/': '/2024 中小學 STEM 比賽清單',
-    '/personal-data-collection': '/個人資料收集',
-    // Competition drone 2024 aliases - handled by urlAliases.js
-    // Date-based redirects for live sitemap URLs
     '/author/admin': '/news',
     '/author/alanchan': '/news',
     '/author/cyruslam': '/news',
@@ -93,6 +87,15 @@ export default defineConfig({
       lastmod: new Date(),
       // Ensure sitemap is accessible
       filter: (page) => !page.includes('404'),
+      // Custom serializer to properly encode URLs
+      serialize: (item) => {
+        // Properly encode the URL to handle spaces and special characters
+        const encodedUrl = item.url.replace(/ /g, '%20');
+        return {
+          ...item,
+          url: encodedUrl
+        };
+      },
     }),
   ],
 

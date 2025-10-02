@@ -151,13 +151,13 @@ export const urlAliases = {
   },
   "2024 中小學 STEM 比賽清單.astro": {
     "tags": {
-      "root": ["2024competitions", "2024 中小學 STEM 比賽名單", "2024-stem-competition-list"]
+      "root": ["2024competitions", "2024-中小學-STEM-比賽名單", "2024-stem-competition-list"]
     },
     "main": "2024competitions"
   },
   "2025 中小學 STEM 比賽清單.astro": {
     "tags": {
-      "root": ["2025competitions", "2025 中小學 STEM 比賽名單"]
+      "root": ["2025competitions", "2025-中小學-STEM-比賽名單"]
     },
     "main": "2025competitions"
   },
@@ -198,7 +198,7 @@ export const urlAliases = {
   },
   "news/index.astro": {
     "tags": {
-      "root": ["news", "blog", "events", "BLOG", "Blog"]
+      "root": ["news", "blog", "events"]
     },
     "main": "news"
   },
@@ -268,10 +268,10 @@ export const urlAliases = {
   },
   "Delightex 遊戲設計課程.astro": {
     "tags": {
-      "school-courses": ["Delightex", "delightex-game-design", "cospaces", "delightex", "cospace"],
-      "course": ["Delightex", "delightex-game-design", "cospaces", "delightex", "cospace"]
+      "school-courses": ["delightex", "delightex-game-design", "cospaces", "cospace"],
+      "course": ["delightex", "delightex-game-design", "cospaces", "cospace"]
     },
-    "main": "Delightex"
+    "main": "delightex"
   },
   "Donkey Car 無人車課程.astro": {
     "tags": {
@@ -544,6 +544,26 @@ export function findFilenameByAlias(alias) {
     }
   }
   return null;
+}
+
+// Helper function to get canonical URL for current pathname
+export function getCanonicalUrl(pathname, site) {
+  // Remove leading slash and trailing slash for matching
+  const cleanPath = pathname.replace(/^\/|\/$/g, '');
+  
+  // Check if this pathname matches any alias
+  const aliasInfo = findFilenameByAlias(cleanPath);
+  
+  if (aliasInfo) {
+    // If it's an alias, use the main URL as canonical
+    const canonicalPath = aliasInfo.tag === 'root' 
+      ? `/${aliasInfo.main}/`
+      : `/${aliasInfo.tag}/${aliasInfo.main}/`;
+    return new URL(canonicalPath, site);
+  }
+  
+  // If not an alias, use the current pathname as canonical
+  return new URL(pathname, site);
 }
 
 export default urlAliases;
