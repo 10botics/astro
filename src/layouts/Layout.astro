@@ -25,12 +25,13 @@ import GoogleTagManager from '../components/GoogleTagManager.astro';
 import GoogleTagManagerNoscript from '../components/GoogleTagManagerNoscript.astro';
 import GoogleTag from '../components/GoogleTag.astro';
 import { getGTMIds, isGTMEnabled, GOOGLE_TAG_CONFIG, isGoogleTagEnabled } from '../utils/gtm-config';
+import { getCanonicalUrl } from '../utils/urlAliases.js';
 
 // Import global styles
 import '../styles/global.css';
 
-// Generate canonical URL
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+// Generate canonical URL using urlAliases main field
+const canonicalURL = getCanonicalUrl(Astro.url.pathname, Astro.site);
 
 // GTM Configuration
 const gtmIds = getGTMIds();
