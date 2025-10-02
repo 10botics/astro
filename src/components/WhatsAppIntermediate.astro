@@ -9,13 +9,18 @@ export interface Props {
 
 const { 
   title = "課程查詢", 
-  phoneNumber = "65541506" 
+  phoneNumber 
 } = Astro.props;
+
+// Automatically determine phone number based on current month
+const currentMonth = new Date().getMonth() + 1; // getMonth() returns 0-11, so add 1
+const defaultPhoneNumber = currentMonth % 2 === 0 ? "60431553" : "65541506";
+const finalPhoneNumber = phoneNumber || defaultPhoneNumber;
 
 // Create the prefilled message
 const message = `我想查詢 ${title}`;
 const encodedMessage = encodeURIComponent(message);
-const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+const whatsappUrl = `https://wa.me/${finalPhoneNumber}?text=${encodedMessage}`;
 ---
 
 <div class="min-h-screen bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center p-4">
@@ -80,8 +85,9 @@ const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
   // Access gtag function from window
   const gtag = (window as any).gtag;
   
-  // Construct WhatsApp URL
-  const phoneNumber = '65541506';
+  // Construct WhatsApp URL with automatic phone number selection
+  const currentMonth = new Date().getMonth() + 1; // getMonth() returns 0-11, so add 1
+  const phoneNumber = currentMonth % 2 === 0 ? '60431553' : '65541506';
   const message = `我想查詢 ${decodeURIComponent(new URLSearchParams(window.location.search).get('title') || '課程查詢')}`;
   const encodedMessage = encodeURIComponent(message);
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
