@@ -1,0 +1,65 @@
+---
+/**
+ * VideoSchema Component
+ * Generates VideoObject structured data for Google Search Console
+ * 
+ * Required for videos to appear in Google Search results and video search
+ * 
+ * @see https://developers.google.com/search/docs/appearance/structured-data/video
+ */
+
+export interface Props {
+  videoId: string;
+  title: string;
+  description: string;
+  thumbnailUrl?: string;
+  uploadDate?: string;
+  duration?: string; // ISO 8601 format: PT1M33S (1 min 33 sec)
+  contentUrl?: string;
+}
+
+const { 
+  videoId, 
+  title, 
+  description, 
+  thumbnailUrl, 
+  uploadDate,
+  duration,
+  contentUrl 
+} = Astro.props;
+
+// Generate YouTube URLs
+const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+const watchUrl = `https://www.youtube.com/watch?v=${videoId}`;
+const defaultThumbnail = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
+
+// Current date as fallback
+const currentDate = new Date().toISOString();
+
+// VideoObject Schema
+const videoSchema = {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": title,
+  "description": description,
+  "thumbnailUrl": [
+    thumbnailUrl || defaultThumbnail,
+    `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
+    `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`
+  ],
+  "uploadDate": uploadDate || currentDate,
+  "duration": duration,
+  "contentUrl": contentUrl || watchUrl,
+  "embedUrl": embedUrl,
+  "interactionStatistic": {
+    "@type": "InteractionCounter",
+    "interactionType": { "@type": "WatchAction" },
+    "userInteractionCount": 0
+  }
+};
+---
+
+<!-- Video Schema for Google Search Console -->
+<script type="application/ld+json" set:html={JSON.stringify(videoSchema)} />
+
+

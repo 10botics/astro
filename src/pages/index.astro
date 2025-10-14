@@ -6,6 +6,7 @@ import ContactForm from '../components/homepage/ContactForm.astro';
 import BlogGrid from '../components/homepage/BlogGrid.astro';
 import CTAWithImage from '../components/homepage/CTAWithImage.astro';
 import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import VideoSchema from '../components/seo/VideoSchema.astro';
 
 // Import images
 import heroImage from '../assets/images/index/hero-image.jpg';
@@ -537,6 +538,23 @@ const pageKeywords = "STEM教育, AI課程, 人工智能, 到校課程, STEM Day
 
     <!-- YouTube Videos Section -->
     <section class="py-20 bg-gray-50">
+      <!-- Video Schema for SEO -->
+      <VideoSchema
+        videoId="Rp4HD5kxs5Q"
+        title="10教育 STEM 課程介紹"
+        description="了解10教育如何透過創新的STEM和AI課程，培養學生的科技創新能力。專業的到校課程服務，讓學生在實踐中學習。"
+      />
+      <VideoSchema
+        videoId="-eBXs4Yo1OQ"
+        title="STEM教育活動"
+        description="10教育STEM教育活動實況，展示學生透過動手實踐學習科技知識，培養創新思維和解決問題的能力。"
+      />
+      <VideoSchema
+        videoId="ohG-qyg0gxc"
+        title="10教育課程活動花絮"
+        description="精彩的STEM課程活動花絮，記錄學生在課堂中的學習歷程和成果展示。"
+      />
+      
       <div class="container mx-auto px-4">
         <div class="max-w-6xl mx-auto">
           <h2 class="text-4xl font-bold text-center mb-8 text-gray-800">YouTube最新影片</h2>
@@ -545,6 +563,7 @@ const pageKeywords = "STEM教育, AI課程, 人工智能, 到校課程, STEM Day
               <div class="aspect-video">
                 <iframe 
                   src="https://www.youtube.com/embed/Rp4HD5kxs5Q"
+                  title="10教育 STEM 課程介紹"
                   frameborder="0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                   allowfullscreen
@@ -568,6 +587,7 @@ const pageKeywords = "STEM教育, AI課程, 人工智能, 到校課程, STEM Day
               <div class="aspect-video">
                 <iframe 
                   src="https://www.youtube.com/embed/ohG-qyg0gxc" 
+                  title="10教育課程活動花絮"
                   frameborder="0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                   allowfullscreen
