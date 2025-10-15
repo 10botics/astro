@@ -1,14 +1,29 @@
 ---
 // YouTube Embed Component for STEM Showroom
+import VideoSchema from '../seo/VideoSchema.astro';
+
 export interface Props {
   videoId: string;
   title: string;
   description?: string;
   autoplay?: boolean;
+  uploadDate?: string;
+  duration?: string;
 }
 
-const { videoId, title, description, autoplay = false } = Astro.props;
+const { videoId, title, description, autoplay = false, uploadDate, duration } = Astro.props;
 ---
+
+<!-- Video Schema for SEO -->
+{description && (
+  <VideoSchema
+    videoId={videoId}
+    title={title}
+    description={description}
+    uploadDate={uploadDate}
+    duration={duration}
+  />
+)}
 
 <section class="py-16 bg-white">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
