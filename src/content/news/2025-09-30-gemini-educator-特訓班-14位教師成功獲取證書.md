@@ -1,7 +1,7 @@
 ---
-title: "活動回顧：Gemini Educator 特訓班｜14位教師成功獲取證書"
+title: "活動回顧：Gemini Educator 特訓班｜教師積極備考證書"
 publishDate: 2025-09-30
-description: "10教育舉辦的Gemini Educator特訓班圓滿結束，14位教師成功完成培訓並獲得證書，為教育界AI應用注入新動力。"
+description: "10教育舉辦的Gemini Educator特訓班圓滿結束，教師們積極參與培訓並準備考取證書，為教育界AI應用注入新動力。"
 featuredImage: "../../assets/images/news/2025-09-30-gemini-educator/featuredimage.jpg"
 SEOImage: "../../assets/images/news/2025-09-30-gemini-educator/featuredimage.jpg"
 category: "過往活動"
@@ -11,7 +11,7 @@ author: "Jenny Li"
 
 ![Gemini Educator 特訓班活動照片](../../assets/images/news/2025-09-30-gemini-educator/indeximage.jpg)
 
-10教育舉辦的「Gemini Educator 特訓班」已於2025年9月30日圓滿結束。這場專為教育工作者設計的AI培訓課程，成功為14位教師提供了深入的Gemini AI工具應用培訓，所有參與教師均成功通過考核並獲得證書。
+10教育舉辦的「Gemini Educator 特訓班」已於2025年9月30日圓滿結束。這場專為教育工作者設計的AI培訓課程，為多位教師提供了深入的Gemini AI工具應用培訓，參與教師們正積極準備考取相關證書。
 
 ## 培訓內容豐富多元
 
@@ -24,7 +24,7 @@ author: "Jenny Li"
 
 ## 教師反饋積極正面
 
-參與培訓的教師們對課程內容給予高度評價，特別是在AI工具與教學實踐結合方面，提供了許多實用的技巧與策略。培訓過程中，教師們不僅學習了技術操作，更重要的是掌握了如何將AI技術融入日常教學，提升教學效果與學生學習體驗。
+參與培訓的教師們對課程內容給予高度評價，特別是在AI工具與教學實踐結合方面，獲得了許多實用的技巧與策略。培訓過程中，教師們不僅學習了技術操作，更重要的是掌握了如何將AI技術融入日常教學，為日後考取證書做好準備，提升教學效果與學生學習體驗。
 
 ## 持續推動教育創新
 
