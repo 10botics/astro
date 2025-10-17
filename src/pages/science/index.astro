@@ -23,6 +23,18 @@ import scienceImage14 from '../../assets/images/science/胡克滾輪.png';
 import scienceImage15 from '../../assets/images/science/聲音的實驗.png';
 import scienceImage16 from '../../assets/images/science/磁力小車.png';
 
+// Import natural science handcraft images
+import lionSilhouette from '../../assets/images/school-courses/自然生物探究手作課程/lion-silhouette.png';
+import oceanCraft from '../../assets/images/school-courses/自然生物探究手作課程/ocean-craft.png';
+import birdHouse from '../../assets/images/school-courses/自然生物探究手作課程/bird-house.jpeg';
+import catDogMask from '../../assets/images/school-courses/自然生物探究手作課程/cat-dog-mask.png';
+import rabbitLantern from '../../assets/images/school-courses/自然生物探究手作課程/rabbit-lantern.png';
+import insectScratch from '../../assets/images/school-courses/自然生物探究手作課程/insect-scratch.png';
+import twistPottedPlant from '../../assets/images/school-courses/自然生物探究手作課程/twist-potted-plant.png';
+import dinosaurCraft from '../../assets/images/school-courses/自然生物探究手作課程/dinosaur-craft.png';
+import pandaClay from '../../assets/images/school-courses/自然生物探究手作課程/panda-clay.jpeg';
+import turtleMoss from '../../assets/images/school-courses/自然生物探究手作課程/turtle-moss.jpeg';
+
 // Gallery streams data structure
 const streams = [
   {
@@ -307,12 +319,176 @@ const streams = [
     id: 'natural-science-handicraft',
     name: '自然科學手作',
     images: [
-      { id: 1, src: '/images/placeholder1.jpg', title: '自然科學手作作品 1' },
-      { id: 2, src: '/images/placeholder2.jpg', title: '自然科學手作作品 2' },
-      { id: 3, src: '/images/placeholder3.jpg', title: '自然科學手作作品 3' },
-      { id: 4, src: '/images/placeholder4.jpg', title: '自然科學手作作品 4' },
-      { id: 5, src: '/images/placeholder5.jpg', title: '自然科學手作作品 5' },
-      { id: 6, src: '/images/placeholder6.jpg', title: '自然科學手作作品 6' },
+      { 
+        id: 1, 
+        src: lionSilhouette, 
+        title: '木質獅子剪影畫',
+        subtitle: '探索非洲大草原，見證生命的壯麗！',
+        difficulty: 2,
+        interest: 4,
+        science: 3,
+        learningOutcomes: [
+          '非洲大草原的特點和氣候',
+          '非洲BIG 5動物',
+          '動物大遷徙'
+        ],
+        scientificPrinciples: '',
+        gradeLevel: '一至四年級',
+        duration: '75分鐘'
+      },
+      { 
+        id: 2, 
+        src: oceanCraft, 
+        title: '海洋立體景深手作',
+        subtitle: '從微生物到巨大的鯨魚，皆有其獨特之處！',
+        difficulty: 2,
+        interest: 4,
+        science: 3,
+        learningOutcomes: [
+          '簡單介紹海洋的知識',
+          '6-8種海洋生物的習性和特徵',
+          '不同的海洋棲息地'
+        ],
+        scientificPrinciples: '',
+        gradeLevel: '一至六年級',
+        duration: '90分鐘'
+      },
+      { 
+        id: 3, 
+        src: birdHouse, 
+        title: '雀鳥小屋',
+        subtitle: '了解雀鳥的習性，增進與自然的連結！',
+        difficulty: 2,
+        interest: 4,
+        science: 3,
+        learningOutcomes: [
+          '介紹香港常見/飼養的雀鳥',
+          '認識牠們的習性和棲息地方',
+          '正確觀鳥的方式'
+        ],
+        scientificPrinciples: '',
+        gradeLevel: '一至六年級',
+        duration: '75分鐘'
+      },
+      { 
+        id: 4, 
+        src: catDogMask, 
+        title: '貓/狗面具',
+        subtitle: '了解貓狗的語言，與寵物建立深厚信任',
+        difficulty: 2,
+        interest: 4,
+        science: 3,
+        learningOutcomes: [
+          '介紹貓狗的特點',
+          '生活環境需要的設備',
+          '如何正確和牠們交流互動'
+        ],
+        scientificPrinciples: '',
+        gradeLevel: '一至四年級',
+        duration: '70分鐘'
+      },
+      { 
+        id: 5, 
+        src: rabbitLantern, 
+        title: '兔子燈籠',
+        subtitle: '了解兔子的特點',
+        difficulty: 2,
+        interest: 4,
+        science: 3,
+        learningOutcomes: [
+          '了解兔子的特點',
+          '認識牠們的生活環境及飲食',
+          '如何飼養兔子'
+        ],
+        scientificPrinciples: '',
+        gradeLevel: '一至四年級',
+        duration: '75分鐘'
+      },
+      { 
+        id: 6, 
+        src: insectScratch, 
+        title: '刮刮昆蟲畫',
+        subtitle: '愛護昆蟲，保護我們的環境與未來！',
+        difficulty: 2,
+        interest: 4,
+        science: 3,
+        learningOutcomes: [
+          '昆蟲的構造',
+          '常見的昆蟲特性及生活環境',
+          '昆蟲的重要'
+        ],
+        scientificPrinciples: '',
+        gradeLevel: '一至四年級',
+        duration: '70分鐘'
+      },
+      { 
+        id: 7, 
+        src: twistPottedPlant, 
+        title: '扭扭棒盆栽',
+        subtitle: '觀察植物的變化，感受生命的力量！',
+        difficulty: 2,
+        interest: 4,
+        science: 3,
+        learningOutcomes: [
+          '植物的構造',
+          '光合作用',
+          '常見的植物種類',
+          '如何種植種子'
+        ],
+        scientificPrinciples: '',
+        gradeLevel: '一至六年級',
+        duration: '75分鐘'
+      },
+      { 
+        id: 8, 
+        src: dinosaurCraft, 
+        title: '可活動恐龍創意畫',
+        subtitle: '化身古生物學家，探索過去的生物多樣性！',
+        difficulty: 2,
+        interest: 4,
+        science: 3,
+        learningOutcomes: [
+          '介紹史前世界',
+          '探索恐龍與古生物',
+          '恐龍生活環境'
+        ],
+        scientificPrinciples: '',
+        gradeLevel: '一至四年級',
+        duration: '75分鐘'
+      },
+      { 
+        id: 9, 
+        src: pandaClay, 
+        title: '熊貓黏土',
+        subtitle: '愛護昆蟲，保護我們的環境與未來！',
+        difficulty: 2,
+        interest: 4,
+        science: 3,
+        learningOutcomes: [
+          '熊貓的特點',
+          '熊貓的生活環境',
+          '熊貓的保育現況'
+        ],
+        scientificPrinciples: '',
+        gradeLevel: '一至六年級',
+        duration: '90分鐘'
+      },
+      { 
+        id: 10, 
+        src: turtleMoss, 
+        title: '永生小龜苔蘚畫',
+        subtitle: '兩種龜類，兩種生活方式！',
+        difficulty: 2,
+        interest: 4,
+        science: 3,
+        learningOutcomes: [
+          '陸龜和水龜的特點',
+          '生活環境'
+        ],
+        scientificPrinciples: '',
+        gradeLevel: '一至六年級',
+        duration: '90分鐘'
+      },
     ]
   }
 ];
