@@ -6,7 +6,7 @@ featuredImage: "../../assets/images/news/2025-09-30-gemini-educator/featuredimag
 SEOImage: "../../assets/images/news/2025-09-30-gemini-educator/featuredimage.jpg"
 category: "過往活動"
 tags: [AI 人工智能, 教師培訓, Gemini]
-author: "Jenny Li"
+author: "Colman"
 ---
 
 ![Gemini Educator 特訓班活動照片](../../assets/images/news/2025-09-30-gemini-educator/indeximage.jpg)
