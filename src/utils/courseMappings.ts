@@ -126,7 +126,7 @@ export const TAG_MAPPING: Record<string, string> = {
   // Additional mappings for broader categories
   'AI': 'ai',
   '藝術': 'arts',
-  '其他': 'others',
+  '科學手作': 'science-handicraft',
   'STEM': 'stem',
   '科學技術工程數學': 'stem',
   // New tags from the provided URLs
@@ -372,29 +372,14 @@ export function filterCoursesByTag(courses: Course[], tag: string, originalTag?:
         courseTag.includes('STEM') || courseTag.includes('物理') ||
         courseTag.includes('KSP') || courseTag.includes('Lego')
       );
-    } else if (tag === 'others') {
-      // Courses that don't fit into AI, Programming, Arts, or STEM categories
-      const hasAITag = course.tags.some(courseTag => 
-        courseTag.includes('AI') || courseTag.includes('人工智能') || courseTag.includes('ai')
+    } else if (tag === 'science-handicraft') {
+      // Science handicraft courses - courses with Science + Arts/Hands-on tags
+      return course.tags.some(courseTag => 
+        (courseTag.includes('Science') || courseTag.includes('科學') || 
+         courseTag.includes('手作') || courseTag.includes('Arts')) &&
+        !courseTag.includes('Programming') && !courseTag.includes('編程') &&
+        !courseTag.includes('AI') && !courseTag.includes('人工智能')
       );
-      const hasProgrammingTag = course.tags.some(courseTag => 
-        courseTag.includes('Programming') || courseTag.includes('編程') || 
-        courseTag.includes('C#') || courseTag.includes('Unity') || courseTag.includes('Swift')
-      );
-      const hasArtsTag = course.tags.some(courseTag => 
-        courseTag.includes('Arts') || courseTag.includes('藝術') || 
-        courseTag.includes('Procreate') || courseTag.includes('繪畫') || courseTag.includes('創意')
-      );
-      const hasSTEMTag = course.tags.some(courseTag => 
-        courseTag.includes('Science') || courseTag.includes('科學') ||
-        courseTag.includes('Engineering') || courseTag.includes('工程') ||
-        courseTag.includes('Robotics') || courseTag.includes('機械人') ||
-        courseTag.includes('Block Coding') || courseTag.includes('方塊編程') ||
-        courseTag.includes('Arduino') || courseTag.includes('Microbit') ||
-        courseTag.includes('STEM') || courseTag.includes('物理') ||
-        courseTag.includes('KSP') || courseTag.includes('Lego')
-      );
-      return !hasAITag && !hasProgrammingTag && !hasArtsTag && !hasSTEMTag;
     } else {
       // Original filtering logic for other tags
       return course.tags.some(courseTag => {
@@ -462,7 +447,7 @@ export function generateTagPaths(allTags: string[]): Array<{params: {tag: string
     { tag: 'programming', originalTag: 'Programming 編程' },
     { tag: 'arts', originalTag: 'Arts 藝術' },
     { tag: 'stem', originalTag: 'STEM 科學技術工程數學' },
-    { tag: 'others', originalTag: 'Others 其他' }
+    { tag: 'science-handicraft', originalTag: '科學手作' }
   ];
 
   // Add missing tags that may not be discovered from courses but exist in TAG_MAPPING

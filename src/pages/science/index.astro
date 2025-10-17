@@ -1,0 +1,228 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import { 
+  discoverCourses, 
+  generateTagSlug,
+  AUDIENCE_TAG_MAPPING,
+  filterCoursesByTag,
+  type Course 
+} from '../../utils/courseMappings';
+
+// Import background image
+import aiCoursesImage from '../../assets/images/index/ai-courses.jpg';
+
+// Auto-discover courses using shared utility
+const astroCourses = await discoverCourses('../school-courses/', ['index.astro', '[slug].astro']);
+
+// Filter for science handicraft courses only
+const scienceHandicraftCourses = filterCoursesByTag(astroCourses, 'science-handicraft', '科學手作');
+
+// Sort courses by publication date (newest first)
+const sortedCourses = scienceHandicraftCourses.sort((a, b) => 
+  new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
+);
+
+// SEO optimized page data
+const pageTitle = "科學手作課程 - 10教育探索科學與藝術";
+const pageDescription = `探索我們的科學手作課程，結合自然科學、生物探究與創意手作。共${sortedCourses.length}個課程，讓學生在動手中學習科學知識。`;
+const pageKeywords = "科學手作, 自然科學課程, 生物探究, 海洋環境, 創意手作, STEM教育, 10教育";
+---
+
+<Layout 
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  ogImage="/images/og/science-courses.jpg"
+>
+  <main class="courses-index">
+    <!-- Header -->
+    <header class="relative text-white py-16 overflow-hidden">
+      <div class="absolute inset-0">
+        <Image src={aiCoursesImage} alt="科學手作課程背景" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+      </div>
+      <div class="relative container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-5xl font-bold mb-6">科學手作課程</h1>
+          <p class="text-xl opacity-90 mb-8">
+            探索自然科學與創意手作的完美結合，讓學生在動手實踐中學習科學知識
+          </p>
+          <div class="flex flex-wrap justify-center gap-4 mt-8">
+            <div class="bg-white bg-opacity-20 backdrop-blur-sm px-6 py-3 rounded-lg">
+              <div class="text-3xl font-bold">{sortedCourses.length}</div>
+              <div class="text-sm opacity-90">科學手作課程</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Course Description -->
+    <section class="py-12 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-3xl font-bold mb-6 text-gray-800">什麼是科學手作課程？</h2>
+          <p class="text-lg text-gray-600 leading-relaxed mb-4">
+            科學手作課程結合自然科學知識與創意手工製作，讓學生透過實際操作探索科學原理。
+            課程涵蓋生物學、環境科學、海洋生態等主題，培養學生的觀察力、創造力與科學探究精神。
+          </p>
+          <p class="text-lg text-gray-600 leading-relaxed">
+            適合對自然科學和動手創作感興趣的學生，通過製作各種科學手工作品，
+            深入了解動植物特徵、生態系統和環境保護的重要性。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- All Science Courses -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl font-bold mb-8 text-gray-800 text-center">探索我們的科學手作課程</h2>
+          
+          {sortedCourses.length > 0 ? (
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {sortedCourses.map((course) => (
+                <article class="course-card bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+                  <!-- Hero Image -->
+                  {course.heroImage && (
+                    <div class="course-image-container bg-gray-100 overflow-hidden aspect-video">
+                      {typeof course.heroImage === 'string' ? (
+                        <Image 
+                          src={course.heroImage} 
+                          alt={course.title}
+                          width={600}
+                          height={400}
+                          class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      ) : (
+                        <Image 
+                          src={course.heroImage} 
+                          alt={course.title}
+                          width={600}
+                          height={400}
+                          class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      )}
+                    </div>
+                  )}
+                  <div class="p-6">
+                    <!-- Course Header -->
+                    <div class="mb-4">
+                      <h3 class="text-xl font-bold mb-2 text-gray-800 line-clamp-2">
+                        <a href={`/school-courses/${course.slug}`} 
+                           class="hover:text-blue-600 transition-colors">
+                          {course.title}
+                        </a>
+                      </h3>
+                      
+                      {course.description && (
+                        <p class="text-gray-600 text-sm line-clamp-3 mb-4">
+                          {course.description}
+                        </p>
+                      )}
+                    </div>
+                    
+                    <!-- Tags -->
+                    <div class="mb-4">
+                      {(() => {
+                        const targetAudienceTags = ['初小', '高小', '初中', '高中'];
+                        const otherTags = course.tags.filter(tag => !targetAudienceTags.includes(tag));
+                        const audienceTags = course.tags.filter(tag => targetAudienceTags.includes(tag));
+                        
+                        return (
+                          <div class="space-y-2">
+                            {/* Target Audience */}
+                            {audienceTags.length > 0 && (
+                              <div class="flex flex-wrap gap-1 items-center">
+                                <span class="text-xs font-medium text-gray-600 mr-1">適合對象:</span>
+                                {audienceTags.map(tag => {
+                                  const tagSlug = AUDIENCE_TAG_MAPPING[tag] || tag.toLowerCase().replace(/\s+/g, '-');
+                                  
+                                  return (
+                                    <a href={`/school-courses/tag/${tagSlug}`} class="bg-cyan-100 text-cyan-800 px-2 py-1 rounded text-xs font-medium hover:bg-cyan-200 transition-colors">
+                                      {tag}
+                                    </a>
+                                  );
+                                })}
+                              </div>
+                            )}
+                            
+                            {/* Other Tags */}
+                            {otherTags.length > 0 && (
+                              <div class="flex flex-wrap gap-1">
+                                {otherTags.map(tag => {
+                                  // Generate tag slug using shared utility
+                                  const tagSlug = generateTagSlug(tag);
+                                  
+                                  return (
+                                    <a href={`/school-courses/tag/${tagSlug}`}
+                                       class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium hover:bg-blue-200 transition-colors">
+                                      {tag}
+                                    </a>
+                                  );
+                                })}
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })()}
+                    </div>
+                    
+                    <!-- Action Button -->
+                    <div class="mt-auto">
+                      <a href={`/school-courses/${course.slug}`}
+                         class="inline-block w-full text-center bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors text-sm font-medium">
+                        查看課程詳情
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div class="text-center py-12">
+              <p class="text-xl text-gray-600">目前尚無科學手作課程</p>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Science Courses -->
+    <section class="py-16 bg-gradient-to-br from-blue-50 to-green-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl font-bold mb-12 text-gray-800 text-center">為什麼選擇我們的科學手作課程？</h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <div class="text-4xl mb-4">🔬</div>
+              <h3 class="text-xl font-bold mb-3 text-gray-800">實踐與理論結合</h3>
+              <p class="text-gray-600">
+                通過動手製作和實驗，將抽象的科學概念轉化為具體的學習體驗
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <div class="text-4xl mb-4">🌿</div>
+              <h3 class="text-xl font-bold mb-3 text-gray-800">探索自然世界</h3>
+              <p class="text-gray-600">
+                深入了解動植物、生態系統和環境科學，培養對自然的熱愛和保護意識
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <div class="text-4xl mb-4">🎨</div>
+              <h3 class="text-xl font-bold mb-3 text-gray-800">激發創造力</h3>
+              <p class="text-gray-600">
+                結合藝術與科學，讓學生在創作中展現個性，培養創新思維
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<!-- Styles are now centralized in src/styles/school-courses.css -->
+
