@@ -153,8 +153,8 @@ const faqItems = [
   />
 
   <!-- Hero image and description section -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <section class="section-padding bg-white">
+    <div class="container-standard">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <div class="rounded-lg overflow-hidden shadow-lg">
@@ -174,15 +174,15 @@ const faqItems = [
           </p>
           <div class="space-y-4">
             <div class="flex items-start space-x-3">
-              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <i class="fas fa-check-circle text-brand-cyan-600 mt-1"></i>
               <span class="text-gray-700">體驗最新空間運算技術</span>
             </div>
             <div class="flex items-start space-x-3">
-              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <i class="fas fa-check-circle text-brand-cyan-600 mt-1"></i>
               <span class="text-gray-700">學習未來平台開發技能</span>
             </div>
             <div class="flex items-start space-x-3">
-              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <i class="fas fa-check-circle text-brand-cyan-600 mt-1"></i>
               <span class="text-gray-700">創造沉浸式遊戲體驗</span>
             </div>
           </div>
@@ -192,15 +192,15 @@ const faqItems = [
   </section>
 
   <!-- Course features section -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
       <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程特色</h2>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
         {courseFeatures.map((feature) => (
-          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+          <div class="card-base card-hover p-6">
             <div class="flex items-center mb-4">
-              <i class={`${feature.icon} text-3xl text-cyan-500 mr-4`}></i>
+              <i class={`${feature.icon} text-3xl text-brand-cyan-600 mr-4`}></i>
               <h3 class="text-xl font-semibold text-gray-900">{feature.title}</h3>
             </div>
             <p class="text-gray-700">{feature.description}</p>
@@ -211,15 +211,15 @@ const faqItems = [
   </section>
 
   <!-- Course objectives section -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <section class="section-padding bg-white">
+    <div class="container-standard">
       <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程目標</h2>
       
       <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
         {courseObjectives.map((objective) => (
-          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow text-center">
+          <div class="card-base card-hover p-6 text-center">
             <div class="flex justify-center mb-4">
-              <i class={`${objective.icon} text-3xl text-cyan-500`}></i>
+              <i class={`${objective.icon} text-3xl text-brand-cyan-600`}></i>
             </div>
             <h3 class="text-lg font-semibold text-gray-900 mb-3">{objective.title}</h3>
             <p class="text-gray-700">{objective.description}</p>

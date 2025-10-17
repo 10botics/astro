@@ -152,8 +152,8 @@ const faqData = [
   />
 
   <!-- Course Description -->
-  <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
       <div class="max-w-4xl mx-auto text-center">
         <p class="text-lg text-gray-700 leading-relaxed">{courseData.detailedDescription}</p>
       </div>
@@ -161,15 +161,15 @@ const faqData = [
   </section>
 
   <!-- Course Features -->
-  <section class="py-16">
-    <div class="container mx-auto px-4">
+  <section class="section-padding">
+    <div class="container-standard">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold text-gray-900 mb-4">課程特色</h2>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
         {courseFeatures.map((feature) => (
-          <div class="text-center p-6 bg-white rounded-lg shadow-lg">
-            <div class="text-4xl text-blue-600 mb-4">
+          <div class="card-base text-center p-6">
+            <div class="text-4xl text-brand-cyan-600 mb-4">
               <i class={feature.icon}></i>
             </div>
             <h3 class="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
@@ -191,15 +191,15 @@ const faqData = [
   />
 
   <!-- Course Schedule -->
-  <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold text-gray-900 mb-4">課程安排</h2>
       </div>
       <div class="max-w-4xl mx-auto">
         {courseSchedule.map((schedule) => (
-          <div class="bg-white rounded-lg shadow-lg p-8 text-center">
-            <div class="text-4xl text-blue-600 mb-4">
+          <div class="card-base p-8 text-center">
+            <div class="text-4xl text-brand-cyan-600 mb-4">
               <i class={schedule.icon}></i>
             </div>
             <h3 class="text-2xl font-semibold text-gray-900 mb-4">{schedule.title}</h3>
@@ -211,8 +211,8 @@ const faqData = [
   </section>
 
   <!-- Course Gallery -->
-  <section class="py-16">
-    <div class="container mx-auto px-4">
+  <section class="section-padding">
+    <div class="container-standard">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold text-gray-900 mb-4">精選照片</h2>
       </div>
@@ -222,7 +222,7 @@ const faqData = [
             <Image 
               src={image} 
               alt="Python 課程活動照片" 
-              class="w-full h-64 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+              class="w-full h-64 object-cover rounded-lg shadow-card group-hover:shadow-card-hover transition-shadow"
             />
           </div>
         ))}

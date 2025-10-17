@@ -184,8 +184,8 @@ const faqItems = [
   />
 
   <!-- Hero image and description section -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <section class="section-padding bg-white">
+    <div class="container-standard">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <div class="rounded-lg overflow-hidden shadow-lg">
@@ -205,15 +205,15 @@ const faqItems = [
           </p>
           <div class="space-y-4">
             <div class="flex items-start space-x-3">
-              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <i class="fas fa-check-circle text-brand-cyan-600 mt-1"></i>
               <span class="text-gray-700">結合藝術創作與科技應用</span>
             </div>
             <div class="flex items-start space-x-3">
-              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <i class="fas fa-check-circle text-brand-cyan-600 mt-1"></i>
               <span class="text-gray-700">培養空間想像和設計思維</span>
             </div>
             <div class="flex items-start space-x-3">
-              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <i class="fas fa-check-circle text-brand-cyan-600 mt-1"></i>
               <span class="text-gray-700">體驗完整的產品開發流程</span>
             </div>
           </div>
@@ -223,15 +223,15 @@ const faqItems = [
   </section>
 
   <!-- Course highlights section -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
       <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程重點</h2>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {courseHighlights.map((highlight) => (
           <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
             <div class="flex items-center mb-4">
-              <i class={`${highlight.icon} text-2xl text-cyan-500 mr-3`}></i>
+              <i class={`${highlight.icon} text-2xl text-brand-cyan-600 mr-3`}></i>
               <h3 class="text-lg font-semibold text-gray-900">{highlight.title}</h3>
             </div>
             <p class="text-gray-700">{highlight.description}</p>
@@ -242,15 +242,15 @@ const faqItems = [
   </section>
 
   <!-- Learning outcomes section -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <section class="section-padding bg-white">
+    <div class="container-standard">
       <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">學習成果</h2>
       
       <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
         {learningOutcomes.map((outcome) => (
           <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow text-center">
             <div class="flex justify-center mb-4">
-              <i class={`${outcome.icon} text-3xl text-cyan-500`}></i>
+              <i class={`${outcome.icon} text-3xl text-brand-cyan-600`}></i>
             </div>
             <h3 class="text-lg font-semibold text-gray-900 mb-3">{outcome.title}</h3>
             <p class="text-gray-700">{outcome.description}</p>
@@ -261,14 +261,14 @@ const faqItems = [
   </section>
 
   <!-- Technology showcase section -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
       <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">所用技術介紹</h2>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
           <div class="flex items-center mb-4">
-            <i class="fas fa-mobile-alt text-3xl text-cyan-500 mr-4"></i>
+            <i class="fas fa-mobile-alt text-3xl text-brand-cyan-600 mr-4"></i>
             <h3 class="text-xl font-semibold text-gray-900">Nomad Sculpt</h3>
           </div>
           <p class="text-gray-700">
@@ -278,7 +278,7 @@ const faqItems = [
         
         <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
           <div class="flex items-center mb-4">
-            <i class="fas fa-microchip text-3xl text-cyan-500 mr-4"></i>
+            <i class="fas fa-microchip text-3xl text-brand-cyan-600 mr-4"></i>
             <h3 class="text-xl font-semibold text-gray-900">Micro:bit</h3>
           </div>
           <p class="text-gray-700">
@@ -288,7 +288,7 @@ const faqItems = [
         
         <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
           <div class="flex items-center mb-4">
-            <i class="fas fa-print text-3xl text-cyan-500 mr-4"></i>
+            <i class="fas fa-print text-3xl text-brand-cyan-600 mr-4"></i>
             <h3 class="text-xl font-semibold text-gray-900">3D 打印技術</h3>
           </div>
           <p class="text-gray-700">

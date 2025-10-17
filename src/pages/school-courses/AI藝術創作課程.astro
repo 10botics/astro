@@ -211,6 +211,9 @@ const courseHighlights = [
 ---
 
 <Layout title={courseData.title} description={courseData.description}>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
   <main>
     <!-- Hero Section -->
     <HeroSection 
@@ -222,18 +225,17 @@ const courseHighlights = [
     />
 
     <!-- Cross-disciplinary Learning Section -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">跨學科學習</h2>
-        </div>
+    <section class="section-padding bg-gray-50">
+      <div class="container-standard">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">跨學科學習</h2>
+        
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {crossDisciplinaryLearning.map((item) => (
-            <div class="bg-white p-6 rounded-lg shadow-md text-center">
-              <div class="text-4xl text-blue-600 mb-4">
+            <div class="card-base card-hover p-6 text-center">
+              <div class="text-4xl text-brand-cyan-600 mb-4">
                 <i class={item.icon}></i>
               </div>
-              <h3 class="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
+              <h3 class="text-xl font-semibold text-gray-800 mb-3">{item.title}</h3>
               <p class="text-gray-600">{item.description}</p>
             </div>
           ))}
@@ -252,26 +254,26 @@ const courseHighlights = [
     />
 
     <!-- Course Arrangement Section -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">課程安排</h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+    <section class="section-padding bg-gray-50">
+      <div class="container-standard">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程安排</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           {courseArrangement.map((item) => (
-            <div class="bg-white p-6 rounded-lg shadow-md">
-              <div class="flex items-start">
-                <div class="text-3xl text-blue-600 mr-4">
-                  <i class={item.icon}></i>
+            <div class="card-base card-hover p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-8 h-8 bg-semantic-warning rounded-full flex items-center justify-center mr-3">
+                  <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                  </svg>
                 </div>
-                <div>
-                  <h3 class="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
-                  {item.description && <p class="text-gray-600">{item.description}</p>}
-                </div>
+                <h3 class="text-xl font-semibold text-gray-800">{item.title}</h3>
               </div>
+              {item.description && <p class="text-gray-600 whitespace-pre-line">{item.description}</p>}
             </div>
           ))}
         </div>
+        
         <div class="text-center mt-8">
           <p class="text-gray-600">歡迎填妥下方表格讓同事為你提供咨詢。</p>
         </div>

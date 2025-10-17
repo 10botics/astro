@@ -228,8 +228,8 @@ const { title, subtitle, tags, description, detailedDescription, heroImage } = c
     />
 
     <!-- Course Introduction -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
+    <section class="section-padding bg-gray-50">
+      <div class="container-standard">
         <div class="max-w-4xl mx-auto">
           <div class="grid md:grid-cols-2 gap-8 items-center">
             <div>
@@ -253,14 +253,14 @@ const { title, subtitle, tags, description, detailedDescription, heroImage } = c
     </section>
 
     <!-- Course Highlights -->
-    <section class="py-16">
-      <div class="container mx-auto px-4">
+    <section class="section-padding bg-white">
+      <div class="container-standard">
         <div class="text-center mb-12">
           <h2 class="text-4xl font-bold mb-4">課程重點</h2>
         </div>
         <div class="grid md:grid-cols-3 gap-8">
           {courseHighlights.map((highlight) => (
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="card-base card-hover">
               <Image 
                 src={highlight.image} 
                 alt={highlight.title}
@@ -279,8 +279,8 @@ const { title, subtitle, tags, description, detailedDescription, heroImage } = c
     </section>
 
     <!-- Course Gallery -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
+    <section class="section-padding bg-gray-50">
+      <div class="container-standard">
         <GalleryCarousel 
           title="課程實況照片"
           images={[
@@ -301,14 +301,14 @@ const { title, subtitle, tags, description, detailedDescription, heroImage } = c
     </section>
 
     <!-- Learning Outcomes -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
+    <section class="section-padding bg-gray-50">
+      <div class="container-standard">
         <div class="text-center mb-12">
           <h2 class="text-4xl font-bold mb-4">目標成果</h2>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {learningOutcomes.map((outcome) => (
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="card-base card-hover">
               <Image 
                 src={outcome.image} 
                 alt={outcome.title}
@@ -337,15 +337,15 @@ const { title, subtitle, tags, description, detailedDescription, heroImage } = c
     />
 
     <!-- Cross-disciplinary Learning -->
-    <section class="py-16">
-      <div class="container mx-auto px-4">
+    <section class="section-padding bg-white">
+      <div class="container-standard">
         <div class="text-center mb-12">
           <h2 class="text-4xl font-bold mb-4">跨學科學習重點</h2>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {crossDisciplinaryLearning.map((item) => (
-            <div class="text-center p-6 bg-white rounded-lg shadow-lg">
-              <div class="text-4xl text-blue-600 mb-4">
+            <div class="card-base card-hover text-center p-6">
+              <div class="text-4xl text-brand-cyan-600 mb-4">
                 <i class={item.icon}></i>
               </div>
               <h3 class="text-xl font-bold mb-3">{item.title}</h3>

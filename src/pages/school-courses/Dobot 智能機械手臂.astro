@@ -103,8 +103,8 @@ const courseArrangement = [
 
 
   <!-- What is Dobot Magician Lite -->
-  <section class="py-16 bg-white">
-    <div class="container mx-auto px-4">
+  <section class="section-padding bg-white">
+    <div class="container-standard">
       <div class="max-w-6xl mx-auto">
         <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">甚麼是 Dobot Magician Lite</h2>
         
@@ -119,7 +119,7 @@ const courseArrangement = [
           <div class="grid grid-cols-1 gap-6">
             <div class="flex items-center space-x-4">
               <div class="flex-shrink-0">
-                <i class="fas fa-code text-3xl text-blue-600"></i>
+                <i class="fas fa-code text-3xl text-brand-cyan-600"></i>
               </div>
               <div>
                 <h3 class="text-xl font-semibold">圖形化編程</h3>
@@ -128,7 +128,7 @@ const courseArrangement = [
             
             <div class="flex items-center space-x-4">
               <div class="flex-shrink-0">
-                <i class="fas fa-link text-3xl text-blue-600"></i>
+                <i class="fas fa-link text-3xl text-brand-cyan-600"></i>
               </div>
               <div>
                 <h3 class="text-xl font-semibold">同時支援 12 個擴展</h3>
@@ -137,7 +137,7 @@ const courseArrangement = [
             
             <div class="flex items-center space-x-4">
               <div class="flex-shrink-0">
-                <i class="fas fa-camera text-3xl text-blue-600"></i>
+                <i class="fas fa-camera text-3xl text-brand-cyan-600"></i>
               </div>
               <div>
                 <h3 class="text-xl font-semibold">豐富配件，如搭配AI視覺套件</h3>
@@ -150,8 +150,8 @@ const courseArrangement = [
   </section>
 
   <!-- Course Features with Images -->
-  <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
       <div class="max-w-6xl mx-auto">
         <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程特色</h2>
         
@@ -160,7 +160,7 @@ const courseArrangement = [
             <Image 
               src={dobotAI} 
               alt="結合人工智能" 
-              class="w-full h-48 object-cover rounded-lg shadow-md mb-4"
+              class="w-full h-48 object-cover rounded-lg shadow-card mb-4"
             />
             <h3 class="text-xl font-semibold mb-2">結合人工智能</h3>
             <p class="text-gray-600">運用 AI 攝像頭進行視覺辨識</p>
@@ -170,7 +170,7 @@ const courseArrangement = [
             <Image 
               src={dobotIndustry} 
               alt="實現工業 4.0" 
-              class="w-full h-48 object-cover rounded-lg shadow-md mb-4"
+              class="w-full h-48 object-cover rounded-lg shadow-card mb-4"
             />
             <h3 class="text-xl font-semibold mb-2">實現工業 4.0</h3>
             <p class="text-gray-600">結合機器學習感測模擬智慧工廠</p>
@@ -180,7 +180,7 @@ const courseArrangement = [
             <Image 
               src={dobotAutomation} 
               alt="自動化控制" 
-              class="w-full h-48 object-cover rounded-lg shadow-md mb-4"
+              class="w-full h-48 object-cover rounded-lg shadow-card mb-4"
             />
             <h3 class="text-xl font-semibold mb-2">自動化控制</h3>
             <p class="text-gray-600">使用不同的夾爪抓取和放置物體</p>
@@ -201,13 +201,13 @@ const courseArrangement = [
   />
 
   <!-- Course Arrangement -->
-  <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
       <div class="max-w-4xl mx-auto">
         <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程安排</h2>
         <div class="grid md:grid-cols-2 gap-8">
           {courseArrangement.map((arrangement) => (
-            <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="card-base p-6">
               <div class="flex items-center mb-4">
                 <i class="fas fa-star text-yellow-500 text-xl mr-3"></i>
                 <h3 class="text-xl font-semibold">{arrangement.title}</h3>
@@ -224,8 +224,8 @@ const courseArrangement = [
   </section>
 
   <!-- Photo Gallery -->
-  <section class="py-16 bg-white">
-    <div class="container mx-auto px-4">
+  <section class="section-padding bg-white">
+    <div class="container-standard">
       <div class="max-w-6xl mx-auto">
         <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">精選照片</h2>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -233,28 +233,28 @@ const courseArrangement = [
             <Image 
               src={dobotThumbnail} 
               alt="Dobot Thumbnail" 
-              class="w-full h-48 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+              class="w-full h-48 object-cover rounded-lg shadow-card group-hover:shadow-card-hover transition-shadow"
             />
           </div>
           <div class="group cursor-pointer">
             <Image 
               src={dobotScreenshot2} 
               alt="Dobot Screenshot 2" 
-              class="w-full h-48 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+              class="w-full h-48 object-cover rounded-lg shadow-card group-hover:shadow-card-hover transition-shadow"
             />
           </div>
           <div class="group cursor-pointer">
             <Image 
               src={dobotPhoto1} 
               alt="Dobot Photo 1" 
-              class="w-full h-48 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+              class="w-full h-48 object-cover rounded-lg shadow-card group-hover:shadow-card-hover transition-shadow"
             />
           </div>
           <div class="group cursor-pointer">
             <Image 
               src={dobotConveyor} 
               alt="Dobot Conveyor" 
-              class="w-full h-48 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+              class="w-full h-48 object-cover rounded-lg shadow-card group-hover:shadow-card-hover transition-shadow"
             />
           </div>
         </div>

@@ -190,6 +190,9 @@ const studentWorkExamples = [
 ---
 
 <Layout title={courseData.title} description={courseData.description}>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
   <HeroSection 
     title={courseData.title}
     subtitle={courseData.subtitle}
@@ -199,18 +202,20 @@ const studentWorkExamples = [
   />
 
   <!-- Course Features Section -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程特色</h2>
+  <section class="section-padding bg-white">
+    <div class="container-standard">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程特色</h2>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {courseFeatures.map((feature) => (
-          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+          <div class="card-base card-hover p-6">
             <div class="flex items-center mb-4">
-              <i class={`${feature.icon} text-3xl text-cyan-500 mr-4`}></i>
-              <h3 class="text-xl font-semibold text-gray-900">{feature.title}</h3>
+              <div class="w-12 h-12 bg-brand-cyan-600 rounded-full flex items-center justify-center mr-4">
+                <i class={`${feature.icon} text-xl text-white`}></i>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800">{feature.title}</h3>
             </div>
-            <p class="text-gray-700 leading-relaxed">{feature.description}</p>
+            <p class="text-gray-600">{feature.description}</p>
           </div>
         ))}
       </div>
@@ -228,41 +233,45 @@ const studentWorkExamples = [
   />
 
   <!-- Course Arrangement Section -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程安排</h2>
+  <section class="section-padding bg-white">
+    <div class="container-standard">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程安排</h2>
       
       <div class="grid md:grid-cols-2 gap-8">
         {courseArrangements.map((arrangement) => (
-          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+          <div class="card-base card-hover p-6">
             <div class="flex items-center mb-4">
-              <i class={`${arrangement.icon} text-3xl text-cyan-500 mr-4`}></i>
-              <h3 class="text-xl font-semibold text-gray-900">{arrangement.title}</h3>
+              <div class="w-8 h-8 bg-semantic-warning rounded-full flex items-center justify-center mr-3">
+                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800">{arrangement.title}</h3>
             </div>
-            <p class="text-gray-700 leading-relaxed whitespace-pre-line">{arrangement.description}</p>
+            <p class="text-gray-600 whitespace-pre-line">{arrangement.description}</p>
           </div>
         ))}
       </div>
       
       <div class="text-center mt-8">
-        <p class="text-lg text-gray-700">歡迎填妥下方表格讓同事為你提供咨詢。</p>
+        <p class="text-gray-600">歡迎填妥下方表格讓同事為你提供咨詢。</p>
       </div>
     </div>
   </section>
 
   <!-- Student Work Examples Section -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">精選照片</h2>
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">精選照片</h2>
       
       <div class="grid md:grid-cols-2 gap-8">
         {studentWorkExamples.map((work) => (
-          <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+          <div class="card-base card-hover">
             {work.videoUrl ? (
               <div class="relative">
                 <Image src={work.image} alt={work.title} class="w-full h-64 object-cover" />
-                <div class="absolute inset-0 flex items-center justify-center">
-                  <a href={work.videoUrl} target="_blank" class="bg-red-600 text-white p-4 rounded-full hover:bg-red-700 transition-colors">
+                <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20 hover:bg-opacity-30 transition-all">
+                  <a href={work.videoUrl} target="_blank" class="bg-red-600 text-white p-4 rounded-full hover:bg-red-700 transition-colors shadow-lg">
                     <i class="fas fa-play text-2xl"></i>
                   </a>
                 </div>
@@ -270,8 +279,8 @@ const studentWorkExamples = [
             ) : (
               <Image src={work.image} alt={work.title} class="w-full h-64 object-cover" />
             )}
-            <div class="p-4">
-              <h3 class="text-lg font-semibold text-gray-900">{work.title}</h3>
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-800">{work.title}</h3>
             </div>
           </div>
         ))}

@@ -230,8 +230,8 @@ const courseArrangement = [
   />
 
   <!-- Course Introduction -->
-  <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
       <div class="max-w-4xl mx-auto">
         <div class="grid md:grid-cols-2 gap-8 items-center">
           <div>
@@ -262,8 +262,8 @@ const courseArrangement = [
   }} />
 
   <!-- Course Features with GIFs -->
-  <section class="py-16 bg-white">
-    <div class="container mx-auto px-4">
+  <section class="section-padding bg-white">
+    <div class="container-standard">
       <div class="max-w-6xl mx-auto">
         <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程特色</h2>
         
@@ -362,13 +362,13 @@ const courseArrangement = [
   />
 
   <!-- Course Arrangement -->
-  <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
       <div class="max-w-4xl mx-auto">
         <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程安排</h2>
         <div class="grid md:grid-cols-2 gap-8">
           {courseArrangement.map((arrangement) => (
-            <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="card-base p-6">
               <div class="flex items-center mb-4">
                 <i class="fas fa-star text-yellow-500 text-xl mr-3"></i>
                 <h3 class="text-xl font-semibold">{arrangement.title}</h3>
@@ -385,8 +385,8 @@ const courseArrangement = [
   </section>
 
   <!-- Hong Kong AI Formula Racing -->
-  <section class="py-16 bg-blue-50">
-    <div class="container mx-auto px-4">
+  <section class="section-padding bg-blue-50">
+    <div class="container-standard">
       <div class="max-w-4xl mx-auto text-center">
         <h2 class="text-3xl font-bold mb-8 text-gray-800">「香港校際AI方程式」比賽</h2>
         <div class="aspect-video mb-8">
@@ -405,7 +405,7 @@ const courseArrangement = [
         <a 
           href="https://formula-ai.racing/" 
           target="_blank" 
-          class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+          class="inline-block bg-brand-cyan-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-brand-cyan-700 transition-colors"
         >
           香港校際 AI 方程式 2024
         </a>
@@ -414,8 +414,8 @@ const courseArrangement = [
   </section>
 
   <!-- Photo Gallery -->
-  <section class="py-16 bg-white">
-    <div class="container mx-auto px-4">
+  <section class="section-padding bg-white">
+    <div class="container-standard">
       <div class="max-w-6xl mx-auto">
         <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">精選照片</h2>
         <div class="grid md:grid-cols-3 gap-6">
@@ -423,21 +423,21 @@ const courseArrangement = [
             <Image 
               src={gallery1} 
               alt="Donkey Car Gallery 1" 
-              class="w-full h-64 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+              class="w-full h-64 object-cover rounded-lg shadow-card group-hover:shadow-card-hover transition-shadow"
             />
           </div>
           <div class="group cursor-pointer">
             <Image 
               src={gallery2} 
               alt="Donkey Car Gallery 2" 
-              class="w-full h-64 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+              class="w-full h-64 object-cover rounded-lg shadow-card group-hover:shadow-card-hover transition-shadow"
             />
           </div>
           <div class="group cursor-pointer">
             <Image 
               src={gallery3} 
               alt="Donkey Car Gallery 3" 
-              class="w-full h-64 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+              class="w-full h-64 object-cover rounded-lg shadow-card group-hover:shadow-card-hover transition-shadow"
             />
           </div>
         </div>

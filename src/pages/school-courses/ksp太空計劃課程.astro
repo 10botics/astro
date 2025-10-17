@@ -214,8 +214,8 @@ const ogImage = kspMain.src;
   />
 
   <!-- Hero image and description section -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <section class="section-padding bg-white">
+    <div class="container-standard">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <div class="rounded-lg overflow-hidden shadow-lg">
@@ -237,15 +237,15 @@ const ogImage = kspMain.src;
           </p>
           <div class="space-y-4">
             <div class="flex items-start space-x-3">
-              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <i class="fas fa-check-circle text-brand-cyan-600 mt-1"></i>
               <span class="text-gray-700">真實的太空科學模擬</span>
             </div>
             <div class="flex items-start space-x-3">
-              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <i class="fas fa-check-circle text-brand-cyan-600 mt-1"></i>
               <span class="text-gray-700">動手實踐的工程設計</span>
             </div>
             <div class="flex items-start space-x-3">
-              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <i class="fas fa-check-circle text-brand-cyan-600 mt-1"></i>
               <span class="text-gray-700">培養科學思維和創造力</span>
             </div>
           </div>
@@ -255,14 +255,14 @@ const ogImage = kspMain.src;
   </section>
 
   <!-- Why the technology is important section -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
       <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">為什麼選用這些技術？</h2>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
           <div class="flex items-center mb-4">
-            <i class="fas fa-rocket text-3xl text-cyan-500 mr-4"></i>
+            <i class="fas fa-rocket text-3xl text-brand-cyan-600 mr-4"></i>
             <h3 class="text-xl font-semibold text-gray-900">真實物理模擬</h3>
           </div>
           <p class="text-gray-700">
@@ -272,7 +272,7 @@ const ogImage = kspMain.src;
         
         <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
           <div class="flex items-center mb-4">
-            <i class="fas fa-gamepad text-3xl text-cyan-500 mr-4"></i>
+            <i class="fas fa-gamepad text-3xl text-brand-cyan-600 mr-4"></i>
             <h3 class="text-xl font-semibold text-gray-900">遊戲化學習</h3>
           </div>
           <p class="text-gray-700">
@@ -282,7 +282,7 @@ const ogImage = kspMain.src;
         
         <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
           <div class="flex items-center mb-4">
-            <i class="fas fa-flask text-3xl text-cyan-500 mr-4"></i>
+            <i class="fas fa-flask text-3xl text-brand-cyan-600 mr-4"></i>
             <h3 class="text-xl font-semibold text-gray-900">STEM 教育整合</h3>
           </div>
           <p class="text-gray-700">
@@ -294,15 +294,15 @@ const ogImage = kspMain.src;
   </section>
 
   <!-- Course requirements section -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <section class="section-padding bg-white">
+    <div class="container-standard">
       <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程要求</h2>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {courseRequirements.map((requirement) => (
           <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow text-center">
             <div class="flex justify-center mb-4">
-              <i class={`${requirement.icon} text-3xl text-cyan-500`}></i>
+              <i class={`${requirement.icon} text-3xl text-brand-cyan-600`}></i>
             </div>
             <h3 class="text-lg font-semibold text-gray-900 mb-2">{requirement.title}</h3>
             <p class="text-gray-700">{requirement.description}</p>
@@ -313,15 +313,15 @@ const ogImage = kspMain.src;
   </section>
 
   <!-- Course highlights section -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
       <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程重點</h2>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {courseHighlights.map((highlight) => (
           <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
             <div class="flex items-center mb-4">
-              <i class={`${highlight.icon} text-2xl text-cyan-500 mr-3`}></i>
+              <i class={`${highlight.icon} text-2xl text-brand-cyan-600 mr-3`}></i>
               <h3 class="text-lg font-semibold text-gray-900">{highlight.title}</h3>
             </div>
             <p class="text-gray-700">{highlight.description}</p>
@@ -342,8 +342,8 @@ const ogImage = kspMain.src;
   />
 
   <!-- Course Schedule -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
       <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程安排</h2>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -400,8 +400,8 @@ const ogImage = kspMain.src;
   </section>
 
   <!-- Teaching Demo Video -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <section class="section-padding bg-white">
+    <div class="container-standard">
       <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Kerbal Space Program 教學示範</h2>
       
       <div class="bg-gray-100 rounded-lg p-8">
@@ -420,8 +420,8 @@ const ogImage = kspMain.src;
   </section>
 
   <!-- Photo Gallery -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
       <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">精選照片</h2>
       
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">

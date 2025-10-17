@@ -146,8 +146,8 @@ const faqItems = [
     />
 
     <!-- Learning Journey Section -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
+    <section class="section-padding bg-gray-50">
+      <div class="container-standard">
         <div class="max-w-4xl mx-auto">
           <div class="text-center mb-8">
             <Image 
@@ -166,14 +166,14 @@ const faqItems = [
     </section>
 
     <!-- Course Highlights Section -->
-    <section class="py-16">
-      <div class="container mx-auto px-4">
+    <section class="section-padding">
+      <div class="container-standard">
         <div class="text-center mb-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">課程重點</h2>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {courseHighlights.map((item) => (
-            <div class="bg-white p-8 rounded-lg shadow-md">
+            <div class="card-base p-8">
               {item.image && (
                 <div class="mb-6">
                   <Image 
@@ -186,7 +186,7 @@ const faqItems = [
                 </div>
               )}
               <div class="flex items-start">
-                <div class="text-4xl text-blue-600 mr-4 mt-2">
+                <div class="text-4xl text-brand-cyan-600 mr-4 mt-2">
                   <i class={item.icon}></i>
                 </div>
                 <div>
@@ -201,14 +201,14 @@ const faqItems = [
     </section>
 
     <!-- Course Objectives Section -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
+    <section class="section-padding bg-gray-50">
+      <div class="container-standard">
         <div class="text-center mb-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">課程目標</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           {courseObjectives.map((item) => (
-            <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="card-base p-6">
               {item.image && (
                 <div class="mb-4">
                   <Image 
@@ -221,7 +221,7 @@ const faqItems = [
                 </div>
               )}
               <div class="flex items-start">
-                <div class="text-3xl text-blue-600 mr-4 mt-2">
+                <div class="text-3xl text-brand-cyan-600 mr-4 mt-2">
                   <i class={item.icon}></i>
                 </div>
                 <div>
@@ -242,16 +242,16 @@ const faqItems = [
     />
 
     <!-- Course Arrangement Section -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
+    <section class="section-padding bg-gray-50">
+      <div class="container-standard">
         <div class="text-center mb-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">課程安排</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {courseArrangement.map((item) => (
-            <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="card-base p-6">
               <div class="flex items-start">
-                <div class="text-3xl text-blue-600 mr-4">
+                <div class="text-3xl text-brand-cyan-600 mr-4">
                   <i class={item.icon}></i>
                 </div>
                 <div>
