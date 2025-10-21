@@ -120,7 +120,6 @@ export default defineConfig({
     '/school-courses/Scratch遊戲設計課程': '/school-courses/scratch-game-design',
     '/school-courses/Blockchain 區塊鏈課程': '/school-courses/blockchain',
     '/school-courses/AI影片製作課程': '/school-courses/ai-video-production',
-    '/school-courses/Microbit 逃出迷宮': '/school-courses/microbit-maze',
     '/school-courses/Tello 無人機課程': '/school-courses/tello',
     // Category redirects (legacy URLs)
     '/category/blog': '/news',
@@ -210,7 +209,6 @@ export default defineConfig({
           '/school-courses/Scratch遊戲設計課程',
           '/school-courses/Blockchain 區塊鏈課程',
           '/school-courses/AI影片製作課程',
-          '/school-courses/Microbit 逃出迷宮',
           '/school-courses/Tello 無人機課程',
           '/category/blog',
           '/category/news',

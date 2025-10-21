@@ -91,12 +91,11 @@ Found **18 pages with YouTube videos** that need VideoSchema added:
 1. ✅ `src/pages/index.astro` - **DONE** ✓
 2. `src/pages/school-courses/Scratch 人工智能編程.astro`
 3. `src/pages/school-courses/Scratch遊戲設計課程.astro`
-4. `src/pages/school-courses/Microbit 逃出迷宮.astro`
-5. `src/pages/school-courses/AI數碼動畫展.astro`
-6. `src/pages/school-courses/Tello 無人機課程.astro`
-7. `src/pages/school-courses/Donkey Car 無人車課程.astro`
-8. `src/pages/school-courses/ksp太空計劃課程.astro`
-9. `src/pages/school-courses/raspberry-pi編程課程.astro`
+4. `src/pages/school-courses/AI數碼動畫展.astro`
+5. `src/pages/school-courses/Tello 無人機課程.astro`
+6. `src/pages/school-courses/Donkey Car 無人車課程.astro`
+7. `src/pages/school-courses/ksp太空計劃課程.astro`
+8. `src/pages/school-courses/raspberry-pi編程課程.astro`
 
 ### Priority 2 - STEM Day Pages (3 pages)
 10. `src/pages/stemday/index.astro`
