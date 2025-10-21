@@ -411,3 +411,9 @@ venv.bak/
 .dmypy.json
 dmypy.json
 .vercel
+
+# Sitemap 404 checker reports
+*_404_report.html
+sitemap_comparison_report.html
+test_sitemap*.xml
+check_sitemap_404.py
