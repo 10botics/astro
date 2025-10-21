@@ -88,6 +88,16 @@ export default defineConfig({
   },
 
   redirects: {
+    // Course redirects - redirect old /course and /courses URLs to /school-courses
+    '/course/:path*': {
+      status: 301,
+      destination: '/school-courses/'
+    },
+    '/courses/:path*': {
+      status: 301,
+      destination: '/school-courses/'
+    },
+    
     // External redirects
     '/timesheet_submission_form': 'https://otfxid9w.paperform.co',
     '/contact-form': 'https://or0uzdua.paperform.co',
