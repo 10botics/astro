@@ -271,7 +271,7 @@ export const urlAliases = {
       "school-courses": ["delightex", "delightex-game-design", "cospaces", "cospace"],
       "course": ["delightex", "delightex-game-design", "cospaces", "cospace"]
     },
-    "main": "delightex"
+    "main": "cospaces"
   },
   "Donkey Car 無人車課程.astro": {
     "tags": {
