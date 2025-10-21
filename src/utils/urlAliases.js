@@ -318,13 +318,6 @@ export const urlAliases = {
     },
     "main": "microbit-parachute"
   },
-  "Microbit 逃出迷宮.astro": {
-    "tags": {
-      "school-courses": ["microbit-maze"],
-      "course": ["microbit-maze"]
-    },
-    "main": "microbit-maze"
-  },
   "Procreate數位藝術課程.astro": {
     "tags": {
       "school-courses": ["procreate"],
