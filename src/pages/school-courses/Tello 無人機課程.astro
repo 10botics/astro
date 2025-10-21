@@ -123,7 +123,7 @@ const advancedCurriculumItems = [
 // Course highlights
 const courseHighlights = [
   {
-    icon: "fas fa-drone",
+    icon: "fas fa-helicopter",
     title: "無人機體驗",
     description: "介紹無人機的技術和飛行原理，學生可以掌握如何操控Tello無人機，以無人機進行航拍及各種飛行動作。"
   },
@@ -240,12 +240,15 @@ const faqItems = [
   },
   {
     question: "可否接收政府採購卡(P-card) 付款?",
-    answer: "我們暫不按受政府採購卡(P-card) 付款。"
+    answer: "我們可以按受政府採購卡(P-card) 付款。"
   }
 ];
 ---
 
 <Layout title={courseData.title} description={courseData.description}>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
   <HeroSection 
     title={courseData.title}
     subtitle={courseData.subtitle}
@@ -255,42 +258,42 @@ const faqItems = [
   />
 
   <!-- Course Highlights -->
-  <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">課程重點</h2>
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程重點</h2>
       <div class="grid md:grid-cols-3 gap-8">
         <!-- 無人機體驗 -->
-        <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="card-base card-hover p-6">
           <div class="mb-6">
             <Image src={droneExperience} alt="無人機體驗" class="w-full h-48 object-cover rounded-lg" />
           </div>
           <div class="flex items-center mb-4">
-            <i class="fas fa-drone text-3xl text-blue-600 mr-4"></i>
-            <h3 class="text-xl font-semibold">無人機體驗</h3>
+            <i class="fas fa-helicopter text-3xl text-brand-cyan-600 mr-4"></i>
+            <h3 class="text-xl font-semibold text-gray-800">無人機體驗</h3>
           </div>
           <p class="text-gray-600">介紹無人機的技術和飛行原理，學生可以掌握如何操控Tello無人機，以無人機進行航拍及各種飛行動作。</p>
         </div>
 
         <!-- 編程控制 -->
-        <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="card-base card-hover p-6">
           <div class="mb-6">
             <Image src={programmingControl} alt="編程控制" class="w-full h-48 object-cover rounded-lg" />
           </div>
           <div class="flex items-center mb-4">
-            <i class="fas fa-code text-3xl text-blue-600 mr-4"></i>
-            <h3 class="text-xl font-semibold">編程控制</h3>
+            <i class="fas fa-code text-3xl text-brand-cyan-600 mr-4"></i>
+            <h3 class="text-xl font-semibold text-gray-800">編程控制</h3>
           </div>
           <p class="text-gray-600">利用Scratch編程工具操控Tello無人機，從而進行不同的任務和挑戰。學生亦可以自行探索，創作自己的花式表演，從而訓練他們的創意和解難能力。</p>
         </div>
 
         <!-- 群飛匯演 -->
-        <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="card-base card-hover p-6">
           <div class="mb-6">
             <Image src={swarmPerformance} alt="群飛匯演" class="w-full h-48 object-cover rounded-lg" />
           </div>
           <div class="flex items-center mb-4">
-            <i class="fas fa-users text-3xl text-blue-600 mr-4"></i>
-            <h3 class="text-xl font-semibold">群飛匯演</h3>
+            <i class="fas fa-users text-3xl text-brand-cyan-600 mr-4"></i>
+            <h3 class="text-xl font-semibold text-gray-800">群飛匯演</h3>
           </div>
           <p class="text-gray-600">課程讓學生體驗編程指令多部無人機進行群飛的刺激。學生可以利用多部無人機組合不同的圖䅁，能夠在各種埸合進行不同的展示效果。</p>
         </div>
@@ -299,22 +302,22 @@ const faqItems = [
   </section>
 
   <!-- Course Features -->
-  <section class="py-16">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">課程特色</h2>
-      <div class="grid lg:grid-cols-2 gap-12 items-start">
+  <section class="section-padding bg-white">
+    <div class="container-standard">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程特色</h2>
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
         <!-- Features List - Left Side -->
         <div class="space-y-6">
           {courseFeatures.map((feature) => (
             <div class="flex items-center">
-              <i class={`${feature.icon} text-2xl text-blue-600 mr-4`}></i>
+              <i class={`${feature.icon} text-2xl text-brand-cyan-600 mr-4`}></i>
               <h3 class="text-lg font-semibold text-gray-800">{feature.title}</h3>
             </div>
           ))}
         </div>
         
         <!-- Video - Right Side -->
-        <div class="aspect-video bg-black rounded-lg overflow-hidden shadow-lg">
+        <div class="aspect-video rounded-lg overflow-hidden shadow-lg">
           <iframe 
             src="https://www.youtube.com/embed/q0JQXZY3wZ4?controls=1&rel=0"
             class="w-full h-full"
@@ -328,37 +331,24 @@ const faqItems = [
   </section>
 
   <!-- Course Objectives -->
-  <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">課程目標</h2>
-      <div class="max-w-7xl mx-auto">
-        <!-- Top row with 3 cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          {courseObjectives.slice(0, 3).map((objective) => (
-            <div class="bg-white p-6 rounded-lg shadow-md">
-              <div class="flex items-start mb-4">
-                <i class={`${objective.icon} text-2xl text-green-600 mr-4 mt-1`}></i>
-                <h3 class="text-lg font-semibold">{objective.title}</h3>
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程目標</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {courseObjectives.map((objective) => (
+          <div class="card-base card-hover p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-8 h-8 bg-brand-cyan-600 rounded-full flex items-center justify-center mr-3">
+                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
               </div>
-              <p class="text-gray-600 ml-10">{objective.description}</p>
+              <h3 class="text-xl font-semibold text-gray-800">{objective.title}</h3>
             </div>
-          ))}
-        </div>
-        
-        <!-- Bottom row with 2 cards, centered -->
-        <div class="flex justify-center">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
-            {courseObjectives.slice(3, 5).map((objective) => (
-              <div class="bg-white p-6 rounded-lg shadow-md">
-                <div class="flex items-start mb-4">
-                  <i class={`${objective.icon} text-2xl text-green-600 mr-4 mt-1`}></i>
-                  <h3 class="text-lg font-semibold">{objective.title}</h3>
-                </div>
-                <p class="text-gray-600 ml-10">{objective.description}</p>
-              </div>
-            ))}
+            <p class="text-gray-600">{objective.description}</p>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
@@ -374,54 +364,61 @@ const faqItems = [
   />
 
   <!-- Course Arrangements -->
-  <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">課程安排</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+  <section class="section-padding bg-white">
+    <div class="container-standard">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程安排</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8">
         {courseArrangements.map((arrangement) => (
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <div class="flex items-start mb-4">
-              <i class={`${arrangement.icon} text-2xl text-yellow-500 mr-4 mt-1`}></i>
-              <h3 class="text-lg font-semibold">{arrangement.title}</h3>
+          <div class="card-base card-hover p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-8 h-8 bg-semantic-warning rounded-full flex items-center justify-center mr-3">
+                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800">{arrangement.title}</h3>
             </div>
-            <p class="text-gray-600 ml-10">{arrangement.description}</p>
+            <p class="text-gray-600 whitespace-pre-line">{arrangement.description}</p>
           </div>
         ))}
       </div>
-      <p class="text-center mt-8 text-gray-600">歡迎填妥下方表格讓同事為你提供咨詢。</p>
+      
+      <div class="text-center mt-8">
+        <p class="text-gray-600">歡迎填妥下方表格讓同事為你提供咨詢。</p>
+      </div>
     </div>
   </section>
 
   <!-- Photo Gallery Section -->
-  <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">精選照片</h2>
-      <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          <!-- Tello teaching session -->
-          <div class="aspect-square bg-cover bg-center rounded-lg shadow-md bg-gray-200 flex items-center justify-center">
-            <Image src={gallery1} alt="Tello teaching session" class="w-full h-full object-cover rounded-lg" />
-          </div>
-          <!-- Tello learning activity -->
-          <div class="aspect-square bg-cover bg-center rounded-lg shadow-md bg-gray-200 flex items-center justify-center">
-            <Image src={gallery2} alt="Tello learning activity" class="w-full h-full object-cover rounded-lg" />
-          </div>
-          <!-- Tello programming interface -->
-          <div class="aspect-square bg-cover bg-center rounded-lg shadow-md bg-gray-200 flex items-center justify-center">
-            <Image src={gallery3} alt="Tello programming interface" class="w-full h-full object-cover rounded-lg" />
-          </div>
-          <!-- Tello swarm flying -->
-          <div class="aspect-square bg-cover bg-center rounded-lg shadow-md bg-gray-200 flex items-center justify-center">
-            <Image src={droneExperience} alt="Tello swarm flying" class="w-full h-full object-cover rounded-lg" />
-          </div>
-          <!-- Tello drone demonstration -->
-          <div class="aspect-square bg-cover bg-center rounded-lg shadow-md bg-gray-200 flex items-center justify-center">
-            <Image src={programmingControl} alt="Tello drone demonstration" class="w-full h-full object-cover rounded-lg" />
-          </div>
-          <!-- Tello course overview -->
-          <div class="aspect-square bg-cover bg-center rounded-lg shadow-md bg-gray-200 flex items-center justify-center">
-            <Image src={swarmPerformance} alt="Tello course overview" class="w-full h-full object-cover rounded-lg" />
-          </div>
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">精選照片</h2>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <!-- Tello teaching session -->
+        <div class="aspect-square overflow-hidden rounded-lg shadow-card">
+          <Image src={gallery1} alt="Tello teaching session" class="w-full h-full object-cover" />
+        </div>
+        <!-- Tello learning activity -->
+        <div class="aspect-square overflow-hidden rounded-lg shadow-card">
+          <Image src={gallery2} alt="Tello learning activity" class="w-full h-full object-cover" />
+        </div>
+        <!-- Tello programming interface -->
+        <div class="aspect-square overflow-hidden rounded-lg shadow-card">
+          <Image src={gallery3} alt="Tello programming interface" class="w-full h-full object-cover" />
+        </div>
+        <!-- Tello swarm flying -->
+        <div class="aspect-square overflow-hidden rounded-lg shadow-card">
+          <Image src={droneExperience} alt="Tello swarm flying" class="w-full h-full object-cover" />
+        </div>
+        <!-- Tello drone demonstration -->
+        <div class="aspect-square overflow-hidden rounded-lg shadow-card">
+          <Image src={programmingControl} alt="Tello drone demonstration" class="w-full h-full object-cover" />
+        </div>
+        <!-- Tello course overview -->
+        <div class="aspect-square overflow-hidden rounded-lg shadow-card">
+          <Image src={swarmPerformance} alt="Tello course overview" class="w-full h-full object-cover" />
         </div>
       </div>
     </div>

@@ -163,8 +163,8 @@ const faqItems = [
   />
 
   <!-- Hero image and description section -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <section class="section-padding bg-white">
+    <div class="container-standard">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <div class="rounded-lg overflow-hidden shadow-lg">
@@ -184,15 +184,15 @@ const faqItems = [
           </p>
           <div class="space-y-4">
             <div class="flex items-start space-x-3">
-              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <i class="fas fa-check-circle text-brand-cyan-600 mt-1"></i>
               <span class="text-gray-700">降低編程門檻，專注創意實現</span>
             </div>
             <div class="flex items-start space-x-3">
-              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <i class="fas fa-check-circle text-brand-cyan-600 mt-1"></i>
               <span class="text-gray-700">學習未來工作模式</span>
             </div>
             <div class="flex items-start space-x-3">
-              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <i class="fas fa-check-circle text-brand-cyan-600 mt-1"></i>
               <span class="text-gray-700">快速原型開發能力</span>
             </div>
           </div>
@@ -202,37 +202,43 @@ const faqItems = [
   </section>
 
   <!-- Why the technology is important section -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">為什麼選用這些技術？</h2>
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">為什麼選用這些技術？</h2>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+        <div class="card-base card-hover p-6">
           <div class="flex items-center mb-4">
-            <i class="fas fa-brain text-3xl text-cyan-500 mr-4"></i>
-            <h3 class="text-xl font-semibold text-gray-900">Poe 平台</h3>
+            <div class="w-8 h-8 bg-brand-cyan-600 rounded-full flex items-center justify-center mr-3">
+              <i class="fas fa-brain text-sm text-white"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800">Poe 平台</h3>
           </div>
-          <p class="text-gray-700">
+          <p class="text-gray-600">
             Poe 提供強大的 AI 助手，能幫助學生設計遊戲邏輯、生成代碼片段，讓編程過程更加直觀和高效。
           </p>
         </div>
         
-        <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+        <div class="card-base card-hover p-6">
           <div class="flex items-center mb-4">
-            <i class="fas fa-cloud text-3xl text-cyan-500 mr-4"></i>
-            <h3 class="text-xl font-semibold text-gray-900">Repl.it 環境</h3>
+            <div class="w-8 h-8 bg-brand-cyan-600 rounded-full flex items-center justify-center mr-3">
+              <i class="fas fa-cloud text-sm text-white"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800">Repl.it 環境</h3>
           </div>
-          <p class="text-gray-700">
+          <p class="text-gray-600">
             Repl.it 提供完整的雲端開發環境，無需本地安裝，支持多種編程語言，讓學生專注於創意實現。
           </p>
         </div>
         
-        <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+        <div class="card-base card-hover p-6">
           <div class="flex items-center mb-4">
-            <i class="fas fa-gamepad text-3xl text-cyan-500 mr-4"></i>
-            <h3 class="text-xl font-semibold text-gray-900">網頁遊戲開發</h3>
+            <div class="w-8 h-8 bg-brand-cyan-600 rounded-full flex items-center justify-center mr-3">
+              <i class="fas fa-gamepad text-sm text-white"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800">網頁遊戲開發</h3>
           </div>
-          <p class="text-gray-700">
+          <p class="text-gray-600">
             網頁遊戲相比其他平台遊戲更容易開發，無需複雜的安裝程序，學生可以快速看到成果並分享給朋友。通過遊戲開發學習編程，讓抽象的編程概念變得具體有趣。
           </p>
         </div>
@@ -241,18 +247,18 @@ const faqItems = [
   </section>
 
   <!-- Course requirements section -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程要求</h2>
+  <section class="section-padding bg-white">
+    <div class="container-standard">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程要求</h2>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {courseRequirements.map((requirement) => (
-          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow text-center">
-            <div class="flex justify-center mb-4">
-              <i class={`${requirement.icon} text-3xl text-cyan-500`}></i>
+          <div class="card-base card-hover p-6 text-center">
+            <div class="w-12 h-12 bg-brand-cyan-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class={`${requirement.icon} text-xl text-white`}></i>
             </div>
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">{requirement.title}</h3>
-            <p class="text-gray-700">{requirement.description}</p>
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">{requirement.title}</h3>
+            <p class="text-gray-600">{requirement.description}</p>
           </div>
         ))}
       </div>
@@ -260,18 +266,20 @@ const faqItems = [
   </section>
 
   <!-- Course highlights section -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程重點</h2>
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程重點</h2>
       
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid md:grid-cols-2 gap-8">
         {courseHighlights.map((highlight) => (
-          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+          <div class="card-base card-hover p-6">
             <div class="flex items-center mb-4">
-              <i class={`${highlight.icon} text-2xl text-cyan-500 mr-3`}></i>
-              <h3 class="text-lg font-semibold text-gray-900">{highlight.title}</h3>
+              <div class="w-8 h-8 bg-brand-cyan-600 rounded-full flex items-center justify-center mr-3">
+                <i class={`${highlight.icon} text-sm text-white`}></i>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800">{highlight.title}</h3>
             </div>
-            <p class="text-gray-700">{highlight.description}</p>
+            <p class="text-gray-600">{highlight.description}</p>
           </div>
         ))}
       </div>
@@ -279,16 +287,16 @@ const faqItems = [
   </section>
 
         <!-- Student Work Showcase section -->
-      <section class="bg-white py-16">
-        <div class="container mx-auto px-4 max-w-6xl">
-          <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">學生作品展示</h2>
-          <p class="text-lg text-gray-700 text-center mb-12 max-w-3xl mx-auto">
+      <section class="section-padding bg-white">
+        <div class="container-standard">
+          <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">學生作品展示</h2>
+          <p class="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
             點擊下方作品直接試玩學生們在 AI 遊戲編程課程中創作的精彩遊戲！從經典的井字棋到創新的自製遊戲，每個作品都展現了學生們的創意和編程技能。
           </p>
           
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Wooden Tic-tac-toe Game -->
-            <a href="/games/ai-game-coding/WoodenTicTac/index.html" target="_blank" class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+            <a href="/games/ai-game-coding/WoodenTicTac/index.html" target="_blank" class="card-base card-hover cursor-pointer">
               <div class="aspect-w-16 aspect-h-9 bg-gray-100">
                 <Image 
                   src={ticTacToe1} 
@@ -299,13 +307,13 @@ const faqItems = [
                 />
               </div>
               <div class="p-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">木製井字棋遊戲</h3>
-                <p class="text-gray-700 text-sm">具有木製質感的經典井字棋遊戲，結合傳統與現代設計</p>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">木製井字棋遊戲</h3>
+                <p class="text-gray-600 text-sm">具有木製質感的經典井字棋遊戲，結合傳統與現代設計</p>
               </div>
             </a>
 
             <!-- Tic-tac-tactics Game -->
-            <a href="/games/ai-game-coding/TicTacTactics/index.html" target="_blank" class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+            <a href="/games/ai-game-coding/TicTacTactics/index.html" target="_blank" class="card-base card-hover cursor-pointer">
               <div class="aspect-w-16 aspect-h-9 bg-gray-100">
                 <Image 
                   src={ticTacToe2} 
@@ -316,13 +324,13 @@ const faqItems = [
                 />
               </div>
               <div class="p-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">井字棋戰術遊戲</h3>
-                <p class="text-gray-700 text-sm">加入戰術元素的創新井字棋，考驗策略思維</p>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">井字棋戰術遊戲</h3>
+                <p class="text-gray-600 text-sm">加入戰術元素的創新井字棋，考驗策略思維</p>
               </div>
             </a>
 
             <!-- Sudoku Game -->
-            <a href="/games/ai-game-coding/SudokuMaster/index.html" target="_blank" class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+            <a href="/games/ai-game-coding/SudokuMaster/index.html" target="_blank" class="card-base card-hover cursor-pointer">
               <div class="aspect-w-16 aspect-h-9 bg-gray-100">
                 <Image 
                   src={sudoku} 
@@ -333,13 +341,13 @@ const faqItems = [
                 />
               </div>
               <div class="p-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">數獨大師</h3>
-                <p class="text-gray-700 text-sm">經典數獨遊戲的完整實現，包含提示功能和難度等級</p>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">數獨大師</h3>
+                <p class="text-gray-600 text-sm">經典數獨遊戲的完整實現，包含提示功能和難度等級</p>
               </div>
             </a>
             
             <!-- Minesweeper Game -->
-            <a href="/games/ai-game-coding/MinefieldChallenge/index.html" target="_blank" class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+            <a href="/games/ai-game-coding/MinefieldChallenge/index.html" target="_blank" class="card-base card-hover cursor-pointer">
               <div class="aspect-w-16 aspect-h-9 bg-gray-100">
                 <Image 
                   src={minesweeper} 
@@ -350,13 +358,13 @@ const faqItems = [
                 />
               </div>
               <div class="p-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">踩地雷挑戰</h3>
-                <p class="text-gray-700 text-sm">經典踩地雷遊戲的網頁版本，考驗邏輯思維能力</p>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">踩地雷挑戰</h3>
+                <p class="text-gray-600 text-sm">經典踩地雷遊戲的網頁版本，考驗邏輯思維能力</p>
               </div>
             </a>
 
             <!-- Pac-Man Game -->
-            <a href="/games/ai-game-coding/PacManChase/index.html" target="_blank" class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+            <a href="/games/ai-game-coding/PacManChase/index.html" target="_blank" class="card-base card-hover cursor-pointer">
               <div class="aspect-w-16 aspect-h-9 bg-gray-100">
                 <Image 
                   src={pacman} 
@@ -367,13 +375,13 @@ const faqItems = [
                 />
               </div>
               <div class="p-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">食鬼追逐遊戲</h3>
-                <p class="text-gray-700 text-sm">經典食鬼遊戲的重新詮釋，展現動畫和遊戲邏輯的結合</p>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">食鬼追逐遊戲</h3>
+                <p class="text-gray-600 text-sm">經典食鬼遊戲的重新詮釋，展現動畫和遊戲邏輯的結合</p>
               </div>
             </a>
 
             <!-- Chinese Puzzle Game -->
-            <a href="/games/ai-game-coding/ChinesePuzzle/index.html" target="_blank" class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+            <a href="/games/ai-game-coding/ChinesePuzzle/index.html" target="_blank" class="card-base card-hover cursor-pointer">
               <div class="aspect-w-16 aspect-h-9 bg-gray-100">
                 <Image 
                   src={chinesePuzzleDemo} 
@@ -384,8 +392,8 @@ const faqItems = [
                 />
               </div>
               <div class="p-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">中國拼圖遊戲</h3>
-                <p class="text-gray-700 text-sm">傳統中國益智遊戲的現代化實現，學習成語和中文</p>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">中國拼圖遊戲</h3>
+                <p class="text-gray-600 text-sm">傳統中國益智遊戲的現代化實現，學習成語和中文</p>
               </div>
             </a>
           </div>
@@ -393,24 +401,24 @@ const faqItems = [
 
 
       <!-- Student Testimonials -->
-      <div class="mt-16 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-lg p-8">
-        <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">學生心得分享</h3>
+      <div class="mt-16 bg-gray-50 rounded-lg p-8">
+        <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">學生心得分享</h3>
         <div class="grid md:grid-cols-2 gap-8">
-          <div class="bg-white rounded-lg p-6 shadow-sm">
+          <div class="card-base p-6">
             <div class="flex items-center mb-4">
-              <i class="fas fa-quote-left text-2xl text-cyan-500 mr-3"></i>
-              <h4 class="text-lg font-semibold text-gray-900">AI 編程初體驗</h4>
+              <i class="fas fa-quote-left text-2xl text-brand-cyan-600 mr-3"></i>
+              <h4 class="text-lg font-semibold text-gray-800">AI 編程初體驗</h4>
             </div>
-            <p class="text-gray-700 italic">
+            <p class="text-gray-600 italic">
               "沒想到編程可以這麼有趣！使用 AI 工具幫助我設計遊戲邏輯，讓我能專注在創意上。完成第一個井字棋遊戲時，那種成就感真的很棒！"
             </p>
           </div>
-          <div class="bg-white rounded-lg p-6 shadow-sm">
+          <div class="card-base p-6">
             <div class="flex items-center mb-4">
-              <i class="fas fa-quote-left text-2xl text-cyan-500 mr-3"></i>
-              <h4 class="text-lg font-semibold text-gray-900">從零到一的突破</h4>
+              <i class="fas fa-quote-left text-2xl text-brand-cyan-600 mr-3"></i>
+              <h4 class="text-lg font-semibold text-gray-800">從零到一的突破</h4>
             </div>
-            <p class="text-gray-700 italic">
+            <p class="text-gray-600 italic">
               "作為編程新手，這個課程讓我學會了如何與 AI 協作開發。現在我不僅能製作遊戲，還能將作品分享給朋友們玩，真的很興奮！"
             </p>
           </div>

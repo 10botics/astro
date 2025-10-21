@@ -159,7 +159,7 @@ const faqItems = [
   },
   {
     question: "可否接收政府採購卡(P-card) 付款?",
-    answer: "我們暫不按受政府採購卡(P-card) 付款。"
+    answer: "我們可以按受政府採購卡(P-card) 付款。"
   }
 ];
 
@@ -182,18 +182,18 @@ const ogImage = swiftPlaygroundsHero.src;
   />
 
   <!-- Course requirements section -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程要求</h2>
+  <section class="section-padding bg-white">
+    <div class="container-standard">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程要求</h2>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {courseRequirements.map((requirement) => (
-          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow text-center">
-            <div class="flex justify-center mb-4">
-              <i class={`${requirement.icon} text-3xl text-cyan-500`}></i>
+          <div class="card-base card-hover p-6 text-center">
+            <div class="w-12 h-12 bg-brand-cyan-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class={`${requirement.icon} text-xl text-white`}></i>
             </div>
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">{requirement.title}</h3>
-            <p class="text-gray-700">{requirement.description}</p>
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">{requirement.title}</h3>
+            <p class="text-gray-600">{requirement.description}</p>
           </div>
         ))}
       </div>
@@ -201,18 +201,20 @@ const ogImage = swiftPlaygroundsHero.src;
   </section>
 
   <!-- Course highlights section -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程重點</h2>
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程重點</h2>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {courseHighlights.map((highlight) => (
-          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+          <div class="card-base card-hover p-6">
             <div class="flex items-center mb-4">
-              <i class={`${highlight.icon} text-2xl text-cyan-500 mr-3`}></i>
-              <h3 class="text-lg font-semibold text-gray-900">{highlight.title}</h3>
+              <div class="w-8 h-8 bg-brand-cyan-600 rounded-full flex items-center justify-center mr-3">
+                <i class={`${highlight.icon} text-sm text-white`}></i>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800">{highlight.title}</h3>
             </div>
-            <p class="text-gray-700">{highlight.description}</p>
+            <p class="text-gray-600">{highlight.description}</p>
           </div>
         ))}
       </div>
@@ -230,41 +232,47 @@ const ogImage = swiftPlaygroundsHero.src;
   />
 
   <!-- Course Schedule -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程安排</h2>
+  <section class="section-padding bg-white">
+    <div class="container-standard">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程安排</h2>
 
-      <div class="bg-gradient-to-r from-cyan-50 to-blue-50 rounded-lg p-8">
-        <div class="flex items-center justify-center mb-6">
-          <div class="bg-cyan-500 text-white p-3 rounded-full mr-4">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+      <div class="card-base p-8 max-w-2xl mx-auto">
+        <div class="flex items-center mb-4">
+          <div class="w-8 h-8 bg-semantic-warning rounded-full flex items-center justify-center mr-3">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
             </svg>
           </div>
-          <h3 class="text-2xl font-bold text-gray-900">完整課程 (15 小時)</h3>
+          <h3 class="text-xl font-semibold text-gray-800">完整課程 (15 小時)</h3>
         </div>
-        <p class="text-center text-gray-700 text-lg">
-          建議一個學期完成 10 節課堂，每節 1.5 小時。<br>
-          <span class="text-sm text-gray-600">*可根據學校需要調整課堂數及時數</span>
-        </p>
+        <p class="text-gray-600 whitespace-pre-line">建議一個學期完成 10 節課堂，每節 1.5 小時。
+*可根據學校需要調整課堂數及時數</p>
       </div>
 
       <div class="text-center mt-8">
-        <p class="text-gray-700">歡迎填妥下方表格讓同事為你提供咨詢。</p>
+        <p class="text-gray-600">歡迎填妥下方表格讓同事為你提供咨詢。</p>
       </div>
     </div>
   </section>
 
   <!-- Photo Gallery -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">精選照片</h2>
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">精選照片</h2>
 
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-        <Image src={swiftPlaygroundsThinking} alt="Swift Playgrounds thinking" class="w-full h-32 object-cover rounded-lg shadow-md" />
-        <Image src={swiftPlaygroundsTrying} alt="Swift Playgrounds trying" class="w-full h-32 object-cover rounded-lg shadow-md" />
-        <Image src={swiftPlaygroundsDoing} alt="Swift Playgrounds doing" class="w-full h-32 object-cover rounded-lg shadow-md" />
-        <Image src={swiftPlaygroundsCoding2} alt="Swift Playgrounds coding" class="w-full h-32 object-cover rounded-lg shadow-md" />
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="aspect-square overflow-hidden rounded-lg shadow-card">
+          <Image src={swiftPlaygroundsThinking} alt="Swift Playgrounds thinking" class="w-full h-full object-cover" />
+        </div>
+        <div class="aspect-square overflow-hidden rounded-lg shadow-card">
+          <Image src={swiftPlaygroundsTrying} alt="Swift Playgrounds trying" class="w-full h-full object-cover" />
+        </div>
+        <div class="aspect-square overflow-hidden rounded-lg shadow-card">
+          <Image src={swiftPlaygroundsDoing} alt="Swift Playgrounds doing" class="w-full h-full object-cover" />
+        </div>
+        <div class="aspect-square overflow-hidden rounded-lg shadow-card">
+          <Image src={swiftPlaygroundsCoding2} alt="Swift Playgrounds coding" class="w-full h-full object-cover" />
+        </div>
       </div>
     </div>
   </section>

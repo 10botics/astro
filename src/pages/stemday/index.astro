@@ -56,7 +56,11 @@ let classMicrobitMaze,
   heroScratch,
   heroRaspberryPi,
   heroMicrobitMaze,
-  heroDelightex;
+  heroDelightex,
+  // News images
+  newsHolimLaiStemDay,
+  newsTinHongStemDay,
+  newsYMCAStemDay;
 
 try {
       heroImage = await import('../../assets/images/stemday/mainpage/hero-image.jpeg');
@@ -148,6 +152,11 @@ try {
     const DelightexModule = await import('../school-courses/Delightex 遊戲設計課程.astro');
     heroDelightex = DelightexModule?.courseData?.heroImage;
   } catch {}
+
+  // News images
+  newsHolimLaiStemDay = await import('../../assets/images/news/2025-07-19-可立中學ai藝術創作stem-day精彩回顧/featured.jpg');
+  newsTinHongStemDay = await import('../../assets/images/news/2024-07-10-深度探索Delightex-vrampar浸信會天虹小學-stem-day/image1.png');
+  newsYMCAStemDay = await import('../../assets/images/news/2024-07-05-ai科技與創意融合中華基督教青年會中學-stem-day/image1.jpeg');
 } catch (error) {
   console.warn('Some images could not be loaded:', error);
 }
@@ -159,163 +168,188 @@ try {
 >
   <main>
     <!-- Hero Section -->
-    <section class="hero-section">
-      <div class="hero-background">
-        {heroImage && <Image src={heroImage.default} alt="STEM Day Hero" class="hero-image" />}
+    <section class="relative h-[60vh] min-h-[400px] overflow-hidden">
+      <div class="relative w-full h-full">
+        {heroImage && <Image src={heroImage.default} alt="STEM Day Hero" class="w-full h-full object-cover" />}
         <div class="hero-overlay">
-          <div class="container">
-            <h1 class="hero-title">STEM Day</h1>
-            <h2 class="hero-subtitle">全力支援學校籌辦STEM day，讓學生對STEM有更加深入的認識，曠闊學生視野。​</h2>
+          <div class="container-standard text-center text-white">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4">STEM Day</h1>
+            <h2 class="text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed mb-8">全力支援學校籌辦STEM day，讓學生對STEM有更加深入的認識，曠闊學生視野。​</h2>
+            <div class="mt-8">
+              <a 
+                href="https://drive.google.com/file/d/17N6B3aMMZQNS-G868shRYo_gO-MJ0qPO/view?usp=sharing" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="btn-primary btn-gradient shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              >
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                下載STEM Day活動簡介
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </section>
       <!-- Video Section -->
-      <section class="video-section">
-        <div class="container">
-          <div class="video-container">
+      <section class="section-padding bg-gray-50">
+        <div class="container-standard">
+          <div class="max-w-4xl mx-auto aspect-video">
             <iframe 
               width="100%" 
-              height="400" 
+              height="100%" 
               src="https://www.youtube.com/embed/qs5OeXSTzsY" 
               title="STEM Day Video"
               frameborder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen>
+              allowfullscreen
+              class="w-full h-full rounded-lg shadow-lg">
             </iframe>
-          </div>
-          <div class="text-center mt-8">
-            <a 
-              href="https://drive.google.com/file/d/17N6B3aMMZQNS-G868shRYo_gO-MJ0qPO/view?usp=sharing" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              class="inline-flex items-center px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-semibold rounded-lg hover:from-cyan-700 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-            >
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-              </svg>
-              下載STEM Day活動簡介
-            </a>
           </div>
         </div>
       </section>
   
       <!-- Booths Section -->
-      <section class="booths-section">
-        <div class="container">
-          <h2 class="section-title">攤位</h2>
-          <p class="section-description">10Botics 提供以攤位的形式進行活動，例如過往爲不同學校舉行一日的STEM Day，為學生提供不同的攤位遊戲，當中包括：</p>
+      <section class="section-padding bg-gray-50">
+        <div class="container-standard">
+          <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-8">攤位</h2>
+          <p class="text-center text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto">10Botics 提供以攤位的形式進行活動，例如過往爲不同學校舉行一日的STEM Day，為學生提供不同的攤位遊戲，當中包括：</p>
           
-          <div class="booths-grid">
-            <div class="booth-card">
-              {codroneExperience && <Image src={codroneExperience.default} alt="CoDrone無人機體驗" class="booth-image" />}
-              <h3><a href="school-courses/codrone/" target="_blank" rel="noopener" style="color:red;">CoDrone無人機體驗</a></h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="card-base card-hover">
+              <a href="school-courses/codrone/" target="_blank" rel="noopener">
+                {codroneExperience && <Image src={codroneExperience.default} alt="CoDrone無人機體驗" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="school-courses/codrone/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">CoDrone無人機體驗</a></h3>
             </div>
-            <div class="booth-card">
-              {aiArtCreation && <Image src={aiArtCreation.default} alt="AI藝術創作" class="booth-image" />}
-              <h3><a href="school-courses/ai-enrichment-course/" target="_blank" rel="noopener" style="color:red;">AI藝術創作</a></h3>
+            <div class="card-base card-hover">
+              <a href="school-courses/ai-enrichment-course/" target="_blank" rel="noopener">
+                {aiArtCreation && <Image src={aiArtCreation.default} alt="AI藝術創作" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="school-courses/ai-enrichment-course/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">AI藝術創作</a></h3>
             </div>
-            <div class="booth-card">
-              {virtualRocketDesign && <Image src={virtualRocketDesign.default} alt="虛擬火箭設計" class="booth-image" />}
-              <h3>虛擬火箭設計</h3>
+            <div class="card-base card-hover">
+              {virtualRocketDesign && <Image src={virtualRocketDesign.default} alt="虛擬火箭設計" class="w-full h-48 object-cover" />}
+              <h3 class="p-4 text-center text-lg font-semibold text-gray-900">虛擬火箭設計</h3>
             </div>
-            <div class="booth-card">
-              {aiDigitalAnimation && <Image src={aiDigitalAnimation.default} alt="AI數碼動畫展" class="booth-image" />}
-              <h3><a href="school-courses/ai-digital-animation-exhibition/" target="_blank" rel="noopener" style="color:red;">AI數碼動畫展</a></h3>
+            <div class="card-base card-hover">
+              <a href="school-courses/ai-digital-animation-exhibition/" target="_blank" rel="noopener">
+                {aiDigitalAnimation && <Image src={aiDigitalAnimation.default} alt="AI數碼動畫展" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="school-courses/ai-digital-animation-exhibition/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">AI數碼動畫展</a></h3>
             </div>
-            <div class="booth-card">
-              {circuitTesting && <Image src={circuitTesting.default} alt="電路接駁測試" class="booth-image" />}
-              <h3>電路接駁測試</h3>
+            <div class="card-base card-hover">
+              {circuitTesting && <Image src={circuitTesting.default} alt="電路接駁測試" class="w-full h-48 object-cover" />}
+              <h3 class="p-4 text-center text-lg font-semibold text-gray-900">電路接駁測試</h3>
             </div>
-            <div class="booth-card">
-              {microbitCar && <Image src={microbitCar.default} alt="Micro:bit遙控車體驗" class="booth-image" />}
-              <h3><a href="school-courses/microbit-maze/" target="_blank" rel="noopener" style="color:red;">Micro:bit遙控車體驗</a></h3>
+            <div class="card-base card-hover">
+              <a href="school-courses/microbit-maze/" target="_blank" rel="noopener">
+                {microbitCar && <Image src={microbitCar.default} alt="Micro:bit遙控車體驗" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="school-courses/microbit-maze/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Micro:bit遙控車體驗</a></h3>
             </div>
-            <div class="booth-card">
-              {mindControlRacing && <Image src={mindControlRacing.default} alt="念力賽車" class="booth-image" />}
-              <h3>念力賽車</h3>
+            <div class="card-base card-hover">
+              {mindControlRacing && <Image src={mindControlRacing.default} alt="念力賽車" class="w-full h-48 object-cover" />}
+              <h3 class="p-4 text-center text-lg font-semibold text-gray-900">念力賽車</h3>
             </div>
-            <div class="booth-card">
-              {martyRobot && <Image src={martyRobot.default} alt="Marty 機械人編程體驗" class="booth-image" />}
-              <h3>Marty 機械人編程體驗</h3>
+            <div class="card-base card-hover">
+              {martyRobot && <Image src={martyRobot.default} alt="Marty 機械人編程體驗" class="w-full h-48 object-cover" />}
+              <h3 class="p-4 text-center text-lg font-semibold text-gray-900">Marty 機械人編程體驗</h3>
             </div>
-            <div class="booth-card">
-              {matatalabProgramming && <Image src={matatalabProgramming.default} alt="Matatalab編程體驗" class="booth-image" />}
-              <h3>Matatalab編程體驗</h3>
+            <div class="card-base card-hover">
+              {matatalabProgramming && <Image src={matatalabProgramming.default} alt="Matatalab編程體驗" class="w-full h-48 object-cover" />}
+              <h3 class="p-4 text-center text-lg font-semibold text-gray-900">Matatalab編程體驗</h3>
             </div>
-            <div class="booth-card">
-              {arGameExperience && <Image src={arGameExperience.default} alt="AR遊戲體驗" class="booth-image" />}
-              <h3>AR遊戲體驗</h3>
+            <div class="card-base card-hover">
+              {arGameExperience && <Image src={arGameExperience.default} alt="AR遊戲體驗" class="w-full h-48 object-cover" />}
+              <h3 class="p-4 text-center text-lg font-semibold text-gray-900">AR遊戲體驗</h3>
             </div>
-            <div class="booth-card">
-              {vrGameExperience && <Image src={vrGameExperience.default} alt="VR遊戲體驗" class="booth-image" />}
-              <h3>VR遊戲體驗</h3>
+            <div class="card-base card-hover">
+              {vrGameExperience && <Image src={vrGameExperience.default} alt="VR遊戲體驗" class="w-full h-48 object-cover" />}
+              <h3 class="p-4 text-center text-lg font-semibold text-gray-900">VR遊戲體驗</h3>
             </div>
-            <div class="booth-card">
-              {virtualSpaceStation && <Image src={virtualSpaceStation.default} alt="虛擬太空站接駁" class="booth-image" />}
-              <h3>虛擬太空站接駁</h3>
+            <div class="card-base card-hover">
+              {virtualSpaceStation && <Image src={virtualSpaceStation.default} alt="虛擬太空站接駁" class="w-full h-48 object-cover" />}
+              <h3 class="p-4 text-center text-lg font-semibold text-gray-900">虛擬太空站接駁</h3>
             </div>
           </div>
         </div>
       </section>
 
     <!-- Classes Section (課堂) -->
-    <section class="classes-section">
-        <div class="container">
-          <h2 class="section-title">課堂</h2>
-          <p class="section-description">10Botics亦爲STEM Day提供以課室的形式進行，透過分班的方式進行課室活動，當中包括：</p>
+    <section class="section-padding bg-white">
+        <div class="container-standard">
+          <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-8">課堂</h2>
+          <p class="text-center text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto">10Botics亦爲STEM Day提供以課室的形式進行，透過分班的方式進行課室活動，當中包括：</p>
   
-          <div class="cards-grid">
-            <div class="card">
-              {classMicrobitMaze && <Image src={classMicrobitMaze.default} alt="Micro:bit 小車：逃出迷宮" class="card-image" />}
-              <h3 class="card-title"><a href="school-courses/microbit-maze/" target="_blank" rel="noopener">Micro:bit 小車：逃出迷宮</a></h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="card-base card-hover">
+              <a href="school-courses/microbit-maze/" target="_blank" rel="noopener">
+                {classMicrobitMaze && <Image src={classMicrobitMaze.default} alt="Micro:bit 小車：逃出迷宮" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="school-courses/microbit-maze/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Micro:bit 小車：逃出迷宮</a></h3>
             </div>
-            <div class="card">
-              {classAIArtStory && <Image src={classAIArtStory.default} alt="AI藝術故事創作" class="card-image" />}
-              <h3 class="card-title"><a href="school-courses/ai-enrichment-course/" target="_blank" rel="noopener">AI藝術故事創作</a></h3>
+            <div class="card-base card-hover">
+              <a href="school-courses/ai-enrichment-course/" target="_blank" rel="noopener">
+                {classAIArtStory && <Image src={classAIArtStory.default} alt="AI藝術故事創作" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="school-courses/ai-enrichment-course/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">AI藝術故事創作</a></h3>
             </div>
-            <div class="card">
-              {classStrawBridge && <Image src={classStrawBridge.default} alt="飲管橋" class="card-image" />}
-              <h3 class="card-title"><a href="stemday/straw-bridge/" target="_blank" rel="noopener">飲管橋</a></h3>
+            <div class="card-base card-hover">
+              <a href="stemday/straw-bridge/" target="_blank" rel="noopener">
+                {classStrawBridge && <Image src={classStrawBridge.default} alt="飲管橋" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="stemday/straw-bridge/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">飲管橋</a></h3>
             </div>
-            <div class="card">
-              {classMicrobitParachute && <Image src={classMicrobitParachute.default} alt="Micro:bit 降落傘" class="card-image" />}
-              <h3 class="card-title"><a href="school-courses/microbit-parachute/" target="_blank" rel="noopener">Micro:bit 降落傘</a></h3>
+            <div class="card-base card-hover">
+              <a href="school-courses/microbit-parachute/" target="_blank" rel="noopener">
+                {classMicrobitParachute && <Image src={classMicrobitParachute.default} alt="Micro:bit 降落傘" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="school-courses/microbit-parachute/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Micro:bit 降落傘</a></h3>
             </div>
-            <div class="card">
-              {classScratchGame && <Image src={classScratchGame.default} alt="Scratch 遊戲設計" class="card-image" />}
-              <h3 class="card-title"><a href="school-courses/scratch-game-design/" target="_blank" rel="noopener">Scratch 遊戲設計</a></h3>
+            <div class="card-base card-hover">
+              <a href="school-courses/scratch-game-design/" target="_blank" rel="noopener">
+                {classScratchGame && <Image src={classScratchGame.default} alt="Scratch 遊戲設計" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="school-courses/scratch-game-design/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Scratch 遊戲設計</a></h3>
             </div>
-            <div class="card">
-              {classKSP && <Image src={classKSP.default} alt="KSP太空遊戲設計" class="card-image" />}
-              <h3 class="card-title"><a href="school-courses/ksp/" target="_blank" rel="noopener">KSP太空遊戲設計</a></h3>
+            <div class="card-base card-hover">
+              <a href="school-courses/ksp/" target="_blank" rel="noopener">
+                {classKSP && <Image src={classKSP.default} alt="KSP太空遊戲設計" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="school-courses/ksp/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">KSP太空遊戲設計</a></h3>
             </div>
-            <div class="card">
-              {classDIY && <Image src={classDIY.default} alt="DIY手作" class="card-image" />}
-              <h3 class="card-title"><a href="stemday/diy/" target="_blank" rel="noopener">DIY手作</a></h3>
+            <div class="card-base card-hover">
+              <a href="stemday/diy/" target="_blank" rel="noopener">
+                {classDIY && <Image src={classDIY.default} alt="DIY手作" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="stemday/diy/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">DIY手作</a></h3>
             </div>
-            <div class="card">
-              {classMatatalab && <Image src={classMatatalab.default} alt="Matatalab 入門編程課程" class="card-image" />}
-              <h3 class="card-title"><a href="stemday/matatalab-入門編程課程/" target="_blank" rel="noopener">Matatalab 入門編程課程</a></h3>
+            <div class="card-base card-hover">
+              <a href="stemday/matatalab-入門編程課程/" target="_blank" rel="noopener">
+                {classMatatalab && <Image src={classMatatalab.default} alt="Matatalab 入門編程課程" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="stemday/matatalab-入門編程課程/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Matatalab 入門編程課程</a></h3>
             </div>
           </div>
         </div>
       </section>
   
       <!-- Lectures Section (講座) -->
-      <section class="lectures-section">
-        <div class="container">
-          <h2 class="section-title">講座</h2>
-          <p class="section-description">10Botics也爲STEM Day提供以禮堂講座的方式進行，當中包括：</p>
+      <section class="section-padding bg-gray-50">
+        <div class="container-standard">
+          <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-8">講座</h2>
+          <p class="text-center text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto">10Botics也爲STEM Day提供以禮堂講座的方式進行，當中包括：</p>
   
-          <div class="lecture-row">
-            <div class="lecture-image">
-              {aiLectureImage && <Image src={aiLectureImage.default} alt="AI 人工智能講座" />}
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-12">
+            <div class="order-2 lg:order-1">
+              {aiLectureImage && <Image src={aiLectureImage.default} alt="AI 人工智能講座" class="w-full h-auto rounded-lg shadow-card" />}
             </div>
-            <div class="lecture-content">
-              <h3>AI 人工智能講座</h3>
-              <p>講座將深入介紹人工智能是什麽，並解釋圖靈測試，講解AI 藝術創作、對話機器人等，讓學生全面瞭解最新的人工智能發展。</p>
-              <ul>
+            <div class="order-1 lg:order-2">
+              <h3 class="text-2xl font-semibold text-gray-900 mb-4">AI 人工智能講座</h3>
+              <p class="text-gray-700 mb-4 leading-relaxed">講座將深入介紹人工智能是什麽，並解釋圖靈測試，講解AI 藝術創作、對話機器人等，讓學生全面瞭解最新的人工智能發展。</p>
+              <ul class="space-y-2 text-gray-700 list-disc pl-5">
                 <li>認識人工智能</li>
                 <li>AI藝術創作：圖像生成、主題、設計風格與時間框架</li>
                 <li>什麽是圖靈測試</li>
@@ -325,14 +359,14 @@ try {
             </div>
           </div>
   
-          <div class="lecture-row">
-            <div class="lecture-image">
-              {blockchainIcon && <Image src={blockchainIcon.default} alt="區塊鏈專題講座" />}
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+              {blockchainIcon && <Image src={blockchainIcon.default} alt="區塊鏈專題講座" class="w-48 h-auto mx-auto lg:mx-0" />}
             </div>
-            <div class="lecture-content">
-              <h3>區塊鏈專題講座</h3>
-              <p>由行業導師主講，講解區塊鏈基礎、加密貨幣、NFT 等熱門主題，幫助同學理解區塊鏈技術的實際價值與應用。</p>
-              <ul>
+            <div>
+              <h3 class="text-2xl font-semibold text-gray-900 mb-4">區塊鏈專題講座</h3>
+              <p class="text-gray-700 mb-4 leading-relaxed">由行業導師主講，講解區塊鏈基礎、加密貨幣、NFT 等熱門主題，幫助同學理解區塊鏈技術的實際價值與應用。</p>
+              <ul class="space-y-2 text-gray-700 list-disc pl-5">
                 <li>認識區塊鏈基礎</li>
                 <li>開放源代碼與重要性</li>
                 <li>NFT 和數位資產</li>
@@ -347,8 +381,8 @@ try {
   
   
     <!-- Gallery Section (活動花絮) -->
-    <section class="gallery-section">
-      <div class="container">
+    <section class="section-padding bg-white">
+      <div class="container-standard">
         <GalleryCarousel
           title="活動花絮"
           images={[
@@ -365,77 +399,101 @@ try {
         />
       </div>
     </section>
-    <section>
-        <div class="container">
-            <h2 class="section-title">精選體驗活動</h2>
-            <div class="cards-grid">
-              <div class="card">
+    <section class="section-padding bg-gray-50">
+        <div class="container-standard">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">精選體驗活動</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div class="card-base card-hover">
+                <a href="/school-courses/ai-digital-animation-exhibition" target="_blank" rel="noopener">
             { (heroAIDigital || featuredAIDigitalAnimation) && (
-              <Image src={(heroAIDigital as any) ?? (featuredAIDigitalAnimation && featuredAIDigitalAnimation.default)} alt="AI數碼動畫展" class="card-image" />
+              <Image src={(heroAIDigital as any) ?? (featuredAIDigitalAnimation && featuredAIDigitalAnimation.default)} alt="AI數碼動畫展" class="w-full h-48 object-cover" />
             )}
-                <h3 class="card-title"><a href="/school-courses/ai-digital-animation-exhibition" rel="noopener">AI數碼動畫展</a></h3>
+                </a>
+                <h3 class="p-4 text-center text-lg font-semibold"><a href="/school-courses/ai-digital-animation-exhibition" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">AI數碼動畫展</a></h3>
               </div>
-              <div class="card">
+              <div class="card-base card-hover">
+                <a href="/school-courses/tello" target="_blank" rel="noopener">
             { (heroTello || featuredTello) && (
-              <Image src={(heroTello as any) ?? (featuredTello && featuredTello.default)} alt="Tello 無人機課程" class="card-image" />
+              <Image src={(heroTello as any) ?? (featuredTello && featuredTello.default)} alt="Tello 無人機課程" class="w-full h-48 object-cover" />
             )}
-                <h3 class="card-title"><a href="/school-courses/tello" rel="noopener">Tello 無人機課程</a></h3>
+                </a>
+                <h3 class="p-4 text-center text-lg font-semibold"><a href="/school-courses/tello" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Tello 無人機課程</a></h3>
               </div>
-              <div class="card">
+              <div class="card-base card-hover">
+                <a href="/school-courses/ksp" target="_blank" rel="noopener">
             { (heroKSP || classKSP) && (
-              <Image src={(heroKSP as any) ?? (classKSP && classKSP.default)} alt="Kerbal Space Program (KSP) 太空任務設計課程" class="card-image" />
+              <Image src={(heroKSP as any) ?? (classKSP && classKSP.default)} alt="Kerbal Space Program (KSP) 太空任務設計課程" class="w-full h-48 object-cover" />
             )}
-                <h3 class="card-title"><a href="/school-courses/ksp" rel="noopener">Kerbal Space Program (KSP) 太空任務設計課程</a></h3>
+                </a>
+                <h3 class="p-4 text-center text-lg font-semibold"><a href="/school-courses/ksp" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Kerbal Space Program (KSP) 太空任務設計課程</a></h3>
               </div>
-              <div class="card">
-                {classStrawBridge && <Image src={classStrawBridge.default} alt="飲管橋" class="card-image" />}
-                <h3 class="card-title"><a href="stemday/straw-bridge/" rel="noopener">飲管橋</a></h3>
+              <div class="card-base card-hover">
+                <a href="stemday/straw-bridge/" target="_blank" rel="noopener">
+                  {classStrawBridge && <Image src={classStrawBridge.default} alt="飲管橋" class="w-full h-48 object-cover" />}
+                </a>
+                <h3 class="p-4 text-center text-lg font-semibold"><a href="stemday/straw-bridge/" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">飲管橋</a></h3>
               </div>
-              <div class="card">
+              <div class="card-base card-hover">
+                <a href="/school-courses/donkey-car" target="_blank" rel="noopener">
             { (heroDonkey || featuredDonkeyCar) && (
-              <Image src={(heroDonkey as any) ?? (featuredDonkeyCar && featuredDonkeyCar.default)} alt="Donkey Car 無人車課程" class="card-image" />
+              <Image src={(heroDonkey as any) ?? (featuredDonkeyCar && featuredDonkeyCar.default)} alt="Donkey Car 無人車課程" class="w-full h-48 object-cover" />
             )}
-                <h3 class="card-title"><a href="/school-courses/donkey-car" rel="noopener">Donkey Car 無人車課程</a></h3>
+                </a>
+                <h3 class="p-4 text-center text-lg font-semibold"><a href="/school-courses/donkey-car" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Donkey Car 無人車課程</a></h3>
               </div>
-              <div class="card">
+              <div class="card-base card-hover">
+                <a href="/school-courses/minecraft" target="_blank" rel="noopener">
             { (heroMinecraft || featuredMinecraft) && (
-              <Image src={(heroMinecraft as any) ?? (featuredMinecraft && featuredMinecraft.default)} alt="Minecraft 校園創建課程" class="card-image" />
+              <Image src={(heroMinecraft as any) ?? (featuredMinecraft && featuredMinecraft.default)} alt="Minecraft 校園創建課程" class="w-full h-48 object-cover" />
             )}
-                <h3 class="card-title"><a href="/school-courses/minecraft" rel="noopener">Minecraft 校園創建課程</a></h3>
+                </a>
+                <h3 class="p-4 text-center text-lg font-semibold"><a href="/school-courses/minecraft" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Minecraft 校園創建課程</a></h3>
               </div>
-              <div class="card">
+              <div class="card-base card-hover">
+                <a href="/school-courses/procreate" target="_blank" rel="noopener">
             { (heroProcreate || featuredProcreate) && (
-              <Image src={(heroProcreate as any) ?? (featuredProcreate && featuredProcreate.default)} alt="Procreate電繪課程" class="card-image" />
+              <Image src={(heroProcreate as any) ?? (featuredProcreate && featuredProcreate.default)} alt="Procreate電繪課程" class="w-full h-48 object-cover" />
             )}
-                <h3 class="card-title"><a href="/school-courses/procreate" rel="noopener">Procreate電繪課程</a></h3>
+                </a>
+                <h3 class="p-4 text-center text-lg font-semibold"><a href="/school-courses/procreate" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Procreate電繪課程</a></h3>
               </div>
-              <div class="card">
-                {classDIY && <Image src={classDIY.default} alt="DIY 手作" class="card-image" />}
-                <h3 class="card-title"><a href="stemday/diy/" rel="noopener">DIY 手作</a></h3>
+              <div class="card-base card-hover">
+                <a href="stemday/diy/" target="_blank" rel="noopener">
+                  {classDIY && <Image src={classDIY.default} alt="DIY 手作" class="w-full h-48 object-cover" />}
+                </a>
+                <h3 class="p-4 text-center text-lg font-semibold"><a href="stemday/diy/" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">DIY 手作</a></h3>
               </div>
-              <div class="card">
+              <div class="card-base card-hover">
+                <a href="/school-courses/scratch-game-design" target="_blank" rel="noopener">
             { (heroScratch || classScratchGame) && (
-              <Image src={(heroScratch as any) ?? (classScratchGame && classScratchGame.default)} alt="Scratch 遊戲設計課程" class="card-image" />
+              <Image src={(heroScratch as any) ?? (classScratchGame && classScratchGame.default)} alt="Scratch 遊戲設計課程" class="w-full h-48 object-cover" />
             )}
-                <h3 class="card-title"><a href="/school-courses/scratch-game-design" rel="noopener">Scratch 遊戲設計課程</a></h3>
+                </a>
+                <h3 class="p-4 text-center text-lg font-semibold"><a href="/school-courses/scratch-game-design" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Scratch 遊戲設計課程</a></h3>
               </div>
-              <div class="card">
+              <div class="card-base card-hover">
+                <a href="/school-courses/raspberry-pi" target="_blank" rel="noopener">
             { (heroRaspberryPi || matatalabProgramming) && (
-              <Image src={(heroRaspberryPi as any) ?? (matatalabProgramming && matatalabProgramming.default)} alt="Matatalab 入門編程課程" class="card-image" />
+              <Image src={(heroRaspberryPi as any) ?? (matatalabProgramming && matatalabProgramming.default)} alt="Matatalab 入門編程課程" class="w-full h-48 object-cover" />
             )}
-                <h3 class="card-title"><a href="/school-courses/raspberry-pi" rel="noopener">Matatalab 入門編程課程</a></h3>
+                </a>
+                <h3 class="p-4 text-center text-lg font-semibold"><a href="/school-courses/raspberry-pi" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Matatalab 入門編程課程</a></h3>
               </div>
-              <div class="card">
+              <div class="card-base card-hover">
+                <a href="/school-courses/microbit-maze" target="_blank" rel="noopener">
             { (heroMicrobitMaze || classMicrobitMaze) && (
-              <Image src={(heroMicrobitMaze as any) ?? (classMicrobitMaze && classMicrobitMaze.default)} alt="Micro:bit 小車：逃出迷宮" class="card-image" />
+              <Image src={(heroMicrobitMaze as any) ?? (classMicrobitMaze && classMicrobitMaze.default)} alt="Micro:bit 小車：逃出迷宮" class="w-full h-48 object-cover" />
             )}
-                <h3 class="card-title"><a href="/school-courses/microbit-maze" rel="noopener">Micro:bit 小車：逃出迷宮</a></h3>
+                </a>
+                <h3 class="p-4 text-center text-lg font-semibold"><a href="/school-courses/microbit-maze" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Micro:bit 小車：逃出迷宮</a></h3>
               </div>
-              <div class="card">
+              <div class="card-base card-hover">
+                <a href="/school-courses/Delightex" target="_blank" rel="noopener">
             { (heroDelightex || featuredDelightex) && (
-              <Image src={(heroDelightex as any) ?? (featuredDelightex && featuredDelightex.default)} alt="CoSpaces 遊戲設計課程" class="card-image" />
+              <Image src={(heroDelightex as any) ?? (featuredDelightex && featuredDelightex.default)} alt="CoSpaces 遊戲設計課程" class="w-full h-48 object-cover" />
             )}
-                <h3 class="card-title"><a href="/school-courses/Delightex" rel="noopener">CoSpaces 遊戲設計課程</a></h3>
+                </a>
+                <h3 class="p-4 text-center text-lg font-semibold"><a href="/school-courses/Delightex" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">CoSpaces 遊戲設計課程</a></h3>
               </div>
             </div>
           </div>
@@ -443,37 +501,37 @@ try {
 
 
       <!-- Why 10botics Section -->
-      <section class="why-section">
-        <div class="container">
-          <h2 class="section-title">為什麼是10botics</h2>
-          <div class="features-grid">
-            <div class="feature-card">
-              <div class="feature-icon">
+      <section class="section-padding bg-white">
+        <div class="container-standard">
+          <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">為什麼是10botics</h2>
+          <div class="feature-grid">
+            <div class="text-center p-8 rounded-xl shadow-card transition-transform duration-300 hover:-translate-y-2">
+              <div class="text-5xl text-brand-cyan-600 mb-6">
                 <i class="fas fa-clipboard-list"></i>
               </div>
-              <h3>彈性活動配搭</h3>
-              <p>根據學校期望的內容安排適合不同年級學生的活動。我們亦可為您編排活動時間表。</p>
+              <h3 class="text-xl font-semibold text-gray-900 mb-4">彈性活動配搭</h3>
+              <p class="text-gray-700 leading-relaxed">根據學校期望的內容安排適合不同年級學生的活動。我們亦可為您編排活動時間表。</p>
             </div>
-            <div class="feature-card">
-              <div class="feature-icon">
+            <div class="text-center p-8 rounded-xl shadow-card transition-transform duration-300 hover:-translate-y-2">
+              <div class="text-5xl text-brand-cyan-600 mb-6">
                 <i class="fas fa-pencil-alt"></i>
               </div>
-              <h3>多元化內容</h3>
-              <p>融入 STEAM 和人工智能等多個的元素。提供一個全面的學習體驗，培養創造力和跨學科連接。内容更可按時間調節。</p>
+              <h3 class="text-xl font-semibold text-gray-900 mb-4">多元化內容</h3>
+              <p class="text-gray-700 leading-relaxed">融入 STEAM 和人工智能等多個的元素。提供一個全面的學習體驗，培養創造力和跨學科連接。内容更可按時間調節。</p>
             </div>
-            <div class="feature-card">
-              <div class="feature-icon">
+            <div class="text-center p-8 rounded-xl shadow-card transition-transform duration-300 hover:-translate-y-2">
+              <div class="text-5xl text-brand-cyan-600 mb-6">
                 <i class="fas fa-chalkboard-teacher"></i>
               </div>
-              <h3>靈活人手安排</h3>
-              <p>就學校預算需求，我們可靈活編排導師人手，亦可活動前提供在校老師培訓。</p>
+              <h3 class="text-xl font-semibold text-gray-900 mb-4">靈活人手安排</h3>
+              <p class="text-gray-700 leading-relaxed">就學校預算需求，我們可靈活編排導師人手，亦可活動前提供在校老師培訓。</p>
             </div>
-            <div class="feature-card">
-              <div class="feature-icon">
+            <div class="text-center p-8 rounded-xl shadow-card transition-transform duration-300 hover:-translate-y-2">
+              <div class="text-5xl text-brand-cyan-600 mb-6">
                 <i class="fas fa-crown"></i>
               </div>
-              <h3>不同活動形式</h3>
-              <p>活動能以課堂、攤位、講座等形式進行。<br>10Botics亦可提供全級 / 全校性活動。</p>
+              <h3 class="text-xl font-semibold text-gray-900 mb-4">不同活動形式</h3>
+              <p class="text-gray-700 leading-relaxed">活動能以課堂、攤位、講座等形式進行。<br>10Botics亦可提供全級 / 全校性活動。</p>
             </div>
           </div>
         </div>
@@ -494,11 +552,11 @@ try {
           <article class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow group hover:border-gray-300">
             {/* Featured Image */}
             <div class="aspect-video overflow-hidden">
-              <img
-                src="/src/assets/images/news/2025-07-19-可立中學ai藝術創作stem-day精彩回顧/featured.jpg"
+              {newsHolimLaiStemDay && <Image
+                src={newsHolimLaiStemDay.default}
                 alt="可立中學AI藝術創作STEM Day"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
+              />}
             </div>
             
             <div class="p-6">
@@ -553,11 +611,11 @@ try {
           <article class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow group hover:border-gray-300">
             {/* Featured Image */}
             <div class="aspect-video overflow-hidden">
-              <img
-                src="/src/assets/images/news/2024-07-10-深度探索Delightex-vrampar浸信會天虹小學-stem-day/image1.png"
+              {newsTinHongStemDay && <Image
+                src={newsTinHongStemDay.default}
                 alt="浸信會天虹小學Delightex VR&AR STEM Day"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
+              />}
             </div>
             
             <div class="p-6">
@@ -612,11 +670,11 @@ try {
           <article class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow group hover:border-gray-300">
             {/* Featured Image */}
             <div class="aspect-video overflow-hidden">
-              <img
-                src="/src/assets/images/news/2024-07-05-ai科技與創意融合中華基督教青年會中學-stem-day/image1.jpeg"
+              {newsYMCAStemDay && <Image
+                src={newsYMCAStemDay.default}
                 alt="中華基督教青年會中學AI科技與創意融合STEM Day"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
+              />}
             </div>
             
             <div class="p-6">
@@ -685,9 +743,9 @@ try {
     </section>
   
     <!-- Contact Form Section -->
-    <section id="contact-form" class="form-section">
-      <div class="container">
-        <h2 class="section-title">聯絡我們</h2>
+    <section id="contact-form" class="section-padding bg-white">
+      <div class="container-standard">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">聯絡我們</h2>
         <PaperformEmbed />
       </div>
     </section>
@@ -695,299 +753,6 @@ try {
 </Layout>
 
 <style>
-  /* Global Styles */
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
-  .section-title {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 2rem;
-    color: #333;
-  }
-
-  .section-description {
-    text-align: center;
-    font-size: 1.2rem;
-    margin-bottom: 3rem;
-    color: #666;
-  }
-
-  /* Hero Section */
-  .hero-section {
-    position: relative;
-    height: 60vh;
-    min-height: 400px;
-    overflow: hidden;
-  }
-
-  .hero-background {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
-
-  .hero-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-  }
-
-  .hero-title {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
-  }
-
-  .hero-subtitle {
-    font-size: 1.5rem;
-    max-width: 800px;
-    line-height: 1.6;
-    text-align: center;
-    margin: 0 auto;
-  }
-
-  /* Video Section */
-  .video-section {
-    padding: 4rem 0;
-    background: #f8f9fa;
-  }
-
-  .video-container {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  /* Why Section */
-  .why-section {
-    padding: 4rem 0;
-    background: white;
-  }
-
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-  }
-
-  .feature-card {
-    text-align: center;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-  }
-
-  .feature-card:hover {
-    transform: translateY(-5px);
-  }
-
-  .feature-icon {
-    font-size: 3rem;
-    color: #007bff;
-    margin-bottom: 1rem;
-  }
-
-  .feature-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #333;
-  }
-
-  .feature-card p {
-    color: #666;
-    line-height: 1.6;
-  }
-
-  /* Booths Section */
-  .booths-section {
-    padding: 4rem 0;
-    background: #f8f9fa;
-  }
-
-  .booths-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-  }
-
-  .booth-card {
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-  }
-
-  .booth-card:hover {
-    transform: translateY(-5px);
-  }
-
-  .booth-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-
-  .booth-card h3 {
-    padding: 1rem;
-    text-align: center;
-    font-size: 1.2rem;
-    color: #333;
-    margin: 0;
-  }
-
-  /* Classes Section */
-  .classes-section {
-    padding: 4rem 0;
-    background: white;
-  }
-
-  .cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-  }
-
-  .card {
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-  }
-
-  .card:hover { transform: translateY(-5px); }
-
-  .card-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    display: block;
-  }
-
-  .card-title {
-    padding: 1rem;
-    text-align: center;
-    font-size: 1.1rem;
-    margin: 0;
-  }
-
-  .card-title a { color: #333; text-decoration: none; }
-  .card-title a:hover { text-decoration: underline; }
-
-  /* Lectures Section */
-  .lectures-section {
-    padding: 4rem 0;
-    background: #f8f9fa;
-  }
-
-  .lecture-row {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 2rem;
-    align-items: center;
-    margin-bottom: 3rem;
-  }
-
-  .lecture-image :global(img) {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  .lecture-image.icon :global(img) {
-    width: 200px;
-    height: auto;
-  }
-
-  .lecture-content h3 {
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
-    color: #333;
-  }
-
-  .lecture-content p { color: #555; }
-  .lecture-content ul { margin-top: 1rem; padding-left: 1.2rem; color: #555; }
-
-  /* Gallery Section */
-  .gallery-section {
-    padding: 4rem 0;
-    background: white;
-  }
-
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-
-  .gallery-image {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-
-  /* Contact Section */
-  .contact-section {
-    padding: 4rem 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    text-align: center;
-  }
-
-  .contact-content h2 {
-    color: white;
-    margin-bottom: 2rem;
-  }
-
-  .cta-button {
-    display: inline-block;
-    background: white;
-    color: #667eea;
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-  }
-
-  .cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-
-  /* Form Section */
-  .form-section {
-    padding: 4rem 0;
-    background: white;
-  }
-
   /* Line clamp utilities for news section */
   .line-clamp-2 {
     display: -webkit-box;
@@ -1001,36 +766,5 @@ try {
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-  }
-
-
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .hero-title {
-      font-size: 2.5rem;
-    }
-
-    .hero-subtitle {
-      font-size: 1.2rem;
-    }
-
-    .section-title {
-      font-size: 2rem;
-    }
-
-    .features-grid,
-    .booths-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .cards-grid,
-    .gallery-grid,
-    .lecture-row {
-      grid-template-columns: 1fr;
-    }
-
-    .container {
-      padding: 0 15px;
-    }
   }
 </style> 

@@ -145,8 +145,8 @@ const ogImage = procreateThumbnail.src;
   />
 
   <!-- Why Procreate section -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <section class="section-padding bg-white">
+    <div class="container-standard">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <div class="rounded-lg overflow-hidden shadow-lg">
@@ -166,15 +166,15 @@ const ogImage = procreateThumbnail.src;
           </p>
           <div class="space-y-4">
             <div class="flex items-start space-x-3">
-              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <i class="fas fa-check-circle text-brand-cyan-600 mt-1"></i>
               <span class="text-gray-700">專業級數位繪畫工具</span>
             </div>
             <div class="flex items-start space-x-3">
-              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <i class="fas fa-check-circle text-brand-cyan-600 mt-1"></i>
               <span class="text-gray-700">直觀易用的操作界面</span>
             </div>
             <div class="flex items-start space-x-3">
-              <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+              <i class="fas fa-check-circle text-brand-cyan-600 mt-1"></i>
               <span class="text-gray-700">豐富的創作工具和效果</span>
             </div>
           </div>
@@ -184,15 +184,15 @@ const ogImage = procreateThumbnail.src;
   </section>
 
   <!-- Course Features -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
       <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程特色</h2>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {courseFeatures.map((feature) => (
-          <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow text-center">
+          <div class="card-base card-hover p-6 text-center">
             <div class="flex justify-center mb-4">
-              <i class={`${feature.icon} text-3xl text-cyan-500`}></i>
+              <i class={`${feature.icon} text-3xl text-brand-cyan-600`}></i>
             </div>
             <h3 class="text-lg font-semibold text-gray-900 mb-3">{feature.title}</h3>
             <p class="text-gray-700 text-sm">{feature.description}</p>
@@ -212,8 +212,8 @@ const ogImage = procreateThumbnail.src;
   />
 
   <!-- Course Arrangement -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
       <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">課程安排</h2>
       
       <div class="grid md:grid-cols-2 gap-8">
@@ -228,7 +228,7 @@ const ogImage = procreateThumbnail.src;
             <ul class="space-y-2 text-gray-600">
               {arrangement.content.map((item) => (
                 <li class="flex items-start">
-                  <i class="fas fa-circle text-cyan-500 text-xs mt-2 mr-3 flex-shrink-0"></i>
+                  <i class="fas fa-circle text-brand-cyan-600 text-xs mt-2 mr-3 flex-shrink-0"></i>
                   <span>{item}</span>
                 </li>
               ))}
@@ -244,8 +244,8 @@ const ogImage = procreateThumbnail.src;
   </section>
 
   <!-- Gallery Section -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <section class="section-padding bg-white">
+    <div class="container-standard">
       <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">精選照片</h2>
       
       <div class="grid md:grid-cols-2 gap-8">

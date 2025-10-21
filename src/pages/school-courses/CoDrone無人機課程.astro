@@ -1,7 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
-import CourseFeatures from '../../components/course/CourseFeatures.astro';
 import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
@@ -122,7 +121,7 @@ const courseFeatures = {
     },
     {
       text: "助學生成為Codrone高手",
-      icon: "fas fa-drone"
+      icon: "fas fa-helicopter"
     },
     {
       text: "創作自己的花式表演",
@@ -199,7 +198,7 @@ const faqItems = [
   },
   {
     question: "可否接收政府採購卡(P-card) 付款?",
-    answer: "我們暫不按受政府採購卡(P-card) 付款。"
+    answer: "我們可以按受政府採購卡(P-card) 付款。"
   }
 ];
 
@@ -220,8 +219,8 @@ const faqItems = [
   />
 
   <!-- Course Highlights Section -->
-  <section class="py-16 bg-gradient-to-r from-blue-50 to-indigo-50">
-    <div class="container mx-auto px-4">
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
       <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程重點</h2>
       
       <div class="grid md:grid-cols-2 gap-8 items-center">
@@ -251,18 +250,35 @@ const faqItems = [
   </section>
 
   <!-- Course Features -->
-  <CourseFeatures features={courseFeatures} />
+  <section class="section-padding bg-white">
+    <div class="container-standard">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">{courseFeatures.title}</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {courseFeatures.features.map((feature) => (
+          <div class="card-base card-hover p-6 text-center">
+            <div class="flex justify-center mb-4">
+              <div class="w-12 h-12 bg-brand-cyan-600 rounded-full flex items-center justify-center">
+                <i class={`${feature.icon} text-xl text-white`}></i>
+              </div>
+            </div>
+            <p class="text-gray-800 font-semibold">{feature.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <!-- Course Objectives -->
-  <section class="py-16 bg-white">
-    <div class="container mx-auto px-4">
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
       <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程目標</h2>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {courseObjectives.map((objective) => (
-          <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+          <div class="card-base card-hover p-6">
             <div class="flex items-center mb-4">
-              <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-3">
+              <div class="w-8 h-8 bg-brand-cyan-600 rounded-full flex items-center justify-center mr-3">
                 <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                 </svg>
@@ -277,10 +293,11 @@ const faqItems = [
   </section>
 
   <!-- Course Content -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4">
+  <section class="section-padding bg-white">
+    <div class="container-standard">
       <div class="max-w-4xl mx-auto">
         <SingleCourseContent 
+          hours="10 小時"
           items={curriculumItems}
         />
       </div>
@@ -288,15 +305,15 @@ const faqItems = [
   </section>
 
   <!-- Course Arrangements -->
-  <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
       <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程安排</h2>
       
       <div class="grid md:grid-cols-2 gap-8">
         {courseArrangements.map((arrangement) => (
-          <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="card-base card-hover p-6">
             <div class="flex items-center mb-4">
-              <div class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center mr-3">
+              <div class="w-8 h-8 bg-semantic-warning rounded-full flex items-center justify-center mr-3">
                 <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                 </svg>
@@ -315,8 +332,8 @@ const faqItems = [
   </section>
 
   <!-- Related Information -->
-  <section class="py-16 bg-cover bg-center" style={`background-image: url(${relatedInfoBg.src})`}>
-    <div class="container mx-auto px-4">
+  <section class="section-padding bg-cover bg-center" style={`background-image: url(${relatedInfoBg.src})`}>
+    <div class="container-standard">
       <div class="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg max-w-2xl mx-auto text-center">
         <h2 class="text-3xl font-bold mb-4 text-gray-800">相關資料</h2>
         <p class="text-gray-600 mb-6">嶄新無人機體驗 – 全新無人機 CoDrone EDU 引領中小學STEM教育新風潮</p>

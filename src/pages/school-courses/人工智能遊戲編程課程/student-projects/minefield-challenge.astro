@@ -21,7 +21,7 @@ const projectData = {
   <div class="min-h-screen bg-gray-50">
     <!-- Hero Section -->
     <section class="bg-gradient-to-br from-red-500 to-red-600 text-white py-16">
-      <div class="container mx-auto px-4 max-w-6xl">
+      <div class="container-standard max-w-6xl">
         <div class="text-center">
           <h1 class="text-4xl font-bold mb-4">{projectData.title}</h1>
           <p class="text-xl mb-6">{projectData.subtitle}</p>
@@ -31,8 +31,8 @@ const projectData = {
     </section>
 
     <!-- Project Details -->
-    <section class="py-16">
-      <div class="container mx-auto px-4 max-w-6xl">
+    <section class="section-padding">
+      <div class="container-standard max-w-6xl">
         <div class="grid lg:grid-cols-2 gap-12">
           <!-- Project Info -->
           <div>
@@ -71,7 +71,7 @@ const projectData = {
           <!-- Game Preview -->
           <div>
             <h2 class="text-3xl font-bold text-gray-900 mb-6">遊戲預覽</h2>
-            <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="card-base p-6">
               <div class="aspect-w-16 aspect-h-9 bg-gray-100 rounded-lg mb-4">
                 <div class="flex items-center justify-center h-64 bg-gradient-to-br from-red-100 to-pink-100 rounded-lg">
                   <div class="text-center">
@@ -88,8 +88,8 @@ const projectData = {
     </section>
 
     <!-- Game Section -->
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-4 max-w-4xl">
+    <section class="section-padding bg-white">
+      <div class="container-standard max-w-4xl">
         <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">試玩遊戲</h2>
         <div class="bg-gray-50 rounded-lg p-8">
           <iframe 
@@ -106,8 +106,8 @@ const projectData = {
     </section>
 
     <!-- Back to Course -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4 max-w-6xl text-center">
+    <section class="section-padding bg-gray-50">
+      <div class="container-standard max-w-6xl text-center">
         <a 
           href="/school-courses/人工智能遊戲編程課程" 
           class="inline-flex items-center px-6 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"

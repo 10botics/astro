@@ -192,8 +192,8 @@ const completeCourseFeatures = [
   />
 
   <!-- Video section -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <section class="section-padding bg-white">
+    <div class="container-standard">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold text-gray-900 mb-4">活動介紹影片</h2>
         <p class="text-lg text-gray-700">觀看我們的 AI 數碼動畫展活動介紹</p>
@@ -214,7 +214,7 @@ const completeCourseFeatures = [
   </section>
 
   <!-- Activity content section -->
-  <section class="bg-gray-50 py-16">
+  <section class="section-padding bg-gray-50">
     <div class="container mx-auto px-4 max-w-7xl">
       <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">活動內容</h2>
       <p class="text-lg text-gray-700 text-center mb-12">工作坊分為三個活動體驗區，讓學生從不同的活動中投入參與：</p>
@@ -238,7 +238,7 @@ const completeCourseFeatures = [
 
         <!-- Arrow 1 -->
         <div class="hidden lg:flex justify-center items-center px-2">
-          <div class="text-cyan-500">
+          <div class="text-brand-cyan-600">
             <svg class="w-8 h-6" fill="currentColor" viewBox="0 0 24 24">
               <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
             </svg>
@@ -262,7 +262,7 @@ const completeCourseFeatures = [
 
         <!-- Arrow 2 -->
         <div class="hidden lg:flex justify-center items-center px-2">
-          <div class="text-cyan-500">
+          <div class="text-brand-cyan-600">
             <svg class="w-8 h-6" fill="currentColor" viewBox="0 0 24 24">
               <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
             </svg>
@@ -288,8 +288,8 @@ const completeCourseFeatures = [
   </section>
 
   <!-- Complete course section -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <section class="section-padding bg-white">
+    <div class="container-standard">
       <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">完整課堂</h2>
       <p class="text-lg text-gray-700 text-center mb-12 font-semibold">
         更自由和個性化的學習體驗，包括主題/人物角色/音樂的製作，以自訂你的AI動態繪畫
@@ -316,15 +316,15 @@ const completeCourseFeatures = [
   </section>
 
   <!-- Course requirements section -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
       <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">活動要求</h2>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {courseRequirements.map((requirement) => (
           <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow text-center">
             <div class="flex justify-center mb-4">
-              <i class={`${requirement.icon} text-3xl text-cyan-500`}></i>
+              <i class={`${requirement.icon} text-3xl text-brand-cyan-600`}></i>
             </div>
             <h3 class="text-lg font-semibold text-gray-900 mb-2">{requirement.title}</h3>
             <p class="text-gray-700">{requirement.description}</p>
@@ -335,15 +335,15 @@ const completeCourseFeatures = [
   </section>
 
   <!-- Course highlights section -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <section class="section-padding bg-white">
+    <div class="container-standard">
       <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">活動特色</h2>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {courseHighlights.map((highlight) => (
           <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
             <div class="flex items-center mb-4">
-              <i class={`${highlight.icon} text-2xl text-cyan-500 mr-3`}></i>
+              <i class={`${highlight.icon} text-2xl text-brand-cyan-600 mr-3`}></i>
               <h3 class="text-lg font-semibold text-gray-900">{highlight.title}</h3>
             </div>
             <p class="text-gray-700">{highlight.description}</p>
@@ -354,8 +354,8 @@ const completeCourseFeatures = [
   </section>
 
   <!-- Course arrangements section -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
       <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">課程安排</h2>
       <p class="text-lg text-gray-700 text-center mb-12">提供多元化活動形式，包括以下：</p>
       
@@ -368,7 +368,7 @@ const completeCourseFeatures = [
                 <ul class="space-y-3">
                   {arrangement.description.map((item) => (
                     <li class="flex items-start space-x-3">
-                      <i class="fas fa-check-circle text-cyan-500 mt-1"></i>
+                      <i class="fas fa-check-circle text-brand-cyan-600 mt-1"></i>
                       <span class="text-gray-700">{item}</span>
                     </li>
                   ))}
@@ -391,13 +391,13 @@ const completeCourseFeatures = [
   </section>
 
   <!-- Customer testimonial section -->
-  <section class="bg-white py-16">
+  <section class="section-padding bg-white">
     <div class="container mx-auto px-4 max-w-4xl">
       <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">客戶評價</h2>
       
       <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-lg p-8">
         <div class="text-center">
-          <i class="fas fa-quote-left text-4xl text-cyan-500 mb-6"></i>
+          <i class="fas fa-quote-left text-4xl text-brand-cyan-600 mb-6"></i>
           <p class="text-lg text-gray-700 leading-relaxed mb-6">
             很好的體驗活動，操作亦簡單易明，本校中學生都很喜歡這個AI體驗活動，而當天到校參觀的小學生玩得很開心，氣氛熱鬧。另外當天的時間控制亦很恰當，整體而言我們都滿意是次以十二生肖為主題的AI數碼動畫展。
           </p>

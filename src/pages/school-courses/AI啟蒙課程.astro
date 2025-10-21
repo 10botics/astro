@@ -249,16 +249,16 @@ const faqItems = [
     />
 
     <!-- Course Highlights Section -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section class="section-padding bg-gray-50">
+      <div class="container-standard">
         <div class="text-center mb-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">課程亮點</h2>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {courseHighlights.map((item) => (
-            <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div class="card-base card-hover p-6">
               <div class="flex items-start">
-                <div class="text-3xl text-cyan-500 mr-4">
+                <div class="text-3xl text-brand-cyan-600 mr-4">
                   <i class={item.icon}></i>
                 </div>
                 <div>
@@ -274,8 +274,8 @@ const faqItems = [
 
 
     <!-- Course Features Section -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section class="section-padding bg-white">
+      <div class="container-standard">
         <div class="text-center mb-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">課程特色</h2>
         </div>
@@ -287,12 +287,12 @@ const faqItems = [
             if (item.link) {
               return (
                 <a href={item.link} class="block hover:scale-105 transition-transform duration-200">
-                  <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+                  <div class="card-base card-hover p-6">
                     <div class="mb-4">
                       <Image src={featureImage} alt={item.title} class="w-full h-48 object-cover rounded-lg" />
                     </div>
                     <div class="flex items-start">
-                      <div class="text-3xl text-cyan-500 mr-4">
+                      <div class="text-3xl text-brand-cyan-600 mr-4">
                         <i class={item.icon}></i>
                       </div>
                       <div>
@@ -310,12 +310,12 @@ const faqItems = [
               );
             } else {
               return (
-                <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+                <div class="card-base card-hover p-6">
                   <div class="mb-4">
                     <Image src={featureImage} alt={item.title} class="w-full h-48 object-cover rounded-lg" />
                   </div>
                   <div class="flex items-start">
-                    <div class="text-3xl text-cyan-500 mr-4">
+                    <div class="text-3xl text-brand-cyan-600 mr-4">
                       <i class={item.icon}></i>
                     </div>
                     <div>

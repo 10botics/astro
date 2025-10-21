@@ -1,0 +1,853 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+// Import background image
+import aiCoursesImage from '../../../gallery-4.png';
+
+// Import science handicraft images
+import scienceImage1 from '../../assets/images/science/投籃器手作.png';
+import scienceImage2 from '../../assets/images/science/星空投影儀.png';
+import scienceImage3 from '../../assets/images/science/橡筋衝鋒車.png';
+import scienceImage4 from '../../assets/images/science/萬花筒.png';
+import scienceImage5 from '../../assets/images/science/空氣加農炮.png';
+import scienceImage6 from '../../assets/images/science/機械翅膀.png';
+import scienceImage7 from '../../assets/images/science/液壓挖掘機.png';
+import scienceImage8 from '../../assets/images/science/慣性滾輪.png';
+import scienceImage9 from '../../assets/images/science/減震裝置.png';
+import scienceImage10 from '../../assets/images/science/燈光隧道.png';
+import scienceImage11 from '../../assets/images/science/滑輪測力器.png';
+import scienceImage12 from '../../assets/images/science/甩干機.png';
+import scienceImage13 from '../../assets/images/science/手搖風扇.png';
+import scienceImage14 from '../../assets/images/science/胡克滾輪.png';
+import scienceImage15 from '../../assets/images/science/聲音的實驗.png';
+import scienceImage16 from '../../assets/images/science/磁力小車.png';
+
+// Import natural science handcraft images
+import lionSilhouette from '../../assets/images/school-courses/自然生物探究手作課程/lion-silhouette.png';
+import oceanCraft from '../../assets/images/school-courses/自然生物探究手作課程/ocean-craft.png';
+import birdHouse from '../../assets/images/school-courses/自然生物探究手作課程/bird-house.jpeg';
+import catDogMask from '../../assets/images/school-courses/自然生物探究手作課程/cat-dog-mask.png';
+import insectScratch from '../../assets/images/school-courses/自然生物探究手作課程/insect-scratch.png';
+import twistPottedPlant from '../../assets/images/school-courses/自然生物探究手作課程/twist-potted-plant.png';
+import dinosaurCraft from '../../assets/images/school-courses/自然生物探究手作課程/dinosaur-craft.png';
+import pandaClay from '../../assets/images/school-courses/自然生物探究手作課程/panda-clay.jpeg';
+import turtleMoss from '../../assets/images/school-courses/自然生物探究手作課程/turtle-moss.jpeg';
+
+// Gallery streams data structure
+const streams = [
+  {
+    id: 'science-handicraft',
+    name: '科學手作',
+    images: [
+      { 
+        id: 1, 
+        src: scienceImage1, 
+        title: '投籃器手作',
+        subtitle: '探索投籃器的基本構造和科學原理',
+        difficulty: 2,
+        interest: 5,
+        science: 3,
+        learningOutcomes: [
+          '探索投籃器的基本構造和科學原理',
+          '循序漸進地理解重力的運用和知識',
+          '親手製作屬於自己的投籃器'
+        ],
+        scientificPrinciples: '重力\n拋物線運動',
+        gradeLevel: '高小',
+        duration: '55分鐘'
+      },
+      { 
+        id: 2, 
+        src: scienceImage2, 
+        title: '星空投影儀',
+        subtitle: '學習星空投影儀的基本原理和構造',
+        difficulty: 2,
+        interest: 5,
+        science: 3,
+        learningOutcomes: [
+          '學習星空投影儀的基本原理和構造',
+          '深入學習天文知識',
+          '親手製作屬於自己的星空投影儀'
+        ],
+        scientificPrinciples: '光的投影原理\n天文知識',
+        gradeLevel: '初小',
+        duration: '55分鐘'
+      },
+      { 
+        id: 3, 
+        src: scienceImage3, 
+        title: '橡筋衝鋒車',
+        subtitle: '活動將向同學們介紹橡筋衝鋒車的運作原理',
+        difficulty: 2,
+        interest: 3,
+        science: 3,
+        learningOutcomes: [
+          '理解橡筋衝鋒車的運作原理',
+          '學習彈簧的動能運動',
+          '親手製作橡筋衝鋒車並與同學競爭'
+        ],
+        scientificPrinciples: '彈性勢能\n動能轉換',
+        gradeLevel: '初小',
+        duration: '55分鐘'
+      },
+      { 
+        id: 4, 
+        src: scienceImage4, 
+        title: '萬花筒',
+        subtitle: '反射與對稱，萬花筒的秘密！',
+        difficulty: 2,
+        interest: 4,
+        science: 3,
+        learningOutcomes: [
+          '製作萬花筒模型',
+          '探索光的對稱性',
+          '了解鏡子的排列'
+        ],
+        scientificPrinciples: '光的反射\n對稱性原理',
+        gradeLevel: '一、二年級',
+        duration: '50分鐘'
+      },
+      { 
+        id: 5, 
+        src: scienceImage5, 
+        title: '空氣加農炮',
+        subtitle: '利用空氣的力量來發射',
+        difficulty: 3,
+        interest: 5,
+        science: 3,
+        learningOutcomes: [
+          '認識氣壓的應用',
+          '測試發射距離',
+          '了解發射角度對射程的影響'
+        ],
+        scientificPrinciples: '氣壓\n發射角度對射程的影響',
+        gradeLevel: '五、六年級',
+        duration: '55分鐘'
+      },
+      { 
+        id: 6, 
+        src: scienceImage6, 
+        title: '機械翅膀',
+        subtitle: '學習機械如何模擬飛翔動作',
+        difficulty: 5,
+        interest: 5,
+        science: 3,
+        learningOutcomes: [
+          '組裝機械結構',
+          '探索電機如何驅動動作',
+          '觀察機械翅膀如何上下擺動'
+        ],
+        scientificPrinciples: '機械運動\n平行四邊形結構',
+        gradeLevel: '六年級',
+        duration: '110分鐘'
+      },
+      { 
+        id: 7, 
+        src: scienceImage7, 
+        title: '液壓挖掘機',
+        subtitle: '掌控液壓力量',
+        difficulty: 4,
+        interest: 3,
+        science: 5,
+        learningOutcomes: [
+          '認識液壓如何移動物體',
+          '學會簡單的壓力應用',
+          '體驗液壓如何產生動作'
+        ],
+        scientificPrinciples: '液壓系統\n壓力轉換',
+        gradeLevel: '四、五年級',
+        duration: '55分鐘'
+      },
+      { 
+        id: 8, 
+        src: scienceImage8, 
+        title: '慣性滾輪',
+        subtitle: '探索慣性與滾動的樂趣',
+        difficulty: 2,
+        interest: 5,
+        science: 5,
+        learningOutcomes: [
+          '認識慣性',
+          '觀察摩擦力影響',
+          '了解物體的運動特性'
+        ],
+        scientificPrinciples: '慣性\n摩擦力',
+        gradeLevel: '五年級',
+        duration: '55分鐘'
+      },
+      { 
+        id: 9, 
+        src: scienceImage9, 
+        title: '減震裝置',
+        subtitle: '打造穩定結構',
+        difficulty: 3,
+        interest: 4,
+        science: 4,
+        learningOutcomes: [
+          '認識減震的基本概念',
+          '學會選擇適合的材料',
+          '測試裝置的穩定性'
+        ],
+        scientificPrinciples: '減震技術\n力的傳遞與分散',
+        gradeLevel: '四年級',
+        duration: '55分鐘'
+      },
+      { 
+        id: 10, 
+        src: scienceImage10, 
+        title: '燈光隧道',
+        subtitle: '創造光影奇蹟',
+        difficulty: 5,
+        interest: 5,
+        science: 3,
+        learningOutcomes: [
+          '認識光線的反射',
+          '學會平面鏡成像原理',
+          '體驗燈光效果的變化'
+        ],
+        scientificPrinciples: '光的折射和反射\n平面鏡成像原理',
+        gradeLevel: '四年級',
+        duration: '55分鐘'
+      },
+      { 
+        id: 11, 
+        src: scienceImage11, 
+        title: '滑輪測力器',
+        subtitle: '探索滑輪的力量',
+        difficulty: 4,
+        interest: 3,
+        science: 4,
+        learningOutcomes: [
+          '認識滑輪如何幫助省力',
+          '學會基礎的力學概念',
+          '嘗試不同滑輪的效果'
+        ],
+        scientificPrinciples: '滑輪系統\n定滑輪和動滑輪',
+        gradeLevel: '四年級',
+        duration: '55分鐘'
+      },
+      { 
+        id: 12, 
+        src: scienceImage12, 
+        title: '甩干機',
+        subtitle: '旋轉的科學，離心力的魔法',
+        difficulty: 3,
+        interest: 5,
+        science: 3,
+        learningOutcomes: [
+          '離心力的概念',
+          '旋轉運動的應用',
+          '旋轉速度對分離效果的關係'
+        ],
+        scientificPrinciples: '離心力\n重力\n摩擦力',
+        gradeLevel: '三年級',
+        duration: '55分鐘'
+      },
+      { 
+        id: 13, 
+        src: scienceImage13, 
+        title: '手搖風扇',
+        subtitle: '能量轉換，風力的秘密',
+        difficulty: 2,
+        interest: 5,
+        science: 5,
+        learningOutcomes: [
+          '手動搖動如何產生風',
+          '搖動速度與風速的關係',
+          '風扇的基本結構'
+        ],
+        scientificPrinciples: '能量轉換',
+        gradeLevel: '三年級',
+        duration: '55分鐘'
+      },
+      { 
+        id: 14, 
+        src: scienceImage14, 
+        title: '胡克滾輪',
+        subtitle: '探索彈性力量',
+        difficulty: 2,
+        interest: 4,
+        science: 4,
+        learningOutcomes: [
+          '了解橡皮筋的彈性和作用力',
+          '觀察彈簧的移動方式',
+          '探索如何讓彈簧滾得更遠'
+        ],
+        scientificPrinciples: '能量的轉換\n彈性與回彈力',
+        gradeLevel: '二年級',
+        duration: '55分鐘'
+      },
+      { 
+        id: 15, 
+        src: scienceImage15, 
+        title: '聲音的實驗',
+        subtitle: '聽見聲音，看見聲音',
+        difficulty: 2,
+        interest: 4,
+        science: 4,
+        learningOutcomes: [
+          '了解聲音可以透過固體傳播',
+          '體驗聲音的振動如何在不同材料中移動',
+          '觀察聲音的振動如何影響物體表面上的圖案'
+        ],
+        scientificPrinciples: '聲音振動',
+        gradeLevel: '一、二年級',
+        duration: '55分鐘'
+      },
+      { 
+        id: 16, 
+        src: scienceImage16, 
+        title: '磁力小車',
+        subtitle: '體驗磁力驅動',
+        difficulty: 2,
+        interest: 3,
+        science: 3,
+        learningOutcomes: [
+          '認識磁鐵的極性與磁場',
+          '探索吸引與排斥對物體運動的影響',
+          '磁力的應用'
+        ],
+        scientificPrinciples: '磁場的吸引與排斥\n磁力的應用',
+        gradeLevel: '二年級',
+        duration: '55分鐘'
+      },
+    ]
+  },
+  {
+    id: 'natural-science-handicraft',
+    name: '自然科學手作',
+    images: [
+      { 
+        id: 1, 
+        src: lionSilhouette, 
+        title: '木質獅子剪影畫',
+        subtitle: '探索非洲大草原，見證生命的壯麗！',
+        difficulty: 2,
+        interest: 4,
+        science: 3,
+        learningOutcomes: [
+          '非洲大草原的特點和氣候',
+          '非洲BIG 5動物',
+          '動物大遷徙'
+        ],
+        scientificPrinciples: '',
+        gradeLevel: '一至四年級',
+        duration: '75分鐘'
+      },
+      { 
+        id: 2, 
+        src: oceanCraft, 
+        title: '海洋立體景深手作',
+        subtitle: '從微生物到巨大的鯨魚，皆有其獨特之處！',
+        difficulty: 2,
+        interest: 4,
+        science: 3,
+        learningOutcomes: [
+          '簡單介紹海洋的知識',
+          '6-8種海洋生物的習性和特徵',
+          '不同的海洋棲息地'
+        ],
+        scientificPrinciples: '',
+        gradeLevel: '一至六年級',
+        duration: '90分鐘'
+      },
+      { 
+        id: 3, 
+        src: birdHouse, 
+        title: '雀鳥小屋',
+        subtitle: '了解雀鳥的習性，增進與自然的連結！',
+        difficulty: 2,
+        interest: 4,
+        science: 3,
+        learningOutcomes: [
+          '介紹香港常見/飼養的雀鳥',
+          '認識牠們的習性和棲息地方',
+          '正確觀鳥的方式'
+        ],
+        scientificPrinciples: '',
+        gradeLevel: '一至六年級',
+        duration: '75分鐘'
+      },
+      { 
+        id: 4, 
+        src: catDogMask, 
+        title: '貓/狗面具',
+        subtitle: '了解貓狗的語言，與寵物建立深厚信任',
+        difficulty: 2,
+        interest: 4,
+        science: 3,
+        learningOutcomes: [
+          '介紹貓狗的特點',
+          '生活環境需要的設備',
+          '如何正確和牠們交流互動'
+        ],
+        scientificPrinciples: '',
+        gradeLevel: '一至四年級',
+        duration: '70分鐘'
+      },
+      { 
+        id: 5, 
+        src: insectScratch, 
+        title: '刮刮昆蟲畫',
+        subtitle: '愛護昆蟲，保護我們的環境與未來！',
+        difficulty: 2,
+        interest: 4,
+        science: 3,
+        learningOutcomes: [
+          '昆蟲的構造',
+          '常見的昆蟲特性及生活環境',
+          '昆蟲的重要'
+        ],
+        scientificPrinciples: '',
+        gradeLevel: '一至四年級',
+        duration: '70分鐘'
+      },
+      { 
+        id: 6, 
+        src: twistPottedPlant, 
+        title: '扭扭棒盆栽',
+        subtitle: '觀察植物的變化，感受生命的力量！',
+        difficulty: 2,
+        interest: 4,
+        science: 3,
+        learningOutcomes: [
+          '植物的構造',
+          '光合作用',
+          '常見的植物種類',
+          '如何種植種子'
+        ],
+        scientificPrinciples: '',
+        gradeLevel: '一至六年級',
+        duration: '75分鐘'
+      },
+      { 
+        id: 7, 
+        src: dinosaurCraft, 
+        title: '可活動恐龍創意畫',
+        subtitle: '化身古生物學家，探索過去的生物多樣性！',
+        difficulty: 2,
+        interest: 4,
+        science: 3,
+        learningOutcomes: [
+          '介紹史前世界',
+          '探索恐龍與古生物',
+          '恐龍生活環境'
+        ],
+        scientificPrinciples: '',
+        gradeLevel: '一至四年級',
+        duration: '75分鐘'
+      },
+      { 
+        id: 8, 
+        src: pandaClay, 
+        title: '熊貓黏土',
+        subtitle: '愛護昆蟲，保護我們的環境與未來！',
+        difficulty: 2,
+        interest: 4,
+        science: 3,
+        learningOutcomes: [
+          '熊貓的特點',
+          '熊貓的生活環境',
+          '熊貓的保育現況'
+        ],
+        scientificPrinciples: '',
+        gradeLevel: '一至六年級',
+        duration: '90分鐘'
+      },
+      { 
+        id: 9, 
+        src: turtleMoss, 
+        title: '永生小龜苔蘚畫',
+        subtitle: '兩種龜類，兩種生活方式！',
+        difficulty: 2,
+        interest: 4,
+        science: 3,
+        learningOutcomes: [
+          '陸龜和水龜的特點',
+          '生活環境'
+        ],
+        scientificPrinciples: '',
+        gradeLevel: '一至六年級',
+        duration: '90分鐘'
+      },
+    ]
+  }
+];
+
+// Calculate total images across all streams
+const totalImages = streams.reduce((sum, stream) => sum + stream.images.length, 0);
+
+// SEO optimized page data
+const pageTitle = "科學手作作品展示 - 10教育探索科學與藝術";
+const pageDescription = `探索我們的科學手作作品展示，展示科學手作與自然科學手作的創意成果。共${totalImages}件作品，讓學生在創作中學習科學知識。`;
+const pageKeywords = "科學手作, 自然科學手作, 自然科學, 生物探究, 海洋環境, 創意手作, STEM教育, 10教育";
+---
+
+<Layout 
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  ogImage="/images/og/science-courses.jpg"
+>
+  <main class="courses-index">
+    <!-- Header -->
+    <header class="relative text-white py-16 overflow-hidden">
+      <div class="absolute inset-0">
+        <Image src={aiCoursesImage} alt="科學手作課程背景" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+      </div>
+      <div class="relative container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-5xl font-bold mb-6">科學手作作品展示</h1>
+          <p class="text-xl opacity-90 mb-8">
+            探索自然科學與創意手作的完美結合，欣賞學生的創意作品與科學探索成果
+          </p>
+          <div class="flex flex-wrap justify-center gap-4 mt-8">
+            <div class="bg-white bg-opacity-20 backdrop-blur-sm px-6 py-3 rounded-lg">
+              <div class="text-3xl font-bold">{totalImages}</div>
+              <div class="text-sm opacity-90">作品展示</div>
+            </div>
+            <div class="bg-white bg-opacity-20 backdrop-blur-sm px-6 py-3 rounded-lg">
+              <div class="text-3xl font-bold">{streams.length}</div>
+              <div class="text-sm opacity-90">展示主題</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Gallery Description -->
+    <section class="py-12 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-3xl font-bold mb-6 text-gray-800">什麼是科學手作？</h2>
+          <p class="text-lg text-gray-600 leading-relaxed mb-4">
+            科學手作結合自然科學知識與創意手工製作，讓學生透過實際操作探索科學原理。
+            作品涵蓋生物學、環境科學、海洋生態等主題，展現學生的觀察力、創造力與科學探究精神。
+          </p>
+          <p class="text-lg text-gray-600 leading-relaxed">
+            點擊作品圖片可查看更多詳情，探索學生們如何將科學知識轉化為精美的手作作品。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Streams -->
+    {streams.map((stream) => (
+      <section class="py-16" id={stream.id}>
+        <div class="container mx-auto px-4">
+          <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold mb-8 text-gray-800 text-center">{stream.name}</h2>
+            
+            {stream.images.length > 0 ? (
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {stream.images.map((image) => (
+                  <div 
+                    class="gallery-item group cursor-pointer bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden"
+                    data-stream-id={stream.id}
+                    data-image-id={image.id}
+                    data-image-src={typeof image.src === 'string' ? image.src : image.src.src}
+                    data-image-title={image.title}
+                    data-subtitle={image.subtitle || ''}
+                    data-difficulty={image.difficulty || 0}
+                    data-interest={image.interest || 0}
+                    data-science={image.science || 0}
+                    data-learning-outcomes={JSON.stringify(image.learningOutcomes || [])}
+                    data-scientific-principles={image.scientificPrinciples || ''}
+                    data-grade-level={image.gradeLevel || ''}
+                    data-duration={image.duration || ''}
+                  >
+                    <div class="aspect-square overflow-hidden bg-gray-100">
+                      {typeof image.src === 'string' ? (
+                        <img 
+                          src={image.src} 
+                          alt={image.title}
+                          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
+                      ) : (
+                        <Image 
+                          src={image.src} 
+                          alt={image.title}
+                          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                          width={400}
+                          height={400}
+                        />
+                      )}
+                    </div>
+                    <div class="p-4">
+                      <h3 class="text-sm font-semibold text-gray-800 text-center line-clamp-2">
+                        {image.title}
+                      </h3>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div class="text-center py-12">
+                <p class="text-xl text-gray-600">目前尚無{stream.name}作品</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <!-- Why Choose Science Handicraft -->
+    <section class="py-16 bg-gradient-to-br from-blue-50 to-green-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl font-bold mb-12 text-gray-800 text-center">為什麼選擇科學手作？</h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <div class="text-4xl mb-4">🔬</div>
+              <h3 class="text-xl font-bold mb-3 text-gray-800">實踐與理論結合</h3>
+              <p class="text-gray-600">
+                通過動手製作和實驗，將抽象的科學概念轉化為具體的學習體驗
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <div class="text-4xl mb-4">🌿</div>
+              <h3 class="text-xl font-bold mb-3 text-gray-800">探索自然世界</h3>
+              <p class="text-gray-600">
+                深入了解動植物、生態系統和環境科學，培養對自然的熱愛和保護意識
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+              <div class="text-4xl mb-4">🎨</div>
+              <h3 class="text-xl font-bold mb-3 text-gray-800">激發創造力</h3>
+              <p class="text-gray-600">
+                結合藝術與科學，讓學生在創作中展現個性，培養創新思維
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal for Image Display -->
+  <div id="imageModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black bg-opacity-75 transition-opacity">
+    <div class="relative max-w-6xl w-full max-h-[90vh] bg-white rounded-lg shadow-2xl overflow-hidden">
+      <!-- Close Button -->
+      <button 
+        id="closeModal" 
+        class="absolute top-4 right-4 z-10 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition-colors"
+        aria-label="關閉"
+      >
+        <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+      
+      <!-- Modal Content -->
+      <div class="flex flex-col md:flex-row max-h-[90vh] overflow-y-auto">
+        <!-- Image Container -->
+        <div class="md:w-1/2 relative bg-gray-100 flex items-center justify-center p-4">
+          <img 
+            id="modalImage" 
+            src="" 
+            alt="" 
+            class="max-w-full w-auto h-auto object-contain"
+            style="max-height: 60vh;"
+          />
+        </div>
+        
+        <!-- Details Section -->
+        <div class="md:w-1/2 p-6 bg-white overflow-y-auto">
+          <!-- Title and Subtitle -->
+          <div class="mb-6">
+            <h3 id="modalTitle" class="text-3xl font-bold text-gray-800 mb-2"></h3>
+            <p id="modalSubtitle" class="text-lg text-gray-600"></p>
+          </div>
+          
+          <!-- Rating Bars -->
+          <div class="mb-6 space-y-3">
+            <div class="flex items-center">
+              <span class="text-sm font-medium text-gray-700 w-16">難度：</span>
+              <div id="difficultyStars" class="text-yellow-500 text-xl"></div>
+            </div>
+            <div class="flex items-center">
+              <span class="text-sm font-medium text-gray-700 w-16">趣味：</span>
+              <div id="interestStars" class="text-yellow-500 text-xl"></div>
+            </div>
+            <div class="flex items-center">
+              <span class="text-sm font-medium text-gray-700 w-16">科學：</span>
+              <div id="scienceStars" class="text-yellow-500 text-xl"></div>
+            </div>
+          </div>
+          
+          <!-- Learning Outcomes -->
+          <div class="mb-6">
+            <div class="bg-cyan-500 text-white px-4 py-2 rounded-t-lg">
+              <h4 class="text-lg font-bold">學習成果</h4>
+            </div>
+            <div class="bg-gray-50 px-4 py-4 rounded-b-lg border border-t-0 border-gray-200">
+              <ul id="learningOutcomesList" class="space-y-2"></ul>
+            </div>
+          </div>
+          
+          <!-- Project Information Table -->
+          <div class="bg-cyan-50 rounded-lg overflow-hidden">
+            <table class="w-full">
+              <tbody>
+                <tr class="border-b border-cyan-200">
+                  <td class="px-4 py-3 font-medium text-gray-700 bg-cyan-100">科學原理</td>
+                  <td id="scientificPrinciples" class="px-4 py-3 text-gray-800"></td>
+                </tr>
+                <tr class="border-b border-cyan-200">
+                  <td class="px-4 py-3 font-medium text-gray-700 bg-cyan-100">適合年級</td>
+                  <td id="gradeLevel" class="px-4 py-3 text-gray-800"></td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-medium text-gray-700 bg-cyan-100">時長</td>
+                  <td id="duration" class="px-4 py-3 text-gray-800"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Modal functionality
+  const modal = document.getElementById('imageModal');
+  const modalImage = document.getElementById('modalImage') as HTMLImageElement;
+  const modalTitle = document.getElementById('modalTitle');
+  const modalSubtitle = document.getElementById('modalSubtitle');
+  const difficultyStars = document.getElementById('difficultyStars');
+  const interestStars = document.getElementById('interestStars');
+  const scienceStars = document.getElementById('scienceStars');
+  const learningOutcomesList = document.getElementById('learningOutcomesList');
+  const scientificPrinciples = document.getElementById('scientificPrinciples');
+  const gradeLevel = document.getElementById('gradeLevel');
+  const duration = document.getElementById('duration');
+  const closeModalBtn = document.getElementById('closeModal');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+
+  // Helper function to generate star rating HTML
+  const generateStars = (rating: number): string => {
+    const totalStars = 5;
+    let starsHTML = '';
+    for (let i = 1; i <= totalStars; i++) {
+      if (i <= rating) {
+        starsHTML += '<span class="text-yellow-500">★</span>';
+      } else {
+        starsHTML += '<span class="text-gray-300">★</span>';
+      }
+    }
+    return starsHTML;
+  };
+
+  // Open modal when clicking on a gallery item
+  galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const imageSrc = item.getAttribute('data-image-src');
+      const imageTitle = item.getAttribute('data-image-title');
+      const subtitle = item.getAttribute('data-subtitle');
+      const difficulty = parseInt(item.getAttribute('data-difficulty') || '0');
+      const interest = parseInt(item.getAttribute('data-interest') || '0');
+      const science = parseInt(item.getAttribute('data-science') || '0');
+      const learningOutcomesStr = item.getAttribute('data-learning-outcomes');
+      const principles = item.getAttribute('data-scientific-principles');
+      const grade = item.getAttribute('data-grade-level');
+      const time = item.getAttribute('data-duration');
+      
+      if (imageSrc && imageTitle && modalImage && modalTitle && modal) {
+        // Set image
+        modalImage.src = imageSrc;
+        modalImage.alt = imageTitle;
+        
+        // Set title and subtitle
+        modalTitle.textContent = imageTitle;
+        if (modalSubtitle) {
+          modalSubtitle.textContent = subtitle || '';
+        }
+        
+        // Set star ratings
+        if (difficultyStars) {
+          difficultyStars.innerHTML = generateStars(difficulty);
+        }
+        if (interestStars) {
+          interestStars.innerHTML = generateStars(interest);
+        }
+        if (scienceStars) {
+          scienceStars.innerHTML = generateStars(science);
+        }
+        
+        // Set learning outcomes
+        if (learningOutcomesList && learningOutcomesStr) {
+          try {
+            const outcomes = JSON.parse(learningOutcomesStr);
+            learningOutcomesList.innerHTML = outcomes.map((outcome: string) => 
+              `<li class="flex items-start">
+                <span class="text-cyan-500 mr-2">•</span>
+                <span class="text-gray-700">${outcome}</span>
+              </li>`
+            ).join('');
+          } catch (e) {
+            learningOutcomesList.innerHTML = '<li class="text-gray-500">無資料</li>';
+          }
+        }
+        
+        // Set project information
+        if (scientificPrinciples) {
+          scientificPrinciples.innerHTML = (principles || '待更新').replace(/\n/g, '<br>');
+        }
+        if (gradeLevel) {
+          gradeLevel.textContent = grade || '待更新';
+        }
+        if (duration) {
+          duration.textContent = time || '待更新';
+        }
+        
+        // Show modal with fade-in effect
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        setTimeout(() => {
+          modal.style.opacity = '1';
+        }, 10);
+        
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  });
+
+  // Close modal function
+  const closeModal = () => {
+    if (modal) {
+      modal.style.opacity = '0';
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }, 200);
+      
+      // Restore body scroll
+      document.body.style.overflow = '';
+    }
+  };
+
+  // Close modal on button click
+  closeModalBtn?.addEventListener('click', closeModal);
+
+  // Close modal when clicking outside the content
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Close modal on ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+      closeModal();
+    }
+  });
+</script>
+
+<!-- Styles are now centralized in src/styles/school-courses.css -->
+
