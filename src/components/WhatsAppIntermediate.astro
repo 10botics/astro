@@ -5,11 +5,13 @@
 export interface Props {
   title?: string;
   phoneNumber?: string;
+  pageUrl?: string;
 }
 
 const { 
   title = "課程查詢", 
-  phoneNumber 
+  phoneNumber,
+  pageUrl = ""
 } = Astro.props;
 
 // Automatically determine phone number based on current month
@@ -18,7 +20,9 @@ const defaultPhoneNumber = currentMonth % 2 === 0 ? "60431553" : "65541506";
 const finalPhoneNumber = phoneNumber || defaultPhoneNumber;
 
 // Create the prefilled message
-const message = `我想查詢 ${title}`;
+const message = pageUrl 
+  ? `我想查詢 ${title}\n\n頁面連結：${pageUrl}`
+  : `我想查詢 ${title}`;
 const encodedMessage = encodeURIComponent(message);
 const whatsappUrl = `https://wa.me/${finalPhoneNumber}?text=${encodedMessage}`;
 ---
@@ -42,7 +46,7 @@ const whatsappUrl = `https://wa.me/${finalPhoneNumber}?text=${encodedMessage}`;
     <!-- Message Preview -->
     <div class="bg-gray-50 rounded-lg p-4 mb-6">
       <p class="text-sm text-gray-600 mb-2">預設訊息：</p>
-      <p class="text-gray-800 font-medium">"{message}"</p>
+      <p id="message-preview" class="text-gray-800 font-medium whitespace-pre-line">"{message}"</p>
     </div>
 
     <!-- Loading Animation -->
@@ -88,9 +92,20 @@ const whatsappUrl = `https://wa.me/${finalPhoneNumber}?text=${encodedMessage}`;
   // Construct WhatsApp URL with automatic phone number selection
   const currentMonth = new Date().getMonth() + 1; // getMonth() returns 0-11, so add 1
   const phoneNumber = currentMonth % 2 === 0 ? '60431553' : '65541506';
-  const message = `我想查詢 ${decodeURIComponent(new URLSearchParams(window.location.search).get('title') || '課程查詢')}`;
+  const urlParams = new URLSearchParams(window.location.search);
+  const title = decodeURIComponent(urlParams.get('title') || '課程查詢');
+  const pageUrl = decodeURIComponent(urlParams.get('url') || '');
+  const message = pageUrl 
+    ? `我想查詢 ${title}\n\n頁面連結：${pageUrl}`
+    : `我想查詢 ${title}`;
   const encodedMessage = encodeURIComponent(message);
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+  
+  // Update the message preview
+  const messagePreview = document.getElementById('message-preview');
+  if (messagePreview) {
+    messagePreview.textContent = `"${message}"`;
+  }
   
   // Set the button href
   const whatsappLink = document.getElementById('whatsapp-link');
