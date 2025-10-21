@@ -13,8 +13,6 @@ import heroImage from '../../assets/images/school-courses/AI數碼動畫展/them
 import aiImageGeneration from '../../assets/images/school-courses/AI數碼動畫展/ai-image-generation.png';
 import immersiveDrawing from '../../assets/images/school-courses/AI數碼動畫展/immersive-drawing.png';
 import checkInInteraction from '../../assets/images/school-courses/AI數碼動畫展/check-in-interaction.png';
-import backgroundMusic from '../../assets/images/school-courses/AI數碼動畫展/background-music.png';
-import themeBackground from '../../assets/images/school-courses/AI數碼動畫展/theme-background.png';
 import drawingPatterns from '../../assets/images/school-courses/AI數碼動畫展/drawing-patterns.png';
 import stemDaySchedule from '../../assets/images/school-courses/AI數碼動畫展/stem-day-schedule.png';
 import stemCourseSchedule from '../../assets/images/school-courses/AI數碼動畫展/stem-course-schedule.png';
@@ -36,7 +34,7 @@ const courseHighlights = [
   {
     icon: "fas fa-magic",
     title: "AI 圖像生成體驗",
-    description: "使用 Mid Journey 進行創作，根據喜愛的角色輸入關鍵詞，創作出屬於自己的人物"
+    description: "使用人工智能生成平台進行創作，根據喜愛的角色輸入關鍵詞，創作出屬於自己的人物"
   },
   {
     icon: "fas fa-paint-brush",
@@ -95,10 +93,6 @@ const faqItems = [
     answer: "可同時供多人遊玩，展示學校學生努力的成果，適合 STEM Day 等大型活動。"
   },
   {
-    question: "主題和內容可以客製化嗎？",
-    answer: "主題及內容可按校方進行修改或自訂，更能配合 STEM Day 需求。根據學校主題製作背景、主題音樂及圖案線稿。"
-  },
-  {
     question: "適合什麼類型的活動？",
     answer: "適合作為 STEM Day、公司開幕、簽到活動、公司親子活動、嘉年華等，簡單有趣且充滿互動性。"
   }
@@ -108,7 +102,7 @@ const faqItems = [
 const activitySections = [
   {
     title: "AI圖像生成體驗區",
-    description: "學生可使用AI圖像生成工具Mid Journey進行創作，根據自己喜愛的角色輸入不同關鍵詞，創作出屬於自己的人物，並在LED屏幕上起舞。更有機會將自己的AI作品製成相片打印出來，永久留念！",
+    description: "學生可使用人工智能生成平台進行創作，根據自己喜愛的角色輸入不同關鍵詞，創作出屬於自己的人物，並在LED屏幕上起舞。更有機會將自己的AI作品製成相片打印出來，永久留念！",
     image: aiImageGeneration
   },
   {
@@ -162,16 +156,6 @@ const courseArrangements = [
 
 // Complete course features
 const completeCourseFeatures = [
-  {
-    title: "背景音樂",
-    description: "除了STEM活動上可以使用的歌曲外，完整課堂為學生提供如何進一步學習利用生成工具進行背景音樂的獨立創作。",
-    image: backgroundMusic
-  },
-  {
-    title: "主題背景",
-    description: "與提供的預設不同，學生可以按照主題的需要或自己的想法，使用AI圖像生成系統進行生成，配合AI啟蒙課程，學生將了解如何自行創作主題背景並使用AI圖像生成的技巧。",
-    image: themeBackground
-  },
   {
     title: "繪畫圖案",
     description: "完整課堂為學生提供人物角色的創建，同學們可以按照所見所想，又或是相應的主題，創作喜歡的圖像角色。同時，透過學習AI生成的繪畫可以提供不同圖案的線稿供學生填色，發揮學生的創意，創造屬於自己獨一無二的角色。",
@@ -292,22 +276,26 @@ const completeCourseFeatures = [
     <div class="container-standard">
       <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">完整課堂</h2>
       <p class="text-lg text-gray-700 text-center mb-12 font-semibold">
-        更自由和個性化的學習體驗，包括主題/人物角色/音樂的製作，以自訂你的AI動態繪畫
+        更自由和個性化的學習體驗，包括主題/人物角色的製作，以自訂你的AI動態繪畫
       </p>
       
-      <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
+      <div class="max-w-4xl mx-auto">
         {completeCourseFeatures.map((feature) => (
-          <div class="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow">
-            <div class="text-center mb-6">
-              <Image 
-                src={feature.image} 
-                alt={feature.title}
-                quality={95}
-                format="webp"
-                class="w-full h-auto rounded-lg mb-4"
-              />
-              <h3 class="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-              <p class="text-gray-700">{feature.description}</p>
+          <div class="bg-gray-50 rounded-lg p-8 hover:shadow-lg transition-shadow">
+            <div class="flex flex-col md:flex-row items-center gap-6">
+              <div class="flex-shrink-0 w-full md:w-64">
+                <Image 
+                  src={feature.image} 
+                  alt={feature.title}
+                  quality={95}
+                  format="webp"
+                  class="w-full h-auto rounded-lg"
+                />
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                <p class="text-gray-700">{feature.description}</p>
+              </div>
             </div>
           </div>
         ))}
