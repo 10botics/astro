@@ -12,7 +12,6 @@ const courseFiles = [
   'ksp太空計劃課程.astro',
   'Lego Spike Prime 機器人技術大師班.astro',
   'Microbit 降落傘課程.astro',
-  'Microbit 逃出迷宮.astro',
   'Minecraft校園創建課程.astro',
   'Procreate數位藝術課程.astro',
   'Python 初階遊戲編程.astro',

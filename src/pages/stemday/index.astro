@@ -145,10 +145,6 @@ try {
     heroRaspberryPi = RaspberryModule?.courseData?.heroImage;
   } catch {}
   try {
-    const MicrobitModule = await import('../school-courses/Microbit 逃出迷宮.astro');
-    heroMicrobitMaze = MicrobitModule?.courseData?.heroImage;
-  } catch {}
-  try {
     const DelightexModule = await import('../school-courses/Delightex 遊戲設計課程.astro');
     heroDelightex = DelightexModule?.courseData?.heroImage;
   } catch {}
@@ -298,7 +294,7 @@ try {
               <a href="school-courses/ksp/" target="_blank" rel="noopener">
                 {classKSP && <Image src={classKSP.default} alt="KSP太空遊戲設計" class="w-full h-48 object-cover" />}
               </a>
-              <h3 class="p-4 text-center text-lg font-semibold"><a href="school-courses/ksp/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">KSP太空遊戲設計</a></h3>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="school-courses/ksp/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">虛擬火箭設計</a></h3>
             </div>
             <div class="card-base card-hover">
               <a href="/science" target="_blank" rel="noopener">
@@ -424,10 +420,10 @@ try {
               <div class="card-base card-hover">
                 <a href="/school-courses/minecraft" target="_blank" rel="noopener">
             { (heroMinecraft || featuredMinecraft) && (
-              <Image src={(heroMinecraft as any) ?? (featuredMinecraft && featuredMinecraft.default)} alt="Minecraft 校園創建課程" class="w-full h-48 object-cover" />
+              <Image src={(heroMinecraft as any) ?? (featuredMinecraft && featuredMinecraft.default)} alt="Minecraft 課程" class="w-full h-48 object-cover" />
             )}
                 </a>
-                <h3 class="p-4 text-center text-lg font-semibold"><a href="/school-courses/minecraft" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Minecraft 校園創建課程</a></h3>
+                <h3 class="p-4 text-center text-lg font-semibold"><a href="/school-courses/minecraft" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Minecraft 課程</a></h3>
               </div>
               <div class="card-base card-hover">
                 <a href="/school-courses/procreate" target="_blank" rel="noopener">

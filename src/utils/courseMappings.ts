@@ -19,7 +19,6 @@ export const COURSE_SLUG_MAPPING: Record<string, string> = {
   'Lego Spike Prime 機器人技術大師班': 'lego-spike-prime',
   'Minecraft校園創建課程': 'minecraft',
   'Microbit 降落傘課程': 'microbit-parachute',
-  'Microbit 逃出迷宮': 'microbit-maze',
   'Procreate數位藝術課程': 'procreate',
   'raspberry-pi編程課程': 'raspberry-pi',
   'Scratch 人工智能編程': 'scratch-ai-programming',
