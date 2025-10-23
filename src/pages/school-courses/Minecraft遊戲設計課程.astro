@@ -1,0 +1,415 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import CourseFeatures from '../../components/course/CourseFeatures.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import { Image } from 'astro:assets';
+
+// Import images
+import featuredImage from '../../assets/images/school-courses/Minecraft遊戲設計課程/featured-image.png';
+
+// Course data (static) - now in frontmatter
+export const courseData = {
+  title: "Minecraft 遊戲設計課程",
+  subtitle: "掌握紅石邏輯，創造無限可能",
+  tags: ["Programming 編程", "遊戲開發", "邏輯思維", "Minecraft", "Redstone", "高小", "初中"],
+  videoId: "", // TODO: Add video ID if available
+  description: "本課程將帶領學員認識 Minecraft 的核心「紅石」，學習如何利用紅石元件設計和製作各種自動化裝置與互動遊戲。從紅石的基本原理和訊號傳遞開始，逐步引導學員製作邏輯閘、防禦系統、陷阱以及更複雜的自動化機械。這不僅是一門遊戲技巧課，更是一堂充滿邏輯思維與創意工程的入門課。",
+  detailedDescription: "本課程從紅石的基本原理開始，讓學生逐步掌握紅石訊號的產生、傳輸與控制。學員將學習製作各種邏輯門（AND、OR、NOT），並應用於實際的機關設計中。課程內容包括脈衝電路、時鐘電路、陷阱設計、鐵路運輸系統，以及自動化機械的製作。透過實作各種紅石裝置，學生將培養邏輯思維、問題解決能力，以及創意工程思維。",
+  heroImage: featuredImage,
+  featuredImage: featuredImage
+};
+
+// Course features
+const courseFeatures = [
+  {
+    icon: "fas fa-brain",
+    title: "邏輯思維訓練",
+    description: "透過紅石邏輯門和電路設計，培養學生的邏輯推理和計算思維能力。"
+  },
+  {
+    icon: "fas fa-cogs",
+    title: "工程設計能力",
+    description: "學習機械原理和自動化系統設計，實踐創意工程概念。"
+  },
+  {
+    icon: "fas fa-puzzle-piece",
+    title: "問題解決技巧",
+    description: "面對複雜的機關設計挑戰，培養分析和解決問題的能力。"
+  },
+  {
+    icon: "fas fa-lightbulb",
+    title: "創意發揮空間",
+    description: "在 Minecraft 創造模式中自由實驗，發揮創意設計獨特的紅石作品。"
+  }
+];
+
+// Course curriculum
+const curriculumItems = [
+  {
+    title: "紅石入門：點亮第一個燈 [第1節]",
+    content: [
+      "課程簡介與目標說明",
+      "介紹創造模式 (Creative Mode) 與紅石相關方塊",
+      "認識紅石能量的產生（紅石火把、按鈕、拉桿）與傳輸（紅石粉）",
+      "製作第一個紅石電路，點亮一盞紅石燈"
+    ]
+  },
+  {
+    title: "能量傳輸與觸發裝置 [第2節]",
+    content: [
+      "學習紅石訊號的強度與傳輸距離",
+      "紅石中繼器與縱向傳輸技巧",
+      "認識不同的觸發器（壓力板、絆線鉤）",
+      "製作防盜警報器"
+    ]
+  },
+  {
+    title: "紅石的思考：邏輯門 [第3節]",
+    content: [
+      "講解程式設計中最基礎的邏輯概念",
+      "學習製作三種基本邏輯門（AND、OR、NOT）",
+      "了解邏輯門在機關設計中的應用",
+      "製作射擊場"
+    ]
+  },
+  {
+    title: "瞬間的藝術：脈衝電路 [第4節]",
+    content: [
+      "了解「脈衝」的概念：短暫的單次訊號",
+      "學習製作脈衝產生器",
+      "認識黏性活塞與活塞的應用",
+      "製作自動隱藏樓梯"
+    ]
+  },
+  {
+    title: "時間的魔法：時鐘電路 [第5節]",
+    content: [
+      "了解「時鐘」的概念：持續重複的訊號",
+      "學習製作基礎的紅石時鐘電路",
+      "認識發射器與投擲器的自動化應用",
+      "製作全自動箭矢發射台"
+    ]
+  },
+  {
+    title: "陷阱設計 [第6節]",
+    content: [
+      "分析優秀陷阱的構成要素：觸發、機關、重置",
+      "熔岩陷阱的設計原理",
+      "規劃並開始搭建活塞地面與觸發機制",
+      "完成陷阱的基礎結構與觸發電路"
+    ]
+  },
+  {
+    title: "鐵路運輸 [第7節]",
+    content: [
+      "介紹 Minecraft 中的鐵路系統（普通、動力、偵測鐵軌）",
+      "鐵軌入口閘門的製作",
+      "學習如何利用偵測鐵軌自動化控制閘門",
+      "為基地入口打造一個自動化的礦車閘門"
+    ]
+  },
+  {
+    title: "自動化機械 [第8節]",
+    content: [
+      "隧道鑽挖機的原理分析",
+      "學習史萊姆方塊與偵測器的組合應用",
+      "製作每次爆炸都會向前推進的鑽挖機"
+    ]
+  },
+  {
+    title: "創意大比拚與成果分享 [第9節]",
+    content: [
+      "自由發揮製作紅石機關",
+      "同學互相參觀並展示課程中的作品",
+      "分享創作理念與設計心得"
+    ]
+  }
+];
+
+// Course highlights
+const courseHighlights = [
+  {
+    icon: "fas fa-clock",
+    title: "課時",
+    description: "10 小時"
+  },
+  {
+    icon: "fas fa-users",
+    title: "適合對象",
+    description: "高小至初中學生，對邏輯思維和機械設計有興趣"
+  },
+  {
+    icon: "fas fa-laptop",
+    title: "所需器材",
+    description: "能流暢運行 Minecraft JAVA 版的電腦、Minecraft 帳號、穩定網絡連接"
+  }
+];
+
+// FAQ items
+const faqItems = [
+  {
+    question: "學生需要有 Minecraft 經驗嗎？",
+    answer: "基礎操作經驗有幫助，但不是必須。課程會從紅石基礎開始教授，並在創造模式中進行，讓學生可以專注於學習紅石邏輯而不受生存模式的限制。"
+  },
+  {
+    question: "學校需要準備甚麼設備？",
+    answer: "學校需準備以下項目：\n1） 需具備足夠性能以順暢運行 Minecraft JAVA 版的電腦\n2） Minecraft 帳號（每位學生需要一個帳號）\n3） 穩定的網絡連接\n建議先致電 +852 6554-1506 或電郵至 info@10botics.com 向同事溝通學校期望的教學內容，同事將就教學所需設備提供建議。"
+  },
+  {
+    question: "課程著重甚麼技能？",
+    answer: "課程主要培養邏輯思維、計算思維、問題解決能力和創意工程思維。學生將學習程式設計中的基本邏輯概念（如邏輯門），並應用於實際的機關設計中。"
+  },
+  {
+    question: "完成課程後學生能製作甚麼？",
+    answer: "學生將能夠獨立設計和製作各種紅石裝置，包括：自動門、防盜系統、射擊場、隱藏樓梯、自動發射台、陷阱、鐵路閘門系統，以及各種自動化機械。更重要的是，學生將掌握紅石邏輯的基本原理，能夠自行設計和實現更複雜的創意作品。"
+  }
+];
+
+// Course arrangements
+const courseArrangements = [
+  {
+    icon: "fas fa-star",
+    title: "標準課程 (10 小時)",
+    description: "建議 5 節課堂，每節 2 小時\n或 10 節課堂，每節 1 小時\n*可根據學校需要調整課堂數及時數"
+  },
+  {
+    icon: "fas fa-star",
+    title: "STEM Day 活動",
+    description: "可選擇課程中的特定主題（如邏輯門、陷阱設計）作為 STEM Day 體驗活動"
+  },
+  {
+    icon: "fas fa-star",
+    title: "進階課程",
+    description: "完成基礎課程後，可安排進階紅石課程，學習更複雜的紅石計算機、音樂盒等高級應用"
+  }
+];
+---
+
+<Layout title={courseData.title} description={courseData.description}>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <HeroSection 
+    title={courseData.title}
+    subtitle={courseData.subtitle}
+    tags={courseData.tags}
+    videoId={courseData.videoId}
+    description={courseData.detailedDescription}
+    featuredImage={courseData.featuredImage}
+  />
+
+  <!-- Course Introduction Section -->
+  <section class="section-padding bg-white">
+    <div class="container-standard">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">關於紅石</h2>
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          紅石是 Minecraft 中的一種特殊材料，類似於現實世界中的電路。透過紅石，玩家可以創建各種複雜的機械裝置和自動化系統。紅石系統的核心概念與電腦科學中的數位邏輯電路相同，是學習程式設計和計算思維的絕佳工具。
+        </p>
+        <p class="text-lg text-gray-700 leading-relaxed">
+          本課程將帶領學生從零開始認識紅石，逐步掌握紅石訊號的傳遞、邏輯門的製作、以及複雜機關的設計。這不僅是一門遊戲課程，更是一堂結合了邏輯思維、工程設計和創意實作的 STEM 課程。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Features Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程特色</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {courseFeatures.map((feature) => (
+          <div class="card-base card-hover p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-brand-cyan-600 rounded-full flex items-center justify-center mr-4">
+                <i class={`${feature.icon} text-xl text-white`}></i>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800">{feature.title}</h3>
+            </div>
+            <p class="text-gray-600">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Highlights Section -->
+  <section class="section-padding bg-white">
+    <div class="container-standard">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程資訊</h2>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        {courseHighlights.map((highlight) => (
+          <div class="card-base card-hover p-6 text-center">
+            <div class="w-16 h-16 bg-brand-cyan-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class={`${highlight.icon} text-2xl text-white`}></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">{highlight.title}</h3>
+            <p class="text-gray-600 whitespace-pre-line">{highlight.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Content Section -->
+  <SingleCourseContent 
+    items={curriculumItems}
+    hours="10 小時"
+  />
+
+  <!-- Learning Path Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">學習路徑</h2>
+      
+      <div class="max-w-4xl mx-auto">
+        <div class="space-y-6">
+          <div class="card-base p-6">
+            <div class="flex items-start">
+              <div class="flex-shrink-0">
+                <div class="w-12 h-12 bg-brand-cyan-600 rounded-full flex items-center justify-center text-white font-bold text-xl">1</div>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">基礎階段（第1-2節）</h3>
+                <p class="text-gray-600">認識紅石基本元件，學習訊號的產生與傳輸，製作簡單的紅石電路。</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-base p-6">
+            <div class="flex items-start">
+              <div class="flex-shrink-0">
+                <div class="w-12 h-12 bg-brand-cyan-600 rounded-full flex items-center justify-center text-white font-bold text-xl">2</div>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">邏輯階段（第3-5節）</h3>
+                <p class="text-gray-600">深入學習邏輯門、脈衝電路和時鐘電路，掌握紅石邏輯的核心概念。</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-base p-6">
+            <div class="flex items-start">
+              <div class="flex-shrink-0">
+                <div class="w-12 h-12 bg-brand-cyan-600 rounded-full flex items-center justify-center text-white font-bold text-xl">3</div>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">應用階段（第6-8節）</h3>
+                <p class="text-gray-600">綜合運用所學知識，設計和製作複雜的紅石裝置，如陷阱、鐵路系統和自動化機械。</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-base p-6">
+            <div class="flex items-start">
+              <div class="flex-shrink-0">
+                <div class="w-12 h-12 bg-brand-cyan-600 rounded-full flex items-center justify-center text-white font-bold text-xl">4</div>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">創作階段（第9節）</h3>
+                <p class="text-gray-600">自由發揮創意，設計獨特的紅石作品，並與同學分享創作理念。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Arrangement Section -->
+  <section class="section-padding bg-white">
+    <div class="container-standard">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程安排</h2>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        {courseArrangements.map((arrangement) => (
+          <div class="card-base card-hover p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-8 h-8 bg-semantic-warning rounded-full flex items-center justify-center mr-3">
+                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800">{arrangement.title}</h3>
+            </div>
+            <p class="text-gray-600 whitespace-pre-line">{arrangement.description}</p>
+          </div>
+        ))}
+      </div>
+      
+      <div class="text-center mt-8">
+        <p class="text-gray-600">歡迎填妥下方表格讓同事為你提供咨詢。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Educational Benefits Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-standard">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程學習效益</h2>
+      
+      <div class="max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="card-base p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              <i class="fas fa-code text-brand-cyan-600 mr-2"></i>
+              計算思維
+            </h3>
+            <p class="text-gray-600">
+              透過紅石邏輯門的學習，學生將理解基本的布林邏輯（AND、OR、NOT），這些概念是程式設計和計算機科學的基礎。
+            </p>
+          </div>
+
+          <div class="card-base p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              <i class="fas fa-project-diagram text-brand-cyan-600 mr-2"></i>
+              系統性思考
+            </h3>
+            <p class="text-gray-600">
+              設計複雜的紅石機關需要系統性思考，學生將學習如何將大問題分解成小問題，並逐步解決。
+            </p>
+          </div>
+
+          <div class="card-base p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              <i class="fas fa-tools text-brand-cyan-600 mr-2"></i>
+              工程設計
+            </h3>
+            <p class="text-gray-600">
+              從簡單的電路到複雜的自動化機械，學生將體驗完整的工程設計過程：規劃、實作、測試、改進。
+            </p>
+          </div>
+
+          <div class="card-base p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              <i class="fas fa-magic text-brand-cyan-600 mr-2"></i>
+              創意實踐
+            </h3>
+            <p class="text-gray-600">
+              Minecraft 提供了一個安全的實驗環境，學生可以自由嘗試各種創意想法，不怕失敗，培養創新精神。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <QnASection faqs={faqItems} />
+  
+  <!-- Related Courses Section -->
+  <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="minecraft-game-design" context="course" />
+  
+  <!-- Related News Section -->
+  <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
+
+  <!-- Contact Section -->
+  <ContactSection subtitle="想了解更多關於 Minecraft 遊戲設計課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
+</Layout>
+
