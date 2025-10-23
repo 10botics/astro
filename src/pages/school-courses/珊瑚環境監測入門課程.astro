@@ -26,10 +26,10 @@ import img1499 from '../../assets/images/school-courses/珊瑚環境監測入門
 export const courseData = {
   title: "珊瑚環境監測入門課程",
   subtitle: "從生物、化學的角度探索海洋環境，學習IoT監察系統和自動化系統",
-  tags: ["Arduino", "IoT", "Microbit", "Programming 編程", "海洋環境", "高小", "初中", "高中"],
+  tags: ["IoT", "Microbit", "Programming 編程", "海洋環境", "高小", "初中", "高中"],
   videoId: "your-video-id-here",
-  description: "從生物化學角度探索海洋環境，學習IoT監察系統與自動化技術。結合Micro:bit、Arduino編程，監控珊瑚缸環境。",
-  detailedDescription: "本課程會從生物、化學的角度與同學探索海洋環境，除了了解不同海洋生物的生理結構外，還會科學的方式製作和監控一個海洋生存環境。課程會用到Microbit及Arduino去設置IoT監察系統和自動化系統，配合 IoT 平台將收集到的數據整理然後上傳至雲端，再通過自動化方式全天候紀錄和管理珊瑚缸的狀況。",
+  description: "從生物化學角度探索海洋環境，學習IoT監察系統與自動化技術。結合Micro:bit編程，監控珊瑚缸環境。",
+  detailedDescription: "本課程會從生物、化學的角度與同學探索海洋環境，除了了解不同海洋生物的生理結構外，還會科學的方式製作和監控一個海洋生存環境。課程會用到Microbit去設置IoT監察系統和自動化系統，配合 IoT 平台將收集到的數據整理然後上傳至雲端，再通過自動化方式全天候紀錄和管理珊瑚缸的狀況。",
   heroImage: featuredImage
 };
 
@@ -90,10 +90,10 @@ const beginnerCurriculum = [
   {
     title: "Microbit 監察系統［2節］",
     content: [
-      "學習組裝不同傳感器",
-      "了解傳感器是如何工作",
-      "通過編程來使用傳感器",
-      "利用傳感器進利測試",
+      "學習進行不同的小型科學實驗",
+      "了解科學實驗的原理",
+      "通過編程來記錄實驗數據",
+      "利用實驗結果進行測試",
       "把Microbit連到IoT平台並上傳數據"
     ]
   }
@@ -107,16 +107,6 @@ const advancedCurriculum = [
       "了解其他會影響水質的化學物質",
       "學習使用更多的測試水質的方法，例如試紙，滴定法等",
       "探究這些化學物質會如何影響到海洋生物"
-    ]
-  },
-  {
-    title: "Arduino 監察系統［2節］",
-    content: [
-      "學習使用難度更高的傳感器",
-      "利用傳感器進行測試",
-      "比較Microbit與Arduino系統的差異",
-      "比較電子傳感器與光學量度器的測試差異",
-      "把收集到的數據上傳到IoT平台"
     ]
   },
   {
@@ -150,12 +140,12 @@ const learningOutcomes = [
   },
   {
     title: "維護海洋缸",
-    description: "探討魚缸生態系統的維護方法，學習如何通過科學實驗來管理光度和溫度，確保水生生物的健康生長。",
+    description: "探討魚缸生態系統的維護方法，學習如何管理必要的海水硬件設備，確保水生生物的健康生長。",
     image: img1592
   },
   {
-    title: "Blockly/Python程式編寫及IoT系統",
-    description: "編寫簡單的程式，讀取感測器數據並進行處理和在IoT上顯示，在課程中提升編程技能。",
+    title: "Blockly程式編寫及IoT系統",
+    description: "編寫簡單的程式，讀取實驗數據並進行處理和在IoT上顯示，在課程中提升編程技能。",
     image: img1754
   },
   {
@@ -197,15 +187,15 @@ const faqData = [
   },
   {
     question: "課程需要什麼設備？",
-    answer: "如果學校支付額外費用，我們可以提供Microbit、Arduino、各種傳感器和海洋缸設備。"
+    answer: "如果學校支付額外費用，我們可以提供Microbit、科學實驗器材和海洋缸設備。"
   },
   {
     question: "課程時長是多少？",
-    answer: "課程總共12小時，分為初階課程（6小時）和進階課程（6小時），可根據學校需要調整。"
+    answer: "課程總共10小時，分為初階課程（6小時）和進階課程（4小時），可根據學校需要調整。"
   },
   {
     question: "學生會學到什麼編程技能？",
-    answer: "學生將學習Blockly和Python編程，掌握IoT系統的應用，以及如何編寫自動化程式。"
+    answer: "學生將學習Blockly編程，掌握IoT系統的應用，以及如何編寫自動化程式。"
   },
   {
     question: "課程會提供學習材料嗎？",
@@ -278,28 +268,6 @@ const { title, subtitle, tags, description, detailedDescription, heroImage } = c
       </div>
     </section>
 
-    <!-- Course Gallery -->
-    <section class="section-padding bg-gray-50">
-      <div class="container-standard">
-        <GalleryCarousel 
-          title="課程實況照片"
-          images={[
-            featuredImage,
-            img1676,
-            img1671,
-            img1639,
-            img1437,
-            img1506,
-            img1592,
-            img1754,
-            img1685,
-            img1499
-          ]}
-          intervalMs={4500}
-        />
-      </div>
-    </section>
-
     <!-- Learning Outcomes -->
     <section class="section-padding bg-gray-50">
       <div class="container-standard">
@@ -333,7 +301,7 @@ const { title, subtitle, tags, description, detailedDescription, heroImage } = c
       beginnerItems={beginnerCurriculum}
       advancedItems={advancedCurriculum}
       beginnerHours="6 小時"
-      advancedHours="6 小時"
+      advancedHours="4 小時"
     />
 
     <!-- Cross-disciplinary Learning -->
@@ -374,6 +342,28 @@ const { title, subtitle, tags, description, detailedDescription, heroImage } = c
 
     <!-- Related News Section -->
     <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
+
+    <!-- Course Gallery -->
+    <section class="section-padding bg-gray-50">
+      <div class="container-standard">
+        <GalleryCarousel 
+          title="課程實況照片"
+          images={[
+            featuredImage,
+            img1676,
+            img1671,
+            img1639,
+            img1437,
+            img1506,
+            img1592,
+            img1754,
+            img1685,
+            img1499
+          ]}
+          intervalMs={4500}
+        />
+      </div>
+    </section>
 
     <!-- Contact Form -->
     <ContactSection subtitle="想了解更多關於珊瑚環境監測入門課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
