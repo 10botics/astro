@@ -1,0 +1,319 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import { Image } from 'astro:assets';
+
+// Import course images
+import heroImage from '../../assets/images/school-courses/Minecraft建築設計課程/hero-image.jpg';
+
+// Course data
+export const courseData = {
+  title: "Minecraft 建築設計課程",
+  subtitle: "從零開始學習 Minecraft 建築技巧，發揮無限創意打造獨特像素建築",
+  tags: ["Minecraft", "建築設計", "創意", "中學", "遊戲設計"],
+  description: "專為中學生設計的 Minecraft 建築課程，系統性學習建築技巧與美學，從基礎操作到主題建築設計。",
+  detailedDescription: "本課程專為中學生設計，引導學員從零開始，系統性地學習 Minecraft 中的建築技巧與美學。課程將從最基本的創意模式操作、方塊知識講起，逐步深入到結構設計、室內外裝潢，最後挑戰不同風格的主題建築。學員將在充滿樂趣的實踐中，發揮無限創意，將想像力轉化為獨一無二的像素建築。",
+  heroImage: heroImage
+};
+
+// Course outline data based on the markdown
+const courseOutline = [
+  {
+    title: "第 1 節：建築第一步：創意基礎",
+    content: [
+      "課程簡介與目標說明",
+      "介紹創造模式 (Creative Mode) 與基本操作",
+      "方塊的種類與選擇",
+      "熟悉 Minecraft 創造模式介面",
+      "了解不同方塊的材質與特性",
+      "完成第一個「火柴盒」小房子"
+    ]
+  },
+  {
+    title: "第 2 節：改造世界：光影與地形",
+    content: [
+      "學習亮度與光照的運用（火把、螢光石等）",
+      "地形改造工具與技巧（剷平、堆高）",
+      "懂得利用光線為建築營造氣氛",
+      "能改造基本地形以配合建築規劃"
+    ]
+  },
+  {
+    title: "第 3 節：家的溫度：室內裝潢魔法",
+    content: [
+      "學習室內空間規劃與動線設計",
+      "利用階梯、告示牌等製作家具（床、桌椅、書架）",
+      "懂得合理規劃室內空間",
+      "學會製作多種 Minecraft 風格的家具",
+      "能為自己的建築進行個性化的室內設計"
+    ]
+  },
+  {
+    title: "第 4 節：建築的臉孔：室外裝飾",
+    content: [
+      "學習室外牆壁的層次感與紋理設計",
+      "窗戶、陽台的設計與裝飾",
+      "室外裝飾與組合建築（花園、小徑、圍欄）",
+      "提升建築外觀的細節與美感"
+    ]
+  },
+  {
+    title: "第 5 節：魔法森林小屋（一）：結構篇",
+    content: [
+      "專題介紹：分析「魔法森林小屋」的風格",
+      "學習選址與環境規劃",
+      "搭建與自然融合的建築框架與屋頂結構",
+      "完成小屋的基礎骨架"
+    ]
+  },
+  {
+    title: "第 6 節：魔法森林小屋（二）：裝飾篇",
+    content: [
+      "外觀裝飾：利用原木、樹葉、藤蔓等豐富牆體細節",
+      "室內設計：打造溫馨、質樸的林中小屋內部",
+      "周邊環境美化，營造奇幻氛圍"
+    ]
+  },
+  {
+    title: "第 7 節：珊瑚家園（一）：結構篇",
+    content: [
+      "專題介紹：分析「珊瑚家園」的風格與挑戰",
+      "學習水下呼吸、施工的技巧",
+      "建造玻璃、海磷石等水下主體結構"
+    ]
+  },
+  {
+    title: "第 8 節：珊瑚家園（二）：海底生態",
+    content: [
+      "外觀裝飾：整合珊瑚、海鞘等生態元素",
+      "室內設計：規劃充滿科技感與海洋氣息的內部空間",
+      "打造水下花園，利用光線點亮海底"
+    ]
+  },
+  {
+    title: "第 9 節：中世紀庭園（一）：古典框架",
+    content: [
+      "專題介紹：分析「中世紀庭園」的建築風格",
+      "學習使用石材、木材搭建古典風格的塔樓或城牆",
+      "掌握堆砌大型結構與拱門的技巧"
+    ]
+  },
+  {
+    title: "第 10 節：中世紀庭園（二）：細節與分享",
+    content: [
+      "外觀裝飾：加上城垛、窗戶等經典細節，建造特色屋頂",
+      "庭園設計：規劃路徑、噴泉與植栽",
+      "為古典建築增添細節",
+      "作品分享與課程總結"
+    ]
+  }
+];
+
+// Learning outcomes
+const learningOutcomes = [
+  {
+    title: "創意模式操作",
+    description: "熟練掌握 Minecraft 創造模式的各種操作，了解不同方塊的特性和使用方法。",
+    icon: "fas fa-gamepad"
+  },
+  {
+    title: "建築結構設計",
+    description: "學習建築物的基本結構設計，包括框架搭建、屋頂設計等核心技巧。",
+    icon: "fas fa-building"
+  },
+  {
+    title: "室內外裝潢",
+    description: "掌握室內空間規劃和室外裝飾技巧，提升建築的美感和實用性。",
+    icon: "fas fa-couch"
+  },
+  {
+    title: "主題建築創作",
+    description: "完成多個不同風格的主題建築，包括森林小屋、水下基地、中世紀城堡等。",
+    icon: "fas fa-chess-rook"
+  },
+  {
+    title: "美學與創意",
+    description: "培養建築美學素養，學會運用色彩、材質、光影營造獨特氛圍。",
+    icon: "fas fa-palette"
+  },
+  {
+    title: "作品展示",
+    description: "完成個人專屬的建築作品，學習如何展示和分享自己的創意成果。",
+    icon: "fas fa-trophy"
+  }
+];
+
+// Course highlights
+const courseHighlights = [
+  {
+    title: "系統化教學",
+    description: "從基礎到進階，循序漸進的課程設計，讓學員扎實掌握每個建築技巧。",
+    icon: "fas fa-graduation-cap"
+  },
+  {
+    title: "實戰專題",
+    description: "三大主題建築專題實作：魔法森林小屋、珊瑚家園、中世紀庭園，涵蓋多種建築風格。",
+    icon: "fas fa-hammer"
+  },
+  {
+    title: "創意發揮",
+    description: "鼓勵學員發揮想像力，在掌握技巧的基礎上創造屬於自己的獨特建築。",
+    icon: "fas fa-lightbulb"
+  }
+];
+
+// FAQ data
+const faqData = [
+  {
+    question: "這個課程適合什麼年級的學生？",
+    answer: "本課程專為中學生設計，適合對 Minecraft 建築有興趣、想要提升建築技巧的學生。無需建築經驗，從零開始教學。"
+  },
+  {
+    question: "課程需要什麼設備？",
+    answer: "需具備足夠性能以順暢運行 Minecraft JAVA 版的電腦、Minecraft 帳號，以及穩定的網絡連接。"
+  },
+  {
+    question: "課程時長是多少？",
+    answer: "課程總共 10 小時，分為 10 個課節，每個課節約 1 小時，可根據學校需要調整。"
+  },
+  {
+    question: "學生需要有 Minecraft 經驗嗎？",
+    answer: "不需要。課程從最基礎的創造模式操作開始教學，零基礎的學生也能輕鬆上手。"
+  },
+  {
+    question: "課程會完成什麼作品？",
+    answer: "學員將完成多個建築作品，包括基礎小房子、魔法森林小屋、水下珊瑚家園、中世紀庭園等不同風格的建築。"
+  }
+];
+
+const { title, subtitle, tags, description, detailedDescription, heroImage: heroImg } = courseData;
+---
+
+<Layout title={title} description={description}>
+  <main>
+    <!-- Hero Section -->
+    <HeroSection 
+      title={title}
+      subtitle={subtitle}
+      tags={tags}
+      description={detailedDescription}
+      heroImage={heroImg}
+    />
+
+    <!-- Course Introduction -->
+    <section class="section-padding bg-white">
+      <div class="container-standard">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-4xl font-bold mb-6">課程簡介</h2>
+          <p class="text-lg text-gray-700 leading-relaxed mb-8">
+            {detailedDescription}
+          </p>
+          <div class="grid md:grid-cols-3 gap-6 mt-12">
+            <div class="card-base p-6">
+              <div class="text-4xl text-brand-cyan-600 mb-4">
+                <i class="fas fa-clock"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-2">課程時長</h3>
+              <p class="text-gray-700">10 小時</p>
+            </div>
+            <div class="card-base p-6">
+              <div class="text-4xl text-brand-cyan-600 mb-4">
+                <i class="fas fa-users"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-2">適合對象</h3>
+              <p class="text-gray-700">中學生</p>
+            </div>
+            <div class="card-base p-6">
+              <div class="text-4xl text-brand-cyan-600 mb-4">
+                <i class="fas fa-laptop"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-2">所需器材</h3>
+              <p class="text-gray-700">電腦、Minecraft 帳號</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Highlights -->
+    <section class="section-padding bg-gray-50">
+      <div class="container-standard">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold mb-4">課程重點</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          {courseHighlights.map((highlight) => (
+            <div class="card-base card-hover text-center p-8">
+              <div class="text-5xl text-brand-cyan-600 mb-4">
+                <i class={highlight.icon}></i>
+              </div>
+              <h3 class="text-xl font-bold mb-3">{highlight.title}</h3>
+              <p class="text-gray-700">{highlight.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Learning Outcomes -->
+    <section class="section-padding bg-white">
+      <div class="container-standard">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold mb-4">學習成果</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {learningOutcomes.map((outcome) => (
+            <div class="card-base card-hover text-center p-6">
+              <div class="text-4xl text-brand-cyan-600 mb-4">
+                <i class={outcome.icon}></i>
+              </div>
+              <h3 class="text-xl font-bold mb-3">{outcome.title}</h3>
+              <p class="text-gray-700">{outcome.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Outline -->
+    <section class="section-padding bg-gray-50">
+      <div class="container-standard">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold mb-4">課程大綱</h2>
+          <p class="text-lg text-gray-600">10 個課節，循序漸進學習建築技巧</p>
+        </div>
+        <div class="max-w-5xl mx-auto space-y-6">
+          {courseOutline.map((lesson, index) => (
+            <div class="card-base card-hover p-6">
+              <h3 class="text-xl font-bold mb-4 text-brand-cyan-600">{lesson.title}</h3>
+              <ul class="space-y-2">
+                {lesson.content.map((item) => (
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle text-brand-cyan-500 mt-1 mr-3"></i>
+                    <span class="text-gray-700">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+    <!-- FAQ Section -->
+    <QnASection faqs={faqData} />
+
+    <!-- Related Courses Section -->
+    <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="minecraft-building-design" context="course" />
+
+    <!-- Related News Section -->
+    <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
+
+    <!-- Contact Form -->
+    <ContactSection subtitle="想了解更多關於 Minecraft 建築設計課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
+  </main>
+</Layout>
+
