@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
-import DualCourseContent from '../../components/course/DualCourseContent.astro';
+import TripleCourseContent from '../../components/course/TripleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
@@ -26,10 +26,10 @@ import img1499 from '../../assets/images/school-courses/珊瑚環境監測入門
 export const courseData = {
   title: "珊瑚環境監測入門課程",
   subtitle: "從生物、化學的角度探索海洋環境，學習IoT監察系統和自動化系統",
-  tags: ["Arduino", "IoT", "Microbit", "Programming 編程", "海洋環境", "高小", "初中", "高中"],
+  tags: ["IoT", "Microbit", "Programming 編程", "海洋環境", "高小", "初中", "高中"],
   videoId: "your-video-id-here",
-  description: "從生物化學角度探索海洋環境，學習IoT監察系統與自動化技術。結合Micro:bit、Arduino編程，監控珊瑚缸環境。",
-  detailedDescription: "本課程會從生物、化學的角度與同學探索海洋環境，除了了解不同海洋生物的生理結構外，還會科學的方式製作和監控一個海洋生存環境。課程會用到Microbit及Arduino去設置IoT監察系統和自動化系統，配合 IoT 平台將收集到的數據整理然後上傳至雲端，再通過自動化方式全天候紀錄和管理珊瑚缸的狀況。",
+  description: "從生物化學角度探索海洋環境，學習IoT監察系統與自動化技術。結合Micro:bit編程，監控珊瑚缸環境。",
+  detailedDescription: "本課程會從生物、化學的角度與同學探索海洋環境，除了了解不同海洋生物的生理結構外，還會科學的方式製作和監控一個海洋生存環境。課程會用到Microbit去設置IoT監察系統和自動化系統，配合 IoT 平台將收集到的數據整理然後上傳至雲端，再通過自動化方式全天候紀錄和管理珊瑚缸的狀況。",
   heroImage: featuredImage
 };
 
@@ -57,76 +57,134 @@ const crossDisciplinaryLearning = [
   }
 ];
 
-// Course curriculum - Beginner level
-const beginnerCurriculum = [
+// Course A: 珊瑚缸管理
+const coralTankManagement = [
   {
-    title: "介紹海洋環境［1節］",
+    title: "魚缸系統及海水缸組裝",
     content: [
-      "介紹海洋內含有的不同化學物質",
-      "探究海洋生物的生存要求"
+      "海洋生物的基本生存條件（溫度、鹽度、亮度、水質）",
+      "魚缸系統的基本概念（過濾系統、溫度調節、燈光控制）",
+      "過濾系統組裝（物理過濾物料、生物環）",
+      "鹽度與滲透（擴散與滲透、水族館鹽介紹、光學鹽度計測試）",
+      "蛋白質分離器介紹及校準",
+      "氣泵組裝（氧氣與可溶性）",
+      "溫度調節系統（暖管、冷水機、溫度計）",
+      "燈光控制系統（水族燈安裝及校準）",
+      "魚缸的廢物分解（氮循環、硝化細菌）"
     ]
   },
   {
-    title: "組裝海洋缸［1節］",
+    title: "水質管理與海洋環境",
     content: [
-      "製造一個適合海洋生物在學校生存的水缸環境",
-      "學習使用珊瑚缸的設備"
+      "水質管理的基本概念",
+      "水質試條介紹及使用",
+      "水中的有害物質介紹（酸與鹼、重金屬、磷酸鹽、硝酸鹽、氨）",
+      "TDS 水質檢測筆介紹及使用",
+      "測試套件介紹及使用",
+      "換水教學",
+      "熱帶海水魚（對水、添加新魚、餵食）",
+      "水箱維護安排"
     ]
   },
   {
-    title: "介紹海洋生物［1節］",
+    title: "魚缸維護及海洋生物",
     content: [
-      "學習海洋生物的生理構造和什麼氮循環",
-      "了解不同的海水魚類與軟體珊瑚"
-    ]
-  },
-  {
-    title: "初步水質測試［1節］",
-    content: [
-      "研究不同水質對海洋生物的影響",
-      "學習如何用科學知識去測試水質"
-    ]
-  },
-  {
-    title: "Microbit 監察系統［2節］",
-    content: [
-      "學習組裝不同傳感器",
-      "了解傳感器是如何工作",
-      "通過編程來使用傳感器",
-      "利用傳感器進利測試",
-      "把Microbit連到IoT平台並上傳數據"
+      "海藻處理（磁性藻類清潔器）",
+      "水質測試及換水",
+      "清洗過濾棉及蛋白質分離器",
+      "魚缸玻璃清潔",
+      "熱帶海水魚的生存條件與習性",
+      "魚的結構和習性、水質控制、常見疾病",
+      "珊瑚的生存條件與習性",
+      "珊瑚的結構和習性、水質控制",
+      "香港生態及環境保育"
     ]
   }
 ];
 
-// Course curriculum - Advanced level
-const advancedCurriculum = [
+// Course B: 入門物聯網監察
+const iotMonitoringBasics = [
   {
-    title: "進階水質測試［2節］",
+    title: "Micro:bit / ESP32 檢測魚缸及 IoT 系統的組成（上）",
     content: [
-      "了解其他會影響水質的化學物質",
-      "學習使用更多的測試水質的方法，例如試紙，滴定法等",
-      "探究這些化學物質會如何影響到海洋生物"
+      "IoT 物聯網及 Micro:bit / ESP32 介紹",
+      "Micro:bit / ESP32 基本編程教學（Hello World、OLED 顯示屏）",
+      "連接 Wi-Fi 網絡及上傳數據至 ThingSpeak",
+      "ThingSpeak 平台設定",
+      "MATLAB 入門教程（隨機漫步）",
+      "溫度傳感器編程、安裝及測試",
+      "ThingSpeak 溫度儀表",
+      "MATLAB 時間序列圖（資料視覺化、移動平均線）",
+      "進階溫度傳感器編程教學"
     ]
   },
   {
-    title: "Arduino 監察系統［2節］",
+    title: "Micro:bit / ESP32 檢測魚缸及 IoT 系統的組成（中）",
     content: [
-      "學習使用難度更高的傳感器",
-      "利用傳感器進行測試",
-      "比較Microbit與Arduino系統的差異",
-      "比較電子傳感器與光學量度器的測試差異",
-      "把收集到的數據上傳到IoT平台"
+      "燈光和珊瑚缸",
+      "光強度傳感器編程、安裝及測試",
+      "上傳光強度數據至 ThingSpeak",
+      "噪音傳感器編程、安裝及測試",
+      "上傳噪音數據至 ThingSpeak",
+      "警報系統（感應器訊息整合、蜂鳴器編程）",
+      "Pipedream 設定",
+      "警報系統測試"
     ]
   },
   {
-    title: "自動化系統［2節］",
+    title: "Micro:bit / ESP32 檢測魚缸及 IoT 系統的組成（下）",
     content: [
-      "了解如何簡化維護魚缸的方法",
-      "探究魚缸在長時間運行後的變化",
-      "用自動化的方法去調節水質",
-      "明白IoT與自動化的關聯",
-      "學習組裝自動化系統"
+      "溶解性總固體 (TDS) 介紹",
+      "TDS 感應器編程、安裝及測試",
+      "上傳 TDS 數據至 ThingSpeak",
+      "警報系統及噪音電子郵件警告",
+      "Pipedream 設定及警報系統測試",
+      "MATLAB 數據分析（平均數、眾數、中位數）",
+      "在 Thingspeak 中檢查 3M",
+      "繪製水溫分佈圖、中央極限定理",
+      "四分位距 (IQR) 及箱線圖"
+    ]
+  }
+];
+
+// Course C: 進階物聯網監察
+const iotMonitoringAdvanced = [
+  {
+    title: "自動補水系統",
+    content: [
+      "自動補水系統的基本概念",
+      "魚缸水蒸發與水質",
+      "引力 ATO 和電子 ATO",
+      "自動補水系統組裝（水缸安裝、加入淡水）",
+      "水導電感測器編程、安裝及測試",
+      "警報系統測試",
+      "氣泵編程、安裝及水管連接",
+      "自動化系統編程及測試"
+    ]
+  },
+  {
+    title: "自動魚糧機（上）",
+    content: [
+      "縮時紀錄檢查",
+      "魚糧成分與餵食",
+      "熱帶海水魚的攝食",
+      "魚飼料含量及餵食時間表",
+      "過度餵食問題",
+      "測試伺服馬達",
+      "魚糧機組裝及編程",
+      "魚糧機安裝及測試"
+    ]
+  },
+  {
+    title: "自動魚糧機（下）",
+    content: [
+      "餵食限制編程及測試",
+      "投餵時鐘編程及測試",
+      "建立時間觸發點",
+      "進度條編程",
+      "剩餘時間計算",
+      "自動魚糧機測試",
+      "課程總結及回顧"
     ]
   }
 ];
@@ -144,18 +202,13 @@ const learningOutcomes = [
     image: img1506
   },
   {
-    title: "海洋環境研究",
-    description: "深入了解海洋環境的特性，如水質、溫度和光照對海洋生態系統的影響，學習到各種珊瑚、魚類和其他無脊椎動物的生活習性和互動關係。",
-    image: img1671
-  },
-  {
     title: "維護海洋缸",
-    description: "探討魚缸生態系統的維護方法，學習如何通過科學實驗來管理光度和溫度，確保水生生物的健康生長。",
+    description: "探討魚缸生態系統的維護方法，學習如何管理必要的海水硬件設備，確保水生生物的健康生長。",
     image: img1592
   },
   {
-    title: "Blockly/Python程式編寫及IoT系統",
-    description: "編寫簡單的程式，讀取感測器數據並進行處理和在IoT上顯示，在課程中提升編程技能。",
+    title: "Blockly程式編寫及IoT系統",
+    description: "編寫簡單的程式，讀取實驗數據並進行處理和在IoT上顯示，在課程中提升編程技能。",
     image: img1754
   },
   {
@@ -185,7 +238,7 @@ const courseHighlights = [
   {
     title: "編程監控",
     description: "同學能實時監控珊瑚缸內的環境參數，通過數據分析來維持珊瑚缸的健康狀況，通過自動化系統的編寫和製作，方便照顧魚缸。",
-    image: img1671
+    image: img1754
   }
 ];
 
@@ -197,15 +250,15 @@ const faqData = [
   },
   {
     question: "課程需要什麼設備？",
-    answer: "如果學校支付額外費用，我們可以提供Microbit、Arduino、各種傳感器和海洋缸設備。"
+    answer: "如果學校支付額外費用，我們可以提供Microbit、科學實驗器材和海洋缸設備。"
   },
   {
     question: "課程時長是多少？",
-    answer: "課程總共12小時，分為初階課程（6小時）和進階課程（6小時），可根據學校需要調整。"
+    answer: "課程總共18小時，分為珊瑚缸管理（4.5小時）、入門物聯網監察（4.5小時）和進階物聯網監察（9小時），可根據學校需要調整。"
   },
   {
     question: "學生會學到什麼編程技能？",
-    answer: "學生將學習Blockly和Python編程，掌握IoT系統的應用，以及如何編寫自動化程式。"
+    answer: "學生將學習Blockly編程，掌握IoT系統的應用，以及如何編寫自動化程式。"
   },
   {
     question: "課程會提供學習材料嗎？",
@@ -278,28 +331,6 @@ const { title, subtitle, tags, description, detailedDescription, heroImage } = c
       </div>
     </section>
 
-    <!-- Course Gallery -->
-    <section class="section-padding bg-gray-50">
-      <div class="container-standard">
-        <GalleryCarousel 
-          title="課程實況照片"
-          images={[
-            featuredImage,
-            img1676,
-            img1671,
-            img1639,
-            img1437,
-            img1506,
-            img1592,
-            img1754,
-            img1685,
-            img1499
-          ]}
-          intervalMs={4500}
-        />
-      </div>
-    </section>
-
     <!-- Learning Outcomes -->
     <section class="section-padding bg-gray-50">
       <div class="container-standard">
@@ -327,13 +358,16 @@ const { title, subtitle, tags, description, detailedDescription, heroImage } = c
     </section>
 
     <!-- Course Content Section -->
-    <DualCourseContent 
-      beginnerTitle="初階課程"
-      advancedTitle="進階課程"
-      beginnerItems={beginnerCurriculum}
-      advancedItems={advancedCurriculum}
-      beginnerHours="6 小時"
-      advancedHours="6 小時"
+    <TripleCourseContent 
+      firstTitle="珊瑚缸管理"
+      secondTitle="入門物聯網監察"
+      thirdTitle="進階物聯網監察"
+      firstItems={coralTankManagement}
+      secondItems={iotMonitoringBasics}
+      thirdItems={iotMonitoringAdvanced}
+      firstHours="4.5 小時"
+      secondHours="4.5 小時"
+      thirdHours="4.5 小時"
     />
 
     <!-- Cross-disciplinary Learning -->
@@ -374,6 +408,28 @@ const { title, subtitle, tags, description, detailedDescription, heroImage } = c
 
     <!-- Related News Section -->
     <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
+
+    <!-- Course Gallery -->
+    <section class="section-padding bg-gray-50">
+      <div class="container-standard">
+        <GalleryCarousel 
+          title="課程實況照片"
+          images={[
+            featuredImage,
+            img1676,
+            img1671,
+            img1639,
+            img1437,
+            img1506,
+            img1592,
+            img1754,
+            img1685,
+            img1499
+          ]}
+          intervalMs={4500}
+        />
+      </div>
+    </section>
 
     <!-- Contact Form -->
     <ContactSection subtitle="想了解更多關於珊瑚環境監測入門課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
