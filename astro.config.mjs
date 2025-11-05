@@ -227,6 +227,11 @@ export default defineConfig({
     '/school-courses/Blockchain 區塊鏈課程': '/school-courses/blockchain',
     '/school-courses/AI影片製作課程': '/school-courses/ai-video-production',
     '/school-courses/Tello 無人機課程': '/school-courses/tello',
+    '/school-courses/Microbit 降落傘課程': '/school-courses/microbit-parachute',
+    '/school-courses/Donkey Car 無人車課程': '/school-courses/donkey-car',
+    '/school-courses/Python 初階遊戲編程': '/school-courses/python-game-dev-beginner',
+    '/school-courses/3D Micro_bit 機械人創作課程': '/school-courses/3d-microbit-robot-creation',
+    '/stemday/飲管橋': '/stemday/straw-bridge',
     
     // Category redirects (legacy URLs)
     '/category/blog': '/news',
@@ -317,6 +322,11 @@ export default defineConfig({
           '/school-courses/Blockchain 區塊鏈課程',
           '/school-courses/AI影片製作課程',
           '/school-courses/Tello 無人機課程',
+          '/school-courses/Microbit 降落傘課程',
+          '/school-courses/Donkey Car 無人車課程',
+          '/school-courses/Python 初階遊戲編程',
+          '/school-courses/3D Micro_bit 機械人創作課程',
+          '/stemday/飲管橋',
           '/category/blog',
           '/category/news',
           '/category/past-activities',
