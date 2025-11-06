@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import ContactSection from '../components/ContactSection.astro';
 import { Image } from 'astro:assets';
-import competitionImage from '../assets/images/competition/第四屆校際AI藝術創作大賽/ai-competition-2026-recovered.jpg';
+import competitionImage from '../assets/images/competition/第四屆校際AI藝術創作大賽/ai-competition-2026-version2.jpg';
 
 const title = "《GEN出你想》香港校際AI生成創作大賽2026 - 10教育";
 const description = "香港校際AI生成創作大賽2026《GEN出你想》，運用人工智能技術創作，展現學生創意才能，更多詳情將於日後釋出，敬請期待。";
@@ -39,19 +39,52 @@ const description = "香港校際AI生成創作大賽2026《GEN出你想》，�
     <section class="py-16 bg-white">
       <div class="container mx-auto px-4">
         <div class="max-w-6xl mx-auto">
-          <!-- Download Button -->
-          <div class="text-center mb-12">
-            <a 
-              href="https://drive.google.com/file/d/1kVrswbBoJ6fHClw-uPMmzC5Fks3REoKn/view" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              class="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-            >
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-              </svg>
-              查看比賽資料
-            </a>
+          <!-- Action Buttons -->
+          <div class="text-center mb-12 space-y-4">
+            <!-- 比賽簡介會 Button -->
+            <div>
+              <a 
+                href="https://www.youtube.com/watch?v=3wXgV83IEuM" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              >
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+                比賽簡介會
+              </a>
+            </div>
+            
+            <!-- 查看比賽資料 Button -->
+            <div>
+              <a 
+                href="https://drive.google.com/file/d/1kVrswbBoJ6fHClw-uPMmzC5Fks3REoKn/view" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              >
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                查看比賽資料
+              </a>
+            </div>
+            
+            <!-- 比賽報名表單 Button -->
+            <div>
+              <a 
+                href="https://ms3owuzo.paperform.co/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              >
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                比賽報名表單
+              </a>
+            </div>
           </div>
 
           <!-- Basic Info -->
@@ -135,7 +168,7 @@ const description = "香港校際AI生成創作大賽2026《GEN出你想》，�
             <div class="bg-white p-6 rounded-lg shadow-md">
               <h3 class="text-xl font-bold text-blue-600 mb-3">高小組</h3>
               <p class="text-gray-700">小三至小六</p>
-              <p class="text-sm text-red-600 mt-2">*不設遊戲，應用程式組</p>
+              <p class="text-sm text-red-600 mt-2">*不設遊戲及應用程式組</p>
             </div>
             <div class="bg-white p-6 rounded-lg shadow-md">
               <h3 class="text-xl font-bold text-purple-600 mb-3">初中組</h3>
@@ -394,11 +427,11 @@ const description = "香港校際AI生成創作大賽2026《GEN出你想》，�
       </div>
     </section>
 
-    <!-- Category Details: 遊戲，應用程式組 -->
+    <!-- Category Details: 遊戲及應用程式組 -->
     <section class="py-16 bg-white">
       <div class="container mx-auto px-4">
         <div class="max-w-6xl mx-auto">
-          <h2 class="text-3xl font-bold text-gray-900 mb-8 border-l-4 border-pink-500 pl-4">遊戲，應用程式組</h2>
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 border-l-4 border-pink-500 pl-4">遊戲及應用程式組</h2>
           
           <div class="space-y-6">
             <!-- 作品要求 -->
@@ -475,9 +508,9 @@ const description = "香港校際AI生成創作大賽2026《GEN出你想》，�
               </ol>
             </div>
 
-            <!-- 遊戲 / 應用程式組 -->
+            <!-- 遊戲及應用程式組 -->
             <div class="bg-white p-6 rounded-lg shadow-md md:col-span-2">
-              <h3 class="text-xl font-bold text-pink-600 mb-4">遊戲 / 應用程式組</h3>
+              <h3 class="text-xl font-bold text-pink-600 mb-4">遊戲及應用程式組</h3>
               <ol class="list-decimal list-inside space-y-2 text-gray-700">
                 <li>創新性</li>
                 <li>設計邏輯</li>
