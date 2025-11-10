@@ -180,6 +180,7 @@ export default defineConfig({
     '/course/microbit-parachute': '/school-courses/microbit-parachute',
     '/stem-day/microbit-parachute': '/school-courses/microbit-parachute',
     '/stemday/microbit-parachute': '/school-courses/microbit-parachute',
+    '/school-courses/microbit-maze': '/school-courses/microbit-parachute',
     '/course/procreate': '/school-courses/procreate',
     '/course/python-game-dev-beginner': '/school-courses/python-game-dev-beginner',
     '/course/raspberry-pi': '/school-courses/raspberry-pi',
@@ -210,6 +211,7 @@ export default defineConfig({
     '/stem-day/matatalab-programming': '/stemday/matatalab-programming',
     '/stem-day/matatalab-入門編程課程': '/stemday/matatalab-programming',
     '/stem-day/matatalab': '/stemday/matatalab-programming',
+    '/stem-day/ai-digital-animation-exhibition': '/school-courses/ai-digital-animation-exhibition',
     '/stemday/matatalab-入門編程課程': '/stemday/matatalab-programming',
     '/stemday/matatalab': '/stemday/matatalab-programming',
     
