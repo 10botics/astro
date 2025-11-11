@@ -375,20 +375,23 @@ export default defineConfig({
           return false;
         }
         
-        // Exclude URLs with URL-encoded Chinese characters
+        // Allow /news/ URLs even if they contain Chinese characters
+        const isNewsUrl = path.startsWith('/news/');
+        
+        // Exclude URLs with URL-encoded Chinese characters (except news URLs)
         // Chinese characters in UTF-8 are encoded as %E followed by hex digits
         // Pattern: %E[0-9A-F][0-9A-F]%[0-9A-F][0-9A-F]%[0-9A-F][0-9A-F]
         // Most Chinese characters start with %E4, %E5, %E6, %E7, %E8, %E9
         const chineseEncodedPattern = /%E[4-9A-F][0-9A-F]/i;
-        if (chineseEncodedPattern.test(path)) {
+        if (chineseEncodedPattern.test(path) && !isNewsUrl) {
           return false;
         }
         
-        // Exclude URLs with decoded Chinese characters
+        // Exclude URLs with decoded Chinese characters (except news URLs)
         // Chinese Unicode range: U+4E00 to U+9FFF (CJK Unified Ideographs)
         // Also includes some extended ranges: U+3400-U+4DBF, U+20000-U+2A6DF
         const chineseUnicodePattern = /[\u4E00-\u9FFF\u3400-\u4DBF]/;
-        if (chineseUnicodePattern.test(decodedPath)) {
+        if (chineseUnicodePattern.test(decodedPath) && !isNewsUrl) {
           return false;
         }
         
