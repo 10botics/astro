@@ -3,48 +3,8 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import path from 'path';
-import { urlAliases } from './src/utils/urlAliases.js';
 
 import vercel from '@astrojs/vercel';
-
-// Helper function to extract all non-canonical alias URLs
-function getNonCanonicalUrls() {
-  const nonCanonicalUrls = new Set();
-  
-  for (const [filename, config] of Object.entries(urlAliases)) {
-    if (config.tags && config.main) {
-      // Also exclude the filename-based URL if it's different from the canonical
-      // Extract the base filename without .astro extension
-      const baseFilename = filename.replace('.astro', '');
-      
-      // Check if this filename would generate a non-canonical URL
-      // For root-level pages, the filename itself becomes a URL
-      for (const [tag, aliases] of Object.entries(config.tags)) {
-        if (tag === 'root' && baseFilename !== config.main) {
-          // Add filename-based URL to exclusion set
-          nonCanonicalUrls.add(`/${baseFilename}`);
-          nonCanonicalUrls.add(`/${baseFilename}/`);
-        }
-      }
-      
-      // Iterate through all tags and their aliases
-      for (const [tag, aliases] of Object.entries(config.tags)) {
-        for (const alias of aliases) {
-          // If this alias is NOT the main canonical URL, add it to the set
-          if (alias !== config.main) {
-            // Construct the full path based on the tag
-            const fullPath = tag === 'root' ? `/${alias}` : `/${tag}/${alias}`;
-            nonCanonicalUrls.add(fullPath);
-            // Also add the version with trailing slash
-            nonCanonicalUrls.add(`${fullPath}/`);
-          }
-        }
-      }
-    }
-  }
-  
-  return nonCanonicalUrls;
-}
 
 // https://astro.build/config
 export default defineConfig({
@@ -107,7 +67,7 @@ export default defineConfig({
     '/minecraft-2024-registration': 'https://exgj8uei.paperform.co',
     '/minecraft-2023-registration': 'https://ofpd3jzg.paperform.co',
     
-    // URL Alias Redirects - Auto-generated from urlAliases.js
+    // URL Alias Redirects - All non-canonical aliases redirect to canonical URLs
     // Root level pages
     '/client': '/about',
     '/gen-ai-competition-2026': '/ai-competition-2026',
@@ -218,7 +178,6 @@ export default defineConfig({
     // Redirect Chinese filename URLs to canonical English URLs
     '/學界無人機救援挑戰賽-比賽名單': '/competition-drone-competitionlist',
     '/加入我們': '/join-us',
-    '/stemday/Matatalab 入門編程課程': '/stemday/matatalab-programming',
     '/school-courses/Lego Spike Prime 機器人技術大師班': '/school-courses/lego-spike-prime',
     '/competition-drone2024/初賽結果': '/competition-drone2024-preliminary-results',
     '/school-courses/AI藝術創作課程': '/school-courses/ai-enrichment-course',
@@ -348,15 +307,9 @@ export default defineConfig({
         ];
         
         // Exclude redirect sources - these are not canonical URLs
-        if (redirectSources.includes(path) || redirectSources.includes(path + '/')) {
-          return false;
-        }
-        
-        // Get non-canonical alias URLs
-        const nonCanonicalUrls = getNonCanonicalUrls();
-        
-        // Exclude non-canonical alias URLs (check both encoded and decoded paths)
-        if (nonCanonicalUrls.has(path) || nonCanonicalUrls.has(decodedPath)) {
+        // All non-canonical aliases are now redirects defined in the redirects object above
+        if (redirectSources.includes(path) || redirectSources.includes(path + '/') || 
+            redirectSources.includes(decodedPath) || redirectSources.includes(decodedPath + '/')) {
           return false;
         }
         
