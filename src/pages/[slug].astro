@@ -1,6 +1,5 @@
 ---
 // Dynamic route to handle URL mapping between English URLs and Chinese filename components
-import { getStaticPathsForFolder, getComponentForSlug } from '../utils/urlAliases.js';
 
 // Pre-import all components to avoid Unicode issues in dynamic imports
 import AboutUs from './關於我們.astro';
@@ -38,7 +37,7 @@ import DroneCompetitionFinalResults from './competition-drone2024/決賽結果.a
 import DroneCompetitionFinalTeamlist from './competition-drone2024/決賽隊伍名單及時間表.astro';
 import CourseBrochure from './course-brochure.astro';
 
-// Component mapping
+// Component mapping by filename
 const componentMap = {
   '關於我們.astro': AboutUs,
   '校際AI藝術創作大賽 2024.astro': AiArtCompetition2024,
@@ -78,33 +77,104 @@ const componentMap = {
 };
 
 export async function getStaticPaths() {
-  return getStaticPathsForFolder('root');
+  // Canonical slug to filename mapping (root level pages)
+  const slugToFilenameMap = {
+    'about': '關於我們.astro',
+    'ai-art-competition-2024': '校際AI藝術創作大賽 2024.astro',
+    'ai-art-competition-2025': '第三屆 校際AI藝術創作大賽.astro',
+    'ai-art-competition2025-result': '第三屆校際AI藝術創作大賽《智畫神話》result.astro',
+    'ai-art-competition-result': '2024 校際AI藝術創作大賽 -《數碼詠古》得獎名單.astro',
+    'ai-competition-2026': '《GEN出你想》香港校際AI生成創作大賽2026.astro',
+    'competition-drone2024': '學界無人機救援挑戰賽.astro',
+    'competition-drone-competitionlist': '學界無人機救援挑戰賽-比賽名單.astro',
+    'competition-ksp2022': '香港航天電競大賽 2022.astro',
+    'competition-minecraft2021': 'Minecraft 校園創建計劃 2021.astro',
+    'competition-minecraft2022': 'Minecraft 校園創建計劃 2022.astro',
+    'competition-minecraft2023': 'Minecraft 校園創建計劃 2023.astro',
+    'competition-minecraft2024': 'Minecraft 校園創建計劃 2024.astro',
+    'contact-us': '聯絡我們.astro',
+    'join-us': '加入我們.astro',
+    'terms-conditions': '條款及細則.astro',
+    'privacy-policy': '隱私政策.astro',
+    'personal-data-collection': '個人資料收集.astro',
+    'cookie-policy': 'Cookie政策.astro',
+    'natural-bio-sciences-01': '草原國度.astro',
+    'home': 'index.astro',
+    'course-brochure': 'course-brochure.astro',
+    '2024competitions': '2024 中小學 STEM 比賽清單.astro',
+    '2025competitions': '2025 中小學 STEM 比賽清單.astro',
+    'elementor-12069': 'stem-showroom.astro',
+    'school-courses': 'school-courses/index.astro',
+    'stemday': 'stemday/index.astro',
+    'teacher-workshop': 'staff-development-day/index.astro',
+    'funding-application': 'funding-application/index.astro',
+    'news': 'news/index.astro',
+    'secondary-ai-course': 'Donkey Car 無人車課程.astro',
+    'competition-drone2024-preliminary-results': 'competition-drone2024/初賽結果.astro',
+    'competition-drone2024-final-results': 'competition-drone2024/決賽結果.astro',
+    'competition-drone2024-final-teamlist': 'competition-drone2024/決賽隊伍名單及時間表.astro'
+  };
+  return Object.keys(slugToFilenameMap).map(slug => ({
+    params: { slug }
+  }));
 }
 
 const { slug } = Astro.params;
 
-// Handle special external redirects first
-// Note: timesheet_submission_form redirect is now handled in astro.config.mjs
+if (!slug) {
+  throw new Error('Slug is required');
+}
 
-// Get component info from global alias configuration
-const componentInfo = getComponentForSlug('root', slug);
+// Get filename from canonical slug mapping
+const slugToFilenameMap: Record<string, string> = {
+  'about': '關於我們.astro',
+  'ai-art-competition-2024': '校際AI藝術創作大賽 2024.astro',
+  'ai-art-competition-2025': '第三屆 校際AI藝術創作大賽.astro',
+  'ai-art-competition2025-result': '第三屆校際AI藝術創作大賽《智畫神話》result.astro',
+  'ai-art-competition-result': '2024 校際AI藝術創作大賽 -《數碼詠古》得獎名單.astro',
+  'ai-competition-2026': '《GEN出你想》香港校際AI生成創作大賽2026.astro',
+  'competition-drone2024': '學界無人機救援挑戰賽.astro',
+  'competition-drone-competitionlist': '學界無人機救援挑戰賽-比賽名單.astro',
+  'competition-ksp2022': '香港航天電競大賽 2022.astro',
+  'competition-minecraft2021': 'Minecraft 校園創建計劃 2021.astro',
+  'competition-minecraft2022': 'Minecraft 校園創建計劃 2022.astro',
+  'competition-minecraft2023': 'Minecraft 校園創建計劃 2023.astro',
+  'competition-minecraft2024': 'Minecraft 校園創建計劃 2024.astro',
+  'contact-us': '聯絡我們.astro',
+  'join-us': '加入我們.astro',
+  'terms-conditions': '條款及細則.astro',
+  'privacy-policy': '隱私政策.astro',
+  'personal-data-collection': '個人資料收集.astro',
+  'cookie-policy': 'Cookie政策.astro',
+  'natural-bio-sciences-01': '草原國度.astro',
+  'home': 'index.astro',
+  'course-brochure': 'course-brochure.astro',
+  '2024competitions': '2024 中小學 STEM 比賽清單.astro',
+  '2025competitions': '2025 中小學 STEM 比賽清單.astro',
+  'elementor-12069': 'stem-showroom.astro',
+  'school-courses': 'school-courses/index.astro',
+  'stemday': 'stemday/index.astro',
+  'teacher-workshop': 'staff-development-day/index.astro',
+  'funding-application': 'funding-application/index.astro',
+  'news': 'news/index.astro',
+  'secondary-ai-course': 'Donkey Car 無人車課程.astro',
+  'competition-drone2024-preliminary-results': 'competition-drone2024/初賽結果.astro',
+  'competition-drone2024-final-results': 'competition-drone2024/決賽結果.astro',
+  'competition-drone2024-final-teamlist': 'competition-drone2024/決賽隊伍名單及時間表.astro'
+};
+const filename = slugToFilenameMap[slug];
 
-if (!componentInfo) {
+if (!filename) {
   throw new Error(`Unknown slug: ${slug}`);
 }
 
-// Handle redirects
-if (componentInfo.isRedirect && componentInfo.redirect) {
-  return Astro.redirect(componentInfo.redirect);
-}
-
 // Get the pre-imported component
-const ChineseComponent = componentInfo.filename in componentMap 
-  ? componentMap[componentInfo.filename as keyof typeof componentMap]
+const ChineseComponent = filename in componentMap 
+  ? componentMap[filename as keyof typeof componentMap]
   : null;
 
 if (!ChineseComponent) {
-  throw new Error(`Component not found for filename: ${componentInfo.filename}`);
+  throw new Error(`Component not found for filename: ${filename}`);
 }
 ---
 

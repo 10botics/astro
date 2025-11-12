@@ -1,6 +1,5 @@
 ---
 // Dynamic route to handle URL mapping for school courses
-import { getStaticPathsForFolder, getComponentForSlug } from '../../utils/urlAliases.js';
 
 // Pre-import all components to avoid Unicode issues in dynamic imports
 import AiGameCoding from './人工智能遊戲編程課程.astro';
@@ -31,7 +30,7 @@ import AppleVisionPro from './Apple Vision Pro 遊戲開發課程.astro';
 import MicrobitRobotCreation from './3D Micro_bit 機械人創作課程.astro';
 import AiVideoProduction from './AI影片製作課程.astro';
 
-// Component mapping
+// Component mapping by filename
 const componentMap = {
   '人工智能遊戲編程課程.astro': AiGameCoding,
   'AI藝術創作課程.astro': AiEnrichmentCourse,
@@ -63,35 +62,90 @@ const componentMap = {
 };
 
 export async function getStaticPaths() {
-  return getStaticPathsForFolder('school-courses');
+  // Canonical slug to filename mapping (school-courses)
+  const slugToFilenameMap = {
+    'ai-game-coding': '人工智能遊戲編程課程.astro',
+    'ai-enrichment-course': 'AI藝術創作課程.astro',
+    'ai-enlightenment': 'AI啟蒙課程.astro',
+    'ai-digital-animation-exhibition': 'AI數碼動畫展.astro',
+    'blockchain': 'Blockchain 區塊鏈課程.astro',
+    'codrone': 'CoDrone無人機課程.astro',
+    'cospaces': 'Delightex 遊戲設計課程.astro',
+    'donkey-car': 'Donkey Car 無人車課程.astro',
+    'dobot': 'Dobot 智能機械手臂.astro',
+    'ksp': 'ksp太空計劃課程.astro',
+    'lego-spike-prime': 'Lego Spike Prime 機器人技術大師班.astro',
+    'minecraft': 'Minecraft校園創建課程.astro',
+    'minecraft-2024': '../Minecraft 校園創建計劃 2024.astro',
+    'microbit-parachute': 'Microbit 降落傘課程.astro',
+    'procreate': 'Procreate數位藝術課程.astro',
+    'python-game-dev-beginner': 'Python 初階遊戲編程.astro',
+    'raspberry-pi': 'raspberry-pi編程課程.astro',
+    'scratch-ai-programming': 'Scratch 人工智能編程.astro',
+    'scratch-game-design': 'Scratch遊戲設計課程.astro',
+    'swiftplaygrounds': 'SwiftPlaygrounds編程課程.astro',
+    'tello': 'Tello 無人機課程.astro',
+    'coral-environment-monitoring': '珊瑚環境監測入門課程.astro',
+    'unity': 'Unity 課程.astro',
+    'natural-bio-sciences': '自然生物探究手作課程.astro',
+    'apple-vision-pro-game-dev': 'Apple Vision Pro 遊戲開發課程.astro',
+    '3d-microbit-robot-creation': '3D Micro_bit 機械人創作課程.astro',
+    'ai-video-production': 'AI影片製作課程.astro'
+  };
+  return Object.keys(slugToFilenameMap).map(slug => ({
+    params: { slug }
+  }));
 }
 
 const { slug } = Astro.params;
 
-// Handle special redirects first
-if (slug === 'ai-courses') {
-  return Astro.redirect('/school-courses/scratch-ai-programming');
+if (!slug) {
+  throw new Error('Slug is required');
 }
 
-// Get component info from global alias configuration
-const componentInfo = getComponentForSlug('school-courses', slug);
+// Get filename from canonical slug mapping
+const slugToFilenameMap = {
+  'ai-game-coding': '人工智能遊戲編程課程.astro',
+  'ai-enrichment-course': 'AI藝術創作課程.astro',
+  'ai-enlightenment': 'AI啟蒙課程.astro',
+  'ai-digital-animation-exhibition': 'AI數碼動畫展.astro',
+  'blockchain': 'Blockchain 區塊鏈課程.astro',
+  'codrone': 'CoDrone無人機課程.astro',
+  'cospaces': 'Delightex 遊戲設計課程.astro',
+  'donkey-car': 'Donkey Car 無人車課程.astro',
+  'dobot': 'Dobot 智能機械手臂.astro',
+  'ksp': 'ksp太空計劃課程.astro',
+  'lego-spike-prime': 'Lego Spike Prime 機器人技術大師班.astro',
+  'minecraft': 'Minecraft校園創建課程.astro',
+  'minecraft-2024': '../Minecraft 校園創建計劃 2024.astro',
+  'microbit-parachute': 'Microbit 降落傘課程.astro',
+  'procreate': 'Procreate數位藝術課程.astro',
+  'python-game-dev-beginner': 'Python 初階遊戲編程.astro',
+  'raspberry-pi': 'raspberry-pi編程課程.astro',
+  'scratch-ai-programming': 'Scratch 人工智能編程.astro',
+  'scratch-game-design': 'Scratch遊戲設計課程.astro',
+  'swiftplaygrounds': 'SwiftPlaygrounds編程課程.astro',
+  'tello': 'Tello 無人機課程.astro',
+  'coral-environment-monitoring': '珊瑚環境監測入門課程.astro',
+  'unity': 'Unity 課程.astro',
+  'natural-bio-sciences': '自然生物探究手作課程.astro',
+  'apple-vision-pro-game-dev': 'Apple Vision Pro 遊戲開發課程.astro',
+  '3d-microbit-robot-creation': '3D Micro_bit 機械人創作課程.astro',
+  'ai-video-production': 'AI影片製作課程.astro'
+};
+const filename = slugToFilenameMap[slug];
 
-if (!componentInfo) {
+if (!filename) {
   throw new Error(`Unknown school course slug: ${slug}`);
 }
 
-// Handle redirects
-if (componentInfo.isRedirect && componentInfo.redirect) {
-  return Astro.redirect(componentInfo.redirect);
-}
-
 // Get the pre-imported component
-const SchoolCourseComponent = componentInfo.filename in componentMap 
-  ? componentMap[componentInfo.filename as keyof typeof componentMap]
+const SchoolCourseComponent = filename in componentMap 
+  ? componentMap[filename as keyof typeof componentMap]
   : null;
 
 if (!SchoolCourseComponent) {
-  throw new Error(`Component not found for filename: ${componentInfo.filename}`);
+  throw new Error(`Component not found for filename: ${filename}`);
 }
 ---
 

@@ -1,6 +1,5 @@
 ---
 // Dynamic route to handle URL mapping for STEM day activities
-import { getStaticPathsForFolder, getComponentForSlug } from '../../utils/urlAliases.js';
 
 // Pre-import all components to avoid Unicode issues in dynamic imports
 import StrawBridge from './飲管橋.astro';
@@ -9,7 +8,7 @@ import Matatalab from './Matatalab 入門編程課程.astro';
 import MicrobitParachute from '../school-courses/Microbit 降落傘課程.astro';
 import Index from './index.astro';
 
-// Component mapping - keys must match exactly what getComponentForSlug returns
+// Component mapping by filename
 const componentMap = {
   '飲管橋.astro': StrawBridge,
   'DIY 手作.astro': DIY,
@@ -19,26 +18,46 @@ const componentMap = {
 };
 
 export async function getStaticPaths() {
-  return getStaticPathsForFolder('stemday');
+  // Canonical slug to filename mapping (stemday)
+  const slugToFilenameMap = {
+    'straw-bridge': '飲管橋.astro',
+    'diy': 'DIY 手作.astro',
+    'matatalab-programming': 'Matatalab 入門編程課程.astro',
+    'microbit-parachute': 'Microbit 降落傘課程.astro',
+    'index': 'index.astro'
+  };
+  return Object.keys(slugToFilenameMap).map(slug => ({
+    params: { slug }
+  }));
 }
 
 const { slug } = Astro.params;
-const stemdayInfo = getComponentForSlug('stemday', slug);
 
-if (!stemdayInfo) {
+if (!slug) {
+  throw new Error('Slug is required');
+}
+
+// Get filename from canonical slug mapping
+const slugToFilenameMap = {
+  'straw-bridge': '飲管橋.astro',
+  'diy': 'DIY 手作.astro',
+  'matatalab-programming': 'Matatalab 入門編程課程.astro',
+  'microbit-parachute': 'Microbit 降落傘課程.astro',
+  'index': 'index.astro'
+};
+const filename = slugToFilenameMap[slug];
+
+if (!filename) {
   throw new Error(`Unknown stemday slug: ${slug}`);
 }
 
-// Handle redirects
-if (stemdayInfo.isRedirect && stemdayInfo.redirect) {
-  return Astro.redirect(stemdayInfo.redirect);
-}
-
-// Get the pre-imported component and assign to a static identifier
-const StemdayComponent = componentMap[stemdayInfo.filename as keyof typeof componentMap];
+// Get the pre-imported component
+const StemdayComponent = filename in componentMap 
+  ? componentMap[filename as keyof typeof componentMap]
+  : null;
 
 if (!StemdayComponent) {
-  throw new Error(`Component not found for filename: ${stemdayInfo.filename}`);
+  throw new Error(`Component not found for filename: ${filename}`);
 }
 ---
 

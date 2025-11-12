@@ -1,37 +1,51 @@
 ---
 // Dynamic route to handle URL mapping for funding application pages
-import { getStaticPathsForFolder, getComponentForSlug } from '../../utils/urlAliases.js';
 
 // Pre-import all components to avoid Unicode issues in dynamic imports
 import ITInnovationLab from './IT創新實驗室計劃.astro';
 import KnowingMoreAboutIT from './奇趣IT識多啲計劃.astro';
 
-// Component mapping
+// Component mapping by filename
 const componentMap = {
   'IT創新實驗室計劃.astro': ITInnovationLab,
   '奇趣IT識多啲計劃.astro': KnowingMoreAboutIT
 };
 
 export async function getStaticPaths() {
-  return getStaticPathsForFolder('funding-application');
+  // Canonical slug to filename mapping (funding-application)
+  const slugToFilenameMap = {
+    'it-innovation-lab': 'IT創新實驗室計劃.astro',
+    'knowing-more-about-it': '奇趣IT識多啲計劃.astro'
+  };
+  return Object.keys(slugToFilenameMap).map(slug => ({
+    params: { slug }
+  }));
 }
 
 const { slug } = Astro.params;
 
-// Get component info from global alias configuration
-const componentInfo = getComponentForSlug('funding-application', slug);
+if (!slug) {
+  throw new Error('Slug is required');
+}
 
-if (!componentInfo) {
+// Get filename from canonical slug mapping
+const slugToFilenameMap = {
+  'it-innovation-lab': 'IT創新實驗室計劃.astro',
+  'knowing-more-about-it': '奇趣IT識多啲計劃.astro'
+};
+const filename = slugToFilenameMap[slug];
+
+if (!filename) {
   throw new Error(`Unknown funding application slug: ${slug}`);
 }
 
 // Get the pre-imported component
-const FundingComponent = componentInfo.filename in componentMap 
-  ? componentMap[componentInfo.filename as keyof typeof componentMap]
+const FundingComponent = filename in componentMap 
+  ? componentMap[filename as keyof typeof componentMap]
   : null;
 
 if (!FundingComponent) {
-  throw new Error(`Component not found for filename: ${componentInfo.filename}`);
+  throw new Error(`Component not found for filename: ${filename}`);
 }
 ---
 
