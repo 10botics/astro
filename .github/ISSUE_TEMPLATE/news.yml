@@ -1,0 +1,95 @@
+name: "News post (AI draft)"
+description: "Create a news post draft via AI, delivered as a PR."
+title: "[News] "
+labels: ["news"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This issue will be turned into a PR that adds a new Markdown file under `src/content/news/`.
+
+        **Important**:
+        - Do not reference images that don't exist in the repo yet.
+        - Use full repo-relative paths like: `../../assets/images/news/YYYY-MM-DD-title/image.jpg`
+
+  - type: input
+    id: publishDate
+    attributes:
+      label: Publish date (YYYY-MM-DD)
+      description: "Example: 2026-02-20"
+      placeholder: "YYYY-MM-DD"
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      placeholder: "短標題 / Short headline"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description (SEO)
+      description: "1–2 sentences. Will be used as the `description` frontmatter."
+      placeholder: "Brief summary for SEO / list page."
+    validations:
+      required: true
+
+  - type: input
+    id: featuredImage
+    attributes:
+      label: featuredImage (path)
+      description: "Repo-relative path used in frontmatter. Must exist."
+      placeholder: "../../assets/images/news/YYYY-MM-DD-title/image1.jpg"
+    validations:
+      required: true
+
+  - type: input
+    id: SEOImage
+    attributes:
+      label: SEOImage (path)
+      description: "Repo-relative path used in frontmatter. Must exist."
+      placeholder: "../../assets/images/news/YYYY-MM-DD-title/image1.jpg"
+    validations:
+      required: true
+
+  - type: textarea
+    id: whatHappened
+    attributes:
+      label: What happened? (notes for AI)
+      description: |
+        Bullet notes are best. Include: where/when, audience, what you delivered, outcomes, any names to mention, and any links you want included.
+      placeholder: |
+        - We ran a STEM Day at ...
+        - Topics: ...
+        - Participants: ...
+        - Outcome/impact: ...
+        - Photos: (already in repo at paths above)
+        - Links: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: extraImages
+    attributes:
+      label: Extra images to embed (optional)
+      description: "One image path per line. These will be embedded in the body as `![](...)`."
+      placeholder: |
+        ../../assets/images/news/YYYY-MM-DD-title/photo2.jpg
+        ../../assets/images/news/YYYY-MM-DD-title/photo3.jpg
+    validations:
+      required: false
+
+  - type: textarea
+    id: externalLinks
+    attributes:
+      label: External links (optional)
+      description: "One link per line. These will be added to a '相關連結' section."
+      placeholder: |
+        https://example.com
+        https://school.edu.hk
+    validations:
+      required: false
