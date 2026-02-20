@@ -444,6 +444,8 @@ async function main() {
     `author: ${yamlQuote(openerLogin)}`,
     '---',
     '',
+    `![](${featuredImage})`,
+    '',
     bodyParts.join('\n').trimEnd(),
     '',
   ].join('\n');
