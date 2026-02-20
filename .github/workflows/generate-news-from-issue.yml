@@ -1,0 +1,75 @@
+name: Generate news post (issue -> PR)
+
+on:
+  issues:
+    types: [opened]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: news-from-issue-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    if: >
+      (github.event_name == 'issues' && contains(toJson(github.event.issue.labels), '"news"'))
+      || (github.event_name == 'issue_comment'
+          && !github.event.issue.pull_request
+          && contains(toJson(github.event.issue.labels), '"news"')
+          && contains(github.event.comment.body, '/generate-news'))
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Generate markdown from issue
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: node scripts/generate-news-from-issue.mjs
+
+      - name: Create pull request
+        id: cpr
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: bot/news-from-issue-${{ github.event.issue.number }}
+          delete-branch: true
+          commit-message: news: add post from issue #${{ github.event.issue.number }}
+          title: news: draft post for issue #${{ github.event.issue.number }}
+          body: |
+            ## Summary
+            This PR was generated from issue #${{ github.event.issue.number }}.
+
+            - **Requested by**: @${{ github.event.issue.user.login }}
+            - **Source**: issue form fields + AI-generated category/tags/body
+
+            ## Notes
+            - If this PR is missing good `category`/`tags`, make sure `OPENROUTER_API_KEY` is set in repo secrets.
+            - You can regenerate after edits by commenting `/generate-news` on the issue.
+
+            Closes #${{ github.event.issue.number }}
+
+      - name: Comment PR link back to issue
+        if: steps.cpr.outputs.pull-request-url != ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue_number = context.payload.issue.number;
+            const prUrl = '${{ steps.cpr.outputs.pull-request-url }}';
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number,
+              body: `PR created: ${prUrl}\n\nVercel Preview will appear on the PR once checks start.`
+            });
