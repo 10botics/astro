@@ -399,7 +399,7 @@ async function main() {
   };
 
   const apiKey = process.env.OPENROUTER_API_KEY;
-  const model = 'openrouter/free';
+  const model = 'google/gemini-2.5-flash';
 
   let category = '其他';
   let tags = [];
