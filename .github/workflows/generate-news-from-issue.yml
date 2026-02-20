@@ -2,7 +2,7 @@ name: Generate news post (issue -> PR)
 
 on:
   issues:
-    types: [opened]
+    types: [opened, labeled, edited]
   issue_comment:
     types: [created]
 
@@ -19,11 +19,17 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     if: >
-      (github.event_name == 'issues' && contains(toJson(github.event.issue.labels), '"news"'))
-      || (github.event_name == 'issue_comment'
-          && !github.event.issue.pull_request
-          && contains(toJson(github.event.issue.labels), '"news"')
-          && contains(github.event.comment.body, '/generate-news'))
+      (github.event_name == 'issues'
+        && (
+          contains(github.event.issue.labels.*.name, 'news')
+          || startsWith(github.event.issue.title, '[News]')
+        )
+      )
+      || (
+        github.event_name == 'issue_comment'
+        && !github.event.issue.pull_request
+        && contains(github.event.comment.body, '/generate-news')
+      )
 
     steps:
       - name: Checkout
