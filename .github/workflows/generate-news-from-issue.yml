@@ -37,6 +37,7 @@ jobs:
       - name: Generate markdown from issue
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node scripts/generate-news-from-issue.mjs
 
       - name: Create pull request
@@ -45,8 +46,8 @@ jobs:
         with:
           branch: bot/news-from-issue-${{ github.event.issue.number }}
           delete-branch: true
-          commit-message: news: add post from issue #${{ github.event.issue.number }}
-          title: news: draft post for issue #${{ github.event.issue.number }}
+          commit-message: "news: add post from issue #${{ github.event.issue.number }}"
+          title: "news: draft post from issue #${{ github.event.issue.number }}"
           body: |
             ## Summary
             This PR was generated from issue #${{ github.event.issue.number }}.
