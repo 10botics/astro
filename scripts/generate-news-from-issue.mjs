@@ -89,6 +89,60 @@ function uniqStrings(values, max = 12) {
   return out;
 }
 
+function extractUrls(text) {
+  const s = normalizeNewlines(text);
+  const urls = [];
+
+  // Markdown images: ![alt](url)
+  for (const m of s.matchAll(/!\[[^\]]*\]\((https?:\/\/[^\s)]+)\)/g)) {
+    urls.push(m[1]);
+  }
+
+  // Bare URLs (fallback)
+  for (const m of s.matchAll(/\bhttps?:\/\/\S+\b/g)) {
+    urls.push(m[0].replace(/[),.]+$/g, ''));
+  }
+
+  return uniqStrings(urls, 50);
+}
+
+function extFromContentType(contentType) {
+  const ct = (contentType ?? '').toLowerCase();
+  if (ct.includes('image/jpeg')) return '.jpg';
+  if (ct.includes('image/png')) return '.png';
+  if (ct.includes('image/webp')) return '.webp';
+  if (ct.includes('image/gif')) return '.gif';
+  if (ct.includes('image/avif')) return '.avif';
+  return '';
+}
+
+function safeImageExtFromUrl(url) {
+  try {
+    const u = new URL(url);
+    const ext = path.extname(u.pathname).toLowerCase();
+    const allowed = new Set(['.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif']);
+    if (allowed.has(ext)) return ext === '.jpeg' ? '.jpg' : ext;
+  } catch {
+    // ignore
+  }
+  return '';
+}
+
+async function downloadImageToFile(url, absTargetPath) {
+  const headers = {};
+  if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+
+  const res = await fetch(url, { headers });
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    throw new Error(`Failed to download image (${res.status}): ${url}\n${text.slice(0, 200)}`);
+  }
+
+  const arrayBuffer = await res.arrayBuffer();
+  await fs.writeFile(absTargetPath, Buffer.from(arrayBuffer));
+  return res.headers.get('content-type') ?? '';
+}
+
 async function callOpenRouter({ apiKey, model, prompt }) {
   const referer =
     process.env.OPENROUTER_REFERRER ||
@@ -172,9 +226,66 @@ async function main() {
   const publishDate = toIsoDate(extractSection(issueBody, 'Publish date (YYYY-MM-DD)'));
   const title = extractSection(issueBody, 'Title') || `News ${publishDate}`;
   const description = extractSection(issueBody, 'Description (SEO)') || '';
-  const featuredImage = extractSection(issueBody, 'featuredImage (path)') || '';
-  const SEOImage = extractSection(issueBody, 'SEOImage (path)') || '';
   const whatHappened = extractSection(issueBody, 'What happened? (notes for AI)') || '';
+
+  const slug = sanitizeFilenameSegment(title);
+  const assetsFolderName = `${publishDate}-${slug}`;
+  const assetsDir = path.join(
+    process.cwd(),
+    'src',
+    'assets',
+    'images',
+    'news',
+    assetsFolderName,
+  );
+  await fs.mkdir(assetsDir, { recursive: true });
+
+  const featuredImageUploadRaw = extractSection(issueBody, 'Featured image (upload)') || '';
+  const seoImageUploadRaw = extractSection(issueBody, 'SEO image (upload)') || '';
+
+  const featuredUrls = extractUrls(featuredImageUploadRaw);
+  const seoUrls = extractUrls(seoImageUploadRaw);
+  const featuredUrl = featuredUrls[0];
+  const seoUrl = seoUrls[0];
+
+  if (!featuredUrl) throw new Error('Missing featured image upload (no image URL found in issue).');
+  if (!seoUrl) throw new Error('Missing SEO image upload (no image URL found in issue).');
+
+  const featuredExtGuess = safeImageExtFromUrl(featuredUrl);
+  const seoExtGuess = safeImageExtFromUrl(seoUrl);
+
+  const featuredBase = 'image1';
+  const seoBase = 'seo';
+
+  // Download featured (and reuse for SEO if same URL)
+  const featuredTmpPath = path.join(assetsDir, `${featuredBase}${featuredExtGuess || ''}`);
+  const featuredContentType = await downloadImageToFile(featuredUrl, featuredTmpPath);
+  const featuredExt =
+    featuredExtGuess || extFromContentType(featuredContentType) || path.extname(featuredTmpPath) || '.jpg';
+  let featuredFileName = `${featuredBase}${featuredExt}`;
+  let featuredAbsPath = path.join(assetsDir, featuredFileName);
+  if (featuredAbsPath !== featuredTmpPath) {
+    await fs.rename(featuredTmpPath, featuredAbsPath);
+  }
+
+  let seoFileName = `${seoBase}${seoExtGuess || ''}`;
+  let seoAbsPath = path.join(assetsDir, seoFileName);
+  if (seoUrl === featuredUrl) {
+    seoFileName = featuredFileName;
+    seoAbsPath = featuredAbsPath;
+  } else {
+    const seoTmpPath = seoAbsPath;
+    const seoContentType = await downloadImageToFile(seoUrl, seoTmpPath);
+    const seoExt = seoExtGuess || extFromContentType(seoContentType) || path.extname(seoTmpPath) || '.jpg';
+    seoFileName = `${seoBase}${seoExt}`;
+    seoAbsPath = path.join(assetsDir, seoFileName);
+    if (seoAbsPath !== seoTmpPath) {
+      await fs.rename(seoTmpPath, seoAbsPath);
+    }
+  }
+
+  const featuredImage = `../../assets/images/news/${assetsFolderName}/${featuredFileName}`;
+  const SEOImage = `../../assets/images/news/${assetsFolderName}/${seoFileName}`;
 
   const extraImages = uniqStrings(
     extractSection(issueBody, 'Extra images to embed (optional)')
@@ -183,6 +294,23 @@ async function main() {
       .filter(Boolean),
     20,
   );
+
+  const extraImageUrls = extractUrls(extraImages.join('\n'));
+  const downloadedExtraImagePaths = [];
+  let extraIndex = 2;
+  for (const url of extraImageUrls) {
+    const extGuess = safeImageExtFromUrl(url);
+    const base = `image${extraIndex}`;
+    const tmpAbs = path.join(assetsDir, `${base}${extGuess || ''}`);
+    const ct = await downloadImageToFile(url, tmpAbs);
+    const ext = extGuess || extFromContentType(ct) || path.extname(tmpAbs) || '.jpg';
+    const finalName = `${base}${ext}`;
+    const finalAbs = path.join(assetsDir, finalName);
+    if (finalAbs !== tmpAbs) await fs.rename(tmpAbs, finalAbs);
+    downloadedExtraImagePaths.push(`../../assets/images/news/${assetsFolderName}/${finalName}`);
+    extraIndex += 1;
+    if (extraIndex > 20) break;
+  }
 
   const externalLinks = uniqStrings(
     extractSection(issueBody, 'External links (optional)')
@@ -199,7 +327,7 @@ async function main() {
     featuredImage,
     SEOImage,
     notes: whatHappened,
-    extraImages,
+    extraImages: downloadedExtraImagePaths,
     externalLinks,
     author: openerLogin,
   };
@@ -229,8 +357,8 @@ async function main() {
   }
 
   const bodyParts = [];
-  if (extraImages.length) {
-    for (const img of extraImages) bodyParts.push(`![](${img})`);
+  if (downloadedExtraImagePaths.length) {
+    for (const img of downloadedExtraImagePaths) bodyParts.push(`![](${img})`);
     bodyParts.push('');
   }
   if (content) bodyParts.push(content);
@@ -255,7 +383,6 @@ async function main() {
   ].join('\n');
 
   const newsDir = path.join(process.cwd(), 'src', 'content', 'news');
-  const slug = sanitizeFilenameSegment(title);
   let fileName = `${publishDate}-${slug}.md`;
   let targetPath = path.join(newsDir, fileName);
 

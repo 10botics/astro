@@ -9,8 +9,8 @@ body:
         This issue will be turned into a PR that adds a new Markdown file under `src/content/news/`.
 
         **Important**:
-        - Do not reference images that don't exist in the repo yet.
-        - Use full repo-relative paths like: `../../assets/images/news/YYYY-MM-DD-title/image.jpg`
+        - Upload images by **drag & drop** into the fields below.
+        - Images will be committed into: `src/assets/images/news/YYYY-MM-DD-<title>/`
 
   - type: input
     id: publishDate
@@ -38,21 +38,25 @@ body:
     validations:
       required: true
 
-  - type: input
-    id: featuredImage
+  - type: textarea
+    id: featuredImageUpload
     attributes:
-      label: featuredImage (path)
-      description: "Repo-relative path used in frontmatter. Must exist."
-      placeholder: "../../assets/images/news/YYYY-MM-DD-title/image1.jpg"
+      label: Featured image (upload)
+      description: |
+        Drag & drop (or paste) **one image** here. This becomes `featuredImage` and will be saved as `image1.<ext>`.
+      placeholder: |
+        Paste or drop the image here (GitHub will insert a markdown image like: ![](https://...))
     validations:
       required: true
 
-  - type: input
-    id: SEOImage
+  - type: textarea
+    id: SEOImageUpload
     attributes:
-      label: SEOImage (path)
-      description: "Repo-relative path used in frontmatter. Must exist."
-      placeholder: "../../assets/images/news/YYYY-MM-DD-title/image1.jpg"
+      label: SEO image (upload)
+      description: |
+        Drag & drop (or paste) **one image** here. This becomes `SEOImage` and will be saved as `seo.<ext>`.
+      placeholder: |
+        Paste or drop the image here (GitHub will insert a markdown image like: ![](https://...))
     validations:
       required: true
 
@@ -67,7 +71,7 @@ body:
         - Topics: ...
         - Participants: ...
         - Outcome/impact: ...
-        - Photos: (already in repo at paths above)
+        - Photos: (upload above / in extra images)
         - Links: ...
     validations:
       required: true
@@ -76,10 +80,12 @@ body:
     id: extraImages
     attributes:
       label: Extra images to embed (optional)
-      description: "One image path per line. These will be embedded in the body as `![](...)`."
+      description: |
+        Optional. Drag & drop images here (one per line is fine) OR paste image URLs.
+        These will be downloaded into the same folder and embedded in the body.
       placeholder: |
-        ../../assets/images/news/YYYY-MM-DD-title/photo2.jpg
-        ../../assets/images/news/YYYY-MM-DD-title/photo3.jpg
+        ![](https://...)
+        ![](https://...)
     validations:
       required: false
 
