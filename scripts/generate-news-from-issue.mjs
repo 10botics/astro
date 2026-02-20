@@ -248,9 +248,11 @@ Typical post has 3–7 tags.
 5. **CTA (optional)** — End with: "如果您的學校對相關課程或活動有興趣，歡迎與我們聯繫，共同探索科技教育的無限可能！"
 
 ## Length
+- MINIMUM 3 paragraphs. Every paragraph must be at least 100 Chinese characters long.
 - Event recaps: 250–400 words, 4–7 paragraphs, 2–4 headings
-- Announcements: 100–200 words, 2–3 paragraphs
+- Announcements: 150–250 words, 3–4 paragraphs
 - Articles: 400–800 words, multiple sections
+- Never produce a post shorter than 3 substantial paragraphs.
 
 ## Images
 - Do NOT invent image paths. Only use images from the "extraImages" array provided in the inputs.
