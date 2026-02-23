@@ -1,0 +1,183 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import { Image } from 'astro:assets';
+import ContactSection from '../../components/ContactSection.astro';
+
+import heroImage from '../../assets/images/stemday/mainpage/vr-game-experience.png';
+
+const activityData: {
+  title: string;
+  subtitle: string;
+  tags: string[];
+  description: string;
+  heroImageAsset: any;
+} = {
+  title: "VR遊戲體驗",
+  subtitle: "我們將會準備不同類型的VR遊戲給同學們體驗，希望同學們親身體驗VR遊戲帶來的刺激感和震撼感。我們在場導師會指引同學們VR遊戲玩法，並且介紹VR技術的基本原理給同學認識，激發同學們對科技創新的興趣。",
+  tags: ["VR 虛擬實境", "遊戲體驗", "初小", "高小", "初中", "高中"],
+  description: "VR遊戲體驗活動讓同學親身體驗VR遊戲帶來的刺激感和震撼感，導師會指引VR遊戲玩法並介紹VR技術的基本原理，激發同學們對科技創新的興趣。",
+  heroImageAsset: heroImage
+};
+
+const activityFeatures = [
+  {
+    icon: "fas fa-vr-cardboard",
+    title: "沉浸式VR體驗",
+    description: "透過VR虛擬實境技術，讓同學親身體驗不同類型的VR遊戲，感受虛擬世界帶來的刺激感和震撼感。"
+  },
+  {
+    icon: "fas fa-gamepad",
+    title: "多元遊戲選擇",
+    description: "我們準備了不同類型的VR遊戲，讓同學體驗各種虛擬實境的應用場景和互動方式。"
+  },
+  {
+    icon: "fas fa-chalkboard-teacher",
+    title: "導師全程指導",
+    description: "活動期間導師會全程指引同學VR遊戲玩法，並介紹VR技術的基本原理，讓同學在遊戲中學習。"
+  },
+  {
+    icon: "fas fa-lightbulb",
+    title: "激發科技興趣",
+    description: "透過親身體驗VR技術，激發同學們對科技創新的興趣，認識虛擬實境技術的發展和應用。"
+  }
+];
+
+const activitySchedule = [
+  {
+    title: "活動簡介",
+    content: [
+      "導師介紹VR虛擬實境技術的基本概念和原理",
+      "說明活動流程及VR設備的使用方法"
+    ]
+  },
+  {
+    title: "VR遊戲體驗",
+    content: [
+      "每次可供1人進行活動",
+      "每次每人可玩1-2分鐘",
+      "佩戴VR眼鏡體驗不同類型的VR遊戲",
+      "導師從旁指引同學操作並講解VR技術原理"
+    ]
+  }
+];
+
+const activityInfo = [
+  { label: "容納人數", value: "每次可供1人進行活動" },
+  { label: "時長", value: "每次每人可玩1-2分鐘" },
+  { label: "我們將會提供", value: "VR遊戲 / VR眼鏡 / 遊戲介紹易拉架 / 電腦" },
+  { label: "學校需提供/自備", value: "桌子" },
+  { label: "備註", value: "1. 建議室內進行\n2. 同時附近需要電源" },
+];
+
+const faqData = [
+  {
+    question: "這項活動適合什麼年級的同學參與？",
+    answer: "這項活動適合小一至中六學生參與。"
+  },
+  {
+    question: "每次活動可以容納多少人？",
+    answer: "每次可供1人進行活動，每人每次可玩1至2分鐘。攤位可輪流讓同學體驗。"
+  },
+  {
+    question: "學校需要準備什麼？",
+    answer: "學校只需提供桌子。我們將提供VR遊戲、VR眼鏡、遊戲介紹易拉架及電腦。\n\n備註：建議室內進行，同時附近需要電源。\n\n建議先致電+852 6554-1506 或電郵至 info@10botics.com 向同事溝通學校期望的活動內容及安排。"
+  }
+];
+
+const { title, subtitle, tags, description, heroImageAsset: heroImg } = activityData;
+---
+
+<Layout title={title} description={description}>
+  <main>
+    <HeroSection 
+      title={title}
+      subtitle={subtitle}
+      tags={tags}
+      description={description}
+      heroImage={heroImg}
+    />
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold mb-4">活動特色</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {activityFeatures.map((feature) => (
+            <div class="text-center">
+              <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class={`${feature.icon} text-white text-2xl`}></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p class="text-gray-600">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <SingleCourseContent 
+      items={activitySchedule}
+      hours="每人每次1-2分鐘"
+    />
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">活動資訊</h2>
+          <div class="overflow-hidden rounded-lg shadow-lg border border-gray-200">
+            <table class="w-full">
+              <tbody>
+                {activityInfo.map((item, i) => (
+                  <tr class={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                    <td class="px-6 py-4 font-semibold text-gray-900 border-r border-gray-200 w-1/3 text-center">{item.label}</td>
+                    <td class="px-6 py-4 text-gray-700 text-center whitespace-pre-line">{item.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <QnASection faqs={faqData} />
+
+    <ContactSection subtitle="歡迎聯絡我們，我們會為您提供詳細的活動安排和報名資訊。" />
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.accordion-header').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.parentElement;
+          if (!item) return;
+          const isActive = item.classList.contains('active');
+          document.querySelectorAll('.accordion-item').forEach(accordionItem => {
+            accordionItem.classList.remove('active');
+          });
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+
+  <style>
+    .accordion-content {
+      display: none;
+    }
+    .accordion-item.active .accordion-content {
+      display: block;
+    }
+    .accordion-item.active .accordion-header i {
+      transform: rotate(45deg);
+    }
+  </style>
+</Layout>
