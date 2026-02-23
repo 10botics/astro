@@ -417,3 +417,5 @@ dmypy.json
 sitemap_comparison_report.html
 test_sitemap*.xml
 check_sitemap_404.py
+
+.cursor/*
