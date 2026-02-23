@@ -39,6 +39,7 @@ let classMicrobitMaze,
   galleryImg7,
   galleryImg8,
   galleryImg9,
+  featuredDobot,
   // Featured activities
   featuredAIDigitalAnimation,
   featuredTello,
@@ -110,6 +111,7 @@ try {
   featuredProcreate = await import('../../assets/images/school-courses/Procreate數位藝術課程/procreate-course-image.webp');
   featuredDonkeyCar = await import('../../assets/images/news/2021-12-09-donkey-car-x學與教博覽2021/image8.jpg');
   featuredDelightex = await import('../../assets/images/school-courses/Delightex 遊戲設計課程/admin-ajax-min.png');
+  featuredDobot = await import('../../assets/images/school-courses/Dobot 智能機械手臂/dobot-cover-pic.png');
 
   // Load course hero images to use in featured activities
   try {
@@ -266,6 +268,18 @@ try {
             <div class="card-base card-hover">
               {virtualSpaceStation && <Image src={virtualSpaceStation.default} alt="虛擬太空站接駁" class="w-full h-48 object-cover" />}
               <h3 class="p-4 text-center text-lg font-semibold text-gray-900">虛擬太空站接駁</h3>
+            </div>
+            <div class="card-base card-hover">
+              <a href="school-courses/donkey-car/" target="_blank" rel="noopener">
+                {featuredDonkeyCar && <Image src={featuredDonkeyCar.default} alt="Donkey Car 無人車" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="school-courses/donkey-car/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Donkey Car 無人車</a></h3>
+            </div>
+            <div class="card-base card-hover">
+              <a href="school-courses/dobot/" target="_blank" rel="noopener">
+                {featuredDobot && <Image src={featuredDobot.default} alt="Dobot 智能機械手臂" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="school-courses/dobot/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Dobot 智能機械手臂</a></h3>
             </div>
           </div>
         </div>
