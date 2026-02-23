@@ -8,6 +8,7 @@ import Matatalab from './Matatalab 入門編程課程.astro';
 import MicrobitParachute from '../school-courses/Microbit 降落傘課程.astro';
 import ARGame from './AR遊戲體驗.astro';
 import MartyRobot from './Marty編程機械人.astro';
+import MicrobitFootball from './Microbit 足球車競賽.astro';
 import Index from './index.astro';
 
 // Component mapping by filename
@@ -18,6 +19,7 @@ const componentMap = {
   'Microbit 降落傘課程.astro': MicrobitParachute,
   'AR遊戲體驗.astro': ARGame,
   'Marty編程機械人.astro': MartyRobot,
+  'Microbit 足球車競賽.astro': MicrobitFootball,
   'index.astro': Index
 };
 
@@ -30,6 +32,7 @@ export async function getStaticPaths() {
     'microbit-parachute': 'Microbit 降落傘課程.astro',
     'ar-game': 'AR遊戲體驗.astro',
     'marty-robot': 'Marty編程機械人.astro',
+    'microbit-football': 'Microbit 足球車競賽.astro',
     'index': 'index.astro'
   };
   return Object.keys(slugToFilenameMap).map(slug => ({
@@ -51,6 +54,7 @@ const slugToFilenameMap = {
   'microbit-parachute': 'Microbit 降落傘課程.astro',
   'ar-game': 'AR遊戲體驗.astro',
   'marty-robot': 'Marty編程機械人.astro',
+  'microbit-football': 'Microbit 足球車競賽.astro',
   'index': 'index.astro'
 };
 const filename = slugToFilenameMap[slug];
