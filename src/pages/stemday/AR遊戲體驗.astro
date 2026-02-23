@@ -1,20 +1,26 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { Image } from 'astro:assets';
+import HeroSection from '../../components/course/HeroSection.astro';
 import QnASection from '../../components/course/QnASection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import { Image } from 'astro:assets';
 import ContactSection from '../../components/ContactSection.astro';
 
 import heroImage from '../../assets/images/stemday/mainpage/ar-game-experience.png';
 
-const title = "AR遊戲體驗";
-const description = "AR遊戲體驗活動可以讓同學們了解AR遊戲如何結合虛擬與現實，並且在活動當中，我們導師也會提供協助，讓同學們能夠明白當中原理，以及可以順利進行遊戲操作。";
-
-const activityInfo = [
-  { label: "容納人數", value: "每次可供6人進行活動" },
-  { label: "時長", value: "每次每人可玩1-2分鐘" },
-  { label: "我們將會提供", value: "AR背景海報 / AR遊戲 / 遊戲介紹易拉架" },
-  { label: "學校需提供/自備", value: "可移動壁報或白板 / 平板電腦" },
-];
+const activityData: {
+  title: string;
+  subtitle: string;
+  tags: string[];
+  description: string;
+  heroImageAsset: any;
+} = {
+  title: "AR遊戲體驗",
+  subtitle: "AR遊戲體驗活動可以讓同學們了解AR遊戲如何結合虛擬與現實，並且在活動當中，我們導師也會提供協助，讓同學們能夠明白當中原理，以及可以順利進行遊戲操作。",
+  tags: ["AR 擴增實境", "遊戲體驗", "初小", "高小", "初中", "高中"],
+  description: "AR遊戲體驗活動可以讓同學們了解AR遊戲如何結合虛擬與現實，並且在活動當中，我們導師也會提供協助，讓同學們能夠明白當中原理，以及可以順利進行遊戲操作。",
+  heroImageAsset: heroImage
+};
 
 const activityFeatures = [
   {
@@ -39,7 +45,32 @@ const activityFeatures = [
   }
 ];
 
-const faqs = [
+const activitySchedule = [
+  {
+    title: "活動簡介",
+    content: [
+      "導師介紹AR擴增實境技術的基本概念",
+      "說明活動流程及遊戲操作方法"
+    ]
+  },
+  {
+    title: "AR遊戲體驗",
+    content: [
+      "每次可供6人同時進行活動",
+      "每人每次可玩1-2分鐘",
+      "導師從旁協助同學操作"
+    ]
+  }
+];
+
+const activityInfo = [
+  { label: "容納人數", value: "每次可供6人進行活動" },
+  { label: "時長", value: "每次每人可玩1-2分鐘" },
+  { label: "我們將會提供", value: "AR背景海報 / AR遊戲 / 遊戲介紹易拉架" },
+  { label: "學校需提供/自備", value: "可移動壁報或白板 / 平板電腦" },
+];
+
+const faqData = [
   {
     question: "這項活動適合什麼年級的同學參與？",
     answer: "這項活動適合小一至中六學生參與。"
@@ -53,65 +84,55 @@ const faqs = [
     answer: "學校需提供可移動壁報或白板以及平板電腦。我們將提供AR背景海報、AR遊戲及遊戲介紹易拉架。\n\n建議先致電+852 6554-1506 或電郵至 info@10botics.com 向同事溝通學校期望的活動內容及安排。"
   }
 ];
+
+const { title, subtitle, tags, description, heroImageAsset: heroImg } = activityData;
 ---
 
-<Layout title={`${title} - STEM Day活動`} description={description}>
+<Layout title={title} description={description}>
   <main>
     <!-- Hero Section -->
-    <section class="relative overflow-hidden bg-gradient-to-r from-cyan-50 to-blue-100">
-      <div class="container mx-auto px-4 py-12 md:py-16">
-        <div class="max-w-6xl mx-auto">
-          <div class="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{title}</h1>
-              <p class="text-lg text-gray-700 mb-6 leading-relaxed">{description}</p>
-              <div class="flex flex-wrap items-center gap-3 text-sm">
-                <span class="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full font-medium">小一至中六</span>
-                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium">每次約1-2分鐘</span>
-                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full font-medium">每次最多6人</span>
-              </div>
-            </div>
-            <div class="flex justify-center">
-              <Image 
-                src={heroImage} 
-                alt="AR遊戲體驗" 
-                class="rounded-lg shadow-lg max-w-md w-full"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <HeroSection 
+      title={title}
+      subtitle={subtitle}
+      tags={tags}
+      description={description}
+      heroImage={heroImg}
+    />
 
     <!-- Activity Features -->
     <section class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
         <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">活動特色</h2>
+          <h2 class="text-4xl font-bold mb-4">活動特色</h2>
         </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {activityFeatures.map((feature) => (
             <div class="text-center">
-              <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <i class={`${feature.icon} text-white text-2xl`}></i>
               </div>
-              <h3 class="text-xl font-semibold mb-2 text-gray-900">{feature.title}</h3>
-              <p class="text-gray-600">{feature.description}</p>
+              <h3 class="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p class="text-gray-600">
+                {feature.description}
+              </p>
             </div>
           ))}
         </div>
       </div>
     </section>
 
+    <!-- Activity Content -->
+    <SingleCourseContent 
+      items={activitySchedule}
+      hours="每人每次1-2分鐘"
+    />
+
     <!-- Activity Info Table -->
-    <section class="py-16 bg-white">
+    <section class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
         <div class="max-w-3xl mx-auto">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">活動資訊</h2>
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">活動資訊</h2>
           <div class="overflow-hidden rounded-lg shadow-lg border border-gray-200">
-            <div class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-center py-3 font-semibold text-lg">
-              活動資訊
-            </div>
             <table class="w-full">
               <tbody>
                 {activityInfo.map((item, i) => (
@@ -128,14 +149,7 @@ const faqs = [
     </section>
 
     <!-- FAQ Section -->
-    <QnASection 
-      title="常見問題"
-      subtitle="FAQ"
-      description="關於AR遊戲體驗活動的常見問題"
-      faqs={faqs}
-      variant="accordion"
-      className="bg-gray-50"
-    />
+    <QnASection faqs={faqData} />
 
     <!-- Contact Section -->
     <ContactSection subtitle="歡迎聯絡我們，我們會為您提供詳細的活動安排和報名資訊。" />
