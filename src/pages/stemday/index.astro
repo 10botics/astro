@@ -19,7 +19,8 @@ let heroImage,
   vrGameExperience,
   virtualSpaceStation,
   handClapKeirinRace,
-  droneFootball;
+  droneFootball,
+  quickEyeHand;
 
 // Additional images from original STEM Day HTML content
 let classMicrobitMaze,
@@ -81,6 +82,7 @@ try {
     virtualSpaceStation = await import('../../assets/images/stemday/mainpage/virtual-space-station.png');
     handClapKeirinRace = await import('../../assets/images/Stemday/hand-clap-keirin-race/hero-image.png');
     droneFootball = await import('../../assets/images/Stemday/drone-football/hero-image.png');
+    quickEyeHand = await import('../../assets/images/stemday/眼明手快/hero-image.png');
   
   // Classes (課堂)
       classMicrobitMaze = await import('../../assets/images/stemday/featured-activities/IMG_1726-1024x768.jpg');
@@ -286,6 +288,12 @@ try {
                 {droneFootball && <Image src={droneFootball.default} alt="無人機足球" class="w-full h-48 object-cover" />}
               </a>
               <h3 class="p-4 text-center text-lg font-semibold"><a href="/stemday/drone-football/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">無人機足球</a></h3>
+            </div>
+            <div class="card-base card-hover">
+              <a href="/stemday/quick-eye-hand/" target="_blank" rel="noopener">
+                {quickEyeHand && <Image src={quickEyeHand.default} alt="眼明手快" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="/stemday/quick-eye-hand/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">眼明手快</a></h3>
             </div>
             <div class="card-base card-hover">
               <a href="school-courses/donkey-car/" target="_blank" rel="noopener">

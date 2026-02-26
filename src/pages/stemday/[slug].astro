@@ -13,6 +13,7 @@ import VRGame from './VR遊戲體驗.astro';
 import VirtualSpaceStationDockingMission from './虛擬太空站接駁任務.astro';
 import HandClapKeirinRace from './手拍凱林賽.astro';
 import DroneFotball from './無人機足球.astro';
+import QuickEyeHand from './眼明手快.astro';
 import Index from './index.astro';
 
 // Component mapping by filename
@@ -28,6 +29,7 @@ const componentMap = {
   '虛擬太空站接駁任務.astro': VirtualSpaceStationDockingMission,
   '手拍凱林賽.astro': HandClapKeirinRace,
   '無人機足球.astro': DroneFotball,
+  '眼明手快.astro': QuickEyeHand,
   'index.astro': Index
 };
 
@@ -45,6 +47,7 @@ export async function getStaticPaths() {
     'virtual-space-station-docking-mission': '虛擬太空站接駁任務.astro',
     'hand-clap-keirin-race': '手拍凱林賽.astro',
     'drone-football': '無人機足球.astro',
+    'quick-eye-hand': '眼明手快.astro',
     'index': 'index.astro'
   };
   return Object.keys(slugToFilenameMap).map(slug => ({
@@ -71,6 +74,7 @@ const slugToFilenameMap = {
   'virtual-space-station-docking-mission': '虛擬太空站接駁任務.astro',
   'hand-clap-keirin-race': '手拍凱林賽.astro',
   'drone-football': '無人機足球.astro',
+  'quick-eye-hand': '眼明手快.astro',
   'index': 'index.astro'
 };
 const filename = slugToFilenameMap[slug];
