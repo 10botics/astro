@@ -1,0 +1,182 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import ContactSection from '../../components/ContactSection.astro';
+
+import heroImage from '../../assets/images/stemday/mainpage/virtual-space-station.png';
+
+const activityData: {
+  title: string;
+  subtitle: string;
+  tags: string[];
+  description: string;
+  heroImageAsset: any;
+} = {
+  title: "虛擬太空站接駁任務",
+  subtitle: "在虛擬太空站接駁任務當中，同學們有機會可以模擬火箭與太空站的對接流程，並且可以了解更多關於航天的技術和知識，希望透過活動增加同學們對航天領域的興趣。",
+  tags: ["小一至中六", "每次約1-2分鐘", "每次供1人遊玩"],
+  description: "虛擬太空站接駁任務讓同學透過模擬火箭與太空站對接流程，認識航天科技概念，培養對太空與創新科技的興趣。",
+  heroImageAsset: heroImage
+};
+
+const activityFeatures = [
+  {
+    icon: "fas fa-rocket",
+    title: "模擬太空接駁體驗",
+    description: "同學可親身操作虛擬接駁任務，嘗試完成火箭與太空站的對接流程，感受真實任務節奏。"
+  },
+  {
+    icon: "fas fa-satellite",
+    title: "學習航天知識",
+    description: "透過活動內容與導師講解，了解航天技術、太空站運作和任務協作等核心概念。"
+  },
+  {
+    icon: "fas fa-gamepad",
+    title: "互動控制操作",
+    description: "使用虛擬手掣進行操作，提升同學的專注力、空間感與任務執行能力。"
+  },
+  {
+    icon: "fas fa-lightbulb",
+    title: "激發科創興趣",
+    description: "以沉浸式任務提升同學對航天及科技創新的好奇心，建立探索未來科技的動機。"
+  }
+];
+
+const activitySchedule = [
+  {
+    title: "活動簡介",
+    content: [
+      "導師介紹虛擬太空站接駁任務流程與操作方式",
+      "講解火箭與太空站對接的基本概念和注意事項"
+    ]
+  },
+  {
+    title: "接駁任務體驗",
+    content: [
+      "每次可供1人進行活動",
+      "每次每人可玩1-2分鐘",
+      "同學使用虛擬手掣完成接駁流程",
+      "導師即場提供指引和技術知識講解"
+    ]
+  }
+];
+
+const activityInfo = [
+  { label: "容納人數", value: "每次可同時供1人進行活動" },
+  { label: "時長", value: "每次每人可玩1-2分鐘" },
+  { label: "我們將會提供", value: "遊戲椅 / 虛擬手掣 / 活動介紹拉架 / 所需軟件" },
+  { label: "學校需提供/自備", value: "Led Wall或電視機幕" },
+  { label: "備註", value: "1. 附近需要電源" },
+];
+
+const faqData = [
+  {
+    question: "這項活動適合哪些年級參與？",
+    answer: "活動適合小一至中六同學參與，內容可按學生程度和學校安排作彈性調整。"
+  },
+  {
+    question: "每次活動可容納多少同學？",
+    answer: "每次可供1人進行活動，每位同學每次約1至2分鐘，適合以攤位輪流形式進行。"
+  },
+  {
+    question: "學校需要準備什麼設備？",
+    answer: "學校需提供Led Wall或電視機幕，以及附近電源。我們會提供遊戲椅、虛擬手掣、活動介紹拉架及所需軟件。"
+  }
+];
+
+const { title, subtitle, tags, description, heroImageAsset: heroImg } = activityData;
+---
+
+<Layout title={title} description={description}>
+  <main>
+    <HeroSection
+      title={title}
+      subtitle={subtitle}
+      tags={tags}
+      description={description}
+      heroImage={heroImg}
+    />
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold mb-4">活動特色</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {activityFeatures.map((feature) => (
+            <div class="text-center">
+              <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class={`${feature.icon} text-white text-2xl`}></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p class="text-gray-600">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <SingleCourseContent
+      items={activitySchedule}
+      hours="每人每次1-2分鐘"
+    />
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">活動資訊</h2>
+          <div class="overflow-hidden rounded-lg shadow-lg border border-gray-200">
+            <table class="w-full">
+              <tbody>
+                {activityInfo.map((item, i) => (
+                  <tr class={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                    <td class="px-6 py-4 font-semibold text-gray-900 border-r border-gray-200 w-1/3 text-center">{item.label}</td>
+                    <td class="px-6 py-4 text-gray-700 text-center whitespace-pre-line">{item.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <QnASection faqs={faqData} />
+
+    <ContactSection subtitle="歡迎聯絡我們，我們會為您提供詳細的活動安排和報名資訊。" />
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.accordion-header').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.parentElement;
+          if (!item) return;
+          const isActive = item.classList.contains('active');
+          document.querySelectorAll('.accordion-item').forEach(accordionItem => {
+            accordionItem.classList.remove('active');
+          });
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+
+  <style>
+    .accordion-content {
+      display: none;
+    }
+    .accordion-item.active .accordion-content {
+      display: block;
+    }
+    .accordion-item.active .accordion-header i {
+      transform: rotate(45deg);
+    }
+  </style>
+</Layout>
