@@ -17,7 +17,8 @@ let heroImage,
   matatalabProgramming,
   arGameExperience,
   vrGameExperience,
-  virtualSpaceStation;
+  virtualSpaceStation,
+  handClapKeirinRace;
 
 // Additional images from original STEM Day HTML content
 let classMicrobitMaze,
@@ -77,6 +78,7 @@ try {
     arGameExperience = await import('../../assets/images/stemday/mainpage/ar-game-experience.png');
     vrGameExperience = await import('../../assets/images/stemday/mainpage/vr-game-experience.png');
     virtualSpaceStation = await import('../../assets/images/stemday/mainpage/virtual-space-station.png');
+    handClapKeirinRace = await import('../../assets/images/stemday/手拍凱林賽/hero-image.png');
   
   // Classes (課堂)
       classMicrobitMaze = await import('../../assets/images/stemday/featured-activities/IMG_1726-1024x768.jpg');
@@ -270,6 +272,12 @@ try {
                 {virtualSpaceStation && <Image src={virtualSpaceStation.default} alt="虛擬太空站接駁任務" class="w-full h-48 object-cover" />}
               </a>
               <h3 class="p-4 text-center text-lg font-semibold"><a href="/stemday/virtual-space-station-docking-mission/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">虛擬太空站接駁任務</a></h3>
+            </div>
+            <div class="card-base card-hover">
+              <a href="/stemday/hand-clap-keirin-race/" target="_blank" rel="noopener">
+                {handClapKeirinRace && <Image src={handClapKeirinRace.default} alt="手拍凱林賽" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="/stemday/hand-clap-keirin-race/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">手拍凱林賽</a></h3>
             </div>
             <div class="card-base card-hover">
               <a href="school-courses/donkey-car/" target="_blank" rel="noopener">

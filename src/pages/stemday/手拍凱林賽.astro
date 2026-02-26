@@ -1,0 +1,186 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import ContactSection from '../../components/ContactSection.astro';
+
+import heroImage from '../../assets/images/stemday/手拍凱林賽/hero-image.png';
+
+const activityData: {
+  title: string;
+  subtitle: string;
+  tags: string[];
+  description: string;
+  heroImageAsset: any;
+} = {
+  title: "手拍凱林賽",
+  subtitle: "手拍凱林賽體驗活動希望讓同學們了解更多關於微處理器基本概念，可以透過此活動和同學比拼手速，十分刺激有趣。",
+  tags: ["小一至中六", "每次約1分鐘", "每次最多4人"],
+  description: "手拍凱林賽讓同學透過比拼手速了解微處理器基本概念，與同學互相競技，體驗科技與運動結合的刺激樂趣。",
+  heroImageAsset: heroImage
+};
+
+const activityFeatures = [
+  {
+    icon: "fas fa-microchip",
+    title: "認識微處理器",
+    description: "透過活動讓同學了解微處理器的基本概念，感受科技在日常生活中的應用。"
+  },
+  {
+    icon: "fas fa-hand-paper",
+    title: "手速競技體驗",
+    description: "同學們以手速互相競賽，最多4人同時進行，刺激緊張，氣氛熱鬧。"
+  },
+  {
+    icon: "fas fa-trophy",
+    title: "競賽模式",
+    description: "賽道設計模擬真實凱林賽節奏，考驗同學的反應速度與專注力。"
+  },
+  {
+    icon: "fas fa-users",
+    title: "多人互動參與",
+    description: "每次最多4人同時參與，鼓勵同學合作競技，增強互動樂趣。"
+  }
+];
+
+const activitySchedule = [
+  {
+    title: "活動簡介",
+    content: [
+      "導師介紹手拍凱林賽的玩法及微處理器基本概念",
+      "講解比賽規則及注意事項"
+    ]
+  },
+  {
+    title: "凱林賽體驗",
+    content: [
+      "每次可同時供最多4人進行活動",
+      "每次約1分鐘",
+      "同學以手速互相競賽，完成凱林賽道",
+      "導師即場提供指引並講解相關科技知識"
+    ]
+  }
+];
+
+const activityInfo = [
+  { label: "容納人數", value: "每次可同時4人進行活動" },
+  { label: "時長", value: "1分鐘" },
+  { label: "我們將會提供", value: "手拍凱林賽燈板一套" },
+  { label: "學校需提供/自備", value: "桌子／\n900x1200mm可移動壁報板或白板" },
+  { label: "備註", value: "1. 附近需要電源\n2. 另設常規課程" },
+];
+
+const faqData = [
+  {
+    question: "這項活動適合哪些年級參與？",
+    answer: "活動適合小一至中六同學參與，內容簡單易上手，適合不同年齡的學生。"
+  },
+  {
+    question: "每次活動可容納多少同學？",
+    answer: "每次最多可供4人同時進行活動，每次約1分鐘，適合以攤位輪流形式進行。"
+  },
+  {
+    question: "學校需要準備什麼設備？",
+    answer: "學校需提供桌子及900x1200mm可移動壁報板或白板，以及附近電源。我們會提供手拍凱林賽燈板一套。"
+  },
+  {
+    question: "活動有常規課程選項嗎？",
+    answer: "是的，除攤位體驗外，我們另設常規課程，歡迎聯絡我們了解詳情。"
+  }
+];
+
+const { title, subtitle, tags, description, heroImageAsset: heroImg } = activityData;
+---
+
+<Layout title={title} description={description}>
+  <main>
+    <HeroSection
+      title={title}
+      subtitle={subtitle}
+      tags={tags}
+      description={description}
+      heroImage={heroImg}
+    />
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold mb-4">活動特色</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {activityFeatures.map((feature) => (
+            <div class="text-center">
+              <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class={`${feature.icon} text-white text-2xl`}></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p class="text-gray-600">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <SingleCourseContent
+      items={activitySchedule}
+      hours="每次約1分鐘"
+    />
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">活動資訊</h2>
+          <div class="overflow-hidden rounded-lg shadow-lg border border-gray-200">
+            <table class="w-full">
+              <tbody>
+                {activityInfo.map((item, i) => (
+                  <tr class={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                    <td class="px-6 py-4 font-semibold text-gray-900 border-r border-gray-200 w-1/3 text-center">{item.label}</td>
+                    <td class="px-6 py-4 text-gray-700 text-center whitespace-pre-line">{item.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <QnASection faqs={faqData} />
+
+    <ContactSection subtitle="歡迎聯絡我們，我們會為您提供詳細的活動安排和報名資訊。" />
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.accordion-header').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.parentElement;
+          if (!item) return;
+          const isActive = item.classList.contains('active');
+          document.querySelectorAll('.accordion-item').forEach(accordionItem => {
+            accordionItem.classList.remove('active');
+          });
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+
+  <style>
+    .accordion-content {
+      display: none;
+    }
+    .accordion-item.active .accordion-content {
+      display: block;
+    }
+    .accordion-item.active .accordion-header i {
+      transform: rotate(45deg);
+    }
+  </style>
+</Layout>
