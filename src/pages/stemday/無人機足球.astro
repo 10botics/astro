@@ -4,6 +4,8 @@ import HeroSection from '../../components/course/HeroSection.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import ContactSection from '../../components/ContactSection.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
 
 import heroImage from '../../assets/images/Stemday/drone-football/hero-image.png';
 
@@ -176,6 +178,9 @@ const { title, subtitle, tags, description, heroImageAsset: heroImg } = activity
     </section>
 
     <QnASection faqs={faqData} />
+
+    <RelatedCourses courseTags={tags} courseTitle={title} context="course" />
+    <RelatedNews courseTags={tags} courseTitle={title} context="course" />
 
     <ContactSection subtitle="歡迎聯絡我們，我們會為您提供詳細的活動安排和報名資訊。" />
   </main>

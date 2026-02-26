@@ -4,6 +4,8 @@ import { Image } from 'astro:assets';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
 
 // Import images
 import heroImage from '../../assets/images/stemday/DIY 手作/hero-image.png';
@@ -30,6 +32,7 @@ const galleryImages = [
 ];
 
 const title = "DIY手作STEM活動";
+const tags = ["DIY手作", "STEM", "初小", "高小", "初中"];
 const description = "DIY手作STEM Day活動，學生探索科學原理概念學習科學融入日常生活，激發科學興趣提高問題解決實踐動手能力，培養創造力邏輯思維實驗設計";
 
 const faqs = [
@@ -220,6 +223,9 @@ const faqs = [
       variant="accordion"
       className="bg-white"
     />
+
+    <RelatedCourses courseTags={tags} courseTitle={title} context="course" />
+    <RelatedNews courseTags={tags} courseTitle={title} context="course" />
 
     <!-- Contact Section -->
     <ContactSection subtitle="歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />

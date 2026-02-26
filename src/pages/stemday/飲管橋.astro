@@ -7,6 +7,8 @@ import SingleCourseContent from '../../components/course/SingleCourseContent.ast
 import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
 import { Image } from 'astro:assets';
 import ContactSection from '../../components/ContactSection.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
 // Import images
 import strawBridgeHero from '../../assets/images/stemday/飲管橋/hero-image.jpg';
 import activityImage1 from '../../assets/images/stemday/飲管橋/activity-image-1.jpg';
@@ -174,6 +176,9 @@ const { title, subtitle, tags, videoId, description, heroImageAsset: heroImage }
 
     <!-- FAQ Section -->
     <QnASection faqs={faqData} />
+
+    <RelatedCourses courseTags={tags} courseTitle={title} context="course" />
+    <RelatedNews courseTags={tags} courseTitle={title} context="course" />
 
     <!-- Contact Form -->
     <ContactSection subtitle="歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
