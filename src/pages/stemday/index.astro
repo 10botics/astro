@@ -21,7 +21,8 @@ let heroImage,
   handClapKeirinRace,
   droneFootball,
   quickEyeHand,
-  appleVisionPro;
+  appleVisionPro,
+  nerveReactionChallenge;
 
 // Additional images from original STEM Day HTML content
 let classMicrobitMaze,
@@ -85,6 +86,7 @@ try {
     droneFootball = await import('../../assets/images/Stemday/drone-football/hero-image.png');
     quickEyeHand = await import('../../assets/images/Stemday/quick-eye-hand/hero-image.png');
     appleVisionPro = await import('../../assets/images/Stemday/apple-vision-pro/hero-image.png');
+    nerveReactionChallenge = await import('../../assets/images/Stemday/nerve-reaction-challenge/hero-image.png');
   
   // Classes (課堂)
       classMicrobitMaze = await import('../../assets/images/stemday/featured-activities/IMG_1726-1024x768.jpg');
@@ -302,6 +304,12 @@ try {
                 {appleVisionPro && <Image src={appleVisionPro.default} alt="APPLE Vision Pro 體驗" class="w-full h-48 object-cover" />}
               </a>
               <h3 class="p-4 text-center text-lg font-semibold"><a href="/stemday/apple-vision-pro/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">APPLE Vision Pro 體驗</a></h3>
+            </div>
+            <div class="card-base card-hover">
+              <a href="/stemday/nerve-reaction-challenge/" target="_blank" rel="noopener">
+                {nerveReactionChallenge && <Image src={nerveReactionChallenge.default} alt="反應神經大挑戰" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="/stemday/nerve-reaction-challenge/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">反應神經大挑戰</a></h3>
             </div>
             <div class="card-base card-hover">
               <a href="school-courses/donkey-car/" target="_blank" rel="noopener">
