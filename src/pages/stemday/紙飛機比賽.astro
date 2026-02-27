@@ -1,0 +1,215 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import { Image } from 'astro:assets';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
+
+import heroImage from '../../assets/images/Stemday/paper-airplane-race/hero-image.png';
+
+const activityData: {
+  title: string;
+  subtitle: string;
+  tags: string[];
+  description: string;
+  heroImageAsset: any;
+} = {
+  title: "紙飛機比賽",
+  subtitle: "設計、摺疊、放飛，挑戰最遠距離！",
+  tags: ["動手製作", "航空知識", "小一至小三"],
+  description: "紙飛機比賽除了能讓同學們嘗試動手設計及製作紙飛機，我們也希望能在比賽中讓同學們了解更多航空方面的知識，從中可以鼓勵同學們在比賽中發揮創意，探索更多可能性。活動以班級形式進行，導師帶領同學認識不同紙飛機的設計原理，讓學生親手摺疊自己的紙飛機並進行比賽，體驗科學與工程的趣味。",
+  heroImageAsset: heroImage
+};
+
+const activityFeatures = [
+  {
+    icon: "fas fa-paper-plane",
+    title: "動手設計製作",
+    description: "學生親自動手設計及摺疊紙飛機，從實踐中學習航空工程的基本概念，培養動手能力與創造力。"
+  },
+  {
+    icon: "fas fa-wind",
+    title: "航空知識探索",
+    description: "導師介紹飛機飛行原理，讓學生了解升力、阻力、重力等航空基礎知識，將科學知識與實際操作結合。"
+  },
+  {
+    icon: "fas fa-trophy",
+    title: "班級競技比賽",
+    description: "透過班級比賽形式，激發學生的競爭意識與團隊精神，鼓勵同學互相學習、反覆改良設計。"
+  },
+  {
+    icon: "fas fa-lightbulb",
+    title: "創意無限發揮",
+    description: "活動鼓勵同學突破傳統設計，嘗試不同摺法與造型，在比賽中探索更多可能性，培養創新思維。"
+  }
+];
+
+const activitySchedule = [
+  {
+    title: "活動介紹及航空知識 [約15分鐘]",
+    content: [
+      "導師介紹紙飛機比賽的規則及評分標準（以飛行距離或滯空時間計算）",
+      "講解基本航空知識：升力、阻力、重力如何影響紙飛機的飛行",
+      "介紹不同類型的紙飛機設計及其特點"
+    ]
+  },
+  {
+    title: "紙飛機設計製作 [約30分鐘]",
+    content: [
+      "導師示範基本紙飛機摺法，學生跟隨學習",
+      "學生使用顏色A4摺紙，自由發揮創意設計個人紙飛機",
+      "導師巡迴指導，協助學生調整飛機平衡及飛行性能",
+      "學生可使用顏色筆為飛機加上個人設計元素"
+    ]
+  },
+  {
+    title: "班級競賽 [約30分鐘]",
+    content: [
+      "學生輪流上前放飛自製紙飛機，挑戰最遠飛行距離",
+      "導師即時記錄成績並鼓勵同學",
+      "學生可根據試飛結果調整飛機設計，再次挑戰",
+      "公佈最終成績，表揚表現出色的同學"
+    ]
+  },
+  {
+    title: "分享與總結 [約15分鐘]",
+    content: [
+      "導師總結活動，引導同學分享設計心得與飛行觀察",
+      "分享紙飛機設計與真實飛機設計的關係",
+      "鼓勵同學在日常生活中繼續探索科學與工程的奧秘"
+    ]
+  }
+];
+
+const activityInfo = [
+  { label: "活動形式", value: "班級活動" },
+  { label: "可容納人數", value: "每班約30人左右" },
+  { label: "時長", value: "約1至1.5小時" },
+  { label: "所需場地", value: "課室" },
+  { label: "我們將會提供", value: "教學PPT／學習歷程工作紙／顏色A4摺紙" },
+  { label: "學校需提供／自備", value: "顏色筆／椅凳／實物投映器／咪" },
+];
+
+const faqData = [
+  {
+    question: "這項活動適合什麼年級的同學參與？",
+    answer: "活動主要適合小一至小三的學生參與。規則簡單易明，適合低年級同學，讓他們在輕鬆愉快的氣氛中體驗動手製作的樂趣，同時接觸基礎航空知識。"
+  },
+  {
+    question: "一個班可以容納多少名學生參與？",
+    answer: "活動以班級形式進行，每班可容納約30人左右。導師會確保每位同學都有機會動手製作及參與比賽，讓所有人都能充分體驗活動的樂趣。"
+  },
+  {
+    question: "學生需要具備特別技能嗎？",
+    answer: "不需要任何特別技能！活動從基本摺法開始教起，適合從未接觸過紙飛機製作的同學。導師會全程指導，確保每位同學都能成功製作出自己的紙飛機。"
+  },
+  {
+    question: "學校需要準備什麼設備？",
+    answer: "學校需提供顏色筆、椅凳、實物投映器及咪。我們將提供全套教學所需物資，包括教學PPT、學習歷程工作紙及顏色A4摺紙，確保活動順利進行。"
+  },
+  {
+    question: "活動需要在課室以外的場地進行嗎？",
+    answer: "比賽部分建議在課室內進行，空間需稍作清理以確保安全。若學校有更大的場地（如禮堂或走廊），亦可配合使用，讓紙飛機有更大的飛行空間，比賽更加精彩。"
+  }
+];
+
+const { title, subtitle, tags, description, heroImageAsset: heroImg } = activityData;
+---
+
+<Layout title={title} description={description}>
+  <main>
+    <HeroSection 
+      title={title}
+      subtitle={subtitle}
+      tags={tags}
+      description={description}
+      heroImage={heroImg}
+    />
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold mb-4">活動特色</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {activityFeatures.map((feature) => (
+            <div class="text-center">
+              <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class={`${feature.icon} text-white text-2xl`}></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p class="text-gray-600">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <SingleCourseContent 
+      items={activitySchedule}
+      hours="約1至1.5小時"
+    />
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">活動資訊</h2>
+          <div class="overflow-hidden rounded-lg shadow-lg border border-gray-200">
+            <table class="w-full">
+              <tbody>
+                {activityInfo.map((item, i) => (
+                  <tr class={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                    <td class="px-6 py-4 font-semibold text-gray-900 border-r border-gray-200 w-1/3 text-center">{item.label}</td>
+                    <td class="px-6 py-4 text-gray-700 text-center">{item.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <QnASection faqs={faqData} />
+
+    <RelatedCourses courseTags={tags} courseTitle={title} context="course" />
+    <RelatedNews courseTags={tags} courseTitle={title} context="course" />
+
+    <ContactSection subtitle="歡迎聯絡我們，我們會為您提供詳細的活動安排和報名資訊。" />
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.accordion-header').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.parentElement;
+          if (!item) return;
+          const isActive = item.classList.contains('active');
+          document.querySelectorAll('.accordion-item').forEach(accordionItem => {
+            accordionItem.classList.remove('active');
+          });
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+
+  <style>
+    .accordion-content {
+      display: none;
+    }
+    .accordion-item.active .accordion-content {
+      display: block;
+    }
+    .accordion-item.active .accordion-header i {
+      transform: rotate(45deg);
+    }
+  </style>
+</Layout>
