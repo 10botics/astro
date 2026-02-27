@@ -25,7 +25,8 @@ let heroImage,
   nerveReactionChallenge,
   marioKartRacing,
   paperAirplaneRace,
-  autonomousCarLecture;
+  autonomousCarLecture,
+  aerospaceLecture;
 
 // Additional images from original STEM Day HTML content
 let classMicrobitMaze,
@@ -93,6 +94,7 @@ try {
     marioKartRacing = await import('../../assets/images/Stemday/mario-kart-racing/hero-image.png');
     paperAirplaneRace = await import('../../assets/images/Stemday/paper-airplane-race/hero-image.png');
     autonomousCarLecture = await import('../../assets/images/Stemday/autonomous-car-lecture/hero-image.png');
+    aerospaceLecture = await import('../../assets/images/Stemday/aerospace-lecture/hero-image.png');
   
   // Classes (課堂)
       classMicrobitMaze = await import('../../assets/images/stemday/featured-activities/IMG_1726-1024x768.jpg');
@@ -452,6 +454,23 @@ try {
                 <li>感測器、AI 與自動駕駛算法</li>
                 <li>無人車在物流、運輸及城市規劃的應用</li>
                 <li>未來無人車技術發展方向</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mt-12">
+            <div class="order-2 lg:order-1">
+              {aerospaceLecture && <Image src={aerospaceLecture.default} alt="航天講座" class="w-full h-auto rounded-lg shadow-card" />}
+            </div>
+            <div class="order-1 lg:order-2">
+              <h3 class="text-2xl font-semibold text-gray-900 mb-4">航天講座</h3>
+              <p class="text-gray-700 mb-4 leading-relaxed">航天講座將會向同學們介紹不同航天科技技術的工作原理，並且會說明人類航天事業的發展歷程，以及探討航天技術在科學探索等方面的重要價值，希望藉此激發同學對航天科技的興趣。</p>
+              <ul class="space-y-2 text-gray-700 list-disc pl-5">
+                <li>認識航天科技原理</li>
+                <li>人類航天發展歷程與里程碑</li>
+                <li>太空站運作及太空人訓練</li>
+                <li>衛星通訊、地球觀測等太空技術應用</li>
+                <li>未來太空探索展望</li>
               </ul>
             </div>
           </div>
