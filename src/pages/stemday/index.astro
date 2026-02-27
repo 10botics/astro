@@ -24,7 +24,8 @@ let heroImage,
   appleVisionPro,
   nerveReactionChallenge,
   marioKartRacing,
-  paperAirplaneRace;
+  paperAirplaneRace,
+  autonomousCarLecture;
 
 // Additional images from original STEM Day HTML content
 let classMicrobitMaze,
@@ -91,6 +92,7 @@ try {
     nerveReactionChallenge = await import('../../assets/images/Stemday/nerve-reaction-challenge/hero-image.png');
     marioKartRacing = await import('../../assets/images/Stemday/mario-kart-racing/hero-image.png');
     paperAirplaneRace = await import('../../assets/images/Stemday/paper-airplane-race/hero-image.png');
+    autonomousCarLecture = await import('../../assets/images/Stemday/autonomous-car-lecture/hero-image.png');
   
   // Classes (課堂)
       classMicrobitMaze = await import('../../assets/images/stemday/featured-activities/IMG_1726-1024x768.jpg');
@@ -433,6 +435,23 @@ try {
                 <li>開放源代碼與重要性</li>
                 <li>NFT 和數位資產</li>
                 <li>加密錢包與安全</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mt-12">
+            <div class="order-2 lg:order-1">
+              {autonomousCarLecture && <Image src={autonomousCarLecture.default} alt="無人車講座" class="w-full h-auto rounded-lg shadow-card" />}
+            </div>
+            <div class="order-1 lg:order-2">
+              <h3 class="text-2xl font-semibold text-gray-900 mb-4">無人車講座</h3>
+              <p class="text-gray-700 mb-4 leading-relaxed">在無人車講座中，講者將會講解無人車技術的基本原理和發展歷程，並且會探討更多未來無人車技術的發展方向。透過介紹不同無人車相關知識，我們期盼激發同學們對無人車的興趣。</p>
+              <ul class="space-y-2 text-gray-700 list-disc pl-5">
+                <li>認識無人車技術基礎原理</li>
+                <li>無人車發展歷程與里程碑</li>
+                <li>感測器、AI 與自動駕駛算法</li>
+                <li>無人車在物流、運輸及城市規劃的應用</li>
+                <li>未來無人車技術發展方向</li>
               </ul>
             </div>
           </div>
