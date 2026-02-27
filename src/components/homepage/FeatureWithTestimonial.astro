@@ -1,4 +1,4 @@
----
+﻿---
 // Feature section with testimonial - Tailwind UI pattern
 export interface Props {
   title: string;
@@ -24,7 +24,7 @@ const { title, subtitle, description, features, testimonial } = Astro.props;
 <section class="bg-white py-24 sm:py-32">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <div class="mx-auto max-w-2xl lg:text-center">
-      <h2 class="text-base font-semibold leading-7 text-blue-600">{subtitle}</h2>
+      <h2 class="text-base font-semibold leading-7 text-brand-blue-600">{subtitle}</h2>
       <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{title}</p>
       <p class="mt-6 text-lg leading-8 text-gray-600">{description}</p>
     </div>
@@ -34,7 +34,7 @@ const { title, subtitle, description, features, testimonial } = Astro.props;
         {features.map((feature) => (
           <div class="relative pl-16">
             <dt class="text-base font-semibold leading-7 text-gray-900">
-              <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
+              <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-brand-blue-600">
                 <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" d={feature.iconPath} />
                 </svg>

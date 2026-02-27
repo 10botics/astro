@@ -1,4 +1,4 @@
----
+﻿---
 // Blog grid section - Tailwind UI pattern
 export interface Props {
   title: string;
@@ -57,7 +57,7 @@ const displayPosts = showAll ? posts : posts.slice(0, 3);
           <p class="mt-2 text-sm leading-6 text-gray-300">{post.excerpt}</p>
           
           <div class="mt-4 flex items-center gap-x-4">
-            <span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
+            <span class="inline-flex items-center rounded-md bg-brand-blue-50 px-2 py-1 text-xs font-medium text-brand-blue-700 ring-1 ring-inset ring-brand-blue-700/10">
               {post.category}
             </span>
             <span class="text-xs text-gray-400">{post.readTime} 分鐘閱讀</span>
@@ -68,7 +68,7 @@ const displayPosts = showAll ? posts : posts.slice(0, 3);
     
     {!showAll && posts.length > 3 && (
       <div class="mt-16 text-center">
-        <a href="/blog" class="inline-flex items-center rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors">
+        <a href="/blog" class="inline-flex items-center rounded-md bg-brand-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-brand-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-blue-600 transition-colors">
           查看更多文章
           <svg class="ml-2 -mr-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />

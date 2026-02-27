@@ -1,4 +1,4 @@
----
+﻿---
 // Simple three column with large icons - Tailwind UI pattern
 export interface Props {
   title: string;
@@ -18,7 +18,7 @@ const { title, subtitle, description, features } = Astro.props;
 <section class="bg-white py-24 sm:py-32">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <div class="mx-auto max-w-2xl lg:text-center">
-      <h2 class="text-base font-semibold leading-7 text-blue-600">{subtitle}</h2>
+      <h2 class="text-base font-semibold leading-7 text-brand-blue-600">{subtitle}</h2>
       <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{title}</p>
       <p class="mt-6 text-lg leading-8 text-gray-600">{description}</p>
     </div>
@@ -28,7 +28,7 @@ const { title, subtitle, description, features } = Astro.props;
         {features.map((feature) => (
           <div class="flex flex-col items-center text-center">
             <dt class="flex flex-col items-center">
-              <div class={`mb-6 flex h-16 w-16 items-center justify-center rounded-lg ${feature.iconColor === 'blue-600' ? 'bg-blue-600' : feature.iconColor === 'green-600' ? 'bg-green-600' : feature.iconColor === 'purple-600' ? 'bg-purple-600' : 'bg-blue-600'}`}>
+              <div class={`mb-6 flex h-16 w-16 items-center justify-center rounded-lg ${feature.iconColor === 'blue-600' ? 'bg-brand-blue-600' : feature.iconColor === 'green-600' ? 'bg-category-green-600' : feature.iconColor === 'purple-600' ? 'bg-category-purple-600' : 'bg-brand-blue-600'}`}>
                 <svg class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" d={feature.iconPath} />
                 </svg>

@@ -2,7 +2,7 @@
 
 /* Course Page Headings - replaces inline style="color: #1e293b;" */
 .course-heading {
-  color: #1e293b;
+  color: theme('colors.primary.dark');
 }
 
 /* Course Index Page Styles */

@@ -125,9 +125,9 @@ if (ogImage && ogImage !== "/images/logo_website_700x200-300x86.png") {
       <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
           <ol class="flex items-center space-x-2 text-sm text-gray-600">
-            <li><a href="/" class="hover:text-blue-600">首頁</a></li>
+            <li><a href="/" class="hover:text-brand-blue-600">首頁</a></li>
             <li><span class="mx-2">/</span></li>
-            <li><a href="/news" class="hover:text-blue-600">最新消息</a></li>
+            <li><a href="/news" class="hover:text-brand-blue-600">最新消息</a></li>
             <li><span class="mx-2">/</span></li>
             <li class="text-gray-900 font-medium truncate">{article.data.title}</li>
           </ol>
@@ -141,7 +141,7 @@ if (ogImage && ogImage !== "/images/logo_website_700x200-300x86.png") {
         <div class="max-w-4xl mx-auto">
           <!-- Category Badge -->
           <div class="mb-4">
-            <span class="inline-block bg-blue-100 text-blue-800 text-sm font-medium px-4 py-2 rounded-full">
+            <span class="inline-block bg-brand-blue-100 text-brand-blue-800 text-sm font-medium px-4 py-2 rounded-full">
               {article.data.category}
             </span>
           </div>
@@ -226,7 +226,7 @@ if (ogImage && ogImage !== "/images/logo_website_700x200-300x86.png") {
               href={`https://www.facebook.com/sharer/sharer.php?u=${Astro.url.origin}/news/${article.slug}`}
               target="_blank"
               rel="noopener noreferrer"
-              class="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
+              class="flex items-center space-x-2 bg-brand-blue-600 text-white px-4 py-2 rounded hover:bg-brand-blue-700 transition-colors"
             >
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
@@ -271,7 +271,7 @@ if (ogImage && ogImage !== "/images/logo_website_700x200-300x86.png") {
         <div class="max-w-4xl mx-auto text-center">
           <a 
             href="/news"
-            class="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-700 font-medium"
+            class="inline-flex items-center space-x-2 text-brand-blue-600 hover:text-brand-blue-700 font-medium"
           >
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
@@ -329,6 +329,6 @@ if (ogImage && ogImage !== "/images/logo_website_700x200-300x86.png") {
   }
   
   .prose a {
-    @apply text-blue-600 hover:text-blue-700 underline;
+    @apply text-brand-blue-600 hover:text-brand-blue-700 underline;
   }
 </style> 

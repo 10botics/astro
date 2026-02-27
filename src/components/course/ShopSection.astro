@@ -1,4 +1,4 @@
----
+﻿---
 // Shop Section Component for School Courses
 interface Props {
   title?: string;
@@ -18,7 +18,7 @@ const {
   buttonText = "立即購買",
   imageSrc,
   imageAlt,
-  backgroundColor = "bg-gradient-to-r from-blue-50 to-cyan-50",
+  backgroundColor = "bg-gradient-to-r from-brand-blue-50 to-cyan-50",
   textColor = "text-gray-900"
 } = Astro.props;
 ---
@@ -40,10 +40,10 @@ const {
             class="w-full h-auto max-w-md rounded-lg shadow-lg"
           />
         ) : (
-          <div class="w-full max-w-md h-64 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-lg flex items-center justify-center">
+          <div class="w-full max-w-md h-64 bg-gradient-to-br from-brand-blue-100 to-cyan-100 rounded-lg flex items-center justify-center">
             <div class="text-center">
-              <i class="fas fa-shopping-cart text-6xl text-blue-400 mb-4"></i>
-              <p class="text-blue-600 font-semibold">課程相關產品</p>
+              <i class="fas fa-shopping-cart text-6xl text-brand-blue-400 mb-4"></i>
+              <p class="text-brand-blue-600 font-semibold">課程相關產品</p>
             </div>
           </div>
         )}
@@ -62,7 +62,7 @@ const {
               href={shopLink}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-block bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-blue-700 hover:to-cyan-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+              class="inline-block bg-gradient-to-r from-brand-blue-600 to-cyan-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-brand-blue-700 hover:to-cyan-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               <i class="fas fa-external-link-alt mr-2"></i>
               {buttonText}

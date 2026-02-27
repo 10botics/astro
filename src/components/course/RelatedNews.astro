@@ -1,4 +1,4 @@
----
+﻿---
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import { generateExcerpt } from '../../utils/excerpt';
@@ -102,8 +102,8 @@ function formatDate(date: Date): string {
 
 // Determine styling and content based on context
 const colorScheme = context === 'news' 
-  ? { bg: 'bg-gray-50', button: 'bg-blue-600 hover:bg-blue-700', tag: 'bg-blue-100 text-blue-800 hover:bg-blue-200', gradient: 'from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700', hover: 'hover:text-blue-600' }
-  : { bg: 'bg-gray-50', button: 'bg-cyan-600 hover:bg-cyan-700', tag: 'bg-cyan-100 text-cyan-800 hover:bg-cyan-200', gradient: 'from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700', hover: 'hover:text-cyan-600' };
+  ? { bg: 'bg-gray-50', button: 'bg-brand-blue-600 hover:bg-brand-blue-700', tag: 'bg-brand-blue-100 text-brand-blue-800 hover:bg-brand-blue-200', gradient: 'from-brand-blue-600 to-cyan-600 hover:from-brand-blue-700 hover:to-cyan-700', hover: 'hover:text-brand-blue-600' }
+  : { bg: 'bg-gray-50', button: 'bg-cyan-600 hover:bg-cyan-700', tag: 'bg-cyan-100 text-cyan-800 hover:bg-cyan-200', gradient: 'from-cyan-600 to-brand-blue-600 hover:from-cyan-700 hover:to-brand-blue-700', hover: 'hover:text-cyan-600' };
 
 const sectionTitle = context === 'news' ? '相關文章' : '相關新聞';
 const sectionDescription = context === 'news' 
@@ -169,7 +169,7 @@ const sectionDescription = context === 'news'
                     </span>
                   ))}
                   {article.data.tags.length > 3 && (
-                    <span class={`text-xs ${context === 'news' ? 'text-blue-500' : 'text-cyan-500'}`}>
+                    <span class={`text-xs ${context === 'news' ? 'text-brand-blue-500' : 'text-cyan-500'}`}>
                       +{article.data.tags.length - 3}
                     </span>
                   )}
@@ -179,7 +179,7 @@ const sectionDescription = context === 'news'
               {/* Read More Link */}
               <a 
                 href={`/news/${article.slug}`}
-                class={`inline-flex items-center ${context === 'news' ? 'text-blue-600 hover:text-blue-700' : 'text-cyan-600 hover:text-cyan-700'} font-medium text-sm group-hover:underline`}
+                class={`inline-flex items-center ${context === 'news' ? 'text-brand-blue-600 hover:text-brand-blue-700' : 'text-cyan-600 hover:text-cyan-700'} font-medium text-sm group-hover:underline`}
               >
                 閱讀更多
                 <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

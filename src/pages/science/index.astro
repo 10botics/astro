@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../../layouts/Layout.astro';
 import ShopSection from '../../components/course/ShopSection.astro';
 import { Image } from 'astro:assets';
@@ -614,7 +614,7 @@ const pageKeywords = "科學手作, 自然科學手作, 自然科學, 生物探�
     ))}
 
     <!-- Why Choose Science Handicraft -->
-    <section class="py-16 bg-gradient-to-br from-blue-50 to-green-50">
+    <section class="py-16 bg-gradient-to-br from-brand-blue-50 to-category-green-50">
       <div class="container mx-auto px-4">
         <div class="max-w-6xl mx-auto">
           <h2 class="text-3xl font-bold mb-12 text-gray-800 text-center">為什麼選擇科學手作？</h2>
@@ -693,15 +693,15 @@ const pageKeywords = "科學手作, 自然科學手作, 自然科學, 生物探�
           <div class="mb-6 space-y-3">
             <div class="flex items-center">
               <span class="text-sm font-medium text-gray-700 w-16">難度：</span>
-              <div id="difficultyStars" class="text-yellow-500 text-xl"></div>
+              <div id="difficultyStars" class="text-category-yellow-500 text-xl"></div>
             </div>
             <div class="flex items-center">
               <span class="text-sm font-medium text-gray-700 w-16">趣味：</span>
-              <div id="interestStars" class="text-yellow-500 text-xl"></div>
+              <div id="interestStars" class="text-category-yellow-500 text-xl"></div>
             </div>
             <div class="flex items-center">
               <span class="text-sm font-medium text-gray-700 w-16">科學：</span>
-              <div id="scienceStars" class="text-yellow-500 text-xl"></div>
+              <div id="scienceStars" class="text-category-yellow-500 text-xl"></div>
             </div>
           </div>
           
@@ -762,7 +762,7 @@ const pageKeywords = "科學手作, 自然科學手作, 自然科學, 生物探�
     let starsHTML = '';
     for (let i = 1; i <= totalStars; i++) {
       if (i <= rating) {
-        starsHTML += '<span class="text-yellow-500">★</span>';
+        starsHTML += '<span class="text-category-yellow-500">★</span>';
       } else {
         starsHTML += '<span class="text-gray-300">★</span>';
       }

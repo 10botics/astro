@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../../../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 
@@ -20,7 +20,7 @@ const projectData = {
 <Layout title={`${projectData.title} - 學生作品`}>
   <div class="min-h-screen bg-gray-50">
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-amber-500 to-orange-600 text-white section-padding">
+    <section class="bg-gradient-to-br from-amber-500 to-category-orange-600 text-white section-padding">
       <div class="container-standard max-w-6xl">
         <div class="text-center">
           <h1 class="text-4xl font-bold mb-4">{projectData.title}</h1>
@@ -73,7 +73,7 @@ const projectData = {
             <h2 class="text-3xl font-bold text-gray-900 mb-6">遊戲預覽</h2>
             <div class="card-base p-6">
               <div class="aspect-w-16 aspect-h-9 bg-gray-100 rounded-lg mb-4">
-                <div class="flex items-center justify-center h-64 bg-gradient-to-br from-amber-100 to-orange-100 rounded-lg">
+                <div class="flex items-center justify-center h-64 bg-gradient-to-br from-amber-100 to-category-orange-100 rounded-lg">
                   <div class="text-center">
                     <i class="fas fa-times text-4xl text-amber-500 mb-4"></i>
                     <p class="text-gray-600">木製井字棋遊戲</p>

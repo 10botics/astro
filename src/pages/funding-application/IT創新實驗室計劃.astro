@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../../layouts/Layout.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
@@ -37,9 +37,9 @@ const sortedCourses = astroCourses.sort((a, b) =>
   <div class="bg-gray-100 py-4">
     <div class="container mx-auto px-4 max-w-6xl">
       <nav class="text-sm text-gray-600">
-        <a href="/" class="hover:text-blue-600">首頁</a>
+        <a href="/" class="hover:text-brand-blue-600">首頁</a>
         <span class="mx-2">»</span>
-        <a href="/funding-application/" class="hover:text-blue-600">資助申請</a>
+        <a href="/funding-application/" class="hover:text-brand-blue-600">資助申請</a>
         <span class="mx-2">»</span>
         <span class="text-gray-900">IT創新實驗室</span>
       </nav>
@@ -80,8 +80,8 @@ const sortedCourses = astroCourses.sort((a, b) =>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         <!-- IT設備和設施 -->
         <div class="bg-white rounded-lg p-6 shadow-lg text-center">
-          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-keyboard text-2xl text-blue-600"></i>
+          <div class="w-16 h-16 bg-brand-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-keyboard text-2xl text-brand-blue-600"></i>
           </div>
           <h3 class="text-xl font-semibold text-gray-900 mb-3">IT設備和設施</h3>
           <ul class="text-gray-700 text-left space-y-2">
@@ -93,8 +93,8 @@ const sortedCourses = astroCourses.sort((a, b) =>
 
         <!-- IT相關課程 -->
         <div class="bg-white rounded-lg p-6 shadow-lg text-center">
-          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-code text-2xl text-green-600"></i>
+          <div class="w-16 h-16 bg-category-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-code text-2xl text-category-green-600"></i>
           </div>
           <h3 class="text-xl font-semibold text-gray-900 mb-3">IT相關課程</h3>
           <ul class="text-gray-700 text-left space-y-2">
@@ -107,8 +107,8 @@ const sortedCourses = astroCourses.sort((a, b) =>
 
         <!-- 其他 -->
         <div class="bg-white rounded-lg p-6 shadow-lg text-center">
-          <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-dollar-sign text-2xl text-yellow-600"></i>
+          <div class="w-16 h-16 bg-category-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-dollar-sign text-2xl text-category-yellow-600"></i>
           </div>
           <h3 class="text-xl font-semibold text-gray-900 mb-3">其他</h3>
           <ul class="text-gray-700 text-left space-y-2">
@@ -120,8 +120,8 @@ const sortedCourses = astroCourses.sort((a, b) =>
 
         <!-- IT相關課外活動 -->
         <div class="bg-white rounded-lg p-6 shadow-lg text-center">
-          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-laptop text-2xl text-purple-600"></i>
+          <div class="w-16 h-16 bg-category-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-laptop text-2xl text-category-purple-600"></i>
           </div>
           <h3 class="text-xl font-semibold text-gray-900 mb-3">IT相關課外活動</h3>
           <ul class="text-gray-700 text-left space-y-2">
@@ -139,32 +139,32 @@ const sortedCourses = astroCourses.sort((a, b) =>
       <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">計劃流程</h2>
       <div class="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
         <div class="text-center">
-          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-file-contract text-2xl text-blue-600"></i>
+          <div class="w-16 h-16 bg-brand-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-file-contract text-2xl text-brand-blue-600"></i>
           </div>
           <h3 class="text-lg font-semibold text-gray-900">出標書</h3>
         </div>
         <div class="text-center">
-          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-dollar-sign text-2xl text-green-600"></i>
+          <div class="w-16 h-16 bg-category-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-dollar-sign text-2xl text-category-green-600"></i>
           </div>
           <h3 class="text-lg font-semibold text-gray-900">收到批核結果</h3>
         </div>
         <div class="text-center">
-          <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-file-upload text-2xl text-yellow-600"></i>
+          <div class="w-16 h-16 bg-category-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-file-upload text-2xl text-category-yellow-600"></i>
           </div>
           <h3 class="text-lg font-semibold text-gray-900">遞交申請表</h3>
         </div>
         <div class="text-center">
-          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-book text-2xl text-purple-600"></i>
+          <div class="w-16 h-16 bg-category-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-book text-2xl text-category-purple-600"></i>
           </div>
           <h3 class="text-lg font-semibold text-gray-900">提交年度報告</h3>
         </div>
         <div class="text-center">
-          <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-keyboard text-2xl text-red-600"></i>
+          <div class="w-16 h-16 bg-category-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-keyboard text-2xl text-category-red-600"></i>
           </div>
           <h3 class="text-lg font-semibold text-gray-900">開展相關IT課程和活動</h3>
         </div>
@@ -266,7 +266,7 @@ const sortedCourses = astroCourses.sort((a, b) =>
           最近教育局推出的初中人工智能課程單元引起了廣泛的關注。10Botics也因此參與了本週二的「OGCIO學校IT創新實驗室 方案分享日」，與眾多學界同仁進行交流互動。
         </p>
         <div class="text-center">
-          <a href="/news/" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+          <a href="/news/" class="inline-block bg-brand-blue-600 text-white px-6 py-3 rounded-lg hover:bg-brand-blue-700 transition-colors">
             了解更多
           </a>
         </div>
@@ -298,10 +298,10 @@ const sortedCourses = astroCourses.sort((a, b) =>
   </section>
 
   <!-- Call to Action -->
-  <section class="bg-blue-600 py-16">
+  <section class="bg-brand-blue-600 py-16">
     <div class="container mx-auto px-4 max-w-6xl text-center">
       <h2 class="text-3xl font-bold text-white mb-6">已經準備好申請？</h2>
-      <p class="text-blue-100 mb-8">填寫下方表格聯絡我們，我們會為您提供詳細的申請協助</p>
+      <p class="text-brand-blue-100 mb-8">填寫下方表格聯絡我們，我們會為您提供詳細的申請協助</p>
     </div>
   </section>
 
@@ -343,7 +343,7 @@ const sortedCourses = astroCourses.sort((a, b) =>
               <div class="mb-4">
                 <h3 class="text-xl font-bold mb-2 text-gray-800 line-clamp-2">
                   <a href={`/school-courses/${course.slug}`} 
-                     class="hover:text-blue-600 transition-colors">
+                     class="hover:text-brand-blue-600 transition-colors">
                     {course.title}
                   </a>
                 </h3>
@@ -389,7 +389,7 @@ const sortedCourses = astroCourses.sort((a, b) =>
                             
                             return (
                               <a href={`/school-courses/tag/${tagSlug}`}
-                                 class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium hover:bg-blue-200 transition-colors">
+                                 class="bg-brand-blue-100 text-brand-blue-800 px-2 py-1 rounded text-xs font-medium hover:bg-brand-blue-200 transition-colors">
                                 {tag}
                               </a>
                             );
@@ -404,7 +404,7 @@ const sortedCourses = astroCourses.sort((a, b) =>
               <!-- Action Button -->
               <div class="mt-auto">
                 <a href={`/school-courses/${course.slug}`}
-                   class="inline-block w-full text-center bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors text-sm font-medium">
+                   class="inline-block w-full text-center bg-brand-blue-600 text-white px-4 py-2 rounded hover:bg-brand-blue-700 transition-colors text-sm font-medium">
                   查看課程詳情
                 </a>
               </div>
@@ -414,7 +414,7 @@ const sortedCourses = astroCourses.sort((a, b) =>
       </div>
 
       <div class="text-center mt-8">
-        <a href="/school-courses/" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+        <a href="/school-courses/" class="inline-block bg-brand-blue-600 text-white px-8 py-3 rounded-lg hover:bg-brand-blue-700 transition-colors font-semibold">
           查看所有課程
         </a>
       </div>

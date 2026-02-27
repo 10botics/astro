@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import { 
@@ -25,10 +25,10 @@ const sortedCourses = astroCourses.sort((a, b) =>
 
 <Layout title={title} description={description}>
   <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
+  <section class="bg-gradient-to-r from-brand-blue-600 to-category-purple-600 text-white py-20">
     <div class="container mx-auto px-4 max-w-6xl text-center">
       <h1 class="text-5xl font-bold mb-6">資助申請</h1>
-      <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+      <p class="text-xl text-brand-blue-100 max-w-3xl mx-auto">
         為學校和教育機構提供各種資助計劃的申請協助，讓您的教育項目獲得資金支持
       </p>
     </div>
@@ -51,7 +51,7 @@ const sortedCourses = astroCourses.sort((a, b) =>
               height={439}
             />
             <div class="absolute top-4 right-4">
-              <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+              <span class="bg-brand-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
                 熱門
               </span>
             </div>
@@ -63,11 +63,11 @@ const sortedCourses = astroCourses.sort((a, b) =>
             </p>
             <div class="flex items-center justify-between">
               <div class="text-sm text-gray-500">
-                <span class="font-semibold text-green-600">最高資助：</span>100萬元
+                <span class="font-semibold text-category-green-600">最高資助：</span>100萬元
               </div>
               <a 
                 href="/funding-application/it-innovation-lab" 
-                class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                class="bg-brand-blue-600 text-white px-6 py-2 rounded-lg hover:bg-brand-blue-700 transition-colors"
               >
                 了解詳情
               </a>
@@ -78,14 +78,14 @@ const sortedCourses = astroCourses.sort((a, b) =>
         <!-- 奇趣IT識多啲計劃 -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
           <div class="relative">
-            <div class="w-full h-48 bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center">
+            <div class="w-full h-48 bg-gradient-to-r from-category-green-400 to-brand-blue-500 flex items-center justify-center">
               <div class="text-center text-white">
                 <i class="fas fa-laptop-code text-4xl mb-2"></i>
                 <p class="text-lg font-semibold">奇趣IT識多啲計劃</p>
               </div>
             </div>
             <div class="absolute top-4 right-4">
-              <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+              <span class="bg-category-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
                 小學適用
               </span>
             </div>
@@ -97,11 +97,11 @@ const sortedCourses = astroCourses.sort((a, b) =>
             </p>
             <div class="flex items-center justify-between">
               <div class="text-sm text-gray-500">
-                <span class="font-semibold text-green-600">最高資助：</span>40萬元
+                <span class="font-semibold text-category-green-600">最高資助：</span>40萬元
               </div>
               <a 
                 href="/funding-application/knowing-more-about-it" 
-                class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                class="bg-category-green-600 text-white px-6 py-2 rounded-lg hover:bg-category-green-700 transition-colors"
               >
                 了解詳情
               </a>
@@ -119,8 +119,8 @@ const sortedCourses = astroCourses.sort((a, b) =>
       
       <div class="grid md:grid-cols-3 gap-8">
         <div class="text-center">
-          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-file-alt text-2xl text-blue-600"></i>
+          <div class="w-16 h-16 bg-brand-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-file-alt text-2xl text-brand-blue-600"></i>
           </div>
           <h3 class="text-xl font-semibold text-gray-900 mb-3">專業申請協助</h3>
           <p class="text-gray-600">
@@ -129,8 +129,8 @@ const sortedCourses = astroCourses.sort((a, b) =>
         </div>
         
         <div class="text-center">
-          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-users text-2xl text-green-600"></i>
+          <div class="w-16 h-16 bg-category-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-users text-2xl text-category-green-600"></i>
           </div>
           <h3 class="text-xl font-semibold text-gray-900 mb-3">經驗豐富團隊</h3>
           <p class="text-gray-600">
@@ -139,8 +139,8 @@ const sortedCourses = astroCourses.sort((a, b) =>
         </div>
         
         <div class="text-center">
-          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <i class="fas fa-headset text-2xl text-purple-600"></i>
+          <div class="w-16 h-16 bg-category-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-headset text-2xl text-category-purple-600"></i>
           </div>
           <h3 class="text-xl font-semibold text-gray-900 mb-3">全程支援服務</h3>
           <p class="text-gray-600">
@@ -152,28 +152,28 @@ const sortedCourses = astroCourses.sort((a, b) =>
   </section>
 
   <!-- Contact CTA -->
-  <section class="py-16 bg-blue-600 text-white">
+  <section class="py-16 bg-brand-blue-600 text-white">
     <div class="container mx-auto px-4 max-w-6xl text-center">
       <h2 class="text-3xl font-bold mb-6">準備好開始申請了嗎？</h2>
-      <p class="text-xl text-blue-100 mb-8">
+      <p class="text-xl text-brand-blue-100 mb-8">
         聯絡我們的專業團隊，獲得最適合您學校的資助計劃建議
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a 
           href="/funding-application/IT創新實驗室計劃" 
-          class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+          class="bg-white text-brand-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
         >
           IT創新實驗室計劃
         </a>
         <a 
           href="/funding-application/奇趣IT識多啲計劃" 
-          class="bg-white text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+          class="bg-white text-category-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
         >
           奇趣IT識多啲計劃
         </a>
         <a 
           href="/contact" 
-          class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
+          class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-brand-blue-600 transition-colors"
         >
           聯絡我們
         </a>
@@ -219,7 +219,7 @@ const sortedCourses = astroCourses.sort((a, b) =>
               <div class="mb-4">
                 <h3 class="text-xl font-bold mb-2 text-gray-800 line-clamp-2">
                   <a href={`/school-courses/${course.slug}`} 
-                     class="hover:text-blue-600 transition-colors">
+                     class="hover:text-brand-blue-600 transition-colors">
                     {course.title}
                   </a>
                 </h3>
@@ -265,7 +265,7 @@ const sortedCourses = astroCourses.sort((a, b) =>
                             
                             return (
                               <a href={`/school-courses/tag/${tagSlug}`}
-                                 class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium hover:bg-blue-200 transition-colors">
+                                 class="bg-brand-blue-100 text-brand-blue-800 px-2 py-1 rounded text-xs font-medium hover:bg-brand-blue-200 transition-colors">
                                 {tag}
                               </a>
                             );
@@ -280,7 +280,7 @@ const sortedCourses = astroCourses.sort((a, b) =>
               <!-- Action Button -->
               <div class="mt-auto">
                 <a href={`/school-courses/${course.slug}`}
-                   class="inline-block w-full text-center bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors text-sm font-medium">
+                   class="inline-block w-full text-center bg-brand-blue-600 text-white px-4 py-2 rounded hover:bg-brand-blue-700 transition-colors text-sm font-medium">
                   查看課程詳情
                 </a>
               </div>
@@ -290,7 +290,7 @@ const sortedCourses = astroCourses.sort((a, b) =>
       </div>
 
       <div class="text-center mt-8">
-        <a href="/school-courses/" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+        <a href="/school-courses/" class="inline-block bg-brand-blue-600 text-white px-8 py-3 rounded-lg hover:bg-brand-blue-700 transition-colors font-semibold">
           查看所有課程
         </a>
       </div>

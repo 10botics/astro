@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 // Main course images
@@ -51,11 +51,11 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
 
 <Layout title={title} description={description}>
   <!-- Hero Section -->
-  <section class="bg-gradient-to-br from-blue-600 to-purple-700 text-white py-20">
+  <section class="bg-gradient-to-br from-brand-blue-600 to-category-purple-700 text-white py-20">
     <div class="container mx-auto px-4 text-center">
       <h1 class="text-5xl font-bold mb-4">Minecraft<br>校園創建計劃</h1>
       <h2 class="text-4xl font-bold mb-8">2021</h2>
-      <a href="#" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+      <a href="#" class="bg-white text-brand-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
         更多課程內容
       </a>
     </div>
@@ -101,7 +101,7 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
           <table class="w-full max-w-2xl mx-auto border border-gray-300 bg-white rounded-lg overflow-hidden shadow-lg">
             <tr>
               <td class="border-r border-gray-300">
-                <button class="tab-button active w-full px-6 py-4 bg-blue-600 text-white font-medium transition-all duration-200 hover:bg-blue-700" data-tab="1">
+                <button class="tab-button active w-full px-6 py-4 bg-brand-blue-600 text-white font-medium transition-all duration-200 hover:bg-brand-blue-700" data-tab="1">
                   面授課堂
                 </button>
               </td>
@@ -127,17 +127,17 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
         <!-- Tab Content -->
         <div class="tab-content active" data-tab="1">
           <div class="bg-white p-8 rounded-lg shadow-lg">
-            <h3 class="text-2xl font-bold text-center mb-8 text-blue-600">課堂內容</h3>
+            <h3 class="text-2xl font-bold text-center mb-8 text-brand-blue-600">課堂內容</h3>
             <div class="space-y-6">
-              <div class="border-l-4 border-blue-500 pl-4">
+              <div class="border-l-4 border-brand-blue-500 pl-4">
                 <h4 class="text-xl font-semibold mb-2 text-gray-800">World-Edit 命令行</h4>
                 <p class="text-gray-600 leading-relaxed">課程教授 World-Edit 命令行的基本概念和運作，例如 //set, //line, //stack, //replace 等，加快學生建設速度。</p>
               </div>
-              <div class="border-l-4 border-blue-500 pl-4">
+              <div class="border-l-4 border-brand-blue-500 pl-4">
                 <h4 class="text-xl font-semibold mb-2 text-gray-800">2D 及 3D 地圖</h4>
                 <p class="text-gray-600 leading-relaxed">課程讓學生認識 Google Map, Google Earth 等工具的使用方法，令學生能夠在相對應的坐標興建 1:1 的校園和社區。</p>
               </div>
-              <div class="border-l-4 border-blue-500 pl-4">
+              <div class="border-l-4 border-brand-blue-500 pl-4">
                 <h4 class="text-xl font-semibold mb-2 text-gray-800">實地考察</h4>
                 <p class="text-gray-600 leading-relaxed">課程為學生們提供實地考察的機會，一起發掘校園建築物的設計細節，共同討論Minecraft內的建設方法。</p>
               </div>
@@ -147,17 +147,17 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
 
         <div class="tab-content" data-tab="2">
           <div class="bg-white p-8 rounded-lg shadow-lg">
-            <h3 class="text-2xl font-bold text-center mb-8 text-green-600">課堂內容</h3>
+            <h3 class="text-2xl font-bold text-center mb-8 text-category-green-600">課堂內容</h3>
             <div class="space-y-6">
-              <div class="border-l-4 border-green-500 pl-4">
+              <div class="border-l-4 border-category-green-500 pl-4">
                 <h4 class="text-xl font-semibold mb-2 text-gray-800">興建校園及周邊社區</h4>
                 <p class="text-gray-600 leading-relaxed">學生利用課堂學習的知識，包括 World-Edit 命令行及網上工具，正式開始創建校園。</p>
               </div>
-              <div class="border-l-4 border-green-500 pl-4">
+              <div class="border-l-4 border-category-green-500 pl-4">
                 <h4 class="text-xl font-semibold mb-2 text-gray-800">自主學習</h4>
                 <p class="text-gray-600 leading-relaxed">學生們在課餘時間亦可進入 Minecraft Server 自行興建，遇到問題可以向同學或導師發問。</p>
               </div>
-              <div class="border-l-4 border-green-500 pl-4">
+              <div class="border-l-4 border-category-green-500 pl-4">
                 <h4 class="text-xl font-semibold mb-2 text-gray-800">團體合作</h4>
                 <p class="text-gray-600 leading-relaxed">校園及周邊社區建築範圍較大，學生們需自行分工，加快建構速度。</p>
               </div>
@@ -167,17 +167,17 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
 
         <div class="tab-content" data-tab="3">
           <div class="bg-white p-8 rounded-lg shadow-lg">
-            <h3 class="text-2xl font-bold text-center mb-8 text-purple-600">課程成果</h3>
+            <h3 class="text-2xl font-bold text-center mb-8 text-category-purple-600">課程成果</h3>
             <div class="space-y-6">
-              <div class="border-l-4 border-purple-500 pl-4">
+              <div class="border-l-4 border-category-purple-500 pl-4">
                 <h4 class="text-xl font-semibold mb-2 text-gray-800">Minecraft 校園</h4>
                 <p class="text-gray-600 leading-relaxed">學生們在 Minecraft Server 內完成校園及社區建設後，供評判判定建築物的準確度及運用的創意力。</p>
               </div>
-              <div class="border-l-4 border-purple-500 pl-4">
+              <div class="border-l-4 border-category-purple-500 pl-4">
                 <h4 class="text-xl font-semibold mb-2 text-gray-800">成果影片</h4>
                 <p class="text-gray-600 leading-relaxed">學生們以 Minecraft 第一人視角錄製影片，帶領觀眾參觀整個校園及社區的建築物，展示校園創建成果。</p>
               </div>
-              <div class="border-l-4 border-purple-500 pl-4">
+              <div class="border-l-4 border-category-purple-500 pl-4">
                 <h4 class="text-xl font-semibold mb-2 text-gray-800">匯報簡報</h4>
                 <p class="text-gray-600 leading-relaxed">學生們完成校園創建後，對校園或社區內建築物背景及歷史加深了認識，藉此機會分享其建築物的用途、背景及歷史及對學校的意義。</p>
               </div>
@@ -187,17 +187,17 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
 
         <div class="tab-content" data-tab="4">
           <div class="bg-white p-8 rounded-lg shadow-lg">
-            <h3 class="text-2xl font-bold text-center mb-8 text-orange-600">準備內容</h3>
+            <h3 class="text-2xl font-bold text-center mb-8 text-category-orange-600">準備內容</h3>
             <div class="space-y-6">
-              <div class="border-l-4 border-orange-500 pl-4">
+              <div class="border-l-4 border-category-orange-500 pl-4">
                 <h4 class="text-xl font-semibold mb-2 text-gray-800">排位賽</h4>
                 <p class="text-gray-600 leading-relaxed">排位賽幫助學生了解 Buildathon 規則，以及判定隊伍選擇建築物選項的先後次序。</p>
               </div>
-              <div class="border-l-4 border-orange-500 pl-4">
+              <div class="border-l-4 border-category-orange-500 pl-4">
                 <h4 class="text-xl font-semibold mb-2 text-gray-800">相討策略</h4>
                 <p class="text-gray-600 leading-relaxed">學生們在30個建築物選項中，選擇適合自己隊伍的建築物，爭取最高分數。</p>
               </div>
-              <div class="border-l-4 border-orange-500 pl-4">
+              <div class="border-l-4 border-category-orange-500 pl-4">
                 <h4 class="text-xl font-semibold mb-2 text-gray-800">練習建設</h4>
                 <p class="text-gray-600 leading-relaxed">確認建築物選項後，在挑戰賽前進行練習，加快比賽時的興建速度。</p>
               </div>
@@ -268,7 +268,7 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
       </div>
 
       <div class="text-center">
-        <a href="#" class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors">
+        <a href="#" class="bg-brand-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-brand-blue-700 transition-colors">
           九龍灣建築圖鑒
         </a>
       </div>
@@ -390,7 +390,7 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
         </div>
         
         <div class="text-center mt-6">
-          <p class="text-sm text-gray-500">所有作品均來自 <a href="/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline">10Botics</a> 元宇宙平台</p>
+          <p class="text-sm text-gray-500">所有作品均來自 <a href="/" target="_blank" rel="noopener noreferrer" class="text-brand-blue-600 hover:text-brand-blue-800 underline">10Botics</a> 元宇宙平台</p>
         </div>
       </div>
       
@@ -432,19 +432,19 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
         
         <div class="mt-8 space-y-4">
           <div class="flex items-center">
-            <span class="w-3 h-3 bg-blue-600 rounded-full mr-4"></span>
+            <span class="w-3 h-3 bg-brand-blue-600 rounded-full mr-4"></span>
             <strong><u>香港電腦教育學會</u></strong> 副主席 陳俊銘
           </div>
           <div class="flex items-center">
-            <span class="w-3 h-3 bg-blue-600 rounded-full mr-4"></span>
+            <span class="w-3 h-3 bg-brand-blue-600 rounded-full mr-4"></span>
             香港大學建築學系講師 衛翠芷博士
           </div>
           <div class="flex items-center">
-            <span class="w-3 h-3 bg-blue-600 rounded-full mr-4"></span>
+            <span class="w-3 h-3 bg-brand-blue-600 rounded-full mr-4"></span>
             <strong><u>cuhkminecraft</u></strong> 創辦人 Owen
           </div>
           <div class="flex items-center">
-            <span class="w-3 h-3 bg-blue-600 rounded-full mr-4"></span>
+            <span class="w-3 h-3 bg-brand-blue-600 rounded-full mr-4"></span>
             <strong><u>Build-The-Earth 香港澳門隊</u></strong> 隊長 Ansen
           </div>
         </div>
@@ -641,22 +641,22 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
           <h3 class="text-xl font-bold mb-2">主辦機構</h3>
           <p class="text-lg">10Botics</p>
           <div class="flex justify-center space-x-4 mt-4">
-            <a href="https://www.facebook.com/10botics" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 transition-colors">
+            <a href="https://www.facebook.com/10botics" target="_blank" rel="noopener noreferrer" class="text-brand-blue-600 hover:text-brand-blue-800 transition-colors">
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
               </svg>
             </a>
-            <a href="https://www.youtube.com/@10botics" target="_blank" rel="noopener noreferrer" class="text-red-600 hover:text-red-800 transition-colors">
+            <a href="https://www.youtube.com/@10botics" target="_blank" rel="noopener noreferrer" class="text-category-red-600 hover:text-category-red-800 transition-colors">
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
               </svg>
             </a>
-            <a href="https://www.instagram.com/10botics" target="_blank" rel="noopener noreferrer" class="text-pink-600 hover:text-pink-800 transition-colors">
+            <a href="https://www.instagram.com/10botics" target="_blank" rel="noopener noreferrer" class="text-category-pink-600 hover:text-category-pink-800 transition-colors">
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987 6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.323-1.297C4.198 14.895 3.708 13.744 3.708 12.447s.49-2.448 1.297-3.323c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.807.875 1.297 2.026 1.297 3.323s-.49 2.448-1.297 3.323c-.875.807-2.026 1.297-3.323 1.297zm7.718-1.297c-.49.49-1.297.807-2.026.807s-1.536-.317-2.026-.807c-.49-.49-.807-1.297-.807-2.026s.317-1.536.807-2.026c.49-.49 1.297-.807 2.026-.807s1.536.317 2.026.807c.49.49.807 1.297.807 2.026s-.317 1.536-.807 2.026z"/>
               </svg>
             </a>
-            <a href="https://www.linkedin.com/company/10botics" target="_blank" rel="noopener noreferrer" class="text-blue-700 hover:text-blue-900 transition-colors">
+            <a href="https://www.linkedin.com/company/10botics" target="_blank" rel="noopener noreferrer" class="text-brand-blue-700 hover:text-brand-blue-900 transition-colors">
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
               </svg>
@@ -671,22 +671,22 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
           <h3 class="text-xl font-bold mb-2">主辦機構</h3>
           <p class="text-lg">BTEHKMU</p>
           <div class="flex justify-center space-x-4 mt-4">
-            <a href="https://www.facebook.com/BTEHKMU" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 transition-colors">
+            <a href="https://www.facebook.com/BTEHKMU" target="_blank" rel="noopener noreferrer" class="text-brand-blue-600 hover:text-brand-blue-800 transition-colors">
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
               </svg>
             </a>
-            <a href="https://twitter.com/BTEHKMU" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-600 transition-colors">
+            <a href="https://twitter.com/BTEHKMU" target="_blank" rel="noopener noreferrer" class="text-brand-blue-400 hover:text-brand-blue-600 transition-colors">
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
               </svg>
             </a>
-            <a href="https://www.youtube.com/@BTEHKMU" target="_blank" rel="noopener noreferrer" class="text-red-600 hover:text-red-800 transition-colors">
+            <a href="https://www.youtube.com/@BTEHKMU" target="_blank" rel="noopener noreferrer" class="text-category-red-600 hover:text-category-red-800 transition-colors">
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
               </svg>
             </a>
-            <a href="https://www.instagram.com/BTEHKMU" target="_blank" rel="noopener noreferrer" class="text-pink-600 hover:text-pink-800 transition-colors">
+            <a href="https://www.instagram.com/BTEHKMU" target="_blank" rel="noopener noreferrer" class="text-category-pink-600 hover:text-category-pink-800 transition-colors">
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987 6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.323-1.297C4.198 14.895 3.708 13.744 3.708 12.447s.49-2.448 1.297-3.323c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.807.875 1.297 2.026 1.297 3.323s-.49 2.448-1.297 3.323c-.875.807-2.026 1.297-3.323 1.297zm7.718-1.297c-.49.49-1.297.807-2.026.807s-1.536-.317-2.026-.807c-.49-.49-.807-1.297-.807-2.026s.317-1.536.807-2.026c.49-.49 1.297-.807 2.026-.807s1.536.317 2.026.807c.49.49.807 1.297.807 2.026s-.317 1.536-.807 2.026z"/>
               </svg>
@@ -701,7 +701,7 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
           <h3 class="text-xl font-bold mb-2">協辦機構</h3>
           <p class="text-lg">香港電腦教育學會</p>
           <div class="flex justify-center space-x-4 mt-4">
-            <a href="https://www.facebook.com/HKACE.org" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 transition-colors">
+            <a href="https://www.facebook.com/HKACE.org" target="_blank" rel="noopener noreferrer" class="text-brand-blue-600 hover:text-brand-blue-800 transition-colors">
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
               </svg>
@@ -766,7 +766,7 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
       const firstTabButton = document.querySelector('.tab-button[data-tab="1"]');
       const firstTabContent = document.querySelector('.tab-content[data-tab="1"]');
       if (firstTabButton && firstTabContent) {
-        firstTabButton.classList.add('active', 'bg-blue-600', 'text-white');
+        firstTabButton.classList.add('active', 'bg-brand-blue-600', 'text-white');
         firstTabButton.classList.remove('bg-gray-100', 'text-gray-700');
         firstTabContent.classList.add('active');
       }
@@ -778,7 +778,7 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
           
           // Remove active class from all buttons and contents
           tabButtons.forEach((btn) => {
-            btn.classList.remove('active', 'bg-blue-600', 'text-white');
+            btn.classList.remove('active', 'bg-brand-blue-600', 'text-white');
             btn.classList.add('bg-gray-100', 'text-gray-700');
           });
           
@@ -787,7 +787,7 @@ const description = "Minecraft 校園創建計劃 2021 更多課程內容 課程
           });
           
           // Add active class to clicked button and corresponding content
-          btn.classList.add('active', 'bg-blue-600', 'text-white');
+          btn.classList.add('active', 'bg-brand-blue-600', 'text-white');
           btn.classList.remove('bg-gray-100', 'text-gray-700');
           
           const targetContent = document.querySelector(`.tab-content[data-tab="${tabNumber}"]`);

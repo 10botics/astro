@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../layouts/Layout.astro';
 import ContactSection from '../components/ContactSection.astro';
 
@@ -198,7 +198,7 @@ const { title, description, primarySchool, juniorSecondary, seniorSecondary, spe
 <Layout title={title} description={description}>
   <main class="min-h-screen bg-gray-50">
     <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-20">
+    <section class="bg-gradient-to-r from-brand-blue-600 to-category-purple-700 text-white py-20">
       <div class="container mx-auto px-4 text-center">
         <h1 class="text-4xl md:text-6xl font-bold mb-6">{title}</h1>
         <p class="text-xl md:text-2xl opacity-90">{description}</p>
@@ -215,7 +215,7 @@ const { title, description, primarySchool, juniorSecondary, seniorSecondary, spe
           <div class="bg-white rounded-lg shadow-lg overflow-hidden">
             <div class="overflow-x-auto">
               <table class="w-full">
-                <thead class="bg-blue-600 text-white">
+                <thead class="bg-brand-blue-600 text-white">
                   <tr>
                     <th class="px-6 py-4 text-left font-semibold">學校名稱</th>
                     <th class="px-6 py-4 text-left font-semibold">參賽者姓名</th>
@@ -228,7 +228,7 @@ const { title, description, primarySchool, juniorSecondary, seniorSecondary, spe
                       <td class="px-6 py-4 text-gray-800">{entry.school}</td>
                       <td class="px-6 py-4 text-gray-800">{entry.student}</td>
                       <td class="px-6 py-4">
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-brand-blue-100 text-brand-blue-800">
                           {entry.award}
                         </span>
                       </td>
@@ -246,7 +246,7 @@ const { title, description, primarySchool, juniorSecondary, seniorSecondary, spe
           <div class="bg-white rounded-lg shadow-lg overflow-hidden">
             <div class="overflow-x-auto">
               <table class="w-full">
-                <thead class="bg-green-600 text-white">
+                <thead class="bg-category-green-600 text-white">
                   <tr>
                     <th class="px-6 py-4 text-left font-semibold">學校名稱</th>
                     <th class="px-6 py-4 text-left font-semibold">參賽者姓名</th>
@@ -259,7 +259,7 @@ const { title, description, primarySchool, juniorSecondary, seniorSecondary, spe
                       <td class="px-6 py-4 text-gray-800">{entry.school}</td>
                       <td class="px-6 py-4 text-gray-800">{entry.student}</td>
                       <td class="px-6 py-4">
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-category-green-100 text-category-green-800">
                           {entry.award}
                         </span>
                       </td>
@@ -277,7 +277,7 @@ const { title, description, primarySchool, juniorSecondary, seniorSecondary, spe
           <div class="bg-white rounded-lg shadow-lg overflow-hidden">
             <div class="overflow-x-auto">
               <table class="w-full">
-                <thead class="bg-purple-600 text-white">
+                <thead class="bg-category-purple-600 text-white">
                   <tr>
                     <th class="px-6 py-4 text-left font-semibold">學校名稱</th>
                     <th class="px-6 py-4 text-left font-semibold">參賽者姓名</th>
@@ -290,7 +290,7 @@ const { title, description, primarySchool, juniorSecondary, seniorSecondary, spe
                       <td class="px-6 py-4 text-gray-800">{entry.school}</td>
                       <td class="px-6 py-4 text-gray-800">{entry.student}</td>
                       <td class="px-6 py-4">
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-category-purple-100 text-category-purple-800">
                           {entry.award}
                         </span>
                       </td>
@@ -308,7 +308,7 @@ const { title, description, primarySchool, juniorSecondary, seniorSecondary, spe
           <div class="bg-white rounded-lg shadow-lg overflow-hidden">
             <div class="overflow-x-auto">
               <table class="w-full">
-                <thead class="bg-orange-600 text-white">
+                <thead class="bg-category-orange-600 text-white">
                   <tr>
                     <th class="px-6 py-4 text-left font-semibold">學校名稱</th>
                     <th class="px-6 py-4 text-left font-semibold">參賽者姓名</th>
@@ -321,7 +321,7 @@ const { title, description, primarySchool, juniorSecondary, seniorSecondary, spe
                       <td class="px-6 py-4 text-gray-800">{entry.school}</td>
                       <td class="px-6 py-4 text-gray-800">{entry.student}</td>
                       <td class="px-6 py-4">
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-orange-100 text-orange-800">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-category-orange-100 text-category-orange-800">
                           {entry.award}
                         </span>
                       </td>
@@ -335,7 +335,7 @@ const { title, description, primarySchool, juniorSecondary, seniorSecondary, spe
 
         <!-- Congratulations Message -->
         <div class="text-center py-12">
-          <div class="bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg p-8 text-white">
+          <div class="bg-gradient-to-r from-category-yellow-400 to-category-orange-500 rounded-lg p-8 text-white">
             <h3 class="text-2xl font-bold mb-4">恭喜所有得獎者！</h3>
             <p class="text-lg opacity-90">
               感謝所有參賽學校和同學的參與，你們的創意和努力讓我們看到了AI藝術的無限可能。
