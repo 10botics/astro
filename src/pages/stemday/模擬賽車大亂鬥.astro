@@ -1,0 +1,200 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import { Image } from 'astro:assets';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
+
+import heroImage from '../../assets/images/Stemday/mario-kart-racing/hero-image.png';
+
+const activityData: {
+  title: string;
+  subtitle: string;
+  tags: string[];
+  description: string;
+  heroImageAsset: any;
+} = {
+  title: "模擬賽車大亂鬥",
+  subtitle: "集中精神，與同學競速，挑戰你的反應與敏捷！",
+  tags: ["賽車競技", "反應訓練", "小一至中五"],
+  description: "模擬賽車大亂鬥讓學生挑戰自己的反應和敏捷度，在限定時間中集中精神與同學比拼駕駛賽車的速度。學生將使用特製搖控器操控賽車，導師會全程指導同學如何操作遊戲，體驗競技賽車的刺激樂趣。每次最多4人同時參與，透過競技形式激發同學的專注力、協調能力和反應速度，感受科技遊戲帶來的運動競技精神。",
+  heroImageAsset: heroImage
+};
+
+const activityFeatures = [
+  {
+    icon: "fas fa-gamepad",
+    title: "真實駕駛體驗",
+    description: "使用特製搖控器操控賽車，讓學生感受逼真的賽車駕駛體驗，訓練手眼協調能力與精細動作控制。"
+  },
+  {
+    icon: "fas fa-bolt",
+    title: "反應速度訓練",
+    description: "賽車競技要求即時判斷與快速反應，有效訓練學生的神經反應速度，提升大腦與肢體的協調效率。"
+  },
+  {
+    icon: "fas fa-users",
+    title: "多人競技對戰",
+    description: "每次最多4人同時參與，透過同學間的競技對抗激發鬥志，培養運動精神與良性競爭的積極態度。"
+  },
+  {
+    icon: "fas fa-brain",
+    title: "專注力培養",
+    description: "在競賽環境中高度集中注意力，排除外界干擾，考驗學生的心理素質與專注程度，是極佳的腦部訓練活動。"
+  }
+];
+
+const activitySchedule = [
+  {
+    title: "活動介紹 [約30秒]",
+    content: [
+      "導師介紹模擬賽車大亂鬥的遊戲規則與操作方式",
+      "示範如何使用特製搖控器控制賽車，講解基本駕駛技巧",
+      "說明賽制安排，讓同學了解如何進行競技對戰"
+    ]
+  },
+  {
+    title: "實際體驗 [約4-6分鐘]",
+    content: [
+      "每次最多4人同時參與，各自選擇賽車角色準備出發",
+      "同學使用特製搖控器操控賽車，在賽道上與對手競速",
+      "導師在旁指導操作技巧，協助同學掌握遊戲要訣",
+      "完成一局後可讓出位置，讓其他同學輪流體驗"
+    ]
+  },
+  {
+    title: "分享與鼓勵",
+    content: [
+      "導師分享遊戲科技與現實賽車運動的關係，介紹模擬駕駛技術的應用",
+      "鼓勵同學在日常生活中培養專注力與反應能力，持續提升競技表現"
+    ]
+  }
+];
+
+const activityInfo = [
+  { label: "容納人數", value: "每次同時可供4人進行活動" },
+  { label: "時長", value: "每次每人可玩4-6分鐘" },
+  { label: "我們將會提供", value: "主機 / 特製搖控器" },
+  { label: "學校需提供/自備", value: "電視/ 屏幕、HDMI 線、電源位、桌椅" },
+  { label: "備註", value: "1. 附近需要電源" },
+];
+
+const faqData = [
+  {
+    question: "這項活動適合什麼年級的同學參與？",
+    answer: "活動適合小一至中五的學生參與。遊戲規則簡單直觀，所有年級的同學都能即時上手，無需任何特別技能或體能要求，只需集中精神操控搖控器即可。"
+  },
+  {
+    question: "每次活動可以容納多少人？",
+    answer: "每次最多供4人同時進行活動，體驗時間約4-6分鐘。我們可根據學校需求同時設置多套設備，讓更多同學輪流參與，減少等候時間。"
+  },
+  {
+    question: "活動需要學校提供什麼設備？",
+    answer: "學校需要提供電視或屏幕、HDMI 線、電源位及桌椅。我們將提供遊戲主機及特製搖控器。攤位所需空間不大，適合在走廊、禮堂或任何開放空間設置，只需確保附近有電源插座。"
+  },
+  {
+    question: "活動需要電源嗎？",
+    answer: "是的，遊戲主機及屏幕均需要電源運作，請確保攤位附近有可用的電源插座。如有疑問，歡迎提前與我們溝通場地安排。"
+  }
+];
+
+const { title, subtitle, tags, description, heroImageAsset: heroImg } = activityData;
+---
+
+<Layout title={title} description={description}>
+  <main>
+    <HeroSection 
+      title={title}
+      subtitle={subtitle}
+      tags={tags}
+      description={description}
+      heroImage={heroImg}
+    />
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold mb-4">活動特色</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {activityFeatures.map((feature) => (
+            <div class="text-center">
+              <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class={`${feature.icon} text-white text-2xl`}></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p class="text-gray-600">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <SingleCourseContent 
+      items={activitySchedule}
+      hours="每人每次4-6分鐘"
+    />
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">活動資訊</h2>
+          <div class="overflow-hidden rounded-lg shadow-lg border border-gray-200">
+            <table class="w-full">
+              <tbody>
+                {activityInfo.map((item, i) => (
+                  <tr class={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                    <td class="px-6 py-4 font-semibold text-gray-900 border-r border-gray-200 w-1/3 text-center">{item.label}</td>
+                    <td class="px-6 py-4 text-gray-700 text-center">{item.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <QnASection faqs={faqData} />
+
+    <RelatedCourses courseTags={tags} courseTitle={title} context="course" />
+    <RelatedNews courseTags={tags} courseTitle={title} context="course" />
+
+    <ContactSection subtitle="歡迎聯絡我們，我們會為您提供詳細的活動安排和報名資訊。" />
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.accordion-header').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.parentElement;
+          if (!item) return;
+          const isActive = item.classList.contains('active');
+          document.querySelectorAll('.accordion-item').forEach(accordionItem => {
+            accordionItem.classList.remove('active');
+          });
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+
+  <style>
+    .accordion-content {
+      display: none;
+    }
+    .accordion-item.active .accordion-content {
+      display: block;
+    }
+    .accordion-item.active .accordion-header i {
+      transform: rotate(45deg);
+    }
+  </style>
+</Layout>

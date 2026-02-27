@@ -16,6 +16,7 @@ import DroneFotball from './無人機足球.astro';
 import QuickEyeHand from './眼明手快.astro';
 import AppleVisionPro from './APPLE Vision Pro 體驗.astro';
 import NerveReactionChallenge from './反應神經大挑戰.astro';
+import MarioKartRacing from './模擬賽車大亂鬥.astro';
 import Index from './index.astro';
 
 // Component mapping by filename
@@ -34,6 +35,7 @@ const componentMap = {
   '眼明手快.astro': QuickEyeHand,
   'APPLE Vision Pro 體驗.astro': AppleVisionPro,
   '反應神經大挑戰.astro': NerveReactionChallenge,
+  '模擬賽車大亂鬥.astro': MarioKartRacing,
   'index.astro': Index
 };
 
@@ -54,6 +56,7 @@ export async function getStaticPaths() {
     'quick-eye-hand': '眼明手快.astro',
     'apple-vision-pro': 'APPLE Vision Pro 體驗.astro',
     'nerve-reaction-challenge': '反應神經大挑戰.astro',
+    'mario-kart-racing': '模擬賽車大亂鬥.astro',
     'index': 'index.astro'
   };
   return Object.keys(slugToFilenameMap).map(slug => ({
@@ -83,6 +86,7 @@ const slugToFilenameMap = {
   'quick-eye-hand': '眼明手快.astro',
   'apple-vision-pro': 'APPLE Vision Pro 體驗.astro',
   'nerve-reaction-challenge': '反應神經大挑戰.astro',
+  'mario-kart-racing': '模擬賽車大亂鬥.astro',
   'index': 'index.astro'
 };
 const filename = slugToFilenameMap[slug];
