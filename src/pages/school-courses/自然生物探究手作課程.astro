@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
@@ -268,11 +268,11 @@ const faqData = [
             <div class="p-6">
               <h3 class="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
               {item.link ? (
-                <a href={item.link} class="text-blue-600 font-medium hover:text-blue-800 transition-colors duration-200">
+                <a href={item.link} class="text-brand-blue-600 font-medium hover:text-brand-blue-800 transition-colors duration-200">
                   {item.course}
                 </a>
               ) : (
-                <p class="text-blue-600 font-medium">{item.course}</p>
+                <p class="text-brand-blue-600 font-medium">{item.course}</p>
               )}
             </div>
           </div>
@@ -285,7 +285,7 @@ const faqData = [
   <QnASection faqs={faqData} />
 
   <!-- Handcraft Products Brochure Section -->
-  <section class="section-padding-sm bg-gradient-to-br from-green-50 to-blue-50">
+  <section class="section-padding-sm bg-gradient-to-br from-category-green-50 to-brand-blue-50">
     <div class="container-standard">
       <div class="max-w-4xl mx-auto text-center">
         <div class="card-base p-8">
@@ -297,7 +297,7 @@ const faqData = [
             href="https://drive.google.com/file/d/1MrvlRJ97L83k4MkKCZ0Z_sjYPCM-lHWW/view?usp=drive_link" 
             target="_blank" 
             rel="noopener noreferrer"
-            class="inline-flex items-center px-8 py-3 bg-gradient-to-r from-green-600 to-blue-600 text-white font-semibold rounded-lg hover:from-green-700 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            class="inline-flex items-center px-8 py-3 bg-gradient-to-r from-category-green-600 to-brand-blue-600 text-white font-semibold rounded-lg hover:from-category-green-700 hover:to-brand-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
           >
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>

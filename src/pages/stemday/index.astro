@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import PaperformEmbed from '../../components/PaperformEmbed.astro';
@@ -17,7 +17,16 @@ let heroImage,
   matatalabProgramming,
   arGameExperience,
   vrGameExperience,
-  virtualSpaceStation;
+  virtualSpaceStation,
+  handClapKeirinRace,
+  droneFootball,
+  quickEyeHand,
+  appleVisionPro,
+  nerveReactionChallenge,
+  marioKartRacing,
+  paperAirplaneRace,
+  autonomousCarLecture,
+  aerospaceLecture;
 
 // Additional images from original STEM Day HTML content
 let classMicrobitMaze,
@@ -39,6 +48,7 @@ let classMicrobitMaze,
   galleryImg7,
   galleryImg8,
   galleryImg9,
+  featuredDobot,
   // Featured activities
   featuredAIDigitalAnimation,
   featuredTello,
@@ -76,6 +86,15 @@ try {
     arGameExperience = await import('../../assets/images/stemday/mainpage/ar-game-experience.png');
     vrGameExperience = await import('../../assets/images/stemday/mainpage/vr-game-experience.png');
     virtualSpaceStation = await import('../../assets/images/stemday/mainpage/virtual-space-station.png');
+    handClapKeirinRace = await import('../../assets/images/stemday/hand-clap-keirin-race/hero-image.png');
+    droneFootball = await import('../../assets/images/stemday/drone-football/hero-image.png');
+    quickEyeHand = await import('../../assets/images/stemday/quick-eye-hand/hero-image.png');
+    appleVisionPro = await import('../../assets/images/stemday/apple-vision-pro/hero-image.png');
+    nerveReactionChallenge = await import('../../assets/images/stemday/nerve-reaction-challenge/hero-image.png');
+    marioKartRacing = await import('../../assets/images/stemday/mario-kart-racing/hero-image.png');
+    paperAirplaneRace = await import('../../assets/images/stemday/paper-airplane-race/hero-image.png');
+    autonomousCarLecture = await import('../../assets/images/stemday/autonomous-car-lecture/hero-image.png');
+    aerospaceLecture = await import('../../assets/images/stemday/aerospace-lecture/hero-image.png');
   
   // Classes (課堂)
       classMicrobitMaze = await import('../../assets/images/stemday/featured-activities/IMG_1726-1024x768.jpg');
@@ -90,7 +109,7 @@ try {
 
   // Lectures (講座)
       aiLectureImage = await import('../../assets/images/stemday/past-activities/Screenshot-2023-10-13-174241.png');
-    blockchainIcon = await import('../../assets/images/stemday/featured-activities/112-e1696583914904.png');
+    blockchainIcon = await import('../../assets/images/stemday/featured-activities/blockchain-lecture.png');
 
   // Gallery (活動花絮)
       galleryImg1 = await import('../../assets/images/stemday/featured-activities/IMG_0089-1024x768.jpg');
@@ -110,6 +129,7 @@ try {
   featuredProcreate = await import('../../assets/images/school-courses/Procreate數位藝術課程/procreate-course-image.webp');
   featuredDonkeyCar = await import('../../assets/images/news/2021-12-09-donkey-car-x學與教博覽2021/image8.jpg');
   featuredDelightex = await import('../../assets/images/school-courses/Delightex 遊戲設計課程/admin-ajax-min.png');
+  featuredDobot = await import('../../assets/images/school-courses/Dobot 智能機械手臂/dobot-cover-pic.png');
 
   // Load course hero images to use in featured activities
   try {
@@ -236,24 +256,88 @@ try {
               <h3 class="p-4 text-center text-lg font-semibold"><a href="school-courses/ai-digital-animation-exhibition/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">AI數碼動畫展</a></h3>
             </div>
             <div class="card-base card-hover">
-              {martyRobot && <Image src={martyRobot.default} alt="Marty 機械人編程體驗" class="w-full h-48 object-cover" />}
-              <h3 class="p-4 text-center text-lg font-semibold text-gray-900">Marty 機械人編程體驗</h3>
+              <a href="stemday/marty-robot/" target="_blank" rel="noopener">
+                {martyRobot && <Image src={martyRobot.default} alt="Marty編程機械人" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="stemday/marty-robot/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Marty編程機械人</a></h3>
+            </div>
+            <div class="card-base card-hover">
+              <a href="stemday/microbit-football/" target="_blank" rel="noopener">
+                {microbitCar && <Image src={microbitCar.default} alt="Micro:bit 足球車競賽" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="stemday/microbit-football/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Micro:bit 足球車競賽</a></h3>
             </div>
             <div class="card-base card-hover">
               {matatalabProgramming && <Image src={matatalabProgramming.default} alt="Matatalab編程體驗" class="w-full h-48 object-cover" />}
               <h3 class="p-4 text-center text-lg font-semibold text-gray-900">Matatalab編程體驗</h3>
             </div>
             <div class="card-base card-hover">
-              {arGameExperience && <Image src={arGameExperience.default} alt="AR遊戲體驗" class="w-full h-48 object-cover" />}
-              <h3 class="p-4 text-center text-lg font-semibold text-gray-900">AR遊戲體驗</h3>
+              <a href="stemday/ar-game/" target="_blank" rel="noopener">
+                {arGameExperience && <Image src={arGameExperience.default} alt="AR遊戲體驗" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="stemday/ar-game/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">AR遊戲體驗</a></h3>
             </div>
             <div class="card-base card-hover">
-              {vrGameExperience && <Image src={vrGameExperience.default} alt="VR遊戲體驗" class="w-full h-48 object-cover" />}
-              <h3 class="p-4 text-center text-lg font-semibold text-gray-900">VR遊戲體驗</h3>
+              <a href="stemday/vr-game/" target="_blank" rel="noopener">
+                {vrGameExperience && <Image src={vrGameExperience.default} alt="VR遊戲體驗" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="stemday/vr-game/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">VR遊戲體驗</a></h3>
             </div>
             <div class="card-base card-hover">
-              {virtualSpaceStation && <Image src={virtualSpaceStation.default} alt="虛擬太空站接駁" class="w-full h-48 object-cover" />}
-              <h3 class="p-4 text-center text-lg font-semibold text-gray-900">虛擬太空站接駁</h3>
+              <a href="/stemday/virtual-space-station-docking-mission/" target="_blank" rel="noopener">
+                {virtualSpaceStation && <Image src={virtualSpaceStation.default} alt="虛擬太空站接駁任務" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="/stemday/virtual-space-station-docking-mission/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">虛擬太空站接駁任務</a></h3>
+            </div>
+            <div class="card-base card-hover">
+              <a href="/stemday/hand-clap-keirin-race/" target="_blank" rel="noopener">
+                {handClapKeirinRace && <Image src={handClapKeirinRace.default} alt="手拍凱林賽" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="/stemday/hand-clap-keirin-race/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">手拍凱林賽</a></h3>
+            </div>
+            <div class="card-base card-hover">
+              <a href="/stemday/drone-football/" target="_blank" rel="noopener">
+                {droneFootball && <Image src={droneFootball.default} alt="無人機足球" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="/stemday/drone-football/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">無人機足球</a></h3>
+            </div>
+            <div class="card-base card-hover">
+              <a href="/stemday/quick-eye-hand/" target="_blank" rel="noopener">
+                {quickEyeHand && <Image src={quickEyeHand.default} alt="眼明手快" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="/stemday/quick-eye-hand/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">眼明手快</a></h3>
+            </div>
+            <div class="card-base card-hover">
+              <a href="/stemday/apple-vision-pro/" target="_blank" rel="noopener">
+                {appleVisionPro && <Image src={appleVisionPro.default} alt="APPLE Vision Pro 體驗" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="/stemday/apple-vision-pro/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">APPLE Vision Pro 體驗</a></h3>
+            </div>
+            <div class="card-base card-hover">
+              <a href="/stemday/nerve-reaction-challenge/" target="_blank" rel="noopener">
+                {nerveReactionChallenge && <Image src={nerveReactionChallenge.default} alt="反應神經大挑戰" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="/stemday/nerve-reaction-challenge/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">反應神經大挑戰</a></h3>
+            </div>
+            <div class="card-base card-hover">
+              <a href="/stemday/mario-kart-racing/" target="_blank" rel="noopener">
+                {marioKartRacing && <Image src={marioKartRacing.default} alt="模擬賽車大亂鬥" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="/stemday/mario-kart-racing/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">模擬賽車大亂鬥</a></h3>
+            </div>
+            <div class="card-base card-hover">
+              <a href="school-courses/donkey-car/" target="_blank" rel="noopener">
+                { (heroDonkey || featuredDonkeyCar) && (
+                  <Image src={(heroDonkey as any) ?? (featuredDonkeyCar && featuredDonkeyCar.default)} alt="Donkey Car 無人車" class="w-full h-48 object-cover" />
+                )}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="school-courses/donkey-car/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Donkey Car 無人車</a></h3>
+            </div>
+            <div class="card-base card-hover">
+              <a href="school-courses/dobot/" target="_blank" rel="noopener">
+                {featuredDobot && <Image src={featuredDobot.default} alt="Dobot 智能機械手臂" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="school-courses/dobot/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Dobot 智能機械手臂</a></h3>
             </div>
           </div>
         </div>
@@ -308,6 +392,12 @@ try {
               </a>
               <h3 class="p-4 text-center text-lg font-semibold"><a href="stemday/matatalab-入門編程課程/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Matatalab 入門編程課程</a></h3>
             </div>
+            <div class="card-base card-hover">
+              <a href="/stemday/paper-airplane-race/" target="_blank" rel="noopener">
+                {paperAirplaneRace && <Image src={paperAirplaneRace.default} alt="紙飛機比賽" class="w-full h-48 object-cover" />}
+              </a>
+              <h3 class="p-4 text-center text-lg font-semibold"><a href="/stemday/paper-airplane-race/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">紙飛機比賽</a></h3>
+            </div>
           </div>
         </div>
       </section>
@@ -336,10 +426,10 @@ try {
           </div>
   
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div>
+            <div class="order-2 lg:order-1">
               {blockchainIcon && <Image src={blockchainIcon.default} alt="區塊鏈專題講座" class="w-full h-auto rounded-lg shadow-card" />}
             </div>
-            <div>
+            <div class="order-1 lg:order-2">
               <h3 class="text-2xl font-semibold text-gray-900 mb-4">區塊鏈專題講座</h3>
               <p class="text-gray-700 mb-4 leading-relaxed">由行業導師主講，講解區塊鏈基礎、加密貨幣、NFT 等熱門主題，幫助同學理解區塊鏈技術的實際價值與應用。</p>
               <ul class="space-y-2 text-gray-700 list-disc pl-5">
@@ -347,6 +437,40 @@ try {
                 <li>開放源代碼與重要性</li>
                 <li>NFT 和數位資產</li>
                 <li>加密錢包與安全</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mt-12">
+            <div class="order-2 lg:order-1">
+              {autonomousCarLecture && <Image src={autonomousCarLecture.default} alt="無人車講座" class="w-full h-auto rounded-lg shadow-card" />}
+            </div>
+            <div class="order-1 lg:order-2">
+              <h3 class="text-2xl font-semibold text-gray-900 mb-4">無人車講座</h3>
+              <p class="text-gray-700 mb-4 leading-relaxed">在無人車講座中，講者將會講解無人車技術的基本原理和發展歷程，並且會探討更多未來無人車技術的發展方向。透過介紹不同無人車相關知識，我們期盼激發同學們對無人車的興趣。</p>
+              <ul class="space-y-2 text-gray-700 list-disc pl-5">
+                <li>認識無人車技術基礎原理</li>
+                <li>無人車發展歷程與里程碑</li>
+                <li>感測器、AI 與自動駕駛算法</li>
+                <li>無人車在物流、運輸及城市規劃的應用</li>
+                <li>未來無人車技術發展方向</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mt-12">
+            <div class="order-2 lg:order-1">
+              {aerospaceLecture && <Image src={aerospaceLecture.default} alt="航天講座" class="w-full h-auto rounded-lg shadow-card" />}
+            </div>
+            <div class="order-1 lg:order-2">
+              <h3 class="text-2xl font-semibold text-gray-900 mb-4">航天講座</h3>
+              <p class="text-gray-700 mb-4 leading-relaxed">航天講座將會向同學們介紹不同航天科技技術的工作原理，並且會說明人類航天事業的發展歷程，以及探討航天技術在科學探索等方面的重要價值，希望藉此激發同學對航天科技的興趣。</p>
+              <ul class="space-y-2 text-gray-700 list-disc pl-5">
+                <li>認識航天科技原理</li>
+                <li>人類航天發展歷程與里程碑</li>
+                <li>太空站運作及太空人訓練</li>
+                <li>衛星通訊、地球觀測等太空技術應用</li>
+                <li>未來太空探索展望</li>
               </ul>
             </div>
           </div>
@@ -699,7 +823,7 @@ try {
         <div class="text-center mt-12">
           <a 
             href="/news" 
-            class="inline-flex items-center bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white px-8 py-3 rounded-lg transition-all duration-300 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            class="inline-flex items-center bg-gradient-to-r from-cyan-600 to-brand-blue-600 hover:from-cyan-700 hover:to-brand-blue-700 text-white px-8 py-3 rounded-lg transition-all duration-300 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
           >
             查看更多新聞
             <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

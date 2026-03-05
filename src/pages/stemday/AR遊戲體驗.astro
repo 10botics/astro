@@ -1,0 +1,218 @@
+﻿---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import { Image } from 'astro:assets';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
+
+import heroImage from '../../assets/images/stemday/mainpage/ar-game-experience.png';
+
+const activityData: {
+  title: string;
+  subtitle: string;
+  tags: string[];
+  description: string;
+  heroImageAsset: any;
+} = {
+  title: "AR遊戲體驗",
+  subtitle: "體驗AR擴增實境遊戲，在現實場景中看見虛擬角色，認識前沿科技！",
+  tags: ["AR 擴增實境", "遊戲體驗", "初小", "高小", "初中", "高中"],
+  description: "AR（擴增實境）遊戲體驗活動帶領同學踏入虛擬與現實交融的奇幻世界！同學透過平板電腦觀看虛擬遊戲角色和互動元素精準疊加在真實環境上，親身感受擴增實境技術帶來的震撼效果，體驗當前最前沿的互動科技。導師全程在旁協助，除確保同學順利進行遊戲操作外，更會即場講解AR技術的工作原理——包括攝影機如何辨識標記（Marker）、電腦如何即時計算虛擬物件的位置和角度，並在正確位置渲染疊加虛擬影像。活動適合小一至中六所有年級，導師會按不同年齡調整知識講解的深度，並介紹AR技術在教育、零售試裝、醫療輔助和建築設計等領域的實際應用，激發同學對科技創新的無限想像。",
+  heroImageAsset: heroImage
+};
+
+const activityFeatures = [
+  {
+    icon: "fas fa-vr-cardboard",
+    title: "虛實交融的AR體驗",
+    description: "透過AR擴增實境技術，同學可在平板電腦熒幕上看見虛擬遊戲角色和元素疊加在真實環境中，親身感受「虛擬與現實融合」的震撼效果，體驗目前最前沿的互動科技。"
+  },
+  {
+    icon: "fas fa-gamepad",
+    title: "寓教於樂的互動遊戲",
+    description: "活動以生動有趣的AR遊戲形式進行，同學在輕鬆歡笑的氛圍中自然地認識AR技術的應用原理。遊戲的互動性設計能有效提升同學的參與積極性和科技學習動機。"
+  },
+  {
+    icon: "fas fa-chalkboard-teacher",
+    title: "導師全程講解協助",
+    description: "我們的專業導師全程在旁提供個人化協助，不僅確保同學能順利進行遊戲操作，更會即場講解AR技術的工作原理——包括如何利用攝影機辨識標記（Marker）並在正確位置疊加虛擬影像。"
+  },
+  {
+    icon: "fas fa-users",
+    title: "適合全校各年級",
+    description: "活動內容靈活，適合小一至中六所有年級學生參與。導師會根據不同年級同學的理解能力，調整知識講解的深度，讓初小同學也能享受體驗，高年級同學則可深入了解AR技術的運作原理。"
+  }
+];
+
+const activitySchedule = [
+  {
+    title: "AR技術簡介 [約1分鐘]",
+    content: [
+      "導師以生活化例子介紹AR擴增實境技術：從Pokémon GO到工業應用的廣泛用途",
+      "講解AR技術的基本工作原理：攝影機如何辨識環境或標記（Marker），再精確疊加虛擬影像",
+      "展示AR背景海報的標記設計，說明電腦如何利用辨識圖案確定虛擬物件的位置和角度"
+    ]
+  },
+  {
+    title: "平板操作指引 [約30秒]",
+    content: [
+      "導師示範如何手持平板電腦對準AR標記，觀察虛擬元素出現",
+      "同學嘗試移動平板的角度和距離，感受虛擬物件如何跟隨現實空間同步變化",
+      "了解AR遊戲的互動操作方式，準備正式開始體驗"
+    ]
+  },
+  {
+    title: "AR遊戲互動體驗 [約1-2分鐘]",
+    content: [
+      "每次可供6人同時使用平板電腦進行AR遊戲體驗",
+      "同學透過平板熒幕與虛擬角色或元素進行互動操作",
+      "體驗不同的AR遊戲場景，感受虛擬世界與現實環境融合的奇妙效果",
+      "導師從旁協助同學解決操作疑問，並鼓勵同學嘗試不同的互動方式"
+    ]
+  },
+  {
+    title: "科技應用分享",
+    content: [
+      "導師介紹AR技術在不同行業的實際應用：醫療手術輔助、建築設計視覺化、教育學習、零售試裝等",
+      "分享AR技術的最新發展趨勢，如Apple Vision Pro等混合現實裝置",
+      "啟發同學思考：你會希望在哪些場合應用AR技術？有什麼創新的想法？"
+    ]
+  }
+];
+
+const activityInfo = [
+  { label: "容納人數", value: "每次可供6人進行活動" },
+  { label: "時長", value: "每次每人可玩1-2分鐘" },
+  { label: "我們將會提供", value: "AR背景海報 / AR遊戲 / 遊戲介紹易拉架" },
+  { label: "學校需提供/自備", value: "可移動壁報或白板 / 平板電腦" },
+];
+
+const faqData = [
+  {
+    question: "這項活動適合什麼年級的同學參與？",
+    answer: "活動適合小一至中六所有年級學生參與。導師會根據不同年級的理解能力調整知識講解的深淺，確保每位同學都能享受體驗並有所收穫。低年級同學著重感受AR遊戲的趣味，高年級同學則可深入了解AR技術的工作原理。"
+  },
+  {
+    question: "每次活動可以容納多少人？",
+    answer: "每次可供6人同時使用平板電腦進行AR遊戲體驗，每人每次約1至2分鐘。相比其他單人體驗攤位，AR遊戲體驗的多人容納量更高，非常適合在STEM Day活動中讓更多同學短時間內輪流參與。"
+  },
+  {
+    question: "學校需要準備什麼設備？",
+    answer: "學校需提供：\n• 可移動壁報板或白板（用於張貼AR背景海報）\n• 平板電腦（數量根據參與人數調整）\n\n我們將提供AR背景海報、AR遊戲軟件及遊戲介紹易拉架。建議先致電 +852 6554-1506 或電郵至 info@10botics.com 與同事溝通學校期望的活動內容及具體安排。"
+  },
+  {
+    question: "AR遊戲有哪些種類？內容是否適合學校環境？",
+    answer: "我們提供多種適合學校環境的AR遊戲選擇，內容涵蓋互動冒險、虛擬角色互動和科普知識探索等不同主題，所有內容均適合學生參與。具體遊戲種類可按學校的年級需求和主題作靈活選擇，歡迎聯絡我們了解詳情。"
+  },
+  {
+    question: "同學無需自備平板電腦嗎？",
+    answer: "學校需要提供平板電腦供同學使用。如學校的平板電腦數量有限，建議提前告知我們，我們可按實際情況為學校建議最合適的參與人數安排，確保活動順利進行。"
+  }
+];
+
+const { title, subtitle, tags, description, heroImageAsset: heroImg } = activityData;
+---
+
+<Layout title={title} description={description}>
+  <main>
+    <!-- Hero Section -->
+    <HeroSection 
+      title={title}
+      subtitle={subtitle}
+      tags={tags}
+      description={description}
+      heroImage={heroImg}
+    />
+
+    <!-- Activity Features -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold mb-4">活動特色</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {activityFeatures.map((feature) => (
+            <div class="text-center">
+              <div class="w-16 h-16 bg-brand-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class={`${feature.icon} text-white text-2xl`}></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p class="text-gray-600">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Activity Content -->
+    <SingleCourseContent 
+      items={activitySchedule}
+      hours="每人每次1-2分鐘"
+    />
+
+    <!-- Activity Info Table -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">活動資訊</h2>
+          <div class="overflow-hidden rounded-lg shadow-lg border border-gray-200">
+            <table class="w-full">
+              <tbody>
+                {activityInfo.map((item, i) => (
+                  <tr class={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                    <td class="px-6 py-4 font-semibold text-gray-900 border-r border-gray-200 w-1/3 text-center">{item.label}</td>
+                    <td class="px-6 py-4 text-gray-700 text-center">{item.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <QnASection faqs={faqData} />
+
+    <!-- Contact Section -->
+    <RelatedCourses courseTags={tags} courseTitle={title} context="course" />
+    <RelatedNews courseTags={tags} courseTitle={title} context="course" />
+
+    <ContactSection subtitle="歡迎聯絡我們，我們會為您提供詳細的活動安排和報名資訊。" />
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.accordion-header').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.parentElement;
+          if (!item) return;
+          const isActive = item.classList.contains('active');
+          document.querySelectorAll('.accordion-item').forEach(accordionItem => {
+            accordionItem.classList.remove('active');
+          });
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+
+  <style>
+    .accordion-content {
+      display: none;
+    }
+    .accordion-item.active .accordion-content {
+      display: block;
+    }
+    .accordion-item.active .accordion-header i {
+      transform: rotate(45deg);
+    }
+  </style>
+</Layout>

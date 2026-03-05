@@ -1,0 +1,217 @@
+﻿---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
+
+import heroImage from '../../assets/images/stemday/drone-football/hero-image.png';
+
+const activityData: {
+  title: string;
+  subtitle: string;
+  tags: string[];
+  description: string;
+  heroImageAsset: any;
+} = {
+  title: "無人機足球",
+  subtitle: "操控無人機穿越龍門競技，體驗航空科技與競技運動的刺激樂趣！",
+  tags: ["小一至中六", "每次約3分鐘", "每次最多2-3人"],
+  description: "無人機足球是一項結合航空科技與競技運動的全新STEM體驗！同學以手持搖控器操控真實無人機，在專業防護網場內飛翔，嘗試靈活穿越龍門得分，感受操控飛行器帶來的成就感與興奮感。活動全程於封閉網場進行，安全可靠，家長和老師可安心觀賞。導師即場講解四軸螺旋槳的升力原理、遙控訊號傳輸及穩定飛行技術，讓同學在競技遊戲中建立對航空工程的基礎認識，並了解無人機在航拍、物流配送、農業噴灑及搜救任務等現實領域的廣泛應用，全面激發對航空科技的探索熱情。",
+  heroImageAsset: heroImage
+};
+
+const activityFeatures = [
+  {
+    icon: "fas fa-gamepad",
+    title: "親手操控無人機",
+    description: "同學可親身嘗試以手控搖控器操控真實無人機，即時感受無人機對指令的回應，體驗操控飛行器的成就感與樂趣，並從中了解搖控訊號與飛行動作的基本關係。"
+  },
+  {
+    icon: "fas fa-futbol",
+    title: "足球競技體驗",
+    description: "無人機在封閉網場中飛行，同學須靈活操控無人機穿越龍門得分，將競技運動的刺激感與無人機科技完美融合，考驗同學的手眼協調能力與空間判斷力。"
+  },
+  {
+    icon: "fas fa-shield-alt",
+    title: "安全網場環境",
+    description: "活動在專業無人機防護網場內進行，無人機全程於封閉空間飛行，配合導師的安全指引，確保同學在完全安全的環境中盡情享受飛行體驗，家長和老師可安心觀賞。"
+  },
+  {
+    icon: "fas fa-lightbulb",
+    title: "認識航空科技原理",
+    description: "導師會在活動中講解無人機的飛行原理，包括四軸螺旋槳的升力原理、遙控訊號傳輸及穩定飛行的技術，讓同學在玩樂中建立對航空科技與工程學的初步認識。"
+  }
+];
+
+const activitySchedule = [
+  {
+    title: "活動簡介與安全講解 [約1分鐘]",
+    content: [
+      "導師簡介無人機足球的玩法與競技規則",
+      "講解無人機的基本飛行原理：四軸螺旋槳如何產生升力及控制方向",
+      "示範搖控器的各功能鍵用途，包括油門、方向桿及緊急停機按鍵",
+      "提醒飛行安全守則，確保同學了解正確的操控姿勢和觀察距離"
+    ]
+  },
+  {
+    title: "熟悉操控 [約1分鐘]",
+    content: [
+      "同學首先練習基本飛行動作：起飛、前進、後退及懸停",
+      "導師從旁指導，協助同學熟悉搖控器的靈敏度與操控手感",
+      "調整油門力度，讓同學感受無人機對指令的即時回應"
+    ]
+  },
+  {
+    title: "無人機足球競技體驗 [約2分鐘]",
+    content: [
+      "每次可同時供2-3人進行競技比賽",
+      "同學操控無人機嘗試穿越龍門得分，先達目標分數者獲勝",
+      "體驗以空間感和手眼協調引導無人機精準穿越目標的成就感",
+      "導師即場協助調整飛行策略，鼓勵同學勇於嘗試不同路線"
+    ]
+  },
+  {
+    title: "活動回顧與分享",
+    content: [
+      "導師與同學分享操控心得，討論哪些飛行技巧最有效",
+      "介紹無人機在現實世界的應用，包括航拍、物流運輸、搜救任務及農業噴灑等",
+      "鼓勵同學思考無人機技術未來的發展方向，激發對航空工程的探索興趣"
+    ]
+  }
+];
+
+const activityInfo = [
+  { label: "可容納人數", value: "每次同時可供2-3人進行活動" },
+  { label: "時長", value: "每次每人可玩2-3分鐘" },
+  { label: "我們將會提供", value: "無人機足球 / 無人機網 / 搖控器 / 導師" },
+  { label: "學校需提供/自備", value: "/" },
+  { label: "備註", value: "1. 附近需要電源" },
+];
+
+const faqData = [
+  {
+    question: "這項活動適合哪些年級參與？",
+    answer: "活動適合小一至中六同學參與，完全無需任何無人機操控經驗。導師會按照同學的年齡和能力，即場提供適切的指導，確保每位同學都能順利體驗飛行樂趣。"
+  },
+  {
+    question: "每次活動可容納多少同學？",
+    answer: "每次可同時供2-3人進行活動，每位同學每次約2至3分鐘體驗時間，非常適合以攤位輪流形式在全校STEM Day活動中進行，讓更多同學輪流參與。"
+  },
+  {
+    question: "活動是否安全？無人機會否傷及同學？",
+    answer: "安全是我們的首要考量。活動在專業無人機防護網場內進行，無人機全程於封閉網場中飛行，不會飛出場外。無人機使用的是適合室內飛行的輕型機型，加上導師全程在場監督及指導，同學可安心體驗活動。"
+  },
+  {
+    question: "學校需要準備什麼設備或空間？",
+    answer: "學校只需確保活動區域附近有電源供電即可。無人機足球場地、防護網、搖控器及專業導師均由我們負責提供及安裝，學校無需另行準備器材。建議預留足夠的室內或戶外空間以架設網場。"
+  },
+  {
+    question: "活動需要多大的場地？",
+    answer: "無人機網場的大小可按學校場地靈活調整。建議預留約3至5米的開放空間以確保最佳飛行體驗。如有特別場地限制，歡迎提前聯絡我們商討合適的安排。"
+  },
+  {
+    question: "同學在活動中能學到什麼？",
+    answer: "除了親身操控無人機的樂趣外，同學將認識無人機的基本飛行原理（包括四軸螺旋槳如何產生升力），了解遙控訊號傳輸的概念，並透過競技體驗訓練手眼協調能力和空間感知。導師亦會介紹無人機在現實生活中的多元應用，如航拍、物流、農業及搜救任務等。"
+  }
+];
+
+const { title, subtitle, tags, description, heroImageAsset: heroImg } = activityData;
+---
+
+<Layout title={title} description={description}>
+  <main>
+    <HeroSection
+      title={title}
+      subtitle={subtitle}
+      tags={tags}
+      description={description}
+      heroImage={heroImg}
+    />
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold mb-4">活動特色</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {activityFeatures.map((feature) => (
+            <div class="text-center">
+              <div class="w-16 h-16 bg-brand-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class={`${feature.icon} text-white text-2xl`}></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p class="text-gray-600">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <SingleCourseContent
+      items={activitySchedule}
+      hours="每人每次2-3分鐘"
+    />
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">活動資訊</h2>
+          <div class="overflow-hidden rounded-lg shadow-lg border border-gray-200">
+            <table class="w-full">
+              <tbody>
+                {activityInfo.map((item, i) => (
+                  <tr class={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                    <td class="px-6 py-4 font-semibold text-gray-900 border-r border-gray-200 w-1/3 text-center">{item.label}</td>
+                    <td class="px-6 py-4 text-gray-700 text-center whitespace-pre-line">{item.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <QnASection faqs={faqData} />
+
+    <RelatedCourses courseTags={tags} courseTitle={title} context="course" />
+    <RelatedNews courseTags={tags} courseTitle={title} context="course" />
+
+    <ContactSection subtitle="歡迎聯絡我們，我們會為您提供詳細的活動安排和報名資訊。" />
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.accordion-header').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.parentElement;
+          if (!item) return;
+          const isActive = item.classList.contains('active');
+          document.querySelectorAll('.accordion-item').forEach(accordionItem => {
+            accordionItem.classList.remove('active');
+          });
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+
+  <style>
+    .accordion-content {
+      display: none;
+    }
+    .accordion-item.active .accordion-content {
+      display: block;
+    }
+    .accordion-item.active .accordion-header i {
+      transform: rotate(45deg);
+    }
+  </style>
+</Layout>

@@ -1,0 +1,213 @@
+﻿---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import { Image } from 'astro:assets';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
+
+import heroImage from '../../assets/images/stemday/mainpage/microbit-car.png';
+
+const activityData: {
+  title: string;
+  subtitle: string;
+  tags: string[];
+  description: string;
+  heroImageAsset: any;
+} = {
+  title: "Micro:bit 足球車競賽",
+  subtitle: "多種方式操控 Micro:bit 賽車，在迷你足球場進行刺激科技競技！",
+  tags: ["Micro:bit", "編程", "小一至中六", "初小", "高小", "初中", "高中"],
+  description: "Micro:bit 足球車競賽是一項充滿科技創意的全新競技體驗！同學可選擇三種截然不同的控制方式——圖像識別（攝影機辨識圖卡方向）、手勢感應（Micro:bit 加速度計感應手腕動作）或平板程式控制（藍牙傳送指令）——操控 Tinybit 小型賽車在迷你足球場上展開對戰，嘗試推球入對方龍門得分。活動讓同學在競技樂趣中自然認識 Micro:bit 微控制器的功能、感應器技術及無線通訊原理，體驗機器視覺在機械人控制中的實際應用。小組形式的分隊對戰亦培養同學的團隊合作精神和溝通協調能力，在歡笑競技中點燃對 STEM 的熱情。",
+  heroImageAsset: heroImage
+};
+
+const activityFeatures = [
+  {
+    icon: "fas fa-futbol",
+    title: "迷你足球車對戰",
+    description: "同學操控Tinybit小型賽車在迷你足球場上互相對戰，嘗試推球入龍門得分。競技氣氛熱烈，即使是旁觀的同學也忍不住為參賽者加油吶喊，場面刺激熱鬧。"
+  },
+  {
+    icon: "fas fa-hand-paper",
+    title: "多元創新操控方式",
+    description: "活動提供三種截然不同的控制方式供選擇：\n① 圖像識別：攝影機辨識不同圖卡控制方向\n② 手勢感應：通過Micro:bit加速度計感應手腕動作\n③ 平板程式：使用自編程式通過平板藍牙操控\n讓同學全面體驗不同的輸入控制技術。"
+  },
+  {
+    icon: "fas fa-microchip",
+    title: "認識Micro:bit編程原理",
+    description: "Tinybit小車以Micro:bit作為核心控制器，透過無線訊號接收操控指令。同學可了解Micro:bit如何接收感應器數據、進行邏輯判斷並輸出控制指令，掌握物聯網（IoT）設備的基本運作概念。"
+  },
+  {
+    icon: "fas fa-users",
+    title: "小組競技培養協作精神",
+    description: "每次可供2至6人同時進行競賽，以小組形式分隊對戰。同學需要互相協調，策略性地分工合作，共同將球推入對方龍門。活動在培養競技精神的同時，也強調溝通協作的重要性。"
+  }
+];
+
+const activitySchedule = [
+  {
+    title: "Micro:bit技術簡介 [約1分鐘]",
+    content: [
+      "導師介紹Micro:bit微控制器的特點：內置LED顯示屏、加速度計、藍牙模組等多種感應器",
+      "講解Tinybit小車的結構：馬達驅動、無線接收模組及與Micro:bit的連接方式",
+      "展示三種不同的操控方式——圖像識別、手勢感應和平板程式——及其背後的技術原理"
+    ]
+  },
+  {
+    title: "操控練習 [約1分鐘]",
+    content: [
+      "同學選擇一種操控方式，在導師指導下進行操控練習",
+      "熟悉控制指令與小車動作的對應關係（前進、後退、轉向）",
+      "調整控制靈敏度，適應Tinybit小車在足球場地上的移動手感"
+    ]
+  },
+  {
+    title: "足球車競賽對戰 [約2分鐘]",
+    content: [
+      "每次可同時供2-6人分隊進行足球競賽",
+      "雙方分別操控各自的Tinybit小車，嘗試推球入對方龍門得分",
+      "導師擔任裁判，記錄得分並宣布結果",
+      "鼓勵同學嘗試不同的操控策略，體驗各種控制方式的優勢"
+    ]
+  },
+  {
+    title: "科技知識延伸分享",
+    content: [
+      "導師分享機器視覺（Computer Vision）和感應器技術在機械人、自動駕駛汽車等領域的實際應用",
+      "介紹Micro:bit在教育和創客（Maker）社群中的廣泛應用，以及如何學習編程",
+      "鼓勵有興趣的同學了解我們的Micro:bit常規課程，深入學習編程和機械人技術"
+    ]
+  }
+];
+
+const activityInfo = [
+  { label: "容納人數", value: "每次可同時供2-6人進行活動" },
+  { label: "時長", value: "每次每人可玩2-3分鐘" },
+  { label: "我們將會提供", value: "Tinybit 小車 / 龍門 / 足球 / 足球場背景 / 遊戲介紹易拉架" },
+  { label: "學校需提供/自備", value: "Microbit / 桌子 / 平板電腦 / 電腦" },
+  { label: "備註", value: "另設常規課程" },
+];
+
+const faqData = [
+  {
+    question: "這項活動適合什麼年級的同學參與？",
+    answer: "活動適合小一至中六所有年級學生參與。初小同學可先從較簡單直觀的圖像識別控制方式開始體驗，高年級同學則可嘗試手勢感應或平板程式控制等更具技術挑戰性的方式，確保各年級都有合適的體驗深度。"
+  },
+  {
+    question: "每次活動可以容納多少人？",
+    answer: "每次可同時供2至6人分組進行足球競賽，每次對戰約2至3分鐘。容納人數較多，非常適合以攤位輪流形式在全校STEM Day中高效率地讓大量同學參與體驗。"
+  },
+  {
+    question: "活動有哪些操控方式？各有什麼特點？",
+    answer: "活動支援三種操控方式：\n\n① 圖像識別控制：攝影機辨識不同圖卡上的特定圖案，對應前進、後退、轉向等指令，感受機器視覺技術的神奇。\n\n② 手勢感應控制：Micro:bit的加速度計感應手腕傾斜動作，自然地將身體動作轉換為小車移動指令。\n\n③ 平板程式控制：通過平板電腦上的圖形化編程介面或遊戲手掣，以藍牙訊號控制小車，體驗無線通訊技術。\n\n學校可根據需要選擇最適合的操控方式，或同時提供多種方式讓同學輪流嘗試。"
+  },
+  {
+    question: "學校需要準備什麼設備？",
+    answer: "學校需要提供：\n• Micro:bit控制板（用於手勢感應控制方式）\n• 桌子（用於放置足球場地）\n• 平板電腦或電腦（用於平板程式控制方式）\n\n我們將提供：Tinybit小車、龍門、足球、足球場背景布景及遊戲介紹易拉架。\n\n建議先致電 +852 6554-1506 或電郵至 info@10botics.com 與同事溝通具體的活動安排。"
+  },
+  {
+    question: "活動有常規課程選項嗎？",
+    answer: "是的！除STEM Day攤位體驗外，我們另設Micro:bit常規課程，讓同學系統性地學習Micro:bit編程，包括基礎程式設計、感應器應用及機械人控制等。有興趣的學校歡迎聯絡我們了解課程詳情。"
+  }
+];
+
+const { title, subtitle, tags, description, heroImageAsset: heroImg } = activityData;
+---
+
+<Layout title={title} description={description}>
+  <main>
+    <HeroSection 
+      title={title}
+      subtitle={subtitle}
+      tags={tags}
+      description={description}
+      heroImage={heroImg}
+    />
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold mb-4">活動特色</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {activityFeatures.map((feature) => (
+            <div class="text-center">
+              <div class="w-16 h-16 bg-brand-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class={`${feature.icon} text-white text-2xl`}></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p class="text-gray-600">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <SingleCourseContent 
+      items={activitySchedule}
+      hours="每人每次2-3分鐘"
+    />
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">活動資訊</h2>
+          <div class="overflow-hidden rounded-lg shadow-lg border border-gray-200">
+            <table class="w-full">
+              <tbody>
+                {activityInfo.map((item, i) => (
+                  <tr class={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                    <td class="px-6 py-4 font-semibold text-gray-900 border-r border-gray-200 w-1/3 text-center">{item.label}</td>
+                    <td class="px-6 py-4 text-gray-700 text-center">{item.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <QnASection faqs={faqData} />
+
+    <RelatedCourses courseTags={tags} courseTitle={title} context="course" />
+    <RelatedNews courseTags={tags} courseTitle={title} context="course" />
+
+    <ContactSection subtitle="歡迎聯絡我們，我們會為您提供詳細的活動安排和報名資訊。" />
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.accordion-header').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.parentElement;
+          if (!item) return;
+          const isActive = item.classList.contains('active');
+          document.querySelectorAll('.accordion-item').forEach(accordionItem => {
+            accordionItem.classList.remove('active');
+          });
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+
+  <style>
+    .accordion-content {
+      display: none;
+    }
+    .accordion-item.active .accordion-content {
+      display: block;
+    }
+    .accordion-item.active .accordion-header i {
+      transform: rotate(45deg);
+    }
+  </style>
+</Layout>

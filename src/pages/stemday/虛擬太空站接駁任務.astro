@@ -1,0 +1,212 @@
+﻿---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
+
+import heroImage from '../../assets/images/stemday/mainpage/virtual-space-station.png';
+
+const activityData: {
+  title: string;
+  subtitle: string;
+  tags: string[];
+  description: string;
+  heroImageAsset: any;
+} = {
+  title: "虛擬太空站接駁任務",
+  subtitle: "模擬太空人執行火箭接駁任務，在沉浸式體驗中認識航天科技！",
+  tags: ["小一至中六", "每次約1-2分鐘", "每次供1人遊玩"],
+  description: "在虛擬太空站接駁任務中，同學將坐上特製遊戲椅，手持虛擬手掣，在大型 Led Wall 或電視熒幕呈現的震撼太空環境下，精準模擬執行火箭飛船與太空站的對接任務。整個過程考驗同學的空間感知力、手眼協調及專注力，讓人真實感受宇宙飛船駕駛員的緊張與成就。導師全程提供操控指引，並即場講解太空站軌道運行原理、飛船對接的精準計算，以及國際太空站（ISS）和中國天宮太空站的結構與使命，帶領同學全面認識現代航天科技，啟發對太空探索的無限好奇與熱情。",
+  heroImageAsset: heroImage
+};
+
+const activityFeatures = [
+  {
+    icon: "fas fa-rocket",
+    title: "沉浸式太空接駁體驗",
+    description: "同學坐上特製遊戲椅，手持虛擬手掣，在大型Led Wall或電視熒幕呈現的太空環境中，親身模擬完成火箭飛船與太空站的精準對接任務，感受身臨其境的宇宙探索體驗。"
+  },
+  {
+    icon: "fas fa-satellite",
+    title: "認識真實航天知識",
+    description: "導師透過活動講解真實的航天任務知識，包括太空站的軌道運行原理、飛船對接所需的精準計算，以及國際太空站（ISS）與中國天宮太空站的結構與功能，拓展同學的科學視野。"
+  },
+  {
+    icon: "fas fa-gamepad",
+    title: "考驗精準操控能力",
+    description: "虛擬接駁任務需要同學以虛擬手掣精細調整飛行方向和速度，在三維空間中完成精準對接。整個過程訓練同學的專注力、空間感知和手眼協調能力，挑戰自我極限。"
+  },
+  {
+    icon: "fas fa-lightbulb",
+    title: "激發太空科創熱情",
+    description: "透過身臨其境的任務體驗，激發同學對太空探索、航天工程和科技創新的濃厚興趣，引導同學思考人類探索太空的意義與未來發展方向，建立對STEM學科的學習動力。"
+  }
+];
+
+const activitySchedule = [
+  {
+    title: "活動簡介與知識講解 [約1分鐘]",
+    content: [
+      "導師簡介太空站接駁任務的背景：人類為何需要太空站，以及太空站對科學研究的重要性",
+      "講解火箭對接的基本原理：如何在零重力環境下精確控制飛行器的速度與角度",
+      "介紹歷史上著名的太空接駁任務，以及中國天宮太空站的最新發展"
+    ]
+  },
+  {
+    title: "設備操作指引 [約30秒]",
+    content: [
+      "導師示範虛擬手掣的操作方式，說明各功能鍵的用途",
+      "同學坐上遊戲椅，調整至舒適的操作位置",
+      "在正式任務前進行簡單的操控練習，熟悉飛行器在虛擬空間中的反應"
+    ]
+  },
+  {
+    title: "虛擬接駁任務體驗 [約1-2分鐘]",
+    content: [
+      "每次可供1人獨立完成接駁任務",
+      "同學在大型熒幕顯示的太空環境中操控虛擬飛船",
+      "精確控制飛行速度與對接角度，嘗試成功完成與太空站的對接",
+      "導師即場提供飛行策略指引，協助同學克服操控挑戰"
+    ]
+  },
+  {
+    title: "任務回顧與延伸討論",
+    content: [
+      "導師與同學分享任務心得，討論哪些操控技巧最關鍵",
+      "介紹航天工程師、太空人及飛行控制員等相關職業，啟發同學對未來職業的想像",
+      "分享太空科技在地球上的實際應用，如衛星導航、氣象預報及材料科學等"
+    ]
+  }
+];
+
+const activityInfo = [
+  { label: "容納人數", value: "每次可同時供1人進行活動" },
+  { label: "時長", value: "每次每人可玩1-2分鐘" },
+  { label: "我們將會提供", value: "遊戲椅 / 虛擬手掣 / 活動介紹拉架 / 所需軟件" },
+  { label: "學校需提供/自備", value: "Led Wall或電視機幕" },
+  { label: "備註", value: "1. 附近需要電源" },
+];
+
+const faqData = [
+  {
+    question: "這項活動適合哪些年級參與？",
+    answer: "活動適合小一至中六同學參與，任務難度可按學生年齡和程度即場調整。低年級同學可先從基本操控體驗開始，高年級同學則可挑戰更精準的對接任務，確保每位同學都有合適的體驗。"
+  },
+  {
+    question: "每次活動可容納多少同學？",
+    answer: "每次可供1人獨立完成接駁任務，每位同學每次約1至2分鐘，非常適合以攤位輪流形式進行。等候的同學亦可觀看熒幕上的任務進行，學習他人的操控技巧，增強觀摩學習效果。"
+  },
+  {
+    question: "學校需要準備什麼設備？",
+    answer: "學校需提供Led Wall或電視機幕以顯示虛擬太空環境，以及活動區域附近的電源。我們將提供所有其他設備，包括遊戲椅、虛擬手掣、活動介紹拉架及所需的遊戲軟件，並由我們的團隊負責安裝設置。"
+  },
+  {
+    question: "同學在活動中能學到什麼知識？",
+    answer: "同學將了解太空站的運作原理、飛船對接在航天任務中的重要性，以及零重力環境下的飛行控制概念。導師亦會介紹中國天宮太空站、國際太空站（ISS）等航天成就，以及衛星導航和氣象預報等太空科技在日常生活中的實際應用。"
+  },
+  {
+    question: "活動中同學需要有特別的技術知識嗎？",
+    answer: "完全不需要！活動設計以趣味體驗為主，任何背景的同學均可參與。導師會在活動開始前提供詳細的操控指引，確保每位同學都能順利進行任務，享受太空探索的樂趣。"
+  }
+];
+
+const { title, subtitle, tags, description, heroImageAsset: heroImg } = activityData;
+---
+
+<Layout title={title} description={description}>
+  <main>
+    <HeroSection
+      title={title}
+      subtitle={subtitle}
+      tags={tags}
+      description={description}
+      heroImage={heroImg}
+    />
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold mb-4">活動特色</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {activityFeatures.map((feature) => (
+            <div class="text-center">
+              <div class="w-16 h-16 bg-brand-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class={`${feature.icon} text-white text-2xl`}></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p class="text-gray-600">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <SingleCourseContent
+      items={activitySchedule}
+      hours="每人每次1-2分鐘"
+    />
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">活動資訊</h2>
+          <div class="overflow-hidden rounded-lg shadow-lg border border-gray-200">
+            <table class="w-full">
+              <tbody>
+                {activityInfo.map((item, i) => (
+                  <tr class={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                    <td class="px-6 py-4 font-semibold text-gray-900 border-r border-gray-200 w-1/3 text-center">{item.label}</td>
+                    <td class="px-6 py-4 text-gray-700 text-center whitespace-pre-line">{item.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <QnASection faqs={faqData} />
+
+    <RelatedCourses courseTags={tags} courseTitle={title} context="course" />
+    <RelatedNews courseTags={tags} courseTitle={title} context="course" />
+
+    <ContactSection subtitle="歡迎聯絡我們，我們會為您提供詳細的活動安排和報名資訊。" />
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.accordion-header').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.parentElement;
+          if (!item) return;
+          const isActive = item.classList.contains('active');
+          document.querySelectorAll('.accordion-item').forEach(accordionItem => {
+            accordionItem.classList.remove('active');
+          });
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+
+  <style>
+    .accordion-content {
+      display: none;
+    }
+    .accordion-item.active .accordion-content {
+      display: block;
+    }
+    .accordion-item.active .accordion-header i {
+      transform: rotate(45deg);
+    }
+  </style>
+</Layout>

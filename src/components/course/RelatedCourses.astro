@@ -1,4 +1,4 @@
----
+﻿---
 import { Image } from 'astro:assets';
 import { 
   discoverCourses, 
@@ -156,8 +156,8 @@ const relatedCourses = schoolCourses
 
 // Determine styling and content based on context
 const colorScheme = context === 'news' 
-  ? { bg: 'bg-gray-50', button: 'bg-cyan-600 hover:bg-cyan-700', tag: 'bg-cyan-100 text-cyan-800 hover:bg-cyan-200', gradient: 'from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700', hover: 'hover:text-cyan-600' }
-  : { bg: 'bg-gray-50', button: 'bg-cyan-600 hover:bg-cyan-700', tag: 'bg-cyan-100 text-cyan-800 hover:bg-cyan-200', gradient: 'from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700', hover: 'hover:text-cyan-600' };
+  ? { bg: 'bg-gray-50', button: 'bg-cyan-600 hover:bg-cyan-700', tag: 'bg-cyan-100 text-cyan-800 hover:bg-cyan-200', gradient: 'from-cyan-600 to-brand-blue-600 hover:from-cyan-700 hover:to-brand-blue-700', hover: 'hover:text-cyan-600' }
+  : { bg: 'bg-gray-50', button: 'bg-cyan-600 hover:bg-cyan-700', tag: 'bg-cyan-100 text-cyan-800 hover:bg-cyan-200', gradient: 'from-cyan-600 to-brand-blue-600 hover:from-cyan-700 hover:to-brand-blue-700', hover: 'hover:text-cyan-600' };
 
 const audienceColorScheme = context === 'news'
   ? { tag: 'bg-cyan-100 text-cyan-800 hover:bg-cyan-200' }
@@ -207,8 +207,8 @@ const shouldLimitTags = context === 'course';
               </div>
             )}
             {!course.heroImage && (
-              <div class={`h-48 bg-gradient-to-r ${context === 'news' ? 'from-cyan-400 via-blue-400 to-cyan-500' : 'from-cyan-400 via-blue-400 to-cyan-500'} relative overflow-hidden`}>
-                <div class={`absolute inset-0 bg-gradient-to-r ${context === 'news' ? 'from-cyan-600/20 to-blue-600/20' : 'from-cyan-600/20 to-blue-600/20'}`}></div>
+              <div class={`h-48 bg-gradient-to-r ${context === 'news' ? 'from-cyan-400 via-brand-blue-400 to-cyan-500' : 'from-cyan-400 via-brand-blue-400 to-cyan-500'} relative overflow-hidden`}>
+                <div class={`absolute inset-0 bg-gradient-to-r ${context === 'news' ? 'from-cyan-600/20 to-brand-blue-600/20' : 'from-cyan-600/20 to-brand-blue-600/20'}`}></div>
                 <div class="absolute inset-0 flex items-center justify-center">
                   <div class="text-white text-center p-4">
                     <div class="text-3xl mb-2">📚</div>
@@ -228,7 +228,7 @@ const shouldLimitTags = context === 'course';
                       {course.title}
                     </a>
                   </h3>
-                  <div class="flex items-center text-yellow-500 ml-2">
+                  <div class="flex items-center text-category-yellow-500 ml-2">
                   </div>
                 </div>
                 

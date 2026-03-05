@@ -1,0 +1,200 @@
+﻿---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import { Image } from 'astro:assets';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
+
+import heroImage from '../../assets/images/stemday/quick-eye-hand/hero-image.png';
+
+const activityData: {
+  title: string;
+  subtitle: string;
+  tags: string[];
+  description: string;
+  heroImageAsset: any;
+} = {
+  title: "眼明手快",
+  subtitle: "挑戰反應與敏捷度，搶在棒子落地前抓住它！",
+  tags: ["反應訓練", "體能協調", "小一至中六"],
+  description: "眼明手快活動讓學生可以挑戰自己的反應和敏捷度，在限定時間內集中精神在棒子掉落到地面前盡快抓取。活動考驗同學的專注力、視覺反應速度及手眼協調能力，適合小一至中六學生參與。導師會全程在旁協助同學進行遊戲，讓每位同學都能在輕鬆愉快的氣氛中挑戰自己的極限，體驗STEM與體能訓練結合的趣味活動。",
+  heroImageAsset: heroImage
+};
+
+const activityFeatures = [
+  {
+    icon: "fas fa-eye",
+    title: "視覺反應訓練",
+    description: "同學需要全神貫注地盯著棒子，在它開始下落的瞬間迅速作出反應，有效訓練視覺反應速度及專注力。"
+  },
+  {
+    icon: "fas fa-hand-paper",
+    title: "手眼協調能力",
+    description: "活動要求同學眼睛和手部動作高度配合，在棒子落下的短暫時間內準確伸手抓取，全面提升手眼協調能力。"
+  },
+  {
+    icon: "fas fa-users",
+    title: "適合所有年級",
+    description: "眼明手快活動設計簡單易懂，小一至中六學生均能即時上手，無需任何特別技能，是適合全校師生的趣味挑戰。"
+  },
+  {
+    icon: "fas fa-trophy",
+    title: "即時挑戰與競技",
+    description: "每次可供2人同時進行，同學可相互競賽，看誰的反應更快。競技氣氛激發同學的挑戰欲，讓活動更加熱鬧有趣。"
+  }
+];
+
+const activitySchedule = [
+  {
+    title: "活動介紹 [約15秒]",
+    content: [
+      "導師簡單介紹眼明手快的規則：參加者需在棒子掉落到地面前盡快抓住",
+      "解釋正確的站立位置和手部準備姿勢",
+      "示範一次讓同學了解遊戲流程"
+    ]
+  },
+  {
+    title: "實際體驗 [約1分鐘]",
+    content: [
+      "每次最多2人同時參與，各自對應一根棒子",
+      "導師發出信號後放開棒子，同學需盡快抓住",
+      "可進行多次嘗試，挑戰自己的最佳反應時間",
+      "導師從旁協助，確保活動安全進行"
+    ]
+  },
+  {
+    title: "分享與鼓勵",
+    content: [
+      "導師分享反應速度與日常生活、運動及科技的關係",
+      "鼓勵同學在日常生活中多做反應訓練，持續提升專注力與協調能力"
+    ]
+  }
+];
+
+const activityInfo = [
+  { label: "容納人數", value: "每次同時可供2人進行活動" },
+  { label: "時長", value: "每次每人可玩1分鐘" },
+  { label: "我們將會提供", value: "眼明手快遊戲道具" },
+  { label: "學校需提供/自備", value: "/" },
+  { label: "備註", value: "/" },
+];
+
+const faqData = [
+  {
+    question: "這項活動適合什麼年級的同學參與？",
+    answer: "活動適合小一至中六的學生參與。規則簡單，無需任何特別技能或體能要求，所有年級的同學都能即時上手並享受遊戲的樂趣。"
+  },
+  {
+    question: "每次活動可以容納多少人？",
+    answer: "每次最多可供2人同時進行活動，體驗時間約1分鐘。我們可根據學校需求同時設置多組道具，讓更多同學能夠參與，減少等候時間。"
+  },
+  {
+    question: "活動安全嗎？",
+    answer: "眼明手快活動使用的棒子為輕巧安全材料製成，不會對同學造成傷害。導師會全程在旁監督，確保活動安全有序地進行。"
+  },
+  {
+    question: "學校需要準備什麼？",
+    answer: "學校毋需準備任何道具，我們將提供所有眼明手快遊戲道具。攤位所需空間不大，適合在走廊、禮堂或任何開放空間設置。如有特別場地需求，歡迎提前與我們溝通。"
+  }
+];
+
+const { title, subtitle, tags, description, heroImageAsset: heroImg } = activityData;
+---
+
+<Layout title={title} description={description}>
+  <main>
+    <HeroSection 
+      title={title}
+      subtitle={subtitle}
+      tags={tags}
+      description={description}
+      heroImage={heroImg}
+    />
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold mb-4">活動特色</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {activityFeatures.map((feature) => (
+            <div class="text-center">
+              <div class="w-16 h-16 bg-brand-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class={`${feature.icon} text-white text-2xl`}></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p class="text-gray-600">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <SingleCourseContent 
+      items={activitySchedule}
+      hours="每人每次1分鐘"
+    />
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">活動資訊</h2>
+          <div class="overflow-hidden rounded-lg shadow-lg border border-gray-200">
+            <table class="w-full">
+              <tbody>
+                {activityInfo.map((item, i) => (
+                  <tr class={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                    <td class="px-6 py-4 font-semibold text-gray-900 border-r border-gray-200 w-1/3 text-center">{item.label}</td>
+                    <td class="px-6 py-4 text-gray-700 text-center">{item.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <QnASection faqs={faqData} />
+
+    <RelatedCourses courseTags={tags} courseTitle={title} context="course" />
+    <RelatedNews courseTags={tags} courseTitle={title} context="course" />
+
+    <ContactSection subtitle="歡迎聯絡我們，我們會為您提供詳細的活動安排和報名資訊。" />
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.accordion-header').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.parentElement;
+          if (!item) return;
+          const isActive = item.classList.contains('active');
+          document.querySelectorAll('.accordion-item').forEach(accordionItem => {
+            accordionItem.classList.remove('active');
+          });
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+
+  <style>
+    .accordion-content {
+      display: none;
+    }
+    .accordion-item.active .accordion-content {
+      display: block;
+    }
+    .accordion-item.active .accordion-header i {
+      transform: rotate(45deg);
+    }
+  </style>
+</Layout>

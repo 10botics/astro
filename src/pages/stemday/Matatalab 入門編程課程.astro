@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../../layouts/Layout.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import QnASection from '../../components/course/QnASection.astro';
@@ -6,6 +6,8 @@ import PaperformEmbed from '../../components/PaperformEmbed.astro';
 import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import { Image } from 'astro:assets';
 import ContactSection from '../../components/ContactSection.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
 // Import images
 import heroImage from '../../assets/images/stemday/Matatalab 入門編程課程/home-set-buy-now_1-1.png';
 import activityImage from '../../assets/images/stemday/Matatalab 入門編程課程/Screenshot-2023-08-07-122249.png';
@@ -128,7 +130,7 @@ const duration = "1 至 3 小時";
           {activityFeatures.map((feature) => (
             <div class="bg-white p-6 rounded-lg shadow-md">
               <div class="text-center mb-4">
-                <i class={`${feature.icon} text-4xl text-blue-600`}></i>
+                <i class={`${feature.icon} text-4xl text-brand-blue-600`}></i>
               </div>
               <h3 class="text-xl font-semibold text-gray-900 mb-3 text-center">{feature.title}</h3>
               <p class="text-gray-600 text-center">{feature.description}</p>
@@ -172,12 +174,12 @@ const duration = "1 至 3 小時";
         <!-- Activity Schedule -->
         <div class="grid md:grid-cols-2 gap-8">
           {activitySchedule.map((schedule) => (
-            <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-600">
+            <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-brand-blue-600">
               <h3 class="text-xl font-semibold text-gray-900 mb-4 text-center">{schedule.title}</h3>
               <ul class="space-y-2 text-center">
                 {schedule.content.map((item) => (
                   <li class="text-gray-600 flex items-center justify-center">
-                    <i class="fas fa-greater-than text-blue-600 mr-2 flex-shrink-0"></i>
+                    <i class="fas fa-greater-than text-brand-blue-600 mr-2 flex-shrink-0"></i>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -216,49 +218,10 @@ const duration = "1 至 3 小時";
     <!-- FAQ Section -->
     <QnASection faqs={faqData} />
 
+    <RelatedCourses courseTags={activityData.tags} courseTitle={activityData.title} context="course" />
+    <RelatedNews courseTags={activityData.tags} courseTitle={activityData.title} context="course" />
+
     <!-- Contact Section -->
     <ContactSection />
-
-    <!-- Related Courses -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4 max-w-6xl">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">其他課程</h2>
-        </div>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Related course cards would go here -->
-          <div class="bg-white rounded-lg shadow-md overflow-hidden">
-            <div class="p-6">
-              <h3 class="text-xl font-semibold text-gray-900 mb-2">AI藝術創作課程</h3>
-              <p class="text-gray-600 mb-4">課程將引導學生深入探索人工智能（AI）在視覺藝術領</p>
-              <a href="/school-courses/ai-enrichment-course/" class="text-blue-600 hover:text-blue-800 font-medium">
-                了解更多 »
-              </a>
-            </div>
-          </div>
-          
-          <div class="bg-white rounded-lg shadow-md overflow-hidden">
-            <div class="p-6">
-              <h3 class="text-xl font-semibold text-gray-900 mb-2">AI數碼動畫展</h3>
-              <p class="text-gray-600 mb-4">AI數碼動畫展是一個簡單有趣的 STEM Day 活動，學生可按主題設計喜歡的圖案/角色，通過人工智能把圖案轉換成栩栩如生的動畫。</p>
-              <a href="/stem-day/ai-digital-animation-exhibition/" class="text-blue-600 hover:text-blue-800 font-medium">
-                了解更多 »
-              </a>
-            </div>
-          </div>
-          
-          <div class="bg-white rounded-lg shadow-md overflow-hidden">
-            <div class="p-6">
-              <h3 class="text-xl font-semibold text-gray-900 mb-2">Blockchain 區塊鏈課程</h3>
-              <p class="text-gray-600 mb-4">本課程旨在引領學生進入Web3.0的世界，瞭解在w</p>
-              <a href="/school-courses/blockchain/" class="text-blue-600 hover:text-blue-800 font-medium">
-                了解更多 »
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 </Layout> 

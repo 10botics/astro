@@ -1,0 +1,200 @@
+﻿---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import { Image } from 'astro:assets';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
+
+import heroImage from '../../assets/images/stemday/nerve-reaction-challenge/hero-image.png';
+
+const activityData: {
+  title: string;
+  subtitle: string;
+  tags: string[];
+  description: string;
+  heroImageAsset: any;
+} = {
+  title: "反應神經大挑戰",
+  subtitle: "精準按停計時器，挑戰你的時間感知極限！",
+  tags: ["反應訓練", "時間感知", "小一至中五"],
+  description: "反應神經大挑戰讓學生考驗個人對時間長短的掌握敏捷度，在限定時間中集中精神按出最接近的十秒。活動使用微秒計時套裝，學生需在不看計時器的情況下，憑感覺判斷何時按下按鈕停止計時，越接近十秒越高分。導師會全程指導同學如何操作遊戲，訓練學生的專注力、時間感知能力及神經反應速度，體驗科技與自身感知能力的結合。",
+  heroImageAsset: heroImage
+};
+
+const activityFeatures = [
+  {
+    icon: "fas fa-stopwatch",
+    title: "時間感知訓練",
+    description: "學生需在不看計時器的情況下，憑藉內在時間感知判斷十秒的長短，有效鍛鍊大腦對時間的精準感知能力。"
+  },
+  {
+    icon: "fas fa-bolt",
+    title: "神經反應速度",
+    description: "遊戲要求學生在適當時機迅速按下按鈕，持續訓練神經系統的反應敏捷度，提升大腦與肢體之間的協調效率。"
+  },
+  {
+    icon: "fas fa-brain",
+    title: "專注力培養",
+    description: "在限定時間內高度集中注意力，排除外界干擾，考驗同學的心理素質與專注程度，是極佳的腦部訓練活動。"
+  },
+  {
+    icon: "fas fa-trophy",
+    title: "即時競技挑戰",
+    description: "每次活動最多1人參與，鼓勵同學挑戰自己的最佳成績，競技氛圍激發同學反覆嘗試，樂趣無窮。"
+  }
+];
+
+const activitySchedule = [
+  {
+    title: "活動介紹 [約15秒]",
+    content: [
+      "導師介紹反應神經大挑戰的規則：參加者需在心中默數十秒後按下按鈕停止計時",
+      "解釋計分方式：按下時計時器顯示的時間越接近十秒，成績越好",
+      "示範一次操作流程，讓同學了解如何正確使用微秒計時套裝"
+    ]
+  },
+  {
+    title: "實際體驗 [約1分鐘]",
+    content: [
+      "每次最多1人參與，同學站在計時設備前準備",
+      "同學按下開始按鈕後，計時器開始計時，同學需在不看計時器的情況下憑感覺按下停止",
+      "計時器顯示結果，導師協助同學分析與十秒的差距",
+      "可進行多次嘗試，挑戰自己的最佳成績"
+    ]
+  },
+  {
+    title: "分享與鼓勵",
+    content: [
+      "導師分享時間感知與日常生活、運動及科學的關係",
+      "鼓勵同學在日常生活中培養專注力，持續提升時間感知能力與神經反應速度"
+    ]
+  }
+];
+
+const activityInfo = [
+  { label: "可容納人數", value: "每次同時可供1人進行活動" },
+  { label: "時長", value: "每次每人可玩1分鐘" },
+  { label: "我們將會提供", value: "微秒計時套裝" },
+  { label: "學校需提供/自備", value: "桌椅、小禮品" },
+  { label: "備註", value: "1. 附近需要電源" },
+];
+
+const faqData = [
+  {
+    question: "這項活動適合什麼年級的同學參與？",
+    answer: "活動適合小一至中五的學生參與。規則簡單直觀，所有年級的同學都能即時上手，無需任何特別技能或體能要求。"
+  },
+  {
+    question: "每次活動可以容納多少人？",
+    answer: "每次最多供1人進行活動，體驗時間約1分鐘。我們可根據學校需求同時設置多套設備，讓更多同學輪流參與，減少等候時間。"
+  },
+  {
+    question: "活動需要電源嗎？",
+    answer: "是的，微秒計時套裝需要電源運作，請確保攤位附近有可用的電源插座。如有疑問，歡迎提前與我們溝通場地安排。"
+  },
+  {
+    question: "學校需要準備什麼？",
+    answer: "學校需要提供桌椅及小禮品作為獎勵。我們將提供全套微秒計時設備。攤位所需空間不大，適合在走廊、禮堂或任何開放空間設置，只需確保附近有電源。"
+  }
+];
+
+const { title, subtitle, tags, description, heroImageAsset: heroImg } = activityData;
+---
+
+<Layout title={title} description={description}>
+  <main>
+    <HeroSection 
+      title={title}
+      subtitle={subtitle}
+      tags={tags}
+      description={description}
+      heroImage={heroImg}
+    />
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold mb-4">活動特色</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {activityFeatures.map((feature) => (
+            <div class="text-center">
+              <div class="w-16 h-16 bg-brand-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class={`${feature.icon} text-white text-2xl`}></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p class="text-gray-600">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <SingleCourseContent 
+      items={activitySchedule}
+      hours="每人每次1分鐘"
+    />
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">活動資訊</h2>
+          <div class="overflow-hidden rounded-lg shadow-lg border border-gray-200">
+            <table class="w-full">
+              <tbody>
+                {activityInfo.map((item, i) => (
+                  <tr class={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                    <td class="px-6 py-4 font-semibold text-gray-900 border-r border-gray-200 w-1/3 text-center">{item.label}</td>
+                    <td class="px-6 py-4 text-gray-700 text-center">{item.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <QnASection faqs={faqData} />
+
+    <RelatedCourses courseTags={tags} courseTitle={title} context="course" />
+    <RelatedNews courseTags={tags} courseTitle={title} context="course" />
+
+    <ContactSection subtitle="歡迎聯絡我們，我們會為您提供詳細的活動安排和報名資訊。" />
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.accordion-header').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.parentElement;
+          if (!item) return;
+          const isActive = item.classList.contains('active');
+          document.querySelectorAll('.accordion-item').forEach(accordionItem => {
+            accordionItem.classList.remove('active');
+          });
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+
+  <style>
+    .accordion-content {
+      display: none;
+    }
+    .accordion-item.active .accordion-content {
+      display: block;
+    }
+    .accordion-item.active .accordion-header i {
+      transform: rotate(45deg);
+    }
+  </style>
+</Layout>

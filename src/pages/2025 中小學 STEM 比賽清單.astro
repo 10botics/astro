@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../layouts/Layout.astro';
 import { readFileSync } from 'fs';
 import { parse } from 'csv-parse/sync';
@@ -55,8 +55,8 @@ const totalCompetitions = primaryCompetitions.length + secondaryCompetitions.len
 
     <!-- 小學比賽清單 -->
     <div class="bg-white shadow-lg rounded-lg overflow-hidden mb-8">
-      <div class="px-6 py-4 bg-blue-50 border-b border-blue-200">
-        <h2 class="text-2xl font-bold text-blue-800">小學組比賽清單</h2>
+      <div class="px-6 py-4 bg-brand-blue-50 border-b border-brand-blue-200">
+        <h2 class="text-2xl font-bold text-brand-blue-800">小學組比賽清單</h2>
       </div>
       <div class="overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200">
@@ -77,7 +77,7 @@ const totalCompetitions = primaryCompetitions.length + secondaryCompetitions.len
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{competition['關鍵字']}</td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{convertToStars(competition['受歡迎程度'])}</td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                  <a href={competition['比賽連結'] || "#"} class="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">點擊進入</a>
+                  <a href={competition['比賽連結'] || "#"} class="text-brand-blue-600 hover:text-brand-blue-800 underline" target="_blank" rel="noopener noreferrer">點擊進入</a>
                 </td>
             </tr>
             ))}
@@ -88,8 +88,8 @@ const totalCompetitions = primaryCompetitions.length + secondaryCompetitions.len
 
     <!-- 中學比賽清單 -->
     <div class="bg-white shadow-lg rounded-lg overflow-hidden mb-8">
-      <div class="px-6 py-4 bg-green-50 border-b border-green-200">
-        <h2 class="text-2xl font-bold text-green-800">中學組比賽清單</h2>
+      <div class="px-6 py-4 bg-category-green-50 border-b border-category-green-200">
+        <h2 class="text-2xl font-bold text-category-green-800">中學組比賽清單</h2>
       </div>
       <div class="overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200">
@@ -110,7 +110,7 @@ const totalCompetitions = primaryCompetitions.length + secondaryCompetitions.len
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{competition['關鍵字']}</td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{convertToStars(competition['受歡迎程度'])}</td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                  <a href={competition['比賽連結'] || "#"} class="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">點擊進入</a>
+                  <a href={competition['比賽連結'] || "#"} class="text-brand-blue-600 hover:text-brand-blue-800 underline" target="_blank" rel="noopener noreferrer">點擊進入</a>
                 </td>
             </tr>
             ))}
@@ -121,21 +121,21 @@ const totalCompetitions = primaryCompetitions.length + secondaryCompetitions.len
 
     <!-- 統計資訊 -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-      <div class="bg-blue-50 p-6 rounded-lg text-center">
-        <h3 class="text-2xl font-bold text-blue-800">{primaryCompetitions.length}</h3>
-        <p class="text-blue-600">小學比賽</p>
+      <div class="bg-brand-blue-50 p-6 rounded-lg text-center">
+        <h3 class="text-2xl font-bold text-brand-blue-800">{primaryCompetitions.length}</h3>
+        <p class="text-brand-blue-600">小學比賽</p>
       </div>
-      <div class="bg-green-50 p-6 rounded-lg text-center">
-        <h3 class="text-2xl font-bold text-green-800">{secondaryCompetitions.length}</h3>
-        <p class="text-green-600">中學比賽</p>
+      <div class="bg-category-green-50 p-6 rounded-lg text-center">
+        <h3 class="text-2xl font-bold text-category-green-800">{secondaryCompetitions.length}</h3>
+        <p class="text-category-green-600">中學比賽</p>
       </div>
-      <div class="bg-purple-50 p-6 rounded-lg text-center">
-        <h3 class="text-2xl font-bold text-purple-800">{totalCompetitions}</h3>
-        <p class="text-purple-600">總比賽數</p>
+      <div class="bg-category-purple-50 p-6 rounded-lg text-center">
+        <h3 class="text-2xl font-bold text-category-purple-800">{totalCompetitions}</h3>
+        <p class="text-category-purple-600">總比賽數</p>
       </div>
     </div>
     
-    <div class="bg-blue-50 p-6 rounded-lg mb-8">
+    <div class="bg-brand-blue-50 p-6 rounded-lg mb-8">
       <h3 class="text-xl font-semibold text-gray-800 mb-4">關於 STEM 比賽</h3>
       <p class="text-gray-700 leading-relaxed">
         我們的課程是由專業 STEM 團隊共同開發，旨在使孩子、老師和父母可以通過現實生活的例子中學習到課程複雜、深奧的概念，令學習變得輕鬆及有趣。

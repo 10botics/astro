@@ -6,6 +6,18 @@ import StrawBridge from './飲管橋.astro';
 import DIY from './DIY 手作.astro';
 import Matatalab from './Matatalab 入門編程課程.astro';
 import MicrobitParachute from '../school-courses/Microbit 降落傘課程.astro';
+import ARGame from './AR遊戲體驗.astro';
+import MartyRobot from './Marty編程機械人.astro';
+import MicrobitFootball from './Microbit 足球車競賽.astro';
+import VRGame from './VR遊戲體驗.astro';
+import VirtualSpaceStationDockingMission from './虛擬太空站接駁任務.astro';
+import HandClapKeirinRace from './手拍凱林賽.astro';
+import DroneFotball from './無人機足球.astro';
+import QuickEyeHand from './眼明手快.astro';
+import AppleVisionPro from './APPLE Vision Pro 體驗.astro';
+import NerveReactionChallenge from './反應神經大挑戰.astro';
+import MarioKartRacing from './模擬賽車大亂鬥.astro';
+import PaperAirplaneRace from './紙飛機比賽.astro';
 import Index from './index.astro';
 
 // Component mapping by filename
@@ -14,6 +26,18 @@ const componentMap = {
   'DIY 手作.astro': DIY,
   'Matatalab 入門編程課程.astro': Matatalab,
   'Microbit 降落傘課程.astro': MicrobitParachute,
+  'AR遊戲體驗.astro': ARGame,
+  'Marty編程機械人.astro': MartyRobot,
+  'Microbit 足球車競賽.astro': MicrobitFootball,
+  'VR遊戲體驗.astro': VRGame,
+  '虛擬太空站接駁任務.astro': VirtualSpaceStationDockingMission,
+  '手拍凱林賽.astro': HandClapKeirinRace,
+  '無人機足球.astro': DroneFotball,
+  '眼明手快.astro': QuickEyeHand,
+  'APPLE Vision Pro 體驗.astro': AppleVisionPro,
+  '反應神經大挑戰.astro': NerveReactionChallenge,
+  '模擬賽車大亂鬥.astro': MarioKartRacing,
+  '紙飛機比賽.astro': PaperAirplaneRace,
   'index.astro': Index
 };
 
@@ -24,6 +48,18 @@ export async function getStaticPaths() {
     'diy': 'DIY 手作.astro',
     'matatalab-programming': 'Matatalab 入門編程課程.astro',
     'microbit-parachute': 'Microbit 降落傘課程.astro',
+    'ar-game': 'AR遊戲體驗.astro',
+    'marty-robot': 'Marty編程機械人.astro',
+    'microbit-football': 'Microbit 足球車競賽.astro',
+    'vr-game': 'VR遊戲體驗.astro',
+    'virtual-space-station-docking-mission': '虛擬太空站接駁任務.astro',
+    'hand-clap-keirin-race': '手拍凱林賽.astro',
+    'drone-football': '無人機足球.astro',
+    'quick-eye-hand': '眼明手快.astro',
+    'apple-vision-pro': 'APPLE Vision Pro 體驗.astro',
+    'nerve-reaction-challenge': '反應神經大挑戰.astro',
+    'mario-kart-racing': '模擬賽車大亂鬥.astro',
+    'paper-airplane-race': '紙飛機比賽.astro',
     'index': 'index.astro'
   };
   return Object.keys(slugToFilenameMap).map(slug => ({
@@ -43,6 +79,18 @@ const slugToFilenameMap = {
   'diy': 'DIY 手作.astro',
   'matatalab-programming': 'Matatalab 入門編程課程.astro',
   'microbit-parachute': 'Microbit 降落傘課程.astro',
+  'ar-game': 'AR遊戲體驗.astro',
+  'marty-robot': 'Marty編程機械人.astro',
+  'microbit-football': 'Microbit 足球車競賽.astro',
+  'vr-game': 'VR遊戲體驗.astro',
+  'virtual-space-station-docking-mission': '虛擬太空站接駁任務.astro',
+  'hand-clap-keirin-race': '手拍凱林賽.astro',
+  'drone-football': '無人機足球.astro',
+  'quick-eye-hand': '眼明手快.astro',
+  'apple-vision-pro': 'APPLE Vision Pro 體驗.astro',
+  'nerve-reaction-challenge': '反應神經大挑戰.astro',
+  'mario-kart-racing': '模擬賽車大亂鬥.astro',
+  'paper-airplane-race': '紙飛機比賽.astro',
   'index': 'index.astro'
 };
 const filename = slugToFilenameMap[slug];

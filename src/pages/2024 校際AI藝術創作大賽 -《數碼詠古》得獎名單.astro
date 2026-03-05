@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../layouts/Layout.astro';
 import ContactSection from '../components/ContactSection.astro';
 
@@ -121,7 +121,7 @@ const { title, description, primarySchool, juniorSecondary, seniorSecondary } = 
 <Layout title={title} description={description}>
   <main class="min-h-screen bg-gray-50">
     <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-20">
+    <section class="bg-gradient-to-r from-brand-blue-600 to-category-purple-700 text-white py-20">
       <div class="container mx-auto px-4 text-center">
         <h1 class="text-4xl md:text-6xl font-bold mb-6">{title}</h1>
         <p class="text-xl md:text-2xl opacity-90">{description}</p>
@@ -138,7 +138,7 @@ const { title, description, primarySchool, juniorSecondary, seniorSecondary } = 
           <div class="bg-white rounded-lg shadow-lg overflow-hidden">
             <div class="overflow-x-auto">
               <table class="w-full">
-                <thead class="bg-blue-600 text-white">
+                <thead class="bg-brand-blue-600 text-white">
                   <tr>
                     <th class="px-6 py-4 text-left font-semibold">學校名稱</th>
                     <th class="px-6 py-4 text-left font-semibold">學生姓名</th>
@@ -151,7 +151,7 @@ const { title, description, primarySchool, juniorSecondary, seniorSecondary } = 
                       <td class="px-6 py-4 text-gray-800">{entry.school}</td>
                       <td class="px-6 py-4 text-gray-800">{entry.student}</td>
                       <td class="px-6 py-4">
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-brand-blue-100 text-brand-blue-800">
                           {entry.award}
                         </span>
                       </td>
@@ -169,7 +169,7 @@ const { title, description, primarySchool, juniorSecondary, seniorSecondary } = 
           <div class="bg-white rounded-lg shadow-lg overflow-hidden">
             <div class="overflow-x-auto">
               <table class="w-full">
-                <thead class="bg-green-600 text-white">
+                <thead class="bg-category-green-600 text-white">
                   <tr>
                     <th class="px-6 py-4 text-left font-semibold">學校名稱</th>
                     <th class="px-6 py-4 text-left font-semibold">學生姓名</th>
@@ -182,7 +182,7 @@ const { title, description, primarySchool, juniorSecondary, seniorSecondary } = 
                       <td class="px-6 py-4 text-gray-800">{entry.school}</td>
                       <td class="px-6 py-4 text-gray-800">{entry.student}</td>
                       <td class="px-6 py-4">
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-category-green-100 text-category-green-800">
                           {entry.award}
                         </span>
                       </td>
@@ -200,7 +200,7 @@ const { title, description, primarySchool, juniorSecondary, seniorSecondary } = 
           <div class="bg-white rounded-lg shadow-lg overflow-hidden">
             <div class="overflow-x-auto">
               <table class="w-full">
-                <thead class="bg-purple-600 text-white">
+                <thead class="bg-category-purple-600 text-white">
                   <tr>
                     <th class="px-6 py-4 text-left font-semibold">學校名稱</th>
                     <th class="px-6 py-4 text-left font-semibold">學生姓名</th>
@@ -213,7 +213,7 @@ const { title, description, primarySchool, juniorSecondary, seniorSecondary } = 
                       <td class="px-6 py-4 text-gray-800">{entry.school}</td>
                       <td class="px-6 py-4 text-gray-800">{entry.student}</td>
                       <td class="px-6 py-4">
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-category-purple-100 text-category-purple-800">
                           {entry.award}
                         </span>
                       </td>

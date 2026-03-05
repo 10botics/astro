@@ -1,4 +1,4 @@
----
+﻿---
 export interface FeatureItem {
   image: string;
   title: string;
@@ -16,7 +16,7 @@ const { sectionTitle, features } = Astro.props;
 {features.length > 0 && (
   <section class="bg-white py-16">
     <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center" style="color: #1e293b;">{sectionTitle}</h2>
+      <h2 class="text-3xl font-bold text-primary-dark mb-12 text-center">{sectionTitle}</h2>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {features.map((feature) => (

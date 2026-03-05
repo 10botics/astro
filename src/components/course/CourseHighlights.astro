@@ -1,4 +1,4 @@
----
+﻿---
 export interface Props {
   title: string;              // e.g., "課程特色"
   highlights: string[];       // Array of highlight text
@@ -21,14 +21,14 @@ const selectedIcon = iconMap[icon as keyof typeof iconMap] || iconMap.star;
 {highlights.length > 0 && (
   <section class="bg-white py-16">
     <div class="container mx-auto px-4 max-w-6xl">
-      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center" style="color: #1e293b;">{title}</h2>
+      <h2 class="text-3xl font-bold text-primary-dark mb-8 text-center">{title}</h2>
       
       <div class="max-w-4xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           {highlights.map((highlight) => (
             <div class="flex items-center justify-center space-x-3">
               <span class="text-xl flex-shrink-0">{selectedIcon}</span>
-              <h3 class="text-lg font-semibold text-gray-900 leading-relaxed text-center">{highlight}</h3>
+              <h3 class="text-lg font-semibold text-primary-dark leading-relaxed text-center">{highlight}</h3>
             </div>
           ))}
         </div>

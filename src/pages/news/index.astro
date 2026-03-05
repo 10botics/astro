@@ -1,4 +1,4 @@
----
+﻿---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
@@ -64,14 +64,14 @@ const pageKeywords = "10教育最新消息, STEM教育活動, AI教師培訓, �
         <div class="max-w-6xl mx-auto">
           <div class="flex flex-wrap justify-center gap-4">
             <button 
-              class="category-filter active bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors"
+              class="category-filter active bg-brand-blue-600 text-white px-6 py-2 rounded-full hover:bg-brand-blue-700 transition-colors"
               data-category="all"
             >
               所有文章
             </button>
             {categories.map((category) => (
               <button 
-                class="category-filter bg-white text-gray-700 px-6 py-2 rounded-full border border-gray-300 hover:bg-blue-50 hover:border-blue-300 transition-colors"
+                class="category-filter bg-white text-gray-700 px-6 py-2 rounded-full border border-gray-300 hover:bg-brand-blue-50 hover:border-brand-blue-300 transition-colors"
                 data-category={category}
               >
                 {category}
@@ -109,7 +109,7 @@ const pageKeywords = "10教育最新消息, STEM教育活動, AI教師培訓, �
                 <div class="p-6">
                   <!-- Category Badge -->
                   <div class="mb-3">
-                    <span class="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded-full">
+                    <span class="inline-block bg-brand-blue-100 text-brand-blue-800 text-xs font-medium px-3 py-1 rounded-full">
                       {article.data.category}
                     </span>
                   </div>
@@ -118,7 +118,7 @@ const pageKeywords = "10教育最新消息, STEM教育活動, AI教師培訓, �
                   <h3 class="text-xl font-bold mb-3 text-gray-800 line-clamp-2">
                     <a 
                       href={`/news/${article.slug}`}
-                      class="hover:text-blue-600 transition-colors"
+                      class="hover:text-brand-blue-600 transition-colors"
                     >
                       {article.data.title}
                     </a>
@@ -160,7 +160,7 @@ const pageKeywords = "10教育最新消息, STEM教育活動, AI教師培訓, �
                   <!-- Read More Button -->
                   <a 
                     href={`/news/${article.slug}`}
-                    class="inline-block w-full text-center bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors text-sm font-medium"
+                    class="inline-block w-full text-center bg-brand-blue-600 text-white px-4 py-2 rounded hover:bg-brand-blue-700 transition-colors text-sm font-medium"
                   >
                     閱讀全文 →
                   </a>
@@ -192,10 +192,10 @@ const pageKeywords = "10教育最新消息, STEM教育活動, AI教師培訓, �
       const category = filter.dataset.category;
       
       // Update active state
-      categoryFilters.forEach(f => f.classList.remove('active', 'bg-blue-600', 'text-white'));
+      categoryFilters.forEach(f => f.classList.remove('active', 'bg-brand-blue-600', 'text-white'));
       categoryFilters.forEach(f => f.classList.add('bg-white', 'text-gray-700'));
       
-      filter.classList.add('active', 'bg-blue-600', 'text-white');
+      filter.classList.add('active', 'bg-brand-blue-600', 'text-white');
       filter.classList.remove('bg-white', 'text-gray-700');
       
       // Filter articles

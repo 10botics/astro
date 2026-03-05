@@ -1,0 +1,215 @@
+﻿---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import { Image } from 'astro:assets';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
+
+import heroImage from '../../assets/images/stemday/mainpage/vr-game-experience.png';
+
+const activityData: {
+  title: string;
+  subtitle: string;
+  tags: string[];
+  description: string;
+  heroImageAsset: any;
+} = {
+  title: "VR遊戲體驗",
+  subtitle: "戴上VR眼鏡，踏入沉浸式虛擬世界，體驗科技帶來的震撼與驚喜！",
+  tags: ["VR 虛擬實境", "遊戲體驗", "初小", "高小", "初中", "高中"],
+  description: "VR（虛擬實境）遊戲體驗帶同學走進完全沉浸式的虛擬世界！戴上VR眼鏡後，360度的視覺環繞令人嘆為觀止，無論是站在高山之巔、深海之底，還是身處外太空，身歷其境的臨場感讓同學忍不住驚呼連連。我們精心挑選了多款適合不同年級的VR遊戲，涵蓋冒險探索、運動競技和科普教育等主題。導師在旁提供全程指引，並講解VR技術的核心科學原理——包括雙眼視差如何製造立體深度感、陀螺儀感應器如何追蹤頭部動作使畫面同步更新——讓同學在享受震撼體驗的同時掌握科技知識，了解VR技術在醫療手術模擬、建築設計視覺化、軍事訓練和心理治療等專業領域的廣泛應用。",
+  heroImageAsset: heroImage
+};
+
+const activityFeatures = [
+  {
+    icon: "fas fa-vr-cardboard",
+    title: "全感官沉浸式VR體驗",
+    description: "戴上VR眼鏡後，同學的視野完全被虛擬世界環繞，頭部轉動時畫面同步跟隨，創造令人嘆為觀止的臨場感。結合立體聲音效，多款精選VR遊戲帶來前所未有的視聽震撼體驗，讓同學忍不住發出驚呼。"
+  },
+  {
+    icon: "fas fa-gamepad",
+    title: "多款精選VR遊戲",
+    description: "我們精心挑選了多款適合不同年級學生的VR遊戲，涵蓋冒險探索、運動競技、科普教育等不同類型，讓同學體驗虛擬實境技術在娛樂、教育和模擬訓練等不同場景中的應用。"
+  },
+  {
+    icon: "fas fa-chalkboard-teacher",
+    title: "導師即場講解VR原理",
+    description: "導師會在活動中講解VR技術的核心工作原理：陀螺儀如何追蹤頭部動作、雙眼分屏顯示如何製造立體深度感，以及為何大腦會「相信」虛擬環境是真實存在的。讓同學在享受遊戲的同時，掌握VR技術的科學知識。"
+  },
+  {
+    icon: "fas fa-lightbulb",
+    title: "開啟科技創新視野",
+    description: "VR技術已遠超娛樂範疇，廣泛應用於醫療手術模擬、建築設計展示、軍事訓練和心理治療等專業領域。透過親身體驗，激發同學對XR（擴展實境）技術未來發展的好奇心和探索精神。"
+  }
+];
+
+const activitySchedule = [
+  {
+    title: "VR技術原理講解 [約1分鐘]",
+    content: [
+      "導師介紹VR虛擬實境技術的基本原理：如何透過雙眼分屏顯示製造立體深度感（雙眼視差原理）",
+      "講解陀螺儀感應器的功能：如何即時追蹤頭部旋轉，讓畫面隨頭部動作同步更新",
+      "說明VR技術與AR技術的分別，以及各自的主要應用場景",
+      "展示VR眼鏡的結構，介紹鏡片、顯示屏及感應器的各自功能"
+    ]
+  },
+  {
+    title: "VR設備使用指引 [約30秒]",
+    content: [
+      "導師示範正確的VR眼鏡佩戴方式和調整方法，確保同學佩戴舒適",
+      "說明體驗過程中的注意事項，如保持站立或坐下、感到不適時立即告知等",
+      "介紹遊戲的互動操控方式，讓同學在進入虛擬世界前做好準備"
+    ]
+  },
+  {
+    title: "VR遊戲沉浸式體驗 [約1-2分鐘]",
+    content: [
+      "每次可供1人佩戴VR眼鏡，獨享完整的沉浸式虛擬體驗",
+      "進入精選VR遊戲場景，體驗360度虛擬環境帶來的震撼感",
+      "根據遊戲類型進行互動操控，感受在虛擬世界中的臨場體驗",
+      "導師在旁觀察同學的體驗狀態，適時提供指引和確保安全"
+    ]
+  },
+  {
+    title: "體驗感受分享與科技延伸",
+    content: [
+      "同學分享VR體驗感受：哪個場景最令你印象深刻？與現實有何分別？",
+      "導師介紹VR技術在各專業領域的實際應用：醫學手術模擬、飛行員訓練、建築設計可視化、心理治療等",
+      "分享XR（擴展實境）技術的最新發展趨勢，如Apple Vision Pro等混合現實裝置的未來應用",
+      "鼓勵同學思考：你會希望用VR技術創造什麼體驗？引導對科技創新的思考"
+    ]
+  }
+];
+
+const activityInfo = [
+  { label: "容納人數", value: "每次可供1人進行活動" },
+  { label: "時長", value: "每次每人可玩1-2分鐘" },
+  { label: "我們將會提供", value: "VR遊戲 / VR眼鏡 / 遊戲介紹易拉架 / 電腦" },
+  { label: "學校需提供/自備", value: "桌子" },
+  { label: "備註", value: "1. 建議室內進行\n2. 同時附近需要電源" },
+];
+
+const faqData = [
+  {
+    question: "這項活動適合什麼年級的同學參與？",
+    answer: "活動適合初小至高中（小一至中六）所有年級學生參與。我們會根據不同年級選擇合適的VR遊戲內容，確保體驗既安全又有趣。建議低年級（小一至小三）同學在體驗前由導師確認是否感到舒適，並縮短單次體驗時間。"
+  },
+  {
+    question: "每次活動可以容納多少人？",
+    answer: "每次可供1人獨立佩戴VR眼鏡進行體驗，每人每次約1至2分鐘。其他等候的同學可觀看旁邊的熒幕顯示器，看見正在體驗的同學所看到的虛擬世界畫面，也能享受觀看的樂趣。"
+  },
+  {
+    question: "有些同學會VR暈機（暈動症）嗎？如何處理？",
+    answer: "少部分人在體驗VR時可能感到輕微暈眩或不適，這是正常的生理反應。我們採取以下措施預防和應對：\n• 選擇移動感較少的VR遊戲，減低暈眩風險\n• 導師在旁密切觀察同學狀態\n• 如同學感到不適，可立即取下眼鏡休息\n• 體驗時間控制在1至2分鐘，降低不適機會\n\n有量車量船歷史的同學建議事先告知導師。"
+  },
+  {
+    question: "學校需要準備什麼設備和場地？",
+    answer: "學校需要提供：\n• 桌子（用於放置電腦及設備）\n• 活動區域附近的電源\n\n我們將提供：VR眼鏡、精選VR遊戲、遊戲介紹易拉架及電腦。\n\n建議：活動在室內進行效果最佳，可避免陽光干擾VR顯示效果。如有特殊場地需求，歡迎提前聯絡我們商討安排。\n\n致電 +852 6554-1506 或電郵至 info@10botics.com 與同事溝通詳情。"
+  },
+  {
+    question: "同學在活動中能了解什麼科技知識？",
+    answer: "除了親身體驗VR遊戲的震撼感外，同學將了解：\n• VR技術的核心原理（雙眼視差、陀螺儀追蹤）\n• VR與AR技術的分別和各自的應用場景\n• VR技術在醫療、教育、建築、軍事訓練等專業領域的實際應用\n• XR（擴展實境）技術的最新發展趨勢，包括Meta Quest、Apple Vision Pro等裝置"
+  }
+];
+
+const { title, subtitle, tags, description, heroImageAsset: heroImg } = activityData;
+---
+
+<Layout title={title} description={description}>
+  <main>
+    <HeroSection 
+      title={title}
+      subtitle={subtitle}
+      tags={tags}
+      description={description}
+      heroImage={heroImg}
+    />
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold mb-4">活動特色</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {activityFeatures.map((feature) => (
+            <div class="text-center">
+              <div class="w-16 h-16 bg-brand-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class={`${feature.icon} text-white text-2xl`}></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p class="text-gray-600">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <SingleCourseContent 
+      items={activitySchedule}
+      hours="每人每次1-2分鐘"
+    />
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">活動資訊</h2>
+          <div class="overflow-hidden rounded-lg shadow-lg border border-gray-200">
+            <table class="w-full">
+              <tbody>
+                {activityInfo.map((item, i) => (
+                  <tr class={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                    <td class="px-6 py-4 font-semibold text-gray-900 border-r border-gray-200 w-1/3 text-center">{item.label}</td>
+                    <td class="px-6 py-4 text-gray-700 text-center whitespace-pre-line">{item.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <QnASection faqs={faqData} />
+
+    <RelatedCourses courseTags={tags} courseTitle={title} context="course" />
+    <RelatedNews courseTags={tags} courseTitle={title} context="course" />
+
+    <ContactSection subtitle="歡迎聯絡我們，我們會為您提供詳細的活動安排和報名資訊。" />
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.accordion-header').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.parentElement;
+          if (!item) return;
+          const isActive = item.classList.contains('active');
+          document.querySelectorAll('.accordion-item').forEach(accordionItem => {
+            accordionItem.classList.remove('active');
+          });
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+
+  <style>
+    .accordion-content {
+      display: none;
+    }
+    .accordion-item.active .accordion-content {
+      display: block;
+    }
+    .accordion-item.active .accordion-header i {
+      transform: rotate(45deg);
+    }
+  </style>
+</Layout>
