@@ -74,9 +74,10 @@ jobs:
           script: |
             const issue_number = context.payload.issue.number;
             const prUrl = '${{ steps.cpr.outputs.pull-request-url }}';
+            const vercelUrl = `https://10botics-website-git-bot-news-from-issue-${issue_number}-10botics-projects.vercel.app/`;
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number,
-              body: `PR created: ${prUrl}\n\nVercel Preview will appear on the PR once checks start.`
+              body: `PR created: ${prUrl}\n\nVercel Preview (available once the build completes): ${vercelUrl}`
             });
