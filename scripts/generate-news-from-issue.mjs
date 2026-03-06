@@ -422,11 +422,6 @@ async function main() {
     content = whatHappened.trim();
   }
 
-  const bodyParts = [];
-  if (downloadedExtraImagePaths.length) {
-    for (const img of downloadedExtraImagePaths) bodyParts.push(`![](${img})`);
-    bodyParts.push('');
-  }
   if (content) bodyParts.push(content);
   if (externalLinks.length) {
     bodyParts.push('', '## 相關連結', ...externalLinks.map((u) => `- ${u}`));
