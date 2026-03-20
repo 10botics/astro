@@ -35,7 +35,7 @@ const pageDescription = article.data.description || excerpt;
 const pageKeywords = (article.data.tags || []).join(', ');
 
 // Handle OG Image - convert asset path to public URL or use default
-let ogImage = "/images/logo_website_700x200-300x86.png"; // Default to logo
+let ogImage = "/images/full_logo.png"; // Default to logo
 
 if (article.data.SEOImage) {
   if (typeof article.data.SEOImage === 'string') {
@@ -88,7 +88,7 @@ const articleSchema: any = {
     "name": "10教育",
     "logo": {
       "@type": "ImageObject",
-      "url": "/images/logo_website_700x200-300x86.png"
+      "url": "/images/full_logo.png"
     }
   },
   "datePublished": article.data.publishDate.toISOString(),
@@ -100,7 +100,7 @@ const articleSchema: any = {
 };
 
 // Add image to schema if available
-if (ogImage && ogImage !== "/images/logo_website_700x200-300x86.png") {
+if (ogImage && ogImage !== "/images/full_logo.png") {
   articleSchema.image = {
     "@type": "ImageObject",
     "url": ogImage,

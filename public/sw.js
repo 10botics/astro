@@ -1,7 +1,8 @@
 const CACHE_NAME = '10botics-v1';
 const urlsToCache = [
   '/',
-  '/images/logo_website_700x200-300x86.png',
+  '/images/full_logo.png',
+  '/images/logo_website_700x200-300x86.png', // legacy URL; keep in sync with full_logo.png
   '/images/hero-image.jpg',
   '/favicon.svg',
   '/favicon-100x100.jpg',
