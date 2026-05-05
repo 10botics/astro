@@ -10,6 +10,9 @@ export interface Props {
   description: string;
   featuredImage?: any;
   heroImage?: any;
+  /** Extra crumb after 首頁, before parent (e.g. 到校服務 → … → 教師發展日 → 本頁) */
+  rootSectionHref?: string;
+  rootSectionLabel?: string;
   /** Breadcrumb parent (default: 到校課程) */
   parentSectionHref?: string;
   parentSectionLabel?: string;
@@ -25,6 +28,8 @@ const {
   description,
   featuredImage,
   heroImage,
+  rootSectionHref,
+  rootSectionLabel,
   parentSectionHref = '/school-courses/',
   parentSectionLabel = '到校課程',
   heroImageCaption,
@@ -38,6 +43,12 @@ const {
     <nav class="text-sm mb-6 text-gray-600">
       <a href="/" class="text-cyan-400 hover:text-cyan-600">首頁</a>
       <span class="mx-2">»</span>
+      {rootSectionHref && rootSectionLabel && (
+        <>
+          <a href={rootSectionHref} class="text-cyan-400 hover:text-cyan-600">{rootSectionLabel}</a>
+          <span class="mx-2">»</span>
+        </>
+      )}
       <a href={parentSectionHref} class="text-cyan-400 hover:text-cyan-600">{parentSectionLabel}</a>
       <span class="mx-2">»</span>
       <span class="text-gray-800">{title}</span>

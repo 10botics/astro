@@ -1,26 +1,53 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, type ImageMetadata } from 'astro:assets';
+
+export type GalleryImageInput =
+  string | ImageMetadata | { src: string | ImageMetadata; alt: string };
+
+type NormalizedGalleryImage = {
+  src: string | ImageMetadata;
+  alt: string;
+  isRemote: boolean;
+};
 
 export interface Props {
   title?: string;
-  images: (string | ImageMetadata)[];
+  images: GalleryImageInput[];
   intervalMs?: number;
+}
+
+function normalizeGalleryImage(img: GalleryImageInput): NormalizedGalleryImage | null {
+  if (typeof img === 'string') {
+    return { src: img, alt: 'Gallery image', isRemote: true };
+  }
+  if (img && typeof img === 'object') {
+    const o = img as Record<string, unknown>;
+    const looksLikeMeta =
+      'width' in o && 'height' in o && 'format' in o && typeof o.src === 'string';
+    if (looksLikeMeta) {
+      return { src: img as ImageMetadata, alt: 'Gallery image', isRemote: false };
+    }
+    if ('src' in o && o.src !== undefined) {
+      const alt = typeof o.alt === 'string' ? o.alt : 'Gallery image';
+      const sub = o.src;
+      if (typeof sub === 'string') {
+        return { src: sub, alt, isRemote: true };
+      }
+      if (sub && typeof sub === 'object') {
+        const m = sub as Record<string, unknown>;
+        if ('width' in m && 'height' in m && 'format' in m) {
+          return { src: sub as ImageMetadata, alt, isRemote: false };
+        }
+      }
+    }
+  }
+  return null;
 }
 
 const { title, images, intervalMs = 4000 } = Astro.props;
 
-// Normalize images to ensure proper handling for both string URLs and ImageMetadata objects
-const normalizedImages = images.map(img => {
-  if (typeof img === 'string') {
-    // If it's a string URL, return it as is for static assets
-    return { src: img, alt: 'Gallery image', isRemote: true };
-  } else if (img && typeof img === 'object' && 'src' in img) {
-    // This is an ImageMetadata object from Astro import - use the src property
-    // According to Astro docs, ImageMetadata objects have a src property that contains the processed image URL
-    return { src: img, alt: 'Gallery image', isRemote: false };
-  }
-  return null;
-}).filter(img => img !== null);
+// Normalize images for string URLs, ImageMetadata imports, or { src, alt } wrappers
+const normalizedImages = images.map(normalizeGalleryImage).filter((img): img is NonNullable<typeof img> => img !== null);
 
 // Debug logging for development
 if (import.meta.env.DEV) {
