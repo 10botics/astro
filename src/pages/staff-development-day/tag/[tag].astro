@@ -8,6 +8,7 @@ import {
   generateTagPaths,
   generateTagSlug,
   AUDIENCE_TAG_MAPPING,
+  getStaffDevelopmentWorkshopHref,
 } from '../../../utils/courseMappings';
 import heroImage from '../../../assets/images/staff-development-day/mainpage/hero-image.jpeg';
 
@@ -92,7 +93,7 @@ const pageKeywords = `${originalTag}, 教師發展日, 教師培訓, STEM, 工�
                     <div class="mb-4">
                       <h3 class="text-xl font-bold mb-2 text-gray-800 line-clamp-2">
                         <a
-                          href={`/staff-development-day/${workshop.slug}`}
+                          href={getStaffDevelopmentWorkshopHref(workshop)}
                           class="hover:text-brand-blue-600 transition-colors"
                         >
                           {workshop.title}
@@ -152,7 +153,7 @@ const pageKeywords = `${originalTag}, 教師發展日, 教師培訓, STEM, 工�
 
                     <div class="mt-auto">
                       <a
-                        href={`/staff-development-day/${workshop.slug}`}
+                        href={getStaffDevelopmentWorkshopHref(workshop)}
                         class="inline-block w-full text-center bg-brand-blue-600 text-white px-4 py-2 rounded hover:bg-brand-blue-700 transition-colors text-sm font-medium"
                       >
                         查看詳情

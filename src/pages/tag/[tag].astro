@@ -9,7 +9,6 @@ import {
   getAllUniqueTags, 
   generateTagPaths, 
   generateTagSlug,
-  TAG_MAPPING,
   type Course 
 } from '../../utils/courseMappings';
 
@@ -46,15 +45,14 @@ const sortedCourses = filteredCourses.sort((a, b) =>
 const allNews = await getCollection('news');
 const filteredNews = allNews.filter(article => {
   if (tag === 'ai') {
-    return article.data.tags?.some(tag => 
-      tag.includes('AI') || tag.includes('人工智能') || tag.includes('ai')
+    return article.data.tags?.some((articleTag) =>
+      articleTag.includes('AI') || articleTag.includes('人工智能') || articleTag.includes('ai')
     );
-  } else {
-    return article.data.tags?.some(tag => {
-      const tagSlug = generateTagSlug(tag);
-      return tagSlug === tag || tag === originalTag;
-    });
   }
+  return article.data.tags?.some((articleTag) => {
+    const articleTagSlug = generateTagSlug(articleTag);
+    return articleTagSlug === tag || articleTag === originalTag;
+  });
 });
 
 // Sort news by publication date (newest first)
