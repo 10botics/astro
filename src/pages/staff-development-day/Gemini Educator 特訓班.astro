@@ -1,0 +1,116 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import StaffWorkshopPageSections from '../../components/staff-development/StaffWorkshopPageSections.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import geminiEducator from '../../assets/images/staff-development-day/mainpage/gemini-educator.jpg';
+
+export const courseData = {
+  title: 'Gemini Educator 特訓班',
+  subtitle: '短時間掌握 Google Gemini 教學應用並取得官方認證',
+  description:
+    '助老師2小時取得Google官方Gemini教師認證！認證旨在培養AI時代的教育引導者，驗證教師對生成式AI基礎概念的理解，以及在教育情境中負責任地整合Google AI工具的能力。',
+  detailedDescription:
+    '助老師約兩小時取得 Google 官方 Gemini 教師認證。內容涵蓋生成式 AI 與 Google AI 工具概覽、Gemini 平台核心功能（引導學習、影像生成、Canvas、深度研究、Gems 等）、NotebookLM 應用注意事項（需配合 VPN），並進行 Gemini 教師認證考試準備與實作。',
+  tags: ['教師發展日', 'Gemini', 'Google AI', 'STEM', '教師培訓', 'AI教育', 'AIGC'],
+  heroImage: geminiEducator,
+  imageCaption: 'Gemini Educator 特訓班 - 助老師2小時取得Gemini教師認證',
+  publishDate: '2024-06-01',
+};
+
+const workshopFeatures = [
+  {
+    icon: 'fas fa-brain',
+    title: '生成式 AI 與 Google AI',
+    description: '建立對生成式 AI 與 Google AI 工具在教育場景中的負責任用法的整體認識。',
+  },
+  {
+    icon: 'fas fa-layer-group',
+    title: 'Gemini 核心功能',
+    description: '涵蓋引導學習、影像生成、Canvas、深度研究、Gems 等常用模組與課堂情境。',
+  },
+  {
+    icon: 'fas fa-book-reader',
+    title: 'NotebookLM',
+    description: '了解 NotebookLM 在備課與學習資源整理上的應用（部分環境需配合 VPN）。',
+  },
+  {
+    icon: 'fas fa-certificate',
+    title: '官方認證',
+    description: '協助完成 Gemini 教師認證流程，取得可查證之官方資格。',
+  },
+];
+
+const curriculum = [
+  {
+    title: '工作坊簡介',
+    content: [
+      '以「AI 時代的教育引導者」為目標，結合理論、示範與認證導向練習。',
+      '適合希望在課堂與行政流程中整合 Google Gemini 的教育同工。',
+    ],
+  },
+  {
+    title: '工作坊重點',
+    content: [
+      '介紹 Generative AI 及 Google AI 工具',
+      'Gemini 平台核心功能',
+      '介紹引導學習、影像生成、Canvas、深度研究、Gems 等',
+      'NotebookLM 的應用（需配合 VPN 使用）',
+      '進行 Gemini 教師認證考試',
+    ],
+  },
+];
+
+const faqItems = [
+  {
+    question: '認證是否由 Google 發出？',
+    answer: [
+      '工作坊對準 Google Gemini 教師認證路徑；實際發證與條款以 Google 官方為準。',
+      '請預留已更新的瀏覽器與穩定網絡；NotebookLM 部分功能可能需 VPN。',
+    ],
+  },
+  {
+    question: '學校如何報名特訓班？',
+    answer: ['請致電 +852 6554-1506 或電郵 info@10botics.com，說明參與人數與期望日期。'],
+  },
+];
+---
+
+<Layout
+  title={`${courseData.title} - 教師發展日 - 10教育`}
+  description={courseData.description}
+  ogImage={geminiEducator.src}
+>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+  <main>
+    <HeroSection
+      title={courseData.title}
+      subtitle={courseData.subtitle}
+      description={courseData.detailedDescription}
+      heroImage={courseData.heroImage}
+      heroImageCaption={courseData.imageCaption}
+      tags={courseData.tags}
+      parentSectionHref="/staff-development-day/"
+      parentSectionLabel="教師發展日"
+    />
+
+    <StaffWorkshopPageSections
+      features={workshopFeatures}
+      curriculum={curriculum}
+      faqs={faqItems}
+      contentHours="約 2 小時"
+      curriculumSectionTitle="課程內容"
+    />
+
+    <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} context="course" />
+
+    <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} maxResults={6} context="course" />
+
+    <ContactSection
+      subtitle={`想了解更多關於「${courseData.title}」的資訊？歡迎聯絡我們，我們會為您提供詳細安排與報名資訊。`}
+    />
+  </main>
+</Layout>

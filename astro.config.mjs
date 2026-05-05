@@ -33,15 +33,23 @@ export default defineConfig({
         '@': path.resolve('./src'),
       },
     },
-    // Exclude migration data from being watched
+    // Narrow dev watchers to reduce EMFILE (too many open files) on Windows when
+    // Astro/Vite + IDE + antivirus all touch the tree at once.
     server: {
       watch: {
         ignored: [
-          'xml-guided-migration-data/**',
-          'migration-data/**',
-          'conversion-report.json',
-          'comprehensive-crawl-report.json',
-          'media-filename-mapping.json'
+          '**/node_modules/**',
+          '**/dist/**',
+          '**/.git/**',
+          '**/.astro/**',
+          '**/db/**',
+          '**/scripts/**',
+          '**/xml-guided-migration-data/**',
+          '**/migration-data/**',
+          '**/conversion-report.json',
+          '**/comprehensive-crawl-report.json',
+          '**/media-filename-mapping.json',
+          '**/category_analysis_results.json'
         ]
       }
     }

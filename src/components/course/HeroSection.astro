@@ -10,9 +10,25 @@ export interface Props {
   description: string;
   featuredImage?: any;
   heroImage?: any;
+  /** Breadcrumb parent (default: 到校課程) */
+  parentSectionHref?: string;
+  parentSectionLabel?: string;
+  /** Optional caption overlay on hero image */
+  heroImageCaption?: string;
 }
 
-const { title, subtitle, tags, videoId, description, featuredImage, heroImage } = Astro.props;
+const {
+  title,
+  subtitle,
+  tags,
+  videoId,
+  description,
+  featuredImage,
+  heroImage,
+  parentSectionHref = '/school-courses/',
+  parentSectionLabel = '到校課程',
+  heroImageCaption,
+} = Astro.props;
 ---
 
 <!-- Clean white background to match original -->
@@ -22,7 +38,7 @@ const { title, subtitle, tags, videoId, description, featuredImage, heroImage } 
     <nav class="text-sm mb-6 text-gray-600">
       <a href="/" class="text-cyan-400 hover:text-cyan-600">首頁</a>
       <span class="mx-2">»</span>
-      <a href="/school-courses/" class="text-cyan-400 hover:text-cyan-600">到校課程</a>
+      <a href={parentSectionHref} class="text-cyan-400 hover:text-cyan-600">{parentSectionLabel}</a>
       <span class="mx-2">»</span>
       <span class="text-gray-800">{title}</span>
     </nav>
@@ -103,7 +119,7 @@ const { title, subtitle, tags, videoId, description, featuredImage, heroImage } 
             </iframe>
           </div>
         ) : heroImage ? (
-          <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg">
+          <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg relative">
             <Image 
               src={heroImage} 
               alt={title}
@@ -111,6 +127,11 @@ const { title, subtitle, tags, videoId, description, featuredImage, heroImage } 
               height={400}
               class="w-full h-full object-cover"
             />
+            {heroImageCaption && (
+              <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 text-white p-4 rounded-b-lg">
+                <p class="text-sm leading-snug">{heroImageCaption}</p>
+              </div>
+            )}
           </div>
         ) : null}
       </div>

@@ -1,0 +1,181 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import {
+  discoverStaffDevelopmentCourses,
+  filterCoursesByTag,
+  getAllUniqueTags,
+  generateTagPaths,
+  generateTagSlug,
+  AUDIENCE_TAG_MAPPING,
+} from '../../../utils/courseMappings';
+import heroImage from '../../../assets/images/staff-development-day/mainpage/hero-image.jpeg';
+
+export async function getStaticPaths() {
+  const astroWorkshops = await discoverStaffDevelopmentCourses(['index.astro', '[slug].astro']);
+  const allTags = getAllUniqueTags(astroWorkshops);
+  return generateTagPaths(allTags);
+}
+
+const { tag, originalTag } = Astro.props;
+
+const astroWorkshops = await discoverStaffDevelopmentCourses(['index.astro', '[slug].astro']);
+
+const filteredWorkshops = filterCoursesByTag(astroWorkshops, tag, originalTag);
+
+const sortedWorkshops = filteredWorkshops.sort(
+  (a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
+);
+
+const pageTitle = `${originalTag} — 教師發展日工作坊 - 10教育`;
+const pageDescription = `瀏覽與 ${originalTag} 相關的教師發展日工作坊及講座。共${sortedWorkshops.length}項。`;
+const pageKeywords = `${originalTag}, 教師發展日, 教師培訓, STEM, 工作坊, 10教育`;
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  ogImage="/images/og/courses-overview.jpg"
+>
+  <main class="courses-index">
+    <header class="relative text-white py-16 overflow-hidden">
+      <div class="absolute inset-0">
+        <Image src={heroImage} alt="教師發展日" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+      </div>
+      <div class="relative container-standard">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-5xl font-bold mb-6">{originalTag}</h1>
+          <p class="text-xl opacity-90 mb-8">教師發展日工作坊與講座</p>
+          <div class="flex justify-center">
+            <a
+              href="/staff-development-day"
+              class="bg-white text-brand-blue-600 px-6 py-2 rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              返回總覽
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="section-padding">
+      <div class="container-standard">
+        <div class="max-w-6xl mx-auto">
+          {sortedWorkshops.length > 0 ? (
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {sortedWorkshops.map((workshop) => (
+                <article class="course-card card-base card-hover overflow-hidden">
+                  {workshop.heroImage && (
+                    <div class="course-image-container bg-gray-100 overflow-hidden aspect-video">
+                      {typeof workshop.heroImage === 'string' ? (
+                        <img
+                          src={workshop.heroImage}
+                          alt={workshop.title}
+                          width={600}
+                          height={400}
+                          class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      ) : (
+                        <Image
+                          src={workshop.heroImage}
+                          alt={workshop.title}
+                          width={600}
+                          height={400}
+                          class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      )}
+                    </div>
+                  )}
+                  <div class="p-6">
+                    <div class="mb-4">
+                      <h3 class="text-xl font-bold mb-2 text-gray-800 line-clamp-2">
+                        <a
+                          href={`/staff-development-day/${workshop.slug}`}
+                          class="hover:text-brand-blue-600 transition-colors"
+                        >
+                          {workshop.title}
+                        </a>
+                      </h3>
+
+                      {workshop.description && (
+                        <p class="text-gray-600 text-sm line-clamp-3 mb-4">{workshop.description}</p>
+                      )}
+                    </div>
+
+                    <div class="mb-4">
+                      {(() => {
+                        const targetAudienceTags = ['初小', '高小', '初中', '高中'];
+                        const otherTags = workshop.tags.filter((t) => !targetAudienceTags.includes(t));
+                        const audienceTags = workshop.tags.filter((t) => targetAudienceTags.includes(t));
+
+                        return (
+                          <div class="space-y-2">
+                            {audienceTags.length > 0 && (
+                              <div class="flex flex-wrap gap-1 items-center">
+                                <span class="text-xs font-medium text-gray-600 mr-1">適合對象:</span>
+                                {audienceTags.map((t) => {
+                                  const tagSlug =
+                                    AUDIENCE_TAG_MAPPING[t] || t.toLowerCase().replace(/\s+/g, '-');
+                                  return (
+                                    <a
+                                      href={`/staff-development-day/tag/${tagSlug}`}
+                                      class="bg-cyan-100 text-cyan-800 px-2 py-1 rounded text-xs font-medium hover:bg-cyan-200 transition-colors"
+                                    >
+                                      {t}
+                                    </a>
+                                  );
+                                })}
+                              </div>
+                            )}
+
+                            {otherTags.length > 0 && (
+                              <div class="flex flex-wrap gap-1">
+                                {otherTags.map((t: string) => {
+                                  const tagSlug = generateTagSlug(t);
+                                  return (
+                                    <a
+                                      href={`/staff-development-day/tag/${tagSlug}`}
+                                      class="bg-brand-blue-100 text-brand-blue-800 px-2 py-1 rounded text-xs font-medium hover:bg-brand-blue-200 transition-colors"
+                                    >
+                                      {t}
+                                    </a>
+                                  );
+                                })}
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })()}
+                    </div>
+
+                    <div class="mt-auto">
+                      <a
+                        href={`/staff-development-day/${workshop.slug}`}
+                        class="inline-block w-full text-center bg-brand-blue-600 text-white px-4 py-2 rounded hover:bg-brand-blue-700 transition-colors text-sm font-medium"
+                      >
+                        查看詳情
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div class="text-center section-padding">
+              <h2 class="text-2xl font-bold text-gray-800 mb-4">沒有找到與 {originalTag} 相關的工作坊</h2>
+              <p class="text-gray-600 mb-8">請嘗試其他標籤或返回總覽</p>
+              <a
+                href="/staff-development-day"
+                class="bg-brand-blue-600 text-white px-6 py-3 rounded-lg hover:bg-brand-blue-700 transition-colors"
+              >
+                返回教師發展日
+              </a>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

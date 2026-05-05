@@ -41,6 +41,8 @@ export interface Props {
     src: any;
     alt: string;
   }>;
+  /** Main heading (default 課程內容) */
+  sectionTitle?: string;
 }
 
 const { 
@@ -49,14 +51,15 @@ const {
   hoursText = "共",
   adjustmentText = "可根據學校需要調整",
   showAdjustmentNote = true,
-  images = []
+  images = [],
+  sectionTitle = "課程內容",
 } = Astro.props;
 ---
 
 <section class="bg-white py-16">
   <div class="container mx-auto px-4">
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">課程內容</h2>
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">{sectionTitle}</h2>
       <div class="text-center mb-8">
         <p class="text-xl text-gray-600">{hoursText} {hours}</p>
         {showAdjustmentNote && (

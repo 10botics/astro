@@ -415,6 +415,13 @@ export const urlAliases = {
     },
     "main": "ai-video-production"
   },
+  "Gemini 學生證書課程.astro": {
+    "tags": {
+      "school-courses": ["gemini-student-certificate"],
+      "course": ["gemini-student-certificate"]
+    },
+    "main": "gemini-student-certificate"
+  },
 
   // STEM Day activities
   "飲管橋.astro": {

@@ -31,7 +31,8 @@ export const COURSE_SLUG_MAPPING: Record<string, string> = {
   'Python 初階遊戲編程': 'python-game-dev-beginner',
   'Apple Vision Pro 遊戲開發課程': 'apple-vision-pro-game-dev',
   '3D Micro_bit 機械人創作課程': '3d-microbit-robot-creation',
-  'AI影片製作課程': 'ai-video-production'
+  'AI影片製作課程': 'ai-video-production',
+  'Gemini 學生證書課程': 'gemini-student-certificate'
 };
 
 // Map STEM Day Chinese filenames to English URL slugs
@@ -39,6 +40,15 @@ export const STEMDAY_SLUG_MAPPING: Record<string, string> = {
   '飲管橋': 'straw-bridge',
   'DIY 手作': 'diy',
   'Matatalab 入門編程課程': 'matatalab-programming'
+};
+
+// Map staff development workshop filenames to English URL slugs
+export const STAFF_DEV_SLUG_MAPPING: Record<string, string> = {
+  'Gemini Educator 特訓班': 'gemini-educator',
+  'ChatGPT在教育行業的運用講座': 'chatgpt-education',
+  'AI人工智能生成講座': 'ai-generation-lecture',
+  'Raspberry Pi與Python的運用講座': 'raspberry-pi-python',
+  'Donkey Car無人車發展和應用講座': 'donkey-car-lecture'
 };
 
 // Map Chinese tags to English URL slugs
@@ -76,6 +86,8 @@ export const TAG_MAPPING: Record<string, string> = {
   'STEM Day': 'stemday',
   // Technology and platform specific tags
   'ChatGPT': 'chatgpt',
+  'Google Gemini': 'google-gemini',
+  'NotebookLM': 'notebooklm',
   'Leonardo AI': 'leonardo-ai',
   'Delightex': 'delightex',
   'Metaverse 元宇宙': 'metaverse',
@@ -271,6 +283,49 @@ export async function discoverStemdayCourses(
         heroImage: course.heroImage,
         publishDate: new Date().toISOString().split('T')[0],
         source: 'stemday'
+      } as Course;
+    });
+}
+
+/**
+ * Auto-discover staff development workshop .astro files (same contract as discoverCourses).
+ */
+export async function discoverStaffDevelopmentCourses(
+  exclusions: string[] = ['index.astro', '[slug].astro']
+): Promise<Course[]> {
+  const courseFiles = await import.meta.glob('/src/pages/staff-development-day/*.astro', {
+    eager: true
+  });
+
+  return Object.entries(courseFiles)
+    .filter(([path]) => {
+      const filename = path.split('/').pop() || '';
+      return !exclusions.some(exclusion => {
+        const exclusionFilename = exclusion.replace(/^\.\.?\//g, '');
+        return filename === exclusionFilename;
+      });
+    })
+    .map(([path, module]: [string, any]) => {
+      const filename = path.replace('/src/pages/staff-development-day/', '').replace('.astro', '');
+      const courseData = module.courseData || {
+        title: filename,
+        description: `${filename} 工作坊`,
+        tags: [filename.replace('-', ' ')]
+      };
+
+      return {
+        slug: STAFF_DEV_SLUG_MAPPING[filename] || filename,
+        filename: `${filename}.astro`,
+        title: courseData.title,
+        subtitle: courseData.subtitle || '',
+        description: courseData.description,
+        courseType: courseData.courseType || '教師發展日',
+        targetAudience: courseData.targetAudience || '教師',
+        duration: courseData.duration || '待定',
+        tags: courseData.tags || [],
+        heroImage: courseData.heroImage,
+        publishDate: courseData.publishDate || new Date().toISOString().split('T')[0],
+        source: 'staff-dev'
       } as Course;
     });
 }

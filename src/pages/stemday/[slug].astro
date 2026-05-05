@@ -74,7 +74,7 @@ if (!slug) {
 }
 
 // Get filename from canonical slug mapping
-const slugToFilenameMap = {
+const slugToFilenameMap: Record<string, string> = {
   'straw-bridge': '飲管橋.astro',
   'diy': 'DIY 手作.astro',
   'matatalab-programming': 'Matatalab 入門編程課程.astro',

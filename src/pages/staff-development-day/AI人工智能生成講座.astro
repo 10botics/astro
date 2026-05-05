@@ -1,0 +1,112 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import StaffWorkshopPageSections from '../../components/staff-development/StaffWorkshopPageSections.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import aiWorkshop from '../../assets/images/staff-development-day/mainpage/ai-workshop.jpg';
+
+export const courseData = {
+  title: 'AI人工智能生成講座',
+  subtitle: 'Midjourney、教學應用與對答式機器人',
+  description:
+    '講座著重探討和演示如何使用Midjourney進行AI智能圖片生成并融入教學内容。還會教老師製作屬於自己科目和課程相關的對答式機器人，爲學生提供一個即時解答疑問的方式，提高老師在教學上的質量和效率。',
+  detailedDescription:
+    '講座著重探討和演示如何使用Midjourney進行AI智能圖片生成并融入教學内容。還會教老師製作屬於自己科目和課程相關的對答式機器人，爲學生提供一個即時解答疑問的方式，提高老師在教學上的質量和效率。',
+  tags: ['教師發展日', 'Midjourney', 'AI 人工智能', 'STEM', '教師培訓', 'AIGC'],
+  heroImage: aiWorkshop,
+  imageCaption: '爲香港道教聯合會圓玄學院第一中學全體教師提供人工智能生成講座',
+  publishDate: '2024-05-01',
+};
+
+const workshopFeatures = [
+  {
+    icon: 'fas fa-image',
+    title: 'Midjourney 智能圖片生成',
+    description: '學習如何運用 Midjourney 進行 AI 圖片生成，並將視覺素材融入教案與課堂演示。',
+  },
+  {
+    icon: 'fas fa-chalkboard-teacher',
+    title: '豐富教學內容',
+    description: '透過 AI 工具強化教材與簡報（例如 PPT），讓課堂展示更生動、更符合科目需要。',
+  },
+  {
+    icon: 'fas fa-robot',
+    title: '對答式機器人',
+    description: '製作與本科目、課程相連的對答式機器人，協助學生即時澄清概念與常見問題。',
+  },
+];
+
+const curriculum = [
+  {
+    title: '工作坊簡介',
+    content: [
+      '面向教師的生成式 AI 與圖像應用講座，結合理論演示與實務取向。',
+      '協助教師提升備課效率與課堂互動，並為學生提供延伸支援。',
+    ],
+  },
+  {
+    title: '講座内容包括',
+    content: [
+      '如何利用 Midjourney 進行 AI 智能圖片生成',
+      '如何透過 AI 豐富教學內容，例如應用在 PPT 上',
+      '如何製作與課程相關的對答式機器人',
+    ],
+  },
+];
+
+const faqItems = [
+  {
+    question: '講座適合哪些老師？',
+    answer: [
+      '適合中小學及致力將 AI／視覺生成融入科目教學的老師；無需程式背景亦可參與。',
+      '若學校希望調整深度或時數，可先與我們同事溝通教學目標。',
+    ],
+  },
+  {
+    question: '如何為學校安排講座？',
+    answer: [
+      '歡迎致電 +852 6554-1506 或電郵 info@10botics.com，說明校情與期望時段。',
+      '同事會協調講座長度、設備與防疫／校本行政安排。',
+    ],
+  },
+];
+---
+
+<Layout
+  title={`${courseData.title} - 教師發展日 - 10教育`}
+  description={courseData.description}
+  ogImage={aiWorkshop.src}
+>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+  <main>
+    <HeroSection
+      title={courseData.title}
+      subtitle={courseData.subtitle}
+      description={courseData.detailedDescription}
+      heroImage={courseData.heroImage}
+      heroImageCaption={courseData.imageCaption}
+      tags={courseData.tags}
+      parentSectionHref="/staff-development-day/"
+      parentSectionLabel="教師發展日"
+    />
+
+    <StaffWorkshopPageSections
+      features={workshopFeatures}
+      curriculum={curriculum}
+      faqs={faqItems}
+      contentHours="約 2–3 小時"
+      curriculumSectionTitle="課程內容"
+    />
+
+    <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} context="course" />
+
+    <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} maxResults={6} context="course" />
+
+    <ContactSection
+      subtitle={`想了解更多關於「${courseData.title}」的資訊？歡迎聯絡我們，我們會為您提供詳細安排與報名資訊。`}
+    />
+  </main>
+</Layout>
