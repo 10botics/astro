@@ -1,12 +1,12 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import StaffWorkshopPageSections from '../../components/staff-development/StaffWorkshopPageSections.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
 import RelatedCourses from '../../components/course/RelatedCourses.astro';
 import ContactSection from '../../components/ContactSection.astro';
-import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
-import geminiEducator from '../../assets/images/staff-development-day/mainpage/gemini-educator.jpg';
+import heroGeminiCertifiedEducator from '../../assets/images/staff-development-day/Gemini Educator 特訓班/hero-gemini-certified-educator-certificate.png';
 import galleryHallWhatIsAi from '../../assets/images/staff-development-day/Gemini Educator 特訓班/gallery-hall-what-is-ai.png';
 import galleryClassroomDigitalScreen from '../../assets/images/staff-development-day/Gemini Educator 特訓班/gallery-classroom-digital-screen.png';
 import galleryAuditoriumGroupSession from '../../assets/images/staff-development-day/Gemini Educator 特訓班/gallery-auditorium-group-session.png';
@@ -19,8 +19,8 @@ export const courseData = {
   detailedDescription:
     '助老師約兩小時取得 Google 官方 Gemini 教師認證。內容涵蓋生成式 AI 與 Google AI 工具概覽、Gemini 平台核心功能（引導學習、影像生成、Canvas、深度研究、Gems 等）、NotebookLM 應用與注意事項，並進行 Gemini 教師認證考試準備與實作。請預留已更新的瀏覽器與穩定網絡；NotebookLM 部分功能可能需 VPN。',
   tags: ['教師發展日', 'Gemini', 'Google AI', 'STEM', '教師培訓', 'AI教育', 'AIGC'],
-  heroImage: geminiEducator,
-  imageCaption: 'Gemini Educator 老師特訓班 - 助老師2小時取得Gemini教師認證',
+  heroImage: heroGeminiCertifiedEducator,
+  imageCaption: 'Gemini Certified Educator 官方認證證書示例（Google for Education）',
   publishDate: '2024-06-01',
 };
 
@@ -91,12 +91,48 @@ const faqItems = [
     ],
   },
 ];
+
+const servicedSchools = [
+  {
+    nameZh: '保良局雨川小學',
+    nameEn: 'Po Leung Kuk Riverain Primary School',
+  },
+  {
+    nameZh: '中華基督教會燕京書院',
+    nameEn: 'The Church of Christ in China Yenching College',
+  },
+  {
+    nameZh: '香港中國婦女會馮堯敬紀念中學',
+    nameEn:
+      "THE HONG KONG CHINESE WOMEN'S CLUB FUNG YIU KING MEMORIAL SECONDARY SCHOOL",
+  },
+  {
+    nameZh: '匡智獅子會晨崗學校（中學部）',
+    nameEn: 'HONG CHI LIONS MORNINGHILL SCHOOL (SECONDARY SECTION)',
+  },
+  {
+    nameZh: '陳瑞祺（喇沙）書院',
+    nameEn: 'CHAN SUI KI (LA SALLE) COLLEGE',
+  },
+  {
+    nameZh: '德望學校',
+    nameEn: 'GOOD HOPE SCHOOL',
+  },
+  {
+    nameZh: '迦密愛禮信小學',
+    nameEn: 'CARMEL ALISON LAM PRIMARY SCHOOL',
+  },
+  {
+    nameZh: '中華基督教會基協中學',
+    nameEn: 'THE CHURCH OF CHRIST IN CHINA KEI HEEP SECONDARY SCHOOL',
+  },
+];
 ---
 
 <Layout
   title={`${courseData.title} - 教師發展日 - 10教育`}
   description={courseData.description}
-  ogImage={geminiEducator.src}
+  ogImage={heroGeminiCertifiedEducator.src}
 >
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
@@ -106,18 +142,11 @@ const faqItems = [
       subtitle={courseData.subtitle}
       description={courseData.detailedDescription}
       heroImage={courseData.heroImage}
+      heroImageMaxScale={0.8}
       heroImageCaption={courseData.imageCaption}
       tags={courseData.tags}
       parentSectionHref="/staff-development-day/"
       parentSectionLabel="教師發展日"
-    />
-
-    <StaffWorkshopPageSections
-      features={workshopFeatures}
-      curriculum={curriculum}
-      faqs={faqItems}
-      contentHours="約 2 小時"
-      curriculumSectionTitle="課程內容"
     />
 
     <section class="section-padding bg-white">
@@ -140,6 +169,44 @@ const faqItems = [
           ]}
           intervalMs={4500}
         />
+      </div>
+    </section>
+
+    <StaffWorkshopPageSections
+      features={workshopFeatures}
+      curriculum={curriculum}
+      faqs={faqItems}
+      contentHours="約 2 小時"
+      curriculumSectionTitle="課程內容"
+    />
+
+    <section class="section-padding bg-gray-50" aria-labelledby="serviced-schools-heading">
+      <div class="container-standard">
+        <div class="text-center mb-12">
+          <h2 id="serviced-schools-heading" class="text-3xl font-bold text-gray-900 mb-4">
+            服務學校
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            以下為曾選擇 Gemini Educator／相關 AI 教師工作坊到校或預約安排的學校。
+          </p>
+        </div>
+        <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 list-none p-0 m-0">
+          {servicedSchools.map((school) => (
+            <li class="card-base card-hover p-6 flex flex-col h-full">
+              <div class="flex items-start gap-3">
+                <span class="text-2xl text-brand-cyan-600 shrink-0" aria-hidden="true">
+                  <i class="fas fa-school" />
+                </span>
+                <div class="min-w-0">
+                  <h3 class="text-lg font-semibold text-gray-900 leading-snug">{school.nameZh}</h3>
+                  {'nameEn' in school && school.nameEn ? (
+                    <p class="text-sm text-gray-500 mt-1 leading-snug">{school.nameEn}</p>
+                  ) : null}
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
 

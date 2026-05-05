@@ -1,14 +1,14 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
 import RelatedCourses from '../../components/course/RelatedCourses.astro';
-import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
 
-import heroGemini from '../../assets/images/school-courses/AI啟蒙課程/ai-application.png';
+import heroGemini from '../../assets/images/school-courses/Gemini 學生證書課程/hero-gemini-certified-student.png';
 import galleryStorybookClassroom from '../../assets/images/school-courses/Gemini 學生證書課程/gallery-storybook-classroom.png';
 import galleryIgWorkshop from '../../assets/images/school-courses/Gemini 學生證書課程/gallery-ig-workshop-lecture-hall.png';
 import galleryComputerLab from '../../assets/images/school-courses/Gemini 學生證書課程/gallery-computer-lab-session.png';
@@ -129,8 +129,36 @@ const faqItems = [
       subtitle={courseData.subtitle}
       description={courseData.detailedDescription}
       heroImage={courseData.heroImage}
+      heroImageMaxScale={0.8}
       tags={courseData.tags}
     />
+
+    <section class="section-padding bg-white">
+      <div class="container-standard">
+        <GalleryCarousel
+          title="課程實況"
+          images={[
+            {
+              src: galleryStorybookClassroom,
+              alt: '到校課堂內，師生進行故事書創作培訓，電子白板展示故事書創作課程內容。',
+            },
+            {
+              src: galleryIgWorkshop,
+              alt: '階梯講堂內的工作坊環境：講者介紹「IG 推廣文案」主題，學員專注聽講。',
+            },
+            {
+              src: galleryComputerLab,
+              alt: '電腦室課堂中，學生於個人電腦前學習，前方大屏幕展示色彩豐富的數位作品網格。',
+            },
+            {
+              src: galleryCanvaComic,
+              alt: '螢幕顯示於 Canva 中製作的樂高人偶卡通四格漫畫，將三國人物置於現代香港情境。',
+            },
+          ]}
+          intervalMs={4500}
+        />
+      </div>
+    </section>
 
     <section class="section-padding bg-gray-50">
       <div class="container-standard">
@@ -162,33 +190,6 @@ const faqItems = [
       showAdjustmentNote={true}
       adjustmentText="可根據學校需要調整節數與模組比重"
     />
-
-    <section class="section-padding bg-white">
-      <div class="container-standard">
-        <GalleryCarousel
-          title="課程實況"
-          images={[
-            {
-              src: galleryStorybookClassroom,
-              alt: '到校課堂內，師生進行故事書創作培訓，電子白板展示故事書創作課程內容。',
-            },
-            {
-              src: galleryIgWorkshop,
-              alt: '階梯講堂內的工作坊環境：講者介紹「IG 推廣文案」主題，學員專注聽講。',
-            },
-            {
-              src: galleryComputerLab,
-              alt: '電腦室課堂中，學生於個人電腦前學習，前方大屏幕展示色彩豐富的數位作品網格。',
-            },
-            {
-              src: galleryCanvaComic,
-              alt: '螢幕顯示於 Canva 中製作的樂高人偶卡通四格漫畫，將三國人物置於現代香港情境。',
-            },
-          ]}
-          intervalMs={4500}
-        />
-      </div>
-    </section>
 
     <QnASection
       faqs={faqItems.map((item) => ({

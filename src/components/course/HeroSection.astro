@@ -18,6 +18,11 @@ export interface Props {
   parentSectionLabel?: string;
   /** Optional caption overlay on hero image */
   heroImageCaption?: string;
+  /**
+   * When set (e.g. 0.8), hero image is centered with object-contain and limited to this fraction
+   * of the hero box (avoids object-cover cropping on wide assets like certificates).
+   */
+  heroImageMaxScale?: number;
 }
 
 const {
@@ -33,7 +38,13 @@ const {
   parentSectionHref = '/school-courses/',
   parentSectionLabel = '到校課程',
   heroImageCaption,
+  heroImageMaxScale,
 } = Astro.props;
+
+const heroScale = heroImageMaxScale != null && heroImageMaxScale > 0 && heroImageMaxScale <= 1
+  ? heroImageMaxScale
+  : null;
+const heroScalePct = heroScale != null ? `${heroScale * 100}%` : null;
 ---
 
 <!-- Clean white background to match original -->
@@ -130,13 +141,25 @@ const {
             </iframe>
           </div>
         ) : heroImage ? (
-          <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg relative">
-            <Image 
-              src={heroImage} 
+          <div
+            class:list={[
+              'aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg relative',
+              heroScale != null && 'flex items-center justify-center',
+            ]}
+          >
+            <Image
+              src={heroImage}
               alt={title}
               width={600}
               height={400}
-              class="w-full h-full object-cover"
+              class:list={[
+                heroScale != null
+                  ? 'w-auto h-auto max-w-full max-h-full object-contain'
+                  : 'w-full h-full object-cover',
+              ]}
+              style={heroScalePct != null
+                ? { maxWidth: heroScalePct, maxHeight: heroScalePct }
+                : undefined}
             />
             {heroImageCaption && (
               <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 text-white p-4 rounded-b-lg">
