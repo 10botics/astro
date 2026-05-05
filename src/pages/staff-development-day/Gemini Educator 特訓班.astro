@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
 import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
@@ -6,7 +7,8 @@ import StaffWorkshopPageSections from '../../components/staff-development/StaffW
 import RelatedNews from '../../components/course/RelatedNews.astro';
 import RelatedCourses from '../../components/course/RelatedCourses.astro';
 import ContactSection from '../../components/ContactSection.astro';
-import heroGeminiCertifiedEducator from '../../assets/images/staff-development-day/Gemini Educator 特訓班/hero-gemini-certified-educator-certificate.png';
+import heroGeminiAiChat from '../../assets/images/school-courses/AI啟蒙課程/ai-application.png';
+import certificateGeminiEducatorSample from '../../assets/images/staff-development-day/Gemini Educator 特訓班/certificate-gemini-certified-educator-sample.png';
 import galleryHallWhatIsAi from '../../assets/images/staff-development-day/Gemini Educator 特訓班/gallery-hall-what-is-ai.png';
 import galleryClassroomDigitalScreen from '../../assets/images/staff-development-day/Gemini Educator 特訓班/gallery-classroom-digital-screen.png';
 import galleryAuditoriumGroupSession from '../../assets/images/staff-development-day/Gemini Educator 特訓班/gallery-auditorium-group-session.png';
@@ -21,8 +23,8 @@ export const courseData = {
   detailedDescription:
     '助老師約兩小時取得 Google 官方 Gemini 教師認證。內容涵蓋生成式 AI 與 Google AI 工具概覽、Gemini 平台核心功能（引導學習、影像生成、Canvas、深度研究、Gems 等）、NotebookLM 應用與注意事項，並進行 Gemini 教師認證考試準備與實作。請預留已更新的瀏覽器與穩定網絡；NotebookLM 部分功能可能需 VPN。',
   tags: ['教師發展日', 'Google Gemini', 'NotebookLM', 'STEM', 'AI 人工智能'],
-  heroImage: heroGeminiCertifiedEducator,
-  imageCaption: 'Gemini Certified Educator 官方認證證書示例（Google for Education）',
+  heroImage: heroGeminiAiChat,
+  imageCaption: '示範運用 Gemini 對話介面於教學與備課情境',
   publishDate: '2024-06-01',
 };
 
@@ -134,7 +136,7 @@ const servicedSchools = [
 <Layout
   title={`${courseData.title} - 教師發展日 - 10教育`}
   description={courseData.description}
-  ogImage={heroGeminiCertifiedEducator.src}
+  ogImage={heroGeminiAiChat.src}
 >
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
@@ -144,73 +146,32 @@ const servicedSchools = [
       subtitle={courseData.subtitle}
       description={courseData.detailedDescription}
       heroImage={courseData.heroImage}
-      heroImageMaxScale={0.8}
       heroImageCaption={courseData.imageCaption}
       tags={courseData.tags}
       parentSectionHref="/staff-development-day/"
       parentSectionLabel="教師發展日"
     />
 
-    <section class="section-padding bg-gray-50" aria-labelledby="serviced-schools-heading">
+    <section class="section-padding bg-gray-50" aria-labelledby="gemini-educator-certificate-heading">
       <div class="container-standard">
-        <div class="text-center mb-12">
-          <h2 id="serviced-schools-heading" class="text-3xl font-bold text-gray-900 mb-4">
-            服務學校
+        <div class="text-center mb-10">
+          <h2 id="gemini-educator-certificate-heading" class="text-3xl font-bold text-gray-900 mb-4">
+            官方認證證書
           </h2>
           <p class="text-gray-600 max-w-2xl mx-auto">
-            以下為曾選擇 Gemini Educator／相關 AI 教師工作坊到校或預約安排的學校。
+            完成工作坊並通過考核後，可取得可查證之 Gemini Certified Educator 資格（範例樣式如下）。
           </p>
         </div>
-        <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 list-none p-0 m-0">
-          {servicedSchools.map((school) => (
-            <li class="card-base card-hover p-6 flex flex-col h-full">
-              <div class="flex items-start gap-3">
-                <span class="text-2xl text-brand-cyan-600 shrink-0" aria-hidden="true">
-                  <i class="fas fa-school" />
-                </span>
-                <div class="min-w-0">
-                  <h3 class="text-lg font-semibold text-gray-900 leading-snug">{school.nameZh}</h3>
-                  {'nameEn' in school && school.nameEn ? (
-                    <p class="text-sm text-gray-500 mt-1 leading-snug">{school.nameEn}</p>
-                  ) : null}
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-
-    <section class="section-padding bg-white">
-      <div class="container-standard">
-        <GalleryCarousel
-          title="工作坊實況"
-          images={[
-            {
-              src: galleryHallWhatIsAi,
-              alt: '禮堂內，講者於台上分享，大螢幕顯示「什麼是人工智能」主題簡報與圖像示意。',
-            },
-            {
-              src: galleryClassroomDigitalScreen,
-              alt: '明亮課室中，多名同工使用手提電腦，講者於前方大型互動螢幕前主持 Gemini 工作坊。',
-            },
-            {
-              src: galleryAuditoriumGroupSession,
-              alt: '學校禮堂內，參加者席地而坐使用電腦，前方舞台設大型投影，工作坊進行中。',
-            },
-            {
-              src: galleryAuditoriumParentEngagement,
-              alt: '禮堂內大批同工出席講座，舞台大螢幕展示「Parent Engagement & School Partnership」家校協作主題簡報。',
-              maxScale: 0.8,
-            },
-            {
-              src: galleryAuditoriumEnrichmentPlanning,
-              alt: '學校禮堂舉行教師發展環節，講者於台上分享，大螢幕顯示「Enrichment & Future Planning」升學與生涯規劃相關內容。',
-              maxScale: 0.8,
-            },
-          ]}
-          intervalMs={4500}
-        />
+        <div class="max-w-4xl mx-auto rounded-xl overflow-hidden shadow-xl ring-1 ring-gray-100 bg-gray-50">
+          <Image
+            src={certificateGeminiEducatorSample}
+            alt="Gemini Certified Educator 官方認證證書示例（Google for Education）"
+            width={1440}
+            height={960}
+            sizes="(min-width: 1024px) 896px, 100vw"
+            class="w-full h-auto object-contain max-h-[85vh]"
+          />
+        </div>
       </div>
     </section>
 
@@ -220,7 +181,72 @@ const servicedSchools = [
       faqs={faqItems}
       contentHours="約 2 小時"
       curriculumSectionTitle="課程內容"
-    />
+    >
+      <div slot="afterCurriculum">
+      <section class="section-padding bg-gray-50">
+        <div class="container-standard">
+          <GalleryCarousel
+            title="工作坊實況"
+            images={[
+              {
+                src: galleryHallWhatIsAi,
+                alt: '禮堂內，講者於台上分享，大螢幕顯示「什麼是人工智能」主題簡報與圖像示意。',
+              },
+              {
+                src: galleryClassroomDigitalScreen,
+                alt: '明亮課室中，多名同工使用手提電腦，講者於前方大型互動螢幕前主持 Gemini 工作坊。',
+              },
+              {
+                src: galleryAuditoriumGroupSession,
+                alt: '學校禮堂內，參加者席地而坐使用電腦，前方舞台設大型投影，工作坊進行中。',
+              },
+              {
+                src: galleryAuditoriumParentEngagement,
+                alt: '禮堂內大批同工出席講座，舞台大螢幕展示「Parent Engagement & School Partnership」家校協作主題簡報。',
+                maxScale: 0.8,
+              },
+              {
+                src: galleryAuditoriumEnrichmentPlanning,
+                alt: '學校禮堂舉行教師發展環節，講者於台上分享，大螢幕顯示「Enrichment & Future Planning」升學與生涯規劃相關內容。',
+                maxScale: 0.8,
+              },
+            ]}
+            intervalMs={4500}
+          />
+        </div>
+      </section>
+
+      <section class="section-padding bg-white" aria-labelledby="serviced-schools-heading">
+        <div class="container-standard">
+          <div class="text-center mb-12">
+            <h2 id="serviced-schools-heading" class="text-3xl font-bold text-gray-900 mb-4">
+              服務學校
+            </h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+              以下為曾選擇 Gemini Educator／相關 AI 教師工作坊到校或預約安排的學校。
+            </p>
+          </div>
+          <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 list-none p-0 m-0">
+            {servicedSchools.map((school) => (
+              <li class="card-base card-hover p-6 flex flex-col h-full">
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl text-brand-cyan-600 shrink-0" aria-hidden="true">
+                    <i class="fas fa-school" />
+                  </span>
+                  <div class="min-w-0">
+                    <h3 class="text-lg font-semibold text-gray-900 leading-snug">{school.nameZh}</h3>
+                    {'nameEn' in school && school.nameEn ? (
+                      <p class="text-sm text-gray-500 mt-1 leading-snug">{school.nameEn}</p>
+                    ) : null}
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+      </div>
+    </StaffWorkshopPageSections>
 
     <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} context="course" />
 

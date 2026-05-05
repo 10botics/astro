@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
 import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
@@ -8,7 +9,8 @@ import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
 import RelatedCourses from '../../components/course/RelatedCourses.astro';
 
-import heroGemini from '../../assets/images/school-courses/Gemini 學生證書課程/hero-gemini-certified-student.png';
+import heroGeminiAiChat from '../../assets/images/school-courses/AI啟蒙課程/ai-application.png';
+import geminiStudentCertificate from '../../assets/images/school-courses/Gemini 學生證書課程/hero-gemini-certified-student.png';
 import galleryStorybookClassroom from '../../assets/images/school-courses/Gemini 學生證書課程/gallery-storybook-classroom.png';
 import galleryIgWorkshop from '../../assets/images/school-courses/Gemini 學生證書課程/gallery-ig-workshop-lecture-hall.png';
 import galleryComputerLab from '../../assets/images/school-courses/Gemini 學生證書課程/gallery-computer-lab-session.png';
@@ -31,7 +33,7 @@ export const courseData = {
     "到校課程結合 Google Gemini、NotebookLM 與 AI vibe coding 實作，協助學生建立生成式 AI 基礎、熟悉校園可用的學習工具，並預留時間完成 Gemini 學生證書相關考核。",
   detailedDescription:
     "本課程為 8 小時密集設計，分四大模組：先從生成式 AI 與 Google AI 生態介紹起，深入 Gemini 平台核心功能與引導學習、影像生成、Canvas、深度研究與 Gems 等應用；其後透過 NotebookLM 認識 Magic Door 試用與平台核心功能，涵蓋 Audio Overview、Video Overview、MindMap、Flashcard、Quiz 等學習形式；再以「AI vibe coding」帶領學生製作自製五子棋與個人化小遊戲；最後安排考取 Gemini 學生證書，鞏固學習成果。課程可配合學校節數與資訊設備調整細節，歡迎聯絡我們討論到校安排。",
-  heroImage: heroGemini
+  heroImage: heroGeminiAiChat
 };
 
 const courseHighlights = [
@@ -129,38 +131,33 @@ const faqItems = [
       subtitle={courseData.subtitle}
       description={courseData.detailedDescription}
       heroImage={courseData.heroImage}
-      heroImageMaxScale={0.8}
       tags={courseData.tags}
     />
 
-    <section class="section-padding bg-white">
+    <section class="section-padding bg-gray-50" aria-labelledby="gemini-student-certificate-heading">
       <div class="container-standard">
-        <GalleryCarousel
-          title="課程實況"
-          images={[
-            {
-              src: galleryStorybookClassroom,
-              alt: '到校課堂內，師生進行故事書創作培訓，電子白板展示故事書創作課程內容。',
-            },
-            {
-              src: galleryIgWorkshop,
-              alt: '階梯講堂內的工作坊環境：講者介紹「IG 推廣文案」主題，學員專注聽講。',
-            },
-            {
-              src: galleryComputerLab,
-              alt: '電腦室課堂中，學生於個人電腦前學習，前方大屏幕展示色彩豐富的數位作品網格。',
-            },
-            {
-              src: galleryCanvaComic,
-              alt: '螢幕顯示於 Canva 中製作的樂高人偶卡通四格漫畫，將三國人物置於現代香港情境。',
-            },
-          ]}
-          intervalMs={4500}
-        />
+        <div class="text-center mb-10">
+          <h2 id="gemini-student-certificate-heading" class="text-3xl font-bold text-gray-900 mb-4">
+            官方認證證書
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            課程預留時間完成考核，學生可取得 Gemini Certified Student 認證（範例樣式如下）。
+          </p>
+        </div>
+        <div class="max-w-4xl mx-auto rounded-xl overflow-hidden shadow-xl ring-1 ring-gray-100 bg-gray-50">
+          <Image
+            src={geminiStudentCertificate}
+            alt="Gemini Certified Student 證書範例（Google for Education），展示課程完成後可取得的認證樣式。"
+            width={1440}
+            height={960}
+            sizes="(min-width: 1024px) 896px, 100vw"
+            class="w-full h-auto object-contain max-h-[85vh]"
+          />
+        </div>
       </div>
     </section>
 
-    <section class="section-padding bg-gray-50">
+    <section class="section-padding bg-white">
       <div class="container-standard">
         <div class="text-center mb-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">課程亮點</h2>
@@ -190,6 +187,33 @@ const faqItems = [
       showAdjustmentNote={true}
       adjustmentText="可根據學校需要調整節數與模組比重"
     />
+
+    <section class="section-padding bg-white">
+      <div class="container-standard">
+        <GalleryCarousel
+          title="課程實況"
+          images={[
+            {
+              src: galleryStorybookClassroom,
+              alt: '到校課堂內，師生進行故事書創作培訓，電子白板展示故事書創作課程內容。',
+            },
+            {
+              src: galleryIgWorkshop,
+              alt: '階梯講堂內的工作坊環境：講者介紹「IG 推廣文案」主題，學員專注聽講。',
+            },
+            {
+              src: galleryComputerLab,
+              alt: '電腦室課堂中，學生於個人電腦前學習，前方大屏幕展示色彩豐富的數位作品網格。',
+            },
+            {
+              src: galleryCanvaComic,
+              alt: '螢幕顯示於 Canva 中製作的樂高人偶卡通四格漫畫，將三國人物置於現代香港情境。',
+            },
+          ]}
+          intervalMs={4500}
+        />
+      </div>
+    </section>
 
     <QnASection
       faqs={faqItems.map((item) => ({

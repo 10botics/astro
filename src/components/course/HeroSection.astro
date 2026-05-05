@@ -25,6 +25,9 @@ export interface Props {
    * of the hero box (avoids object-cover cropping on wide assets like certificates).
    */
   heroImageMaxScale?: number;
+  /** Optional large image rendered below the description paragraph (right column). */
+  descriptionFooterImage?: any;
+  descriptionFooterImageAlt?: string;
 }
 
 const {
@@ -42,6 +45,8 @@ const {
   endBreadcrumbAtParentSection = false,
   heroImageCaption,
   heroImageMaxScale,
+  descriptionFooterImage,
+  descriptionFooterImageAlt,
 } = Astro.props;
 
 const heroScale = heroImageMaxScale != null && heroImageMaxScale > 0 && heroImageMaxScale <= 1
@@ -185,6 +190,18 @@ const heroScalePct = heroScale != null ? `${heroScale * 100}%` : null;
           <p class="text-base text-gray-700 leading-relaxed">
             {description}
           </p>
+          {descriptionFooterImage && (
+            <div class="mt-10 rounded-xl overflow-hidden shadow-xl ring-1 ring-gray-100 bg-gray-50">
+              <Image
+                src={descriptionFooterImage}
+                alt={descriptionFooterImageAlt ?? title}
+                width={1440}
+                height={960}
+                sizes="(min-width: 1024px) 42vw, 100vw"
+                class="w-full h-auto object-contain max-h-[85vh]"
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -239,7 +239,6 @@ export default defineConfig({
     '/school-courses/人工智能遊戲編程課程': '/school-courses/ai-game-coding',
     '/school-courses/利用人工智能提昇學習效能': '/parent-talk',
     '/school-courses/parent-ai-learning-efficiency': '/parent-talk',
-    '/parent-talk/ai-improve-study-efficiency': '/parent-talk',
     
     // Stemday
     '/stemday/飲管橋': '/stemday/straw-bridge',

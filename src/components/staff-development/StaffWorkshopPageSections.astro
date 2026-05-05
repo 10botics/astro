@@ -64,6 +64,8 @@ const {
   sectionTitle={curriculumSectionTitle}
 />
 
+<slot name="afterCurriculum" />
+
 <QnASection
   faqs={faqs.map((item) => ({
     question: item.question,

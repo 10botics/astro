@@ -24,13 +24,8 @@ export const courseData = (() => {
     '給教師與校方：本講座對準家長教育與科技素養方向。工作坊呼應教育局家長教育方針，與「家長智Net」等官方網上資源方向互相扣連，把生成式人工智能、提示工程與輔助功課的在地脈絡落到實處，讓家校以同一套語言談學習與網上安全。系統化示範與討論有助家長建立事實核查、學術誠信與私隱界線等共識，減輕教師反覆解答 AI 疑惑的負擔。對決策同工而言，安排講座即向社群表明學校重視家校合作與數碼時代家長賦能，與以網絡與講座支援家長的政策方向一致，並主動縮窄課堂創新與家庭支援之間的鴻溝。';
   return {
     title: '利用人工智能提昇學習效能',
-    subtitle: 'AI 世代的學習新模式 — 透過人工智能提升子女的學習效能（POE 實作工作坊）',
-    tags: [
-      '家長講座',
-      'AI 人工智能',
-      'Google Gemini',
-      'ChatGPT',
-    ].filter((tag) => Object.hasOwn(TAG_MAPPING, tag)),
+    subtitle: 'AI 世代的學習新模式 — 透過人工智能提升子女的學習效能（實作工作坊）',
+    tags: ['家長講座', 'AI 人工智能'].filter((tag) => Object.hasOwn(TAG_MAPPING, tag)),
     description: staffAndSchoolCourseSummary,
     detailedDescription: staffAndSchoolCourseSummary,
     heroImage,
@@ -40,9 +35,9 @@ export const courseData = (() => {
 const courseHighlights = [
   {
     icon: 'fas fa-comments',
-    title: 'POE 一站式上手多款 AI',
+    title: '認識可用的 AI 工具與情境',
     description:
-      '理解香港地區使用限制與 VPN 議題；認識 POE 如何集合 ChatGPT、Gemini、Claude、Grok 等，以及學校／公司 Gmail 使用 Gemini 的特例。',
+      '理解香港地區使用限制與網絡環境議題；認識不同類型的人工智能助手與家長可選擇的入手方式，以及如何在校方提供的帳戶或家用環境下安全試用。',
   },
   {
     icon: 'fas fa-clipboard-check',
@@ -61,28 +56,28 @@ const courseHighlights = [
 const courseCurriculum = {
   items: [
     {
-      title: '如何使用 AI：POE 與對話基礎',
+      title: '如何使用 AI：對話基礎',
       duration: '約 1 單元',
       content: [
-        '香港使用 ChatGPT／Gemini 的限制與為何以 POE 作為多模型入口（含多款模型概覽）',
+        '香港使用常見人工智能工具的注意事項與地區限制概覽',
         '下載登入、廣東話語音與基礎對話練習',
-        '選用 Gemini-2.5-Flash、比較不同模型表現，並調整預設 Assistant',
+        '比較不同工具的回應風格，並學習調整預設設定以配合家庭學習需要',
       ],
     },
     {
-      title: '點數與進階功能',
+      title: '用量與進階功能',
       duration: '約 1 單元',
       content: [
-        'POE 點數規則與不同模型的大致消耗',
+        '各平台用量規則與訂閱模式概述（按當日示範工具為準）',
         '學習應用：檢查功課、生成測驗、作文輔助、閱讀報告、造句／慣用語與英文文法檢查',
-        '分享與對話歷史；Stable Diffusion XL 圖片生成（字／圖生圖）及操作要點',
+        '分享與對話歷史；以文字／圖像輔助生成學習素材的操作要點',
       ],
     },
     {
-      title: 'Bot、訂閱與 AI 素養',
+      title: '自訂助手、訂閱與 AI 素養',
       duration: '約 1 單元',
       content: [
-        '專屬 Bot（如測驗機械人）與製作／訂閱流程；iOS 與網頁版訂閱差異',
+        '建立或訂閱適合測驗、練習等用途的自訂助手；流動裝置與網頁版使用差異',
         '準確性與幻覺、深度偽造、學術誠信與個人私隱',
       ],
     },
@@ -91,10 +86,10 @@ const courseCurriculum = {
 
 const faqItems = [
   {
-    question: '為什麼示範環節會選用 POE？',
+    question: '為什麼示範環節會涵蓋多款做法？',
     answer: [
-      '同一介面可展示多款模型，適合向家長說明「不同 AI 回答有何分別」與實際可用的組合方式。',
-      '講者會配合貴校情境，概述 ChatGPT／Gemini 等地區限制與替代做法，便於家長理解現實環境。',
+      '同一主題下不同工具的回應各有差異，有助家長理解如何選擇與比較，以及在家中可重現的做法。',
+      '講者會配合貴校情境，概述地區限制與網絡環境等現實因素，便於家長掌握實際可用的選項。',
     ],
   },
   {
@@ -160,37 +155,6 @@ function formatDate(date: Date): string {
       endBreadcrumbAtParentSection={true}
     />
 
-    <section class="section-padding bg-white">
-      <div class="container-standard">
-        <GalleryCarousel
-          title="講座實況"
-          images={[
-            {
-              src: galleryAuditoriumAiEducation,
-              alt: '學校禮堂內，家長坐在觀眾席聆聽講座，大螢幕投影「AI 教育」主題簡報與數位人像圖像，講者持麥克風於台前分享。',
-            },
-            {
-              src: galleryClassroomParentTalk,
-              alt: '課室或小型禮堂內舉行家長講座，家長坐於藍色座椅面向講台，女講者持麥於投影幕前講解。',
-            },
-            {
-              src: gallerySchoolUpdates,
-              alt: '學校禮堂內舉行家長講座，講者於台前分享，大螢幕顯示「School Updates」主題簡報，家長於觀眾席面向舞台聆聽。',
-            },
-            {
-              src: galleryParentSchoolPartnership,
-              alt: '課室內「家校合作」主題家長講座，講者於講台前主持，投影幕列出重點日程、義工機會與問答環節，家長安坐聆聽。',
-            },
-            {
-              src: galleryParentTalkHallPresentation,
-              alt: '學校活動場地舉行家長講座，家長坐於藍色座椅面向投影幕；牆身展示獎杯櫃，女講者持麥克風於台前講解圖文化簡報。',
-            },
-          ]}
-          intervalMs={4500}
-        />
-      </div>
-    </section>
-
     <section class="section-padding bg-gray-50">
       <div class="container-standard">
         <div class="text-center mb-12">
@@ -225,6 +189,37 @@ function formatDate(date: Date): string {
       showAdjustmentNote={true}
       adjustmentText="環節次序、深度與時長可按貴校家長講座時段調整；亦可配合跟進工作坊。"
     />
+
+    <section class="section-padding bg-gray-50">
+      <div class="container-standard">
+        <GalleryCarousel
+          title="講座實況"
+          images={[
+            {
+              src: galleryAuditoriumAiEducation,
+              alt: '學校禮堂內，家長坐在觀眾席聆聽講座，大螢幕投影「AI 教育」主題簡報與數位人像圖像，講者持麥克風於台前分享。',
+            },
+            {
+              src: galleryClassroomParentTalk,
+              alt: '課室或小型禮堂內舉行家長講座，家長坐於藍色座椅面向講台，女講者持麥於投影幕前講解。',
+            },
+            {
+              src: gallerySchoolUpdates,
+              alt: '學校禮堂內舉行家長講座，講者於台前分享，大螢幕顯示「School Updates」主題簡報，家長於觀眾席面向舞台聆聽。',
+            },
+            {
+              src: galleryParentSchoolPartnership,
+              alt: '課室內「家校合作」主題家長講座，講者於講台前主持，投影幕列出重點日程、義工機會與問答環節，家長安坐聆聽。',
+            },
+            {
+              src: galleryParentTalkHallPresentation,
+              alt: '學校活動場地舉行家長講座，家長坐於藍色座椅面向投影幕；牆身展示獎杯櫃，女講者持麥克風於台前講解圖文化簡報。',
+            },
+          ]}
+          intervalMs={4500}
+        />
+      </div>
+    </section>
 
     <QnASection
       title="常見問題"
