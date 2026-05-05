@@ -5,18 +5,22 @@ import StaffWorkshopPageSections from '../../components/staff-development/StaffW
 import RelatedNews from '../../components/course/RelatedNews.astro';
 import RelatedCourses from '../../components/course/RelatedCourses.astro';
 import ContactSection from '../../components/ContactSection.astro';
+import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
 import geminiEducator from '../../assets/images/staff-development-day/mainpage/gemini-educator.jpg';
+import galleryHallWhatIsAi from '../../assets/images/staff-development-day/Gemini Educator 特訓班/gallery-hall-what-is-ai.png';
+import galleryClassroomDigitalScreen from '../../assets/images/staff-development-day/Gemini Educator 特訓班/gallery-classroom-digital-screen.png';
+import galleryAuditoriumGroupSession from '../../assets/images/staff-development-day/Gemini Educator 特訓班/gallery-auditorium-group-session.png';
 
 export const courseData = {
-  title: 'Gemini Educator 特訓班',
+  title: 'Gemini Educator 老師特訓班',
   subtitle: '短時間掌握 Google Gemini 教學應用並取得官方認證',
   description:
     '助老師2小時取得Google官方Gemini教師認證！認證旨在培養AI時代的教育引導者，驗證教師對生成式AI基礎概念的理解，以及在教育情境中負責任地整合Google AI工具的能力。',
   detailedDescription:
-    '助老師約兩小時取得 Google 官方 Gemini 教師認證。內容涵蓋生成式 AI 與 Google AI 工具概覽、Gemini 平台核心功能（引導學習、影像生成、Canvas、深度研究、Gems 等）、NotebookLM 應用注意事項（需配合 VPN），並進行 Gemini 教師認證考試準備與實作。',
+    '助老師約兩小時取得 Google 官方 Gemini 教師認證。內容涵蓋生成式 AI 與 Google AI 工具概覽、Gemini 平台核心功能（引導學習、影像生成、Canvas、深度研究、Gems 等）、NotebookLM 應用與注意事項，並進行 Gemini 教師認證考試準備與實作。請預留已更新的瀏覽器與穩定網絡；NotebookLM 部分功能可能需 VPN。',
   tags: ['教師發展日', 'Gemini', 'Google AI', 'STEM', '教師培訓', 'AI教育', 'AIGC'],
   heroImage: geminiEducator,
-  imageCaption: 'Gemini Educator 特訓班 - 助老師2小時取得Gemini教師認證',
+  imageCaption: 'Gemini Educator 老師特訓班 - 助老師2小時取得Gemini教師認證',
   publishDate: '2024-06-01',
 };
 
@@ -34,7 +38,8 @@ const workshopFeatures = [
   {
     icon: 'fas fa-book-reader',
     title: 'NotebookLM',
-    description: '了解 NotebookLM 在備課與學習資源整理上的應用（部分環境需配合 VPN）。',
+    description:
+      '了解 NotebookLM 在備課與學習資源整理上的應用；請預留已更新的瀏覽器與穩定網絡，NotebookLM 部分功能可能需 VPN。',
   },
   {
     icon: 'fas fa-certificate',
@@ -57,7 +62,7 @@ const curriculum = [
       '介紹 Generative AI 及 Google AI 工具',
       'Gemini 平台核心功能',
       '介紹引導學習、影像生成、Canvas、深度研究、Gems 等',
-      'NotebookLM 的應用（需配合 VPN 使用）',
+      'NotebookLM 的應用（請預留已更新瀏覽器與穩定網絡；部分功能可能需 VPN）',
       '進行 Gemini 教師認證考試',
     ],
   },
@@ -65,15 +70,25 @@ const curriculum = [
 
 const faqItems = [
   {
-    question: '認證是否由 Google 發出？',
+    question: '在特訓班中如何使用 NotebookLM？',
     answer: [
-      '工作坊對準 Google Gemini 教師認證路徑；實際發證與條款以 Google 官方為準。',
-      '請預留已更新的瀏覽器與穩定網絡；NotebookLM 部分功能可能需 VPN。',
+      '在特訓班中，我們會配合 Magic Door 試用——由本公司另外提供的方案，協助教師在既有的教學與備課脈絡下安全、有節奏地導入 NotebookLM 相關體驗。',
+      '更多方案說明可參考：https://www.magicdoor.cc/',
     ],
   },
   {
-    question: '學校如何報名特訓班？',
-    answer: ['請致電 +852 6554-1506 或電郵 info@10botics.com，說明參與人數與期望日期。'],
+    question: 'Gemini 教師認證對老師有什麼幫助？',
+    answer: [
+      '認證可作為教師完成 Google Gemini 學習路徑的正式紀錄，有助於在專業發展或校內推動 AI 教學時展現具認證的 AI 素養。',
+      '工作坊會預留時間完成認證相關考核步驟；若教師需額外支援，導師會於活動中安排練習與答疑。',
+    ],
+  },
+  {
+    question: '什麼設備與環境較適合參加？',
+    answer: [
+      '建議具備基本中英文打字與網頁操作能力；請預留已更新的瀏覽器與穩定網絡，NotebookLM 部分功能可能需 VPN。',
+      '請準備可上網的電腦或 Chromebook／手提電腦，並使用學校或個人核准的 Google 帳戶登入相關服務。',
+    ],
   },
 ];
 ---
@@ -104,6 +119,29 @@ const faqItems = [
       contentHours="約 2 小時"
       curriculumSectionTitle="課程內容"
     />
+
+    <section class="section-padding bg-white">
+      <div class="container-standard">
+        <GalleryCarousel
+          title="工作坊實況"
+          images={[
+            {
+              src: galleryHallWhatIsAi,
+              alt: '禮堂內，講者於台上分享，大螢幕顯示「什麼是人工智能」主題簡報與圖像示意。',
+            },
+            {
+              src: galleryClassroomDigitalScreen,
+              alt: '明亮課室中，多名同工使用手提電腦，講者於前方大型互動螢幕前主持 Gemini 工作坊。',
+            },
+            {
+              src: galleryAuditoriumGroupSession,
+              alt: '學校禮堂內，參加者席地而坐使用電腦，前方舞台設大型投影，工作坊進行中。',
+            },
+          ]}
+          intervalMs={4500}
+        />
+      </div>
+    </section>
 
     <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} context="course" />
 
