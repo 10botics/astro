@@ -6,8 +6,13 @@ import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
 import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
 
 import heroGemini from '../../assets/images/school-courses/AI啟蒙課程/ai-application.png';
+import galleryStorybookClassroom from '../../assets/images/school-courses/Gemini 學生證書課程/gallery-storybook-classroom.png';
+import galleryIgWorkshop from '../../assets/images/school-courses/Gemini 學生證書課程/gallery-ig-workshop-lecture-hall.png';
+import galleryComputerLab from '../../assets/images/school-courses/Gemini 學生證書課程/gallery-computer-lab-session.png';
+import galleryCanvaComic from '../../assets/images/school-courses/Gemini 學生證書課程/gallery-canva-comic-project.png';
 
 export const courseData = {
   title: "Gemini 學生證書課程",
@@ -109,7 +114,7 @@ const faqItems = [
     question: "什麼年級與設備較適合？",
     answer: [
       "建議初小至高小、初中學生參與；需具備基本中英文打字與網頁操作能力更佳。",
-      "學校請準備可上網的電腦或 Chromebook／手提電腦，並讓學生使用學校核准的 Google 帳戶登入相關服務；實際清單請先致電 +852 6554-1506 或電郵 info@10botics.com，同事會為貴校設備與帳號政策給出具體建議。"
+      "學校請準備可上網的電腦或 Chromebook／手提電腦，並讓學生使用學校核准的 Google 帳戶登入相關服務。"
     ]
   }
 ];
@@ -157,6 +162,33 @@ const faqItems = [
       showAdjustmentNote={true}
       adjustmentText="可根據學校需要調整節數與模組比重"
     />
+
+    <section class="section-padding bg-white">
+      <div class="container-standard">
+        <GalleryCarousel
+          title="課程實況"
+          images={[
+            {
+              src: galleryStorybookClassroom,
+              alt: '到校課堂內，師生進行故事書創作培訓，電子白板展示故事書創作課程內容。',
+            },
+            {
+              src: galleryIgWorkshop,
+              alt: '階梯講堂內的工作坊環境：講者介紹「IG 推廣文案」主題，學員專注聽講。',
+            },
+            {
+              src: galleryComputerLab,
+              alt: '電腦室課堂中，學生於個人電腦前學習，前方大屏幕展示色彩豐富的數位作品網格。',
+            },
+            {
+              src: galleryCanvaComic,
+              alt: '螢幕顯示於 Canva 中製作的樂高人偶卡通四格漫畫，將三國人物置於現代香港情境。',
+            },
+          ]}
+          intervalMs={4500}
+        />
+      </div>
+    </section>
 
     <QnASection
       faqs={faqItems.map((item) => ({
