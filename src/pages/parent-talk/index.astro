@@ -18,24 +18,26 @@ import galleryParentSchoolPartnership from '../../assets/images/parent-talk/gall
 import galleryParentTalkHallPresentation from '../../assets/images/parent-talk/gallery-parent-talk-hall-presentation.png';
 
 /** Canonical URL: /parent-talk */
-export const courseData = {
-  title: '利用人工智能提昇學習效能',
-  subtitle: 'AI 世代的學習新模式 — 透過人工智能提升子女的學習效能（POE 實作工作坊）',
-  tags: [
-    '家長講座',
-    'AI 人工智能',
-    'POE',
-    'Google Gemini',
-    'ChatGPT',
-    '家長教育',
-    '提示工程',
-  ],
-  description:
-    '面向家長的工作坊：認識在香港使用生成式 AI 的實際情境、以 POE 整合多款模型，並透過檢查功課、生成測驗、作文輔助與 AI 素養，安全有效地支援子女學習。',
-  detailedDescription:
-    '以「如何使用 AI」為主軸：說明 ChatGPT／Gemini 在香港使用的限制與替代方案、推介 POE 作為多模型入口（含 Gemini、Claude、Grok、DeepSeek 等）；示範廣東話語音輸入、選擇 Gemini-2.5-Flash、理解點數與模型成本；並帶領家長實作檢查功課、生成測驗、作文大綱與段落、閱讀報告總結、造句與英文文法檢查、對話分享與 Stable Diffusion XL 圖片生成、探索 Bot 與訂閱注意事項（尤其 iOS）。最後討論準確性與幻覺、深度偽造、學術誠信與私隱，呼籲以 AI 增強而非取代孩子的能力。',
-  heroImage,
-};
+export const courseData = (() => {
+  const staffAndSchoolCourseSummary =
+    '給教師與校方：本講座對準家長教育與科技素養方向。工作坊呼應教育局家長教育方針，與「家長智Net」等官方網上資源方向互相扣連，把生成式人工智能、提示工程與輔助功課的在地脈絡落到實處，讓家校以同一套語言談學習與網上安全。系統化示範與討論有助家長建立事實核查、學術誠信與私隱界線等共識，減輕教師反覆解答 AI 疑惑的負擔。對決策同工而言，安排講座即向社群表明學校重視家校合作與數碼時代家長賦能，與以網絡與講座支援家長的政策方向一致，並主動縮窄課堂創新與家庭支援之間的鴻溝。';
+  return {
+    title: '利用人工智能提昇學習效能',
+    subtitle: 'AI 世代的學習新模式 — 透過人工智能提升子女的學習效能（POE 實作工作坊）',
+    tags: [
+      '家長講座',
+      'AI 人工智能',
+      'POE',
+      'Google Gemini',
+      'ChatGPT',
+      '家長教育',
+      '提示工程',
+    ],
+    description: staffAndSchoolCourseSummary,
+    detailedDescription: staffAndSchoolCourseSummary,
+    heroImage,
+  };
+})();
 
 const courseHighlights = [
   {
@@ -156,6 +158,7 @@ function formatDate(date: Date): string {
       rootSectionLabel="到校服務"
       parentSectionHref="/parent-talk"
       parentSectionLabel="家長講座"
+      endBreadcrumbAtParentSection={true}
     />
 
     <section class="section-padding bg-white">
@@ -186,42 +189,6 @@ function formatDate(date: Date): string {
           ]}
           intervalMs={4500}
         />
-      </div>
-    </section>
-
-    <section class="section-padding bg-white border-y border-gray-100">
-      <div class="container-standard max-w-4xl">
-        <div class="text-center mb-10">
-          <h2 class="text-3xl font-bold text-gray-900 mb-3">給教師與校方：對準家長教育與科技素養方向</h2>
-          <p class="text-gray-600 text-lg leading-relaxed">
-            這場工作坊不只服務家長，也能讓學校以具體行動呼應家長教育的政策脈絡——當家長透過網上資訊與講座累積科技識見，家校便能用同一套語言談學習與網上安全。
-          </p>
-        </div>
-        <div class="prose prose-gray max-w-none text-gray-700 space-y-5">
-          <p>
-            <strong class="text-gray-900">與教育局家長教育方針互相扣連。</strong>
-            教育局一直鼓勵學校推動家長教育，並透過「<a
-              href="https://www.parent.edu.hk/"
-              class="text-cyan-600 hover:text-cyan-700 underline underline-offset-2"
-              target="_blank"
-              rel="noopener noreferrer"
-              >家長智Net</a
-            >」等官方網上平台，讓家長按需要搜尋、瀏覽與親職、電子學習、媒體與資訊素養相關的資源。不少家長雖然願意上網自學，卻仍欠缺<strong class="font-medium text-gray-900"
-              >生成式人工智能、提示工程與實際輔助功課的在地脈絡</strong
-            >；本講座正好把「官方資源所指的方向」落到實處，令家長在離開禮堂後仍懂得延續學習。
-          </p>
-          <p>
-            <strong class="text-gray-900">減輕教師在「解答 AI 疑惑」上的無形負擔。</strong>
-            當學生已在課堂接觸資訊科技與人工智能相關學習，家長若只靠零碎短片或搜尋結果拼湊認知，容易產生誤解或過度放任／過度禁止的兩極。一次系統化的現場示範與討論，能幫助家長建立<strong
-              class="font-medium text-gray-900"
-              >事實核查、學術誠信與私隱界線</strong
-            >等共識，教師日後與家長溝通時亦更省時、聚焦。
-          </p>
-          <p class="rounded-xl bg-cyan-50 border border-cyan-100 px-5 py-4 text-cyan-900">
-            <strong class="font-semibold">總結給決策的同工：</strong>
-            安排這類家長講座，等於向社群表明學校重視<strong>家校合作</strong>與<strong>數碼時代下的家長賦能</strong>——與當前透過網絡與講座支援家長的方向一致，亦突顯貴校願意主動填補「課堂創新」與「家庭支援」之間的鴻溝。
-          </p>
-        </div>
       </div>
     </section>
 

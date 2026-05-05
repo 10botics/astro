@@ -16,6 +16,8 @@ export interface Props {
   /** Breadcrumb parent (default: 到校課程) */
   parentSectionHref?: string;
   parentSectionLabel?: string;
+  /** When true, breadcrumb ends at parent (e.g. 首頁 » 到校服務 » 家長講座) with no trailing course title */
+  endBreadcrumbAtParentSection?: boolean;
   /** Optional caption overlay on hero image */
   heroImageCaption?: string;
   /**
@@ -37,6 +39,7 @@ const {
   rootSectionLabel,
   parentSectionHref = '/school-courses/',
   parentSectionLabel = '到校課程',
+  endBreadcrumbAtParentSection = false,
   heroImageCaption,
   heroImageMaxScale,
 } = Astro.props;
@@ -60,9 +63,15 @@ const heroScalePct = heroScale != null ? `${heroScale * 100}%` : null;
           <span class="mx-2">»</span>
         </>
       )}
-      <a href={parentSectionHref} class="text-cyan-400 hover:text-cyan-600">{parentSectionLabel}</a>
-      <span class="mx-2">»</span>
-      <span class="text-gray-800">{title}</span>
+      {endBreadcrumbAtParentSection ? (
+        <span class="text-gray-800">{parentSectionLabel}</span>
+      ) : (
+        <>
+          <a href={parentSectionHref} class="text-cyan-400 hover:text-cyan-600">{parentSectionLabel}</a>
+          <span class="mx-2">»</span>
+          <span class="text-gray-800">{title}</span>
+        </>
+      )}
     </nav>
 
     <!-- Title Section - match original typography -->
