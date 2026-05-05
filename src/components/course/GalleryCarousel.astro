@@ -287,6 +287,8 @@ if (import.meta.env.DEV) {
       // Handle responsive behavior
       window.addEventListener('resize', () => this.updatePerView());
       
+      this.track.addEventListener('transitionend', (e) => this.onTrackTransitionEnd(e));
+      
       // Keyboard navigation
       document.addEventListener('keydown', (e) => {
         if (this.container.contains(document.activeElement)) {
@@ -296,29 +298,63 @@ if (import.meta.env.DEV) {
       });
     }
     
+    private setTrackTransition(enabled: boolean) {
+      this.track.style.transition = enabled ? '' : 'none';
+    }
+
+    /** After transform transition: snap from clone strip to equivalent real slide (invisible jump). */
+    private onTrackTransitionEnd(e: TransitionEvent) {
+      if (e.target !== this.track || e.propertyName !== 'transform') return;
+      if (this.cloneOffset === 0) return;
+
+      const firstEndClone = this.cloneOffset + this.totalSlides;
+
+      if (this.currentIndex >= firstEndClone) {
+        this.setTrackTransition(false);
+        this.currentIndex = this.cloneOffset + (this.currentIndex - firstEndClone);
+        this.updateTrack();
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => this.setTrackTransition(true));
+        });
+        this.updateDots();
+        return;
+      }
+
+      if (this.currentIndex < this.cloneOffset) {
+        this.setTrackTransition(false);
+        this.currentIndex =
+          this.cloneOffset + (this.totalSlides - this.cloneOffset + this.currentIndex);
+        this.updateTrack();
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => this.setTrackTransition(true));
+        });
+        this.updateDots();
+      }
+    }
+
     updateTrack() {
-  const imageWidth = 100 / this.perView; // Width of one image in the current view
-  const translateX = -(this.currentIndex * imageWidth);
-  this.track.style.transform = `translateX(${translateX}%)`;
+      const imageWidth = 100 / this.perView; // Width of one image in the current view
+      const translateX = -(this.currentIndex * imageWidth);
+      this.track.style.transform = `translateX(${translateX}%)`;
     }
     
     prev() {
       this.currentIndex--;
-      
-      // Check if we need to wrap around
-      if (this.cloneOffset > 0 && this.currentIndex < this.cloneOffset) {
-        // We're before the first real slide, jump to the end without animation
-        this.track.style.transition = 'none';
-        this.currentIndex = this.cloneOffset + this.totalSlides - 1;
-        this.updateTrack();
-        // Re-enable animation after a brief delay
-        setTimeout(() => {
-          this.track.style.transition = 'transform 500ms ease-in-out';
-        }, 10);
-      } else if (this.cloneOffset === 0 && this.currentIndex < 0) {
+
+      if (this.cloneOffset === 0 && this.currentIndex < 0) {
         this.currentIndex = this.totalSlides - 1;
       }
-      
+
+      // Fell past the left clone strip — instant wrap to equivalent real slides
+      if (this.cloneOffset > 0 && this.currentIndex < 0) {
+        this.setTrackTransition(false);
+        this.currentIndex = this.cloneOffset + this.totalSlides - 1;
+        this.updateTrack();
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => this.setTrackTransition(true));
+        });
+      }
+
       this.updateTrack();
       this.updateDots();
       this.updateButtons();
@@ -327,21 +363,23 @@ if (import.meta.env.DEV) {
     
     next() {
       this.currentIndex++;
-      
-      // Check if we need to wrap around
-      if (this.cloneOffset > 0 && this.currentIndex >= this.cloneOffset + this.totalSlides) {
-        // We're past the last real slide, jump to the beginning without animation
-        this.track.style.transition = 'none';
-        this.currentIndex = this.cloneOffset;
-        this.updateTrack();
-        // Re-enable animation after a brief delay
-        setTimeout(() => {
-          this.track.style.transition = 'transform 500ms ease-in-out';
-        }, 10);
-      } else if (this.cloneOffset === 0 && this.currentIndex >= this.totalSlides) {
+
+      if (this.cloneOffset === 0 && this.currentIndex >= this.totalSlides) {
         this.currentIndex = 0;
       }
-      
+
+      // Burst past end clones (rare) — snap without animating wrong positions
+      const maxIndexWithClones =
+        this.cloneOffset + this.totalSlides + this.cloneOffset - 1;
+      if (this.cloneOffset > 0 && this.currentIndex > maxIndexWithClones) {
+        this.setTrackTransition(false);
+        this.currentIndex = this.cloneOffset;
+        this.updateTrack();
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => this.setTrackTransition(true));
+        });
+      }
+
       this.updateTrack();
       this.updateDots();
       this.updateButtons();
@@ -358,11 +396,24 @@ if (import.meta.env.DEV) {
     }
     
     updateDots() {
-      // Calculate which original slide we're currently viewing
-      const activeOriginalIndex = this.currentIndex - this.cloneOffset;
-      
+      let activeOriginalIndex = this.currentIndex - this.cloneOffset;
+
+      if (this.cloneOffset > 0 && this.totalSlides > 0) {
+        const firstEndClone = this.cloneOffset + this.totalSlides;
+        if (this.currentIndex >= firstEndClone) {
+          activeOriginalIndex = this.currentIndex - firstEndClone;
+        } else if (this.currentIndex < this.cloneOffset) {
+          activeOriginalIndex =
+            this.currentIndex + this.totalSlides - this.cloneOffset;
+        }
+      }
+
+      const clampedDot =
+        ((activeOriginalIndex % this.totalSlides) + this.totalSlides) %
+        this.totalSlides;
+
       this.dots.forEach((dot: Element, index: number) => {
-        if (index === activeOriginalIndex) {
+        if (index === clampedDot) {
           dot.classList.add('bg-white');
           dot.classList.remove('bg-white/60');
           dot.setAttribute('aria-selected', 'true');
