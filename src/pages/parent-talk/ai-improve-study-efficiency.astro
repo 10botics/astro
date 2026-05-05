@@ -1,0 +1,188 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+
+import heroImage from '../../assets/images/staff-development-day/mainpage/hero-image.jpeg';
+
+/** Canonical URL: /parent-talk/ai-improve-study-efficiency */
+export const courseData = {
+  title: '利用人工智能提昇學習效能',
+  subtitle: 'AI 世代的學習新模式 — 透過人工智能提升子女的學習效能（POE 實作工作坊）',
+  tags: [
+    '家長講座',
+    'AI 人工智能',
+    'POE',
+    'Google Gemini',
+    'ChatGPT',
+    '家長教育',
+    '提示工程',
+  ],
+  description:
+    '面向家長的工作坊：認識在香港使用生成式 AI 的實際情境、以 POE 整合多款模型，並透過檢查功課、生成測驗、作文輔助與 AI 素養，安全有效地支援子女學習。',
+  detailedDescription:
+    '以「如何使用 AI」為主軸：說明 ChatGPT／Gemini 在香港使用的限制與替代方案、推介 POE 作為多模型入口（含 Gemini、Claude、Grok、DeepSeek 等）；示範廣東話語音輸入、選擇 Gemini-2.5-Flash、理解點數與模型成本；並帶領家長實作檢查功課、生成測驗、作文大綱與段落、閱讀報告總結、造句與英文文法檢查、對話分享與 Stable Diffusion XL 圖片生成、探索 Bot 與訂閱注意事項（尤其 iOS）。最後討論準確性與幻覺、深度偽造、學術誠信與私隱，呼籲以 AI 增強而非取代孩子的能力。',
+  heroImage,
+};
+
+const courseHighlights = [
+  {
+    icon: 'fas fa-comments',
+    title: 'POE 一站式上手多款 AI',
+    description:
+      '理解香港地區使用限制與 VPN 議題；認識 POE 如何集合 ChatGPT、Gemini、Claude、Grok 等，以及學校／公司 Gmail 使用 Gemini 的特例。',
+  },
+  {
+    icon: 'fas fa-clipboard-check',
+    title: '貼近家課與測考的實作',
+    description:
+      '由拍照檢查答案、純文字／附圖生成測驗，到作文大綱與分段寫作、閱讀報告總結、成語造句與英文文法檢查，一步步可在家庭中重現。',
+  },
+  {
+    icon: 'fas fa-shield-heart',
+    title: 'AI 素養與安全界線',
+    description:
+      '討論幻覺與事實核查、深度偽造與法律、學術誠信的合理使用方式，以及不向 AI 洩露過度個人資料等私隱意識。',
+  },
+];
+
+const courseCurriculum = {
+  items: [
+    {
+      title: '如何使用 AI：POE 與對話基礎',
+      duration: '約 1 單元',
+      content: [
+        '香港使用 ChatGPT／Gemini 的限制與為何以 POE 作為多模型入口（含多款模型概覽）',
+        '下載登入、廣東話語音與基礎對話練習',
+        '選用 Gemini-2.5-Flash、比較不同模型表現，並調整預設 Assistant',
+      ],
+    },
+    {
+      title: '點數與進階功能',
+      duration: '約 1 單元',
+      content: [
+        'POE 點數規則與不同模型的大致消耗',
+        '學習應用：檢查功課、生成測驗、作文輔助、閱讀報告、造句／慣用語與英文文法檢查',
+        '分享與對話歷史；Stable Diffusion XL 圖片生成（字／圖生圖）及操作要點',
+      ],
+    },
+    {
+      title: 'Bot、訂閱與 AI 素養',
+      duration: '約 1 單元',
+      content: [
+        '專屬 Bot（如測驗機械人）與製作／訂閱流程；iOS 與網頁版訂閱差異',
+        '準確性與幻覺、深度偽造、學術誠信與個人私隱',
+        '結語：以 AI 提升而非取代能力；延伸資源與聯絡（info@10botics.com、6554-1506）',
+      ],
+    },
+  ],
+};
+
+const faqItems = [
+  {
+    question: '為什麼示範環節會選用 POE？',
+    answer: [
+      '同一介面可展示多款模型，適合向家長說明「不同 AI 回答有何分別」與實際可用的組合方式。',
+      '講者會配合貴校情境，概述 ChatGPT／Gemini 等地區限制與替代做法，便於家長理解現實環境。',
+    ],
+  },
+  {
+    question: '學校安排講座時，一般要預留什麼？',
+    answer: [
+      '通常需要投影或大屏幕、音響及穩定無線網絡；若希望家長現場跟著操作，可再預留電源與座位。',
+      '單次時長、拆節或系列講座均可按貴校家長日／講座檔期商議。',
+    ],
+  },
+  {
+    question: '如何洽談日期或調整講座重點？',
+    answer: [
+      '請透過頁底聯絡方式與我們說明對象、時段與希望加強的部分（例如偏重工具示範或 AI 素養討論）。',
+      '同事會按校方需要建議合適的環節長度與流程。',
+    ],
+  },
+];
+---
+
+<Layout
+  title={`${courseData.title} - 家長講座 - 10教育`}
+  description={courseData.description}
+  ogImage={heroImage.src}
+>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+  <main>
+    <HeroSection
+      title={courseData.title}
+      subtitle={courseData.subtitle}
+      description={courseData.detailedDescription}
+      heroImage={courseData.heroImage}
+      tags={courseData.tags}
+      rootSectionHref="/school-courses"
+      rootSectionLabel="到校服務"
+      parentSectionHref="/parent-talk"
+      parentSectionLabel="家長講座"
+    />
+
+    <section class="section-padding bg-gray-50">
+      <div class="container-standard">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">講座亮點</h2>
+          <p class="text-gray-600 max-w-3xl mx-auto">
+            示範為主、家長向 — 由工具選擇、日常學習應用到 AI 素養與界線，一次掌握「敢用、會用、用得安全」。
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {courseHighlights.map((item) => (
+            <div class="card-base card-hover p-6">
+              <div class="flex items-start">
+                <div class="text-3xl text-brand-cyan-600 mr-4">
+                  <i class={item.icon}></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
+                  <p class="text-gray-600">{item.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <SingleCourseContent
+      items={courseCurriculum.items}
+      hours="按校情調整（常見為單次約 2–3 小時或拆節）"
+      hoursText="時長"
+      sectionTitle="講座大綱"
+      showAdjustmentNote={true}
+      adjustmentText="環節次序、深度與時長可按貴校家長講座時段調整；亦可配合跟進工作坊。"
+    />
+
+    <QnASection
+      title="常見問題"
+      subtitle="FAQ"
+      description="為準備或安排家長工作坊的教師／同工常見問題"
+      faqs={faqItems.map((item) => ({
+        question: item.question,
+        answer: item.answer.join('\n\n'),
+      }))}
+    />
+
+    <RelatedCourses
+      courseTags={courseData.tags}
+      courseTitle={courseData.title}
+      currentCourseSlug="ai-improve-study-efficiency"
+      context="course"
+    />
+
+    <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
+
+    <ContactSection
+      subtitle={`想了解更多關於「${courseData.title}」或為貴校安排家長講座？歡迎聯絡 info@10botics.com 或致電 6554-1506。`}
+    />
+  </main>
+</Layout>

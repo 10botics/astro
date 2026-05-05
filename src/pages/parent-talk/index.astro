@@ -1,0 +1,187 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import { generateExcerpt } from '../../utils/excerpt';
+import {
+  parentTalkDetailedDescription,
+  parentTalkImageCaption,
+  parentTalkStaffWorkshop,
+} from '../../data/parentTalkStaffWorkshop';
+import heroImageAsset from '../../assets/images/staff-development-day/mainpage/hero-image.jpeg';
+
+const PARENT_TALK_TAG = '家長講座';
+const courseData = {
+  ...parentTalkStaffWorkshop,
+  detailedDescription: parentTalkDetailedDescription,
+  imageCaption: parentTalkImageCaption,
+};
+
+const allNews = await getCollection('news');
+const parentTalkNews = allNews
+  .filter((article) => article.data.tags?.includes(PARENT_TALK_TAG))
+  .map((article) => ({
+    ...article,
+    data: {
+      ...article.data,
+      excerpt: article.data.excerpt || generateExcerpt(article.body, 150),
+    },
+  }))
+  .sort(
+    (a, b) =>
+      new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
+  );
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('zh-TW', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+---
+
+<Layout
+  title={`${courseData.title} - 教師發展日 - 10教育`}
+  description={courseData.description}
+  ogImage={heroImageAsset.src}
+>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+  <main>
+    <HeroSection
+      title={courseData.title}
+      subtitle={courseData.subtitle || ''}
+      description={courseData.detailedDescription}
+      heroImage={courseData.heroImage}
+      heroImageCaption={courseData.imageCaption}
+      tags={courseData.tags}
+      rootSectionHref="/school-courses"
+      rootSectionLabel="到校服務"
+      parentSectionHref="/staff-development-day/"
+      parentSectionLabel="教師發展日"
+    />
+
+    <section class="py-10 bg-white border-b border-gray-100">
+      <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div
+          class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 rounded-xl border border-cyan-100 bg-cyan-50/40 px-6 py-5"
+        >
+          <div>
+            <p class="text-sm font-medium text-cyan-800 uppercase tracking-wide">精選工作坊</p>
+            <h2 class="text-xl font-bold text-gray-900 mt-1">利用人工智能提昇學習效能（家長版）</h2>
+            <p class="text-gray-600 text-sm mt-2 max-w-2xl">
+              POE 實作、模型選擇、檢查功課與作文輔助，以及 AI 素養與私隱 — Jonathan Tse, 10教育
+            </p>
+          </div>
+          <a
+            href="/parent-talk/ai-improve-study-efficiency"
+            class="inline-flex shrink-0 items-center justify-center rounded-lg bg-cyan-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-cyan-700 transition-colors"
+          >
+            查看講座內容
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">相關新聞與活動回顧</h2>
+          <p class="text-lg text-gray-600">
+            共 {parentTalkNews.length} 篇報導（標籤：{PARENT_TALK_TAG}）
+          </p>
+        </div>
+
+        {parentTalkNews.length > 0 ? (
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {parentTalkNews.map((article) => (
+              <article class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow group hover:border-gray-300">
+                {article.data.featuredImage && (
+                  <div class="aspect-video overflow-hidden">
+                    <Image
+                      src={article.data.featuredImage as any}
+                      alt={article.data.title}
+                      width={600}
+                      height={400}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                )}
+
+                <div class="p-6">
+                  <div class="flex items-center justify-between text-sm text-gray-500 mb-3">
+                    <span class="bg-cyan-100 text-cyan-800 px-2 py-1 rounded-full text-xs font-medium">
+                      {article.data.category}
+                    </span>
+                    <time datetime={article.data.publishDate.toISOString()}>
+                      {formatDate(article.data.publishDate)}
+                    </time>
+                  </div>
+
+                  <h3 class="text-lg font-semibold text-gray-900 mb-3 line-clamp-2 hover:text-cyan-600 transition-colors">
+                    <a href={`/news/${article.slug}`} class="hover:underline">
+                      {article.data.title}
+                    </a>
+                  </h3>
+
+                  <p class="text-gray-600 text-sm mb-4 line-clamp-3">{article.data.excerpt}</p>
+
+                  {article.data.tags && article.data.tags.length > 0 && (
+                    <div class="flex flex-wrap gap-2 mb-4">
+                      {article.data.tags.slice(0, 4).map((tag) => (
+                        <span class="bg-cyan-100 text-cyan-800 px-2 py-1 rounded text-xs">{tag}</span>
+                      ))}
+                      {article.data.tags.length > 4 && (
+                        <span class="text-xs text-cyan-500">+{article.data.tags.length - 4}</span>
+                      )}
+                    </div>
+                  )}
+
+                  <a
+                    href={`/news/${article.slug}`}
+                    class="inline-flex items-center text-cyan-600 hover:text-cyan-700 font-medium text-sm group-hover:underline"
+                  >
+                    閱讀更多
+                    <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <p class="text-center text-gray-600 py-8">目前尚無帶有「家長講座」標籤的新聞。</p>
+        )}
+      </div>
+    </section>
+
+    <ContactSection
+      subtitle={`想了解更多關於「${courseData.title}」或為貴校安排活動？歡迎聯絡我們。`}
+    />
+  </main>
+</Layout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
