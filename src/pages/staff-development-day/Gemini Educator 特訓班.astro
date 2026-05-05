@@ -151,6 +151,36 @@ const servicedSchools = [
       parentSectionLabel="教師發展日"
     />
 
+    <section class="section-padding bg-gray-50" aria-labelledby="serviced-schools-heading">
+      <div class="container-standard">
+        <div class="text-center mb-12">
+          <h2 id="serviced-schools-heading" class="text-3xl font-bold text-gray-900 mb-4">
+            服務學校
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            以下為曾選擇 Gemini Educator／相關 AI 教師工作坊到校或預約安排的學校。
+          </p>
+        </div>
+        <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 list-none p-0 m-0">
+          {servicedSchools.map((school) => (
+            <li class="card-base card-hover p-6 flex flex-col h-full">
+              <div class="flex items-start gap-3">
+                <span class="text-2xl text-brand-cyan-600 shrink-0" aria-hidden="true">
+                  <i class="fas fa-school" />
+                </span>
+                <div class="min-w-0">
+                  <h3 class="text-lg font-semibold text-gray-900 leading-snug">{school.nameZh}</h3>
+                  {'nameEn' in school && school.nameEn ? (
+                    <p class="text-sm text-gray-500 mt-1 leading-snug">{school.nameEn}</p>
+                  ) : null}
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
     <section class="section-padding bg-white">
       <div class="container-standard">
         <GalleryCarousel
@@ -191,36 +221,6 @@ const servicedSchools = [
       contentHours="約 2 小時"
       curriculumSectionTitle="課程內容"
     />
-
-    <section class="section-padding bg-gray-50" aria-labelledby="serviced-schools-heading">
-      <div class="container-standard">
-        <div class="text-center mb-12">
-          <h2 id="serviced-schools-heading" class="text-3xl font-bold text-gray-900 mb-4">
-            服務學校
-          </h2>
-          <p class="text-gray-600 max-w-2xl mx-auto">
-            以下為曾選擇 Gemini Educator／相關 AI 教師工作坊到校或預約安排的學校。
-          </p>
-        </div>
-        <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 list-none p-0 m-0">
-          {servicedSchools.map((school) => (
-            <li class="card-base card-hover p-6 flex flex-col h-full">
-              <div class="flex items-start gap-3">
-                <span class="text-2xl text-brand-cyan-600 shrink-0" aria-hidden="true">
-                  <i class="fas fa-school" />
-                </span>
-                <div class="min-w-0">
-                  <h3 class="text-lg font-semibold text-gray-900 leading-snug">{school.nameZh}</h3>
-                  {'nameEn' in school && school.nameEn ? (
-                    <p class="text-sm text-gray-500 mt-1 leading-snug">{school.nameEn}</p>
-                  ) : null}
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
 
     <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} context="course" />
 
