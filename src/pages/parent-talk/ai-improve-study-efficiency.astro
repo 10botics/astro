@@ -6,8 +6,12 @@ import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
 import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
 
 import heroImage from '../../assets/images/staff-development-day/mainpage/hero-image.jpeg';
+import galleryAuditoriumAiEducation from '../../assets/images/parent-talk/ai-improve-study-efficiency/gallery-auditorium-ai-education-slide.png';
+import galleryClassroomParentTalk from '../../assets/images/parent-talk/ai-improve-study-efficiency/gallery-classroom-parent-talk.png';
+import galleryStageOpenAiAiDevelopment from '../../assets/images/parent-talk/ai-improve-study-efficiency/gallery-stage-openai-ai-development-education.png';
 
 /** Canonical URL: /parent-talk/ai-improve-study-efficiency */
 export const courseData = {
@@ -160,6 +164,29 @@ const faqItems = [
       showAdjustmentNote={true}
       adjustmentText="環節次序、深度與時長可按貴校家長講座時段調整；亦可配合跟進工作坊。"
     />
+
+    <section class="section-padding bg-white">
+      <div class="container-standard">
+        <GalleryCarousel
+          title="講座實況"
+          images={[
+            {
+              src: galleryAuditoriumAiEducation,
+              alt: '學校禮堂內，家長坐在觀眾席聆聽講座，大螢幕投影「AI 教育」主題簡報與數位人像圖像，講者持麥克風於台前分享。',
+            },
+            {
+              src: galleryClassroomParentTalk,
+              alt: '課室或小型禮堂內舉行家長講座，家長坐於藍色座椅面向講台，女講者持麥於投影幕前講解。',
+            },
+            {
+              src: galleryStageOpenAiAiDevelopment,
+              alt: '講者於台上主持「AI 發展與教育」主題，大螢幕顯示 OpenAI／ChatGPT 標誌與簡報標題。',
+            },
+          ]}
+          intervalMs={4500}
+        />
+      </div>
+    </section>
 
     <QnASection
       title="常見問題"
