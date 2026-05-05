@@ -5,7 +5,6 @@
  */
 
 import { generateTagSlug } from './tagMapping';
-import { parentTalkStaffWorkshop } from '../data/parentTalkStaffWorkshop';
 
 export { TAG_MAPPING, generateTagSlug } from './tagMapping';
 
@@ -103,6 +102,17 @@ export interface Course {
 export function getStaffDevelopmentWorkshopHref(workshop: Course): string {
   if (workshop.publicPath) return workshop.publicPath;
   return `/staff-development-day/${workshop.slug}`;
+}
+
+/** Global tag page and mixed listings: correct href per course source */
+export function getCoursePageHref(course: Course): string {
+  if (course.source === 'staff-dev') {
+    return getStaffDevelopmentWorkshopHref(course);
+  }
+  if (course.source === 'stemday') {
+    return `/stemday/${course.filename.replace('.astro', '')}`;
+  }
+  return `/school-courses/${course.slug}`;
 }
 
 /**
@@ -219,8 +229,7 @@ export async function discoverStaffDevelopmentCourses(
       } as Course;
     });
 
-  const withoutDup = mapped.filter((c) => c.slug !== parentTalkStaffWorkshop.slug);
-  return [...withoutDup, parentTalkStaffWorkshop as Course];
+  return mapped;
 }
 
 /**
@@ -279,12 +288,13 @@ export async function discoverCourses(
 export async function discoverAllCourses(
   exclusions: string[] = ['index.astro', '[slug].astro']
 ): Promise<Course[]> {
-  const [schoolCourses, stemdayCourses] = await Promise.all([
+  const [schoolCourses, stemdayCourses, staffDevCourses] = await Promise.all([
     discoverCourses('../school-courses/', exclusions),
-    discoverStemdayCourses(exclusions)
+    discoverStemdayCourses(exclusions),
+    discoverStaffDevelopmentCourses(exclusions),
   ]);
-  
-  return [...schoolCourses, ...stemdayCourses];
+
+  return [...schoolCourses, ...stemdayCourses, ...staffDevCourses];
 }
 
 /**

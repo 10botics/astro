@@ -9,6 +9,7 @@ import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import { generateExcerpt } from '../../utils/excerpt';
+import { TAG_MAPPING } from '../../utils/tagMapping';
 
 import heroImage from '../../assets/images/parent-talk/ai-improve-study-efficiency/gallery-stage-openai-ai-development-education.png';
 import galleryAuditoriumAiEducation from '../../assets/images/parent-talk/ai-improve-study-efficiency/gallery-auditorium-ai-education-slide.png';
@@ -27,12 +28,9 @@ export const courseData = (() => {
     tags: [
       '家長講座',
       'AI 人工智能',
-      'POE',
       'Google Gemini',
       'ChatGPT',
-      '家長教育',
-      '提示工程',
-    ],
+    ].filter((tag) => Object.hasOwn(TAG_MAPPING, tag)),
     description: staffAndSchoolCourseSummary,
     detailedDescription: staffAndSchoolCourseSummary,
     heroImage,
@@ -153,6 +151,7 @@ function formatDate(date: Date): string {
       subtitle={courseData.subtitle}
       description={courseData.detailedDescription}
       heroImage={courseData.heroImage}
+      heroImageMaxScale={0.8}
       tags={courseData.tags}
       rootSectionHref="/school-courses"
       rootSectionLabel="到校服務"

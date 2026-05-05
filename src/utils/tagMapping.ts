@@ -41,6 +41,7 @@ export const TAG_MAPPING: Record<string, string> = {
   'Google Gemini': 'google-gemini',
   NotebookLM: 'notebooklm',
   'Leonardo AI': 'leonardo-ai',
+  Midjourney: 'midjourney',
   Delightex: 'delightex',
   'Metaverse 元宇宙': 'metaverse',
   元宇宙: 'metaverse',
