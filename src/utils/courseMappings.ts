@@ -4,6 +4,11 @@
  * Used across multiple pages and components to ensure consistency
  */
 
+import { generateTagSlug } from './tagMapping';
+import { parentTalkStaffWorkshop } from '../data/parentTalkStaffWorkshop';
+
+export { TAG_MAPPING, generateTagSlug } from './tagMapping';
+
 // Map Chinese filenames to English URL slugs
 export const COURSE_SLUG_MAPPING: Record<string, string> = {
   '人工智能遊戲編程課程': 'ai-game-coding',
@@ -44,112 +49,11 @@ export const STEMDAY_SLUG_MAPPING: Record<string, string> = {
 
 // Map staff development workshop filenames to English URL slugs
 export const STAFF_DEV_SLUG_MAPPING: Record<string, string> = {
-  'Gemini Educator 特訓班': 'gemini-educator',
+  'Gemini Educator 老師特訓班': 'gemini-educator',
   'ChatGPT在教育行業的運用講座': 'chatgpt-education',
   'AI人工智能生成講座': 'ai-generation-lecture',
   'Raspberry Pi與Python的運用講座': 'raspberry-pi-python',
-  'Donkey Car無人車發展和應用講座': 'donkey-car-lecture'
-};
-
-// Map Chinese tags to English URL slugs
-export const TAG_MAPPING: Record<string, string> = {
-  // Chinese tags to English equivalents
-  '初中': 'junior-secondary',
-  '高中': 'senior-secondary', 
-  '高小': 'senior-primary',
-  '初小': 'junior-primary',
-  '小學': 'primary-school',
-  '遊戲開發': 'game-development',
-  '網頁遊戲': 'web-games',
-  '無人機': 'drone',
-  '軟件開發': 'app-develop',
-  '數位藝術': 'digital-art',
-  '創意': 'creativity',
-  '繪畫': 'drawing',
-  '虛擬實境': 'virtual-reality',
-  'VR 虛擬實境': 'vr-virtual-reality',
-  'AR 擴增實境': 'ar-augmented-reality',
-  '動畫創作': 'animation-creation',
-  '互動體驗': 'interactive-experience',
-  'AI 人工智能': 'ai',
-  'Programming 編程': 'programming',
-  'Block Coding 方塊編程': 'block-coding',
-  'Arts 藝術': 'arts',
-  'Engineering 工程': 'engineering',
-  '工程': 'engineering',
-  'Science 科學': 'science',
-  '科學': 'science',
-  '物理': 'physics',
-  '設計': 'design',
-  '團隊合作': 'teamwork',
-  'Matatalab': 'matatalab',
-  'STEM Day': 'stemday',
-  // Technology and platform specific tags
-  'ChatGPT': 'chatgpt',
-  'Google Gemini': 'google-gemini',
-  'NotebookLM': 'notebooklm',
-  'Leonardo AI': 'leonardo-ai',
-  'Delightex': 'delightex',
-  'Metaverse 元宇宙': 'metaverse',
-  '元宇宙': 'metaverse',
-  'Microbit': 'microbit',
-  'Micro:bit': 'microbit',
-  'Blockchain 區塊鏈': 'blockchain',
-  'Dobot': 'dobot',
-  'KSP': 'ksp',
-  'Lego': 'lego',
-  'Robotics 機械人': 'robotics',
-  'Coral': 'coral',
-  'Python': 'python',
-  'Raspberry Pi': 'raspberry-pi',
-  'Tensorflow': 'tensorflow',
-  'Swift Playground': 'swift-playground',
-  '3D 建模': '3d-modeling',
-  'C#': 'c',
-  'Unity': 'unity',
-  '故事開發': 'story-development',
-  '編程': 'programming',
-  '手作': 'hands-on',
-  'IoT': 'iot',
-  '海洋環境': 'marine-environment',
-  'Arduino': 'arduino',
-  'Tello': 'tello',
-  'Scratch': 'scratch',
-  'Procreate': 'procreate',
-  'Donkey Car': 'donkey-car',
-  'CoDrone': 'codrone',
-  'Minecraft': 'minecraft',
-  // Additional technology and platform tags
-  'CoSpaces': 'cospaces',
-  'Formula AI': 'formula-ai',
-  'Game Develop': 'game-develop',
-  'IT創新實驗室': 'it-innovation-lab',
-  'Microbit 2': 'microbit-2',
-  'STEM教師培訓工作坊': 'stem-teacher-training-workshop',
-  // 3D and robotics specific tags
-  '3D 打印': '3d-printing',
-  '3D打印': '3d-printing',
-  '3D Printing': '3d-printing',
-  '機械人': 'robotics',
-  'Robot': 'robotics',
-  'Robotics': 'robotics',
-  '機械人創作': 'robot-creation',
-  // Additional mappings for broader categories
-  'AI': 'ai',
-  '藝術': 'arts',
-  '科學手作': 'science-handicraft',
-  'STEM': 'stem',
-  '科學技術工程數學': 'stem',
-  // New tags from the provided URLs
-  '中學': '中學',
-  '教師發展日': '教師發展日',
-  '航天科技': '航天科技',
-  '資優教育': '資優教育',
-  '3D建模元宇宙': '3D建模元宇宙',
-  'AI人工智能': 'aAI人工智能',
-  'AI數碼動畫展': 'AI數碼動畫展',
-  'AI藝術創作': 'AI藝術創作',
-  'Donkey Car CoDrone': 'donkey-car-codrone'
+  'Donkey Car無人車發展和應用講座': 'donkey-car-lecture',
 };
 
 // Target audience tag mapping for specific styling
@@ -191,28 +95,14 @@ export interface Course {
   heroImage?: string | any;
   publishDate: string;
   source: string;
+  /** If set (e.g. 家長講座), links use this path instead of /staff-development-day/[slug] */
+  publicPath?: string;
 }
 
-/**
- * Generate a URL-safe tag slug from a Chinese or English tag
- */
-export function generateTagSlug(tag: string): string {
-  // Check if we have a mapping for this tag
-  const mappedTag = TAG_MAPPING[tag] || tag;
-  
-  // For Chinese characters, preserve them as-is for URL encoding
-  // For English tags, convert to lowercase and replace spaces with hyphens
-  if (/[\u4e00-\u9fff]/.test(mappedTag)) {
-    // Contains Chinese characters - preserve as-is
-    return mappedTag;
-  } else {
-    // English tag - convert to slug format
-    return mappedTag
-      .toLowerCase()
-      .replace(/\s+/g, '-')
-      .replace(/[^\w-]/g, '') // Remove all non-word characters except hyphens
-      .replace(/-+$/, ''); // Remove trailing hyphens
-  }
+/** Staff dev listing / tag pages */
+export function getStaffDevelopmentWorkshopHref(workshop: Course): string {
+  if (workshop.publicPath) return workshop.publicPath;
+  return `/staff-development-day/${workshop.slug}`;
 }
 
 /**
@@ -297,7 +187,7 @@ export async function discoverStaffDevelopmentCourses(
     eager: true
   });
 
-  return Object.entries(courseFiles)
+  const mapped = Object.entries(courseFiles)
     .filter(([path]) => {
       const filename = path.split('/').pop() || '';
       return !exclusions.some(exclusion => {
@@ -328,6 +218,9 @@ export async function discoverStaffDevelopmentCourses(
         source: 'staff-dev'
       } as Course;
     });
+
+  const withoutDup = mapped.filter((c) => c.slug !== parentTalkStaffWorkshop.slug);
+  return [...withoutDup, parentTalkStaffWorkshop as Course];
 }
 
 /**
@@ -536,7 +429,8 @@ export function generateTagPaths(allTags: string[]): Array<{params: {tag: string
     { tag: 'codrone', originalTag: 'CoDrone' },
     { tag: 'donkey-car-codrone', originalTag: 'Donkey Car CoDrone' },
     { tag: 'minecraft', originalTag: 'Minecraft' },
-    { tag: 'stemday', originalTag: 'STEM Day' }
+    { tag: 'stemday', originalTag: 'STEM Day' },
+    { tag: 'parent-talk', originalTag: '家長講座' },
   ];
 
   const categoryPaths = categoryTags.map(({ tag, originalTag }) => ({
