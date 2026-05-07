@@ -1,7 +1,6 @@
 ---
 import { Image } from 'astro:assets';
 import Layout from '../../layouts/Layout.astro';
-import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
 import HeroSection from '../../components/course/HeroSection.astro';
 import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
 import QnASection from '../../components/course/QnASection.astro';
@@ -11,10 +10,6 @@ import RelatedCourses from '../../components/course/RelatedCourses.astro';
 
 import heroGeminiAiChat from '../../assets/images/school-courses/AI啟蒙課程/ai-application.png';
 import geminiStudentCertificate from '../../assets/images/school-courses/Gemini 學生證書課程/certificate-gemini-certified-student-sample.jpg';
-import galleryStorybookClassroom from '../../assets/images/school-courses/Gemini 學生證書課程/gallery-storybook-classroom.png';
-import galleryIgWorkshop from '../../assets/images/school-courses/Gemini 學生證書課程/gallery-ig-workshop-lecture-hall.png';
-import galleryComputerLab from '../../assets/images/school-courses/Gemini 學生證書課程/gallery-computer-lab-session.png';
-import galleryCanvaComic from '../../assets/images/school-courses/Gemini 學生證書課程/gallery-canva-comic-project.png';
 
 export const courseData = {
   title: "Gemini 學生證書課程",
@@ -32,7 +27,7 @@ export const courseData = {
   description:
     "到校課程結合 Google Gemini、NotebookLM 與 AI vibe coding 實作，協助學生建立生成式 AI 基礎、熟悉校園可用的學習工具，並預留時間完成 Gemini 學生證書相關考核。",
   detailedDescription:
-    "本課程為 8 小時密集設計，分四大模組：先從生成式 AI 與 Google AI 生態介紹起，深入 Gemini 平台核心功能與引導學習、影像生成、Canvas、深度研究與 Gems 等應用；其後透過 NotebookLM 認識 Magic Door 試用與平台核心功能，涵蓋 Audio Overview、Video Overview、MindMap、Flashcard、Quiz 等學習形式；再以「AI vibe coding」帶領學生製作自製五子棋與個人化小遊戲；最後安排考取 Gemini 學生證書，鞏固學習成果。課程可配合學校節數與資訊設備調整細節，歡迎聯絡我們討論到校安排。",
+    "本課程為 8 小時密集設計，分四大模組：先從生成式 AI 與 Google AI 生態介紹起，深入 Gemini 平台核心功能與引導學習、影像生成、Canvas、深度研究與 Gems 等應用；其後透過 NotebookLM 認識 Magic Door 試用與平台核心功能，涵蓋 Audio Overview、Video Overview、MindMap、Flashcard、Quiz 等學習形式；再以「AI vibe coding」帶領學生製作自製五子棋與個人化小遊戲；最後安排考取 Gemini 學生證書，鞏固學習成果。",
   heroImage: heroGeminiAiChat
 };
 
@@ -120,6 +115,9 @@ const faqItems = [
     ]
   }
 ];
+
+const schoolArrangementNote =
+  '課程可配合學校節數與資訊設備調整細節，歡迎聯絡我們討論到校安排。';
 ---
 
 <Layout title={courseData.title} description={courseData.description}>
@@ -186,34 +184,8 @@ const faqItems = [
       hoursText="共"
       showAdjustmentNote={true}
       adjustmentText="可根據學校需要調整節數與模組比重"
+      hoursFooterNote={schoolArrangementNote}
     />
-
-    <section class="section-padding bg-white">
-      <div class="container-standard">
-        <GalleryCarousel
-          title="課程實況"
-          images={[
-            {
-              src: galleryStorybookClassroom,
-              alt: '到校課堂內，師生進行故事書創作培訓，電子白板展示故事書創作課程內容。',
-            },
-            {
-              src: galleryIgWorkshop,
-              alt: '階梯講堂內的工作坊環境：講者介紹「IG 推廣文案」主題，學員專注聽講。',
-            },
-            {
-              src: galleryComputerLab,
-              alt: '電腦室課堂中，學生於個人電腦前學習，前方大屏幕展示色彩豐富的數位作品網格。',
-            },
-            {
-              src: galleryCanvaComic,
-              alt: '螢幕顯示於 Canva 中製作的樂高人偶卡通四格漫畫，將三國人物置於現代香港情境。',
-            },
-          ]}
-          intervalMs={4500}
-        />
-      </div>
-    </section>
 
     <QnASection
       faqs={faqItems.map((item) => ({
