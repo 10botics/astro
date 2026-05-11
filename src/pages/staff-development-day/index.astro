@@ -3,426 +3,301 @@ import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import CTAButton from '../../components/CTAButton.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
-
-// Import images
+import {
+  discoverStaffDevelopmentCourses,
+  generateTagSlug,
+  AUDIENCE_TAG_MAPPING,
+  getStaffDevelopmentWorkshopHref,
+} from '../../utils/courseMappings';
+import type { Course } from '../../utils/courseMappings';
 import heroImage from '../../assets/images/staff-development-day/mainpage/hero-image.jpeg';
 import heroBackground from '../../assets/images/staff-development-day/mainpage/hero-background.jpeg';
-import chatgptWorkshop from '../../assets/images/staff-development-day/mainpage/chatgpt-workshop.jpg';
-import aiWorkshop from '../../assets/images/staff-development-day/mainpage/ai-workshop.jpg';
-import raspberryPi from '../../assets/images/staff-development-day/mainpage/raspberry-pi.jpeg';
-import donkeyCar from '../../assets/images/staff-development-day/mainpage/donkey-car.jpeg';
 import gallery1 from '../../assets/images/staff-development-day/mainpage/gallery-1.jpeg';
 import gallery2 from '../../assets/images/staff-development-day/mainpage/gallery-2.jpeg';
 import gallery3 from '../../assets/images/staff-development-day/mainpage/gallery-3.jpeg';
 import gallery4 from '../../assets/images/staff-development-day/mainpage/gallery-4.jpeg';
-import geminiEducator from '../../assets/images/staff-development-day/mainpage/gemini-educator.jpg';
 
-const title = "教師發展日工作坊 - 10教育";
-const description = "定期舉辦教師STEM培訓工作坊，提供AIGC技術協助自動生成教案試題學習資料，節省教師時間精力，獲取整理教學資源使教學流暢高效";
+const astroWorkshops = await discoverStaffDevelopmentCourses(['index.astro', '[slug].astro']);
 
-// No redirect needed - routing is handled by [slug].astro
+const sortedWorkshops = astroWorkshops.sort(
+  (a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
+);
+
+const pageTitle = '教師發展日工作坊 - 10教育';
+const pageDescription =
+  '定期舉辦教師STEM培訓工作坊，提供AIGC技術協助自動生成教案試題學習資料，節省教師時間精力，獲取整理教學資源使教學流暢高效';
+const pageKeywords =
+  '教師發展日, 教師培訓, STEM工作坊, ChatGPT, AI教育, Raspberry Pi, Donkey Car, Gemini, 10教育';
 ---
 
-<Layout title={title} description={description} ogImage={heroImage.src}>
-	<!-- Hero Section -->
-	<section class="relative text-white py-20 overflow-hidden">
-		<!-- Background Image -->
-		<div class="absolute inset-0">
-			<Image 
-				src={heroBackground} 
-				alt="教師發展日背景" 
-				class="w-full h-full object-cover"
-				width={1920}
-				height={1080}
-			/>
-			<div class="absolute inset-0 bg-black bg-opacity-30"></div>
-		</div>
-		
-		<div class="container mx-auto px-4 relative z-10">
-			<div class="text-center max-w-4xl mx-auto">
-				<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-					教師發展日<br>
-					<span class="text-gray-200">Staff Development Day</span>
-				</h1>
-				<p class="text-xl md:text-2xl text-gray-100 leading-relaxed">
-					10Botics 定期舉辦教師工作坊，為教師提供STEM培訓<br>
-				</p>
-			</div>
-		</div>
-	</section>
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  ogImage={heroImage.src}
+>
+  <main class="courses-index">
+    <header class="relative text-white py-20 overflow-hidden">
+      <div class="absolute inset-0">
+        <Image
+          src={heroBackground}
+          alt="教師發展日背景"
+          class="w-full h-full object-cover"
+          width={1920}
+          height={1080}
+        />
+        <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+      </div>
 
-	<!-- Main Content -->
-	<main class="py-16">
-		<div class="container mx-auto px-4">
-			<!-- Gemini Educator Section -->
-			<section class="mb-20">
-				<div class="grid lg:grid-cols-2 gap-12 items-center">
-					<div>
-						<div class="relative">
-							<Image 
-								src={geminiEducator} 
-								alt="Gemini Educator 特訓班 - 助老師2小時取得Gemini教師認證" 
-								class="w-full h-auto rounded-2xl shadow-2xl"
-								width={800}
-								height={600}
-							/>
-							<div class="absolute bottom-4 left-4 right-4 bg-black bg-opacity-70 text-white p-4 rounded-lg">
-								<p class="text-sm">Gemini Educator 特訓班 - 助老師2小時取得Gemini教師認證</p>
-							</div>
-						</div>
-					</div>
-					<div>
-						<div class="bg-gray-50 rounded-2xl p-8">
-							<h2 class="text-3xl font-bold text-gray-900 mb-6">Gemini Educator 特訓班</h2>
-							<p class="text-lg text-gray-700 leading-relaxed mb-6">
-								助老師2小時取得Google官方Gemini教師認證！認證旨在培養AI時代的教育引導者，驗證教師對生成式AI基礎概念的理解，以及在教育情境中負責任地整合Google AI工具的能力。
-							</p>
-						<ul class="space-y-3 text-gray-700">
-							<li class="flex items-start">
-								<span class="text-brand-blue-600 mr-3 mt-1">•</span>
-								介紹 Generative AI 及 Google AI 工具
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center max-w-4xl mx-auto">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            教師發展日<br />
+            <span class="text-gray-200">Staff Development Day</span>
+          </h1>
+          <p class="text-xl md:text-2xl text-gray-100 leading-relaxed">
+            10Botics 定期舉辦教師工作坊，為教師提供STEM培訓<br />
+          </p>
+        </div>
+      </div>
+    </header>
 
-							</li>
-							<li class="flex items-start">
-								<span class="text-brand-blue-600 mr-3 mt-1">•</span>
-								Gemini 平台核心功能
-							</li>
-							<li class="flex items-start">
-								<span class="text-brand-blue-600 mr-3 mt-1">•</span>
-								介紹引導學習、影像生成、Canvas、深度研究、Gems 等
-							</li>
-							<li class="flex items-start">
-								<span class="text-brand-blue-600 mr-3 mt-1">•</span>
-								NotebookLM 的應用(需配合VPN 使用)
-							</li>
-							<li class="flex items-start">
-								<span class="text-brand-blue-600 mr-3 mt-1">•</span>
-								進行Gemini 教師認證考試
-							</li>
-						</ul>
-						</div>
-					</div>
-				</div>
-			</section>
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto mb-12 text-center">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">工作坊及講座</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            瀏覽我們為教師設計的培訓主題，點選標籤可按主題篩選相關工作坊。
+          </p>
+        </div>
+        <div class="max-w-6xl mx-auto">
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {sortedWorkshops.map((workshop: Course) => (
+              <article class="course-card bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+                {workshop.heroImage && (
+                  <div class="course-image-container bg-gray-100 overflow-hidden aspect-video">
+                    {typeof workshop.heroImage === 'string' ? (
+                      <Image
+                        src={workshop.heroImage}
+                        alt={workshop.title}
+                        width={600}
+                        height={400}
+                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    ) : (
+                      <Image
+                        src={workshop.heroImage}
+                        alt={workshop.title}
+                        width={600}
+                        height={400}
+                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    )}
+                  </div>
+                )}
+                <div class="p-6">
+                  <div class="mb-4">
+                    <h3 class="text-xl font-bold mb-2 text-gray-800 line-clamp-2">
+                      <a
+                        href={getStaffDevelopmentWorkshopHref(workshop)}
+                        class="hover:text-brand-blue-600 transition-colors"
+                      >
+                        {workshop.title}
+                      </a>
+                    </h3>
 
-			<!-- ChatGPT Workshop Section -->
-			<section class="mb-20">
-				<div class="grid lg:grid-cols-2 gap-12 items-center">
-					<div class="order-1 lg:order-2">
-						<div class="bg-gray-50 rounded-2xl p-8">
-							<h2 class="text-3xl font-bold text-gray-900 mb-6">ChatGPT在教育行業的運用講座</h2>
-							<p class="text-lg text-gray-700 leading-relaxed mb-6">
-								講座將針對教育界和老師的需要，提供内容緊貼的最新資訊，以深入淺出的方式，向老師介紹ChatGPT，並教授關於ChatGPT如何輔助日常教學工作，使用ChatGPT加快編寫教學資源，協助老師迅速解決學生常見問題等。
-							</p>
-							<p class="text-lg text-gray-700 mb-4">講座内容包括：</p>
-							<ul class="space-y-3 text-gray-700">
-								<li class="flex items-start">
-									<span class="text-brand-blue-600 mr-3 mt-1">•</span>
-									介紹ChatGPT等技術對教育的影響和重要性
-								</li>
-								<li class="flex items-start">
-									<span class="text-brand-blue-600 mr-3 mt-1">•</span>
-									ChatGPT的基本應用方法
-								</li>
-								<li class="flex items-start">
-									<span class="text-brand-blue-600 mr-3 mt-1">•</span>
-									如何利用ChatGPT輔助日常教學工作
-								</li>
-								<li class="flex items-start">
-									<span class="text-brand-blue-600 mr-3 mt-1">•</span>
-									如何利用ChatGPT創建和加快教學資源的編寫
-								</li>
-								<li class="flex items-start">
-									<span class="text-brand-blue-600 mr-3 mt-1">•</span>
-									如何利用ChatGPT快速解決常見問題
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="order-1 lg:order-2">
-						<div class="relative">
-							<Image 
-								src={chatgptWorkshop} 
-								alt="向馬錦明慈善基金馬可賓紀念中學全體老師教授如何在教育方面運用ChatGPT" 
-								class="w-full h-auto rounded-2xl shadow-2xl"
-								width={800}
-								height={600}
-							/>
-							<div class="absolute bottom-4 left-4 right-4 bg-black bg-opacity-70 text-white p-4 rounded-lg">
-								<p class="text-sm">向馬錦明慈善基金馬可賓紀念中學全體老師教授如何在教育方面運用ChatGPT</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+                    {workshop.description && (
+                      <p class="text-gray-600 text-sm line-clamp-3 mb-4">{workshop.description}</p>
+                    )}
+                  </div>
 
-			<!-- AI Workshop Section -->
-			<section class="mb-20">
-				<div class="grid lg:grid-cols-2 gap-12 items-center">
-					<div>
-						<div class="relative">
-							<Image 
-								src={aiWorkshop} 
-								alt="爲香港道教聯合會圓玄學院第一中學全體教師提供人工智能生成講座" 
-								class="w-full h-auto rounded-2xl shadow-2xl"
-								width={800}
-								height={600}
-							/>
-							<div class="absolute bottom-4 left-4 right-4 bg-black bg-opacity-70 text-white p-4 rounded-lg">
-								<p class="text-sm">爲香港道教聯合會圓玄學院第一中學全體教師提供人工智能生成講座</p>
-							</div>
-						</div>
-					</div>
-					<div>
-						<div class="bg-gray-50 rounded-2xl p-8">
-							<h2 class="text-3xl font-bold text-gray-900 mb-6">AI人工智能生成講座</h2>
-							<p class="text-lg text-gray-700 leading-relaxed mb-6">
-								講座著重探討和演示如何使用Midjourney進行AI智能圖片生成并融入教學内容。還會教老師製作屬於自己科目和課程相關的對答式機器人，爲學生提供一個即時解答疑問的方式，提高老師在教學上的質量和效率。
-							</p>
-							<p class="text-lg text-gray-700 mb-4">講座内容包括：</p>
-							<ul class="space-y-3 text-gray-700">
-								<li class="flex items-start">
-									<span class="text-brand-blue-600 mr-3 mt-1">•</span>
-									如何利用Midjourney進行AI智能圖片生成
-								</li>
-								<li class="flex items-start">
-									<span class="text-brand-blue-600 mr-3 mt-1">•</span>
-									如何透過AI豐富教學内容，例如應用在PPT上
-								</li>
-								<li class="flex items-start">
-									<span class="text-brand-blue-600 mr-3 mt-1">•</span>
-									如何製作與課程相關的對答式機器人
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</section>
+                  <div class="mb-4">
+                    {(() => {
+                      const targetAudienceTags = ['初小', '高小', '初中', '高中'];
+                      const otherTags = workshop.tags.filter((tag) => !targetAudienceTags.includes(tag));
+                      const audienceTags = workshop.tags.filter((tag) => targetAudienceTags.includes(tag));
 
+                      return (
+                        <div class="space-y-2">
+                          {audienceTags.length > 0 && (
+                            <div class="flex flex-wrap gap-1 items-center">
+                              <span class="text-xs font-medium text-gray-600 mr-1">適合對象:</span>
+                              {audienceTags.map((tag) => {
+                                const tagSlug =
+                                  AUDIENCE_TAG_MAPPING[tag] || tag.toLowerCase().replace(/\s+/g, '-');
+                                return (
+                                  <a
+                                    href={`/staff-development-day/tag/${tagSlug}`}
+                                    class="bg-cyan-100 text-cyan-800 px-2 py-1 rounded text-xs font-medium hover:bg-cyan-200 transition-colors"
+                                  >
+                                    {tag}
+                                  </a>
+                                );
+                              })}
+                            </div>
+                          )}
 
-			<!-- Raspberry Pi Section -->
-			<section class="mb-20">
-				<div class="grid lg:grid-cols-2 gap-12 items-center">
-					<div class="order-2 lg:order-1">
-						<div class="bg-gray-50 rounded-2xl p-8">
-							<h2 class="text-3xl font-bold text-gray-900 mb-6">Raspberry Pi與Python的運用講座</h2>
-							<p class="text-lg text-gray-700 leading-relaxed mb-6">
-								該講座將引導老師探索Raspberry Pi的應用，並教他們如何以創新的方式在課室中教授Python編程，豐富學生的學習體驗。我們將分享實用的教學策略，從基礎到進階，使老師能夠輕鬆將程式教學融入課程中，啓發學生學習興趣，并提高教學中的創意性和互動性。
-							</p>
-							<p class="text-lg text-gray-700 mb-4">講座内容包括：</p>
-							<ul class="space-y-3 text-gray-700">
-								<li class="flex items-start">
-									<span class="text-brand-blue-600 mr-3 mt-1">•</span>
-									各個行業的應用和案例
-								</li>
-								<li class="flex items-start">
-									<span class="text-brand-blue-600 mr-3 mt-1">•</span>
-									如何應用Rasberry Pi
-								</li>
-								<li class="flex items-start">
-									<span class="text-brand-blue-600 mr-3 mt-1">•</span>
-									如何將Rasberry Pi運用在Python的教學上
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="order-1 lg:order-2">
-						<div class="relative">
-							<Image 
-								src={raspberryPi} 
-								alt="與知創空間合作向老師們分享如何利用 Raspberry Pi 在校內教授 Python" 
-								class="w-full h-auto rounded-2xl shadow-2xl"
-								width={800}
-								height={600}
-							/>
-							<div class="absolute bottom-4 left-4 right-4 bg-black bg-opacity-70 text-white p-4 rounded-lg">
-								<p class="text-sm">與知創空間合作向老師們分享如何利用 Raspberry Pi 在校內教授 Python</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+                          {otherTags.length > 0 && (
+                            <div class="flex flex-wrap gap-1">
+                              {otherTags.map((tag) => {
+                                const tagSlug = generateTagSlug(tag);
+                                return (
+                                  <a
+                                    href={`/staff-development-day/tag/${tagSlug}`}
+                                    class="bg-brand-blue-100 text-brand-blue-800 px-2 py-1 rounded text-xs font-medium hover:bg-brand-blue-200 transition-colors"
+                                  >
+                                    {tag}
+                                  </a>
+                                );
+                              })}
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })()}
+                  </div>
 
-			<!-- Donkey Car Section -->
-			<section class="mb-20">
-				<div class="grid lg:grid-cols-2 gap-12 items-center">
-					<div>
-						<div class="relative">
-							<Image 
-								src={donkeyCar} 
-								alt="與賽馬會多元出路計劃「鼓掌 – 創新教育歷程」合作向老師們分享Donkey Car的發展及實際操作" 
-								class="w-full h-auto rounded-2xl shadow-2xl"
-								width={800}
-								height={600}
-							/>
-							<div class="absolute bottom-4 left-4 right-4 bg-black bg-opacity-70 text-white p-4 rounded-lg">
-								<p class="text-sm">與賽馬會多元出路計劃「鼓掌 – 創新教育歷程」合作向老師們分享Donkey Car的發展及實際操作</p>
-							</div>
-						</div>
-					</div>
-					<div>
-						<div class="bg-gray-50 rounded-2xl p-8">
-							<h2 class="text-3xl font-bold text-gray-900 mb-6">Donkey Car無人車發展和應用講座</h2>
-							<p class="text-lg text-gray-700 leading-relaxed mb-6">
-								該講座將帶老師深入探索Donkey Car的發展和應用，包括介紹無人車技術，從構建到程式編寫，以及在教學中的實際運用。透過講座，你將學習如何啓發學生對STEM領域的興趣，以及如何通過Donkey Car培養創造力和問題解決能力。
-							</p>
-							<p class="text-lg text-gray-700 mb-4">講座内容包括：</p>
-							<ul class="space-y-3 text-gray-700">
-								<li class="flex items-start">
-									<span class="text-brand-blue-600 mr-3 mt-1">•</span>
-									瞭解人工智能的趨勢和Donkey Car無人車的發展
-								</li>
-								<li class="flex items-start">
-									<span class="text-brand-blue-600 mr-3 mt-1">•</span>
-									了解Donkey Car 無人車的技術和編程能力
-								</li>
-								<li class="flex items-start">
-									<span class="text-brand-blue-600 mr-3 mt-1">•</span>
-									如何運用和透過Python編程繼而控制無人車
-								</li>
-								<li class="flex items-start">
-									<span class="text-brand-blue-600 mr-3 mt-1">•</span>
-									透過machine learning訓練和體驗自動駕駛的模型
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</section>
+                  <div class="mt-auto">
+                    <a
+                      href={getStaffDevelopmentWorkshopHref(workshop)}
+                      class="inline-block w-full text-center bg-brand-blue-600 text-white px-4 py-2 rounded hover:bg-brand-blue-700 transition-colors text-sm font-medium"
+                    >
+                      查看詳情
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <section class="pb-16">
+      <div class="container mx-auto px-4">
+        <div class="bg-gray-50 rounded-2xl p-8 max-w-6xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">活動照片集</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="group relative overflow-hidden rounded-xl">
+              <Image
+                src={gallery1}
+                alt="香港教育城專業發展日"
+                class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                width={768}
+                height={576}
+              />
+              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
+                <div class="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <h3 class="font-semibold mb-2">香港教育城專業發展日</h3>
+                  <p class="text-sm">
+                    闡述人工智能對教育界的影響，向老師介紹無人駕駛系統及如何推動學生學習人工智能
+                  </p>
+                </div>
+              </div>
+            </div>
 
-			<!-- Gallery Section -->
-			<section class="mb-20">
-				<div class="bg-gray-50 rounded-2xl p-8">
-					<h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">活動照片集</h2>
-					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-						<div class="group relative overflow-hidden rounded-xl">
-							<Image 
-								src={gallery1} 
-								alt="香港教育城專業發展日" 
-								class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
-								width={768}
-								height={576}
-							/>
-							<div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
-								<div class="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-									<h3 class="font-semibold mb-2">香港教育城專業發展日</h3>
-									<p class="text-sm">闡述人工智能對教育界的影響，向老師介紹無人駕駛系統及如何推動學生學習人工智能</p>
-								</div>
-							</div>
-						</div>
-						
-						<div class="group relative overflow-hidden rounded-xl">
-							<Image 
-								src={gallery2} 
-								alt="浸大CLAP-TECH" 
-								class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
-								width={768}
-								height={576}
-							/>
-							<div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
-								<div class="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-									<h3 class="font-semibold mb-2">浸大CLAP-TECH</h3>
-									<p class="text-sm">以實作形式指導老師學習編寫 python 程式，運用 python 及 Tensorflow 進行路牌辨識及將所學帶回學校與學生分享</p>
-								</div>
-							</div>
-						</div>
-						
-						<div class="group relative overflow-hidden rounded-xl">
-							<Image 
-								src={gallery3} 
-								alt="教育局-教師專場1" 
-								class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
-								width={768}
-								height={512}
-							/>
-							<div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
-								<div class="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-									<h3 class="font-semibold mb-2">教育局-教師專場1</h3>
-									<p class="text-sm">在中學運用人工智能編程控制無人機於 STEM 教育相關的學習活動</p>
-								</div>
-							</div>
-						</div>
-						
-						<div class="group relative overflow-hidden rounded-xl">
-							<Image 
-								src={gallery4} 
-								alt="教育局-教師專場2" 
-								class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
-								width={768}
-								height={512}
-							/>
-							<div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
-								<div class="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-									<h3 class="font-semibold mb-2">教育局-教師專場2</h3>
-									<p class="text-sm">在中學運用人工智能編程控制無人機於 STEM 教育相關的學習活動</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+            <div class="group relative overflow-hidden rounded-xl">
+              <Image
+                src={gallery2}
+                alt="浸大CLAP-TECH"
+                class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                width={768}
+                height={576}
+              />
+              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
+                <div class="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <h3 class="font-semibold mb-2">浸大CLAP-TECH</h3>
+                  <p class="text-sm">
+                    以實作形式指導老師學習編寫 python 程式，運用 python 及 Tensorflow
+                    進行路牌辨識及將所學帶回學校與學生分享
+                  </p>
+                </div>
+              </div>
+            </div>
 
-		</div>
-	</main>
+            <div class="group relative overflow-hidden rounded-xl">
+              <Image
+                src={gallery3}
+                alt="教育局-教師專場1"
+                class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                width={768}
+                height={512}
+              />
+              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
+                <div class="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <h3 class="font-semibold mb-2">教育局-教師專場1</h3>
+                  <p class="text-sm">在中學運用人工智能編程控制無人機於 STEM 教育相關的學習活動</p>
+                </div>
+              </div>
+            </div>
 
-	<!-- Related News Section -->
-	<RelatedNews 
-		courseTags={["教師培訓", "AI教育", "STEM", "ChatGPT", "人工智能", "Raspberry Pi", "Donkey Car", "教師發展", "工作坊"]}
-		courseTitle="教師發展日工作坊"
-		maxResults={6}
-		context="course"
-	/>
+            <div class="group relative overflow-hidden rounded-xl">
+              <Image
+                src={gallery4}
+                alt="教育局-教師專場2"
+                class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                width={768}
+                height={512}
+              />
+              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
+                <div class="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <h3 class="font-semibold mb-2">教育局-教師專場2</h3>
+                  <p class="text-sm">在中學運用人工智能編程控制無人機於 STEM 教育相關的學習活動</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-	<!-- CTA Section -->
-	<section class="bg-brand-blue-600 text-white py-16">
-		<div class="container mx-auto px-4 text-center">
-			<h2 class="text-3xl md:text-4xl font-bold mb-6">準備好提升您的教學技能了嗎？</h2>
-			<p class="text-xl text-brand-blue-100 mb-8 max-w-3xl mx-auto">
-				加入我們的教師發展計劃，掌握最新的AI和STEM教學技術，為您的學生帶來更豐富的學習體驗。
-			</p>
-			<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-				<CTAButton 
-					href="/contact"
-					text="聯絡我們"
-					variant="white"
-					size="lg"
-				/>
-				<CTAButton 
-					href="/school-courses"
-					text="查看課程"
-					variant="outline"
-					size="lg"
-					class="border-2 border-white text-white hover:bg-white hover:text-brand-blue-600"
-				/>
-			</div>
-		</div>
-	</section>
+  <RelatedNews
+    courseTags={['教師培訓', 'AI教育', 'STEM', 'ChatGPT', '人工智能', 'Raspberry Pi', 'Donkey Car', '教師發展', '工作坊']}
+    courseTitle="教師發展日工作坊"
+    maxResults={6}
+    context="course"
+  />
+
+  <section class="bg-brand-blue-600 text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">準備好提升您的教學技能了嗎？</h2>
+      <p class="text-xl text-brand-blue-100 mb-8 max-w-3xl mx-auto">
+        加入我們的教師發展計劃，掌握最新的AI和STEM教學技術，為您的學生帶來更豐富的學習體驗。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <CTAButton href="/contact" text="聯絡我們" variant="white" size="lg" />
+        <CTAButton
+          href="/school-courses"
+          text="查看課程"
+          variant="outline"
+          size="lg"
+          class="border-2 border-white text-white hover:bg-white hover:text-brand-blue-600"
+        />
+      </div>
+    </div>
+  </section>
 </Layout>
 
 <style>
-	/* Custom styles for the page */
-	.container {
-		max-width: 1200px;
-	}
-	
-	/* Smooth scrolling */
-	html {
-		scroll-behavior: smooth;
-	}
-	
-	/* Image hover effects */
-	.group:hover .group-hover\:scale-110 {
-		transform: scale(1.1);
-	}
-	
-	/* Responsive text sizing */
-	@media (max-width: 768px) {
-		.text-6xl {
-			font-size: 2.5rem;
-		}
-		.text-5xl {
-			font-size: 2rem;
-		}
-	}
-</style> 
+  .container {
+    max-width: 1200px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .group:hover .group-hover\:scale-110 {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    .text-6xl {
+      font-size: 2.5rem;
+    }
+    .text-5xl {
+      font-size: 2rem;
+    }
+  }
+</style>

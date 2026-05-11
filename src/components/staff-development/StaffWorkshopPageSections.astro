@@ -1,0 +1,74 @@
+---
+import SingleCourseContent from '../course/SingleCourseContent.astro';
+import QnASection from '../course/QnASection.astro';
+
+export interface WorkshopFeature {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+export interface CurriculumItem {
+  title: string;
+  content: string[];
+}
+
+export interface FaqItem {
+  question: string;
+  answer: string[];
+}
+
+interface Props {
+  features: WorkshopFeature[];
+  curriculum: CurriculumItem[];
+  faqs: FaqItem[];
+  contentHours?: string;
+  curriculumSectionTitle?: string;
+}
+
+const {
+  features,
+  curriculum,
+  faqs,
+  contentHours = '約 2–3 小時',
+  curriculumSectionTitle = '課程內容',
+} = Astro.props;
+---
+
+<section class="section-padding bg-white">
+  <div class="container-standard">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">課程特色</h2>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {features.map((item) => (
+        <div class="card-base card-hover p-6">
+          <div class="flex items-start">
+            <div class="text-3xl text-brand-cyan-600 mr-4">
+              <i class={item.icon} />
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
+              <p class="text-gray-600">{item.description}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<SingleCourseContent
+  items={curriculum}
+  hours={contentHours}
+  sectionTitle={curriculumSectionTitle}
+/>
+
+<slot name="afterCurriculum" />
+
+<QnASection
+  faqs={faqs.map((item) => ({
+    question: item.question,
+    answer: item.answer.join('\n'),
+  }))}
+/>

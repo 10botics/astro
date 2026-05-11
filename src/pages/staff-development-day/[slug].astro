@@ -1,21 +1,32 @@
 ---
-// Dynamic route to handle English URLs while using Chinese-named components
+// Dynamic route: English slug -> workshop .astro page (same pattern as stemday/[slug].astro).
+// Duplicate slug↔filename literals: Astro's isolated `getStaticPaths` bundle cannot see sibling
+// `const` nor reliably import derived maps from courseMappings.
 
-// Pre-import all components to avoid Unicode issues in dynamic imports
-import StaffDevIndex from './index.astro';
+import GeminiEducator from './Gemini Educator 特訓班.astro';
+import ChatgptEducation from './ChatGPT在教育行業的運用講座.astro';
+import AiGenerationLecture from './AI人工智能生成講座.astro';
+import RaspberryPiPython from './Raspberry Pi與Python的運用講座.astro';
+import DonkeyCarLecture from './Donkey Car無人車發展和應用講座.astro';
 
-// Component mapping by filename
 const componentMap = {
-  'index.astro': StaffDevIndex
+  'Gemini Educator 特訓班.astro': GeminiEducator,
+  'ChatGPT在教育行業的運用講座.astro': ChatgptEducation,
+  'AI人工智能生成講座.astro': AiGenerationLecture,
+  'Raspberry Pi與Python的運用講座.astro': RaspberryPiPython,
+  'Donkey Car無人車發展和應用講座.astro': DonkeyCarLecture,
 };
 
 export async function getStaticPaths() {
-  // Canonical slug to filename mapping (staff-development-day)
   const slugToFilenameMap = {
-    'staff-development-day': 'index.astro'
+    'gemini-educator': 'Gemini Educator 特訓班.astro',
+    'chatgpt-education': 'ChatGPT在教育行業的運用講座.astro',
+    'ai-generation-lecture': 'AI人工智能生成講座.astro',
+    'raspberry-pi-python': 'Raspberry Pi與Python的運用講座.astro',
+    'donkey-car-lecture': 'Donkey Car無人車發展和應用講座.astro',
   };
-  return Object.keys(slugToFilenameMap).map(slug => ({
-    params: { slug }
+  return Object.keys(slugToFilenameMap).map((slug) => ({
+    params: { slug },
   }));
 }
 
@@ -25,24 +36,25 @@ if (!slug) {
   throw new Error('Slug is required');
 }
 
-// Get filename from canonical slug mapping
-const slugToFilenameMap = {
-  'staff-development-day': 'index.astro'
+const slugToFilenameMap: Record<string, string> = {
+  'gemini-educator': 'Gemini Educator 特訓班.astro',
+  'chatgpt-education': 'ChatGPT在教育行業的運用講座.astro',
+  'ai-generation-lecture': 'AI人工智能生成講座.astro',
+  'raspberry-pi-python': 'Raspberry Pi與Python的運用講座.astro',
+  'donkey-car-lecture': 'Donkey Car無人車發展和應用講座.astro',
 };
+
 const filename = slugToFilenameMap[slug];
 
 if (!filename) {
-  throw new Error(`Unknown slug: ${slug}`);
+  throw new Error(`Unknown staff development workshop slug: ${slug}`);
 }
 
-// Get the pre-imported component
-const Component = filename in componentMap 
-  ? componentMap[filename as keyof typeof componentMap]
-  : null;
+const WorkshopComponent = filename in componentMap ? componentMap[filename as keyof typeof componentMap] : null;
 
-if (!Component) {
+if (!WorkshopComponent) {
   throw new Error(`Component not found for filename: ${filename}`);
 }
 ---
 
-<Component /> 
+<WorkshopComponent />

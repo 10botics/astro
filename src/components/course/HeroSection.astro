@@ -10,9 +10,52 @@ export interface Props {
   description: string;
   featuredImage?: any;
   heroImage?: any;
+  /** Extra crumb after 首頁, before parent (e.g. 到校服務 → … → 教師發展日 → 本頁) */
+  rootSectionHref?: string;
+  rootSectionLabel?: string;
+  /** Breadcrumb parent (default: 到校課程) */
+  parentSectionHref?: string;
+  parentSectionLabel?: string;
+  /** When true, breadcrumb ends at parent (e.g. 首頁 » 到校服務 » 家長講座) with no trailing course title */
+  endBreadcrumbAtParentSection?: boolean;
+  /** Optional caption overlay on hero image */
+  heroImageCaption?: string;
+  /**
+   * When set (e.g. 0.8), hero image is centered with object-contain and limited to this fraction
+   * of the hero box (avoids object-cover cropping on wide assets like certificates).
+   */
+  heroImageMaxScale?: number;
+  /** Optional large image rendered below the description paragraph (right column). */
+  descriptionFooterImage?: any;
+  descriptionFooterImageAlt?: string;
+  /** Optional Tailwind / utility classes for the description `<p>` (e.g. `whitespace-pre-line`). */
+  descriptionClass?: string;
 }
 
-const { title, subtitle, tags, videoId, description, featuredImage, heroImage } = Astro.props;
+const {
+  title,
+  subtitle,
+  tags,
+  videoId,
+  description,
+  featuredImage,
+  heroImage,
+  rootSectionHref,
+  rootSectionLabel,
+  parentSectionHref = '/school-courses/',
+  parentSectionLabel = '到校課程',
+  endBreadcrumbAtParentSection = false,
+  heroImageCaption,
+  heroImageMaxScale,
+  descriptionFooterImage,
+  descriptionFooterImageAlt,
+  descriptionClass = '',
+} = Astro.props;
+
+const heroScale = heroImageMaxScale != null && heroImageMaxScale > 0 && heroImageMaxScale <= 1
+  ? heroImageMaxScale
+  : null;
+const heroScalePct = heroScale != null ? `${heroScale * 100}%` : null;
 ---
 
 <!-- Clean white background to match original -->
@@ -22,9 +65,21 @@ const { title, subtitle, tags, videoId, description, featuredImage, heroImage } 
     <nav class="text-sm mb-6 text-gray-600">
       <a href="/" class="text-cyan-400 hover:text-cyan-600">首頁</a>
       <span class="mx-2">»</span>
-      <a href="/school-courses/" class="text-cyan-400 hover:text-cyan-600">到校課程</a>
-      <span class="mx-2">»</span>
-      <span class="text-gray-800">{title}</span>
+      {rootSectionHref && rootSectionLabel && (
+        <>
+          <a href={rootSectionHref} class="text-cyan-400 hover:text-cyan-600">{rootSectionLabel}</a>
+          <span class="mx-2">»</span>
+        </>
+      )}
+      {endBreadcrumbAtParentSection ? (
+        <span class="text-gray-800">{parentSectionLabel}</span>
+      ) : (
+        <>
+          <a href={parentSectionHref} class="text-cyan-400 hover:text-cyan-600">{parentSectionLabel}</a>
+          <span class="mx-2">»</span>
+          <span class="text-gray-800">{title}</span>
+        </>
+      )}
     </nav>
 
     <!-- Title Section - match original typography -->
@@ -103,14 +158,31 @@ const { title, subtitle, tags, videoId, description, featuredImage, heroImage } 
             </iframe>
           </div>
         ) : heroImage ? (
-          <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg">
-            <Image 
-              src={heroImage} 
+          <div
+            class:list={[
+              'aspect-video bg-gray-100 rounded-lg overflow-hidden shadow-lg relative',
+              heroScale != null && 'flex items-center justify-center',
+            ]}
+          >
+            <Image
+              src={heroImage}
               alt={title}
               width={600}
               height={400}
-              class="w-full h-full object-cover"
+              class:list={[
+                heroScale != null
+                  ? 'w-auto h-auto max-w-full max-h-full object-contain'
+                  : 'w-full h-full object-cover',
+              ]}
+              style={heroScalePct != null
+                ? { maxWidth: heroScalePct, maxHeight: heroScalePct }
+                : undefined}
             />
+            {heroImageCaption && (
+              <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 text-white p-4 rounded-b-lg">
+                <p class="text-sm leading-snug">{heroImageCaption}</p>
+              </div>
+            )}
           </div>
         ) : null}
       </div>
@@ -118,9 +190,21 @@ const { title, subtitle, tags, videoId, description, featuredImage, heroImage } 
       <!-- Description Section - match original styling -->
       <div class="order-2">
         <div class="bg-white">
-          <p class="text-base text-gray-700 leading-relaxed">
+          <p class:list={['text-base text-gray-700 leading-relaxed', descriptionClass]}>
             {description}
           </p>
+          {descriptionFooterImage && (
+            <div class="mt-10 rounded-xl overflow-hidden shadow-xl ring-1 ring-gray-100 bg-gray-50">
+              <Image
+                src={descriptionFooterImage}
+                alt={descriptionFooterImageAlt ?? title}
+                width={1440}
+                height={960}
+                sizes="(min-width: 1024px) 42vw, 100vw"
+                class="w-full h-auto object-contain max-h-[85vh]"
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

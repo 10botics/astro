@@ -37,10 +37,14 @@ export interface Props {
   hoursText?: string;
   adjustmentText?: string;
   showAdjustmentNote?: boolean;
+  /** Shown below hours / adjustment lines, above the accordion (e.g. contact / 到校安排). */
+  hoursFooterNote?: string;
   images?: Array<{
     src: any;
     alt: string;
   }>;
+  /** Main heading (default 課程內容) */
+  sectionTitle?: string;
 }
 
 const { 
@@ -49,18 +53,25 @@ const {
   hoursText = "共",
   adjustmentText = "可根據學校需要調整",
   showAdjustmentNote = true,
-  images = []
+  hoursFooterNote = '',
+  images = [],
+  sectionTitle = "課程內容",
 } = Astro.props;
 ---
 
 <section class="bg-white py-16">
   <div class="container mx-auto px-4">
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">課程內容</h2>
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">{sectionTitle}</h2>
       <div class="text-center mb-8">
         <p class="text-xl text-gray-600">{hoursText} {hours}</p>
         {showAdjustmentNote && (
           <p class="text-sm text-gray-500">* {adjustmentText}</p>
+        )}
+        {hoursFooterNote && (
+          <p class="text-base text-gray-600 mt-4 max-w-3xl mx-auto leading-relaxed">
+            {hoursFooterNote}
+          </p>
         )}
       </div>
       
