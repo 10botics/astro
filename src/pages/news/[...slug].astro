@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import { generateExcerpt } from '../../utils/excerpt';
@@ -11,13 +11,13 @@ export async function getStaticPaths() {
   const newsArticles = await getCollection('news');
   
   return newsArticles.map((article) => ({
-    params: { slug: article.slug },
+    params: { slug: article.id },
     props: { article },
   }));
 }
 
 const { article } = Astro.props;
-const { Content } = await article.render();
+const { Content } = await render(article);
 
 // Generate excerpt from content
 const excerpt = article.data.excerpt || generateExcerpt(article.body, 200);
@@ -25,7 +25,7 @@ const excerpt = article.data.excerpt || generateExcerpt(article.body, 200);
 // Get related articles (same category, excluding current)
 const allNews = await getCollection('news');
 const relatedArticles = allNews
-  .filter(a => a.slug !== article.slug && a.data.category === article.data.category)
+  .filter(a => a.id !== article.id && a.data.category === article.data.category)
   .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime())
   .slice(0, 6);
 
@@ -95,7 +95,7 @@ const articleSchema: any = {
   "dateModified": article.data.publishDate.toISOString(),
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": `/news/${article.slug}`
+    "@id": `/news/${article.id}`
   }
 };
 
@@ -201,7 +201,7 @@ if (ogImage && ogImage !== "/images/full_logo.png") {
           <div class="max-w-4xl mx-auto">
             <h3 class="text-lg font-semibold text-gray-900 mb-4">相關標籤</h3>
             <div class="flex flex-wrap gap-2">
-              {(article.data.tags || []).map((tag) => {
+              {(article.data.tags || []).filter(Boolean).map((tag) => {
                 const tagSlug = generateTagSlug(tag);
                 return (
                   <a href={`/tag/${tagSlug}`}
@@ -223,7 +223,7 @@ if (ogImage && ogImage !== "/images/full_logo.png") {
           <h3 class="text-lg font-semibold text-gray-900 mb-4">分享文章</h3>
           <div class="flex space-x-4">
             <a 
-              href={`https://www.facebook.com/sharer/sharer.php?u=${Astro.url.origin}/news/${article.slug}`}
+              href={`https://www.facebook.com/sharer/sharer.php?u=${Astro.url.origin}/news/${article.id}`}
               target="_blank"
               rel="noopener noreferrer"
               class="flex items-center space-x-2 bg-brand-blue-600 text-white px-4 py-2 rounded hover:bg-brand-blue-700 transition-colors"
@@ -252,7 +252,7 @@ if (ogImage && ogImage !== "/images/full_logo.png") {
     <RelatedNews 
       newsTags={article.data.tags || []}
       newsTitle={article.data.title}
-      currentNewsSlug={article.slug}
+      currentNewsSlug={article.id}
       context="news"
       maxResults={6}
     />

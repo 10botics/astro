@@ -44,7 +44,7 @@ const schoolCourses = astroCourses;
 
 // Function to calculate tag similarity score
 function calculateTagSimilarity(courseTags: string[], inputTags: string[]): number {
-  if (!courseTags || !inputTags) return 0;
+  if (!courseTags?.length || !inputTags?.length) return 0;
   
   const courseTagsLower = courseTags.map(tag => tag.toLowerCase().trim());
   const inputTagsLower = inputTags.map(tag => tag.toLowerCase().trim());
@@ -242,9 +242,10 @@ const shouldLimitTags = context === 'course';
               {/* Tags */}
               <div class="mb-4">
                 {(() => {
+                  const tagsList = (course.tags ?? []).filter(Boolean);
                   const targetAudienceTags = ['初小', '高小', '初中', '高中'];
-                  const otherTags = course.tags.filter((tag: string) => !targetAudienceTags.includes(tag));
-                  const audienceTags = course.tags.filter((tag: string) => targetAudienceTags.includes(tag));
+                  const otherTags = tagsList.filter((tag: string) => !targetAudienceTags.includes(tag));
+                  const audienceTags = tagsList.filter((tag: string) => targetAudienceTags.includes(tag));
                   
                   return (
                     <div class="space-y-2">

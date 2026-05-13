@@ -2,6 +2,8 @@
 // WhatsApp Intermediate Page Component
 // This component creates an intermediate page that redirects to WhatsApp with a prefilled message
 
+import { formatUrlForWhatsAppMessage } from '../utils/formatUrlForWhatsApp';
+
 export interface Props {
   title?: string;
   phoneNumber?: string;
@@ -19,9 +21,11 @@ const currentMonth = new Date().getMonth() + 1; // getMonth() returns 0-11, so a
 const defaultPhoneNumber = currentMonth % 2 === 0 ? "60431553" : "65541506";
 const finalPhoneNumber = phoneNumber || defaultPhoneNumber;
 
-// Create the prefilled message
-const message = pageUrl 
-  ? `我想查詢 ${title}\n\n頁面連結：${pageUrl}`
+const linkForMessage = formatUrlForWhatsAppMessage(pageUrl);
+
+// Create the prefilled message (page URL encoded: spaces → %20, safe path segments)
+const message = linkForMessage
+  ? `我想查詢 ${title}\n\n頁面連結：${linkForMessage}`
   : `我想查詢 ${title}`;
 const encodedMessage = encodeURIComponent(message);
 const whatsappUrl = `https://wa.me/${finalPhoneNumber}?text=${encodedMessage}`;
@@ -86,6 +90,8 @@ const whatsappUrl = `https://wa.me/${finalPhoneNumber}?text=${encodedMessage}`;
 </div>
 
 <script>
+  import { formatUrlForWhatsAppMessage } from '../utils/formatUrlForWhatsApp';
+  
   // Access gtag function from window
   const gtag = (window as any).gtag;
   
@@ -93,10 +99,12 @@ const whatsappUrl = `https://wa.me/${finalPhoneNumber}?text=${encodedMessage}`;
   const currentMonth = new Date().getMonth() + 1; // getMonth() returns 0-11, so add 1
   const phoneNumber = currentMonth % 2 === 0 ? '60431553' : '65541506';
   const urlParams = new URLSearchParams(window.location.search);
-  const title = decodeURIComponent(urlParams.get('title') || '課程查詢');
-  const pageUrl = decodeURIComponent(urlParams.get('url') || '');
-  const message = pageUrl 
-    ? `我想查詢 ${title}\n\n頁面連結：${pageUrl}`
+  // searchParams.get() is already decoded; do not decodeURIComponent again (breaks titles with "%")
+  const title = urlParams.get('title') || '課程查詢';
+  const pageUrl = urlParams.get('url') || '';
+  const linkForMessage = formatUrlForWhatsAppMessage(pageUrl);
+  const message = linkForMessage
+    ? `我想查詢 ${title}\n\n頁面連結：${linkForMessage}`
     : `我想查詢 ${title}`;
   const encodedMessage = encodeURIComponent(message);
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
