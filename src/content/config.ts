@@ -19,7 +19,7 @@ const newsCollection = defineCollection({
       'AI人工智能課程',
       '其他'
     ]).default('過往活動'),
-    tags: z.array(z.string()).optional(),
+    tags: z.array(z.string()).optional().default([]),
     author: z.string().default('admin'),
   }),
 });

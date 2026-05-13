@@ -392,7 +392,7 @@ const pageKeywords = "STEM教育, AI課程, 人工智能, 到校課程, STEM Day
 
                   {/* Title */}
                   <h3 class="text-lg font-semibold text-gray-900 mb-3 line-clamp-2 hover:text-brand-blue-600 transition-colors">
-                    <a href={`/news/${article.slug}`} class="hover:underline">
+                    <a href={`/news/${article.id}`} class="hover:underline">
                       {article.data.title}
                     </a>
                   </h3>
@@ -420,7 +420,7 @@ const pageKeywords = "STEM教育, AI課程, 人工智能, 到校課程, STEM Day
 
                   {/* Read More Link */}
                   <a 
-                    href={`/news/${article.slug}`}
+                    href={`/news/${article.id}`}
                     class="inline-flex items-center text-brand-blue-600 hover:text-brand-blue-700 font-medium text-sm group-hover:underline"
                   >
                     閱讀更多

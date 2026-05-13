@@ -50,7 +50,11 @@ export default defineConfig({
           '**/comprehensive-crawl-report.json',
           '**/media-filename-mapping.json',
           '**/category_analysis_results.json'
-        ]
+        ],
+        // Fewer native file watchers on Windows → avoids intermittent EMFILE crashes during dev.
+        ...(process.platform === 'win32'
+          ? { usePolling: true, interval: 1000 }
+          : {})
       }
     }
   },

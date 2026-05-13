@@ -269,7 +269,7 @@ function formatDate(date: Date): string {
                   </div>
 
                   <h3 class="text-lg font-semibold text-gray-900 mb-3 line-clamp-2 hover:text-cyan-600 transition-colors">
-                    <a href={`/news/${article.slug}`} class="hover:underline">
+                    <a href={`/news/${article.id}`} class="hover:underline">
                       {article.data.title}
                     </a>
                   </h3>
@@ -288,7 +288,7 @@ function formatDate(date: Date): string {
                   )}
 
                   <a
-                    href={`/news/${article.slug}`}
+                    href={`/news/${article.id}`}
                     class="inline-flex items-center text-cyan-600 hover:text-cyan-700 font-medium text-sm group-hover:underline"
                   >
                     閱讀更多
