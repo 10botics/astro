@@ -1,0 +1,46 @@
+---
+import type { GradeGroup } from '../../utils/gen2026Results';
+
+interface Props {
+  grades: GradeGroup[];
+}
+
+const { grades } = Astro.props;
+
+/** Table column labels (Unicode escapes avoid editor encoding issues) */
+const headerSchool = '\u5b78\u6821';
+const headerStudent = '\u5b78\u751f\u59d3\u540d';
+const headerAward = '\u734e\u9805';
+---
+
+{grades.map((grade) => (
+  <div class="mb-16">
+    <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">{grade.title}</h2>
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead class={grade.headerClass}>
+            <tr>
+              <th class="px-6 py-4 text-left font-semibold">{headerSchool}</th>
+              <th class="px-6 py-4 text-left font-semibold">{headerStudent}</th>
+              <th class="px-6 py-4 text-left font-semibold">{headerAward}</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            {grade.entries.map((entry, index) => (
+              <tr class={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
+                <td class="px-6 py-4 text-gray-800">{entry.school}</td>
+                <td class="px-6 py-4 text-gray-800">{entry.student}</td>
+                <td class="px-6 py-4">
+                  <span class:list={['inline-flex items-center px-3 py-1 rounded-full text-sm font-medium', grade.badgeClass]}>
+                    {entry.award}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+))}

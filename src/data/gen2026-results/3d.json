@@ -1,0 +1,139 @@
+{
+  "id": "3d",
+  "label": "3D設計組",
+  "grouped": {
+    "primary": [
+      {
+        "school": "拔萃女小學",
+        "student": "余安之",
+        "award": "二等獎"
+      },
+      {
+        "school": "拔萃女小學",
+        "student": "Yu On Chee Erin",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會青衣主恩小學",
+        "student": "陳奕妃",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會青衣主恩小學",
+        "student": "楊盛竣",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會青衣主恩小學",
+        "student": "潘柏行",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會青衣主恩小學",
+        "student": "蔡沛炘",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會青衣主恩小學",
+        "student": "魏若嵐",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會青衣主恩小學",
+        "student": "朱諾行",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會青衣主恩小學",
+        "student": "梁貝兒",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會青衣主恩小學",
+        "student": "陳梓滔",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會青衣主恩小學",
+        "student": "黃枳維",
+        "award": "二等獎"
+      }
+    ],
+    "junior": [
+      {
+        "school": "上水官立中學",
+        "student": "覃惠蘭",
+        "award": "三等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯紀念中學",
+        "student": "羅楊博",
+        "award": "一等獎"
+      },
+      {
+        "school": "嗇色園主辦可道中學",
+        "student": "梁安琪",
+        "award": "二等獎"
+      },
+      {
+        "school": "嗇色園主辦可道中學",
+        "student": "梁安琪，鄧靖希",
+        "award": "二等獎"
+      },
+      {
+        "school": "路德會呂祥光中學",
+        "student": "鄭穎謙",
+        "award": "一等獎"
+      }
+    ],
+    "senior": [
+      {
+        "school": "上水官立中學",
+        "student": "趙樂桐",
+        "award": "二等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯紀念中學",
+        "student": "陳熙兒",
+        "award": "一等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯紀念中學",
+        "student": "Kwok Wing Ni",
+        "award": "三等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯記念中學",
+        "student": "黃主惠",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會莫壽增會督中學",
+        "student": "黎善穎",
+        "award": "二等獎"
+      }
+    ],
+    "special": [
+      {
+        "school": "路德會救主學校",
+        "student": "陳希兒",
+        "award": "一等獎"
+      },
+      {
+        "school": "路德會救主學校",
+        "student": "黃悅童",
+        "award": "一等獎"
+      },
+      {
+        "school": "路德會救主學校",
+        "student": "陳栢軒",
+        "award": "二等獎"
+      },
+      {
+        "school": "路德會救主學校",
+        "student": "鄭智泓",
+        "award": "二等獎"
+      }
+    ]
+  }
+}

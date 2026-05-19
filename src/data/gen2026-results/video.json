@@ -1,0 +1,599 @@
+{
+  "id": "video",
+  "label": "影片製作組",
+  "grouped": {
+    "primary": [
+      {
+        "school": "中華基督教會基全小學",
+        "student": "葉坤",
+        "award": "一等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "周沚柔",
+        "award": "一等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "張靄琳",
+        "award": "一等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "楊心妤",
+        "award": "一等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "鄧熙穎",
+        "award": "一等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "鍾靖雯",
+        "award": "一等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "伍芷樂",
+        "award": "二等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "何芊兒",
+        "award": "二等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "吳宇蕎",
+        "award": "二等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "吳凱晴",
+        "award": "二等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "周鈺婷",
+        "award": "二等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "林子朗",
+        "award": "二等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "林欣玲",
+        "award": "二等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "區綽翹",
+        "award": "二等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "張焯祺",
+        "award": "二等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "張濟滔",
+        "award": "二等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "陳律言",
+        "award": "二等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "陳晉賢",
+        "award": "二等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "陳紫喬",
+        "award": "二等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "陳瑀淇",
+        "award": "二等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "黃康僑",
+        "award": "二等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "鄔凱澄",
+        "award": "二等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "蔡焯藍",
+        "award": "二等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "鄭諾熙",
+        "award": "二等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "羅愷怡",
+        "award": "二等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "羅敬雄",
+        "award": "二等獎"
+      },
+      {
+        "school": "仁濟醫院羅陳楚思小學",
+        "student": "譚希瑜",
+        "award": "二等獎"
+      },
+      {
+        "school": "拔萃女小學",
+        "student": "余安之",
+        "award": "二等獎"
+      },
+      {
+        "school": "拔萃女小學",
+        "student": "Cheung Shannon",
+        "award": "二等獎"
+      },
+      {
+        "school": "拔萃女小學",
+        "student": "Lam Yi Tung",
+        "award": "二等獎"
+      },
+      {
+        "school": "拔萃女小學",
+        "student": "not applicable",
+        "award": "二等獎"
+      },
+      {
+        "school": "拔萃女小學",
+        "student": "Yu On Chee Erin",
+        "award": "二等獎"
+      },
+      {
+        "school": "拔萃女小學",
+        "student": "Yuen Yuet Yi Luna",
+        "award": "二等獎"
+      }
+    ],
+    "junior": [
+      {
+        "school": "上水官立中學",
+        "student": "丁榮豪",
+        "award": "二等獎"
+      },
+      {
+        "school": "上水官立中學",
+        "student": "朱琪",
+        "award": "二等獎"
+      },
+      {
+        "school": "上水官立中學",
+        "student": "何周凱",
+        "award": "二等獎"
+      },
+      {
+        "school": "上水官立中學",
+        "student": "余馨",
+        "award": "二等獎"
+      },
+      {
+        "school": "上水官立中學",
+        "student": "李培東",
+        "award": "二等獎"
+      },
+      {
+        "school": "上水官立中學",
+        "student": "阮思穎",
+        "award": "二等獎"
+      },
+      {
+        "school": "上水官立中學",
+        "student": "孫誠",
+        "award": "二等獎"
+      },
+      {
+        "school": "上水官立中學",
+        "student": "陳依林",
+        "award": "二等獎"
+      },
+      {
+        "school": "上水官立中學",
+        "student": "普昭然",
+        "award": "二等獎"
+      },
+      {
+        "school": "上水官立中學",
+        "student": "葉雅淇",
+        "award": "二等獎"
+      },
+      {
+        "school": "上水官立中學",
+        "student": "鍾慧一",
+        "award": "二等獎"
+      },
+      {
+        "school": "上水官立中學",
+        "student": "盧亭之",
+        "award": "三等獎"
+      },
+      {
+        "school": "中華基督教會基朗中學",
+        "student": "李卓峰",
+        "award": "一等獎"
+      },
+      {
+        "school": "中華基督教會基朗中學",
+        "student": "李育慧",
+        "award": "一等獎"
+      },
+      {
+        "school": "中華基督教會基朗中學",
+        "student": "梁昕翹",
+        "award": "一等獎"
+      },
+      {
+        "school": "中華基督教會基朗中學",
+        "student": "郭㬢文",
+        "award": "一等獎"
+      },
+      {
+        "school": "中華基督教會基朗中學",
+        "student": "陳一心",
+        "award": "一等獎"
+      },
+      {
+        "school": "文理書院(九龍)",
+        "student": "余振軒",
+        "award": "二等獎"
+      },
+      {
+        "school": "文理書院(九龍)",
+        "student": "吳泳汶",
+        "award": "二等獎"
+      },
+      {
+        "school": "文理書院(九龍)",
+        "student": "沃鍵臻",
+        "award": "二等獎"
+      },
+      {
+        "school": "文理書院(九龍)",
+        "student": "崔心盈",
+        "award": "二等獎"
+      },
+      {
+        "school": "文理書院(九龍)",
+        "student": "陳泳希",
+        "award": "二等獎"
+      },
+      {
+        "school": "文理書院(九龍)",
+        "student": "陳柏翹",
+        "award": "二等獎"
+      },
+      {
+        "school": "文理書院(九龍)",
+        "student": "黃立賢",
+        "award": "二等獎"
+      },
+      {
+        "school": "文理書院(九龍)",
+        "student": "蘇斯琳",
+        "award": "二等獎"
+      },
+      {
+        "school": "石籬天主教中學",
+        "student": "25-26年度1A班同學",
+        "award": "一等獎"
+      },
+      {
+        "school": "伊利沙伯中學舊生會湯國華中學",
+        "student": "王紫悅",
+        "award": "一等獎"
+      },
+      {
+        "school": "伊利沙伯中學舊生會湯國華中學",
+        "student": "徐靖宥",
+        "award": "一等獎"
+      },
+      {
+        "school": "伊利沙伯中學舊生會湯國華中學",
+        "student": "徐子晗",
+        "award": "二等獎"
+      },
+      {
+        "school": "伊利沙伯中學舊生會湯國華中學",
+        "student": "陳映彤",
+        "award": "二等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧賢紀念中學",
+        "student": "趙汝桐",
+        "award": "二等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧賢紀念中學",
+        "student": "劉梓浩",
+        "award": "二等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯紀念中學",
+        "student": "李炘桐",
+        "award": "一等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯紀念中學",
+        "student": "廖文龍",
+        "award": "一等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯紀念中學",
+        "student": "蘇子杰",
+        "award": "一等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯紀念中學",
+        "student": "王俊曦",
+        "award": "二等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯紀念中學",
+        "student": "宋成吉",
+        "award": "二等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯紀念中學",
+        "student": "李約漢",
+        "award": "二等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯紀念中學",
+        "student": "林希彤",
+        "award": "二等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯紀念中學",
+        "student": "張可宜",
+        "award": "二等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯紀念中學",
+        "student": "曹浩然",
+        "award": "二等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯紀念中學",
+        "student": "麥靜茹",
+        "award": "二等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯紀念中學",
+        "student": "黃裕恒",
+        "award": "二等獎"
+      },
+      {
+        "school": "張振興伉儷書院",
+        "student": "嚴凱瑩",
+        "award": "一等獎"
+      },
+      {
+        "school": "張振興伉儷書院",
+        "student": "陳啟健",
+        "award": "二等獎"
+      },
+      {
+        "school": "路德會呂祥光中學",
+        "student": "張浩宇",
+        "award": "一等獎"
+      },
+      {
+        "school": "路德會呂祥光中學",
+        "student": "鄭穎謙",
+        "award": "一等獎"
+      }
+    ],
+    "senior": [
+      {
+        "school": "上水官立中學",
+        "student": "黃宣霖",
+        "award": "三等獎"
+      },
+      {
+        "school": "世界龍岡學校劉皇發中學",
+        "student": "劉佳利",
+        "award": "一等獎"
+      },
+      {
+        "school": "宣道會陳朱素華紀念中學",
+        "student": "周朗希",
+        "award": "一等獎"
+      },
+      {
+        "school": "宣道會陳朱素華紀念中學",
+        "student": "陳以琳",
+        "award": "一等獎"
+      },
+      {
+        "school": "宣道會陳朱素華紀念中學",
+        "student": "彭宇謙",
+        "award": "一等獎"
+      },
+      {
+        "school": "宣道會陳朱素華紀念中學",
+        "student": "曾治杰",
+        "award": "一等獎"
+      },
+      {
+        "school": "宣道會陳朱素華紀念中學",
+        "student": "馮嘉明",
+        "award": "一等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯紀念中學",
+        "student": "薛程",
+        "award": "一等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯紀念中學",
+        "student": "胡亦斐",
+        "award": "二等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯紀念中學",
+        "student": "陳希準",
+        "award": "二等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯紀念中學",
+        "student": "甘湘晨",
+        "award": "三等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯紀念中學",
+        "student": "孫宇涵",
+        "award": "三等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯紀念中學",
+        "student": "黃祺鈺",
+        "award": "三等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯紀念中學",
+        "student": "譚思言",
+        "award": "三等獎"
+      },
+      {
+        "school": "張振興伉儷書院",
+        "student": "黃美諭",
+        "award": "一等獎"
+      },
+      {
+        "school": "張振興伉儷書院",
+        "student": "蔣紫涵",
+        "award": "二等獎"
+      },
+      {
+        "school": "萬鈞匯知中學",
+        "student": "文逸澧",
+        "award": "二等獎"
+      },
+      {
+        "school": "萬鈞匯知中學",
+        "student": "梁皓熙",
+        "award": "二等獎"
+      },
+      {
+        "school": "萬鈞匯知中學",
+        "student": "Chenk lok yin",
+        "award": "二等獎"
+      },
+      {
+        "school": "萬鈞匯知中學",
+        "student": "Cheuk lok yin",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會莫壽增會督中學",
+        "student": "林穎嵐",
+        "award": "二等獎"
+      },
+      {
+        "school": "嘉諾撒聖心書院",
+        "student": "林巧晴",
+        "award": "二等獎"
+      },
+      {
+        "school": "嘉諾撒聖心書院",
+        "student": "陳思錡",
+        "award": "二等獎"
+      },
+      {
+        "school": "嘉諾撒聖心書院",
+        "student": "陳紫鉖",
+        "award": "二等獎"
+      },
+      {
+        "school": "嘉諾撒聖心書院",
+        "student": "鄭穎雯",
+        "award": "三等獎"
+      },
+      {
+        "school": "嘉諾撒聖心書院",
+        "student": "關睎予",
+        "award": "三等獎"
+      }
+    ],
+    "special": [
+      {
+        "school": "路德會救主學校",
+        "student": "梁彥衡",
+        "award": "一等獎"
+      },
+      {
+        "school": "路德會救主學校",
+        "student": "莫皓勛",
+        "award": "一等獎"
+      },
+      {
+        "school": "路德會救主學校",
+        "student": "NIL",
+        "award": "一等獎"
+      },
+      {
+        "school": "路德會救主學校",
+        "student": "/",
+        "award": "二等獎"
+      },
+      {
+        "school": "路德會救主學校",
+        "student": "阿索爾",
+        "award": "二等獎"
+      },
+      {
+        "school": "路德會救主學校",
+        "student": "徐昊軒",
+        "award": "二等獎"
+      },
+      {
+        "school": "路德會救主學校",
+        "student": "陳芷晴",
+        "award": "二等獎"
+      },
+      {
+        "school": "路德會救主學校",
+        "student": "陳俊傑",
+        "award": "二等獎"
+      },
+      {
+        "school": "路德會救主學校",
+        "student": "彭浩軒",
+        "award": "二等獎"
+      },
+      {
+        "school": "路德會救主學校",
+        "student": "甄家傑",
+        "award": "二等獎"
+      },
+      {
+        "school": "路德會救主學校",
+        "student": "鍾逸朗",
+        "award": "二等獎"
+      }
+    ]
+  }
+}
