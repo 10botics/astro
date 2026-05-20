@@ -34,11 +34,6 @@
         "award": "三等獎"
       },
       {
-        "school": "中華基督教會小學",
-        "student": "陳藴晞",
-        "award": "二等獎"
-      },
-      {
         "school": "中華基督教會協和小學",
         "student": "孫綽賢",
         "award": "一等獎"
@@ -575,11 +570,16 @@
       },
       {
         "school": "李陞大坑學校",
-        "student": "Mabuyog, Jorgeanna Danielle Casten",
-        "award": "一等獎"
+        "student": "Mabuyog",
+        "award": "二等獎"
       },
       {
-        "school": "沙田圍胡素旗博士紀念學校",
+        "school": "李陞大坑學校",
+        "student": "Jorgeanna Danielle Casten",
+        "award": "二等獎"
+      },
+      {
+        "school": "沙田圍胡素貞博士紀念學校",
         "student": "潘梓樂",
         "award": "二等獎"
       },
@@ -829,7 +829,7 @@
         "award": "三等獎"
       },
       {
-        "school": "真道書院小學部",
+        "school": "香港華人基督教聯會真道書院(小學部)",
         "student": "紀鈞灝",
         "award": "二等獎"
       },
@@ -1354,11 +1354,6 @@
         "award": "三等獎"
       },
       {
-        "school": "蔡卓嵐",
-        "student": "蔡卓嵐",
-        "award": "三等獎"
-      },
-      {
         "school": "寶覺小學",
         "student": "Gurung Evan",
         "award": "一等獎"
@@ -1404,12 +1399,7 @@
         "award": "二等獎"
       },
       {
-        "school": "fwqfeq",
-        "student": "fqfwf",
-        "award": "二等獎"
-      },
-      {
-        "school": "SacredHeartCanossianSchool",
+        "school": "嘉諾撒聖心學校",
         "student": "王卓懿",
         "award": "二等獎"
       }
@@ -1486,11 +1476,6 @@
         "award": "二等獎"
       },
       {
-        "school": "天主教伍华中学",
-        "student": "张袁浩",
-        "award": "二等獎"
-      },
-      {
         "school": "天主教伍華中學",
         "student": "王雨澌",
         "award": "二等獎"
@@ -1557,7 +1542,7 @@
       },
       {
         "school": "天主教伍華中學",
-        "student": "Ｌｕｎｇ　Ｃｈｕｎ　Ｌｏｎｇ",
+        "student": "Lung Chun Long",
         "award": "二等獎"
       },
       {
@@ -1746,28 +1731,8 @@
         "award": "三等獎"
       },
       {
-        "school": "世界龙冈学校刘皇发中学",
-        "student": "杨宗凯",
-        "award": "三等獎"
-      },
-      {
-        "school": "世界龙岗学校刘皇发中学",
-        "student": "杨宗凯",
-        "award": "三等獎"
-      },
-      {
         "school": "世界龙岡学校刘皇发中学",
         "student": "Yang Ho Yam",
-        "award": "三等獎"
-      },
-      {
-        "school": "世界龍岡学校劉皇发中学",
-        "student": "劉晞宜",
-        "award": "二等獎"
-      },
-      {
-        "school": "世界龍岡劉皇發中學",
-        "student": "區芊語",
         "award": "三等獎"
       },
       {
@@ -1813,16 +1778,6 @@
       {
         "school": "世界龍岡學校劉皇發中學",
         "student": "Yang Ho Yam",
-        "award": "三等獎"
-      },
-      {
-        "school": "可艺中学",
-        "student": "刘海浪",
-        "award": "三等獎"
-      },
-      {
-        "school": "可藝中學",
-        "student": "李盈睻",
         "award": "三等獎"
       },
       {
@@ -1943,16 +1898,6 @@
       {
         "school": "東華三院邱金元中學",
         "student": "陳釨淇",
-        "award": "三等獎"
-      },
-      {
-        "school": "東華三院邱金元中學",
-        "student": "赖嘉佩",
-        "award": "三等獎"
-      },
-      {
-        "school": "東華三院邱金元中學",
-        "student": "谭咏芯",
         "award": "三等獎"
       },
       {
@@ -2216,11 +2161,6 @@
         "award": "三等獎"
       },
       {
-        "school": "啬色園主辦可藝中学",
-        "student": "张子骞",
-        "award": "二等獎"
-      },
-      {
         "school": "棉紡會中學",
         "student": "陳亦侖",
         "award": "一等獎"
@@ -2273,47 +2213,47 @@
       {
         "school": "順德聯誼總會胡兆熾中學",
         "student": "司徒文諾",
-        "award": "二等獎"
+        "award": "一等獎"
       },
       {
         "school": "順德聯誼總會胡兆熾中學",
         "student": "陳展帆",
-        "award": "二等獎"
+        "award": "一等獎"
       },
       {
         "school": "順德聯誼總會胡兆熾中學",
         "student": "王俊希",
-        "award": "三等獎"
+        "award": "二等獎"
       },
       {
         "school": "順德聯誼總會胡兆熾中學",
         "student": "邢天怡",
-        "award": "三等獎"
+        "award": "二等獎"
       },
       {
         "school": "順德聯誼總會胡兆熾中學",
         "student": "裴曉漫",
-        "award": "三等獎"
+        "award": "二等獎"
       },
       {
         "school": "順德聯誼總會胡兆熾中學",
         "student": "蔡蕎蔚",
-        "award": "三等獎"
+        "award": "二等獎"
       },
       {
         "school": "順德聯誼總會胡兆熾中學",
         "student": "鄭智堯",
-        "award": "三等獎"
+        "award": "二等獎"
       },
       {
         "school": "順德聯誼總會胡兆熾中學",
         "student": "黎珈汶",
-        "award": "三等獎"
+        "award": "二等獎"
       },
       {
         "school": "順德聯誼總會胡兆熾中學",
         "student": "譚安婷",
-        "award": "三等獎"
+        "award": "二等獎"
       },
       {
         "school": "嗇色園主辦可藝中學",
@@ -2411,11 +2351,6 @@
         "award": "三等獎"
       },
       {
-        "school": "嗇色園可藝中學",
-        "student": "鍾芮姿",
-        "award": "三等獎"
-      },
-      {
         "school": "圓玄學院妙法寺內明陳呂重德紀念中學",
         "student": "張津銘",
         "award": "三等獎"
@@ -2423,11 +2358,6 @@
       {
         "school": "圓玄學院妙法寺內明陳呂重德紀念中學",
         "student": "劉嘉兒",
-        "award": "三等獎"
-      },
-      {
-        "school": "萬鈞匯知",
-        "student": "劉偉業",
         "award": "三等獎"
       },
       {
@@ -2612,7 +2542,7 @@
       },
       {
         "school": "萬鈞匯知中學",
-        "student": "CHAN　Ｈｅｉ　Ｔｕｎｇ",
+        "student": "Chan Hei Tung",
         "award": "三等獎"
       },
       {
@@ -2642,7 +2572,7 @@
       },
       {
         "school": "萬鈞匯知中學",
-        "student": "HiHi",
+        "student": "lam chi kwan",
         "award": "三等獎"
       },
       {
@@ -2711,17 +2641,17 @@
         "award": "三等獎"
       },
       {
-        "school": "萬鈞匯知中學|ManKwanQualiEdCollege",
+        "school": "萬鈞匯知中學",
         "student": "Wong Ka Hei",
         "award": "二等獎"
       },
       {
-        "school": "萬鈞匯知中學|ManKwanQualiEdCollege",
+        "school": "萬鈞匯知中學",
         "student": "Wong Kai Fung",
         "award": "二等獎"
       },
       {
-        "school": "萬鈞匯知中學|ManKwanQualiEdCollege",
+        "school": "萬鈞匯知中學",
         "student": "fan hoi yiu",
         "award": "三等獎"
       },
@@ -3018,26 +2948,6 @@
       {
         "school": "蘇浙公學",
         "student": "段泳欣",
-        "award": "三等獎"
-      },
-      {
-        "school": "lwfss",
-        "student": "李駿然",
-        "award": "二等獎"
-      },
-      {
-        "school": "LWFSS",
-        "student": "李駿然",
-        "award": "二等獎"
-      },
-      {
-        "school": "mkqc",
-        "student": "Lo Wing Sze",
-        "award": "二等獎"
-      },
-      {
-        "school": "MKQC",
-        "student": "Chang Ka Wong",
         "award": "三等獎"
       }
     ],

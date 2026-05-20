@@ -1,0 +1,73 @@
+import { readFileSync, writeFileSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const path = join(__dirname, '../src/data/gen2026-results/video.json');
+const data = JSON.parse(readFileSync(path, 'utf8'));
+
+const AWARD_RANK = { 一等獎: 1, 二等獎: 2, 三等獎: 3 };
+
+const norm = (s) => String(s ?? '').trim().replace(/\s+/g, ' ');
+
+function match(entry, school, student, award) {
+  return (
+    norm(entry.school) === school &&
+    norm(entry.student) === student &&
+    entry.award === award
+  );
+}
+
+function sortGrade(entries) {
+  entries.sort((a, b) => {
+    const schoolCmp = a.school.localeCompare(b.school, 'zh-Hant');
+    if (schoolCmp !== 0) return schoolCmp;
+    const awardCmp = AWARD_RANK[a.award] - AWARD_RANK[b.award];
+    if (awardCmp !== 0) return awardCmp;
+    return a.student.localeCompare(b.student, 'zh-Hant');
+  });
+}
+
+// 高小組: Delete 拔萃女小學, not applicable, 二等獎
+data.grouped.primary = data.grouped.primary.filter(
+  (e) => !match(e, '拔萃女小學', 'not applicable', '二等獎')
+);
+
+// 初中組
+data.grouped.junior = data.grouped.junior.filter((e) => {
+  if (match(e, '石籬天主教中學', '25-26年度1A班同學', '一等獎')) return false;
+  if (norm(e.school) === '路德會救主學校') return false;
+  return true;
+});
+
+const newJuniorWinners = [
+  { school: '石籬天主教中學', student: '鄧梓愉', award: '一等獎' },
+  { school: '石籬天主教中學', student: '梁凱嵐', award: '一等獎' },
+  { school: '石籬天主教中學', student: '謝焯嵐', award: '一等獎' },
+  { school: '石籬天主教中學', student: '徐栢希', award: '一等獎' },
+  { school: '石籬天主教中學', student: '張浩恩', award: '一等獎' },
+];
+
+for (const entry of newJuniorWinners) {
+  const exists = data.grouped.junior.some(
+    (e) =>
+      norm(e.school) === entry.school &&
+      norm(e.student) === entry.student &&
+      e.award === entry.award
+  );
+  if (!exists) data.grouped.junior.push(entry);
+}
+
+// 特殊學校組
+data.grouped.special = data.grouped.special.filter((e) => {
+  if (match(e, '路德會救主學校', 'NIL', '一等獎')) return false;
+  if (match(e, '路德會救主學校', '/', '二等獎')) return false;
+  return true;
+});
+
+for (const key of Object.keys(data.grouped)) {
+  sortGrade(data.grouped[key]);
+}
+
+writeFileSync(path, JSON.stringify(data, null, 2) + '\n', 'utf8');
+console.log('Patched video.json');

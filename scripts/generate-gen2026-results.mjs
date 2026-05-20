@@ -15,7 +15,7 @@ const categories = [
   {
     id: '3d',
     label: '3D設計組',
-    file: 'C:/Users/Karen/Downloads/_香港校際AI生成創作大賽2026《GEN出你想》作品 - 3D設計組.csv',
+    file: 'C:/Users/Karen/Downloads/_香港校際AI生成創作大賽2026《GEN出你想》作品 - 3D設計組 (1).csv',
   },
   {
     id: 'video',
