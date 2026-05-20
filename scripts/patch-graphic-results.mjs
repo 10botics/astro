@@ -17,6 +17,8 @@ function shouldDelete(entry, grade) {
     if (school === 'fwqfeq' && student === 'fqfwf') return true;
     // duplicate 陳藴晞 at wrong school (correct entry exists under 基慧)
     if (school === '中華基督教會小學' && student === '陳藴晞') return true;
+    // duplicate / withdrawn (user request)
+    if (school === '路德會呂祥光中學' && student === '趙蔚榣 凌梓桐' && entry.award === '三等獎') return true;
     return false;
   }
 
@@ -35,6 +37,7 @@ function shouldDelete(entry, grade) {
     if (school === 'LWFSS' && student === '李駿然') return true;
     if (school === 'mkqc' && student === 'Lo Wing Sze') return true;
     if (school === 'MKQC' && student === 'Chang Ka Wong') return true;
+    if (school === '路德會呂祥光中學' && student === '趙蔚榣 凌梓桐' && entry.award === '三等獎') return true;
     return false;
   }
 

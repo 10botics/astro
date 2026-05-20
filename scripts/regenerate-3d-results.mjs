@@ -82,6 +82,14 @@ for (const e of grouped.junior) {
   if (e.school === '關愛隊3D角色' && e.student === '林建浚' && e.award === '二等獎') {
     e.school = '上水官立中學';
   }
+  // List only 鄧靖希 (梁安琪 already has own row)
+  if (
+    e.school === '嗇色園主辦可道中學' &&
+    e.award === '二等獎' &&
+    (e.student === '梁安琪，鄧靖希' || e.student === '梁安琪,鄧靖希')
+  ) {
+    e.student = '鄧靖希';
+  }
 }
 
 for (const key of Object.keys(grouped)) {
