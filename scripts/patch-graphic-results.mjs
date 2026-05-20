@@ -8,7 +8,7 @@ const data = JSON.parse(readFileSync(path, 'utf8'));
 
 const norm = (s) => String(s ?? '').trim().replace(/\s+/g, ' ');
 
-const AWARD_RANK = { 一等獎: 1, 二等獎: 2, 三等獎: 3 };
+const AWARD_RANK = { 一等獎: 1, 二等獎: 2, 三等獎: 3, 優異獎: 4 };
 
 function sortGraphicGrade(entries) {
   entries.sort((a, b) => {
@@ -100,6 +100,12 @@ function patchEntry(entry, grade) {
     if (school.includes('ManKwanQualiEdCollege')) {
       entry.school = '萬鈞匯知中學';
     }
+    if (entry.school === '萬鈞會知中學') {
+      entry.school = '萬鈞匯知中學';
+    }
+    if (norm(entry.school) === '萬鈞匯知中學' && norm(entry.student) === '黃珈泯 黃珈泯') {
+      entry.student = '黃珈泯';
+    }
   }
 
   return entry;
@@ -118,6 +124,18 @@ for (const grade of ['primary', 'junior']) {
   }
   data.grouped[grade] = next;
 }
+
+// Drop duplicate rows (same school + student + award) in junior
+function dedupeGraphicEntries(entries) {
+  const seen = new Set();
+  return entries.filter((e) => {
+    const k = `${norm(e.school)}|${norm(e.student)}|${e.award}`;
+    if (seen.has(k)) return false;
+    seen.add(k);
+    return true;
+  });
+}
+data.grouped.junior = dedupeGraphicEntries(data.grouped.junior);
 
 // Primary-school entry wrongly filed under senior → move to primary
 if (Array.isArray(data.grouped.senior)) {

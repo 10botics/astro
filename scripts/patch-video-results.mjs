@@ -6,7 +6,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const path = join(__dirname, '../src/data/gen2026-results/video.json');
 const data = JSON.parse(readFileSync(path, 'utf8'));
 
-const AWARD_RANK = { 一等獎: 1, 二等獎: 2, 三等獎: 3 };
+const AWARD_RANK = { 一等獎: 1, 二等獎: 2, 三等獎: 3, 優異獎: 4 };
 
 const norm = (s) => String(s ?? '').trim().replace(/\s+/g, ' ');
 
@@ -69,6 +69,26 @@ for (const e of data.grouped.junior) {
   ) {
     e.school = tangYinRight;
   }
+}
+
+const additionalJuniorWinners = [
+  { school: '上水官立中學', student: '許恩嘉', award: '優異獎' },
+  { school: '上水官立中學', student: '羅騏', award: '優異獎' },
+  { school: '上水官立中學', student: '彭偉滔', award: '優異獎' },
+  { school: '上水官立中學', student: '葉焯堃', award: '二等獎' },
+  { school: '上水官立中學', student: '王銘辰', award: '二等獎' },
+  { school: '上水官立中學', student: '林建浚', award: '二等獎' },
+  { school: '明愛聖若瑟中學', student: '謝錚江', award: '一等獎' },
+];
+
+for (const entry of additionalJuniorWinners) {
+  const exists = data.grouped.junior.some(
+    (e) =>
+      norm(e.school) === entry.school &&
+      norm(e.student) === entry.student &&
+      e.award === entry.award
+  );
+  if (!exists) data.grouped.junior.push(entry);
 }
 
 // 高中組: remove erroneous duplicate spelling (Cheuk lok yin retained)

@@ -575,32 +575,17 @@
       },
       {
         "school": "聖公會李兆強小學",
-        "student": "袁思琳",
-        "award": "三等獎"
-      },
-      {
-        "school": "聖公會李兆強小學",
         "student": "麥妃言",
         "award": "三等獎"
       },
       {
         "school": "聖公會李兆強小學",
-        "student": "曾台朗",
+        "student": "黃子倫",
         "award": "三等獎"
       },
       {
         "school": "聖公會李兆強小學",
         "student": "黃湋淇",
-        "award": "三等獎"
-      },
-      {
-        "school": "聖公會李兆強小學",
-        "student": "楊肇浠",
-        "award": "三等獎"
-      },
-      {
-        "school": "聖公會李兆強小學",
-        "student": "楊叡霖",
         "award": "三等獎"
       },
       {
@@ -611,11 +596,6 @@
       {
         "school": "聖公會李兆強小學",
         "student": "鄒佩倪",
-        "award": "三等獎"
-      },
-      {
-        "school": "聖公會李兆強小學",
-        "student": "CHIU SUM YING",
         "award": "三等獎"
       },
       {
@@ -635,13 +615,38 @@
       },
       {
         "school": "聖公會李兆強小學",
-        "student": "Liu Tsz Yuk",
+        "student": "Mak Chin Tung",
         "award": "三等獎"
       },
       {
         "school": "聖公會李兆強小學",
-        "student": "Mak Chin Tung",
-        "award": "三等獎"
+        "student": "袁思琳",
+        "award": "優異獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "曾台朗",
+        "award": "優異獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "楊肇浠",
+        "award": "優異獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "楊叡霖",
+        "award": "優異獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "CHIU SUM YING",
+        "award": "優異獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Liu Tsz Yuk",
+        "award": "優異獎"
       },
       {
         "school": "聖公會青衣主恩小學",
@@ -702,18 +707,18 @@
       },
       {
         "school": "上水官立中學",
-        "student": "彭偉滔",
+        "student": "葉焯堃",
         "award": "三等獎"
+      },
+      {
+        "school": "上水官立中學",
+        "student": "彭偉滔",
+        "award": "優異獎"
       },
       {
         "school": "上水官立中學",
         "student": "覃惠蘭",
-        "award": "三等獎"
-      },
-      {
-        "school": "上水官立中學",
-        "student": "葉焯堃",
-        "award": "三等獎"
+        "award": "優異獎"
       },
       {
         "school": "王肇枝中學",
@@ -744,11 +749,6 @@
         "school": "嗇色園主辦可道中學",
         "student": "鄧靖希",
         "award": "二等獎"
-      },
-      {
-        "school": "聖公會李兆強小學",
-        "student": "黃子倫",
-        "award": "三等獎"
       },
       {
         "school": "路德會呂祥光中學",
@@ -784,11 +784,6 @@
       },
       {
         "school": "上水官立中學",
-        "student": "洪澤鑒",
-        "award": "三等獎"
-      },
-      {
-        "school": "上水官立中學",
         "student": "徐梓恒",
         "award": "三等獎"
       },
@@ -801,6 +796,11 @@
         "school": "上水官立中學",
         "student": "黃澤立",
         "award": "三等獎"
+      },
+      {
+        "school": "上水官立中學",
+        "student": "洪澤鑒",
+        "award": "優異獎"
       },
       {
         "school": "香海正覺蓮社佛教正覺中學",
@@ -825,7 +825,7 @@
       {
         "school": "香港道教聯合會鄧顯紀念中學",
         "student": "Kwok Wing Ni",
-        "award": "三等獎"
+        "award": "優異獎"
       },
       {
         "school": "香港道教聯合會鄧顯記念中學",

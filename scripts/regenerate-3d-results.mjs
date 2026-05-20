@@ -9,7 +9,7 @@ const root = join(__dirname, '..');
 const file =
   'C:/Users/Karen/Downloads/_香港校際AI生成創作大賽2026《GEN出你想》作品 - 3D設計組 (1).csv';
 
-const AWARD_RANK = { 一等獎: 1, 二等獎: 2, 三等獎: 3 };
+const AWARD_RANK = { 一等獎: 1, 二等獎: 2, 三等獎: 3, 優異獎: 4 };
 
 function normGrade(s) {
   if (!s) return null;
@@ -25,7 +25,7 @@ function normAward(g) {
   const t = String(g).trim();
   if (!t || t === '參與') return null;
   if (t === '一等' || t === '二等' || t === '三等') return `${t}獎`;
-  if (['一等獎', '二等獎', '三等獎'].includes(t)) return t;
+  if (['一等獎', '二等獎', '三等獎', '優異獎'].includes(t)) return t;
   return null;
 }
 
@@ -89,6 +89,18 @@ for (const e of grouped.junior) {
     (e.student === '梁安琪，鄧靖希' || e.student === '梁安琪,鄧靖希')
   ) {
     e.student = '鄧靖希';
+  }
+}
+
+// Primary-school winner wrongly in junior → move to primary
+for (let i = grouped.junior.length - 1; i >= 0; i--) {
+  const e = grouped.junior[i];
+  if (e.school === '聖公會李兆強小學' && e.student === '黃子倫' && e.award === '三等獎') {
+    grouped.junior.splice(i, 1);
+    const dup = grouped.primary.some(
+      (x) => x.school === e.school && x.student === e.student && x.award === e.award
+    );
+    if (!dup) grouped.primary.push({ school: e.school, student: e.student, award: e.award });
   }
 }
 
