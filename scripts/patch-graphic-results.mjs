@@ -8,6 +8,18 @@ const data = JSON.parse(readFileSync(path, 'utf8'));
 
 const norm = (s) => String(s ?? '').trim().replace(/\s+/g, ' ');
 
+const AWARD_RANK = { 一等獎: 1, 二等獎: 2, 三等獎: 3 };
+
+function sortGraphicGrade(entries) {
+  entries.sort((a, b) => {
+    const schoolCmp = a.school.localeCompare(b.school, 'zh-Hant');
+    if (schoolCmp !== 0) return schoolCmp;
+    const awardCmp = AWARD_RANK[a.award] - AWARD_RANK[b.award];
+    if (awardCmp !== 0) return awardCmp;
+    return a.student.localeCompare(b.student, 'zh-Hant');
+  });
+}
+
 function shouldDelete(entry, grade) {
   const school = norm(entry.school);
   const student = norm(entry.student);
@@ -67,6 +79,9 @@ function patchEntry(entry, grade) {
   }
 
   if (grade === 'junior') {
+    if (entry.school === '世界龙岡学校刘皇发中学') {
+      entry.school = '世界龍岡學校劉皇發中學';
+    }
     if (school === '天主教伍華中學' && student.replace(/\s/g, '') === 'Ｌｕｎｇ　Ｃｈｕｎ　Ｌｏｎｇ'.replace(/\s/g, '')) {
       entry.student = 'Lung Chun Long';
     }
@@ -103,6 +118,21 @@ for (const grade of ['primary', 'junior']) {
   }
   data.grouped[grade] = next;
 }
+
+// Primary-school entry wrongly filed under senior → move to primary
+if (Array.isArray(data.grouped.senior)) {
+  for (let i = data.grouped.senior.length - 1; i >= 0; i--) {
+    const e = data.grouped.senior[i];
+    if (e.school === '秀明小學' && e.student === '余心柔' && e.award === '二等獎') {
+      data.grouped.senior.splice(i, 1);
+      const dup = data.grouped.primary.some(
+        (x) => norm(x.school) === norm(e.school) && norm(x.student) === norm(e.student)
+      );
+      if (!dup) data.grouped.primary.push(e);
+    }
+  }
+}
+sortGraphicGrade(data.grouped.primary);
 
 writeFileSync(path, JSON.stringify(data, null, 2) + '\n', 'utf8');
 console.log('Patched graphic.json');

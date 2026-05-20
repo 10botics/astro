@@ -570,17 +570,22 @@
       },
       {
         "school": "李陞大坑學校",
-        "student": "Mabuyog",
+        "student": "Jorgeanna Danielle Casten",
         "award": "二等獎"
       },
       {
         "school": "李陞大坑學校",
-        "student": "Jorgeanna Danielle Casten",
+        "student": "Mabuyog",
         "award": "二等獎"
       },
       {
         "school": "沙田圍胡素貞博士紀念學校",
         "student": "潘梓樂",
+        "award": "二等獎"
+      },
+      {
+        "school": "秀明小學",
+        "student": "余心柔",
         "award": "二等獎"
       },
       {
@@ -804,6 +809,11 @@
         "award": "二等獎"
       },
       {
+        "school": "香港華人基督教聯會真道書院(小學部)",
+        "student": "紀鈞灝",
+        "award": "二等獎"
+      },
+      {
         "school": "浸信會孔憲紹天虹小學",
         "student": "吳浠舜",
         "award": "三等獎"
@@ -827,11 +837,6 @@
         "school": "浸信會孔憲紹天虹小學",
         "student": "劉枳溢",
         "award": "三等獎"
-      },
-      {
-        "school": "香港華人基督教聯會真道書院(小學部)",
-        "student": "紀鈞灝",
-        "award": "二等獎"
       },
       {
         "school": "基督教香港信義會馬鞍山信義學校",
@@ -1269,6 +1274,11 @@
         "award": "二等獎"
       },
       {
+        "school": "嘉諾撒聖心學校",
+        "student": "王卓懿",
+        "award": "二等獎"
+      },
+      {
         "school": "樂善堂梁銶琚學校(分校)",
         "student": "李柏霖",
         "award": "一等獎"
@@ -1396,11 +1406,6 @@
       {
         "school": "寶覺小學",
         "student": "Sotsri Nalynnipha",
-        "award": "二等獎"
-      },
-      {
-        "school": "嘉諾撒聖心學校",
-        "student": "王卓懿",
         "award": "二等獎"
       }
     ],
@@ -1731,11 +1736,6 @@
         "award": "三等獎"
       },
       {
-        "school": "世界龙岡学校刘皇发中学",
-        "student": "Yang Ho Yam",
-        "award": "三等獎"
-      },
-      {
         "school": "世界龍岡學校劉皇發中學",
         "student": "陳敏謙",
         "award": "一等獎"
@@ -1773,6 +1773,11 @@
       {
         "school": "世界龍岡學校劉皇發中學",
         "student": "黃俊夫",
+        "award": "三等獎"
+      },
+      {
+        "school": "世界龍岡學校劉皇發中學",
+        "student": "Yang Ho Yam",
         "award": "三等獎"
       },
       {
@@ -2497,6 +2502,16 @@
       },
       {
         "school": "萬鈞匯知中學",
+        "student": "Wong Ka Hei",
+        "award": "二等獎"
+      },
+      {
+        "school": "萬鈞匯知中學",
+        "student": "Wong Kai Fung",
+        "award": "二等獎"
+      },
+      {
+        "school": "萬鈞匯知中學",
         "student": "Wong Nga Yau Adrienne",
         "award": "二等獎"
       },
@@ -2562,6 +2577,11 @@
       },
       {
         "school": "萬鈞匯知中學",
+        "student": "fan hoi yiu",
+        "award": "三等獎"
+      },
+      {
+        "school": "萬鈞匯知中學",
         "student": "Fok Yuet Chi",
         "award": "三等獎"
       },
@@ -2572,17 +2592,17 @@
       },
       {
         "school": "萬鈞匯知中學",
-        "student": "lam chi kwan",
-        "award": "三等獎"
-      },
-      {
-        "school": "萬鈞匯知中學",
         "student": "Ho Yan Yuet",
         "award": "三等獎"
       },
       {
         "school": "萬鈞匯知中學",
         "student": "kwongpohei",
+        "award": "三等獎"
+      },
+      {
+        "school": "萬鈞匯知中學",
+        "student": "lam chi kwan",
         "award": "三等獎"
       },
       {
@@ -2638,21 +2658,6 @@
       {
         "school": "萬鈞匯知中學",
         "student": "WONG HEI LAM",
-        "award": "三等獎"
-      },
-      {
-        "school": "萬鈞匯知中學",
-        "student": "Wong Ka Hei",
-        "award": "二等獎"
-      },
-      {
-        "school": "萬鈞匯知中學",
-        "student": "Wong Kai Fung",
-        "award": "二等獎"
-      },
-      {
-        "school": "萬鈞匯知中學",
-        "student": "fan hoi yiu",
         "award": "三等獎"
       },
       {
@@ -3141,11 +3146,6 @@
         "school": "世界龍岡學校劉皇發中學",
         "student": "韓雅妃",
         "award": "三等獎"
-      },
-      {
-        "school": "秀明小學",
-        "student": "余心柔",
-        "award": "二等獎"
       },
       {
         "school": "明愛聖若瑟中學",
