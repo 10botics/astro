@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactSection from '../components/ContactSection.astro';
+import CTAButton from '../components/CTAButton.astro';
+import Gen2026ResultsTables from '../components/competition/Gen2026ResultsTables.astro';
+import categoryData from '../data/gen2026-results/video.json';
+import { buildGradeGroups } from '../utils/gen2026Results';
+
+const title = '香港校際AI生成創作大賽2026《GEN出你想》得獎名單 - 影片製作組';
+const description = '香港校際AI生成創作大賽2026《GEN出你想》影片製作組得獎名單';
+const grades = buildGradeGroups(categoryData);
+---
+
+<Layout title={title} description={description}>
+  <main class="min-h-screen bg-gray-50">
+    <section class="bg-gradient-to-r from-brand-blue-600 to-category-purple-700 text-white py-20">
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-3xl md:text-5xl font-bold mb-4">
+          香港校際AI生成創作大賽2026《GEN出你想》<br />得獎名單
+        </h1>
+        <p class="text-2xl md:text-3xl opacity-90">{categoryData.label}</p>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <Gen2026ResultsTables grades={grades} />
+
+        <div class="text-center py-8">
+          <CTAButton
+            href="/《GEN出你想》香港校際AI生成創作大賽2026得獎名單"
+            text="返回組別選擇"
+            variant="outline"
+            size="lg"
+          />
+        </div>
+      </div>
+    </section>
+
+    <ContactSection />
+  </main>
+</Layout>

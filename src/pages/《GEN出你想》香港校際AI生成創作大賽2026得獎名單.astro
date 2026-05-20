@@ -1,0 +1,58 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactSection from '../components/ContactSection.astro';
+import CTAButton from '../components/CTAButton.astro';
+import indexData from '../data/gen2026-results/index.json';
+
+const title = indexData.title;
+const description = '香港校際AI生成創作大賽2026《GEN出你想》得獎名單，平面創作組、3D設計組、影片製作組、遊戲及應用程式組';
+
+const categoryPages: Record<string, string> = {
+  graphic: '/《GEN出你想》香港校際AI生成創作大賽2026得獎名單-平面創作組',
+  '3d': '/《GEN出你想》香港校際AI生成創作大賽2026得獎名單-3D設計組',
+  video: '/《GEN出你想》香港校際AI生成創作大賽2026得獎名單-影片製作組',
+  game: '/《GEN出你想》香港校際AI生成創作大賽2026得獎名單-遊戲及應用程式組',
+};
+
+/** 組別按鈕底色；3D 組未指定，沿用紫色系 */
+const categoryButtonClass: Record<string, string> = {
+  graphic: 'bg-[#00bbde] hover:bg-[#0099b8]',
+  '3d': 'bg-category-purple-600 hover:bg-category-purple-700',
+  video: 'bg-[#38b6ff] hover:bg-[#1a9de6]',
+  game: 'bg-[#ff66c4] hover:bg-[#e04aa8]',
+};
+---
+
+<Layout title={title} description={description}>
+  <main class="min-h-screen bg-gray-50">
+    <section class="bg-gradient-to-r from-brand-blue-600 to-category-purple-700 text-white py-20">
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">{title}</h1>
+        <p class="text-xl md:text-2xl opacity-90 mb-10">請選擇比賽組別查看得獎名單</p>
+        <div class="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
+          {indexData.categories.map((category) => (
+            <a
+              href={categoryPages[category.id]}
+              class:list={[
+                'inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white rounded-lg transition-all duration-300 shadow-md hover:shadow-lg',
+                categoryButtonClass[category.id] ?? 'bg-brand-blue-600 hover:bg-brand-blue-700',
+              ]}
+            >
+              {category.label}
+            </a>
+          ))}
+        </div>
+        <div class="mt-10">
+          <CTAButton
+            href="/《GEN出你想》香港校際AI生成創作大賽2026"
+            text="返回比賽主頁"
+            variant="white"
+            size="lg"
+          />
+        </div>
+      </div>
+    </section>
+
+    <ContactSection />
+  </main>
+</Layout>

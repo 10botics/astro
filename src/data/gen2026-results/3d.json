@@ -1,0 +1,864 @@
+{
+  "id": "3d",
+  "label": "3D設計組",
+  "grouped": {
+    "primary": [
+      {
+        "school": "拔萃女小學",
+        "student": "余安之",
+        "award": "二等獎"
+      },
+      {
+        "school": "拔萃女小學",
+        "student": "Yu On Chee Erin",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "何宗蔚",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "郭珀瑜",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "劉森",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Chan Hiu Wing",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Chan Ki Hang",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "chan pui kwan",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Cheung Cheunk Nam",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Cheung Ho Yin",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "choi chor ki ,chelsea",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Chow Man Hei",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Deng Tsz Yu",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Do Pui Ka",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Fung Lok Chi",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Huang Tsz Ho",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "hui tsz yuen",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Lam Chi Huen",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Lam Chun Ngai",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Lam Tsz Yau",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Leung Yiu Chuen",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Leunh Ka I",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Li Cheuk Lam",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "lin tsun hei",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Mok Yui Yui ,Yuki",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Ng Man Wing",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "SIT YIK YU",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "TAN YUI LAAM",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Wai Sze Wing",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "wan cheuk yu",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "WONG KI CHUN",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Wong Wang Lok",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Yeung Hei Lam",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "江芍瑩",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "江佩琳",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "何佩逾",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "李映嶠",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "李詩淇",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "周睿天",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "周韻兒",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "林芯宜",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "林恪晞",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "林珮潼",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "胡安善",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "容樂也",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "袁雋彥",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "馬騏槺",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "張琛怡",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "許睿臻",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "曾寶毅",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "黃曉然",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "劉詠琳",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "歐陽妍希",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "潘頌恩",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "蔡卓嵐",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "鄭恩呈",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "鄭紫媱",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "黎子鋒",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "黎恩名",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "謝潔琳",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "關朗昕",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Chantelle",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Chen Ka Man",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Cheng Tsz Kiu",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "CHONG HIU YING",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Chong Pui Chi,Gigi",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Fong Tsan Yu",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Ho Cheuk Yiu",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Ho Tsz Ip",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Ho Tsz Long",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Huang Ching Lam",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Huang Tin Yau",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Hui Sze Ham",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Kong Yi Ting",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "KwanManChun",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Kwok Yuen Ki",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Kwong Wan In",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Lai Chun Kan",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Lai Hiu Ying",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Lam Sin Yee",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Lam Tsz Huen",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Lee Chiu Yi",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Lee Wing Shan",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Leung Chung Ching",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Leung Chung Kiu",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Leung Lok Hei",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Leung Nga I",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "LEUNG YAT HEI",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Lo Chi Yau",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Lo Hiu Yan",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Ma Kai Yeung",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Ma King Yan",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Ng Ching Ting",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Ng Hong Lam",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Ng Sum Yan",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Ng Tsun Ming",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Ng Wing Lam",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Poon Tin Yan",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Shih Wing Tung",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "tam tsz kiu",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Tang Tsz Yau,Karris",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Tsang Yu Cheuk",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Wong Chi Wah",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Wong NgoPok",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Wong Sum Yu",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Wong Yik Fei",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Wong Yui Ming",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Wu hei yin",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Ye Hoi Lam",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Yu Chun Hei",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Yuen Tsz Fung",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "王語嫣 Wang Yu Yin",
+        "award": "三等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "吳遨延",
+        "award": "三等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "岑彩妍",
+        "award": "三等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "麥妃言",
+        "award": "三等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "黃子倫",
+        "award": "三等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "黃湋淇",
+        "award": "三等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "董沛妍",
+        "award": "三等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "鄒佩倪",
+        "award": "三等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Choy Tsz To",
+        "award": "三等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Hung Hei Yu",
+        "award": "三等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Kwan Yau Him",
+        "award": "三等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Mak Chin Tung",
+        "award": "三等獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "袁思琳",
+        "award": "優異獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "曾台朗",
+        "award": "優異獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "楊肇浠",
+        "award": "優異獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "楊叡霖",
+        "award": "優異獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "CHIU SUM YING",
+        "award": "優異獎"
+      },
+      {
+        "school": "聖公會李兆強小學",
+        "student": "Liu Tsz Yuk",
+        "award": "優異獎"
+      },
+      {
+        "school": "聖公會青衣主恩小學",
+        "student": "陳奕妃",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會青衣主恩小學",
+        "student": "楊盛竣",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會青衣主恩小學",
+        "student": "潘柏行",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會青衣主恩小學",
+        "student": "蔡沛炘",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會青衣主恩小學",
+        "student": "魏若嵐",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會青衣主恩小學",
+        "student": "朱諾行",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會青衣主恩小學",
+        "student": "梁貝兒",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會青衣主恩小學",
+        "student": "陳梓滔",
+        "award": "二等獎"
+      },
+      {
+        "school": "聖公會青衣主恩小學",
+        "student": "黃枳維",
+        "award": "二等獎"
+      }
+    ],
+    "junior": [
+      {
+        "school": "上水官立中學",
+        "student": "林建浚",
+        "award": "二等獎"
+      },
+      {
+        "school": "上水官立中學",
+        "student": "王銘辰",
+        "award": "三等獎"
+      },
+      {
+        "school": "上水官立中學",
+        "student": "葉焯堃",
+        "award": "三等獎"
+      },
+      {
+        "school": "上水官立中學",
+        "student": "彭偉滔",
+        "award": "優異獎"
+      },
+      {
+        "school": "上水官立中學",
+        "student": "覃惠蘭",
+        "award": "優異獎"
+      },
+      {
+        "school": "王肇枝中學",
+        "student": "司徒睿鵬",
+        "award": "一等獎"
+      },
+      {
+        "school": "王肇枝中學",
+        "student": "周梓熹",
+        "award": "一等獎"
+      },
+      {
+        "school": "香海正覺蓮社佛教正覺中學",
+        "student": "鄧灝政",
+        "award": "三等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯紀念中學",
+        "student": "羅楊博",
+        "award": "一等獎"
+      },
+      {
+        "school": "嗇色園主辦可道中學",
+        "student": "梁安琪",
+        "award": "二等獎"
+      },
+      {
+        "school": "嗇色園主辦可道中學",
+        "student": "鄧靖希",
+        "award": "二等獎"
+      },
+      {
+        "school": "路德會呂祥光中學",
+        "student": "鄭穎謙",
+        "award": "一等獎"
+      },
+      {
+        "school": "蘇浙公學",
+        "student": "鄭梓墨",
+        "award": "一等獎"
+      },
+      {
+        "school": "蘇浙公學",
+        "student": "賴若茜",
+        "award": "二等獎"
+      }
+    ],
+    "senior": [
+      {
+        "school": "上水官立中學",
+        "student": "陳俊軒",
+        "award": "二等獎"
+      },
+      {
+        "school": "上水官立中學",
+        "student": "陳軒樂",
+        "award": "二等獎"
+      },
+      {
+        "school": "上水官立中學",
+        "student": "趙樂桐",
+        "award": "二等獎"
+      },
+      {
+        "school": "上水官立中學",
+        "student": "徐梓恒",
+        "award": "三等獎"
+      },
+      {
+        "school": "上水官立中學",
+        "student": "黃宣霖",
+        "award": "三等獎"
+      },
+      {
+        "school": "上水官立中學",
+        "student": "黃澤立",
+        "award": "三等獎"
+      },
+      {
+        "school": "上水官立中學",
+        "student": "洪澤鑒",
+        "award": "優異獎"
+      },
+      {
+        "school": "香海正覺蓮社佛教正覺中學",
+        "student": "鄭章裕",
+        "award": "一等獎"
+      },
+      {
+        "school": "香海正覺蓮社佛教正覺中學",
+        "student": "陈思科",
+        "award": "二等獎"
+      },
+      {
+        "school": "香海正覺蓮社佛教正覺中學",
+        "student": "郭永悅",
+        "award": "二等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯紀念中學",
+        "student": "陳熙兒",
+        "award": "一等獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯紀念中學",
+        "student": "Kwok Wing Ni",
+        "award": "優異獎"
+      },
+      {
+        "school": "香港道教聯合會鄧顯記念中學",
+        "student": "黃主惠",
+        "award": "一等獎"
+      },
+      {
+        "school": "聖公會莫壽增會督中學",
+        "student": "黎善穎",
+        "award": "二等獎"
+      }
+    ],
+    "special": [
+      {
+        "school": "路德會救主學校",
+        "student": "陳希兒",
+        "award": "一等獎"
+      },
+      {
+        "school": "路德會救主學校",
+        "student": "黃悅童",
+        "award": "一等獎"
+      },
+      {
+        "school": "路德會救主學校",
+        "student": "陳栢軒",
+        "award": "二等獎"
+      },
+      {
+        "school": "路德會救主學校",
+        "student": "鄭智泓",
+        "award": "二等獎"
+      }
+    ]
+  }
+}
