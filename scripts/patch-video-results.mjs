@@ -71,6 +71,11 @@ for (const e of data.grouped.junior) {
   }
 }
 
+// 高中組: remove erroneous duplicate spelling (Cheuk lok yin retained)
+data.grouped.senior = data.grouped.senior.filter(
+  (e) => !match(e, '萬鈞匯知中學', 'Chenk lok yin', '二等獎')
+);
+
 // 特殊學校組
 data.grouped.special = data.grouped.special.filter((e) => {
   if (match(e, '路德會救主學校', 'NIL', '一等獎')) return false;
