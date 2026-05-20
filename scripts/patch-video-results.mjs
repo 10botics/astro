@@ -58,6 +58,19 @@ for (const entry of newJuniorWinners) {
   if (!exists) data.grouped.junior.push(entry);
 }
 
+// 初中組: CSV typo 鄧賢 → 鄧顯（與該校其他得獎者一致）
+const tangYinWrong = '香港道教聯合會鄧賢紀念中學';
+const tangYinRight = '香港道教聯合會鄧顯紀念中學';
+for (const e of data.grouped.junior) {
+  if (
+    norm(e.school) === tangYinWrong &&
+    e.award === '二等獎' &&
+    (norm(e.student) === '趙汝桐' || norm(e.student) === '劉梓浩')
+  ) {
+    e.school = tangYinRight;
+  }
+}
+
 // 特殊學校組
 data.grouped.special = data.grouped.special.filter((e) => {
   if (match(e, '路德會救主學校', 'NIL', '一等獎')) return false;
