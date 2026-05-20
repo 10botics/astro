@@ -77,6 +77,13 @@ for (const { gradeKey, school, student, award } of byKey.values()) {
   grouped[gradeKey].push({ school, student, award });
 }
 
+// Manual corrections (CSV had wrong school name for this entry)
+for (const e of grouped.junior) {
+  if (e.school === '關愛隊3D角色' && e.student === '林建浚' && e.award === '二等獎') {
+    e.school = '上水官立中學';
+  }
+}
+
 for (const key of Object.keys(grouped)) {
   grouped[key].sort((a, b) => {
     const schoolCmp = a.school.localeCompare(b.school, 'zh-Hant');
