@@ -104,6 +104,22 @@ for (let i = grouped.junior.length - 1; i >= 0; i--) {
   }
 }
 
+// Withdrawn entry (user request)
+grouped.primary = grouped.primary.filter(
+  (e) => !(e.school === '拔萃女小學' && e.student === '余安之' && e.award === '二等獎')
+);
+
+// Senior: simplified Chinese name typo in CSV
+for (const e of grouped.senior) {
+  if (
+    e.school === '香海正覺蓮社佛教正覺中學' &&
+    e.student === '陈思科' &&
+    e.award === '二等獎'
+  ) {
+    e.student = '陳思科';
+  }
+}
+
 for (const key of Object.keys(grouped)) {
   grouped[key].sort((a, b) => {
     const schoolCmp = a.school.localeCompare(b.school, 'zh-Hant');
