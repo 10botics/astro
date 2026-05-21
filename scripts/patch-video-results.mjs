@@ -33,6 +33,11 @@ data.grouped.primary = data.grouped.primary.filter(
   (e) => !match(e, '拔萃女小學', 'not applicable', '二等獎')
 );
 
+// 高小組: Delete 拔萃女小學, 余安之, 二等獎
+data.grouped.primary = data.grouped.primary.filter(
+  (e) => !match(e, '拔萃女小學', '余安之', '二等獎')
+);
+
 // 初中組
 data.grouped.junior = data.grouped.junior.filter((e) => {
   if (match(e, '石籬天主教中學', '25-26年度1A班同學', '一等獎')) return false;

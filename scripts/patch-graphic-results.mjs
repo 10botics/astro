@@ -31,6 +31,7 @@ function shouldDelete(entry, grade) {
     if (school === '中華基督教會小學' && student === '陳藴晞') return true;
     // duplicate / withdrawn (user request)
     if (school === '路德會呂祥光中學' && student === '趙蔚榣 凌梓桐' && entry.award === '三等獎') return true;
+    if (school === '拔萃女小學' && student === '余安之' && entry.award === '二等獎') return true;
     return false;
   }
 
