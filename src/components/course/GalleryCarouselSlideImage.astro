@@ -1,0 +1,58 @@
+---
+import { Image, type ImageMetadata } from 'astro:assets';
+
+export interface Props {
+  isRemote: boolean;
+  src: string | ImageMetadata;
+  alt: string;
+  /** Same idea as HeroSection `heroImageMaxScale`: object-contain, limited to this fraction of slide width. */
+  maxScale?: number;
+}
+
+const { isRemote, src, alt, maxScale } = Astro.props;
+const scaled =
+  typeof maxScale === 'number' && maxScale > 0 && maxScale <= 1 ? maxScale : null;
+const widthStyle = scaled != null ? ({ width: `${scaled * 100}%` } as const) : undefined;
+---
+
+{
+  scaled != null ? (
+    <div class="flex items-center justify-center w-full">
+      {isRemote ? (
+        <img
+          src={src as string}
+          alt={alt}
+          class="h-auto max-w-none block object-contain rounded-lg"
+          style={widthStyle}
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        <Image
+          src={src as ImageMetadata}
+          alt={alt}
+          class="h-auto max-w-none block object-contain rounded-lg"
+          style={widthStyle}
+          loading="lazy"
+          decoding="async"
+        />
+      )}
+    </div>
+  ) : isRemote ? (
+    <img
+      src={src as string}
+      alt={alt}
+      class="w-full h-auto object-contain rounded-lg"
+      loading="lazy"
+      decoding="async"
+    />
+  ) : (
+    <Image
+      src={src as ImageMetadata}
+      alt={alt}
+      class="w-full h-auto object-contain rounded-lg"
+      loading="lazy"
+      decoding="async"
+    />
+  )
+}

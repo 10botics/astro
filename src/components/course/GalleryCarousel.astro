@@ -1,26 +1,102 @@
 ---
-import { Image } from 'astro:assets';
+import { type ImageMetadata } from 'astro:assets';
+import GalleryCarouselSlideImage from './GalleryCarouselSlideImage.astro';
+
+export type GalleryImageInput = string | ImageMetadata | GalleryImageSlot;
+
+type GalleryImageSlot = {
+  src: string | ImageMetadata;
+  alt: string;
+  /** Object-contain, limited to this fraction of slide width (see HeroSection `heroImageMaxScale`). */
+  maxScale?: number;
+};
+
+type NormalizedGalleryImage = {
+  src: string | ImageMetadata;
+  alt: string;
+  isRemote: boolean;
+  maxScale?: number;
+};
 
 export interface Props {
   title?: string;
-  images: (string | ImageMetadata)[];
+  /** Use `null`/`undefined` entries to keep slide positions; they reuse the first valid image. */
+  images: ReadonlyArray<GalleryImageInput | null | undefined>;
   intervalMs?: number;
 }
 
-const { title, images, intervalMs = 4000 } = Astro.props;
+/** Vite/Astro metadata: `src` may be a string or URL object — requiring `typeof src === 'string'` caused null slides. */
+function isImageMetadataLike(o: Record<string, unknown>): boolean {
+  return (
+    typeof o.width === 'number' &&
+    typeof o.height === 'number' &&
+    typeof o.format === 'string' &&
+    'src' in o &&
+    o.src != null
+  );
+}
 
-// Normalize images to ensure proper handling for both string URLs and ImageMetadata objects
-const normalizedImages = images.map(img => {
+function normalizeGalleryImage(
+  img: GalleryImageInput | null | undefined,
+): NormalizedGalleryImage | null {
+  if (img == null) {
+    return null;
+  }
   if (typeof img === 'string') {
-    // If it's a string URL, return it as is for static assets
     return { src: img, alt: 'Gallery image', isRemote: true };
-  } else if (img && typeof img === 'object' && 'src' in img) {
-    // This is an ImageMetadata object from Astro import - use the src property
-    // According to Astro docs, ImageMetadata objects have a src property that contains the processed image URL
-    return { src: img, alt: 'Gallery image', isRemote: false };
+  }
+  if (img && typeof img === 'object') {
+    const o = img as Record<string, unknown>;
+    // Dynamic `import("./asset.jpg")` gives `{ default: ImageMetadata }` — unwrap before other checks.
+    if (
+      'default' in o &&
+      (o.default as unknown) !== null &&
+      (o.default as unknown) !== undefined &&
+      !isImageMetadataLike(o)
+    ) {
+      return normalizeGalleryImage(o.default as GalleryImageInput);
+    }
+    if (isImageMetadataLike(o)) {
+      return { src: img as ImageMetadata, alt: 'Gallery image', isRemote: false };
+    }
+    if ('src' in o && o.src !== undefined) {
+      const alt = typeof o.alt === 'string' ? o.alt : 'Gallery image';
+      const rawScale = o.maxScale;
+      const maxScale =
+        typeof rawScale === 'number' && rawScale > 0 && rawScale <= 1 ? rawScale : undefined;
+      const sub = o.src;
+      if (typeof sub === 'string') {
+        return { src: sub, alt, isRemote: true, maxScale };
+      }
+      if (sub instanceof URL) {
+        return { src: sub.href, alt, isRemote: true, maxScale };
+      }
+      if (sub && typeof sub === 'object') {
+        const m = sub as Record<string, unknown>;
+        if (isImageMetadataLike(m)) {
+          return { src: sub as ImageMetadata, alt, isRemote: false, maxScale };
+        }
+      }
+    }
   }
   return null;
-}).filter(img => img !== null);
+}
+
+const { title, images: imagesRaw, intervalMs = 4000 } = Astro.props;
+const images = imagesRaw ?? [];
+
+// Normalize images for string URLs, ImageMetadata imports, or { src, alt } wrappers.
+// Entries that fail normalization reuse the first valid image instead of becoming null gaps.
+const normalizedSlots = images.map(normalizeGalleryImage);
+const firstValidImage =
+  normalizedSlots.find((img): img is NormalizedGalleryImage => img !== null);
+const normalizedImages: NormalizedGalleryImage[] =
+  firstValidImage === undefined
+    ? []
+    : normalizedSlots.map((slot) => slot ?? firstValidImage);
+
+/** No clones / no “more slides” UX when everything fits the strip (≤3 slides). */
+const interactiveCarousel = normalizedImages.length > 3;
 
 // Debug logging for development
 if (import.meta.env.DEV) {
@@ -29,7 +105,11 @@ if (import.meta.env.DEV) {
 }
 ---
 
-<div class="gallery-carousel relative" data-interval-ms={intervalMs}>
+<div
+  class="gallery-carousel relative"
+  data-interval-ms={intervalMs}
+  data-carousel-static={interactiveCarousel ? undefined : 'true'}
+>
   {title && (
     <div class="text-center mb-8">
       <h3 class="text-2xl font-bold text-gray-800">{title}</h3>
@@ -49,23 +129,12 @@ if (import.meta.env.DEV) {
               class="carousel-slide flex-shrink-0 w-full lg:w-1/3 md:w-1/2 px-2"
               data-clone="start"
             >
-              {img.isRemote ? (
-                <img 
-                  src={img.src as string} 
-                  alt={img.alt}
-                  class="w-full h-auto object-contain rounded-lg"
-                  loading="lazy"
-                  decoding="async"
-                />
-              ) : (
-                <Image 
-                  src={img.src as ImageMetadata} 
-                  alt={img.alt}
-                  class="w-full h-auto object-contain rounded-lg"
-                  loading="lazy"
-                  decoding="async"
-                />
-              )}
+              <GalleryCarouselSlideImage
+                isRemote={img.isRemote}
+                src={img.src}
+                alt={img.alt}
+                maxScale={img.maxScale}
+              />
             </div>
           ))}
 
@@ -75,23 +144,12 @@ if (import.meta.env.DEV) {
               class="carousel-slide flex-shrink-0 w-full lg:w-1/3 md:w-1/2 px-2"
               data-original-index={index}
             >
-              {img.isRemote ? (
-                <img 
-                  src={img.src as string} 
-                  alt={img.alt}
-                  class="w-full h-auto object-contain rounded-lg"
-                  loading="lazy"
-                  decoding="async"
-                />
-              ) : (
-                <Image 
-                  src={img.src as ImageMetadata} 
-                  alt={img.alt}
-                  class="w-full h-auto object-contain rounded-lg"
-                  loading="lazy"
-                  decoding="async"
-                />
-              )}
+              <GalleryCarouselSlideImage
+                isRemote={img.isRemote}
+                src={img.src}
+                alt={img.alt}
+                maxScale={img.maxScale}
+              />
             </div>
           ))}
 
@@ -101,56 +159,52 @@ if (import.meta.env.DEV) {
               class="carousel-slide flex-shrink-0 w-full lg:w-1/3 md:w-1/2 px-2"
               data-clone="end"
             >
-              {img.isRemote ? (
-                <img 
-                  src={img.src as string} 
-                  alt={img.alt}
-                  class="w-full h-auto object-contain rounded-lg"
-                  loading="lazy"
-                  decoding="async"
-                />
-              ) : (
-                <Image 
-                  src={img.src as ImageMetadata} 
-                  alt={img.alt}
-                  class="w-full h-auto object-contain rounded-lg"
-                  loading="lazy"
-                  decoding="async"
-                />
-              )}
+              <GalleryCarouselSlideImage
+                isRemote={img.isRemote}
+                src={img.src}
+                alt={img.alt}
+                maxScale={img.maxScale}
+              />
             </div>
           ))}
         </div>
 
-        <!-- Navigation Buttons -->
-        <button 
-          class="carousel-btn carousel-prev absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200 z-10"
-          aria-label="Previous image"
-        >
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-          </svg>
-        </button>
-        
-        <button 
-          class="carousel-btn carousel-next absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200 z-10"
-          aria-label="Next image"
-        >
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
-        </button>
+        {interactiveCarousel && (
+          <>
+            <!-- Navigation Buttons -->
+            <button
+              type="button"
+              class="carousel-btn carousel-prev absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200 z-10"
+              aria-label="Previous image"
+            >
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+              </svg>
+            </button>
 
-        <!-- Dots -->
-        <div class="carousel-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
-          {normalizedImages.map((_, i) => (
-            <button 
-              class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white transition-colors duration-200"
-              aria-label={`Go to slide ${i + 1}`}
-              data-index={i}
-            ></button>
-          ))}
-        </div>
+            <button
+              type="button"
+              class="carousel-btn carousel-next absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-200 z-10"
+              aria-label="Next image"
+            >
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </button>
+
+            <!-- Dots -->
+            <div class="carousel-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+              {normalizedImages.map((_, i) => (
+                <button
+                  type="button"
+                  class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white transition-colors duration-200"
+                  aria-label={`Go to slide ${i + 1}`}
+                  data-index={i}
+                ></button>
+              ))}
+            </div>
+          </>
+        )}
       </>
     ) : (
       <div class="text-center py-16 text-gray-500">
@@ -197,9 +251,13 @@ if (import.meta.env.DEV) {
     private cloneOffset: number;
     private autoplayInterval: ReturnType<typeof setInterval> | null;
     private intervalMs: number;
+    /** Full carousel UX (nav, autoplay); off when slide count ≤ 3. */
+    private interactive: boolean;
 
     constructor(container: HTMLElement) {
       this.container = container;
+      this.interactive =
+        container.getAttribute('data-carousel-static') !== 'true';
       this.track = container.querySelector('.carousel-track') as HTMLElement;
       this.slides = container.querySelectorAll('.carousel-slide');
       this.originalSlides = container.querySelectorAll('[data-original-index]');
@@ -216,6 +274,37 @@ if (import.meta.env.DEV) {
       
       this.init();
     }
+
+    /** Euclidean modulo: always in [0, n) for n > 0. */
+    private mod(slideIndex: number, n: number): number {
+      if (n <= 0) return 0;
+      return ((slideIndex % n) + n) % n;
+    }
+
+    /** Which original slide (0 … n−1) the track position represents. Uses modulo after clone-strip mapping. */
+    private getLogicalSlideIndex(): number {
+      const n = this.totalSlides;
+      if (n === 0) return 0;
+      if (this.cloneOffset === 0) {
+        return this.mod(this.currentIndex, n);
+      }
+      let active = this.currentIndex - this.cloneOffset;
+      const firstEndClone = this.cloneOffset + n;
+      if (this.currentIndex >= firstEndClone) {
+        active = this.currentIndex - firstEndClone;
+      } else if (this.currentIndex < this.cloneOffset) {
+        active = this.currentIndex + n - this.cloneOffset;
+      }
+      return this.mod(active, n);
+    }
+
+    /** Map a logical slide to the physical strip index used by translate (clone band or linear). */
+    private physicalFromLogical(logicalSlide: number): number {
+      const n = this.totalSlides;
+      if (n === 0) return 0;
+      const l = this.mod(logicalSlide, n);
+      return this.cloneOffset === 0 ? l : this.cloneOffset + l;
+    }
     
     getPerView(): number {
       if (window.innerWidth >= 1024) return 3; // lg
@@ -227,14 +316,26 @@ if (import.meta.env.DEV) {
       const newPerView = this.getPerView();
       if (newPerView !== this.perView) {
         this.perView = newPerView;
-        // Clamp current index to valid range
-        this.currentIndex = Math.min(this.currentIndex, this.totalSlides - 1);
+        if (!this.interactive) {
+          this.updateTrack();
+          return;
+        }
+        const logical = this.getLogicalSlideIndex();
+        /** Keep same slide visible; modulo maps logical index into correct physical position for new viewport. */
+        this.currentIndex = this.physicalFromLogical(logical);
         this.updateTrack();
         this.updateDots();
       }
     }
     
     init() {
+      if (!this.interactive) {
+        this.perView = this.getPerView();
+        this.updateTrack();
+        window.addEventListener('resize', () => this.updatePerView());
+        return;
+      }
+
       this.bindEvents();
       this.startAutoplay();
       this.updateDots();
@@ -260,6 +361,8 @@ if (import.meta.env.DEV) {
       // Handle responsive behavior
       window.addEventListener('resize', () => this.updatePerView());
       
+      this.track.addEventListener('transitionend', (e) => this.onTrackTransitionEnd(e));
+      
       // Keyboard navigation
       document.addEventListener('keydown', (e) => {
         if (this.container.contains(document.activeElement)) {
@@ -269,29 +372,73 @@ if (import.meta.env.DEV) {
       });
     }
     
+    private setTrackTransition(enabled: boolean) {
+      this.track.style.transition = enabled ? '' : 'none';
+    }
+
+    /** After transform transition: snap from clone strip to equivalent real slide (invisible jump). */
+    private onTrackTransitionEnd(e: TransitionEvent) {
+      if (e.target !== this.track || e.propertyName !== 'transform') return;
+      if (this.cloneOffset === 0) return;
+
+      const n = this.totalSlides;
+      const firstEndClone = this.cloneOffset + n;
+
+      if (this.currentIndex >= firstEndClone) {
+        this.setTrackTransition(false);
+        const logical = this.mod(this.currentIndex - firstEndClone, n);
+        this.currentIndex = this.physicalFromLogical(logical);
+        this.updateTrack();
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => this.setTrackTransition(true));
+        });
+        this.updateDots();
+        return;
+      }
+
+      if (this.currentIndex >= 0 && this.currentIndex < this.cloneOffset) {
+        this.setTrackTransition(false);
+        const logical = this.mod(this.currentIndex + n - this.cloneOffset, n);
+        this.currentIndex = this.physicalFromLogical(logical);
+        this.updateTrack();
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => this.setTrackTransition(true));
+        });
+        this.updateDots();
+      }
+    }
+
     updateTrack() {
-  const imageWidth = 100 / this.perView; // Width of one image in the current view
-  const translateX = -(this.currentIndex * imageWidth);
-  this.track.style.transform = `translateX(${translateX}%)`;
+      const imageWidth = 100 / this.perView; // Width of one image in the current view
+      const translateX = -(this.currentIndex * imageWidth);
+      this.track.style.transform = `translateX(${translateX}%)`;
     }
     
     prev() {
-      this.currentIndex--;
-      
-      // Check if we need to wrap around
-      if (this.cloneOffset > 0 && this.currentIndex < this.cloneOffset) {
-        // We're before the first real slide, jump to the end without animation
-        this.track.style.transition = 'none';
-        this.currentIndex = this.cloneOffset + this.totalSlides - 1;
+      const n = this.totalSlides;
+      if (n === 0) return;
+
+      if (this.cloneOffset === 0) {
+        this.currentIndex = this.mod(this.currentIndex - 1, n);
         this.updateTrack();
-        // Re-enable animation after a brief delay
-        setTimeout(() => {
-          this.track.style.transition = 'transform 500ms ease-in-out';
-        }, 10);
-      } else if (this.cloneOffset === 0 && this.currentIndex < 0) {
-        this.currentIndex = this.totalSlides - 1;
+        this.updateDots();
+        this.updateButtons();
+        this.restartAutoplay();
+        return;
       }
-      
+
+      this.currentIndex--;
+
+      if (this.currentIndex < 0) {
+        this.setTrackTransition(false);
+        /** Left of first cell → previous slide in modulo order (wrap to last logical). */
+        this.currentIndex = this.physicalFromLogical(n - 1);
+        this.updateTrack();
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => this.setTrackTransition(true));
+        });
+      }
+
       this.updateTrack();
       this.updateDots();
       this.updateButtons();
@@ -299,22 +446,33 @@ if (import.meta.env.DEV) {
     }
     
     next() {
-      this.currentIndex++;
-      
-      // Check if we need to wrap around
-      if (this.cloneOffset > 0 && this.currentIndex >= this.cloneOffset + this.totalSlides) {
-        // We're past the last real slide, jump to the beginning without animation
-        this.track.style.transition = 'none';
-        this.currentIndex = this.cloneOffset;
+      const n = this.totalSlides;
+      if (n === 0) return;
+
+      if (this.cloneOffset === 0) {
+        this.currentIndex = this.mod(this.currentIndex + 1, n);
         this.updateTrack();
-        // Re-enable animation after a brief delay
-        setTimeout(() => {
-          this.track.style.transition = 'transform 500ms ease-in-out';
-        }, 10);
-      } else if (this.cloneOffset === 0 && this.currentIndex >= this.totalSlides) {
-        this.currentIndex = 0;
+        this.updateDots();
+        this.updateButtons();
+        this.restartAutoplay();
+        return;
       }
-      
+
+      this.currentIndex++;
+
+      const maxPhy = this.cloneOffset + n + this.cloneOffset - 1;
+      if (this.currentIndex > maxPhy) {
+        this.setTrackTransition(false);
+        /** Read logical from last valid cell, advance one modulo n → first→second wrap at cycle. */
+        this.currentIndex--;
+        const nextLogical = this.mod(this.getLogicalSlideIndex() + 1, n);
+        this.currentIndex = this.physicalFromLogical(nextLogical);
+        this.updateTrack();
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => this.setTrackTransition(true));
+        });
+      }
+
       this.updateTrack();
       this.updateDots();
       this.updateButtons();
@@ -322,8 +480,9 @@ if (import.meta.env.DEV) {
     }
     
     goToSlide(slideIndex: number) {
-      // Convert dot index to actual slide index (accounting for clones)
-      this.currentIndex = this.cloneOffset + slideIndex;
+      const n = this.totalSlides;
+      if (n === 0) return;
+      this.currentIndex = this.physicalFromLogical(slideIndex);
       this.updateTrack();
       this.updateDots();
       this.updateButtons();
@@ -331,11 +490,12 @@ if (import.meta.env.DEV) {
     }
     
     updateDots() {
-      // Calculate which original slide we're currently viewing
-      const activeOriginalIndex = this.currentIndex - this.cloneOffset;
-      
+      const n = this.totalSlides;
+      if (n === 0) return;
+      const clampedDot = this.getLogicalSlideIndex();
+
       this.dots.forEach((dot: Element, index: number) => {
-        if (index === activeOriginalIndex) {
+        if (index === clampedDot) {
           dot.classList.add('bg-white');
           dot.classList.remove('bg-white/60');
           dot.setAttribute('aria-selected', 'true');
