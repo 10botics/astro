@@ -5,6 +5,7 @@
  */
 
 import { generateTagSlug } from './tagMapping';
+import { parentTalkStaffWorkshop } from '../data/parentTalkStaffWorkshop';
 
 export { TAG_MAPPING, generateTagSlug } from './tagMapping';
 
@@ -229,7 +230,7 @@ export async function discoverStaffDevelopmentCourses(
       } as Course;
     });
 
-  return mapped;
+  return [...mapped, parentTalkStaffWorkshop as Course];
 }
 
 /**

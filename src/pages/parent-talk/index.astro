@@ -103,6 +103,25 @@ const faqItems = [
   },
 ];
 
+const servicedSchools = [
+  { nameZh: '聖若瑟英文小學' },
+  { nameZh: '真光女書院' },
+  { nameZh: '聖公會李炳中學' },
+  { nameZh: '聖公會德田李兆強小學' },
+  { nameZh: '佛教榮茵學校' },
+  { nameZh: '九龍城浸信會禧年小學' },
+  { nameZh: '元朗官立小學' },
+  { nameZh: '愛秩序灣官立小學' },
+  { nameZh: '塘尾道官立小學' },
+  { nameZh: '新界鄉議局大埔區中學' },
+  { nameZh: '天水圍循道衞理中學' },
+  { nameZh: '匡智翠林晨崗學校（小學部）' },
+  { nameZh: '九龍塘官立小學' },
+  { nameZh: '保良局方王錦全小學' },
+  { nameZh: '慈航學校' },
+  { nameZh: '天主教石鐘山紀念小學' },
+];
+
 const PARENT_TALK_TAG = '家長講座';
 const allNews = await getCollection('news');
 const parentTalkNews = allNews
@@ -141,6 +160,7 @@ function formatDate(date: Date): string {
       subtitle={courseData.subtitle}
       description={courseData.detailedDescription}
       heroImage={courseData.heroImage}
+      heroImageMaxScale={0.8}
       tags={courseData.tags}
       descriptionClass="whitespace-pre-line"
       rootSectionHref="/school-courses"
@@ -213,6 +233,33 @@ function formatDate(date: Date): string {
           ]}
           intervalMs={4500}
         />
+      </div>
+    </section>
+
+    <section class="section-padding bg-white" aria-labelledby="serviced-schools-heading">
+      <div class="container-standard">
+        <div class="text-center mb-12">
+          <h2 id="serviced-schools-heading" class="text-3xl font-bold text-gray-900 mb-4">
+            服務學校
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            以下為曾選擇「利用人工智能提昇學習效能」家長講座到校或預約安排的學校。
+          </p>
+        </div>
+        <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 list-none p-0 m-0">
+          {servicedSchools.map((school) => (
+            <li class="card-base card-hover p-6 flex flex-col h-full">
+              <div class="flex items-start gap-3">
+                <span class="text-2xl text-brand-cyan-600 shrink-0" aria-hidden="true">
+                  <i class="fas fa-school" />
+                </span>
+                <div class="min-w-0">
+                  <h3 class="text-lg font-semibold text-gray-900 leading-snug">{school.nameZh}</h3>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
 

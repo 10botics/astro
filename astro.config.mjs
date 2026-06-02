@@ -176,7 +176,9 @@ export default defineConfig({
     '/course/3d-microbit-robot-creation': '/school-courses/3d-microbit-robot-creation',
     '/course/ai-video-production': '/school-courses/ai-video-production',
     '/course/parent-ai-learning-efficiency': '/parent-talk',
-    
+    '/school-courses/parent-ai-learning-efficiency': '/parent-talk',
+    '/school-courses/利用人工智能提昇學習效能': '/parent-talk',
+
     // STEM Day activities
     '/stem-day/straw-bridge': '/stemday/straw-bridge',
     '/stem-day/飲管橋': '/stemday/straw-bridge',
