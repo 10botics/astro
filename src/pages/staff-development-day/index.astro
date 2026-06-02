@@ -16,6 +16,7 @@ import gallery2 from '../../assets/images/staff-development-day/mainpage/gallery
 import gallery3 from '../../assets/images/staff-development-day/mainpage/gallery-3.jpeg';
 import gallery4 from '../../assets/images/staff-development-day/mainpage/gallery-4.jpeg';
 import geminiEducator from '../../assets/images/staff-development-day/mainpage/gemini-educator.jpg';
+import parentTalkHero from '../../assets/images/parent-talk/ai-improve-study-efficiency/gallery-classroom-parent-talk.png';
 
 const title = "教師發展日工作坊 - 10教育";
 const description = "定期舉辦教師STEM培訓工作坊，提供AIGC技術協助自動生成教案試題學習資料，節省教師時間精力，獲取整理教學資源使教學流暢高效";
@@ -54,6 +55,55 @@ const description = "定期舉辦教師STEM培訓工作坊，提供AIGC技術協
 	<!-- Main Content -->
 	<main class="py-16">
 		<div class="container mx-auto px-4">
+			<!-- Parent Talk Section -->
+			<section class="mb-20">
+				<div class="grid lg:grid-cols-2 gap-12 items-center">
+					<div class="order-2 lg:order-1">
+						<div class="bg-gray-50 rounded-2xl p-8">
+							<h2 class="text-3xl font-bold text-gray-900 mb-6">家長講座 — 利用人工智能提昇學習效能</h2>
+							<p class="text-lg text-gray-700 leading-relaxed mb-6">
+								面向家長的 AI 實作工作坊：示範生成式人工智能、提示工程與日常學習應用，並討論 AI 素養、學術誠信與安全使用界線，支援家校協作。
+							</p>
+							<ul class="space-y-3 text-gray-700 mb-8">
+								<li class="flex items-start">
+									<span class="text-brand-blue-600 mr-3 mt-1">•</span>
+									認識可用的 AI 工具與香港使用情境
+								</li>
+								<li class="flex items-start">
+									<span class="text-brand-blue-600 mr-3 mt-1">•</span>
+									功課檢查、測驗生成、作文與閱讀輔助等實作示範
+								</li>
+								<li class="flex items-start">
+									<span class="text-brand-blue-600 mr-3 mt-1">•</span>
+									AI 素養、私隱與學術誠信
+								</li>
+							</ul>
+							<a
+								href="/parent-talk"
+								class="inline-flex items-center px-6 py-3 bg-brand-blue-600 text-white font-semibold rounded-lg hover:bg-brand-blue-700 transition-colors"
+							>
+								了解家長講座詳情
+								<i class="fas fa-arrow-right ml-2 text-sm" aria-hidden="true"></i>
+							</a>
+						</div>
+					</div>
+					<div class="order-1 lg:order-2">
+						<a href="/parent-talk" class="block relative group">
+							<Image
+								src={parentTalkHero}
+								alt="家長講座 — 利用人工智能提昇學習效能"
+								class="w-full h-auto rounded-2xl shadow-2xl group-hover:opacity-95 transition-opacity"
+								width={800}
+								height={600}
+							/>
+							<div class="absolute bottom-4 left-4 right-4 bg-black bg-opacity-70 text-white p-4 rounded-lg">
+								<p class="text-sm">家長講座 — 利用人工智能提昇學習效能</p>
+							</div>
+						</a>
+					</div>
+				</div>
+			</section>
+
 			<!-- Gemini Educator Section -->
 			<section class="mb-20">
 				<div class="grid lg:grid-cols-2 gap-12 items-center">
