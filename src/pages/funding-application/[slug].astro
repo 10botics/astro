@@ -29,7 +29,7 @@ if (!slug) {
 }
 
 // Get filename from canonical slug mapping
-const slugToFilenameMap = {
+const slugToFilenameMap: Record<string, string> = {
   'it-innovation-lab': 'IT創新實驗室計劃.astro',
   'knowing-more-about-it': '奇趣IT識多啲計劃.astro'
 };

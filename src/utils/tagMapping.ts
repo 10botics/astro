@@ -111,15 +111,21 @@ export const TAG_MAPPING: Record<string, string> = {
  * circular-init / TDZ when re-exported from courseMappings).
  */
 export function generateTagSlug(tag: string): string {
-  const mappedTag = TAG_MAPPING[tag] || tag;
+  if (tag == null || typeof tag !== 'string') return 'misc';
+  const trimmed = tag.trim();
+  if (!trimmed) return 'misc';
+
+  const mappedTag = TAG_MAPPING[trimmed] || trimmed;
 
   if (/[\u4e00-\u9fff]/.test(mappedTag)) {
-    return mappedTag;
+    return mappedTag || 'misc';
   }
 
-  return mappedTag
+  const slug = mappedTag
     .toLowerCase()
     .replace(/\s+/g, '-')
     .replace(/[^\w-]/g, '')
     .replace(/-+$/, '');
+
+  return slug || 'misc';
 }

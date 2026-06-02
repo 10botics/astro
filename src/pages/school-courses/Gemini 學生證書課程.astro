@@ -1,0 +1,208 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+
+import heroGeminiAiChat from '../../assets/images/school-courses/AI啟蒙課程/ai-application.png';
+import geminiStudentCertificate from '../../assets/images/school-courses/Gemini 學生證書課程/certificate-gemini-certified-student-sample.jpg';
+
+export const courseData = {
+  title: "Gemini 學生證書課程",
+  subtitle: "8 小時掌握 Gemini、NotebookLM 與 AI 實作，邁向 Gemini 學生證書",
+  tags: [
+    "AI 人工智能",
+    "Google Gemini",
+    "NotebookLM",
+    "Programming 編程",
+    "初小",
+    "高小",
+    "初中"
+  ],
+  videoId: "your-video-id-here",
+  description:
+    "到校課程結合 Google Gemini、NotebookLM 與 AI vibe coding 實作，協助學生建立生成式 AI 基礎、熟悉校園可用的學習工具，並預留時間完成 Gemini 學生證書相關考核。",
+  detailedDescription:
+    "本課程為 8 小時密集設計，分四大模組：先從生成式 AI 與 Google AI 生態介紹起，深入 Gemini 平台核心功能與引導學習、影像生成、Canvas、深度研究與 Gems 等應用；其後透過 NotebookLM 認識 Magic Door 試用與平台核心功能，涵蓋 Audio Overview、Video Overview、MindMap、Flashcard、Quiz 等學習形式；再以「AI vibe coding」帶領學生製作自製五子棋與個人化小遊戲；最後安排考取 Gemini 學生證書，鞏固學習成果。",
+  heroImage: heroGeminiAiChat
+};
+
+const courseHighlights = [
+  {
+    icon: "fas fa-wand-magic-sparkles",
+    title: "Gemini 與生成式 AI 基礎",
+    description:
+      "認識生成式 AI 與 Google AI 工具願景，並實際操作 Gemini 平台核心能力，包含引導學習、影像生成、Canvas、深度研究與 Gems。"
+  },
+  {
+    icon: "fas fa-book-reader",
+    title: "NotebookLM 與延展學習體驗",
+    description:
+      "透過 Magic Door 試用與 NotebookLM 核心流程，體驗 Audio／Video Overview、心智圖、生字卡與測驗等，將閱讀與報告轉為可聽、可視化的學習內容。"
+  },
+  {
+    icon: "fas fa-certificate",
+    title: "實作小遊戲＋學生證書",
+    description:
+      "以 AI vibe coding 完成五子棋與個人遊戲專題，最後預留時間進行 Gemini 學生證書考取，讓能力與認證並重。"
+  }
+];
+
+const courseCurriculum = {
+  items: [
+    {
+      title: "Gemini",
+      duration: "2 小時",
+      content: [
+        "介紹生成式 AI 及 Google AI 工具",
+        "Gemini 平台核心功能",
+        "引導學習、影像生成、Canvas、深度研究、Gems 等應用概覽與實作"
+      ]
+    },
+    {
+      title: "NotebookLM",
+      duration: "2 小時",
+      content: [
+        "Magic Door 試用",
+        "NotebookLM 平台核心功能",
+        "Audio Overview、Video Overview、MindMap、Flashcard、Quiz 等介紹與練習"
+      ]
+    },
+    {
+      title: "AI vibe coding",
+      duration: "3 小時",
+      content: [
+        "以 AI 輔助規劃與實作程式邏輯",
+        "建立自製五子棋",
+        "延伸製作專屬主題小遊戲"
+      ]
+    },
+    {
+      title: "考取證書",
+      duration: "1 小時",
+      content: [
+        "複習 Gemini 重點與應考注意事項",
+        "在課堂內完成 Gemini 學生證書相關考核與提交"
+      ]
+    }
+  ]
+};
+
+const faqItems = [
+  {
+    question: "學校在課程中如何使用 NotebookLM？",
+    answer: [
+      "在到校課程中，我們會配合 Magic Door 試用——由本公司另外提供的方案，協助學校在既有的課程脈絡下安全、有節奏地導入 NotebookLM 相關體驗。",
+      "更多方案說明可參考：https://www.magicdoor.cc/"
+    ]
+  },
+  {
+    question: "Gemini 學生證書對學生有什麼幫助？",
+    answer: [
+      "證書可作為學生完成 Google Gemini 學習路徑的正式紀錄，有助於他們在升學資料或學習歷程中展現具認證的 AI 素養。",
+      "課程最後一段會集中完成考核步驟；若學生需額外支援，導師會於課堂內安排練習與答疑。"
+    ]
+  },
+  {
+    question: "什麼年級與設備較適合？",
+    answer: [
+      "建議初小至高小、初中學生參與；需具備基本中英文打字與網頁操作能力更佳。",
+      "學校請準備可上網的電腦或 Chromebook／手提電腦，並讓學生使用學校核准的 Google 帳戶登入相關服務。"
+    ]
+  }
+];
+
+const schoolArrangementNote =
+  '課程可配合學校節數與資訊設備調整細節，歡迎聯絡我們討論到校安排。';
+---
+
+<Layout title={courseData.title} description={courseData.description}>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <main>
+    <HeroSection
+      title={courseData.title}
+      subtitle={courseData.subtitle}
+      description={courseData.detailedDescription}
+      heroImage={courseData.heroImage}
+      tags={courseData.tags}
+    />
+
+    <section class="section-padding bg-gray-50" aria-labelledby="gemini-student-certificate-heading">
+      <div class="container-standard">
+        <div class="text-center mb-10">
+          <h2 id="gemini-student-certificate-heading" class="text-3xl font-bold text-gray-900 mb-4">
+            官方認證證書
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            課程預留時間完成考核，學生可取得 Gemini Certified Student 認證（範例樣式如下）。
+          </p>
+        </div>
+        <div class="max-w-4xl mx-auto rounded-xl overflow-hidden shadow-xl ring-1 ring-gray-100 bg-gray-50">
+          <Image
+            src={geminiStudentCertificate}
+            alt="Gemini Certified Student 證書範例（Google for Education），展示課程完成後可取得的認證樣式。"
+            width={3574}
+            height={2792}
+            sizes="(min-width: 1024px) 896px, 100vw"
+            class="w-full h-auto object-contain max-h-[85vh]"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding bg-white">
+      <div class="container-standard">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">課程亮點</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {courseHighlights.map((item) => (
+            <div class="card-base card-hover p-6">
+              <div class="flex items-start">
+                <div class="text-3xl text-brand-cyan-600 mr-4">
+                  <i class={item.icon}></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
+                  <p class="text-gray-600">{item.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <SingleCourseContent
+      items={courseCurriculum.items}
+      hours="8 小時"
+      hoursText="共"
+      showAdjustmentNote={true}
+      adjustmentText="可根據學校需要調整節數與模組比重"
+      hoursFooterNote={schoolArrangementNote}
+    />
+
+    <QnASection
+      faqs={faqItems.map((item) => ({
+        question: item.question,
+        answer: item.answer.join("\n")
+      }))}
+    />
+
+    <RelatedCourses
+      courseTags={courseData.tags}
+      courseTitle={courseData.title}
+      currentCourseSlug="gemini-student-certificate"
+      context="course"
+    />
+
+    <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
+
+    <ContactSection subtitle="想了解更多關於 Gemini 學生證書課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排與到校方案。" />
+  </main>
+</Layout>

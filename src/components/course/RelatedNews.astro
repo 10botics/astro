@@ -64,7 +64,7 @@ function calculateTagSimilarity(newsTags: string[], inputTags: string[]): number
 const relatedNews = allNews
   .filter(article => {
     // For news context, exclude the current news article
-    if (context === 'news' && currentNewsSlug && article.slug === currentNewsSlug) {
+    if (context === 'news' && currentNewsSlug && article.id === currentNewsSlug) {
       return false;
     }
     return true;
@@ -150,7 +150,7 @@ const sectionDescription = context === 'news'
 
               {/* Title */}
               <h3 class={`text-lg font-semibold text-gray-900 mb-3 line-clamp-2 ${colorScheme.hover} transition-colors`}>
-                <a href={`/news/${article.slug}`} class="hover:underline">
+                <a href={`/news/${article.id}`} class="hover:underline">
                   {article.data.title}
                 </a>
               </h3>
@@ -178,7 +178,7 @@ const sectionDescription = context === 'news'
 
               {/* Read More Link */}
               <a 
-                href={`/news/${article.slug}`}
+                href={`/news/${article.id}`}
                 class={`inline-flex items-center ${context === 'news' ? 'text-brand-blue-600 hover:text-brand-blue-700' : 'text-cyan-600 hover:text-cyan-700'} font-medium text-sm group-hover:underline`}
               >
                 閱讀更多

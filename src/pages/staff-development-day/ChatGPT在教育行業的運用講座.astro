@@ -1,0 +1,118 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import StaffWorkshopPageSections from '../../components/staff-development/StaffWorkshopPageSections.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import chatgptWorkshop from '../../assets/images/staff-development-day/mainpage/chatgpt-workshop.jpg';
+
+export const courseData = {
+  title: 'ChatGPT在教育行業的運用講座',
+  subtitle: '教學資源、日常工作與即時答疑應用',
+  description:
+    '講座將針對教育界和老師的需要，提供内容緊貼的最新資訊，以深入淺出的方式，向老師介紹ChatGPT，並教授關於ChatGPT如何輔助日常教學工作，使用ChatGPT加快編寫教學資源，協助老師迅速解決學生常見問題等。',
+  detailedDescription:
+    '講座將針對教育界和老師的需要，提供内容緊貼的最新資訊，以深入淺出的方式，向老師介紹 ChatGPT，並教授 ChatGPT 如何輔助日常教學工作、加快編寫教學資源，以及協助迅速處理學生常見問題與行政文案。',
+  tags: ['教師發展日', 'ChatGPT', 'STEM', 'AI 人工智能'],
+  heroImage: chatgptWorkshop,
+  imageCaption: '向馬錦明慈善基金馬可賓紀念中學全體老師教授如何在教育方面運用ChatGPT',
+  publishDate: '2024-05-15',
+};
+
+const workshopFeatures = [
+  {
+    icon: 'fas fa-lightbulb',
+    title: '教育場景概覽',
+    description: '認識 ChatGPT 等大語言模型對教學設計、評估與家校溝通的潛力與注意事項。',
+  },
+  {
+    icon: 'fas fa-terminal',
+    title: '基礎應用',
+    description: '由提示詞設計到對話流程，協助教師建立安全、高效的日常使用習慣。',
+  },
+  {
+    icon: 'fas fa-tasks',
+    title: '教學工作輔助',
+    description: '示範如何把 ChatGPT 用於備課、活動設計與差異化學習建議。',
+  },
+  {
+    icon: 'fas fa-file-alt',
+    title: '教學資源編寫',
+    description: '加快工作紙、簡報大綱與評語草稿的起草，並強調人工覆核的重要性。',
+  },
+  {
+    icon: 'fas fa-question-circle',
+    title: '常見問題速答',
+    description: '建立可用於課後延伸或科室分享的「FAQ」式對話模板。',
+  },
+];
+
+const curriculum = [
+  {
+    title: '工作坊簡介',
+    content: [
+      '適合希望在遵守校本資訊政策前提下，將 ChatGPT 融入教學與科組協作的老師。',
+      '講座以繁體中文為主，並可視乎校本需要調整例子科目。',
+    ],
+  },
+  {
+    title: '講座内容包括',
+    content: [
+      '介紹 ChatGPT 等技術對教育的影響和重要性',
+      'ChatGPT 的基本應用方法',
+      '如何利用 ChatGPT 輔助日常教學工作',
+      '如何利用 ChatGPT 創建和加快教學資源的編寫',
+      '如何利用 ChatGPT 快速解決常見問題',
+    ],
+  },
+];
+
+const faqItems = [
+  {
+    question: '是否需要編程經驗？',
+    answer: ['不需要。講座以介面操作與教學情境為主，適合文科與理科老師共同參與。'],
+  },
+  {
+    question: '如何預約到校講座？',
+    answer: ['請聯絡 +852 6554-1506 或 info@10botics.com，提供預計人數、年級組別與時段偏好。'],
+  },
+];
+---
+
+<Layout
+  title={`${courseData.title} - 教師發展日 - 10教育`}
+  description={courseData.description}
+  ogImage={chatgptWorkshop.src}
+>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+  <main>
+    <HeroSection
+      title={courseData.title}
+      subtitle={courseData.subtitle}
+      description={courseData.detailedDescription}
+      heroImage={courseData.heroImage}
+      heroImageCaption={courseData.imageCaption}
+      tags={courseData.tags}
+      parentSectionHref="/staff-development-day/"
+      parentSectionLabel="教師發展日"
+    />
+
+    <StaffWorkshopPageSections
+      features={workshopFeatures}
+      curriculum={curriculum}
+      faqs={faqItems}
+      contentHours="約 2–3 小時"
+      curriculumSectionTitle="課程內容"
+    />
+
+    <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} context="course" />
+
+    <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} maxResults={6} context="course" />
+
+    <ContactSection
+      subtitle={`想了解更多關於「${courseData.title}」的資訊？歡迎聯絡我們，我們會為您提供詳細安排與報名資訊。`}
+    />
+  </main>
+</Layout>

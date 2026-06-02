@@ -28,6 +28,8 @@ export interface Props {
   /** Optional large image rendered below the description paragraph (right column). */
   descriptionFooterImage?: any;
   descriptionFooterImageAlt?: string;
+  /** Optional Tailwind / utility classes for the description `<p>` (e.g. `whitespace-pre-line`). */
+  descriptionClass?: string;
 }
 
 const {
@@ -47,6 +49,7 @@ const {
   heroImageMaxScale,
   descriptionFooterImage,
   descriptionFooterImageAlt,
+  descriptionClass = '',
 } = Astro.props;
 
 const heroScale = heroImageMaxScale != null && heroImageMaxScale > 0 && heroImageMaxScale <= 1
@@ -187,7 +190,7 @@ const heroScalePct = heroScale != null ? `${heroScale * 100}%` : null;
       <!-- Description Section - match original styling -->
       <div class="order-2">
         <div class="bg-white">
-          <p class="text-base text-gray-700 leading-relaxed">
+          <p class:list={['text-base text-gray-700 leading-relaxed', descriptionClass]}>
             {description}
           </p>
           {descriptionFooterImage && (

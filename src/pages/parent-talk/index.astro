@@ -19,18 +19,21 @@ import galleryParentSchoolPartnership from '../../assets/images/parent-talk/gall
 import galleryParentTalkHallPresentation from '../../assets/images/parent-talk/gallery-parent-talk-hall-presentation.png';
 
 /** Canonical URL: /parent-talk */
-export const courseData = (() => {
-  const staffAndSchoolCourseSummary =
-    '給教師與校方：本講座聚焦家長教育與科技素養。工作坊配合教育局的家長教育方針，並與「家長智Net」等官方網上資源方向一致；針對本地情況，示範生成式人工智能、提示工程，以及如何用 AI 協助功課，讓學校與家長用同一套說法討論學習與網上安全。透過有條理的示範與討論，家長較易就事實核查、學術誠信與私隱界線建立共同理解，亦減輕教師不停重複解答 AI 相關疑問的壓力。對負責策劃的同工來說，舉辦講座是向社群表明：學校重視家校合作，以及數碼時代下如何支援家長；這與「以網絡與講座支援家長」的政策方向相符，亦有助收窄課堂創新與家庭支援之間的差距。';
-  return {
-    title: '利用人工智能提昇學習效能',
-    subtitle: 'AI 世代的學習新模式 — 透過人工智能提升子女的學習效能（實作工作坊）',
-    tags: ['家長講座', 'AI 人工智能'].filter((tag) => Object.hasOwn(TAG_MAPPING, tag)),
-    description: staffAndSchoolCourseSummary,
-    detailedDescription: staffAndSchoolCourseSummary,
-    heroImage,
-  };
-})();
+export const courseData = {
+  title: '利用人工智能提昇學習效能',
+  subtitle: 'AI 世代的學習新模式 — 透過人工智能提升子女的學習效能（實作工作坊）',
+  tags: ['家長講座', 'AI 人工智能'].filter((tag) => Object.hasOwn(TAG_MAPPING, tag)),
+  description:
+    '配合教育局「家長教育」方針與「家長智Net」資源，助家校建立共同標準；示範生成式 AI 與提示工程，並討論 AI 輔助功課、事實核查、學術誠信與網絡安全。',
+  detailedDescription: `在生成式 AI 普及的當下，學校與家庭如何建立共識？本工作坊緊貼教育局「家長教育」方針及「家長智Net」資源，助校方與家長達成「同套語言、共同標準」，共同守護學生的學術誠信與網絡安全。
+
+實戰示範：生成式 AI 應用、提示工程（Prompt Engineering）技巧。
+學習支援：如何正確運用 AI 輔導功課，轉化學習模式。
+素養建立：深入討論事實核查、私隱界線及學術誠信。
+家校雙贏：減少教師重複回覆 AI 疑問的壓力，收窄課堂與家庭的數碼差距。
+核心目標：透過專業示範與討論，向社區展現學校對數碼時代家校合作的重視。`,
+  heroImage,
+};
 
 const courseHighlights = [
   {
@@ -159,6 +162,7 @@ function formatDate(date: Date): string {
       heroImage={courseData.heroImage}
       heroImageMaxScale={0.8}
       tags={courseData.tags}
+      descriptionClass="whitespace-pre-line"
       rootSectionHref="/school-courses"
       rootSectionLabel="到校服務"
       parentSectionHref="/parent-talk"
@@ -312,7 +316,7 @@ function formatDate(date: Date): string {
                   </div>
 
                   <h3 class="text-lg font-semibold text-gray-900 mb-3 line-clamp-2 hover:text-cyan-600 transition-colors">
-                    <a href={`/news/${article.slug}`} class="hover:underline">
+                    <a href={`/news/${article.id}`} class="hover:underline">
                       {article.data.title}
                     </a>
                   </h3>
@@ -331,7 +335,7 @@ function formatDate(date: Date): string {
                   )}
 
                   <a
-                    href={`/news/${article.slug}`}
+                    href={`/news/${article.id}`}
                     class="inline-flex items-center text-cyan-600 hover:text-cyan-700 font-medium text-sm group-hover:underline"
                   >
                     閱讀更多

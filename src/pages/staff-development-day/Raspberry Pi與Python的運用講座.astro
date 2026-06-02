@@ -1,0 +1,109 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import StaffWorkshopPageSections from '../../components/staff-development/StaffWorkshopPageSections.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import raspberryPi from '../../assets/images/staff-development-day/mainpage/raspberry-pi.jpeg';
+
+export const courseData = {
+  title: 'Raspberry Pi與Python的運用講座',
+  subtitle: '硬件結合 Python，提升課堂創意與互動',
+  description:
+    '該講座將引導老師探索Raspberry Pi的應用，並教他們如何以創新的方式在課室中教授Python編程，豐富學生的學習體驗。',
+  detailedDescription:
+    '講座引導老師探索 Raspberry Pi 在課室的應用，並以創新方式教授 Python：由各行各業案例出發，示範硬件準備與課堂活動設計，協助教師把程式教育融入校本 STEM／資訊科技課程，提升互動與創意。',
+  tags: ['教師發展日', 'Raspberry Pi', 'Python', 'STEM', 'Programming 編程'],
+  heroImage: raspberryPi,
+  imageCaption: '與知創空間合作向老師們分享如何利用 Raspberry Pi 在校內教授 Python',
+  publishDate: '2024-04-20',
+};
+
+const workshopFeatures = [
+  {
+    icon: 'fas fa-industry',
+    title: '跨領域案例',
+    description: '認識 Raspberry Pi／嵌入式運算在不同行業的真實應用，連結生涯與跨科學習。',
+  },
+  {
+    icon: 'fas fa-microchip',
+    title: '硬件與環境',
+    description: '了解 Raspberry Pi 基本組件、系統概念與課堂安全管理要點。',
+  },
+  {
+    icon: 'fas fa-code',
+    title: 'Python 教學銜接',
+    description: '示範如何把 GPIO、感測器或視覺化小項目融入 Python 課堂活動。',
+  },
+];
+
+const curriculum = [
+  {
+    title: '工作坊簡介',
+    content: [
+      '適合資訊科技、STEM 统筹或希望在科目中加入運算思維元素的老師。',
+      '可按學校已有的 Pi／Chromebook／電腦室環境調整示範深度。',
+    ],
+  },
+  {
+    title: '講座内容包括',
+    content: [
+      '各個行業的應用和案例',
+      '如何應用 Raspberry Pi',
+      '如何將 Raspberry Pi 運用在 Python 的教學上',
+    ],
+  },
+];
+
+const faqItems = [
+  {
+    question: '學校需要準備哪些設備？',
+    answer: [
+      '視乎講座形式，可能需要 Raspberry Pi 套裝、顯示設備與穩定網絡；可先與同事確認校本硬件。',
+      '也可安排以講者示範為主，再由科組分期試行。',
+    ],
+  },
+  {
+    question: '如何洽談到校講座？',
+    answer: ['請致電 +852 6554-1506 或電郵 info@10botics.com，同事會配合校本時間表報價與規劃。'],
+  },
+];
+---
+
+<Layout
+  title={`${courseData.title} - 教師發展日 - 10教育`}
+  description={courseData.description}
+  ogImage={raspberryPi.src}
+>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+  <main>
+    <HeroSection
+      title={courseData.title}
+      subtitle={courseData.subtitle}
+      description={courseData.detailedDescription}
+      heroImage={courseData.heroImage}
+      heroImageCaption={courseData.imageCaption}
+      tags={courseData.tags}
+      parentSectionHref="/staff-development-day/"
+      parentSectionLabel="教師發展日"
+    />
+
+    <StaffWorkshopPageSections
+      features={workshopFeatures}
+      curriculum={curriculum}
+      faqs={faqItems}
+      contentHours="約 2–3 小時"
+      curriculumSectionTitle="課程內容"
+    />
+
+    <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} context="course" />
+
+    <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} maxResults={6} context="course" />
+
+    <ContactSection
+      subtitle={`想了解更多關於「${courseData.title}」的資訊？歡迎聯絡我們，我們會為您提供詳細安排與報名資訊。`}
+    />
+  </main>
+</Layout>

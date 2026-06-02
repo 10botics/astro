@@ -33,16 +33,28 @@ export default defineConfig({
         '@': path.resolve('./src'),
       },
     },
-    // Exclude migration data from being watched
+    // Narrow dev watchers to reduce EMFILE (too many open files) on Windows when
+    // Astro/Vite + IDE + antivirus all touch the tree at once.
     server: {
       watch: {
         ignored: [
-          'xml-guided-migration-data/**',
-          'migration-data/**',
-          'conversion-report.json',
-          'comprehensive-crawl-report.json',
-          'media-filename-mapping.json'
-        ]
+          '**/node_modules/**',
+          '**/dist/**',
+          '**/.git/**',
+          '**/.astro/**',
+          '**/db/**',
+          '**/scripts/**',
+          '**/xml-guided-migration-data/**',
+          '**/migration-data/**',
+          '**/conversion-report.json',
+          '**/comprehensive-crawl-report.json',
+          '**/media-filename-mapping.json',
+          '**/category_analysis_results.json'
+        ],
+        // Fewer native file watchers on Windows → avoids intermittent EMFILE crashes during dev.
+        ...(process.platform === 'win32'
+          ? { usePolling: true, interval: 1000 }
+          : {})
       }
     }
   },
@@ -101,7 +113,8 @@ export default defineConfig({
     '/staff-development-day/staff-development-day': '/teacher-workshop',
     '/blog': '/news',
     '/events': '/news',
-    
+    '/staff-development-day/parent-talk': '/parent-talk',
+
     // Subdirectory files
     '/competition-drone2024/final-results': '/competition-drone2024-final-results',
     
@@ -165,7 +178,6 @@ export default defineConfig({
     '/course/parent-ai-learning-efficiency': '/parent-talk',
     '/school-courses/parent-ai-learning-efficiency': '/parent-talk',
     '/school-courses/利用人工智能提昇學習效能': '/parent-talk',
-    '/staff-development-day/parent-talk': '/parent-talk',
 
     // STEM Day activities
     '/stem-day/straw-bridge': '/stemday/straw-bridge',
@@ -231,6 +243,8 @@ export default defineConfig({
     '/school-courses/3D Micro_bit 機械人創作課程': '/school-courses/3d-microbit-robot-creation',
     '/school-courses/AI影片製作課程': '/school-courses/ai-video-production',
     '/school-courses/人工智能遊戲編程課程': '/school-courses/ai-game-coding',
+    '/school-courses/利用人工智能提昇學習效能': '/parent-talk',
+    '/school-courses/parent-ai-learning-efficiency': '/parent-talk',
     
     // Stemday
     '/stemday/飲管橋': '/stemday/straw-bridge',

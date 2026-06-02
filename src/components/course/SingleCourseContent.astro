@@ -37,6 +37,8 @@ export interface Props {
   hoursText?: string;
   adjustmentText?: string;
   showAdjustmentNote?: boolean;
+  /** Shown below hours / adjustment lines, above the accordion (e.g. contact / 到校安排). */
+  hoursFooterNote?: string;
   images?: Array<{
     src: any;
     alt: string;
@@ -51,6 +53,7 @@ const {
   hoursText = "共",
   adjustmentText = "可根據學校需要調整",
   showAdjustmentNote = true,
+  hoursFooterNote = '',
   images = [],
   sectionTitle = "課程內容",
 } = Astro.props;
@@ -64,6 +67,11 @@ const {
         <p class="text-xl text-gray-600">{hoursText} {hours}</p>
         {showAdjustmentNote && (
           <p class="text-sm text-gray-500">* {adjustmentText}</p>
+        )}
+        {hoursFooterNote && (
+          <p class="text-base text-gray-600 mt-4 max-w-3xl mx-auto leading-relaxed">
+            {hoursFooterNote}
+          </p>
         )}
       </div>
       

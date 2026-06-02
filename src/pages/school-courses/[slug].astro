@@ -29,6 +29,7 @@ import NaturalBioSciences from './自然生物探究手作課程.astro';
 import AppleVisionPro from './Apple Vision Pro 遊戲開發課程.astro';
 import MicrobitRobotCreation from './3D Micro_bit 機械人創作課程.astro';
 import AiVideoProduction from './AI影片製作課程.astro';
+import GeminiStudentCertificate from './Gemini 學生證書課程.astro';
 
 // Component mapping by filename
 const componentMap = {
@@ -58,7 +59,8 @@ const componentMap = {
   '自然生物探究手作課程.astro': NaturalBioSciences,
   'Apple Vision Pro 遊戲開發課程.astro': AppleVisionPro,
   '3D Micro_bit 機械人創作課程.astro': MicrobitRobotCreation,
-  'AI影片製作課程.astro': AiVideoProduction
+  'AI影片製作課程.astro': AiVideoProduction,
+  'Gemini 學生證書課程.astro': GeminiStudentCertificate
 };
 
 export async function getStaticPaths() {
@@ -90,7 +92,8 @@ export async function getStaticPaths() {
     'natural-bio-sciences': '自然生物探究手作課程.astro',
     'apple-vision-pro-game-dev': 'Apple Vision Pro 遊戲開發課程.astro',
     '3d-microbit-robot-creation': '3D Micro_bit 機械人創作課程.astro',
-    'ai-video-production': 'AI影片製作課程.astro'
+    'ai-video-production': 'AI影片製作課程.astro',
+    'gemini-student-certificate': 'Gemini 學生證書課程.astro'
   };
   return Object.keys(slugToFilenameMap).map(slug => ({
     params: { slug }
@@ -104,7 +107,7 @@ if (!slug) {
 }
 
 // Get filename from canonical slug mapping
-const slugToFilenameMap = {
+const slugToFilenameMap: Record<string, string> = {
   'ai-game-coding': '人工智能遊戲編程課程.astro',
   'ai-enrichment-course': 'AI藝術創作課程.astro',
   'ai-enlightenment': 'AI啟蒙課程.astro',
@@ -131,7 +134,8 @@ const slugToFilenameMap = {
   'natural-bio-sciences': '自然生物探究手作課程.astro',
   'apple-vision-pro-game-dev': 'Apple Vision Pro 遊戲開發課程.astro',
   '3d-microbit-robot-creation': '3D Micro_bit 機械人創作課程.astro',
-  'ai-video-production': 'AI影片製作課程.astro'
+  'ai-video-production': 'AI影片製作課程.astro',
+  'gemini-student-certificate': 'Gemini 學生證書課程.astro'
 };
 const filename = slugToFilenameMap[slug];
 

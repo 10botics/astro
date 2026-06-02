@@ -28,7 +28,7 @@ export async function extractSERPData(): Promise<SERPPageData[]> {
     for (const newsItem of newsCollection) {
       serpData.push({
         title: newsItem.data.title,
-        url: `https://10botics.com/news/${newsItem.slug}`,
+        url: `https://10botics.com/news/${newsItem.id}`,
         description: newsItem.data.excerpt || `${newsItem.data.title} - 10教育最新消息`,
         position: position++,
         category: 'news',

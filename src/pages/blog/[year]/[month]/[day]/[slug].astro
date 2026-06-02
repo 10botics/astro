@@ -16,7 +16,7 @@ newsArticles.forEach(article => {
   const day = publishDate.getDate().toString().padStart(2, '0');
   
   const dateKey = `${year}/${month}/${day}`;
-  dateToSlugMapping[dateKey] = article.slug;
+  dateToSlugMapping[dateKey] = article.id;
 });
 
 // For static generation, handle known blog URLs from the sitemap

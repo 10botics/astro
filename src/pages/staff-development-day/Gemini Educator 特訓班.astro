@@ -1,0 +1,257 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import StaffWorkshopPageSections from '../../components/staff-development/StaffWorkshopPageSections.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import heroGeminiAiChat from '../../assets/images/school-courses/AI啟蒙課程/ai-application.png';
+import certificateGeminiEducatorSample from '../../assets/images/staff-development-day/Gemini Educator 特訓班/certificate-gemini-certified-educator-sample.jpg';
+import galleryHallWhatIsAi from '../../assets/images/staff-development-day/Gemini Educator 特訓班/gallery-hall-what-is-ai.png';
+import galleryClassroomDigitalScreen from '../../assets/images/staff-development-day/Gemini Educator 特訓班/gallery-classroom-digital-screen.png';
+import galleryAuditoriumGroupSession from '../../assets/images/staff-development-day/Gemini Educator 特訓班/gallery-auditorium-group-session.png';
+import galleryAuditoriumParentEngagement from '../../assets/images/staff-development-day/Gemini Educator 特訓班/gallery-auditorium-parent-engagement-school-partnership.png';
+import galleryAuditoriumEnrichmentPlanning from '../../assets/images/staff-development-day/Gemini Educator 特訓班/gallery-auditorium-enrichment-future-planning.png';
+
+export const courseData = {
+  title: 'Gemini Educator 老師特訓班',
+  subtitle: '短時間掌握 Google Gemini 教學應用並取得官方認證',
+  description:
+    '助老師2小時取得Google官方Gemini教師認證！認證旨在培養AI時代的教育引導者，驗證教師對生成式AI基礎概念的理解，以及在教育情境中負責任地整合Google AI工具的能力。',
+  detailedDescription:
+    '助老師約兩小時取得 Google 官方 Gemini 教師認證。內容涵蓋生成式 AI 與 Google AI 工具概覽、Gemini 平台核心功能（引導學習、影像生成、Canvas、深度研究、Gems 等）、NotebookLM 應用與注意事項，並進行 Gemini 教師認證考試準備與實作。',
+  tags: ['教師發展日', 'Google Gemini', 'NotebookLM', 'STEM', 'AI 人工智能'],
+  heroImage: heroGeminiAiChat,
+  imageCaption: '示範運用 Gemini 對話介面於教學與備課情境',
+  publishDate: '2024-06-01',
+};
+
+const workshopFeatures = [
+  {
+    icon: 'fas fa-brain',
+    title: '生成式 AI 與 Google AI',
+    description: '建立對生成式 AI 與 Google AI 工具在教育場景中的負責任用法的整體認識。',
+  },
+  {
+    icon: 'fas fa-layer-group',
+    title: 'Gemini 核心功能',
+    description: '涵蓋引導學習、影像生成、Canvas、深度研究、Gems 等常用模組與課堂情境。',
+  },
+  {
+    icon: 'fas fa-book-reader',
+    title: 'NotebookLM',
+    description:
+      '了解 NotebookLM 在備課與學習資源整理上的應用；請預留已更新的瀏覽器與穩定網絡，NotebookLM 我們會提供安全的VPN。',
+  },
+  {
+    icon: 'fas fa-certificate',
+    title: '官方認證',
+    description: '協助完成 Gemini 教師認證流程，取得可查證之官方資格。',
+  },
+];
+
+const curriculum = [
+  {
+    title: '工作坊簡介',
+    content: [
+      '以「AI 時代的教育引導者」為目標，結合理論、示範與認證導向練習。',
+      '適合希望在課堂與行政流程中整合 Google Gemini 的教育同工。',
+    ],
+  },
+  {
+    title: '工作坊重點',
+    content: [
+      '介紹 Generative AI 及 Google AI 工具',
+      'Gemini 平台核心功能',
+      '介紹引導學習、影像生成、Canvas、深度研究、Gems 等',
+      'NotebookLM 的應用（請預留已更新瀏覽器與穩定網絡；部分功能可能需 VPN）',
+      '進行 Gemini 教師認證考試',
+    ],
+  },
+];
+
+const faqItems = [
+  {
+    question: '在特訓班中如何使用 NotebookLM？',
+    answer: [
+      '在特訓班中，我們會配合 Magic Door 試用——由本公司另外提供的方案，協助教師在既有的教學與備課脈絡下安全、有節奏地導入 NotebookLM 相關體驗。',
+      '更多方案說明可參考：https://www.magicdoor.cc/',
+    ],
+  },
+  {
+    question: 'Gemini 教師認證對老師有什麼幫助？',
+    answer: [
+      '認證可作為教師完成 Google Gemini 學習路徑的正式紀錄，有助於在專業發展或校內推動 AI 教學時展現具認證的 AI 素養。',
+      '工作坊會預留時間完成認證相關考核步驟；若教師需額外支援，導師會於活動中安排練習與答疑。',
+    ],
+  },
+  {
+    question: '什麼設備與環境較適合參加？',
+    answer: [
+      '建議具備基本中英文打字與網頁操作能力；請預留已更新的瀏覽器與穩定網絡，NotebookLM 部分功能可能需 VPN。',
+      '請準備可上網的電腦或 Chromebook／手提電腦，並使用學校或個人核准的 Google 帳戶登入相關服務。',
+    ],
+  },
+];
+
+const servicedSchools = [
+  {
+    nameZh: '保良局雨川小學',
+    nameEn: 'Po Leung Kuk Riverain Primary School',
+  },
+  {
+    nameZh: '中華基督教會燕京書院',
+    nameEn: 'The Church of Christ in China Yenching College',
+  },
+  {
+    nameZh: '香港中國婦女會馮堯敬紀念中學',
+    nameEn:
+      "THE HONG KONG CHINESE WOMEN'S CLUB FUNG YIU KING MEMORIAL SECONDARY SCHOOL",
+  },
+  {
+    nameZh: '匡智獅子會晨崗學校（中學部）',
+    nameEn: 'HONG CHI LIONS MORNINGHILL SCHOOL (SECONDARY SECTION)',
+  },
+  {
+    nameZh: '陳瑞祺（喇沙）書院',
+    nameEn: 'CHAN SUI KI (LA SALLE) COLLEGE',
+  },
+  {
+    nameZh: '德望學校',
+    nameEn: 'GOOD HOPE SCHOOL',
+  },
+  {
+    nameZh: '迦密愛禮信小學',
+    nameEn: 'CARMEL ALISON LAM PRIMARY SCHOOL',
+  },
+  {
+    nameZh: '中華基督教會基協中學',
+    nameEn: 'THE CHURCH OF CHRIST IN CHINA KEI HEEP SECONDARY SCHOOL',
+  },
+];
+---
+
+<Layout
+  title={`${courseData.title} - 教師發展日 - 10教育`}
+  description={courseData.description}
+  ogImage={heroGeminiAiChat.src}
+>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+  <main>
+    <HeroSection
+      title={courseData.title}
+      subtitle={courseData.subtitle}
+      description={courseData.detailedDescription}
+      heroImage={courseData.heroImage}
+      heroImageCaption={courseData.imageCaption}
+      tags={courseData.tags}
+      parentSectionHref="/staff-development-day/"
+      parentSectionLabel="教師發展日"
+    />
+
+    <section class="section-padding bg-gray-50" aria-labelledby="gemini-educator-certificate-heading">
+      <div class="container-standard">
+        <div class="text-center mb-10">
+          <h2 id="gemini-educator-certificate-heading" class="text-3xl font-bold text-gray-900 mb-4">
+            官方認證證書
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            完成工作坊並通過考核後，可取得可查證之 Gemini Certified Educator 資格（範例樣式如下）。
+          </p>
+        </div>
+        <div class="max-w-4xl mx-auto rounded-xl overflow-hidden shadow-xl ring-1 ring-gray-100 bg-gray-50">
+          <Image
+            src={certificateGeminiEducatorSample}
+            alt="Gemini Certified Educator 官方認證證書示例（Google for Education）"
+            width={3574}
+            height={2792}
+            sizes="(min-width: 1024px) 896px, 100vw"
+            class="w-full h-auto object-contain max-h-[85vh]"
+          />
+        </div>
+      </div>
+    </section>
+
+    <StaffWorkshopPageSections
+      features={workshopFeatures}
+      curriculum={curriculum}
+      faqs={faqItems}
+      contentHours="約 2 小時"
+      curriculumSectionTitle="課程內容"
+    >
+      <div slot="afterCurriculum">
+      <section class="section-padding bg-gray-50">
+        <div class="container-standard">
+          <GalleryCarousel
+            title="工作坊實況"
+            images={[
+              {
+                src: galleryHallWhatIsAi,
+                alt: '禮堂內，講者於台上分享，大螢幕顯示「什麼是人工智能」主題簡報與圖像示意。',
+              },
+              {
+                src: galleryClassroomDigitalScreen,
+                alt: '明亮課室中，多名同工使用手提電腦，講者於前方大型互動螢幕前主持 Gemini 工作坊。',
+              },
+              {
+                src: galleryAuditoriumGroupSession,
+                alt: '學校禮堂內，參加者席地而坐使用電腦，前方舞台設大型投影，工作坊進行中。',
+              },
+              {
+                src: galleryAuditoriumParentEngagement,
+                alt: '禮堂內大批同工出席講座，舞台大螢幕展示「Parent Engagement & School Partnership」家校協作主題簡報。',
+              },
+              {
+                src: galleryAuditoriumEnrichmentPlanning,
+                alt: '學校禮堂舉行教師發展環節，講者於台上分享，大螢幕顯示「Enrichment & Future Planning」升學與生涯規劃相關內容。',
+              },
+            ]}
+            intervalMs={4500}
+          />
+        </div>
+      </section>
+
+      <section class="section-padding bg-white" aria-labelledby="serviced-schools-heading">
+        <div class="container-standard">
+          <div class="text-center mb-12">
+            <h2 id="serviced-schools-heading" class="text-3xl font-bold text-gray-900 mb-4">
+              服務學校
+            </h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+              以下為曾選擇 Gemini Educator／相關 AI 教師工作坊到校或預約安排的學校。
+            </p>
+          </div>
+          <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 list-none p-0 m-0">
+            {servicedSchools.map((school) => (
+              <li class="card-base card-hover p-6 flex flex-col h-full">
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl text-brand-cyan-600 shrink-0" aria-hidden="true">
+                    <i class="fas fa-school" />
+                  </span>
+                  <div class="min-w-0">
+                    <h3 class="text-lg font-semibold text-gray-900 leading-snug">{school.nameZh}</h3>
+                    {'nameEn' in school && school.nameEn ? (
+                      <p class="text-sm text-gray-500 mt-1 leading-snug">{school.nameEn}</p>
+                    ) : null}
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+      </div>
+    </StaffWorkshopPageSections>
+
+    <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} context="course" />
+
+    <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} maxResults={6} context="course" />
+
+    <ContactSection
+      subtitle={`想了解更多關於「${courseData.title}」的資訊？歡迎聯絡我們，我們會為您提供詳細安排與報名資訊。`}
+    />
+  </main>
+</Layout>
