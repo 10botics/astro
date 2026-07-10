@@ -117,6 +117,7 @@ export default defineConfig({
 
     // Subdirectory files
     '/competition-drone2024/final-results': '/competition-drone2024-final-results',
+    '/學界無人機救援挑戰賽2026': '/competition-drone2026',
     
     // School courses - course tag redirects to school-courses
     '/course/ai-game-coding': '/school-courses/ai-game-coding',
