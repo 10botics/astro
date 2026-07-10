@@ -1,0 +1,105 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import { Image } from 'astro:assets';
+import { readFileSync } from 'fs';
+import { parse } from 'csv-parse/sync';
+import path from 'path';
+
+import posterImage from '../../assets/images/competition/學界無人機救援挑戰賽2026/poster.png';
+
+const title = '學界無人機救援挑戰賽 2026';
+const description =
+  '學界無人機救援挑戰賽 2026 比賽資訊及得獎名單。透過模擬器挑戰，考驗學生編程能力，完成坍塌廢墟搜救與山火智能應對任務。';
+
+const csvPath = path.join(process.cwd(), 'src/data/competition-drone2026-results.csv');
+const csvContent = readFileSync(csvPath, 'utf-8');
+
+const winners = parse(csvContent, {
+  columns: true,
+  skip_empty_lines: true,
+  trim: true,
+  bom: true,
+}).map((row: Record<string, string>) => ({
+  school: row['學校名稱']?.trim() ?? '',
+  name: row['參賽同學姓名']?.trim() ?? '',
+  task1Award: row['任務一獎項']?.trim() ?? '',
+  task2Award: row['任務二獎項']?.trim() ?? '',
+}));
+
+function awardCellClass(award: string) {
+  if (award === '一等獎') return 'font-semibold text-amber-700';
+  if (award === '二等獎') return 'font-semibold text-slate-600';
+  if (award === '三等獎') return 'font-semibold text-orange-700';
+  return 'text-gray-500';
+}
+---
+
+<Layout title={title} description={description}>
+  <main class="min-h-screen bg-gray-50">
+    <section class="bg-gradient-to-r from-brand-blue-700 to-cyan-800 text-white py-12">
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-3xl md:text-5xl font-bold mb-3">{title}</h1>
+      </div>
+    </section>
+
+    <section class="py-12 bg-white">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <div class="rounded-xl overflow-hidden shadow-xl ring-1 ring-gray-100">
+          <Image
+            src={posterImage}
+            alt="學界無人機救援挑戰賽 2026 比賽海報"
+            width={1200}
+            height={1697}
+            sizes="(min-width: 1024px) 896px, 100vw"
+            class="w-full h-auto"
+          />
+        </div>
+
+        <div class="mt-10 max-w-3xl mx-auto bg-brand-blue-50 p-8 rounded-lg border-l-4 border-brand-blue-500 text-center">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">最新消息</h2>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            衷心感謝各位對學界無人機救援挑戰賽 2026 的參與及支持，比賽結果現已公佈!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-gray-50" aria-labelledby="winners-heading">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <h2 id="winners-heading" class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-10">
+          得獎名單
+        </h2>
+
+        <div class="overflow-x-auto rounded-lg shadow-md bg-white">
+          <table class="min-w-full border-collapse">
+            <thead>
+              <tr class="bg-brand-blue-600 text-white">
+                <th class="border border-brand-blue-500 px-4 py-3 text-left font-semibold">學校名稱</th>
+                <th class="border border-brand-blue-500 px-4 py-3 text-left font-semibold">參賽同學姓名</th>
+                <th class="border border-brand-blue-500 px-4 py-3 text-center font-semibold">任務一獎項</th>
+                <th class="border border-brand-blue-500 px-4 py-3 text-center font-semibold">任務二獎項</th>
+              </tr>
+            </thead>
+            <tbody>
+              {winners.map((row) => (
+                <tr class="hover:bg-gray-50 even:bg-gray-50/60">
+                  <td class="border border-gray-200 px-4 py-3 text-gray-800">{row.school}</td>
+                  <td class="border border-gray-200 px-4 py-3 text-gray-800">{row.name}</td>
+                  <td class:list={['border border-gray-200 px-4 py-3 text-center', awardCellClass(row.task1Award)]}>
+                    {row.task1Award || '—'}
+                  </td>
+                  <td class:list={['border border-gray-200 px-4 py-3 text-center', awardCellClass(row.task2Award)]}>
+                    {row.task2Award || '—'}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <ContactSection />
+  </main>
+</Layout>
