@@ -6,200 +6,150 @@ import QnASection from '../../components/course/QnASection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
 import RelatedCourses from '../../components/course/RelatedCourses.astro';
-import { Image } from 'astro:assets';
 
-// Import course images
-import featuredImage from '../../assets/images/school-courses/AI啟蒙課程/ai-2d-video.png';
+import heroImage from '../../assets/images/school-courses/AI影片製作課程/manga-to-color-hero.png';
 
-// Course data
 export const courseData = {
-  title: "AI影片製作課程",
-  subtitle: "從劇本創作到口型同步，掌握AI影片製作全流程",
-  tags: ["AI 人工智能", "Video 影片製作", "Animation 動畫", "Creative 創意", "初小", "高小", "初中"],
+  title: "人工智能媒體創作課程",
+  subtitle: "以 Cursor 與 AI 工具，從黑白漫畫創意到彩色動畫影片",
+  tags: [
+    "AI 人工智能",
+    "Video 影片製作",
+    "Animation 動畫",
+    "Programming 編程",
+    "Creative 創意",
+    "初中",
+    "高中"
+  ],
   videoId: "your-video-id-here",
-  description: "課程將引導學生學習AI影片製作的完整流程，從劇本創作、角色設計到最終的口型同步影片製作。學生將掌握多種AI工具的使用技巧，創作出專業級的影片作品。",
-  detailedDescription: "課程將引導學生學習AI影片製作的完整流程，從劇本創作、角色設計到最終的口型同步影片製作。學生將掌握多種AI工具的使用技巧，包括文字轉圖像、圖像轉影片、語音生成等技術，並學會如何將這些技術整合應用，創作出專業級的影片作品。課程注重實踐操作，讓學生在學習過程中完成自己的主題項目。",
-  heroImage: featuredImage
+  description:
+    "透過 Cursor 人工智能編程平台及現實世界中的黑白漫畫作引子，學習用 AI 製作一段彩色影片。學生將掌握人工智能編程概念、圖像元素創建、動畫設計和影片剪輯等技巧。",
+  detailedDescription:
+    "這個課程將帶領學生透過 Cursor 人工智能編程平台及現實世界中的黑白漫畫作引子，學習用 AI 製作一段彩色影片。學生將學會人工智能編程概念、創建圖像元素、動畫設計和影片剪輯等技巧，最終會先一起完成一個測試作品，及後學生將有機會學以致用，製作屬於自己／自定義主題的作品。",
+  heroImage
 };
 
-// Course features
+const courseRequirements = [
+  {
+    icon: "fas fa-clock",
+    title: "課時",
+    description: "12–18 小時"
+  },
+  {
+    icon: "fas fa-laptop",
+    title: "所需器材",
+    description: "電腦；Cursor 訂閱帳戶（如學校沒有可由 10 教育提供帳戶於課堂上使用）"
+  },
+  {
+    icon: "fas fa-user-graduate",
+    title: "學員要求",
+    description: "中二至中四；基本電腦操作（如打字、登入系統等）"
+  }
+];
+
 const courseFeatures = [
   {
-    icon: "fas fa-file-alt",
-    title: "劇本創作與構思",
-    description: "學習如何構思和創作吸引人的影片劇本，掌握故事結構和情節設計技巧"
+    icon: "fas fa-code",
+    title: "Cursor AI 編程平台",
+    description: "透過 Cursor 學習人工智能編程概念，把創意想法轉化為可執行的媒體製作流程"
   },
   {
-    icon: "fas fa-image",
-    title: "文字轉圖像技術",
-    description: "掌握AI圖像生成技術，將文字描述轉化為精美的視覺圖像"
-  },
-  {
-    icon: "fas fa-user-tie",
-    title: "角色創作與設計",
-    description: "學習使用AI工具進行角色設計，包括外觀、服裝、表情等細節設計"
-  },
-  {
-    icon: "fas fa-paint-brush",
-    title: "角色風格化",
-    description: "掌握角色風格化技巧，為角色添加獨特的視覺風格和個性特徵"
+    icon: "fas fa-book-open",
+    title: "黑白漫畫到彩色影片",
+    description: "以現實世界黑白漫畫為引子，逐步學習用 AI 創建圖像元素並製作彩色動畫短片"
   },
   {
     icon: "fas fa-film",
-    title: "圖像轉影片技術",
-    description: "學習將靜態圖像轉化為動態影片的AI技術，創造流暢的動畫效果"
-  },
-  {
-    icon: "fas fa-microphone-alt",
-    title: "語音生成與配音",
-    description: "掌握AI語音生成技術，為影片添加自然流暢的配音和音效"
-  },
-  {
-    icon: "fas fa-lips",
-    title: "口型同步技術",
-    description: "學習先進的口型同步技術，讓角色說話更加自然逼真"
+    title: "專業製作流程",
+    description: "從鏡頭清單、參考幀、關鍵劇照到音訊資產與時間軸預演，建立完整的媒體創作方法"
   },
   {
     icon: "fas fa-project-diagram",
-    title: "主題項目製作",
-    description: "完成個人主題項目，整合所學技術創作出完整的影片作品"
+    title: "測試作品與個人專題",
+    description: "先共同完成測試作品，再學以致用製作屬於自己／自定義主題的專題作品"
   }
 ];
 
-// Course curriculum
 const courseCurriculum = [
   {
-    title: "AI影片製作入門",
+    title: "故事順序、鏡頭、視覺鎖定與聲音計畫",
     content: [
-      "AI影片製作概述",
-      "相關工具介紹",
-      "製作流程講解",
-      "項目規劃方法",
-      "創意構思技巧"
+      "確立故事順序與節奏點（beats）",
+      "建立包含固定 ID 和螢幕備註的鏡頭清單（shot list）",
+      "記錄畫面的連貫性並製作一份簡明的風格指南",
+      "添加音訊計畫：旁白（VO）腳本或逐個節奏點的台詞",
+      "為每個節奏點／鏡頭列出音效（SFX）提示清單",
+      "制定背景音樂指導（情緒、節奏、能量，以及音樂應該高昂或減弱的位置）"
     ]
   },
   {
-    title: "劇本創作與構思展示",
+    title: "每個鏡頭的參考幀（畫面 + 聲音對點）",
     content: [
-      "故事結構設計",
-      "角色設定技巧",
-      "情節發展方法",
-      "劇本寫作規範",
-      "創意展示技巧"
+      "根據計畫的場景調度，為每個鏡頭準備一張參考圖",
+      "使用與鏡頭 ID 相對應的命名",
+      "在進行大量圖像生成之前，對參考圖的構圖、順序和細節進行品質控管（QC）",
+      "添加聲音對點／定位（spotting）備註：明確旁白、音效和音樂的變化點應落在各個鏡頭的哪個相對位置"
     ]
   },
   {
-    title: "AI語音生成技術",
+    title: "關鍵劇照、旁白／音效／音樂資產與審核",
     content: [
-      "語音生成工具使用",
-      "聲音參數調整",
-      "語音風格選擇",
-      "多語言配音技巧",
-      "音質優化方法"
+      "根據參考圖和風格指南，為每個鏡頭製作一張主劇照",
+      "挑選出審核通過的關鍵圖（heroes），並重做明顯不合格的圖像",
+      "獲取旁白（如合成語音），並匯出按鏡頭／台詞標記的分軌（stems）",
+      "為清單上的提示點製作或尋找音效素材",
+      "選擇或生成符合專案要求的背景音樂"
     ]
   },
   {
-    title: "文字轉圖像技術",
+    title: "劇照生成短動態影片 + 臨時音訊預演",
     content: [
-      "提示詞寫作技巧",
-      "圖像風格選擇",
-      "角色外觀設計",
-      "場景構圖方法",
-      "圖像質量優化"
+      "使用審核通過的劇照生成短動態片段，配合簡短的運動提示詞並進行簡單的版本控制",
+      "進行粗略的時間軸排版：將旁白、音效、音樂與動態畫面齊平",
+      "在簡單的專案或草稿時間軸中預演，以便儘早暴露問題",
+      "修復明顯的音畫同步或音量電平（level）問題"
     ]
   },
   {
-    title: "角色創作與設計",
+    title: "專題製作",
     content: [
-      "角色外觀設計",
-      "服裝風格選擇",
-      "表情動作設計",
-      "個性特徵塑造",
-      "角色一致性保持"
-    ]
-  },
-  {
-    title: "角色風格化技巧",
-    content: [
-      "視覺風格選擇",
-      "色彩搭配技巧",
-      "線條風格設計",
-      "質感表現方法",
-      "整體風格統一"
-    ]
-  },
-  {
-    title: "圖像轉影片技術",
-    content: [
-      "動畫生成原理",
-      "動作設計技巧",
-      "過渡效果製作",
-      "時間軸控制",
-      "流暢度優化"
-    ]
-  },
-  {
-    title: "口型同步技術",
-    content: [
-      "口型同步原理",
-      "語音分析技巧",
-      "口型匹配方法",
-      "自然度優化",
-      "同步精度調整"
-    ]
-  },
-  {
-    title: "主題項目製作",
-    content: [
-      "項目主題選擇",
-      "製作計劃制定",
-      "技術整合應用",
-      "作品完善優化",
-      "成果展示準備"
+      "創作個人專題作品"
     ]
   }
 ];
 
-
-// FAQ section
 const faqItems = [
   {
     question: "什麼年級的學生適合？",
     answer: [
-      "該課程一般適合任何初小至初中學生。",
-      "如學生具備基本電腦操作更好（如打字）。"
+      "本課程適合中二至中四學生。",
+      "學生需具備基本電腦操作能力，例如打字及登入系統。"
     ]
   },
   {
     question: "學校需要什麼設備？",
     answer: [
       "學校需準備以下項目：",
-      "1）iPad / 手提電腦 / 電腦",
-      "2）學生Gmail 賬號（以登入相關AI平台）",
+      "1）電腦",
+      "2）Cursor 訂閱帳戶（如學校沒有，可由 10 教育於課堂上提供帳戶）",
       "3）穩定的網絡連接",
-      "建議先致電+852 6554-1506 或電郵至 info@10botics.com向同事溝通學校期望的教學內容，同事將就教學所需設備提供建議。"
+      "建議先致電 +852 6554-1506 或電郵至 info@10botics.com 向同事溝通學校期望的教學內容，我們將就設備與帳戶安排提供建議。"
     ]
   },
   {
-    question: "課程包含哪些AI工具？",
+    question: "課程會使用哪些工具？",
     answer: [
-      "課程涵蓋多個AI平台：",
-      "• ChatGPT - 劇本創作與構思",
-      "• Leonardo AI - 圖像生成",
-      "• Runway ML - 影片生成",
-      "• ElevenLabs - 語音生成",
-      "• D-ID - 口型同步",
-      "• 其他相關AI工具"
+      "課程以 Cursor 人工智能編程平台為核心，配合 AI 圖像生成、動畫製作與影片剪輯相關工具。",
+      "學生將從黑白漫畫創意出發，完成鏡頭規劃、視覺資產製作、音訊整合與最終短片輸出。"
     ]
   },
   {
     question: "學生需要具備什麼基礎？",
     answer: [
       "學生需要具備：",
-      "• 基本電腦操作能力",
-      "• 基本的文字輸入能力",
-      "• 創意思維和想像力",
-      "• 對影片製作有興趣"
+      "• 基本電腦操作能力（如打字、登入系統）",
+      "• 對故事創作與影片製作有興趣",
+      "• 願意按步驟完成鏡頭規劃、資產審核與時間軸預演等製作流程"
     ]
   }
 ];
@@ -207,10 +157,9 @@ const faqItems = [
 
 <Layout title={courseData.title} description={courseData.description}>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  
+
   <main>
-    <!-- Hero Section -->
-    <HeroSection 
+    <HeroSection
       title={courseData.title}
       subtitle={courseData.subtitle}
       description={courseData.detailedDescription}
@@ -218,8 +167,24 @@ const faqItems = [
       tags={courseData.tags}
     />
 
-    <!-- Course Features Section -->
     <section class="section-padding bg-white">
+      <div class="container-standard">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程要求</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          {courseRequirements.map((requirement) => (
+            <div class="card-base card-hover p-6 text-center">
+              <div class="w-12 h-12 bg-brand-cyan-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class={`${requirement.icon} text-xl text-white`}></i>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-2">{requirement.title}</h3>
+              <p class="text-gray-600">{requirement.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding bg-gray-50">
       <div class="container-standard">
         <div class="text-center mb-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">課程特色</h2>
@@ -242,26 +207,25 @@ const faqItems = [
       </div>
     </section>
 
-    <!-- Course Content Section -->
-    <SingleCourseContent 
+    <SingleCourseContent
       items={courseCurriculum}
-      hours="3-5 小時"
+      hours="12–18 小時"
     />
 
-
-    <!-- FAQ Section -->
-    <QnASection faqs={faqItems.map(item => ({
+    <QnASection faqs={faqItems.map((item) => ({
       question: item.question,
       answer: item.answer.join('\n')
     }))} />
 
-    <!-- Related Courses Section -->
-    <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="ai-video-production" context="course" />
-    
-    <!-- Related News Section -->
+    <RelatedCourses
+      courseTags={courseData.tags}
+      courseTitle={courseData.title}
+      currentCourseSlug="ai-video-production"
+      context="course"
+    />
+
     <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
 
-    <!-- Contact Section -->
-    <ContactSection subtitle="想了解更多關於 AI 影片製作課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
+    <ContactSection subtitle="想了解更多關於人工智能媒體創作課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
   </main>
 </Layout>
