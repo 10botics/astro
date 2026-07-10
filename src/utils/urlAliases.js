@@ -415,6 +415,13 @@ export const urlAliases = {
     },
     "main": "ai-video-production"
   },
+  "AI 影片創作課程入門.astro": {
+    "tags": {
+      "school-courses": ["ai-video-creation-intro"],
+      "course": ["ai-video-creation-intro"]
+    },
+    "main": "ai-video-creation-intro"
+  },
   "Gemini 學生證書課程.astro": {
     "tags": {
       "school-courses": ["gemini-student-certificate"],

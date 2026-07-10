@@ -37,6 +37,7 @@ export const COURSE_SLUG_MAPPING: Record<string, string> = {
   'Apple Vision Pro 遊戲開發課程': 'apple-vision-pro-game-dev',
   '3D Micro_bit 機械人創作課程': '3d-microbit-robot-creation',
   'AI影片製作課程': 'ai-video-production',
+  'AI 影片創作課程入門': 'ai-video-creation-intro',
   'Gemini 學生證書課程': 'gemini-student-certificate'
 };
 

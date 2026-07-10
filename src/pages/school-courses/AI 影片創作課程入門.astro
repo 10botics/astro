@@ -1,0 +1,293 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import SingleCourseContent from '../../components/course/SingleCourseContent.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+
+import heroImage from '../../assets/images/school-courses/AI啟蒙課程/ai-2d-video.png';
+
+export const courseData = {
+  title: "AI 影片創作課程入門",
+  subtitle: "以 Gemini 與 Canva 完成溫馨故事短片，從構思到導出 MP4",
+  tags: [
+    "AI 人工智能",
+    "Video 影片製作",
+    "Google Gemini",
+    "Animation 動畫",
+    "Creative 創意",
+    "高小",
+    "初中"
+  ],
+  videoId: "your-video-id-here",
+  exampleVideo: {
+    title: "海洋保育 大家有責",
+    description: "以 Gemini 生成圖像與短片，並在 Canva 組合字幕與配樂完成的 AI 動畫小影片範例。",
+    embedUrl: "https://drive.google.com/file/d/17wlbJCw6FNaka_pTbQyhzezL4y9wK1uS/preview"
+  },
+  description:
+    "此課程將幫助學生掌握生成式 AI 平台的用法，特別聚焦於 Gemini 平台的使用。內容涵蓋登入 Gemini、與 Gemini 對話、輸入文字指令生成圖像及影片，引導學生透過 Gemini 進行多樣化的 AI 藝術創作，並以 Canva 完成短片剪輯與導出。",
+  detailedDescription:
+    "此課程將幫助學生掌握生成式 AI 平台的用法，特別聚焦於 Gemini 平台的使用。內容涵蓋了如何登入 Gemini、與 Gemini 對話、輸入文字指令生成圖像及影片，引導使用者透過 Gemini 進行多樣化的 AI 藝術創作。學生將從故事構思、分鏡拆解、角色與場景圖生成，到圖片轉影片動畫，最後在 Canva 組合字幕、配樂並導出完整 MP4 短片。",
+  heroImage
+};
+
+const courseRequirements = [
+  {
+    icon: "fas fa-user-graduate",
+    title: "學員要求",
+    description: "小四至中三"
+  },
+  {
+    icon: "fas fa-clock",
+    title: "時數",
+    description: "10 節，每節 1–1.5 小時"
+  },
+  {
+    icon: "fas fa-sign-in-alt",
+    title: "事前準備",
+    description: "學校 Google 帳戶，需確保學生可使用 Gemini 生成圖片"
+  },
+  {
+    icon: "fas fa-laptop",
+    title: "設備",
+    description: "iPad／電腦／手提電腦"
+  }
+];
+
+const courseFeatures = [
+  {
+    icon: "fas fa-comments",
+    title: "對話式 AI 構思故事",
+    description: "認識生成式 AI 與對話平台，學習向 Gemini 下達指令構思溫馨故事大綱與分鏡"
+  },
+  {
+    icon: "fas fa-wand-magic-sparkles",
+    title: "Gemini 圖像生成",
+    description: "設定主角外貌、服裝與畫風，生成角色參考圖與 4–5 張連續場景圖"
+  },
+  {
+    icon: "fas fa-film",
+    title: "圖片轉影片動畫",
+    description: "上傳種子圖片，運用 Gemini 將靜態場景變成約 5 秒的動態短片"
+  },
+  {
+    icon: "fas fa-clapperboard",
+    title: "Canva 小導演工作室",
+    description: "匯入短片、排列時間軸、加入字幕與背景音樂，導出最終 MP4 動畫小影片"
+  }
+];
+
+const courseCurriculum = [
+  {
+    title: "認識 AI 魔法與構思溫馨故事",
+    content: [
+      "了解什麼是 AI 藝術與生成工具，建立正確的使用態度",
+      "認識對話式 AI 平台",
+      "訂立影片主題，學習向 AI 平台下達簡單指令來構思故事大綱"
+    ]
+  },
+  {
+    title: "拆解影片分鏡與寫出「好咒語」",
+    content: [
+      "了解影片是由不同「鏡頭／畫面」組成的概念（簡單分鏡）",
+      "利用 AI 平台將故事拆解成 4 至 5 個連續場景",
+      "學習指示 AI 幫忙寫出每個場景的畫面描述（提示詞）"
+    ]
+  },
+  {
+    title: "創造專屬主角",
+    content: [
+      "認識強大的 Google Gemini 平台與圖像生成功能",
+      "學習如何設定主角的外貌特徵、服裝與畫風（如 3D 卡通、水彩繪本風）",
+      "運用 Gemini 生成故事主角的「角色參考圖」並學習儲存備用"
+    ]
+  },
+  {
+    title: "生成故事場景圖（實作一）",
+    content: [
+      "將準備好的場景描述輸入 Gemini，生成場景圖",
+      "學習修改圖片比例（如改為橫向 16:9 適合影片播放）",
+      "導師從旁協助學生解決「咒語」不準確或圖片出錯的問題"
+    ]
+  },
+  {
+    title: "圖片大檢閱與優化（實作二）",
+    content: [
+      "【充足實作時間】讓學生慢慢完善故事的 4–5 張場景圖",
+      "學習利用 Gemini 重新生成或微調不滿意的圖片，確保角色看起來一致",
+      "將所有滿意的場景與角色圖整理並下載，作為下一步的「種子圖片」"
+    ]
+  },
+  {
+    title: "動畫魔法：讓圖片動起來",
+    content: [
+      "認識影片生成模型",
+      "學習「圖片轉影片」技術：上傳前期準備好的圖片來引導影片內容",
+      "掌握將靜態場景變成 5 秒動態畫面的基礎技巧"
+    ]
+  },
+  {
+    title: "動態生成實作（實作三）",
+    content: [
+      "【充足實作時間】學生親自操作，將所有靜態場景逐一生成動態短片",
+      "導師協助指導如何加上簡單的動作指令（如：揮手、微笑、攝影機慢慢拉近）",
+      "篩選出最滿意的短片素材並下載至電腦／平板"
+    ]
+  },
+  {
+    title: "小導演工作室：Canva 基本組合（實作四）",
+    content: [
+      "認識 Canva 的影片編輯介面，開啟空白影片專案",
+      "將 Gemini 生成的動態短片匯入，並按故事發展順序排列在時間軸上",
+      "學習使用文字工具，為每段影片加上簡單易讀的故事字幕或標題"
+    ]
+  },
+  {
+    title: "簡易配樂與導出準備",
+    content: [
+      "了解背景音樂對影片氣氛的重要性",
+      "在 Canva 挑選一首合適的內建背景音樂（如溫馨、輕快），鋪在整段影片下方",
+      "檢查影片順序與字幕，學習點擊「分享」並導出最終的 MP4 動畫小影片"
+    ]
+  }
+];
+
+const faqItems = [
+  {
+    question: "什麼年級的學生適合？",
+    answer: [
+      "本課程適合小四至中三學生。",
+      "學生需具備基本中英文輸入與網頁操作能力；對故事創作與影片製作有興趣更佳。"
+    ]
+  },
+  {
+    question: "學校需要什麼設備與帳戶？",
+    answer: [
+      "學校需準備以下項目：",
+      "1）iPad／電腦／手提電腦",
+      "2）學校 Google 帳戶，並確保學生可使用 Gemini 生成圖片",
+      "3）穩定的網絡連接",
+      "建議先致電 +852 6554-1506 或電郵至 info@10botics.com 向同事溝通學校期望的教學內容，我們將就設備與帳戶設定提供建議。"
+    ]
+  },
+  {
+    question: "課程使用哪些平台？",
+    answer: [
+      "課程主要使用：",
+      "• Google Gemini — 故事構思、圖像生成與圖片轉影片",
+      "• Canva — 影片剪輯、字幕、配樂與 MP4 導出"
+    ]
+  },
+  {
+    question: "與「AI 影片製作課程」有什麼分別？",
+    answer: [
+      "「AI 影片創作課程入門」以 Gemini 與 Canva 為主，適合高小至初中學生，從零開始完成溫馨故事短片。",
+      "「AI 影片製作課程」涵蓋更多進階工具（如語音生成、口型同步等），適合希望深入掌握完整 AI 影片製作流程的學校。"
+    ]
+  }
+];
+---
+
+<Layout title={courseData.title} description={courseData.description}>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <main>
+    <HeroSection
+      title={courseData.title}
+      subtitle={courseData.subtitle}
+      description={courseData.detailedDescription}
+      heroImage={courseData.heroImage}
+      tags={courseData.tags}
+    />
+
+    <section class="section-padding bg-white">
+      <div class="container-standard">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">課程要求</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {courseRequirements.map((requirement) => (
+            <div class="card-base card-hover p-6 text-center">
+              <div class="w-12 h-12 bg-brand-cyan-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class={`${requirement.icon} text-xl text-white`}></i>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-2">{requirement.title}</h3>
+              <p class="text-gray-600">{requirement.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding bg-gray-50">
+      <div class="container-standard">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">課程特色</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {courseFeatures.map((item) => (
+            <div class="card-base card-hover p-6">
+              <div class="flex items-start">
+                <div class="text-3xl text-brand-cyan-600 mr-4">
+                  <i class={item.icon}></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
+                  <p class="text-gray-600">{item.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding bg-white" aria-labelledby="ai-video-example-heading">
+      <div class="container-standard">
+        <div class="text-center mb-12">
+          <h2 id="ai-video-example-heading" class="text-3xl font-bold text-gray-900 mb-4">AI 影片範例</h2>
+          <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+            {courseData.exampleVideo.description}
+          </p>
+        </div>
+        <div class="max-w-4xl mx-auto">
+          <div class="relative w-full bg-gray-100 rounded-lg overflow-hidden shadow-lg" style="aspect-ratio: 16/9;">
+            <iframe
+              src={courseData.exampleVideo.embedUrl}
+              title={courseData.exampleVideo.title}
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+              class="absolute top-0 left-0 w-full h-full"
+            ></iframe>
+          </div>
+          <div class="mt-6 text-center">
+            <p class="text-gray-800 font-semibold">{courseData.exampleVideo.title}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <SingleCourseContent
+      items={courseCurriculum}
+      hours="10 節（每節 1–1.5 小時）"
+    />
+
+    <QnASection faqs={faqItems.map((item) => ({
+      question: item.question,
+      answer: item.answer.join('\n')
+    }))} />
+
+    <RelatedCourses
+      courseTags={courseData.tags}
+      courseTitle={courseData.title}
+      currentCourseSlug="ai-video-creation-intro"
+      context="course"
+    />
+
+    <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
+
+    <ContactSection subtitle="想了解更多關於 AI 影片創作課程入門的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
+  </main>
+</Layout>
