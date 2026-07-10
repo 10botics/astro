@@ -1,12 +1,12 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ContactSection from '../../components/ContactSection.astro';
-import { Image } from 'astro:assets';
 import { readFileSync } from 'fs';
 import { parse } from 'csv-parse/sync';
 import path from 'path';
 
-import posterImage from '../../assets/images/competition/學界無人機救援挑戰賽2026/poster.png';
+const poster1x = '/images/competition-drone2026/poster.jpg';
+const poster2x = '/images/competition-drone2026/poster@2x.jpg';
 
 const title = '學界無人機救援挑戰賽 2026';
 const description =
@@ -28,9 +28,9 @@ const winners = parse(csvContent, {
 }));
 
 function awardCellClass(award: string) {
-  if (award === '一等獎') return 'font-semibold text-amber-700';
-  if (award === '二等獎') return 'font-semibold text-slate-600';
-  if (award === '三等獎') return 'font-semibold text-orange-700';
+  if (award === '一等獎' || award === '二等獎' || award === '三等獎') {
+    return 'text-gray-900';
+  }
   return 'text-gray-500';
 }
 ---
@@ -46,13 +46,16 @@ function awardCellClass(award: string) {
     <section class="py-12 bg-white">
       <div class="container mx-auto px-4 max-w-4xl">
         <div class="rounded-xl overflow-hidden shadow-xl ring-1 ring-gray-100">
-          <Image
-            src={posterImage}
+          <img
+            src={poster1x}
+            srcset={`${poster1x} 900w, ${poster2x} 1800w`}
+            sizes="(max-width: 900px) 100vw, 900px"
+            width={900}
+            height={1273}
             alt="學界無人機救援挑戰賽 2026 比賽海報"
-            width={1200}
-            height={1697}
-            sizes="(min-width: 1024px) 896px, 100vw"
-            class="w-full h-auto"
+            loading="eager"
+            decoding="async"
+            class="w-full h-auto block"
           />
         </div>
 
