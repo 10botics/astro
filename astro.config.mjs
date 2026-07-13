@@ -244,7 +244,9 @@ export default defineConfig({
     '/school-courses/Apple Vision Pro 遊戲開發課程': '/school-courses/apple-vision-pro-game-dev',
     '/school-courses/3D Micro_bit 機械人創作課程': '/school-courses/3d-microbit-robot-creation',
     '/school-courses/AI影片製作課程': '/school-courses/ai-video-production',
+    '/school-courses/AI 動畫製作課程': '/school-courses/ai-video-production',
     '/school-courses/AI 影片創作課程入門': '/school-courses/ai-video-creation-intro',
+    '/school-courses/AI 影片製作課程入門': '/school-courses/ai-video-creation-intro',
     '/school-courses/人工智能遊戲編程課程': '/school-courses/ai-game-coding',
     '/school-courses/利用人工智能提昇學習效能': '/parent-talk',
     '/school-courses/parent-ai-learning-efficiency': '/parent-talk',
@@ -315,6 +317,7 @@ export default defineConfig({
     '/school-courses/3D%20Micro_bit%20%E6%A9%9F%E6%A2%B0%E4%BA%BA%E5%89%B5%E4%BD%9C%E8%AA%B2%E7%A8%8B': '/school-courses/3d-microbit-robot-creation',
     '/school-courses/AI%E5%BD%B1%E7%89%87%E8%A3%BD%E4%BD%9C%E8%AA%B2%E7%A8%8B': '/school-courses/ai-video-production',
     '/school-courses/AI%20%E5%BD%B1%E7%89%87%E5%89%B5%E4%BD%9C%E8%AA%B2%E7%A8%8B%E5%85%A5%E9%96%80': '/school-courses/ai-video-creation-intro',
+    '/school-courses/AI%20%E5%BD%B1%E7%89%87%E8%A3%BD%E4%BD%9C%E8%AA%B2%E7%A8%8B%E5%85%A5%E9%96%80': '/school-courses/ai-video-creation-intro',
     '/school-courses/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E9%81%8A%E6%88%B2%E7%B7%A8%E7%A8%8B%E8%AA%B2%E7%A8%8B': '/school-courses/ai-game-coding',
     
     // Stemday (URL-encoded)
