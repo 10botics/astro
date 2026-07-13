@@ -28,8 +28,8 @@ import Unity from './Unity 課程.astro';
 import NaturalBioSciences from './自然生物探究手作課程.astro';
 import AppleVisionPro from './Apple Vision Pro 遊戲開發課程.astro';
 import MicrobitRobotCreation from './3D Micro_bit 機械人創作課程.astro';
-import AiVideoProduction from './AI影片製作課程.astro';
-import AiVideoCreationIntro from './AI 影片創作課程入門.astro';
+import AiVideoProduction from './AI 動畫製作課程.astro';
+import AiVideoCreationIntro from './AI 影片製作課程入門.astro';
 import GeminiStudentCertificate from './Gemini 學生證書課程.astro';
 
 // Component mapping by filename
@@ -60,8 +60,8 @@ const componentMap = {
   '自然生物探究手作課程.astro': NaturalBioSciences,
   'Apple Vision Pro 遊戲開發課程.astro': AppleVisionPro,
   '3D Micro_bit 機械人創作課程.astro': MicrobitRobotCreation,
-  'AI影片製作課程.astro': AiVideoProduction,
-  'AI 影片創作課程入門.astro': AiVideoCreationIntro,
+  'AI 動畫製作課程.astro': AiVideoProduction,
+  'AI 影片製作課程入門.astro': AiVideoCreationIntro,
   'Gemini 學生證書課程.astro': GeminiStudentCertificate
 };
 
@@ -94,8 +94,8 @@ export async function getStaticPaths() {
     'natural-bio-sciences': '自然生物探究手作課程.astro',
     'apple-vision-pro-game-dev': 'Apple Vision Pro 遊戲開發課程.astro',
     '3d-microbit-robot-creation': '3D Micro_bit 機械人創作課程.astro',
-    'ai-video-production': 'AI影片製作課程.astro',
-    'ai-video-creation-intro': 'AI 影片創作課程入門.astro',
+    'ai-video-production': 'AI 動畫製作課程.astro',
+    'ai-video-creation-intro': 'AI 影片製作課程入門.astro',
     'gemini-student-certificate': 'Gemini 學生證書課程.astro'
   };
   return Object.keys(slugToFilenameMap).map(slug => ({
@@ -137,8 +137,8 @@ const slugToFilenameMap: Record<string, string> = {
   'natural-bio-sciences': '自然生物探究手作課程.astro',
   'apple-vision-pro-game-dev': 'Apple Vision Pro 遊戲開發課程.astro',
   '3d-microbit-robot-creation': '3D Micro_bit 機械人創作課程.astro',
-  'ai-video-production': 'AI影片製作課程.astro',
-  'ai-video-creation-intro': 'AI 影片創作課程入門.astro',
+  'ai-video-production': 'AI 動畫製作課程.astro',
+  'ai-video-creation-intro': 'AI 影片製作課程入門.astro',
   'gemini-student-certificate': 'Gemini 學生證書課程.astro'
 };
 const filename = slugToFilenameMap[slug];
