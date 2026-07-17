@@ -68,7 +68,7 @@ const componentMap = {
 export async function getStaticPaths() {
   // Canonical slug to filename mapping (school-courses)
   const slugToFilenameMap = {
-    'ai-game-coding': '人工智能遊戲編程課程.astro',
+    'ai-vibe-coding': '人工智能遊戲編程課程.astro',
     'ai-enrichment-course': 'AI藝術創作課程.astro',
     'ai-enlightenment': 'AI啟蒙課程.astro',
     'ai-digital-animation-exhibition': 'AI數碼動畫展.astro',
@@ -111,7 +111,7 @@ if (!slug) {
 
 // Get filename from canonical slug mapping
 const slugToFilenameMap: Record<string, string> = {
-  'ai-game-coding': '人工智能遊戲編程課程.astro',
+  'ai-vibe-coding': '人工智能遊戲編程課程.astro',
   'ai-enrichment-course': 'AI藝術創作課程.astro',
   'ai-enlightenment': 'AI啟蒙課程.astro',
   'ai-digital-animation-exhibition': 'AI數碼動畫展.astro',
@@ -157,4 +157,4 @@ if (!SchoolCourseComponent) {
 }
 ---
 
-<SchoolCourseComponent /> 
+<SchoolCourseComponent />

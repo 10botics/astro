@@ -18,7 +18,7 @@ For SEO optimization, add internal links to school courses and competitions when
 - **Microbit** → `/school-courses/tag/microbit/`
 - **Blockchain** → `/school-courses/Blockchain%20區塊鏈課程/`
 - **AI數碼動畫** → `/school-courses/AI數碼動畫展/`
-- **人工智能遊戲編程** → `/school-courses/人工智能遊戲編程課程/`
+- **AI Vibe Coding 遊戲設計課程** → `/school-courses/ai-vibe-coding/`
 - **AI啟蒙** → `/school-courses/AI藝術創作課程/`
 - **Dobot機械手臂** → `/school-courses/Dobot%20智能機械手臂/`
 - **Lego Spike** → `/school-courses/Lego%20Spike%20Prime%20機器人技術大師班/`
@@ -70,7 +70,7 @@ For SEO optimization, add internal links to school courses and competitions when
 
 **After:**
 ```
-專為香港中學教師量身打造的「[STEAM教育](/school-courses/)知識增益系列：在中學 STEAM教育中使用單板電腦作為教學工具應用[人工智能技術](/school-courses/人工智能遊戲編程課程/)設計與製作自動駕駛模型車」實戰工作坊圓滿落幕！讓本地中學老師深度探索 [Raspberry Pi](/school-courses/raspberry-pi編程課程/)，結合 [Python編程](/school-courses/Python%20初階遊戲編程/) 與 [Donkey Car](/school-courses/Donkey%20Car%20無人車課程/)開源平台的教學應用。
+專為香港中學教師量身打造的「[STEAM教育](/school-courses/)知識增益系列：在中學 STEAM教育中使用單板電腦作為教學工具應用[人工智能技術](/school-courses/ai-vibe-coding/)設計與製作自動駕駛模型車」實戰工作坊圓滿落幕！讓本地中學老師深度探索 [Raspberry Pi](/school-courses/raspberry-pi編程課程/)，結合 [Python編程](/school-courses/Python%20初階遊戲編程/) 與 [Donkey Car](/school-courses/Donkey%20Car%20無人車課程/)開源平台的教學應用。
 ```
 
 **❌ WRONG - Over-linking example:**

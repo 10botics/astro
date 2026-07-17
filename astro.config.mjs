@@ -120,7 +120,9 @@ export default defineConfig({
     '/學界無人機救援挑戰賽2026': '/competition-drone2026',
     
     // School courses - course tag redirects to school-courses
-    '/course/ai-game-coding': '/school-courses/ai-game-coding',
+    '/course/ai-game-coding': '/school-courses/ai-vibe-coding',
+    '/course/ai-vibe-coding': '/school-courses/ai-vibe-coding',
+    '/school-courses/ai-game-coding': '/school-courses/ai-vibe-coding',
     '/course/ai-enrichment-course': '/school-courses/ai-enrichment-course',
     '/course/ai-enlightenment': '/school-courses/ai-enlightenment',
     '/course/ai-digital-animation-exhibition': '/school-courses/ai-digital-animation-exhibition',
@@ -247,7 +249,7 @@ export default defineConfig({
     '/school-courses/AI 動畫製作課程': '/school-courses/ai-video-production',
     '/school-courses/AI 影片創作課程入門': '/school-courses/ai-video-creation-intro',
     '/school-courses/AI 影片製作課程入門': '/school-courses/ai-video-creation-intro',
-    '/school-courses/人工智能遊戲編程課程': '/school-courses/ai-game-coding',
+    '/school-courses/人工智能遊戲編程課程': '/school-courses/ai-vibe-coding',
     '/school-courses/利用人工智能提昇學習效能': '/parent-talk',
     '/school-courses/parent-ai-learning-efficiency': '/parent-talk',
     
@@ -318,7 +320,7 @@ export default defineConfig({
     '/school-courses/AI%E5%BD%B1%E7%89%87%E8%A3%BD%E4%BD%9C%E8%AA%B2%E7%A8%8B': '/school-courses/ai-video-production',
     '/school-courses/AI%20%E5%BD%B1%E7%89%87%E5%89%B5%E4%BD%9C%E8%AA%B2%E7%A8%8B%E5%85%A5%E9%96%80': '/school-courses/ai-video-creation-intro',
     '/school-courses/AI%20%E5%BD%B1%E7%89%87%E8%A3%BD%E4%BD%9C%E8%AA%B2%E7%A8%8B%E5%85%A5%E9%96%80': '/school-courses/ai-video-creation-intro',
-    '/school-courses/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E9%81%8A%E6%88%B2%E7%B7%A8%E7%A8%8B%E8%AA%B2%E7%A8%8B': '/school-courses/ai-game-coding',
+    '/school-courses/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E9%81%8A%E6%88%B2%E7%B7%A8%E7%A8%8B%E8%AA%B2%E7%A8%8B': '/school-courses/ai-vibe-coding',
     
     // Stemday (URL-encoded)
     '/stemday/%E9%A3%B2%E7%AE%A1%E6%A9%8B': '/stemday/straw-bridge',

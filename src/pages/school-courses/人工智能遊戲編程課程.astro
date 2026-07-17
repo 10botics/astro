@@ -20,12 +20,12 @@ import aiGameCodingHero from '../../assets/images/school-courses/人工智能遊
 
 // Course data (static) - now in frontmatter
 export const courseData = {
-  title: "人工智能遊戲編程課程",
-  subtitle: "以 Gemini + GitHub 學習新世代 Vibe Coding",
+  title: "AI Vibe Coding 遊戲設計課程",
+  subtitle: "運用 Gemini 創作、測試及發布個人網頁遊戲",
   tags: ["AI 人工智能", "Programming 編程", "遊戲開發","初中", "高中"],
   videoId: "your-video-id-here",
-  description: "透過 Gemini 以自然語言協作編程，從五子棋原型到個人網頁遊戲開發，並以 GitHub 發佈作品。",
-  detailedDescription: "本課程以 Vibe Coding 為核心，學生會學習如何用自然語言與 Gemini 協作，將想法拆解成可實作的遊戲功能。課程由五子棋挑戰開始，逐步完成專案企劃、核心框架、邏輯深化與最終測試，最後透過 GitHub 建立儲存庫、上傳程式碼並啟用 GitHub Pages，讓作品以專屬 URL 對外分享。",
+  description: "AI Vibe Coding 遊戲設計課程讓學生運用 Gemini 創作、測試及發布 HTML、CSS 與 JavaScript 網頁遊戲，適合中學生參加。",
+  detailedDescription: "本課程以 AI Vibe Coding 為核心，讓學生運用自然語言與 Gemini 協作，把遊戲構思逐步轉化為完整的網頁作品。學生會先分析遊戲規則及勝利條件，再學習把需求拆解成清晰指令，建立由 HTML、CSS 和 JavaScript 組成的遊戲原型。在創作過程中，學生會持續測試遊戲、描述問題、修改功能並改善介面，從實踐中培養邏輯思維、提示設計、除錯和創意解難能力。完成作品後，學生會使用 GitHub 管理專案並透過 GitHub Pages 發布遊戲，建立可供他人直接試玩的作品網址。",
   heroImage: aiGameCodingHero
 };
 
@@ -114,12 +114,12 @@ const courseRequirements = [
   {
     icon: "fas fa-clock",
     title: "課時",
-    description: "12 小時"
+    description: "3–12 小時，可按學生程度及學校需要調整"
   },
   {
     icon: "fas fa-laptop",
     title: "所需設備",
-    description: "手提電腦或桌面電腦或平板電腦"
+    description: "每位學生一部可連接互聯網及運行現代瀏覽器的手提電腦或桌面電腦；學校需提供穩定 Wi-Fi"
   },
   {
     icon: "fas fa-user-graduate",
@@ -129,7 +129,7 @@ const courseRequirements = [
   {
     icon: "fas fa-sign-in-alt",
     title: "帳戶需求",
-    description: "Google account 用於登入 GitHub"
+    description: "每位學生需備有可使用 Gemini 的帳戶及個人 GitHub 帳戶"
   }
 ];
 
@@ -141,7 +141,7 @@ const faqItems = [
   },
   {
     question: "需要自備電腦嗎？",
-    answer: "是的，學校需要自備手提電腦，並確保有穩定的網絡連接。"
+    answer: "是的，每位學生需要使用一部可連接互聯網及運行現代瀏覽器的手提電腦或桌面電腦，並備有可使用 Gemini 的帳戶及個人 GitHub 帳戶；學校亦需提供穩定 Wi-Fi。"
   },
   {
     question: "會學到什麼編程語言？",
@@ -461,20 +461,19 @@ const faqItems = [
   <!-- Course Content Section -->
   <SingleCourseContent 
     items={curriculumItems}
-    hours="12 小時"
+    hours="3–12 小時"
   />
 
   <QnASection faqs={faqItems} />
   <!-- Related Courses Section -->
-  <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="ai-game-coding" context="course" />
+  <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="ai-vibe-coding" context="course" />
   <!-- Related News Section -->
   <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
 
 
 
   <!-- Contact section -->
-  <ContactSection subtitle="想了解更多關於 AI Vibe Coding（Gemini + GitHub）課程的資訊？歡迎聯絡我們，我們會提供詳細的課程安排與報名資訊。" />
+  <ContactSection subtitle="想了解更多關於 AI Vibe Coding 遊戲設計課程的資訊？歡迎聯絡我們，我們會按學生程度及學校需要提供 3–12 小時的課程安排。" />
 </Layout>
-
 
 

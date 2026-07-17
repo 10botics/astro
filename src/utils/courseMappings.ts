@@ -11,7 +11,7 @@ export { TAG_MAPPING, generateTagSlug } from './tagMapping';
 
 // Map Chinese filenames to English URL slugs
 export const COURSE_SLUG_MAPPING: Record<string, string> = {
-  '人工智能遊戲編程課程': 'ai-game-coding',
+  '人工智能遊戲編程課程': 'ai-vibe-coding',
   'AI藝術創作課程': 'ai-enrichment-course',
   'AI啟蒙課程': 'ai-enlightenment',
   'AI數碼動畫展': 'ai-digital-animation-exhibition',

@@ -83,10 +83,10 @@ Gets all aliases for a specific filename.
 For the `course` folder, entries can have a `redirect` property:
 
 ```javascript
-"ai-game-coding": {
-  "redirect": "/school-courses/ai-game-coding",
-  "aliases": ["ai-game-coding"],
-  "main": "ai-game-coding"
+"ai-vibe-coding": {
+  "redirect": "/school-courses/ai-vibe-coding",
+  "aliases": ["ai-vibe-coding", "ai-game-coding"],
+  "main": "ai-vibe-coding"
 }
 ```
 

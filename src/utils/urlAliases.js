@@ -226,10 +226,10 @@ export const urlAliases = {
   // School courses
   "人工智能遊戲編程課程.astro": {
     "tags": {
-      "school-courses": ["ai-game-coding"],
-      "course": ["ai-game-coding"]
+      "school-courses": ["ai-vibe-coding", "ai-game-coding"],
+      "course": ["ai-vibe-coding", "ai-game-coding"]
     },
-    "main": "ai-game-coding"
+    "main": "ai-vibe-coding"
   },
   "AI藝術創作課程.astro": {
     "tags": {
