@@ -11,7 +11,9 @@ import { Image } from 'astro:assets';
 import { generateExcerpt } from '../../utils/excerpt';
 import { TAG_MAPPING } from '../../utils/tagMapping';
 
-import heroImage from '../../assets/images/parent-talk/ai-improve-study-efficiency/gallery-stage-openai-ai-development-education.png';
+import heroImage from '../../assets/images/parent-talk/hero-parent-talk-auditorium-audience.png';
+import galleryGeminiParentWorkshop from '../../assets/images/parent-talk/hero-gemini-parent-workshop-cmass.png';
+import galleryAuditoriumParentAudience from '../../assets/images/parent-talk/gallery-auditorium-parent-audience.png';
 import galleryAuditoriumAiEducation from '../../assets/images/parent-talk/ai-improve-study-efficiency/gallery-auditorium-ai-education-slide.png';
 import galleryClassroomParentTalk from '../../assets/images/parent-talk/ai-improve-study-efficiency/gallery-classroom-parent-talk.png';
 import gallerySchoolUpdates from '../../assets/images/parent-talk/gallery-school-updates.png';
@@ -21,67 +23,82 @@ import galleryParentTalkHallPresentation from '../../assets/images/parent-talk/g
 /** Canonical URL: /parent-talk */
 export const courseData = {
   title: '利用人工智能提昇學習效能',
-  subtitle: 'AI 世代的學習新模式 — 透過人工智能提升子女的學習效能（實作工作坊）',
-  tags: ['家長講座', 'AI 人工智能'].filter((tag) => Object.hasOwn(TAG_MAPPING, tag)),
+  subtitle: '掌握 Gemini 與 Hoppy 遊戲化平台，成為孩子自主學習的最佳 AI 導師！',
+  tags: ['家長講座', 'AI 人工智能', 'Google Gemini'].filter((tag) => Object.hasOwn(TAG_MAPPING, tag)),
   description:
-    '配合教育局「家長教育」方針與「家長智Net」資源，助家校建立共同標準；示範生成式 AI 與提示工程，並討論 AI 輔助功課、事實核查、學術誠信與網絡安全。',
-  detailedDescription: `在生成式 AI 普及的當下，學校與家庭如何建立共識？本工作坊緊貼教育局「家長教育」方針及「家長智Net」資源，助校方與家長達成「同套語言、共同標準」，共同守護學生的學術誠信與網絡安全。
-
-實戰示範：生成式 AI 應用、提示工程（Prompt Engineering）技巧。
-學習支援：如何正確運用 AI 輔導功課，轉化學習模式。
-素養建立：深入討論事實核查、私隱界線及學術誠信。
-家校雙贏：減少教師重複回覆 AI 疑問的壓力，收窄課堂與家庭的數碼差距。
-核心目標：透過專業示範與討論，向社區展現學校對數碼時代家校合作的重視。`,
+    '專為家長設計的 AI 教育講座：掌握 Gemini 提示詞、自動生成溫習測驗、作文大綱導引，以及 Hoppy 遊戲化平台，輕鬆輔導孩子、提升學習效能與親子互動。',
+  detailedDescription: `隨著生成式人工智慧（Generative AI）的快速發展，AI 工具正全面改變學習模式。本課程特別為家長設計，旨在協助家長掌握最新的 AI 教育工具與應用技巧，從提示詞（Prompt）設定、自動生成溫習測驗、作文大綱導引，到運用 Hoppy 遊戲化平台誘發學習興趣，讓家長能輕鬆輔導孩子、提升學習效能與親子互動！`,
   heroImage,
 };
 
 const courseHighlights = [
   {
-    icon: 'fas fa-comments',
-    title: '認識可用的 AI 工具與情境',
+    icon: 'fas fa-lightbulb',
+    title: 'Gemini 實戰與高效 Prompt',
     description:
-      '理解香港地區使用限制與網絡環境議題；認識不同類型的人工智能助手與家長可選擇的入手方式，以及如何在校方提供的帳戶或家用環境下安全試用。',
+      '學會多模態應用（語音、圖片辨識、文件總結、Deep Research 深度研究）。',
   },
   {
     icon: 'fas fa-clipboard-check',
-    title: '貼近家課與測考的實作',
+    title: 'AI 輔導學習與輔助作答',
     description:
-      '由拍照檢查答案、純文字／附圖生成測驗，到作文大綱與分段寫作、閱讀報告總結、成語造句與英文文法檢查，一步步可在家庭中重現。',
+      '掌握 Canvas、Guided Learning、檢查功課文法與生成作文大綱。',
+  },
+  {
+    icon: 'fas fa-gamepad',
+    title: 'Hoppy 遊戲化學習平台',
+    description:
+      '了解如何輕鬆生成自訂題目、監察學習進度，並設定家長獎勵機制。',
   },
   {
     icon: 'fas fa-shield-heart',
-    title: 'AI 素養與安全界線',
+    title: 'AI 時代網絡安全與親子協作',
     description:
-      '討論幻覺與事實核查、深度偽造與法律、學術誠信的合理使用方式，以及不向 AI 洩露過度個人資料等私隱意識。',
+      '掌握 AI 正確使用邊界、防範 AI 假資訊與引導孩子建立健康的使用習慣。',
   },
 ];
 
 const courseCurriculum = {
   items: [
     {
-      title: '如何使用 AI：對話基礎',
-      duration: '約 1 單元',
+      title: 'Generative AI 與 Gemini 基礎',
       content: [
-        '香港使用常見人工智能工具的注意事項與地區限制概覽',
-        '下載登入、廣東話語音與基礎對話練習',
-        '比較不同工具的回應風格，並學習調整預設設定以配合家庭學習需要',
+        '生成式 AI 概念簡介（文字、圖像、音樂）',
+        '掌握優質 Prompt 四大要素（明確、背景、格式、範例）',
+        '理解 AI 限制：幻覺（Hallucination）與偏見（Bias）',
+        '實戰：拍照辨識（昆蟲／物件）、上載文件／保險單張／施政報告進行自動摘要',
       ],
     },
     {
-      title: '用量與進階功能',
-      duration: '約 1 單元',
+      title: 'Gemini 深度學習與進階功能',
       content: [
-        '各平台用量規則與訂閱模式概述（按當日示範工具為準）',
-        '學習應用：檢查功課、生成測驗、作文輔助、閱讀報告、造句／慣用語與英文文法檢查',
-        '分享與對話歷史；以文字／圖像輔助生成學習素材的操作要點',
+        'Deep Research：自動進行升學選科、樓市、保險等主題研究',
+        'Canvas & Guided Learning：模擬物理／科學概念與導向學習',
+        'Gems & 工具：建立專屬 AI 助手、故事書（Storybook）及音樂生成',
       ],
     },
     {
-      title: '自訂助手、訂閱與 AI 素養',
-      duration: '約 1 單元',
+      title: '家長輔導實務：檢查功課與生成溫習資料',
       content: [
-        '建立或訂閱適合測驗、練習等用途的自訂助手；流動裝置與網頁版使用差異',
-        '準確性與幻覺、深度偽造、學術誠信與個人私隱',
+        '功課檢查：核對答案與英文文法錯誤判斷',
+        '測驗生成：3 分鐘內生成成語／英文多項選擇題及同款模擬試題',
+        '作文指導：提供「起承轉合」大綱與文章改善建議',
+      ],
+    },
+    {
+      title: 'Hoppy 遊戲化學習平台與家長協作',
+      content: [
+        'Hoppy 平台介紹：將碎片化時間轉化為學習動力，擺脫欠交功課',
+        '家長帳戶實作：自訂題目難度、全班／個人能力數據監察',
+        '親子互動：設定自訂獎勵商店與答題排行榜',
+      ],
+    },
+    {
+      title: 'AI 時代網絡安全與健康素養',
+      content: [
+        '引導孩子建立正確的 AI 使用原則（避免過度依賴與直接抄襲）',
+        '辨識 AI 假資訊與資訊安全注意事項',
+        '如何透過 AI 建立良性親子溝通與共同學習習慣',
       ],
     },
   ],
@@ -89,16 +106,17 @@ const courseCurriculum = {
 
 const faqItems = [
   {
-    question: '為什麼示範環節會涵蓋多款做法？',
+    question: '家長需要自備什麼設備或帳戶？',
     answer: [
-      '同一主題下不同工具的回應各有差異，有助家長理解如何選擇與比較，以及在家中可重現的做法。'
+      '建議攜帶可上網的智能手機或平板；若學校提供 Google 帳戶，可現場登入 Gemini 跟隨示範。',
+      'Hoppy 平台部分環節會示範家長帳戶設定，講座後可按指引自行註冊使用。',
     ],
   },
   {
     question: '學校安排講座時，一般要預留什麼？',
     answer: [
       '通常需要投影或大屏幕、音響及穩定無線網絡；若希望家長現場跟著操作，可再預留電源與座位。',
-      '單次時長、拆節或系列講座均可按貴校家長日／講座檔期商議。',
+      '建議時長約 2–3 小時，拆節或系列講座均可按貴校家長日／講座檔期商議。',
     ],
   },
 ];
@@ -160,7 +178,6 @@ function formatDate(date: Date): string {
       subtitle={courseData.subtitle}
       description={courseData.detailedDescription}
       heroImage={courseData.heroImage}
-      heroImageMaxScale={0.8}
       tags={courseData.tags}
       descriptionClass="whitespace-pre-line"
       rootSectionHref="/school-courses"
@@ -175,10 +192,10 @@ function formatDate(date: Date): string {
         <div class="text-center mb-12">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">講座亮點</h2>
           <p class="text-gray-600 max-w-3xl mx-auto">
-            示範為主、家長向 — 由工具選擇、日常學習應用到 AI 素養與界線，一次掌握「敢用、會用、用得安全」。
+            由 Gemini 實戰、家長輔導實務到 Hoppy 遊戲化平台與 AI 安全素養，一次掌握「敢用、會用、用得安全」。
           </p>
         </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid md:grid-cols-2 gap-8">
           {courseHighlights.map((item) => (
             <div class="card-base card-hover p-6">
               <div class="flex items-start">
@@ -198,11 +215,11 @@ function formatDate(date: Date): string {
 
     <SingleCourseContent
       items={courseCurriculum.items}
-      hours="按校情調整（常見為單次約 2–3 小時或拆節）"
+      hours="約 2–3 小時"
       hoursText="時長"
       sectionTitle="講座大綱"
       showAdjustmentNote={true}
-      adjustmentText="環節次序、深度與時長可按貴校家長講座時段調整；亦可配合跟進工作坊。"
+      adjustmentText="環節次序、深度與時長可按貴校家長講座或社區中心需求調整；亦可配合跟進工作坊。"
     />
 
     <section class="section-padding bg-gray-50">
@@ -210,6 +227,14 @@ function formatDate(date: Date): string {
         <GalleryCarousel
           title="講座實況"
           images={[
+            {
+              src: galleryGeminiParentWorkshop,
+              alt: '學校禮堂舉行 Gemini 家長工作坊，投影幕示範「Create images」等 AI 功能，家長於課桌使用平板電腦跟隨實作。',
+            },
+            {
+              src: galleryAuditoriumParentAudience,
+              alt: '學校禮堂內舉行家長講座，大量家長坐於藍色座椅面向舞台，講台設有麥克風，展現踴躍參與的講座實況。',
+            },
             {
               src: galleryAuditoriumAiEducation,
               alt: '學校禮堂內，家長坐在觀眾席聆聽講座，大螢幕投影「AI 教育」主題簡報與數位人像圖像，講者持麥克風於台前分享。',
