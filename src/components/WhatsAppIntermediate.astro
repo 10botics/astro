@@ -16,9 +16,7 @@ const {
   pageUrl = ""
 } = Astro.props;
 
-// Automatically determine phone number based on current month
-const currentMonth = new Date().getMonth() + 1; // getMonth() returns 0-11, so add 1
-const defaultPhoneNumber = currentMonth % 2 === 0 ? "60431553" : "65541506";
+const defaultPhoneNumber = "65541506";
 const finalPhoneNumber = phoneNumber || defaultPhoneNumber;
 
 const linkForMessage = formatUrlForWhatsAppMessage(pageUrl);
@@ -95,9 +93,8 @@ const whatsappUrl = `https://wa.me/${finalPhoneNumber}?text=${encodedMessage}`;
   // Access gtag function from window
   const gtag = (window as any).gtag;
   
-  // Construct WhatsApp URL with automatic phone number selection
-  const currentMonth = new Date().getMonth() + 1; // getMonth() returns 0-11, so add 1
-  const phoneNumber = currentMonth % 2 === 0 ? '60431553' : '65541506';
+  // Construct WhatsApp URL using the main enquiry number
+  const phoneNumber = '65541506';
   const urlParams = new URLSearchParams(window.location.search);
   // searchParams.get() is already decoded; do not decodeURIComponent again (breaks titles with "%")
   const title = urlParams.get('title') || '課程查詢';
