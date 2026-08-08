@@ -1,20 +1,37 @@
 ---
 export interface Props {
   interest?: string;
+  variant?: 'default' | 'teacher-training';
 }
 
-const { interest = "" } = Astro.props;
+const { interest = "", variant = 'default' } = Astro.props;
 const apiBase = import.meta.env.PUBLIC_FREEDOM_API_BASE || "https://freedom.10botics.com";
+const isTeacherTraining = variant === 'teacher-training';
 ---
 
-<form class="enquiry-form text-left" data-api={`${apiBase}/api/marketing/enquiries/`} data-interest={interest}>
+<form class="enquiry-form text-left" data-api={`${apiBase}/api/marketing/enquiries/`} data-interest={interest} data-variant={variant}>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-    <div><label class="block text-sm font-semibold text-gray-800 mb-2">姓名 *</label><input name="name" required maxlength="200" class="w-full rounded-lg border border-gray-300 px-4 py-3" /></div>
-    <div><label class="block text-sm font-semibold text-gray-800 mb-2">學校／機構</label><input name="organisation" maxlength="255" class="w-full rounded-lg border border-gray-300 px-4 py-3" /></div>
-    <div><label class="block text-sm font-semibold text-gray-800 mb-2">電郵</label><input type="email" name="email" maxlength="254" class="w-full rounded-lg border border-gray-300 px-4 py-3" /></div>
-    <div><label class="block text-sm font-semibold text-gray-800 mb-2">電話／WhatsApp</label><input type="tel" name="phone" maxlength="40" class="w-full rounded-lg border border-gray-300 px-4 py-3" /></div>
-    <div class="md:col-span-2"><label class="block text-sm font-semibold text-gray-800 mb-2">查詢項目</label><input name="interest" maxlength="255" value={interest} class="w-full rounded-lg border border-gray-300 px-4 py-3" /></div>
-    <div class="md:col-span-2"><label class="block text-sm font-semibold text-gray-800 mb-2">查詢內容</label><textarea name="message" rows="5" class="w-full rounded-lg border border-gray-300 px-4 py-3"></textarea></div>
+    <div><label class="block text-sm font-semibold text-gray-800 mb-2" for={`${variant}-name`}>姓名 *</label><input id={`${variant}-name`} name="name" required maxlength="200" autocomplete="name" class="w-full rounded-lg border border-gray-300 px-4 py-3" /></div>
+    <div><label class="block text-sm font-semibold text-gray-800 mb-2" for={`${variant}-organisation`}>學校／機構</label><input id={`${variant}-organisation`} name="organisation" maxlength="255" autocomplete="organization" class="w-full rounded-lg border border-gray-300 px-4 py-3" /></div>
+    <div><label class="block text-sm font-semibold text-gray-800 mb-2" for={`${variant}-email`}>電郵</label><input id={`${variant}-email`} type="email" name="email" maxlength="254" autocomplete="email" class="w-full rounded-lg border border-gray-300 px-4 py-3" /></div>
+    <div><label class="block text-sm font-semibold text-gray-800 mb-2" for={`${variant}-phone`}>電話／WhatsApp</label><input id={`${variant}-phone`} type="tel" name="phone" maxlength="40" autocomplete="tel" class="w-full rounded-lg border border-gray-300 px-4 py-3" /></div>
+    {isTeacherTraining ? (
+      <>
+        <div><label class="block text-sm font-semibold text-gray-800 mb-2" for="teacher-training-participants">預計參與人數</label><input id="teacher-training-participants" name="participant_count" maxlength="80" placeholder="例如：30位教師" class="w-full rounded-lg border border-gray-300 px-4 py-3" /></div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-800 mb-2" for="teacher-training-schedule">時段</label>
+          <select id="teacher-training-schedule" name="preferred_schedule" class="w-full rounded-lg border border-gray-300 bg-white px-4 py-3">
+            <option value="">未定</option>
+            <option value="上午">上午</option>
+            <option value="下午">下午</option>
+            <option value="全日">全日</option>
+          </select>
+        </div>
+      </>
+    ) : (
+      <div class="md:col-span-2"><label class="block text-sm font-semibold text-gray-800 mb-2" for="default-interest">查詢項目</label><input id="default-interest" name="interest" maxlength="255" value={interest} class="w-full rounded-lg border border-gray-300 px-4 py-3" /></div>
+    )}
+    <div class="md:col-span-2"><label class="block text-sm font-semibold text-gray-800 mb-2" for={`${variant}-message`}>{isTeacherTraining ? '補充資料' : '查詢內容'}</label><textarea id={`${variant}-message`} name="message" rows="5" class="w-full rounded-lg border border-gray-300 px-4 py-3"></textarea></div>
     <div class="md:col-span-2 flex items-start gap-3"><input id="privacy-consent" name="privacy_consent" value="true" type="checkbox" required class="mt-1 h-4 w-4" /><label for="privacy-consent" class="text-sm text-gray-600">我同意10教育使用以上資料回覆此查詢，並已閱讀<a class="text-brand-blue-700 underline" href="/privacy-policy" target="_blank">私隱政策</a>。</label></div>
     <div class="hidden" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off" /></label></div>
   </div>
@@ -39,9 +56,19 @@ const apiBase = import.meta.env.PUBLIC_FREEDOM_API_BASE || "https://freedom.10bo
       const params = new URLSearchParams(window.location.search);
       const submissionId = form.dataset.submissionId || crypto.randomUUID();
       form.dataset.submissionId = submissionId;
+      const participantCount = String(values.participant_count || '').trim();
+      const preferredSchedule = String(values.preferred_schedule || '').trim();
+      const originalMessage = String(values.message || '').trim();
+      const messageParts = [
+        participantCount ? `預計參與人數：${participantCount}` : '',
+        preferredSchedule ? `時段：${preferredSchedule}` : '',
+        originalMessage ? `補充資料：${originalMessage}` : '',
+      ].filter(Boolean);
+      const { participant_count: _participantCount, preferred_schedule: _preferredSchedule, ...submittedValues } = values;
       const payload = {
-        ...values,
+        ...submittedValues,
         interest: values.interest || form.dataset.interest || document.title,
+        message: form.dataset.variant === 'teacher-training' ? messageParts.join('\n') : originalMessage,
         landing_page: window.location.href,
         referrer: document.referrer,
         utm_source: params.get('utm_source') || '',

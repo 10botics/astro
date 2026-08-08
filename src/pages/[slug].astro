@@ -27,7 +27,6 @@ import Stem2024List from './2024 中小學 STEM 比賽清單.astro';
 import Stem2025List from './2025 中小學 STEM 比賽清單.astro';
 import SchoolCoursesIndex from './school-courses/index.astro';
 import stemdayIndex from './stemday/index.astro';
-import StaffDevIndex from './staff-development-day/index.astro';
 import FundingIndex from './funding-application/index.astro';
 import NewsIndex from './news/index.astro';
 import StemShowroom from './stem-showroom.astro';
@@ -64,7 +63,6 @@ const componentMap = {
   '2025 中小學 STEM 比賽清單.astro': Stem2025List,
   'school-courses/index.astro': SchoolCoursesIndex,
   'stemday/index.astro': stemdayIndex,
-  'staff-development-day/index.astro': StaffDevIndex,
   'funding-application/index.astro': FundingIndex,
   'news/index.astro': NewsIndex,
   'stem-showroom.astro': StemShowroom,
@@ -106,7 +104,6 @@ export async function getStaticPaths() {
     'elementor-12069': 'stem-showroom.astro',
     'school-courses': 'school-courses/index.astro',
     'stemday': 'stemday/index.astro',
-    'teacher-workshop': 'staff-development-day/index.astro',
     'funding-application': 'funding-application/index.astro',
     'news': 'news/index.astro',
     'secondary-ai-course': 'Donkey Car 無人車課程.astro',
@@ -154,7 +151,6 @@ const slugToFilenameMap: Record<string, string> = {
   'elementor-12069': 'stem-showroom.astro',
   'school-courses': 'school-courses/index.astro',
   'stemday': 'stemday/index.astro',
-  'teacher-workshop': 'staff-development-day/index.astro',
   'funding-application': 'funding-application/index.astro',
   'news': 'news/index.astro',
   'secondary-ai-course': 'Donkey Car 無人車課程.astro',
@@ -178,4 +174,4 @@ if (!ChineseComponent) {
 }
 ---
 
-<ChineseComponent /> 
+<ChineseComponent />

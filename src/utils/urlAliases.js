@@ -187,7 +187,7 @@ export const urlAliases = {
       "root": ["teacher-workshop", "stemworkshop"],
       "staff-development-day": ["staff-development-day"]
     },
-    "main": "teacher-workshop",
+    "main": "staff-development-day",
     "filename": "index.astro"
   },
   "funding-application/index.astro": {

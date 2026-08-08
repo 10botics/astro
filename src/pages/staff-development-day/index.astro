@@ -1,303 +1,278 @@
-﻿---
-import Layout from '../../layouts/Layout.astro';
+---
 import { Image } from 'astro:assets';
-import CTAButton from '../../components/CTAButton.astro';
-import RelatedNews from '../../components/course/RelatedNews.astro';
-import {
-  discoverStaffDevelopmentCourses,
-  generateTagSlug,
-  AUDIENCE_TAG_MAPPING,
-  getStaffDevelopmentWorkshopHref,
-} from '../../utils/courseMappings';
-import type { Course } from '../../utils/courseMappings';
-import heroImage from '../../assets/images/staff-development-day/mainpage/hero-image.jpeg';
-import heroBackground from '../../assets/images/staff-development-day/mainpage/hero-background.jpeg';
-import gallery1 from '../../assets/images/staff-development-day/mainpage/gallery-1.jpeg';
-import gallery2 from '../../assets/images/staff-development-day/mainpage/gallery-2.jpeg';
-import gallery3 from '../../assets/images/staff-development-day/mainpage/gallery-3.jpeg';
-import gallery4 from '../../assets/images/staff-development-day/mainpage/gallery-4.jpeg';
+import Layout from '../../layouts/Layout.astro';
+import EnquiryForm from '../../components/EnquiryForm.astro';
+import dbsAuditorium from '../../assets/images/staff-development-day/ai-teacher-training/dbs-gemini-auditorium.jpg';
+import dbsWorkshop from '../../assets/images/staff-development-day/ai-teacher-training/dbs-gemini-workshop.jpg';
+import goodHopeWorkshop from '../../assets/images/staff-development-day/ai-teacher-training/good-hope-gemini-workshop.jpg';
 
-const astroWorkshops = await discoverStaffDevelopmentCourses(['index.astro', '[slug].astro']);
-
-const sortedWorkshops = astroWorkshops.sort(
-  (a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
-);
-
-const pageTitle = '教師發展日工作坊 - 10教育';
+const pageTitle = 'AI教師培訓及教師發展日｜Gemini Educator教師認證培訓｜10教育';
 const pageDescription =
-  '定期舉辦教師STEM培訓工作坊，提供AIGC技術協助自動生成教案試題學習資料，節省教師時間精力，獲取整理教學資源使教學流暢高效';
+  '為香港學校提供AI教師培訓及教師發展日方案，涵蓋Gemini Educator認證、AI備課、教材製作、個人化學習、資訊素養、私隱及負責任使用AI。';
 const pageKeywords =
-  '教師發展日, 教師培訓, STEM工作坊, ChatGPT, AI教育, Raspberry Pi, Donkey Car, Gemini, 10教育';
+  'AI教師培訓, 教師發展日, SDD, Gemini Educator, Gemini教師認證, 生成式AI, 資訊素養, 香港學校, 教師工作坊';
+const whatsappHref = `/whatsapp?title=${encodeURIComponent('AI教師培訓及教師發展日')}&url=${encodeURIComponent(Astro.url.href)}`;
+
+const outcomes = [
+  {
+    number: '01',
+    title: '提升備課及日常工作效率',
+    description: '運用Gemini整理資料、摘要、改寫、建立教材初稿、規劃活動及進行Deep Research。',
+  },
+  {
+    number: '02',
+    title: '設計互動及個人化學習',
+    description: '透過Canvas、Guided Learning、Storybook及Gems，設計切合學生需要的學習內容。',
+  },
+  {
+    number: '03',
+    title: '建立AI及資訊素養',
+    description: '辨識AI幻覺、核實資料來源、保護私隱，並建立師生負責任使用AI的原則。',
+  },
+  {
+    number: '04',
+    title: '準備Gemini Educator評核',
+    description: '掌握認證所需的主要知識和實際應用，為Google的Gemini Certified Educator評核作好準備。',
+  },
+];
+
+const formats = [
+  { duration: '講座', title: '主題分享', description: '適合全校教師共同建立AI概念、資訊素養及校本方向。' },
+  { duration: '約2小時', title: '實作培訓', description: '教師親自完成提示設計、備課、研究和教材製作任務。' },
+  { duration: '半日', title: '教師發展日', description: '結合講解、示範、分組實作及校本應用討論。' },
+  { duration: '全日', title: '深度工作坊', description: '按學校需要組合多個主題，並預留充足時間實踐和交流。' },
+];
+
+const topics = [
+  'Gemini Educator教師認證培訓',
+  'AI備課及教材製作',
+  'AI教學及個人化學習',
+  'AI研究及資料整理',
+  '資訊素養與負責任使用AI',
+  'AI校務及行政效率',
+];
+
+const faqs = [
+  {
+    question: '培訓適合哪些學校和教師？',
+    answer: '課程適合香港中小學、特殊學校及教育機構，可按教師的AI經驗、學科背景和學校發展重點調整內容。',
+  },
+  {
+    question: '教師發展日可以安排多長時間？',
+    answer: '可安排主題講座、約兩小時實作培訓、半日或全日教師發展日，亦可按學校時間表度身設計。',
+  },
+  {
+    question: '參與培訓是否一定取得Gemini Educator認證？',
+    answer: '認證由Google頒發。培訓會協助教師掌握評核所需知識和應用，但教師仍須自行完成並通過Google評核。學校亦可選擇只參與培訓而不要求教師應考。',
+  },
+  {
+    question: '內容可以配合學校需要嗎？',
+    answer: '可以。我們會按參與教師、培訓目標、時間、學校現有工具及校本AI方向調整活動和示例。',
+  },
+  {
+    question: '學校需要預先為每位教師購買付費AI帳戶嗎？',
+    answer: '不需要另行為每位教師購買付費AI帳戶。參與教師只需備有學校提供的Google Workspace for Education帳戶。我們會在確認方案時了解學校現有帳戶和設備，並按可用功能設計培訓內容及事前準備。',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
 ---
 
-<Layout
-  title={pageTitle}
-  description={pageDescription}
-  keywords={pageKeywords}
-  ogImage={heroImage.src}
->
-  <main class="courses-index">
-    <header class="relative text-white py-20 overflow-hidden">
-      <div class="absolute inset-0">
-        <Image
-          src={heroBackground}
-          alt="教師發展日背景"
-          class="w-full h-full object-cover"
-          width={1920}
-          height={1080}
-        />
-        <div class="absolute inset-0 bg-black bg-opacity-30"></div>
-      </div>
+<Layout title={pageTitle} description={pageDescription} keywords={pageKeywords} ogImage={dbsAuditorium.src}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
-      <div class="container mx-auto px-4 relative z-10">
-        <div class="text-center max-w-4xl mx-auto">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            教師發展日<br />
-            <span class="text-gray-200">Staff Development Day</span>
-          </h1>
-          <p class="text-xl md:text-2xl text-gray-100 leading-relaxed">
-            10Botics 定期舉辦教師工作坊，為教師提供STEM培訓<br />
+  <div class="bg-white text-slate-900">
+    <header class="relative isolate overflow-hidden bg-slate-950 text-white">
+      <Image
+        src={dbsAuditorium}
+        alt="拔萃男書院教師參與Gemini及生成式AI培訓"
+        class="absolute inset-0 -z-20 h-full w-full object-cover object-center"
+        widths={[640, 960, 1440, 2000]}
+        sizes="100vw"
+        loading="eager"
+      />
+      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/35"></div>
+      <div class="container mx-auto px-4 py-20 md:py-28 lg:py-32">
+        <div class="max-w-3xl">
+          <p class="mb-5 inline-flex rounded-full border border-cyan-300/40 bg-cyan-300/10 px-4 py-2 text-sm font-semibold tracking-wide text-cyan-100">
+            專為香港學校及教育機構設計
           </p>
+          <h1 class="text-4xl font-bold leading-tight md:text-6xl lg:text-7xl">
+            AI教師培訓<br />及教師發展日
+          </h1>
+          <p class="mt-7 max-w-2xl text-lg leading-8 text-slate-100 md:text-xl">
+            協助教師把Gemini及生成式AI真正應用於備課、教材製作、資料研究和個人化學習，同時建立資訊核實、私隱保障及負責任使用AI的能力。
+          </p>
+          <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <a href="#enquiry" class="rounded-lg bg-cyan-400 px-7 py-4 text-center text-lg font-bold text-slate-950 shadow-lg transition hover:bg-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-200">
+              索取教師培訓方案
+            </a>
+            <a href="/staff-development-day/gemini-educator/" class="rounded-lg border-2 border-white/70 bg-white/10 px-7 py-4 text-center text-lg font-semibold text-white backdrop-blur transition hover:bg-white hover:text-slate-950 focus:outline-none focus:ring-2 focus:ring-white">
+              了解Gemini Educator特訓班
+            </a>
+            <a href={whatsappHref} class="rounded-lg border-2 border-green-300/80 bg-green-500/20 px-7 py-4 text-center text-lg font-semibold text-white backdrop-blur transition hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-200">
+              WhatsApp查詢
+            </a>
+          </div>
         </div>
       </div>
     </header>
 
-    <section class="py-16">
+    <section class="border-b border-slate-200 bg-slate-50 py-8">
+      <div class="container mx-auto grid gap-5 px-4 text-center md:grid-cols-3 md:text-left">
+        <div><p class="text-sm font-semibold text-cyan-700">校本設計</p><p class="mt-1 font-bold">配合教師經驗及學校發展方向</p></div>
+        <div><p class="text-sm font-semibold text-cyan-700">實作為本</p><p class="mt-1 font-bold">不只聽講，教師即場完成應用任務</p></div>
+        <div><p class="text-sm font-semibold text-cyan-700">認證準備</p><p class="mt-1 font-bold">旗艦Gemini Educator培訓方案</p></div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24">
       <div class="container mx-auto px-4">
-        <div class="max-w-6xl mx-auto mb-12 text-center">
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">工作坊及講座</h2>
-          <p class="text-gray-600 max-w-2xl mx-auto">
-            瀏覽我們為教師設計的培訓主題，點選標籤可按主題篩選相關工作坊。
-          </p>
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-bold tracking-widest text-cyan-700">從日常工作到課堂實踐</p>
+          <h2 class="mt-3 text-3xl font-bold md:text-5xl">
+            學完即用，讓AI真正<span class="whitespace-nowrap">支援教學</span>
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-slate-600">課程內容源自我們實際為學校提供的Gemini教師培訓，按最新工具和香港教學情境持續更新。</p>
         </div>
-        <div class="max-w-6xl mx-auto">
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {sortedWorkshops.map((workshop: Course) => (
-              <article class="course-card bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-                {workshop.heroImage && (
-                  <div class="course-image-container bg-gray-100 overflow-hidden aspect-video">
-                    {typeof workshop.heroImage === 'string' ? (
-                      <Image
-                        src={workshop.heroImage}
-                        alt={workshop.title}
-                        width={600}
-                        height={400}
-                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                      />
-                    ) : (
-                      <Image
-                        src={workshop.heroImage}
-                        alt={workshop.title}
-                        width={600}
-                        height={400}
-                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                      />
-                    )}
-                  </div>
-                )}
-                <div class="p-6">
-                  <div class="mb-4">
-                    <h3 class="text-xl font-bold mb-2 text-gray-800 line-clamp-2">
-                      <a
-                        href={getStaffDevelopmentWorkshopHref(workshop)}
-                        class="hover:text-brand-blue-600 transition-colors"
-                      >
-                        {workshop.title}
-                      </a>
-                    </h3>
+        <div class="mx-auto mt-12 grid max-w-6xl gap-6 md:grid-cols-2">
+          {outcomes.map((outcome) => (
+            <article class="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
+              <span class="text-sm font-bold text-cyan-700">{outcome.number}</span>
+              <h3 class="mt-3 text-2xl font-bold">{outcome.title}</h3>
+              <p class="mt-3 leading-7 text-slate-600">{outcome.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
 
-                    {workshop.description && (
-                      <p class="text-gray-600 text-sm line-clamp-3 mb-4">{workshop.description}</p>
-                    )}
-                  </div>
+    <section class="bg-slate-950 py-16 text-white md:py-24">
+      <div class="container mx-auto grid items-center gap-12 px-4 lg:grid-cols-2">
+        <div>
+          <p class="text-sm font-bold tracking-widest text-cyan-300">旗艦教師培訓</p>
+          <h2 class="mt-3 text-3xl font-bold md:text-5xl">Gemini Educator教師認證培訓</h2>
+          <p class="mt-6 text-lg leading-8 text-slate-200">
+            教師透過講解、示範及實作，掌握有效提示、Deep Research、Canvas、Guided Learning、Storybook、Gems及Google Classroom應用，並學習核實資料和安全使用AI。
+          </p>
+          <p class="mt-5 leading-7 text-slate-300">
+            約兩小時完成核心培訓及認證評核準備。認證由Google頒發；教師須完成並通過Google評核，方可取得Gemini Certified Educator認證。
+          </p>
+          <a href="/staff-development-day/gemini-educator/" class="mt-8 inline-flex rounded-lg bg-cyan-400 px-6 py-3 font-bold text-slate-950 transition hover:bg-cyan-300">
+            查看Gemini Educator培訓詳情
+          </a>
+        </div>
+        <Image
+          src={dbsWorkshop}
+          alt="拔萃男書院教師在禮堂參與生成式AI實作培訓"
+          class="aspect-[4/3] w-full rounded-2xl object-cover shadow-2xl"
+          widths={[640, 960, 1400]}
+          sizes="(min-width: 1024px) 50vw, 100vw"
+        />
+      </div>
+    </section>
 
-                  <div class="mb-4">
-                    {(() => {
-                      const targetAudienceTags = ['初小', '高小', '初中', '高中'];
-                      const otherTags = workshop.tags.filter((tag) => !targetAudienceTags.includes(tag));
-                      const audienceTags = workshop.tags.filter((tag) => targetAudienceTags.includes(tag));
+    <section class="py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-bold tracking-widest text-cyan-700">培訓主題</p>
+          <h2 class="mt-3 text-3xl font-bold md:text-5xl">
+            不只教授工具，更協助學校建立<span class="whitespace-nowrap">應用能力</span>
+          </h2>
+        </div>
+        <div class="mx-auto mt-10 flex max-w-5xl flex-wrap justify-center gap-3">
+          {topics.map((topic) => <span class="rounded-full border border-cyan-200 bg-cyan-50 px-5 py-3 font-semibold text-cyan-950">{topic}</span>)}
+        </div>
+        <div class="mx-auto mt-12 grid max-w-6xl gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {formats.map((format) => (
+            <article class="rounded-2xl bg-slate-50 p-6">
+              <p class="font-bold text-cyan-700">{format.duration}</p>
+              <h3 class="mt-2 text-xl font-bold">{format.title}</h3>
+              <p class="mt-3 leading-7 text-slate-600">{format.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
 
-                      return (
-                        <div class="space-y-2">
-                          {audienceTags.length > 0 && (
-                            <div class="flex flex-wrap gap-1 items-center">
-                              <span class="text-xs font-medium text-gray-600 mr-1">適合對象:</span>
-                              {audienceTags.map((tag) => {
-                                const tagSlug =
-                                  AUDIENCE_TAG_MAPPING[tag] || tag.toLowerCase().replace(/\s+/g, '-');
-                                return (
-                                  <a
-                                    href={`/staff-development-day/tag/${tagSlug}`}
-                                    class="bg-cyan-100 text-cyan-800 px-2 py-1 rounded text-xs font-medium hover:bg-cyan-200 transition-colors"
-                                  >
-                                    {tag}
-                                  </a>
-                                );
-                              })}
-                            </div>
-                          )}
+    <section class="bg-cyan-50 py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-bold tracking-widest text-cyan-800">學校實例</p>
+          <h2 class="mt-3 text-3xl font-bold md:text-5xl">香港學校的真實培訓經驗</h2>
+          <p class="mt-5 text-lg leading-8 text-slate-600">我們按學校的教師背景、培訓目標和時間安排設計內容，讓參與者可以即場實踐。</p>
+        </div>
+        <div class="mx-auto mt-12 grid max-w-6xl gap-8 lg:grid-cols-2">
+          <article class="overflow-hidden rounded-2xl bg-white shadow-sm">
+            <Image src={dbsAuditorium} alt="拔萃男書院教師在禮堂參與Gemini Educator培訓" class="aspect-video w-full object-cover" widths={[640, 960, 1400]} sizes="(min-width: 1024px) 50vw, 100vw" />
+            <div class="p-7">
+              <p class="text-sm font-bold text-cyan-700">拔萃男書院</p>
+              <h3 class="mt-2 text-2xl font-bold">大規模Gemini Educator教師培訓</h3>
+              <p class="mt-4 leading-7 text-slate-600">透過講解、現場示範及實作活動，協助教師掌握Gemini在備課、研究、教材製作及個人化學習方面的應用。多位參與教師其後完成Google評核並取得Gemini Certified Educator認證。</p>
+            </div>
+          </article>
+          <article class="overflow-hidden rounded-2xl bg-white shadow-sm">
+            <Image src={goodHopeWorkshop} alt="德望學校教師分組參與Gemini實作培訓" class="aspect-video w-full object-cover" widths={[640, 960, 1400]} sizes="(min-width: 1024px) 50vw, 100vw" />
+            <div class="p-7">
+              <p class="text-sm font-bold text-cyan-700">德望學校</p>
+              <h3 class="mt-2 text-2xl font-bold">AI教學應用實作培訓</h3>
+              <p class="mt-4 leading-7 text-slate-600">教師透過實作認識Gemini的教學應用、提示設計、內容製作、資料核實及負責任使用AI，為日後參與Gemini Educator認證評核作好準備。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-                          {otherTags.length > 0 && (
-                            <div class="flex flex-wrap gap-1">
-                              {otherTags.map((tag) => {
-                                const tagSlug = generateTagSlug(tag);
-                                return (
-                                  <a
-                                    href={`/staff-development-day/tag/${tagSlug}`}
-                                    class="bg-brand-blue-100 text-brand-blue-800 px-2 py-1 rounded text-xs font-medium hover:bg-brand-blue-200 transition-colors"
-                                  >
-                                    {tag}
-                                  </a>
-                                );
-                              })}
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })()}
-                  </div>
-
-                  <div class="mt-auto">
-                    <a
-                      href={getStaffDevelopmentWorkshopHref(workshop)}
-                      class="inline-block w-full text-center bg-brand-blue-600 text-white px-4 py-2 rounded hover:bg-brand-blue-700 transition-colors text-sm font-medium"
-                    >
-                      查看詳情
-                    </a>
-                  </div>
-                </div>
-              </article>
+    <section class="py-16 md:py-24">
+      <div class="container mx-auto px-4">
+        <div class="mx-auto max-w-4xl">
+          <div class="text-center">
+            <p class="text-sm font-bold tracking-widest text-cyan-700">常見問題</p>
+            <h2 class="mt-3 text-3xl font-bold md:text-5xl">安排培訓前，學校通常會問</h2>
+          </div>
+          <div class="mt-10 divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white px-6 md:px-8">
+            {faqs.map((faq) => (
+              <details class="group py-5">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-5 text-lg font-bold">
+                  {faq.question}<span aria-hidden="true" class="text-2xl text-cyan-700 transition group-open:rotate-45">＋</span>
+                </summary>
+                <p class="mt-4 max-w-3xl leading-7 text-slate-600">{faq.answer}</p>
+              </details>
             ))}
           </div>
         </div>
       </div>
     </section>
 
-    <section class="pb-16">
-      <div class="container mx-auto px-4">
-        <div class="bg-gray-50 rounded-2xl p-8 max-w-6xl mx-auto">
-          <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">活動照片集</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="group relative overflow-hidden rounded-xl">
-              <Image
-                src={gallery1}
-                alt="香港教育城專業發展日"
-                class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
-                width={768}
-                height={576}
-              />
-              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
-                <div class="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <h3 class="font-semibold mb-2">香港教育城專業發展日</h3>
-                  <p class="text-sm">
-                    闡述人工智能對教育界的影響，向老師介紹無人駕駛系統及如何推動學生學習人工智能
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="group relative overflow-hidden rounded-xl">
-              <Image
-                src={gallery2}
-                alt="浸大CLAP-TECH"
-                class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
-                width={768}
-                height={576}
-              />
-              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
-                <div class="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <h3 class="font-semibold mb-2">浸大CLAP-TECH</h3>
-                  <p class="text-sm">
-                    以實作形式指導老師學習編寫 python 程式，運用 python 及 Tensorflow
-                    進行路牌辨識及將所學帶回學校與學生分享
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="group relative overflow-hidden rounded-xl">
-              <Image
-                src={gallery3}
-                alt="教育局-教師專場1"
-                class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
-                width={768}
-                height={512}
-              />
-              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
-                <div class="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <h3 class="font-semibold mb-2">教育局-教師專場1</h3>
-                  <p class="text-sm">在中學運用人工智能編程控制無人機於 STEM 教育相關的學習活動</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="group relative overflow-hidden rounded-xl">
-              <Image
-                src={gallery4}
-                alt="教育局-教師專場2"
-                class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
-                width={768}
-                height={512}
-              />
-              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
-                <div class="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <h3 class="font-semibold mb-2">教育局-教師專場2</h3>
-                  <p class="text-sm">在中學運用人工智能編程控制無人機於 STEM 教育相關的學習活動</p>
-                </div>
-              </div>
-            </div>
+    <section id="enquiry" class="scroll-mt-20 bg-slate-100 py-16 md:py-24">
+      <div class="container mx-auto grid gap-10 px-4 lg:grid-cols-[0.8fr_1.2fr]">
+        <div>
+          <p class="text-sm font-bold tracking-widest text-cyan-700">下一步</p>
+          <h2 class="mt-3 text-3xl font-bold md:text-5xl">索取AI教師培訓方案</h2>
+          <p class="mt-5 text-lg leading-8 text-slate-600">告訴我們學校的培訓目標、預計人數和日期。我們會按需要建議主題、形式和時間安排。</p>
+          <div class="mt-8 rounded-2xl bg-white p-6">
+            <p class="font-bold">想先簡單談談？</p>
+            <p class="mt-2 text-slate-600">您亦可直接透過WhatsApp聯絡我們。</p>
+            <a href={whatsappHref} class="mt-4 inline-flex rounded-lg bg-green-600 px-5 py-3 font-bold text-white transition hover:bg-green-700">WhatsApp查詢</a>
           </div>
+        </div>
+        <div class="rounded-2xl bg-white p-6 shadow-sm md:p-8">
+          <EnquiryForm variant="teacher-training" interest="AI教師培訓及教師發展日" />
         </div>
       </div>
     </section>
-  </main>
-
-  <RelatedNews
-    courseTags={['教師培訓', 'AI教育', 'STEM', 'ChatGPT', '人工智能', 'Raspberry Pi', 'Donkey Car', '教師發展', '工作坊']}
-    courseTitle="教師發展日工作坊"
-    maxResults={6}
-    context="course"
-  />
-
-  <section class="bg-brand-blue-600 text-white py-16">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">準備好提升您的教學技能了嗎？</h2>
-      <p class="text-xl text-brand-blue-100 mb-8 max-w-3xl mx-auto">
-        加入我們的教師發展計劃，掌握最新的AI和STEM教學技術，為您的學生帶來更豐富的學習體驗。
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <CTAButton href="/contact" text="聯絡我們" variant="white" size="lg" />
-        <CTAButton
-          href="/school-courses"
-          text="查看課程"
-          variant="outline"
-          size="lg"
-          class="border-2 border-white text-white hover:bg-white hover:text-brand-blue-600"
-        />
-      </div>
-    </div>
-  </section>
+  </div>
 </Layout>
 
 <style>
-  .container {
-    max-width: 1200px;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  .group:hover .group-hover\:scale-110 {
-    transform: scale(1.1);
-  }
-
-  @media (max-width: 768px) {
-    .text-6xl {
-      font-size: 2.5rem;
-    }
-    .text-5xl {
-      font-size: 2rem;
-    }
-  }
+  .container { max-width: 1200px; }
+  html { scroll-behavior: smooth; }
 </style>
