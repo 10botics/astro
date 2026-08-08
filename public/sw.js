@@ -5,8 +5,10 @@ const urlsToCache = [
   '/images/logo_website_700x200-300x86.png', // legacy URL; keep in sync with full_logo.png
   '/images/hero-image.jpg',
   '/favicon.svg',
-  '/favicon-100x100.jpg',
-  '/favicon-300x300.jpg'
+  '/favicon-32.png',
+  '/favicon-192.png',
+  '/favicon-512.png',
+  '/apple-touch-icon.png'
 ];
 
 // Install event - cache critical resources
@@ -82,4 +84,4 @@ self.addEventListener('sync', event => {
 function doBackgroundSync() {
   // Handle background sync tasks
   console.log('Background sync triggered');
-} 
+}
