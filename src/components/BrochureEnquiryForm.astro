@@ -13,7 +13,7 @@ const apiBase = import.meta.env.PUBLIC_FREEDOM_API_BASE || "https://freedom.10bo
   </div>
   <p class="form-error hidden mt-4 text-red-700" role="alert"></p>
   <p class="form-success hidden mt-4 rounded-lg bg-green-50 p-4 text-green-800" role="status"></p>
-  <button type="submit" class="mt-6 rounded-lg bg-brand-blue-600 px-7 py-3 font-semibold text-white hover:bg-brand-blue-700 disabled:opacity-60">電郵給我課程總覽</button>
+  <button type="submit" class="mt-6 rounded-lg bg-brand-blue-600 px-7 py-3 font-semibold text-white hover:bg-brand-blue-700 disabled:opacity-60">索取課程總覽</button>
 </form>
 
 <script>
@@ -69,7 +69,7 @@ const apiBase = import.meta.env.PUBLIC_FREEDOM_API_BASE || "https://freedom.10bo
       } catch {
         if (error) { error.textContent = '暫時未能提交，請致電或 WhatsApp 6554 1506。'; error.classList.remove('hidden'); }
       } finally {
-        if (button) { button.disabled = false; button.textContent = '電郵給我課程總覽'; }
+        if (button) { button.disabled = false; button.textContent = '索取課程總覽'; }
       }
     });
   }
