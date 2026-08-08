@@ -1,0 +1,76 @@
+---
+export interface Props {
+  interest?: string;
+}
+
+const { interest = "" } = Astro.props;
+const apiBase = import.meta.env.PUBLIC_FREEDOM_API_BASE || "https://freedom.10botics.com";
+---
+
+<form class="enquiry-form text-left" data-api={`${apiBase}/api/marketing/enquiries/`} data-interest={interest}>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div><label class="block text-sm font-semibold text-gray-800 mb-2">姓名 *</label><input name="name" required maxlength="200" class="w-full rounded-lg border border-gray-300 px-4 py-3" /></div>
+    <div><label class="block text-sm font-semibold text-gray-800 mb-2">學校／機構</label><input name="organisation" maxlength="255" class="w-full rounded-lg border border-gray-300 px-4 py-3" /></div>
+    <div><label class="block text-sm font-semibold text-gray-800 mb-2">電郵</label><input type="email" name="email" maxlength="254" class="w-full rounded-lg border border-gray-300 px-4 py-3" /></div>
+    <div><label class="block text-sm font-semibold text-gray-800 mb-2">電話／WhatsApp</label><input type="tel" name="phone" maxlength="40" class="w-full rounded-lg border border-gray-300 px-4 py-3" /></div>
+    <div class="md:col-span-2"><label class="block text-sm font-semibold text-gray-800 mb-2">查詢項目</label><input name="interest" maxlength="255" value={interest} class="w-full rounded-lg border border-gray-300 px-4 py-3" /></div>
+    <div class="md:col-span-2"><label class="block text-sm font-semibold text-gray-800 mb-2">查詢內容</label><textarea name="message" rows="5" class="w-full rounded-lg border border-gray-300 px-4 py-3"></textarea></div>
+    <div class="md:col-span-2 flex items-start gap-3"><input id="privacy-consent" name="privacy_consent" value="true" type="checkbox" required class="mt-1 h-4 w-4" /><label for="privacy-consent" class="text-sm text-gray-600">我同意10教育使用以上資料回覆此查詢，並已閱讀<a class="text-brand-blue-700 underline" href="/privacy-policy" target="_blank">私隱政策</a>。</label></div>
+    <div class="hidden" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off" /></label></div>
+  </div>
+  <p class="form-error hidden mt-4 text-red-700" role="alert"></p>
+  <p class="form-success hidden mt-4 rounded-lg bg-green-50 p-4 text-green-800" role="status"></p>
+  <button type="submit" class="mt-6 rounded-lg bg-brand-blue-600 px-7 py-3 font-semibold text-white hover:bg-brand-blue-700 disabled:opacity-60">提交查詢</button>
+  <p class="mt-3 text-sm text-gray-500">請至少填寫電郵或電話其中一項。我們通常會在一個工作天內回覆。</p>
+</form>
+
+<script>
+  for (const form of document.querySelectorAll<HTMLFormElement>('.enquiry-form')) {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      const error = form.querySelector<HTMLElement>('.form-error');
+      const success = form.querySelector<HTMLElement>('.form-success');
+      const values = Object.fromEntries(new FormData(form).entries());
+      if (!values.email && !values.phone) {
+        if (error) { error.textContent = '請填寫電郵或電話。'; error.classList.remove('hidden'); }
+        return;
+      }
+      const params = new URLSearchParams(window.location.search);
+      const submissionId = form.dataset.submissionId || crypto.randomUUID();
+      form.dataset.submissionId = submissionId;
+      const payload = {
+        ...values,
+        interest: values.interest || form.dataset.interest || document.title,
+        landing_page: window.location.href,
+        referrer: document.referrer,
+        utm_source: params.get('utm_source') || '',
+        utm_medium: params.get('utm_medium') || '',
+        utm_campaign: params.get('utm_campaign') || '',
+        utm_term: params.get('utm_term') || '',
+        utm_content: params.get('utm_content') || '',
+        gclid: params.get('gclid') || '',
+        gbraid: params.get('gbraid') || '',
+        wbraid: params.get('wbraid') || '',
+        attribution_reference: params.get('ref') || '',
+        client_submission_id: submissionId,
+      };
+      if (button) { button.disabled = true; button.textContent = '提交中…'; }
+      error?.classList.add('hidden'); success?.classList.add('hidden');
+      try {
+        const response = await fetch(form.dataset.api || '', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload),
+        });
+        if (!response.ok) throw new Error('request failed');
+        const result = await response.json();
+        form.reset();
+        delete form.dataset.submissionId;
+        if (success) { success.textContent = `查詢已收到，參考編號：${result.reference}`; success.classList.remove('hidden'); }
+      } catch {
+        if (error) { error.textContent = '暫時未能提交，請致電或 WhatsApp 6554 1506。'; error.classList.remove('hidden'); }
+      } finally {
+        if (button) { button.disabled = false; button.textContent = '提交查詢'; }
+      }
+    });
+  }
+</script>

@@ -72,10 +72,10 @@ export default defineConfig({
     
     // External redirects
     '/timesheet_submission_form': 'https://otfxid9w.paperform.co',
-    '/contact-form': 'https://or0uzdua.paperform.co',
+    '/contact-form': '/contact-us',
     '/formula-ai': 'https://formula-ai.racing',
     '/ai-art-competition-2023': 'https://art.www.10botics.com',
-    '/course-overview': 'https://or0uzdua.paperform.co',
+    '/course-overview': '/contact-us',
     '/minecraft-2024-registration': 'https://exgj8uei.paperform.co',
     '/minecraft-2023-registration': 'https://ofpd3jzg.paperform.co',
     

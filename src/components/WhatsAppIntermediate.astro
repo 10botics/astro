@@ -100,11 +100,36 @@ const whatsappUrl = `https://wa.me/${finalPhoneNumber}?text=${encodedMessage}`;
   const title = urlParams.get('title') || '課程查詢';
   const pageUrl = urlParams.get('url') || '';
   const linkForMessage = formatUrlForWhatsAppMessage(pageUrl);
-  const message = linkForMessage
+  let message = linkForMessage
     ? `我想查詢 ${title}\n\n頁面連結：${linkForMessage}`
     : `我想查詢 ${title}`;
-  const encodedMessage = encodeURIComponent(message);
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+  let whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+  const apiBase = (import.meta.env.PUBLIC_FREEDOM_API_BASE || 'https://freedom.10botics.com');
+  const params = new URLSearchParams(window.location.search);
+  const controller = new AbortController();
+  const attributionTimeout = window.setTimeout(() => controller.abort(), 800);
+  try {
+    const response = await fetch(`${apiBase}/api/marketing/whatsapp-attribution/`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      signal: controller.signal,
+      body: JSON.stringify({
+        landing_page: pageUrl || document.referrer,
+        referrer: document.referrer,
+        utm_source: params.get('utm_source') || '', utm_medium: params.get('utm_medium') || '',
+        utm_campaign: params.get('utm_campaign') || '', utm_term: params.get('utm_term') || '',
+        utm_content: params.get('utm_content') || '', gclid: params.get('gclid') || '',
+        gbraid: params.get('gbraid') || '', wbraid: params.get('wbraid') || '',
+      }),
+    });
+    if (response.ok) {
+      const result = await response.json();
+      message += `\n\n查詢參考：${result.reference}`;
+      whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    }
+  } catch { /* WhatsApp remains available when attribution is unavailable. */ }
+  finally { window.clearTimeout(attributionTimeout); }
   
   // Update the message preview
   const messagePreview = document.getElementById('message-preview');
