@@ -1,0 +1,76 @@
+---
+const apiBase = import.meta.env.PUBLIC_FREEDOM_API_BASE || "https://freedom.10botics.com";
+---
+
+<form class="brochure-enquiry-form text-left" data-api={`${apiBase}/api/marketing/enquiries/`}>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div><label class="block text-sm font-semibold text-gray-800 mb-2" for="brochure-name">聯絡人姓名 *</label><input id="brochure-name" name="name" required maxlength="200" autocomplete="name" class="w-full rounded-lg border border-gray-300 px-4 py-3" /></div>
+    <div><label class="block text-sm font-semibold text-gray-800 mb-2" for="brochure-organisation">學校／機構 *</label><input id="brochure-organisation" name="organisation" required maxlength="255" autocomplete="organization" class="w-full rounded-lg border border-gray-300 px-4 py-3" /></div>
+    <div><label class="block text-sm font-semibold text-gray-800 mb-2" for="brochure-email">電郵 *</label><input id="brochure-email" type="email" name="email" required maxlength="254" autocomplete="email" class="w-full rounded-lg border border-gray-300 px-4 py-3" /></div>
+    <div><label class="block text-sm font-semibold text-gray-800 mb-2" for="brochure-phone">電話／WhatsApp</label><input id="brochure-phone" type="tel" name="phone" maxlength="40" autocomplete="tel" class="w-full rounded-lg border border-gray-300 px-4 py-3" /></div>
+    <div class="md:col-span-2 flex items-start gap-3"><input id="brochure-privacy-consent" name="privacy_consent" value="true" type="checkbox" required class="mt-1 h-4 w-4" /><label for="brochure-privacy-consent" class="text-sm text-gray-600">我同意10教育使用以上資料回覆此查詢及發送課程總覽，並已閱讀<a class="text-brand-blue-700 underline" href="/privacy-policy" target="_blank">私隱政策</a>。</label></div>
+    <div class="hidden" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off" /></label></div>
+  </div>
+  <p class="form-error hidden mt-4 text-red-700" role="alert"></p>
+  <p class="form-success hidden mt-4 rounded-lg bg-green-50 p-4 text-green-800" role="status"></p>
+  <button type="submit" class="mt-6 rounded-lg bg-brand-blue-600 px-7 py-3 font-semibold text-white hover:bg-brand-blue-700 disabled:opacity-60">電郵給我課程總覽</button>
+</form>
+
+<script>
+  declare global {
+    interface Window {
+      dataLayer: Array<Record<string, unknown>>;
+    }
+  }
+
+  for (const form of document.querySelectorAll<HTMLFormElement>('.brochure-enquiry-form')) {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      const error = form.querySelector<HTMLElement>('.form-error');
+      const success = form.querySelector<HTMLElement>('.form-success');
+      const values = Object.fromEntries(new FormData(form).entries());
+      const params = new URLSearchParams(window.location.search);
+      const submissionId = form.dataset.submissionId || crypto.randomUUID();
+      form.dataset.submissionId = submissionId;
+      const payload = {
+        ...values,
+        enquiry_type: 'course_brochure',
+        interest: 'Course brochure request',
+        landing_page: window.location.href,
+        referrer: document.referrer,
+        utm_source: params.get('utm_source') || '',
+        utm_medium: params.get('utm_medium') || '',
+        utm_campaign: params.get('utm_campaign') || '',
+        utm_term: params.get('utm_term') || '',
+        utm_content: params.get('utm_content') || '',
+        gclid: params.get('gclid') || '',
+        gbraid: params.get('gbraid') || '',
+        wbraid: params.get('wbraid') || '',
+        attribution_reference: params.get('ref') || '',
+        client_submission_id: submissionId,
+      };
+      if (button) { button.disabled = true; button.textContent = '提交中…'; }
+      error?.classList.add('hidden'); success?.classList.add('hidden');
+      try {
+        const response = await fetch(form.dataset.api || '', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload),
+        });
+        if (!response.ok) throw new Error('request failed');
+        const result = await response.json();
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'brochure_request_submitted', enquiry_reference: result.reference });
+        form.reset();
+        delete form.dataset.submissionId;
+        if (success) {
+          success.textContent = `課程總覽將發送到你的電郵。參考編號：${result.reference}。如數分鐘後仍未收到，請檢查垃圾郵件資料夾。`;
+          success.classList.remove('hidden');
+        }
+      } catch {
+        if (error) { error.textContent = '暫時未能提交，請致電或 WhatsApp 6554 1506。'; error.classList.remove('hidden'); }
+      } finally {
+        if (button) { button.disabled = false; button.textContent = '電郵給我課程總覽'; }
+      }
+    });
+  }
+</script>

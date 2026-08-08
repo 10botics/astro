@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import PaperformEmbed from '../components/PaperformEmbed.astro';
+import BrochureEnquiryForm from '../components/BrochureEnquiryForm.astro';
 
 const title = "索取課程總覽 | 10教育";
 const description = "填寫表格以索取我們的完整課程總覽，了解10教育提供的各種STEM及AI課程詳情。";
@@ -16,20 +16,17 @@ const keywords = "課程總覽, 課程資料, STEM課程, AI課程, 10教育, �
   <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4 max-w-4xl">
       <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12">
-        
-        <PaperformEmbed formId="or0uzdua" />
-        
+        <div class="mb-8 text-center">
+          <h1 class="text-3xl font-bold text-gray-900 mb-3">索取課程總覽</h1>
+          <p class="text-gray-600">填寫以下資料，我們會將最新課程總覽發送到你的電郵。</p>
+        </div>
+        <BrochureEnquiryForm />
       </div>
     </div>
   </section>
 </Layout>
 
 <style>
-  /* Custom styles for the course brochure page */
-  .hero-section {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  }
-  
   /* Smooth animations */
   @keyframes fadeInUp {
     from {
