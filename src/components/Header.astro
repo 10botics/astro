@@ -56,14 +56,6 @@ const navItems = [
     ]
   },
   { 
-    name: '資助申請', 
-    href: '#',
-    children: [
-      { name: '「IT創新實驗室」', href: '/funding-application/it-innovation-lab' },
-      { name: '「奇趣it識多啲」', href: '/funding-application/knowing-more-about-it' }
-    ]
-  },
-  { 
     name: '關於我們', 
     href: '#',
     children: [
@@ -106,7 +98,7 @@ const navItems = [
           <div class="relative group">
             <a
               href={item.href}
-              class="text-gray-700 hover:text-brand-blue-600 px-2 py-1 text-xs font-medium transition-colors duration-200 flex items-center whitespace-nowrap"
+              class="text-gray-700 hover:text-brand-blue-600 px-2 py-1 text-sm font-medium transition-colors duration-200 flex items-center whitespace-nowrap"
             >
               {item.name}
               {item.children && (
@@ -339,4 +331,4 @@ const navItems = [
   // Check on load and resize
   window.addEventListener('load', checkNavigationWrap);
   window.addEventListener('resize', checkNavigationWrap);
-</script> 
+</script>
