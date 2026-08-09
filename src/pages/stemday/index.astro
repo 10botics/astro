@@ -1,862 +1,313 @@
-﻿---
-import Layout from '../../layouts/Layout.astro';
+---
 import { Image } from 'astro:assets';
-import PaperformEmbed from '../../components/PaperformEmbed.astro';
-import GalleryCarousel from '../../components/course/GalleryCarousel.astro';
+import Layout from '../../layouts/Layout.astro';
+import EnquiryForm from '../../components/EnquiryForm.astro';
 
-// Import images with error handling
-let heroImage,
-  codroneExperience,
-  aiArtCreation,
-  virtualRocketDesign,
-  aiDigitalAnimation,
-  circuitTesting,
-  microbitCar,
-  mindControlRacing,
-  martyRobot,
-  matatalabProgramming,
-  arGameExperience,
-  vrGameExperience,
-  virtualSpaceStation,
-  handClapKeirinRace,
-  droneFootball,
-  quickEyeHand,
-  appleVisionPro,
-  nerveReactionChallenge,
-  marioKartRacing,
-  paperAirplaneRace,
-  autonomousCarLecture,
-  aerospaceLecture;
+import heroEventOverview from '../../assets/images/stemday/mainpage/hero-2025-kwun-tong-stem-day.jpg';
+import classroomCoding from '../../assets/images/stemday/mainpage/IMG_0089-1024x768.jpg';
+import classroomKsp from '../../assets/images/stemday/mainpage/WhatsApp-Image-2023-07-05-at-14.18.132-1024x768.jpeg';
+import boothKeirin from '../../assets/images/stemday/hand-clap-keirin-race/hero-image.png';
+import boothSpace from '../../assets/images/stemday/mainpage/virtual-space-station.png';
+import boothDrone from '../../assets/images/stemday/mainpage/codrone-experience.png';
+import boothMicrobit from '../../assets/images/stemday/mainpage/microbit-car.png';
+import newsHolimLai from '../../assets/images/news/2025-07-19-可立中學ai藝術創作stem-day精彩回顧/featured.jpg';
+import newsTinHong from '../../assets/images/news/2024-07-10-深度探索Delightex-vrampar浸信會天虹小學-stem-day/image1.png';
+import newsYmca from '../../assets/images/stemday/mainpage/ai-digital-animation.png';
 
-// Additional images from original STEM Day HTML content
-let classMicrobitMaze,
-  classAIArtStory,
-  classStrawBridge,
-  classMicrobitParachute,
-  classScratchGame,
-  classKSP,
-  classDIY,
-  classMatatalab,
-  aiLectureImage,
-  blockchainIcon,
-  galleryImg1,
-  galleryImg2,
-  galleryImg3,
-  galleryImg4,
-  galleryImg5,
-  galleryImg6,
-  galleryImg7,
-  galleryImg8,
-  galleryImg9,
-  featuredDobot,
-  // Featured activities
-  featuredAIDigitalAnimation,
-  featuredTello,
-  featuredMinecraft,
-  featuredProcreate,
-  featuredDonkeyCar,
-  featuredDelightex,
-  // Course hero images
-  heroAIDigital,
-  heroTello,
-  heroKSP,
-  heroDonkey,
-  heroMinecraft,
-  heroProcreate,
-  heroScratch,
-  heroRaspberryPi,
-  heroMicrobitMaze,
-  heroDelightex,
-  // News images
-  newsHolimLaiStemDay,
-  newsTinHongStemDay,
-  newsYMCAStemDay;
+const formats = [
+  {
+    number: '01',
+    title: '課室工作坊',
+    eyebrow: '人人動手創作',
+    description: '學生在課室內同步參與，從構思、實作到展示，在有限時間內完成可見的學習成果。',
+    meta: '一般 60–180 分鐘一節，可安排平行課堂',
+    href: '#classroom-workshops'
+  },
+  {
+    number: '02',
+    title: '體驗攤位',
+    eyebrow: '流動探索科技',
+    description: '以短時間、低門檻的互動體驗營造全校科技氣氛，適合禮堂、操場或多用途空間。',
+    meta: '按場地、人流與活動時段配置',
+    href: '#experience-booths'
+  },
+  {
+    number: '03',
+    title: '專題講座',
+    eyebrow: '用故事打開視野',
+    description: '從人工智能、太空科技到區塊鏈，以貼近學生的案例把科技發展連結社會與未來。',
+    meta: '一般 45–60 分鐘，可配合互動問答',
+    href: '#talks'
+  }
+];
 
-try {
-      heroImage = await import('../../assets/images/stemday/mainpage/hero-image.jpeg');
-    codroneExperience = await import('../../assets/images/stemday/mainpage/codrone-experience.png');
-    aiArtCreation = await import('../../assets/images/stemday/mainpage/ai-art-creation.jpeg');
-    virtualRocketDesign = await import('../../assets/images/stemday/mainpage/virtual-rocket-design.jpg');
-    aiDigitalAnimation = await import('../../assets/images/stemday/mainpage/ai-digital-animation.png');
-    circuitTesting = await import('../../assets/images/stemday/mainpage/circuit-testing.png');
-    microbitCar = await import('../../assets/images/stemday/mainpage/microbit-car.png');
-    mindControlRacing = await import('../../assets/images/stemday/mainpage/mind-control-racing.png');
-    martyRobot = await import('../../assets/images/stemday/mainpage/marty-robot.png');
-    matatalabProgramming = await import('../../assets/images/stemday/mainpage/matatalab-programming.png');
-    arGameExperience = await import('../../assets/images/stemday/mainpage/ar-game-experience.png');
-    vrGameExperience = await import('../../assets/images/stemday/mainpage/vr-game-experience.png');
-    virtualSpaceStation = await import('../../assets/images/stemday/mainpage/virtual-space-station.png');
-    handClapKeirinRace = await import('../../assets/images/stemday/hand-clap-keirin-race/hero-image.png');
-    droneFootball = await import('../../assets/images/stemday/drone-football/hero-image.png');
-    quickEyeHand = await import('../../assets/images/stemday/quick-eye-hand/hero-image.png');
-    appleVisionPro = await import('../../assets/images/stemday/apple-vision-pro/hero-image.png');
-    nerveReactionChallenge = await import('../../assets/images/stemday/nerve-reaction-challenge/hero-image.png');
-    marioKartRacing = await import('../../assets/images/stemday/mario-kart-racing/hero-image.png');
-    paperAirplaneRace = await import('../../assets/images/stemday/paper-airplane-race/hero-image.png');
-    autonomousCarLecture = await import('../../assets/images/stemday/autonomous-car-lecture/hero-image.png');
-    aerospaceLecture = await import('../../assets/images/stemday/aerospace-lecture/hero-image.png');
-  
-  // Classes (課堂)
-      classMicrobitMaze = await import('../../assets/images/stemday/featured-activities/IMG_1726-1024x768.jpg');
-    classAIArtStory = await import('../../assets/images/stemday/featured-activities/IMG_0089-1024x768.jpg');
-    classStrawBridge = await import('../../assets/images/stemday/past-activities/20230718_024242873_iOS-1024x768.jpg');
-    classMicrobitParachute = await import('../../assets/images/stemday/past-activities/Screenshot-2024-08-16-181803.png');
-    classScratchGame = await import('../../assets/images/stemday/classroom-activities/Scratch-遊戲設計-768x701.png');
-    classKSP = await import('../../assets/images/stemday/past-activities/WhatsApp-Image-2023-07-05-at-14.18.132-1024x768.jpeg');
-    classDIY = await import('../../assets/images/stemday/featured-activities/IMG_3708-scaled-e1720172148276-1024x780.jpg');
-    classMatatalab = await import('../../assets/images/stemday/Matatalab 入門編程課程/home-set-buy-now_1-1.png');
-    classScratchGame = await import('../../assets/images/stemday/classroom-activities/WhatsApp-Image-2023-03-06-at-16.40.556.jpeg');
+const featuredWorkshops = [
+  {
+    title: 'AI 影片創作',
+    badge: '高小至中學',
+    description: '運用 Gemini 構思故事、生成畫面，再以 Canva 組合成短片，讓學生帶走可播放的作品。',
+    outcome: '成果：AI 故事短片／分鏡作品',
+    href: '/school-courses/AI 影片製作課程入門'
+  },
+  {
+    title: 'AI Vibe Coding',
+    badge: '中學',
+    description: '學生以自然語言與 Gemini 協作，在 85–180 分鐘內設計、測試並改良個人網頁遊戲。',
+    outcome: '成果：可即場試玩的遊戲原型',
+    href: '/school-courses/人工智能遊戲編程課程'
+  },
+  {
+    title: 'Gemini 學生證書路徑',
+    badge: '高小至中學',
+    description: '以 2–4 小時認識 Gemini、NotebookLM 與負責任使用 AI，作為完整八小時認證課程的起點。',
+    outcome: '成果：AI 學習任務；證書須完成完整八小時課程',
+    href: '/school-courses/Gemini 學生證書課程'
+  }
+];
 
-  // Lectures (講座)
-      aiLectureImage = await import('../../assets/images/stemday/past-activities/Screenshot-2023-10-13-174241.png');
-    blockchainIcon = await import('../../assets/images/stemday/featured-activities/blockchain-lecture.png');
+const additionalWorkshops = [
+  ['KSP 太空任務', '/school-courses/ksp太空計劃課程'],
+  ['CoSpaces／Delightex 3D 創作', '/school-courses/Delightex 遊戲設計課程'],
+  ['AI 藝術創作', '/school-courses/AI藝術創作課程'],
+  ['無人機編程與挑戰', '/school-courses/Tello 無人機課程'],
+  ['Micro:bit 創作', '/school-courses/Microbit 降落傘課程'],
+  ['科學手作與工程挑戰', '/stemday/DIY 手作']
+];
 
-  // Gallery (活動花絮)
-      galleryImg1 = await import('../../assets/images/stemday/featured-activities/IMG_0089-1024x768.jpg');
-    galleryImg2 = await import('../../assets/images/stemday/featured-activities/LKN_2476-Enhanced-NR-1-1024x768.jpg');
-    galleryImg3 = await import('../../assets/images/stemday/featured-activities/IMG_9985-1024x768.jpeg');
-    galleryImg4 = await import('../../assets/images/stemday/past-activities/IMG_1979-scaled.jpg');
-    galleryImg5 = await import('../../assets/images/stemday/past-activities/IMG_3821-scaled.jpg');
-    galleryImg6 = await import('../../assets/images/stemday/past-activities/Screenshot-2024-08-02-181239-1024x768.png');
-    galleryImg7 = await import('../../assets/images/stemday/past-activities/Screenshot-2024-08-02-103220-1024x768.png');
-    galleryImg8 = await import('../../assets/images/stemday/past-activities/Screenshot-2024-08-02-105604-1024x768.png');
-    galleryImg9 = await import('../../assets/images/stemday/past-activities/Screenshot-2024-08-02-105923-3-1024x768.png');
-  
-  // Featured activities
-  featuredAIDigitalAnimation = await import('../../assets/images/school-courses/AI數碼動畫展/ai-image-generation.png');
-  featuredTello = await import('../../assets/images/school-courses/Tello 無人機課程/tello-main-image.jpg');
-  featuredMinecraft = await import('../../assets/images/school-courses/Minecraft校園創建課程/featured-image.png');
-  featuredProcreate = await import('../../assets/images/school-courses/Procreate數位藝術課程/procreate-course-image.webp');
-  featuredDonkeyCar = await import('../../assets/images/news/2021-12-09-donkey-car-x學與教博覽2021/image8.jpg');
-  featuredDelightex = await import('../../assets/images/school-courses/Delightex 遊戲設計課程/admin-ajax-min.png');
-  featuredDobot = await import('../../assets/images/school-courses/Dobot 智能機械手臂/dobot-cover-pic.png');
+const booths = [
+  { title: '手拍凱林賽', description: '以節奏與反應控制單車競速', image: boothKeirin, href: '/stemday/手拍凱林賽' },
+  { title: '虛擬太空站接駁', description: '完成沉浸式太空對接任務', image: boothSpace, href: '/stemday/虛擬太空站接駁任務' },
+  { title: '無人機挑戰', description: '體驗飛行控制與任務操作', image: boothDrone, href: '/stemday/無人機足球' },
+  { title: 'Micro:bit 足球車', description: '操控、競賽與工程思維並重', image: boothMicrobit, href: '/stemday/Microbit 足球車競賽' }
+];
 
-  // Load course hero images to use in featured activities
-  try {
-    const AIDigitalModule = await import('../school-courses/AI數碼動畫展.astro');
-    heroAIDigital = AIDigitalModule?.courseData?.heroImage;
-  } catch {}
-  try {
-    const TelloModule = await import('../school-courses/Tello 無人機課程.astro');
-    heroTello = TelloModule?.courseData?.heroImage || TelloModule?.courseData?.featuredImage;
-  } catch {}
-  try {
-    const KSPModule = await import('../school-courses/ksp太空計劃課程.astro');
-    heroKSP = KSPModule?.courseData?.heroImage;
-  } catch {}
-  try {
-    const DonkeyModule = await import('../school-courses/Donkey Car 無人車課程.astro');
-    heroDonkey = DonkeyModule?.courseData?.heroImage;
-  } catch {}
-  try {
-    const MinecraftModule = await import('../school-courses/Minecraft校園創建課程.astro');
-    heroMinecraft = MinecraftModule?.courseData?.heroImage || MinecraftModule?.courseData?.featuredImage;
-  } catch {}
-  try {
-    const ProcreateModule = await import('../school-courses/Procreate數位藝術課程.astro');
-    heroProcreate = ProcreateModule?.courseData?.heroImage;
-  } catch {}
-  try {
-    const ScratchModule = await import('../school-courses/Scratch遊戲設計課程.astro');
-    heroScratch = ScratchModule?.courseData?.heroImage;
-  } catch {}
-  try {
-    const RaspberryModule = await import('../school-courses/raspberry-pi編程課程.astro');
-    heroRaspberryPi = RaspberryModule?.courseData?.heroImage;
-  } catch {}
-  try {
-    const DelightexModule = await import('../school-courses/Delightex 遊戲設計課程.astro');
-    heroDelightex = DelightexModule?.courseData?.heroImage;
-  } catch {}
+const talks = [
+  {
+    title: 'AI、未來交通與自動駕駛',
+    description: '從生成式 AI 到自動駕駛，認識人工智能如何理解環境、作出判斷，以及科技帶來的社會與倫理議題。',
+    audience: '高小及中學'
+  },
+  {
+    title: '太空科技、火箭與人類探索',
+    description: '由可重用火箭、月球與火星任務出發，理解太空工程如何改變人類探索宇宙的方法。',
+    audience: '高小及中學'
+  },
+  {
+    title: '區塊鏈與智能合約入門',
+    description: '以數碼素養角度認識去中心化、區塊鏈紀錄及智能合約，不涉及投資推介。',
+    audience: '中學生'
+  }
+];
 
-  // News images
-  newsHolimLaiStemDay = await import('../../assets/images/news/2025-07-19-可立中學ai藝術創作stem-day精彩回顧/featured.jpg');
-  newsTinHongStemDay = await import('../../assets/images/news/2024-07-10-深度探索Delightex-vrampar浸信會天虹小學-stem-day/image1.png');
-  newsYMCAStemDay = await import('../../assets/images/news/2024-07-05-ai科技與創意融合中華基督教青年會中學-stem-day/image1.jpeg');
-} catch (error) {
-  console.warn('Some images could not be loaded:', error);
-}
+const cases = [
+  {
+    date: '2025',
+    title: '可立中學｜AI 藝術創作 STEM Day',
+    description: '學生在課室內由概念出發，運用生成式 AI 完成個人視覺創作。',
+    image: newsHolimLai,
+    href: '/news/2025-07-19-可立中學ai藝術創作stem-day精彩回顧'
+  },
+  {
+    date: '2024',
+    title: '浸信會天虹小學｜VR／AR 科技體驗',
+    description: '以多元互動體驗讓學生探索沉浸式科技及其實際應用。',
+    image: newsTinHong,
+    href: '/news/2024-07-10-深度探索cospaces-vrampar浸信會天虹小學-stem-day'
+  },
+  {
+    date: '2024',
+    title: '中華基督教青年會中學｜AI 與數碼動畫',
+    description: '把人工智能、動畫創作與科技體驗帶進校園活動。',
+    image: newsYmca,
+    href: '/news/2024-07-05-ai科技與創意融合中華基督教青年會中學-stem-day'
+  }
+];
+
+const faqs = [
+  ['學校只有兩至四小時，可以怎樣安排？', '大部分 STEM Day 都可在 2–4 小時內完成。我們會按年級、人數及場地，安排一至多節 60–180 分鐘工作坊、體驗攤位或講座。'],
+  ['可以同時安排不同活動嗎？', '可以。課室工作坊、體驗攤位與講座可按學校需要組合；我們會協助規劃人流、平行課堂、轉場及器材。'],
+  ['課室工作坊是否每位學生都有作品？', '活動會按時數設定合適成果，例如短片、遊戲原型、AI 藝術作品、任務紀錄或學習成果。實際完成程度亦取決於學生年級、設備及帳戶設定。'],
+  ['Gemini 體驗課完成後會取得證書嗎？', '2–4 小時 STEM Day 版本屬探索或預備模組，不會直接頒發認證。學生須完成完整八小時課程及相關考核，才可取得 Gemini 學生證書。'],
+  ['學校需要準備甚麼？', '一般需要場地、投影設備及穩定網絡；部分工作坊需要學生電腦、平板或獲學校核准的 Google 帳戶。我們會在確認方案後提供完整準備清單。']
+];
 ---
 
-<Layout 
-  title="STEM Day活動 - 10教育"
-  description="STEM Day全力支援學校籌辦，提供AI藝術創作、飲管橋、Microbit編程、Scratch遊戲設計等多元活動，讓學生深入認識STEM拓闊視野"
+<Layout
+  title="STEM Day 到校活動｜課室工作坊、體驗攤位及專題講座"
+  description="10教育為香港中小學設計 2–4 小時 STEM Day，提供課室工作坊、科技體驗攤位及專題講座，讓學生由體驗走向創作，帶走作品、能力或認證。"
 >
-  <main>
-    <!-- Hero Section -->
-    <section class="relative h-[60vh] min-h-[400px] overflow-hidden">
-      <div class="relative w-full h-full">
-        {heroImage && <Image src={heroImage.default} alt="STEM Day Hero" class="w-full h-full object-cover" />}
-        <div class="hero-overlay">
-          <div class="container-standard text-center text-white">
-            <h1 class="text-5xl md:text-6xl font-bold mb-4">STEM Day</h1>
-            <h2 class="text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed mb-8">全力支援學校籌辦STEM day，讓學生對STEM有更加深入的認識，曠闊學生視野。​</h2>
-            <div class="mt-8">
-              <a 
-                href="https://drive.google.com/file/d/17N6B3aMMZQNS-G868shRYo_gO-MJ0qPO/view?usp=sharing" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                class="btn-primary btn-gradient shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-              >
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-                下載STEM Day活動簡介
-              </a>
-            </div>
+  <main class="bg-white text-slate-900">
+    <section class="relative isolate overflow-hidden bg-slate-950 text-white">
+      <Image
+        src={heroEventOverview}
+        alt="學校禮堂內多組學生同時參與 STEM Day 科技活動"
+        class="absolute inset-0 -z-20 h-full w-full object-cover object-center"
+        widths={[768, 1280, 1920]}
+        sizes="100vw"
+        loading="eager"
+      />
+      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/20"></div>
+      <div class="container-standard py-24 md:py-32 lg:py-36">
+        <div class="max-w-3xl">
+          <p class="mb-5 text-sm font-bold tracking-[0.24em] text-cyan-300">到校 STEM DAY</p>
+          <h1 class="text-4xl font-bold leading-tight md:text-6xl">由體驗走向創作</h1>
+          <p class="mt-7 max-w-2xl text-lg leading-8 text-slate-200">按學生年級、時間、場地與預算，設計課室工作坊、體驗攤位及專題講座。活動不只熱鬧，更讓學生真正參與、思考與完成成果。</p>
+          <div class="mt-9 flex flex-wrap gap-4">
+            <a href="#contact-form" class="rounded-lg bg-cyan-400 px-7 py-3.5 font-bold text-slate-950 transition hover:bg-cyan-300">索取報價</a>
+            <a href="#programme-formats" class="rounded-lg border border-white/40 bg-white/10 px-7 py-3.5 font-semibold text-white backdrop-blur transition hover:bg-white/20">了解活動形式</a>
           </div>
         </div>
       </div>
     </section>
-      <!-- Video Section -->
-      <section class="section-padding bg-gray-50">
-        <div class="container-standard">
-          <div class="max-w-4xl mx-auto aspect-video">
-            <iframe 
-              width="100%" 
-              height="100%" 
-              src="https://www.youtube.com/embed/qs5OeXSTzsY" 
-              title="STEM Day Video"
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+
+    <section id="programme-formats" class="section-padding bg-slate-50">
+      <div class="container-standard">
+        <div class="mx-auto mb-12 max-w-3xl text-center">
+          <p class="text-sm font-bold tracking-[0.2em] text-cyan-700">三種活動形式，同樣重要</p>
+          <h2 class="mt-3 text-3xl font-bold md:text-4xl">按學校目標，組成合適的 STEM Day</h2>
+          <p class="mt-4 text-lg leading-8 text-slate-600">學校可選擇單一形式，亦可按時間表、場地與預算靈活配搭。</p>
+        </div>
+        <div class="grid gap-6 lg:grid-cols-3">
+          {formats.map((format) => (
+            <a href={format.href} class="group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:border-cyan-300 hover:shadow-xl">
+              <div class="flex items-center justify-between"><span class="text-sm font-bold tracking-widest text-cyan-700">{format.eyebrow}</span><span class="text-3xl font-black text-slate-200">{format.number}</span></div>
+              <h3 class="mt-5 text-2xl font-bold">{format.title}</h3>
+              <p class="mt-4 flex-1 leading-7 text-slate-600">{format.description}</p>
+              <p class="mt-6 border-t border-slate-100 pt-5 text-sm font-semibold text-slate-700">{format.meta}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="classroom-workshops" class="section-padding bg-white scroll-mt-24">
+      <div class="container-standard">
+        <div class="grid items-center gap-10 lg:grid-cols-[1.05fr_.95fr]">
+          <div>
+            <p class="text-sm font-bold tracking-[0.2em] text-cyan-700">課室工作坊</p>
+            <h2 class="mt-3 text-3xl font-bold md:text-4xl">人人參與，從想法走到作品</h2>
+            <p class="mt-5 text-lg leading-8 text-slate-600">學生毋須輪候短暫體驗，而是在導師引導下同步動手。一般可把現有完整課程濃縮成 60–180 分鐘的主題工作坊，亦可安排多個課室平行進行。</p>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <Image src={classroomCoding} alt="學生在課室內進行 AI 創作活動" class="h-56 w-full rounded-2xl object-cover" />
+            <Image src={classroomKsp} alt="學生參與 KSP 太空任務工作坊" class="mt-8 h-56 w-full rounded-2xl object-cover" />
+          </div>
+        </div>
+
+        <div class="mt-14 grid gap-6 lg:grid-cols-3">
+          {featuredWorkshops.map((workshop) => (
+            <article class="flex h-full flex-col rounded-2xl bg-slate-950 p-7 text-white">
+              <span class="w-fit rounded-full bg-cyan-400/15 px-3 py-1 text-xs font-bold text-cyan-300">{workshop.badge}</span>
+              <h3 class="mt-5 text-2xl font-bold">{workshop.title}</h3>
+              <p class="mt-4 flex-1 leading-7 text-slate-300">{workshop.description}</p>
+              <p class="mt-5 text-sm font-semibold text-cyan-200">{workshop.outcome}</p>
+              <a href={workshop.href} class="mt-6 inline-flex font-bold text-white hover:text-cyan-300">查看課程詳情 <span aria-hidden="true" class="ml-2">→</span></a>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-10 rounded-2xl border border-slate-200 bg-slate-50 p-7 md:p-9">
+          <h3 class="text-xl font-bold">更多可濃縮成 STEM Day 的主題</h3>
+          <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {additionalWorkshops.map(([title, href]) => (
+              <a href={href} class="rounded-xl border border-slate-200 bg-white px-5 py-4 font-semibold text-slate-800 transition hover:border-cyan-400 hover:text-cyan-800">{title} <span aria-hidden="true">→</span></a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience-booths" class="section-padding bg-cyan-50 scroll-mt-24">
+      <div class="container-standard">
+        <div class="mx-auto mb-12 max-w-3xl text-center">
+          <p class="text-sm font-bold tracking-[0.2em] text-cyan-700">體驗攤位</p>
+          <h2 class="mt-3 text-3xl font-bold md:text-4xl">讓科技走進校園每個角落</h2>
+          <p class="mt-4 text-lg leading-8 text-slate-600">適合希望營造全校氣氛、讓不同年級自由探索的學校。我們會按場地、人流及活動時段，選擇互動清晰、容易投入的科技體驗。</p>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {booths.map((booth) => (
+            <a href={booth.href} class="group overflow-hidden rounded-2xl bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+              <Image src={booth.image} alt={`${booth.title} STEM Day 體驗`} class="h-52 w-full object-cover transition duration-500 group-hover:scale-105" />
+              <div class="p-6"><h3 class="text-xl font-bold">{booth.title}</h3><p class="mt-2 text-sm leading-6 text-slate-600">{booth.description}</p></div>
+            </a>
+          ))}
+        </div>
+        <p class="mt-8 text-center text-sm text-slate-600">另有 VR／AR、反應挑戰、模擬駕駛、Apple Vision Pro、機械人及科學手作等選項；實際供應按日期、場地與人手安排確認。</p>
+      </div>
+    </section>
+
+    <section id="talks" class="section-padding bg-slate-950 text-white scroll-mt-24">
+      <div class="container-standard">
+        <div class="mx-auto mb-12 max-w-3xl text-center">
+          <p class="text-sm font-bold tracking-[0.2em] text-cyan-300">專題講座｜45–60 分鐘</p>
+          <h2 class="mt-3 text-3xl font-bold md:text-4xl">由一個好問題，打開科技世界</h2>
+          <p class="mt-4 text-lg leading-8 text-slate-300">以故事、案例和互動提問，把艱深科技連結學生的生活、社會與未來。</p>
+        </div>
+        <div class="grid gap-6 lg:grid-cols-3">
+          {talks.map((talk, index) => (
+            <article class="rounded-2xl border border-white/10 bg-white/5 p-7">
+              <span class="text-sm font-bold text-cyan-300">主題 {String(index + 1).padStart(2, '0')}｜{talk.audience}</span>
+              <h3 class="mt-5 text-2xl font-bold">{talk.title}</h3>
+              <p class="mt-4 leading-7 text-slate-300">{talk.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding bg-white">
+      <div class="container-standard">
+        <div class="mb-12 text-center"><p class="text-sm font-bold tracking-[0.2em] text-cyan-700">學校活動實例</p><h2 class="mt-3 text-3xl font-bold md:text-4xl">不同場景，同樣讓學生投入</h2></div>
+        <div class="grid gap-6 lg:grid-cols-3">
+          {cases.map((item) => (
+            <a href={item.href} class="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+              <Image src={item.image} alt={item.title} class="h-56 w-full object-cover transition duration-500 group-hover:scale-105" />
+              <div class="p-6"><span class="text-xs font-bold text-cyan-700">{item.date}</span><h3 class="mt-2 text-xl font-bold">{item.title}</h3><p class="mt-3 leading-7 text-slate-600">{item.description}</p><span class="mt-5 inline-flex font-bold text-cyan-800">閱讀活動回顧 →</span></div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding bg-slate-50" aria-labelledby="stem-day-video-heading">
+      <div class="container-standard">
+        <div class="mx-auto mb-10 max-w-3xl text-center">
+          <p class="text-sm font-bold tracking-[0.2em] text-cyan-700">過往活動實錄</p>
+          <h2 id="stem-day-video-heading" class="mt-3 text-3xl font-bold md:text-4xl">STEM Day 校園實況</h2>
+          <p class="mt-4 text-lg leading-8 text-slate-600">透過過往活動片段，了解學生在真實校園環境中參與科技體驗的情況。</p>
+        </div>
+        <div class="mx-auto max-w-5xl overflow-hidden rounded-2xl bg-slate-950 shadow-2xl">
+          <div class="aspect-video">
+            <iframe
+              src="https://www.youtube.com/embed/qs5OeXSTzsY"
+              title="10教育過往 STEM Day 校園活動實錄"
+              class="h-full w-full"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
               allowfullscreen
-              class="w-full h-full rounded-lg shadow-lg">
-            </iframe>
+            ></iframe>
           </div>
-        </div>
-      </section>
-  
-      <!-- Booths Section -->
-      <section class="section-padding bg-gray-50">
-        <div class="container-standard">
-          <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-8">攤位</h2>
-          <p class="text-center text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto">10Botics 提供以攤位的形式進行活動，例如過往爲不同學校舉行一日的STEM Day，為學生提供不同的攤位遊戲，當中包括：</p>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="card-base card-hover">
-              <a href="school-courses/codrone/" target="_blank" rel="noopener">
-                {codroneExperience && <Image src={codroneExperience.default} alt="CoDrone無人機體驗" class="w-full h-48 object-cover" />}
-              </a>
-              <h3 class="p-4 text-center text-lg font-semibold"><a href="school-courses/codrone/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">CoDrone無人機體驗</a></h3>
-            </div>
-            <div class="card-base card-hover">
-              <a href="school-courses/ai-enrichment-course/" target="_blank" rel="noopener">
-                {aiArtCreation && <Image src={aiArtCreation.default} alt="AI藝術創作" class="w-full h-48 object-cover" />}
-              </a>
-              <h3 class="p-4 text-center text-lg font-semibold"><a href="school-courses/ai-enrichment-course/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">AI藝術創作</a></h3>
-            </div>
-            <div class="card-base card-hover">
-              {virtualRocketDesign && <Image src={virtualRocketDesign.default} alt="虛擬火箭設計" class="w-full h-48 object-cover" />}
-              <h3 class="p-4 text-center text-lg font-semibold text-gray-900">虛擬火箭設計</h3>
-            </div>
-            <div class="card-base card-hover">
-              <a href="school-courses/ai-digital-animation-exhibition/" target="_blank" rel="noopener">
-                {aiDigitalAnimation && <Image src={aiDigitalAnimation.default} alt="AI數碼動畫展" class="w-full h-48 object-cover" />}
-              </a>
-              <h3 class="p-4 text-center text-lg font-semibold"><a href="school-courses/ai-digital-animation-exhibition/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">AI數碼動畫展</a></h3>
-            </div>
-            <div class="card-base card-hover">
-              <a href="stemday/marty-robot/" target="_blank" rel="noopener">
-                {martyRobot && <Image src={martyRobot.default} alt="Marty編程機械人" class="w-full h-48 object-cover" />}
-              </a>
-              <h3 class="p-4 text-center text-lg font-semibold"><a href="stemday/marty-robot/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Marty編程機械人</a></h3>
-            </div>
-            <div class="card-base card-hover">
-              <a href="stemday/microbit-football/" target="_blank" rel="noopener">
-                {microbitCar && <Image src={microbitCar.default} alt="Micro:bit 足球車競賽" class="w-full h-48 object-cover" />}
-              </a>
-              <h3 class="p-4 text-center text-lg font-semibold"><a href="stemday/microbit-football/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Micro:bit 足球車競賽</a></h3>
-            </div>
-            <div class="card-base card-hover">
-              {matatalabProgramming && <Image src={matatalabProgramming.default} alt="Matatalab編程體驗" class="w-full h-48 object-cover" />}
-              <h3 class="p-4 text-center text-lg font-semibold text-gray-900">Matatalab編程體驗</h3>
-            </div>
-            <div class="card-base card-hover">
-              <a href="stemday/ar-game/" target="_blank" rel="noopener">
-                {arGameExperience && <Image src={arGameExperience.default} alt="AR遊戲體驗" class="w-full h-48 object-cover" />}
-              </a>
-              <h3 class="p-4 text-center text-lg font-semibold"><a href="stemday/ar-game/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">AR遊戲體驗</a></h3>
-            </div>
-            <div class="card-base card-hover">
-              <a href="stemday/vr-game/" target="_blank" rel="noopener">
-                {vrGameExperience && <Image src={vrGameExperience.default} alt="VR遊戲體驗" class="w-full h-48 object-cover" />}
-              </a>
-              <h3 class="p-4 text-center text-lg font-semibold"><a href="stemday/vr-game/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">VR遊戲體驗</a></h3>
-            </div>
-            <div class="card-base card-hover">
-              <a href="/stemday/virtual-space-station-docking-mission/" target="_blank" rel="noopener">
-                {virtualSpaceStation && <Image src={virtualSpaceStation.default} alt="虛擬太空站接駁任務" class="w-full h-48 object-cover" />}
-              </a>
-              <h3 class="p-4 text-center text-lg font-semibold"><a href="/stemday/virtual-space-station-docking-mission/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">虛擬太空站接駁任務</a></h3>
-            </div>
-            <div class="card-base card-hover">
-              <a href="/stemday/hand-clap-keirin-race/" target="_blank" rel="noopener">
-                {handClapKeirinRace && <Image src={handClapKeirinRace.default} alt="手拍凱林賽" class="w-full h-48 object-cover" />}
-              </a>
-              <h3 class="p-4 text-center text-lg font-semibold"><a href="/stemday/hand-clap-keirin-race/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">手拍凱林賽</a></h3>
-            </div>
-            <div class="card-base card-hover">
-              <a href="/stemday/drone-football/" target="_blank" rel="noopener">
-                {droneFootball && <Image src={droneFootball.default} alt="無人機足球" class="w-full h-48 object-cover" />}
-              </a>
-              <h3 class="p-4 text-center text-lg font-semibold"><a href="/stemday/drone-football/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">無人機足球</a></h3>
-            </div>
-            <div class="card-base card-hover">
-              <a href="/stemday/quick-eye-hand/" target="_blank" rel="noopener">
-                {quickEyeHand && <Image src={quickEyeHand.default} alt="眼明手快" class="w-full h-48 object-cover" />}
-              </a>
-              <h3 class="p-4 text-center text-lg font-semibold"><a href="/stemday/quick-eye-hand/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">眼明手快</a></h3>
-            </div>
-            <div class="card-base card-hover">
-              <a href="/stemday/apple-vision-pro/" target="_blank" rel="noopener">
-                {appleVisionPro && <Image src={appleVisionPro.default} alt="APPLE Vision Pro 體驗" class="w-full h-48 object-cover" />}
-              </a>
-              <h3 class="p-4 text-center text-lg font-semibold"><a href="/stemday/apple-vision-pro/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">APPLE Vision Pro 體驗</a></h3>
-            </div>
-            <div class="card-base card-hover">
-              <a href="/stemday/nerve-reaction-challenge/" target="_blank" rel="noopener">
-                {nerveReactionChallenge && <Image src={nerveReactionChallenge.default} alt="反應神經大挑戰" class="w-full h-48 object-cover" />}
-              </a>
-              <h3 class="p-4 text-center text-lg font-semibold"><a href="/stemday/nerve-reaction-challenge/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">反應神經大挑戰</a></h3>
-            </div>
-            <div class="card-base card-hover">
-              <a href="/stemday/mario-kart-racing/" target="_blank" rel="noopener">
-                {marioKartRacing && <Image src={marioKartRacing.default} alt="模擬賽車大亂鬥" class="w-full h-48 object-cover" />}
-              </a>
-              <h3 class="p-4 text-center text-lg font-semibold"><a href="/stemday/mario-kart-racing/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">模擬賽車大亂鬥</a></h3>
-            </div>
-            <div class="card-base card-hover">
-              <a href="school-courses/donkey-car/" target="_blank" rel="noopener">
-                { (heroDonkey || featuredDonkeyCar) && (
-                  <Image src={(heroDonkey as any) ?? (featuredDonkeyCar && featuredDonkeyCar.default)} alt="Donkey Car 無人車" class="w-full h-48 object-cover" />
-                )}
-              </a>
-              <h3 class="p-4 text-center text-lg font-semibold"><a href="school-courses/donkey-car/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Donkey Car 無人車</a></h3>
-            </div>
-            <div class="card-base card-hover">
-              <a href="school-courses/dobot/" target="_blank" rel="noopener">
-                {featuredDobot && <Image src={featuredDobot.default} alt="Dobot 智能機械手臂" class="w-full h-48 object-cover" />}
-              </a>
-              <h3 class="p-4 text-center text-lg font-semibold"><a href="school-courses/dobot/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Dobot 智能機械手臂</a></h3>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    <!-- Classes Section (課堂) -->
-    <section class="section-padding bg-white">
-        <div class="container-standard">
-          <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-8">課堂</h2>
-          <p class="text-center text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto">10Botics亦爲STEM Day提供以課室的形式進行，透過分班的方式進行課室活動，當中包括：</p>
-  
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="card-base card-hover">
-              <a href="school-courses/ai-enrichment-course/" target="_blank" rel="noopener">
-                {classAIArtStory && <Image src={classAIArtStory.default} alt="AI藝術故事創作" class="w-full h-48 object-cover" />}
-              </a>
-              <h3 class="p-4 text-center text-lg font-semibold"><a href="school-courses/ai-enrichment-course/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">AI藝術故事創作</a></h3>
-            </div>
-            <div class="card-base card-hover">
-              <a href="stemday/straw-bridge/" target="_blank" rel="noopener">
-                {classStrawBridge && <Image src={classStrawBridge.default} alt="飲管橋" class="w-full h-48 object-cover" />}
-              </a>
-              <h3 class="p-4 text-center text-lg font-semibold"><a href="stemday/straw-bridge/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">飲管橋</a></h3>
-            </div>
-            <div class="card-base card-hover">
-              <a href="school-courses/microbit-parachute/" target="_blank" rel="noopener">
-                {classMicrobitParachute && <Image src={classMicrobitParachute.default} alt="Micro:bit 降落傘" class="w-full h-48 object-cover" />}
-              </a>
-              <h3 class="p-4 text-center text-lg font-semibold"><a href="school-courses/microbit-parachute/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Micro:bit 降落傘</a></h3>
-            </div>
-            <div class="card-base card-hover">
-              <a href="school-courses/scratch-game-design/" target="_blank" rel="noopener">
-                {classScratchGame && <Image src={classScratchGame.default} alt="Scratch 遊戲設計" class="w-full h-48 object-cover" />}
-              </a>
-              <h3 class="p-4 text-center text-lg font-semibold"><a href="school-courses/scratch-game-design/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Scratch 遊戲設計</a></h3>
-            </div>
-            <div class="card-base card-hover">
-              <a href="school-courses/ksp/" target="_blank" rel="noopener">
-                {classKSP && <Image src={classKSP.default} alt="KSP太空遊戲設計" class="w-full h-48 object-cover" />}
-              </a>
-              <h3 class="p-4 text-center text-lg font-semibold"><a href="school-courses/ksp/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">虛擬火箭設計</a></h3>
-            </div>
-            <div class="card-base card-hover">
-              <a href="/science" target="_blank" rel="noopener">
-                {classDIY && <Image src={classDIY.default} alt="DIY手作" class="w-full h-48 object-cover" />}
-              </a>
-              <h3 class="p-4 text-center text-lg font-semibold"><a href="/science" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">DIY手作</a></h3>
-            </div>
-            <div class="card-base card-hover">
-              <a href="stemday/matatalab-入門編程課程/" target="_blank" rel="noopener">
-                {classMatatalab && <Image src={classMatatalab.default} alt="Matatalab 入門編程課程" class="w-full h-48 object-cover" />}
-              </a>
-              <h3 class="p-4 text-center text-lg font-semibold"><a href="stemday/matatalab-入門編程課程/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Matatalab 入門編程課程</a></h3>
-            </div>
-            <div class="card-base card-hover">
-              <a href="/stemday/paper-airplane-race/" target="_blank" rel="noopener">
-                {paperAirplaneRace && <Image src={paperAirplaneRace.default} alt="紙飛機比賽" class="w-full h-48 object-cover" />}
-              </a>
-              <h3 class="p-4 text-center text-lg font-semibold"><a href="/stemday/paper-airplane-race/" target="_blank" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">紙飛機比賽</a></h3>
-            </div>
-          </div>
-        </div>
-      </section>
-  
-      <!-- Lectures Section (講座) -->
-      <section class="section-padding bg-gray-50">
-        <div class="container-standard">
-          <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-8">講座</h2>
-          <p class="text-center text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto">10Botics也爲STEM Day提供以禮堂講座的方式進行，當中包括：</p>
-  
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-12">
-            <div class="order-2 lg:order-1">
-              {aiLectureImage && <Image src={aiLectureImage.default} alt="AI 人工智能講座" class="w-full h-auto rounded-lg shadow-card" />}
-            </div>
-            <div class="order-1 lg:order-2">
-              <h3 class="text-2xl font-semibold text-gray-900 mb-4">AI 人工智能講座</h3>
-              <p class="text-gray-700 mb-4 leading-relaxed">講座將深入介紹人工智能是什麽，並解釋圖靈測試，講解AI 藝術創作、對話機器人等，讓學生全面瞭解最新的人工智能發展。</p>
-              <ul class="space-y-2 text-gray-700 list-disc pl-5">
-                <li>認識人工智能</li>
-                <li>AI藝術創作：圖像生成、主題、設計風格與時間框架</li>
-                <li>什麽是圖靈測試</li>
-                <li>ChatGPT：原理與日常應用</li>
-                <li>AI 最新發展與無人車</li>
-              </ul>
-            </div>
-          </div>
-  
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div class="order-2 lg:order-1">
-              {blockchainIcon && <Image src={blockchainIcon.default} alt="區塊鏈專題講座" class="w-full h-auto rounded-lg shadow-card" />}
-            </div>
-            <div class="order-1 lg:order-2">
-              <h3 class="text-2xl font-semibold text-gray-900 mb-4">區塊鏈專題講座</h3>
-              <p class="text-gray-700 mb-4 leading-relaxed">由行業導師主講，講解區塊鏈基礎、加密貨幣、NFT 等熱門主題，幫助同學理解區塊鏈技術的實際價值與應用。</p>
-              <ul class="space-y-2 text-gray-700 list-disc pl-5">
-                <li>認識區塊鏈基礎</li>
-                <li>開放源代碼與重要性</li>
-                <li>NFT 和數位資產</li>
-                <li>加密錢包與安全</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mt-12">
-            <div class="order-2 lg:order-1">
-              {autonomousCarLecture && <Image src={autonomousCarLecture.default} alt="無人車講座" class="w-full h-auto rounded-lg shadow-card" />}
-            </div>
-            <div class="order-1 lg:order-2">
-              <h3 class="text-2xl font-semibold text-gray-900 mb-4">無人車講座</h3>
-              <p class="text-gray-700 mb-4 leading-relaxed">在無人車講座中，講者將會講解無人車技術的基本原理和發展歷程，並且會探討更多未來無人車技術的發展方向。透過介紹不同無人車相關知識，我們期盼激發同學們對無人車的興趣。</p>
-              <ul class="space-y-2 text-gray-700 list-disc pl-5">
-                <li>認識無人車技術基礎原理</li>
-                <li>無人車發展歷程與里程碑</li>
-                <li>感測器、AI 與自動駕駛算法</li>
-                <li>無人車在物流、運輸及城市規劃的應用</li>
-                <li>未來無人車技術發展方向</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mt-12">
-            <div class="order-2 lg:order-1">
-              {aerospaceLecture && <Image src={aerospaceLecture.default} alt="航天講座" class="w-full h-auto rounded-lg shadow-card" />}
-            </div>
-            <div class="order-1 lg:order-2">
-              <h3 class="text-2xl font-semibold text-gray-900 mb-4">航天講座</h3>
-              <p class="text-gray-700 mb-4 leading-relaxed">航天講座將會向同學們介紹不同航天科技技術的工作原理，並且會說明人類航天事業的發展歷程，以及探討航天技術在科學探索等方面的重要價值，希望藉此激發同學對航天科技的興趣。</p>
-              <ul class="space-y-2 text-gray-700 list-disc pl-5">
-                <li>認識航天科技原理</li>
-                <li>人類航天發展歷程與里程碑</li>
-                <li>太空站運作及太空人訓練</li>
-                <li>衛星通訊、地球觀測等太空技術應用</li>
-                <li>未來太空探索展望</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-  
-     
-  
-  
-    <!-- Gallery Section (活動花絮) -->
-    <section class="section-padding bg-white">
-      <div class="container-standard">
-        <GalleryCarousel
-          title="活動花絮"
-          images={[
-            galleryImg1?.default,
-            galleryImg2?.default,
-            galleryImg3?.default,
-            galleryImg4?.default,
-            galleryImg6?.default,
-            galleryImg7?.default,
-            galleryImg8?.default,
-            galleryImg9?.default,
-          ]}
-          intervalMs={4500}
-        />
-      </div>
-    </section>
-    <section class="section-padding bg-gray-50">
-        <div class="container-standard">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">精選體驗活動</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div class="card-base card-hover">
-                <a href="/school-courses/ai-digital-animation-exhibition" target="_blank" rel="noopener">
-            { (heroAIDigital || featuredAIDigitalAnimation) && (
-              <Image src={(heroAIDigital as any) ?? (featuredAIDigitalAnimation && featuredAIDigitalAnimation.default)} alt="AI數碼動畫展" class="w-full h-48 object-cover" />
-            )}
-                </a>
-                <h3 class="p-4 text-center text-lg font-semibold"><a href="/school-courses/ai-digital-animation-exhibition" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">AI數碼動畫展</a></h3>
-              </div>
-              <div class="card-base card-hover">
-                <a href="/school-courses/tello" target="_blank" rel="noopener">
-            { (heroTello || featuredTello) && (
-              <Image src={(heroTello as any) ?? (featuredTello && featuredTello.default)} alt="Tello 無人機課程" class="w-full h-48 object-cover" />
-            )}
-                </a>
-                <h3 class="p-4 text-center text-lg font-semibold"><a href="/school-courses/tello" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Tello 無人機課程</a></h3>
-              </div>
-              <div class="card-base card-hover">
-                <a href="/school-courses/ksp" target="_blank" rel="noopener">
-            { (heroKSP || classKSP) && (
-              <Image src={(heroKSP as any) ?? (classKSP && classKSP.default)} alt="Kerbal Space Program (KSP) 太空任務設計課程" class="w-full h-48 object-cover" />
-            )}
-                </a>
-                <h3 class="p-4 text-center text-lg font-semibold"><a href="/school-courses/ksp" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Kerbal Space Program (KSP) 太空任務設計課程</a></h3>
-              </div>
-              <div class="card-base card-hover">
-                <a href="stemday/straw-bridge/" target="_blank" rel="noopener">
-                  {classStrawBridge && <Image src={classStrawBridge.default} alt="飲管橋" class="w-full h-48 object-cover" />}
-                </a>
-                <h3 class="p-4 text-center text-lg font-semibold"><a href="stemday/straw-bridge/" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">飲管橋</a></h3>
-              </div>
-              <div class="card-base card-hover">
-                <a href="/school-courses/donkey-car" target="_blank" rel="noopener">
-            { (heroDonkey || featuredDonkeyCar) && (
-              <Image src={(heroDonkey as any) ?? (featuredDonkeyCar && featuredDonkeyCar.default)} alt="Donkey Car 無人車課程" class="w-full h-48 object-cover" />
-            )}
-                </a>
-                <h3 class="p-4 text-center text-lg font-semibold"><a href="/school-courses/donkey-car" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Donkey Car 無人車課程</a></h3>
-              </div>
-              <div class="card-base card-hover">
-                <a href="/school-courses/minecraft" target="_blank" rel="noopener">
-            { (heroMinecraft || featuredMinecraft) && (
-              <Image src={(heroMinecraft as any) ?? (featuredMinecraft && featuredMinecraft.default)} alt="Minecraft 課程" class="w-full h-48 object-cover" />
-            )}
-                </a>
-                <h3 class="p-4 text-center text-lg font-semibold"><a href="/school-courses/minecraft" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Minecraft 課程</a></h3>
-              </div>
-              <div class="card-base card-hover">
-                <a href="/school-courses/procreate" target="_blank" rel="noopener">
-            { (heroProcreate || featuredProcreate) && (
-              <Image src={(heroProcreate as any) ?? (featuredProcreate && featuredProcreate.default)} alt="Procreate電繪課程" class="w-full h-48 object-cover" />
-            )}
-                </a>
-                <h3 class="p-4 text-center text-lg font-semibold"><a href="/school-courses/procreate" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Procreate電繪課程</a></h3>
-              </div>
-              <div class="card-base card-hover">
-                <a href="/science" target="_blank" rel="noopener">
-                  {classDIY && <Image src={classDIY.default} alt="DIY 手作" class="w-full h-48 object-cover" />}
-                </a>
-                <h3 class="p-4 text-center text-lg font-semibold"><a href="/science" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">DIY 手作</a></h3>
-              </div>
-              <div class="card-base card-hover">
-                <a href="/school-courses/scratch-game-design" target="_blank" rel="noopener">
-            { (heroScratch || classScratchGame) && (
-              <Image src={(heroScratch as any) ?? (classScratchGame && classScratchGame.default)} alt="Scratch 遊戲設計課程" class="w-full h-48 object-cover" />
-            )}
-                </a>
-                <h3 class="p-4 text-center text-lg font-semibold"><a href="/school-courses/scratch-game-design" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Scratch 遊戲設計課程</a></h3>
-              </div>
-              <div class="card-base card-hover">
-                <a href="/school-courses/raspberry-pi" target="_blank" rel="noopener">
-            { (heroRaspberryPi || matatalabProgramming) && (
-              <Image src={(heroRaspberryPi as any) ?? (matatalabProgramming && matatalabProgramming.default)} alt="Matatalab 入門編程課程" class="w-full h-48 object-cover" />
-            )}
-                </a>
-                <h3 class="p-4 text-center text-lg font-semibold"><a href="/school-courses/raspberry-pi" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">Matatalab 入門編程課程</a></h3>
-              </div>
-              <div class="card-base card-hover">
-                <a href="/school-courses/Delightex" target="_blank" rel="noopener">
-            { (heroDelightex || featuredDelightex) && (
-              <Image src={(heroDelightex as any) ?? (featuredDelightex && featuredDelightex.default)} alt="CoSpaces 遊戲設計課程" class="w-full h-48 object-cover" />
-            )}
-                </a>
-                <h3 class="p-4 text-center text-lg font-semibold"><a href="/school-courses/Delightex" rel="noopener" class="text-gray-900 hover:text-cyan-600 hover:underline">CoSpaces 遊戲設計課程</a></h3>
-              </div>
-            </div>
-          </div>
-    </section>
-
-
-      <!-- Why 10botics Section -->
-      <section class="section-padding bg-white">
-        <div class="container-standard">
-          <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">為什麼是10botics</h2>
-          <div class="feature-grid">
-            <div class="text-center p-8 rounded-xl shadow-card transition-transform duration-300 hover:-translate-y-2">
-              <div class="text-5xl text-brand-cyan-600 mb-6">
-                <i class="fas fa-clipboard-list"></i>
-              </div>
-              <h3 class="text-xl font-semibold text-gray-900 mb-4">彈性活動配搭</h3>
-              <p class="text-gray-700 leading-relaxed">根據學校期望的內容安排適合不同年級學生的活動。我們亦可為您編排活動時間表。</p>
-            </div>
-            <div class="text-center p-8 rounded-xl shadow-card transition-transform duration-300 hover:-translate-y-2">
-              <div class="text-5xl text-brand-cyan-600 mb-6">
-                <i class="fas fa-pencil-alt"></i>
-              </div>
-              <h3 class="text-xl font-semibold text-gray-900 mb-4">多元化內容</h3>
-              <p class="text-gray-700 leading-relaxed">融入 STEAM 和人工智能等多個的元素。提供一個全面的學習體驗，培養創造力和跨學科連接。内容更可按時間調節。</p>
-            </div>
-            <div class="text-center p-8 rounded-xl shadow-card transition-transform duration-300 hover:-translate-y-2">
-              <div class="text-5xl text-brand-cyan-600 mb-6">
-                <i class="fas fa-chalkboard-teacher"></i>
-              </div>
-              <h3 class="text-xl font-semibold text-gray-900 mb-4">靈活人手安排</h3>
-              <p class="text-gray-700 leading-relaxed">就學校預算需求，我們可靈活編排導師人手，亦可活動前提供在校老師培訓。</p>
-            </div>
-            <div class="text-center p-8 rounded-xl shadow-card transition-transform duration-300 hover:-translate-y-2">
-              <div class="text-5xl text-brand-cyan-600 mb-6">
-                <i class="fas fa-crown"></i>
-              </div>
-              <h3 class="text-xl font-semibold text-gray-900 mb-4">不同活動形式</h3>
-              <p class="text-gray-700 leading-relaxed">活動能以課堂、攤位、講座等形式進行。<br>10Botics亦可提供全級 / 全校性活動。</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      
-    <!-- News Section -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">STEM Day 活動回顧</h2>
-          <p class="text-lg text-gray-600">
-            看看我們過往為不同學校舉辦的精彩STEM Day活動，了解學生們如何透過實踐體驗科技的魅力
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <article class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow group hover:border-gray-300">
-            {/* Featured Image */}
-            <div class="aspect-video overflow-hidden">
-              {newsHolimLaiStemDay && <Image
-                src={newsHolimLaiStemDay.default}
-                alt="可立中學AI藝術創作STEM Day"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />}
-            </div>
-            
-            <div class="p-6">
-              {/* Category and Date */}
-              <div class="flex items-center justify-between text-sm text-gray-500 mb-3">
-                <span class="bg-cyan-100 text-cyan-800 hover:bg-cyan-200 px-2 py-1 rounded-full text-xs font-medium">
-                  過往活動
-                </span>
-                <time datetime="2025-07-19">
-                  2025年7月19日
-                </time>
-              </div>
-
-              {/* Title */}
-              <h3 class="text-lg font-semibold text-gray-900 mb-3 line-clamp-2 hover:text-cyan-600 transition-colors">
-                <a href="/news/2025-07-19-可立中學ai藝術創作stem-day精彩回顧" class="hover:underline">
-                  🎨 AI藝術創作｜STEM Day 精彩回顧 - 可立中學
-                </a>
-              </h3>
-
-              {/* Excerpt */}
-              <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-                可立中學STEM Day舉辦AI藝術創作體驗活動，10教育傳授提示工程技巧，學生學習與AI對話創作藝術作品，培養未來AI協作能力與創意思維。
-              </p>
-
-              {/* Tags */}
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="bg-cyan-100 text-cyan-800 hover:bg-cyan-200 px-2 py-1 rounded text-xs transition-colors">
-                  可立中學
-                </span>
-                <span class="bg-cyan-100 text-cyan-800 hover:bg-cyan-200 px-2 py-1 rounded text-xs transition-colors">
-                  AI藝術創作
-                </span>
-                <span class="bg-cyan-100 text-cyan-800 hover:bg-cyan-200 px-2 py-1 rounded text-xs transition-colors">
-                  STEM Day
-                </span>
-              </div>
-
-              {/* Read More Link */}
-              <a 
-                href="/news/2025-07-19-可立中學ai藝術創作stem-day精彩回顧"
-                class="inline-flex items-center text-cyan-600 hover:text-cyan-700 font-medium text-sm group-hover:underline"
-              >
-                閱讀更多
-                <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </a>
-            </div>
-          </article>
-
-          <article class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow group hover:border-gray-300">
-            {/* Featured Image */}
-            <div class="aspect-video overflow-hidden">
-              {newsTinHongStemDay && <Image
-                src={newsTinHongStemDay.default}
-                alt="浸信會天虹小學Delightex VR&AR STEM Day"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />}
-            </div>
-            
-            <div class="p-6">
-              {/* Category and Date */}
-              <div class="flex items-center justify-between text-sm text-gray-500 mb-3">
-                <span class="bg-cyan-100 text-cyan-800 hover:bg-cyan-200 px-2 py-1 rounded-full text-xs font-medium">
-                  過往活動
-                </span>
-                <time datetime="2024-07-10">
-                  2024年7月10日
-                </time>
-              </div>
-
-              {/* Title */}
-              <h3 class="text-lg font-semibold text-gray-900 mb-3 line-clamp-2 hover:text-cyan-600 transition-colors">
-                <a href="/news/2024-07-10-深度探索Delightex-vrampar浸信會天虹小學-stem-day" class="hover:underline">
-                  【深度探索Delightex VR&AR】浸信會天虹小學 STEM Day
-                </a>
-              </h3>
-
-              {/* Excerpt */}
-              <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-                浸信會天虹小學200名小四小五學生參與Delightex AR及VR課程，體驗VR頭戴設備和AR MergeCube編程，深入學習虛擬和擴增實境技術原理。
-              </p>
-
-              {/* Tags */}
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="bg-cyan-100 text-cyan-800 hover:bg-cyan-200 px-2 py-1 rounded text-xs transition-colors">
-                  Delightex
-                </span>
-                <span class="bg-cyan-100 text-cyan-800 hover:bg-cyan-200 px-2 py-1 rounded text-xs transition-colors">
-                  STEM Day
-                </span>
-                <span class="bg-cyan-100 text-cyan-800 hover:bg-cyan-200 px-2 py-1 rounded text-xs transition-colors">
-                  小學
-                </span>
-              </div>
-
-              {/* Read More Link */}
-              <a 
-                href="/news/2024-07-10-深度探索Delightex-vrampar浸信會天虹小學-stem-day"
-                class="inline-flex items-center text-cyan-600 hover:text-cyan-700 font-medium text-sm group-hover:underline"
-              >
-                閱讀更多
-                <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </a>
-            </div>
-          </article>
-
-          <article class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow group hover:border-gray-300">
-            {/* Featured Image */}
-            <div class="aspect-video overflow-hidden">
-              {newsYMCAStemDay && <Image
-                src={newsYMCAStemDay.default}
-                alt="中華基督教青年會中學AI科技與創意融合STEM Day"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />}
-            </div>
-            
-            <div class="p-6">
-              {/* Category and Date */}
-              <div class="flex items-center justify-between text-sm text-gray-500 mb-3">
-                <span class="bg-cyan-100 text-cyan-800 hover:bg-cyan-200 px-2 py-1 rounded-full text-xs font-medium">
-                  過往活動
-                </span>
-                <time datetime="2024-07-05">
-                  2024年7月5日
-                </time>
-              </div>
-
-              {/* Title */}
-              <h3 class="text-lg font-semibold text-gray-900 mb-3 line-clamp-2 hover:text-cyan-600 transition-colors">
-                <a href="/news/2024-07-05-ai科技與創意融合中華基督教青年會中學-stem-day" class="hover:underline">
-                  【AI科技與創意融合】中華基督教青年會中學 STEM Day
-                </a>
-              </h3>
-
-              {/* Excerpt */}
-              <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-                中華基督教青年會中學350名中一中二學生參與STEM Day，體驗Donkey Car無人車技術和AI數碼動畫展，運用AI圖像生成技術創作動畫角色。
-              </p>
-
-              {/* Tags */}
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="bg-cyan-100 text-cyan-800 hover:bg-cyan-200 px-2 py-1 rounded text-xs transition-colors">
-                  AI 人工智能
-                </span>
-                <span class="bg-cyan-100 text-cyan-800 hover:bg-cyan-200 px-2 py-1 rounded text-xs transition-colors">
-                  STEM Day
-                </span>
-                <span class="bg-cyan-100 text-cyan-800 hover:bg-cyan-200 px-2 py-1 rounded text-xs transition-colors">
-                  中學
-                </span>
-              </div>
-
-              {/* Read More Link */}
-              <a 
-                href="/news/2024-07-05-ai科技與創意融合中華基督教青年會中學-stem-day"
-                class="inline-flex items-center text-cyan-600 hover:text-cyan-700 font-medium text-sm group-hover:underline"
-              >
-                閱讀更多
-                <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </a>
-            </div>
-          </article>
-        </div>
-
-        {/* Show More Link */}
-        <div class="text-center mt-12">
-          <a 
-            href="/news" 
-            class="inline-flex items-center bg-gradient-to-r from-cyan-600 to-brand-blue-600 hover:from-cyan-700 hover:to-brand-blue-700 text-white px-8 py-3 rounded-lg transition-all duration-300 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-          >
-            查看更多新聞
-            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
-          </a>
         </div>
       </div>
     </section>
-  
-    <!-- Contact Form Section -->
-    <section id="contact-form" class="section-padding bg-white">
-      <div class="container-standard">
-        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">聯絡我們</h2>
-        <PaperformEmbed />
+
+    <section class="section-padding bg-slate-50">
+      <div class="container-standard grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
+        <div><p class="text-sm font-bold tracking-[0.2em] text-cyan-700">活動策劃</p><h2 class="mt-3 text-3xl font-bold">由學校條件出發</h2><p class="mt-5 leading-8 text-slate-600">告訴我們年級、人數、日期、時段、場地及預算方向，我們會建議合適的課堂、攤位或講座組合，並列出器材、帳戶及場地準備。</p></div>
+        <div class="space-y-3">
+          {faqs.map(([question, answer]) => (
+            <details class="group rounded-xl border border-slate-200 bg-white p-5"><summary class="cursor-pointer list-none pr-8 font-bold marker:hidden">{question}<span class="float-right text-cyan-700 group-open:rotate-45">＋</span></summary><p class="mt-4 border-t border-slate-100 pt-4 leading-7 text-slate-600">{answer}</p></details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="contact-form" class="section-padding scroll-mt-24 bg-gradient-to-br from-cyan-50 to-slate-100">
+      <div class="container-standard grid items-start gap-10 lg:grid-cols-[.75fr_1.25fr]">
+        <div class="lg:sticky lg:top-28"><p class="text-sm font-bold tracking-[0.2em] text-cyan-700">下一步</p><h2 class="mt-3 text-3xl font-bold md:text-4xl">索取 STEM Day 報價</h2><p class="mt-5 text-lg leading-8 text-slate-600">提供初步日期、人數與活動時間即可。我們會按學校需要建議活動內容、場地配置及預算方案。</p><p class="mt-6 rounded-xl bg-white p-5 text-sm leading-6 text-slate-600 shadow-sm">一般 STEM Day 為 2–4 小時。活動可選課室工作坊、體驗攤位或專題講座，亦可按需要配搭。</p></div>
+        <div class="rounded-2xl bg-white p-6 shadow-xl md:p-9"><EnquiryForm interest="STEM Day 到校活動及報價" /></div>
       </div>
     </section>
   </main>
 </Layout>
-
-<style>
-  /* Line clamp utilities for news section */
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-</style> 
