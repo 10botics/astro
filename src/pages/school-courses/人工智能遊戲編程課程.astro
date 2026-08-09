@@ -8,25 +8,21 @@ import RelatedNews from '../../components/course/RelatedNews.astro';
 import RelatedCourses from '../../components/course/RelatedCourses.astro';
 import { Image } from 'astro:assets';
 
-// Import student work images
-import ticTacToe1 from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/student-work-1.jpg';
-import ticTacToe2 from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/student-work-2.jpg';
-import pacman from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/student-work-3.jpg';
-import sudoku from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/student-work-4.jpg';
-import minesweeper from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/student-work-5.jpg';
-import chinesePuzzleDemo from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/chinese-puzzle-demo.png';
-import aiGeneratedCodeImage from '../../assets/images/school-courses/人工智能遊戲編程課程/ai_generated_code1_Main.jpg';
-import aiGameCodingHero from '../../assets/images/school-courses/人工智能遊戲編程課程/ai-game-coding-hero.jpg';
+// Authentic student project screenshots
+import studentSnake from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/student-snake-neon.png';
+import studentSnakeGameplay from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/student-snake-gameplay.png';
+import studentTowerDefense from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/student-tower-defense.png';
+import studentChess from '../../assets/images/school-courses/人工智能遊戲編程課程/student-work/student-chess.png';
 
 // Course data (static) - now in frontmatter
 export const courseData = {
   title: "AI Vibe Coding 遊戲設計課程",
-  subtitle: "運用 Gemini 創作、測試及發布個人網頁遊戲",
-  tags: ["AI 人工智能", "Programming 編程", "遊戲開發","初中", "高中"],
+  subtitle: "2–4 小時完成可玩原型，或以 8–12 小時發展完整遊戲專題",
+  tags: ["AI 人工智能", "Programming 編程", "遊戲開發", "高小", "中學"],
   videoId: "your-video-id-here",
-  description: "AI Vibe Coding 遊戲設計課程讓學生運用 Gemini 創作、測試及發布 HTML、CSS 與 JavaScript 網頁遊戲，適合中學生參加。",
-  detailedDescription: "本課程以 AI Vibe Coding 為核心，讓學生運用自然語言與 Gemini 協作，把遊戲構思逐步轉化為完整的網頁作品。學生會先分析遊戲規則及勝利條件，再學習把需求拆解成清晰指令，建立由 HTML、CSS 和 JavaScript 組成的遊戲原型。在創作過程中，學生會持續測試遊戲、描述問題、修改功能並改善介面，從實踐中培養邏輯思維、提示設計、除錯和創意解難能力。完成作品後，學生會使用 GitHub 管理專案並透過 GitHub Pages 發布遊戲，建立可供他人直接試玩的作品網址。",
-  heroImage: aiGameCodingHero
+  description: "為高小至中學而設的 AI Vibe Coding 遊戲設計課程。學生運用 AI coding 工具把創意轉化為可玩的網頁遊戲，內容與工具按程度及課時調整。",
+  detailedDescription: "學生以自然語言與 AI coding 工具協作，把遊戲構思逐步轉化為可測試的網頁作品。兩至四小時工作坊以 Gemini 與 GitHub 集中完成可即場試玩的原型；八至十二小時進階課程則可使用 Codex 或 Cursor，加入更完整的企劃、邏輯、除錯、個人化及發布流程。課程適合高小至中學，內容按學生程度調整。",
+  heroImage: studentSnakeGameplay
 };
 
 // Course curriculum
@@ -84,8 +80,8 @@ const curriculumItems = [
 const courseHighlights = [
   {
     icon: "fas fa-robot",
-    title: "Gemini 協作編程",
-    description: "以自然語言與 Gemini 協作，把想法快速轉化為可測試的遊戲原型"
+    title: "AI Coding 協作",
+    description: "以自然語言與 Gemini、Codex 或 Cursor 等工具協作，把想法轉化為可測試的遊戲原型"
   },
   {
     icon: "fas fa-gamepad",
@@ -114,22 +110,22 @@ const courseRequirements = [
   {
     icon: "fas fa-clock",
     title: "課時",
-    description: "3–12 小時，可按學生程度及學校需要調整"
+    description: "2–4 小時工作坊，或 8–12 小時進階課程"
   },
   {
     icon: "fas fa-laptop",
     title: "所需設備",
-    description: "每位學生一部可連接互聯網及運行現代瀏覽器的手提電腦或桌面電腦；學校需提供穩定 Wi-Fi"
+    description: "每位學生一部可連接互聯網及運行現代瀏覽器的手提電腦；不建議使用 iPad 或其他平板電腦"
   },
   {
     icon: "fas fa-user-graduate",
     title: "學員要求",
-    description: "中一至中六"
+    description: "高小至中學，內容按學生程度調整"
   },
   {
     icon: "fas fa-sign-in-alt",
     title: "帳戶需求",
-    description: "每位學生需備有可使用 Gemini 的帳戶及個人 GitHub 帳戶"
+    description: "短版使用 Gemini 與 GitHub；進階課程可按校情使用 Codex 或 Cursor，帳戶安排於課前確認"
   }
 ];
 
@@ -141,15 +137,15 @@ const faqItems = [
   },
   {
     question: "需要自備電腦嗎？",
-    answer: "是的，每位學生需要使用一部可連接互聯網及運行現代瀏覽器的手提電腦或桌面電腦，並備有可使用 Gemini 的帳戶及個人 GitHub 帳戶；學校亦需提供穩定 Wi-Fi。"
+    answer: "是的，每位學生需要使用一部可連接互聯網及運行現代瀏覽器的手提電腦，學校亦需提供穩定 Wi-Fi。iPad 或其他平板電腦不建議用於本課程。短版通常使用 Gemini 與 GitHub；進階課程可按校情使用 Codex 或 Cursor，實際帳戶安排會在課前確認。"
   },
   {
     question: "會學到什麼編程語言？",
-    answer: "主要會接觸 HTML、CSS、JavaScript，並重點學習如何透過自然語言與 Gemini 協作完成程式開發。"
+    answer: "主要會接觸 HTML、CSS、JavaScript，並重點學習如何透過自然語言與 AI coding 工具協作、測試及改良作品。"
   },
   {
     question: "課程結束後能做出什麼作品？",
-    answer: "學生會完成五子棋原型與個人化網頁遊戲，並透過 GitHub Pages 發佈成可分享的作品連結。"
+    answer: "短版工作坊會完成可在瀏覽器即場試玩的遊戲原型；進階課程可再加入個人化功能、完整測試及 GitHub Pages 發佈。"
   }
 ];
 
@@ -164,8 +160,41 @@ const faqItems = [
     subtitle={courseData.subtitle}
     tags={courseData.tags}
     heroImage={courseData.heroImage}
+    heroImageClass="scale-[1.55]"
     description={courseData.detailedDescription}
+    parentSectionLabel="課程"
   />
+
+  <section class="section-padding bg-white" aria-labelledby="vibe-coding-formats-heading">
+    <div class="container-standard">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-bold tracking-[0.2em] text-brand-cyan-700">按課時選擇</p>
+        <h2 id="vibe-coding-formats-heading" class="mt-3 text-3xl font-bold text-gray-900 md:text-4xl">每位學生都把想法變成可玩的作品</h2>
+        <p class="mt-4 text-lg leading-8 text-gray-600">同一套創作流程可按學校時間表及學生程度調整，短課程重視完成原型，進階課程則深入測試、改良與發布。</p>
+      </div>
+      <div class="mx-auto mt-10 grid max-w-5xl gap-6 lg:grid-cols-2">
+        <article class="rounded-2xl border-2 border-brand-cyan-500 bg-cyan-50 p-8">
+          <p class="text-sm font-bold text-brand-cyan-700">集中創作體驗</p>
+          <h3 class="mt-3 text-2xl font-bold text-gray-900">AI Vibe Coding 工作坊｜2–4 小時</h3>
+          <p class="mt-4 leading-7 text-gray-700">學生拆解遊戲規則、向 Gemini 表達需求、測試並修正功能，再透過 GitHub 儲存或分享可即場試玩的網頁遊戲原型。</p>
+          <p class="mt-5 rounded-xl bg-white p-4 font-semibold text-gray-900">適合課堂活動、試後活動及短期到校工作坊。</p>
+        </article>
+        <article class="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+          <p class="text-sm font-bold text-brand-cyan-700">完整專題學習</p>
+          <h3 class="mt-3 text-2xl font-bold text-gray-900">AI 遊戲創作專題｜8–12 小時</h3>
+          <p class="mt-4 leading-7 text-gray-600">可使用 Codex 或 Cursor，由共同原型延伸至個人企劃，加入遊戲邏輯、關卡、介面、除錯、測試及作品發布。</p>
+          <p class="mt-5 rounded-xl bg-gray-50 p-4 font-semibold text-gray-900">適合多節課程、課後活動及專題學習。</p>
+        </article>
+      </div>
+      <div class="mx-auto mt-6 flex max-w-5xl flex-col items-start justify-between gap-5 rounded-2xl bg-slate-900 px-7 py-6 text-white md:flex-row md:items-center">
+        <div>
+          <h3 class="text-xl font-bold">高小至中學，內容按學生程度調整</h3>
+          <p class="mt-2 text-slate-300">零編程基礎亦可參與；導師會按年級、打字能力及課時調整示範、遊戲複雜度與支援方式。</p>
+        </div>
+        <a href="#enquiry" class="inline-flex shrink-0 rounded-lg bg-brand-cyan-500 px-6 py-3 font-bold text-white hover:bg-brand-cyan-600">查詢到校安排</a>
+      </div>
+    </div>
+  </section>
 
   <!-- Hero image and description section -->
   <section class="section-padding bg-white">
@@ -174,7 +203,7 @@ const faqItems = [
         <div class="text-left lg:pl-4">
           <h2 class="text-3xl font-bold text-gray-900 mb-6">為什麼選擇 AI 編程？</h2>
           <p class="text-lg text-gray-700 leading-relaxed mb-6">
-            在 AI 原生時代，學生需要的不只是語法知識，更是把想法清楚表達、快速驗證與持續改良的能力。本課程以 Gemini 協作開發為主軸，讓學生在遊戲專案中掌握提示工程、邏輯拆解與除錯流程，並建立可展示的實作成果。
+            在 AI 原生時代，學生需要的不只是語法知識，更是把想法清楚表達、快速驗證與持續改良的能力。本課程按深度選用合適的 AI coding 工具，讓學生在遊戲專案中掌握需求表達、邏輯拆解與除錯流程，並建立可展示的實作成果。
           </p>
           <div class="space-y-4">
             <div class="flex items-start space-x-3">
@@ -187,29 +216,37 @@ const faqItems = [
             </div>
             <div class="flex items-start space-x-3">
               <i class="fas fa-check-circle text-brand-cyan-600 mt-1"></i>
-              <span class="text-gray-700">完成 GitHub 發佈與成果分享</span>
+              <span class="text-gray-700">較長課程可完成 GitHub 發佈與成果分享</span>
             </div>
           </div>
         </div>
         <div class="justify-self-start">
-          <div class="rounded-lg overflow-hidden shadow-lg mr-auto">
-            <Image 
-              src={aiGeneratedCodeImage} 
-              alt="AI 編程新時代" 
+          <a href="https://solverneos08.github.io/tower-defense/" target="_blank" rel="noopener noreferrer" class="group block overflow-hidden rounded-2xl bg-slate-950 shadow-xl">
+            <Image
+              src={studentTowerDefense}
+              alt="學生創作的塔防網頁遊戲"
               width={600}
               height={400}
-              class="w-full h-auto"
+              class="aspect-[16/10] w-full object-cover object-center transition duration-300 group-hover:scale-[1.02]"
             />
-          </div>
+            <div class="flex items-center justify-between gap-4 px-5 py-4 text-white">
+              <div>
+                <p class="text-xs font-bold tracking-[0.18em] text-cyan-300">真實學生作品</p>
+                <p class="mt-1 font-bold">塔防遊戲：炮塔、波次與升級系統</p>
+              </div>
+              <i class="fas fa-arrow-up-right-from-square text-cyan-300"></i>
+            </div>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Why the technology is important section -->
+  <!-- Tools by course depth section -->
   <section class="section-padding bg-gray-50">
     <div class="container-standard">
-      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">為什麼選用 Gemini + GitHub？</h2>
+      <h2 class="text-3xl font-bold text-center mb-4 text-gray-800">按課程深度選用合適工具</h2>
+      <p class="mx-auto mb-12 max-w-3xl text-center text-lg leading-8 text-gray-600">工具不是課程目的。我們會按課時、學生程度與學校帳戶環境，選擇足以支持學生完成作品的 AI coding 流程。</p>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="card-base card-hover p-6">
@@ -217,10 +254,10 @@ const faqItems = [
             <div class="w-8 h-8 bg-brand-cyan-600 rounded-full flex items-center justify-center mr-3">
               <i class="fas fa-brain text-sm text-white"></i>
             </div>
-            <h3 class="text-xl font-semibold text-gray-800">Gemini 助手</h3>
+            <h3 class="text-xl font-semibold text-gray-800">Gemini 快速原型</h3>
           </div>
           <p class="text-gray-600">
-            Gemini 能協助學生快速生成原型、釐清邏輯與修正錯誤，讓編程從「記語法」轉向「解決問題」。
+            2–4 小時工作坊以 Gemini 快速生成、測試及修正網頁遊戲，讓學生在有限時間內完成可玩的成果。
           </p>
         </div>
         
@@ -229,10 +266,10 @@ const faqItems = [
             <div class="w-8 h-8 bg-brand-cyan-600 rounded-full flex items-center justify-center mr-3">
               <i class="fas fa-cloud text-sm text-white"></i>
             </div>
-            <h3 class="text-xl font-semibold text-gray-800">GitHub 協作與發佈</h3>
+            <h3 class="text-xl font-semibold text-gray-800">GitHub 儲存與分享</h3>
           </div>
           <p class="text-gray-600">
-            透過 GitHub 建立儲存庫與版本管理，再用 GitHub Pages 發佈，學生可以擁有可公開分享的作品網址。
+            短版可利用 GitHub 儲存及分享作品；較長課程則可進一步處理版本、發布及持續改良。
           </p>
         </div>
         
@@ -241,10 +278,10 @@ const faqItems = [
             <div class="w-8 h-8 bg-brand-cyan-600 rounded-full flex items-center justify-center mr-3">
               <i class="fas fa-gamepad text-sm text-white"></i>
             </div>
-            <h3 class="text-xl font-semibold text-gray-800">網頁遊戲開發</h3>
+            <h3 class="text-xl font-semibold text-gray-800">Codex／Cursor 進階開發</h3>
           </div>
           <p class="text-gray-600">
-            網頁遊戲無需安裝即可跨裝置執行，適合短時間完成迭代與展示。學生能在實作中同時學習產品思維與程式邏輯。
+            8–12 小時進階課程可按校情使用 Codex 或 Cursor，讓學生處理較完整的檔案結構、功能迭代、除錯與個人專題。
           </p>
         </div>
       </div>
@@ -291,195 +328,87 @@ const faqItems = [
     </div>
   </section>
 
-        <!-- Student Work Showcase section -->
-      <section class="section-padding bg-white">
-        <div class="container-standard">
-          <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">學生作品展示</h2>
-          <p class="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
-            點擊下方作品直接試玩學生們在 AI 遊戲編程課程中創作的精彩遊戲！從經典的井字棋到創新的自製遊戲，每個作品都展現了學生們的創意和編程技能。
-          </p>
+  <!-- Authentic student work showcase -->
+  <section class="section-padding bg-white" aria-labelledby="student-work-heading">
+    <div class="container-standard">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-bold tracking-[0.2em] text-brand-cyan-700">真實學生作品</p>
+        <h2 id="student-work-heading" class="mt-3 text-3xl font-bold text-gray-900 md:text-4xl">不只是練習，每個連結都可以真正試玩</h2>
+        <p class="mt-4 text-lg leading-8 text-gray-600">學生由玩法構思開始，逐步加入電腦對戰、關卡、難度、升級系統及雙人模式。點擊作品即可開啟遊戲。</p>
+      </div>
 
-          <a
-            href="https://alanchan246.github.io/AI_Vibe_Coding/showcase/index.html"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="block card-base card-hover p-8 mb-12 border-2 border-brand-cyan-200 bg-gradient-to-r from-brand-cyan-50 to-white"
-          >
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-              <div class="flex-1">
-                <div class="flex items-center gap-3 mb-3">
-                  <div class="w-10 h-10 bg-brand-cyan-600 rounded-full flex items-center justify-center shrink-0">
-                    <i class="fas fa-rocket text-white"></i>
-                  </div>
-                  <span class="text-sm font-medium text-brand-cyan-700">學友社工作坊</span>
-                </div>
-                <h3 class="text-xl font-semibold text-gray-800 mb-2">學友社青年 AI Vibe Coding 工作坊 · 作品展示</h3>
-                <p class="text-gray-600">
-                  同學網頁小遊戲作品集：遊戲大廳、桌遊小站、休閒遊戲館與多款單一遊戲（五子棋、數獨、踩地雷、貪食蛇等），可直接在瀏覽器試玩。
-                </p>
-              </div>
-              <span class="inline-flex items-center justify-center px-6 py-3 bg-brand-cyan-600 text-white font-semibold rounded-lg shrink-0">
-                進入作品大廳
-                <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-              </span>
+      <div class="mt-12 grid gap-7 lg:grid-cols-3">
+        <a href="https://52110230608.github.io/snake/" target="_blank" rel="noopener noreferrer" class="group overflow-hidden rounded-2xl border-2 border-brand-cyan-400 bg-slate-950 shadow-lg lg:col-span-2">
+          <Image src={studentSnake} alt="學生創作的霓虹貪食蛇遊戲" width={1200} height={675} class="aspect-video w-full object-cover object-center transition duration-300 group-hover:scale-[1.015]" />
+          <div class="flex flex-col justify-between gap-4 p-6 text-white sm:flex-row sm:items-end">
+            <div>
+              <p class="text-xs font-bold tracking-[0.18em] text-cyan-300">遊戲介面與玩法設計</p>
+              <h3 class="mt-2 text-2xl font-bold">Retro Neon Snake</h3>
+              <p class="mt-2 text-slate-300">單人、電腦對戰及雙人模式，配合不同地圖、速度與視覺主題。</p>
+            </div>
+            <span class="inline-flex shrink-0 items-center font-bold text-cyan-300">立即試玩 <i class="fas fa-arrow-up-right-from-square ml-2 text-sm"></i></span>
+          </div>
+        </a>
+
+        <div class="grid gap-7">
+          <a href="https://solverneos08.github.io/tower-defense/" target="_blank" rel="noopener noreferrer" class="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+            <Image src={studentTowerDefense} alt="學生創作的塔防遊戲" width={600} height={338} class="aspect-video w-full object-cover object-center transition duration-300 group-hover:scale-[1.02]" />
+            <div class="p-5">
+              <p class="text-xs font-bold tracking-[0.15em] text-brand-cyan-700">系統與策略</p>
+              <h3 class="mt-2 text-xl font-bold text-gray-900">Tower Defense</h3>
+              <p class="mt-2 text-sm leading-6 text-gray-600">炮塔選擇、敵人波次、升級與出售機制。</p>
             </div>
           </a>
-          
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Wooden Tic-tac-toe Game -->
-            <a href="/games/ai-game-coding/WoodenTicTac/index.html" target="_blank" class="card-base card-hover cursor-pointer">
-              <div class="aspect-w-16 aspect-h-9 bg-gray-100">
-                <Image 
-                  src={ticTacToe1} 
-                  alt="木製井字棋遊戲作品" 
-                  width={400}
-                  height={300}
-                  class="w-full h-48 object-cover"
-                />
-              </div>
-              <div class="p-6">
-                <h3 class="text-lg font-semibold text-gray-800 mb-2">木製井字棋遊戲</h3>
-                <p class="text-gray-600 text-sm">具有木製質感的經典井字棋遊戲，結合傳統與現代設計</p>
-              </div>
-            </a>
-
-            <!-- Tic-tac-tactics Game -->
-            <a href="/games/ai-game-coding/TicTacTactics/index.html" target="_blank" class="card-base card-hover cursor-pointer">
-              <div class="aspect-w-16 aspect-h-9 bg-gray-100">
-                <Image 
-                  src={ticTacToe2} 
-                  alt="井字棋戰術遊戲作品" 
-                  width={400}
-                  height={300}
-                  class="w-full h-48 object-cover"
-                />
-              </div>
-              <div class="p-6">
-                <h3 class="text-lg font-semibold text-gray-800 mb-2">井字棋戰術遊戲</h3>
-                <p class="text-gray-600 text-sm">加入戰術元素的創新井字棋，考驗策略思維</p>
-              </div>
-            </a>
-
-            <!-- Sudoku Game -->
-            <a href="/games/ai-game-coding/SudokuMaster/index.html" target="_blank" class="card-base card-hover cursor-pointer">
-              <div class="aspect-w-16 aspect-h-9 bg-gray-100">
-                <Image 
-                  src={sudoku} 
-                  alt="數獨遊戲作品" 
-                  width={400}
-                  height={300}
-                  class="w-full h-48 object-cover"
-                />
-              </div>
-              <div class="p-6">
-                <h3 class="text-lg font-semibold text-gray-800 mb-2">數獨大師</h3>
-                <p class="text-gray-600 text-sm">經典數獨遊戲的完整實現，包含提示功能和難度等級</p>
-              </div>
-            </a>
-            
-            <!-- Minesweeper Game -->
-            <a href="/games/ai-game-coding/MinefieldChallenge/index.html" target="_blank" class="card-base card-hover cursor-pointer">
-              <div class="aspect-w-16 aspect-h-9 bg-gray-100">
-                <Image 
-                  src={minesweeper} 
-                  alt="踩地雷遊戲作品" 
-                  width={400}
-                  height={300}
-                  class="w-full h-48 object-cover"
-                />
-              </div>
-              <div class="p-6">
-                <h3 class="text-lg font-semibold text-gray-800 mb-2">踩地雷挑戰</h3>
-                <p class="text-gray-600 text-sm">經典踩地雷遊戲的網頁版本，考驗邏輯思維能力</p>
-              </div>
-            </a>
-
-            <!-- Pac-Man Game -->
-            <a href="/games/ai-game-coding/PacManChase/index.html" target="_blank" class="card-base card-hover cursor-pointer">
-              <div class="aspect-w-16 aspect-h-9 bg-gray-100">
-                <Image 
-                  src={pacman} 
-                  alt="食鬼遊戲作品" 
-                  width={400}
-                  height={300}
-                  class="w-full h-48 object-cover"
-                />
-              </div>
-              <div class="p-6">
-                <h3 class="text-lg font-semibold text-gray-800 mb-2">食鬼追逐遊戲</h3>
-                <p class="text-gray-600 text-sm">經典食鬼遊戲的重新詮釋，展現動畫和遊戲邏輯的結合</p>
-              </div>
-            </a>
-
-            <!-- Chinese Puzzle Game -->
-            <a href="/games/ai-game-coding/ChinesePuzzle/index.html" target="_blank" class="card-base card-hover cursor-pointer">
-              <div class="aspect-w-16 aspect-h-9 bg-gray-100">
-                <Image 
-                  src={chinesePuzzleDemo} 
-                  alt="中國拼圖遊戲作品" 
-                  width={400}
-                  height={300}
-                  class="w-full h-48 object-cover"
-                />
-              </div>
-              <div class="p-6">
-                <h3 class="text-lg font-semibold text-gray-800 mb-2">中國拼圖遊戲</h3>
-                <p class="text-gray-600 text-sm">傳統中國益智遊戲的現代化實現，學習成語和中文</p>
-              </div>
-            </a>
-          </div>
-
-
-
-      <!-- Student Testimonials -->
-      <div class="mt-16 bg-gray-50 rounded-lg p-8">
-        <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">學生心得分享</h3>
-        <div class="grid md:grid-cols-2 gap-8">
-          <div class="card-base p-6">
-            <div class="flex items-center mb-4">
-              <i class="fas fa-quote-left text-2xl text-brand-cyan-600 mr-3"></i>
-              <h4 class="text-lg font-semibold text-gray-800">AI 編程初體驗</h4>
+          <a href="https://search-or-enter-website-name.github.io/hoi4-prototype/chess/" target="_blank" rel="noopener noreferrer" class="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+            <Image src={studentChess} alt="學生創作的國際象棋遊戲" width={600} height={338} class="aspect-video w-full object-cover object-center transition duration-300 group-hover:scale-[1.02]" />
+            <div class="p-5">
+              <p class="text-xs font-bold tracking-[0.15em] text-brand-cyan-700">遊戲邏輯與電腦對戰</p>
+              <h3 class="mt-2 text-xl font-bold text-gray-900">Chess</h3>
+              <p class="mt-2 text-sm leading-6 text-gray-600">電腦對手、難度選擇及同機雙人模式。</p>
             </div>
-            <p class="text-gray-600 italic">
-              "沒想到編程可以這麼有趣！使用 AI 工具幫助我設計遊戲邏輯，讓我能專注在創意上。完成第一個井字棋遊戲時，那種成就感真的很棒！"
-            </p>
-          </div>
-          <div class="card-base p-6">
-            <div class="flex items-center mb-4">
-              <i class="fas fa-quote-left text-2xl text-brand-cyan-600 mr-3"></i>
-              <h4 class="text-lg font-semibold text-gray-800">從零到一的突破</h4>
-            </div>
-            <p class="text-gray-600 italic">
-              "作為編程新手，這個課程讓我學會了如何與 AI 協作開發。現在我不僅能製作遊戲，還能將作品分享給朋友們玩，真的很興奮！"
-            </p>
-          </div>
+          </a>
         </div>
+      </div>
+
+      <div class="mt-8 flex flex-col items-start justify-between gap-5 rounded-2xl bg-cyan-50 px-7 py-6 md:flex-row md:items-center">
+        <p class="font-semibold leading-7 text-gray-800">以上均為課程學生作品；實際成果會因課時、學生程度及個人創作方向而有所不同。</p>
+        <a href="https://alanchan246.github.io/AI_Vibe_Coding/showcase/index.html" target="_blank" rel="noopener noreferrer" class="inline-flex shrink-0 items-center rounded-lg bg-brand-cyan-600 px-5 py-3 font-bold text-white hover:bg-brand-cyan-700">瀏覽更多作品 <i class="fas fa-arrow-up-right-from-square ml-2 text-sm"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding bg-slate-950 text-white" aria-labelledby="vibe-coding-delivery-heading">
+    <div class="container-standard">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-sm font-bold tracking-[0.2em] text-cyan-300">近期到校實踐</p>
+        <h2 id="vibe-coding-delivery-heading" class="mt-3 text-3xl font-bold md:text-4xl">由單次工作坊到多節遊戲專題</h2>
+        <p class="mt-4 text-lg leading-8 text-slate-300">近期課程涵蓋 3.5–4 小時集中工作坊，以及 8–10 小時學校專題。學生由共同示範起步，再按課時發展個人玩法、測試及改良作品。</p>
+      </div>
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        <article class="rounded-2xl border border-white/10 bg-white/5 p-7">
+          <p class="text-sm font-bold text-cyan-300">短期工作坊</p>
+          <h3 class="mt-3 text-xl font-bold">集中完成可玩原型</h3>
+          <p class="mt-3 leading-7 text-slate-300">把規則、提示、生成、測試及基本修正濃縮在一次活動內。</p>
+        </article>
+        <article class="rounded-2xl border border-white/10 bg-white/5 p-7">
+          <p class="text-sm font-bold text-cyan-300">多節學校課程</p>
+          <h3 class="mt-3 text-xl font-bold">逐步深化個人作品</h3>
+          <p class="mt-3 leading-7 text-slate-300">加入更完整的遊戲企劃、功能改良、介面設計與系統測試。</p>
+        </article>
+        <article class="rounded-2xl border border-white/10 bg-white/5 p-7">
+          <p class="text-sm font-bold text-cyan-300">真實作品證明</p>
+          <h3 class="mt-3 text-xl font-bold">學生遊戲可直接試玩</h3>
+          <p class="mt-3 leading-7 text-slate-300">作品不只停留在截圖；訪客可在上方作品大廳及展示卡直接開啟遊戲。</p>
+        </article>
       </div>
     </div>
   </section>
 
   <!-- Course Content Section -->
-  <SingleCourseContent 
+  <SingleCourseContent
     items={curriculumItems}
-    hours="3–12 小時"
+    hours="2–4 小時工作坊／8–12 小時進階課程"
   />
-
-  <section class="section-padding bg-cyan-50" aria-labelledby="vibe-coding-stem-day-heading">
-    <div class="container-standard">
-      <div class="rounded-2xl bg-white p-8 shadow-lg md:p-10">
-        <p class="text-sm font-bold tracking-[0.2em] text-brand-cyan-700">STEM DAY 活動版本</p>
-        <h2 id="vibe-coding-stem-day-heading" class="mt-3 text-3xl font-bold text-gray-900">一節課，由構思走到可玩的遊戲原型</h2>
-        <p class="mt-4 max-w-3xl text-lg leading-8 text-gray-600">適合中一至中六，學生運用 Gemini 把遊戲規則轉化為網頁原型，並透過測試與提示修正功能。短版集中完成可即場試玩的作品；GitHub 發布保留於較長課程。</p>
-        <div class="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <div class="rounded-xl bg-gray-50 p-5"><strong class="block text-gray-900">建議時數</strong><span class="mt-2 block text-gray-600">85–180 分鐘</span></div>
-          <div class="rounded-xl bg-gray-50 p-5"><strong class="block text-gray-900">設備與帳戶</strong><span class="mt-2 block text-gray-600">每人一部電腦、穩定網絡及可使用 Gemini 的帳戶</span></div>
-          <div class="rounded-xl bg-gray-50 p-5"><strong class="block text-gray-900">平行課堂</strong><span class="mt-2 block text-gray-600">可按導師及電腦室數量安排</span></div>
-          <div class="rounded-xl bg-gray-50 p-5"><strong class="block text-gray-900">學生成果</strong><span class="mt-2 block text-gray-600">可在瀏覽器即場試玩的遊戲原型</span></div>
-        </div>
-        <a href="/stemday/#contact-form" class="mt-7 inline-flex rounded-lg bg-brand-cyan-600 px-6 py-3 font-bold text-white hover:bg-brand-cyan-700">規劃 STEM Day 活動</a>
-      </div>
-    </div>
-  </section>
 
   <QnASection faqs={faqItems} />
   <!-- Related Courses Section -->
@@ -490,6 +419,10 @@ const faqItems = [
 
 
   <!-- Contact section -->
-  <ContactSection subtitle="想了解更多關於 AI Vibe Coding 遊戲設計課程的資訊？歡迎聯絡我們，我們會按學生程度及學校需要提供 3–12 小時的課程安排。" />
+  <div id="enquiry" class="scroll-mt-20">
+    <ContactSection
+      interest="AI Vibe Coding 到校課程"
+      subtitle="告訴我們學生年級、人數、可用課時及電腦安排，我們會建議 2–4 小時工作坊或 8–12 小時進階課程，並提供方案及報價。"
+    />
+  </div>
 </Layout>
-

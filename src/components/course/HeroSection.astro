@@ -20,6 +20,8 @@ export interface Props {
   endBreadcrumbAtParentSection?: boolean;
   /** Optional caption overlay on hero image */
   heroImageCaption?: string;
+  /** Optional presentation classes for a particular hero image (for example, a modest crop/zoom). */
+  heroImageClass?: string;
   /**
    * When set (e.g. 0.8), hero image is centered with object-contain and limited to this fraction
    * of the hero box (avoids object-cover cropping on wide assets like certificates).
@@ -46,6 +48,7 @@ const {
   parentSectionLabel = '到校課程',
   endBreadcrumbAtParentSection = false,
   heroImageCaption,
+  heroImageClass = '',
   heroImageMaxScale,
   descriptionFooterImage,
   descriptionFooterImageAlt,
@@ -173,6 +176,7 @@ const heroScalePct = heroScale != null ? `${heroScale * 100}%` : null;
                 heroScale != null
                   ? 'w-auto h-auto max-w-full max-h-full object-contain'
                   : 'w-full h-full object-cover',
+                heroImageClass,
               ]}
               style={heroScalePct != null
                 ? { maxWidth: heroScalePct, maxHeight: heroScalePct }
@@ -226,4 +230,4 @@ const heroScalePct = heroScale != null ? `${heroScale * 100}%` : null;
       </div>
     </div>
   </section>
-)} 
+)}
