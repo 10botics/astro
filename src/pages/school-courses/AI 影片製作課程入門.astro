@@ -10,8 +10,8 @@ import RelatedCourses from '../../components/course/RelatedCourses.astro';
 import heroImage from '../../assets/images/school-courses/AI啟蒙課程/ai-2d-video.png';
 
 export const courseData = {
-  title: "AI 影片製作課程入門",
-  subtitle: "以 Gemini 與 Canva 完成溫馨故事短片，從構思到導出 MP4",
+  title: "AI 影片製作課程",
+  subtitle: "學生以 Gemini 與 Canva 從故事構思走到可播放的 MP4 短片",
   tags: [
     "AI 人工智能",
     "Video 影片製作",
@@ -28,7 +28,7 @@ export const courseData = {
     embedUrl: "https://drive.google.com/file/d/17wlbJCw6FNaka_pTbQyhzezL4y9wK1uS/preview"
   },
   description:
-    "此課程將幫助學生掌握生成式 AI 平台的用法，特別聚焦於 Gemini 平台的使用。內容涵蓋登入 Gemini、與 Gemini 對話、輸入文字指令生成圖像及影片，引導學生透過 Gemini 進行多樣化的 AI 藝術創作，並以 Canva 完成短片剪輯與導出。",
+    "為香港學校而設的 AI 影片製作課程。學生運用 Gemini 構思故事、製作分鏡、生成圖像與短片素材，再以 Canva 加入字幕及配樂，完成可播放的 MP4 作品。",
   detailedDescription:
     "此課程將幫助學生掌握生成式 AI 平台的用法，特別聚焦於 Gemini 平台的使用。內容涵蓋了如何登入 Gemini、與 Gemini 對話、輸入文字指令生成圖像及影片，引導使用者透過 Gemini 進行多樣化的 AI 藝術創作。學生將從故事構思、分鏡拆解、角色與場景圖生成，到圖片轉影片動畫，最後在 Canva 組合字幕、配樂並導出完整 MP4 短片。",
   heroImage
@@ -201,7 +201,19 @@ const faqItems = [
       description={courseData.detailedDescription}
       heroImage={courseData.heroImage}
       tags={courseData.tags}
+      parentSectionLabel="課程"
     />
+
+    <section class="border-y border-cyan-100 bg-cyan-50 py-10">
+      <div class="container-standard grid items-center gap-8 lg:grid-cols-[1fr_auto]">
+        <div>
+          <p class="text-sm font-bold tracking-[0.2em] text-brand-cyan-700">學生創作成果</p>
+          <h2 class="mt-2 text-2xl font-bold text-gray-900 md:text-3xl">不只認識 AI，而是完成一段自己的影片</h2>
+          <p class="mt-3 max-w-3xl leading-7 text-gray-600">可按小四至中三學生程度、學校課時與帳戶環境安排完整課程或 2–4 小時活動版本。課程以故事、分鏡、媒體素養與實際製作連成一個完整創作流程。</p>
+        </div>
+        <a href="#enquiry" class="inline-flex justify-center rounded-lg bg-brand-cyan-600 px-7 py-3.5 font-bold text-white transition hover:bg-brand-cyan-700">索取到校課程方案</a>
+      </div>
+    </section>
 
     <section class="section-padding bg-white">
       <div class="container-standard">
@@ -269,6 +281,33 @@ const faqItems = [
       </div>
     </section>
 
+    <section class="section-padding bg-slate-950 text-white" aria-labelledby="ai-video-delivery-heading">
+      <div class="container-standard">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-bold tracking-[0.2em] text-cyan-300">近期到校實踐</p>
+          <h2 id="ai-video-delivery-heading" class="mt-3 text-3xl font-bold md:text-4xl">由學生創作課程到教師實務工作坊</h2>
+          <p class="mt-4 text-lg leading-8 text-slate-300">2026 年，我們已把 AI 影片製作帶進不同學校場景，按學生程度、課時與教學目標調整工具及製作流程。</p>
+        </div>
+        <div class="mt-10 grid gap-6 md:grid-cols-3">
+          <article class="rounded-2xl border border-white/10 bg-white/5 p-7">
+            <p class="text-sm font-bold text-cyan-300">中學學生課程</p>
+            <h3 class="mt-4 text-xl font-bold">AI 影片完整創作</h3>
+            <p class="mt-3 leading-7 text-slate-300">由故事與分鏡開始，逐步生成視覺素材、整理時間線並完成可播放作品。</p>
+          </article>
+          <article class="rounded-2xl border border-white/10 bg-white/5 p-7">
+            <p class="text-sm font-bold text-cyan-300">中學進階應用</p>
+            <h3 class="mt-4 text-xl font-bold">AI 輔助影片剪輯</h3>
+            <p class="mt-3 leading-7 text-slate-300">把生成式 AI 加入既有影片製作流程，協助學生提升構思、素材準備與後期效率。</p>
+          </article>
+          <article class="rounded-2xl border border-white/10 bg-white/5 p-7">
+            <p class="text-sm font-bold text-cyan-300">教師工作坊</p>
+            <h3 class="mt-4 text-xl font-bold">先處理帳戶與課堂流程</h3>
+            <p class="mt-3 leading-7 text-slate-300">從學校帳戶、工具權限到示範任務，協助教師掌握在課堂推行 AI 影片創作的實際條件。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <SingleCourseContent
       items={courseCurriculum}
       hours="10 節（每節 1–1.5 小時）"
@@ -305,6 +344,11 @@ const faqItems = [
 
     <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
 
-    <ContactSection subtitle="想了解更多關於 AI 影片製作課程入門的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排和報名資訊。" />
+    <div id="enquiry" class="scroll-mt-20">
+      <ContactSection
+        interest="AI影片製作到校課程"
+        subtitle="告訴我們學生年級、預計人數、課時與設備安排，我們會建議完整課程或 STEM Day 活動版本，並提供方案及報價。"
+      />
+    </div>
   </main>
 </Layout>
