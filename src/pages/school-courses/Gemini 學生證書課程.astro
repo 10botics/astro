@@ -8,26 +8,25 @@ import ContactSection from '../../components/ContactSection.astro';
 import RelatedNews from '../../components/course/RelatedNews.astro';
 import RelatedCourses from '../../components/course/RelatedCourses.astro';
 
-import heroGeminiAiChat from '../../assets/images/school-courses/AI啟蒙課程/ai-application.png';
+import heroGeminiAiChat from '../../assets/images/school-courses/Gemini 學生證書課程/gallery-computer-lab-session.png';
 import geminiStudentCertificate from '../../assets/images/school-courses/Gemini 學生證書課程/certificate-gemini-certified-student-sample.jpg';
 
 export const courseData = {
   title: "Gemini 學生證書課程",
-  subtitle: "8 小時掌握 Gemini、NotebookLM 與 AI 實作，邁向 Gemini 學生證書",
+  subtitle: "2 小時完成認證路徑，或以 8 小時延伸至 NotebookLM 與 AI Vibe Coding",
   tags: [
     "AI 人工智能",
     "Google Gemini",
     "NotebookLM",
     "Programming 編程",
-    "初小",
-    "高小",
-    "初中"
+    "中學",
+    "Google 認證"
   ],
   videoId: "your-video-id-here",
   description:
-    "到校課程結合 Google Gemini、NotebookLM 與 AI vibe coding 實作，協助學生建立生成式 AI 基礎、熟悉校園可用的學習工具，並預留時間完成 Gemini 學生證書相關考核。",
+    "為香港學校而設的 Gemini 學生認證課程。13–17 歲學生可在導師帶領下完成 Google 基礎學習內容及官方考核；學校亦可選擇八小時版本，加入 NotebookLM 與 AI Vibe Coding 實作。",
   detailedDescription:
-    "本課程為 8 小時密集設計，分四大模組：先從生成式 AI 與 Google AI 生態介紹起，深入 Gemini 平台核心功能與引導學習、影像生成、Canvas、深度研究與 Gems 等應用；其後透過 NotebookLM 認識 Magic Door 試用與平台核心功能，涵蓋 Audio Overview、Video Overview、MindMap、Flashcard、Quiz 等學習形式；再以「AI vibe coding」帶領學生製作自製五子棋與個人化小遊戲；最後安排考取 Gemini 學生證書，鞏固學習成果。",
+    "課程設有兩種到校安排：兩小時認證版本集中完成 Google 指定基礎學習內容、負責任使用 AI、重點溫習及官方考核；八小時進階版本則加入 NotebookLM 學習工具及 AI Vibe Coding 專題，讓學生在取得認證以外，完成更深入的應用與創作。",
   heroImage: heroGeminiAiChat
 };
 
@@ -46,21 +45,21 @@ const courseHighlights = [
   },
   {
     icon: "fas fa-certificate",
-    title: "實作小遊戲＋學生證書",
+    title: "官方認證與實作成果",
     description:
-      "以 AI vibe coding 完成五子棋與個人遊戲專題，最後預留時間進行 Gemini 學生證書考取，讓能力與認證並重。"
+      "13–17 歲學生完成基礎學習及通過官方考核後，可取得 Google Gemini Certified Student 證書；八小時版本再加入個人遊戲專題。"
   }
 ];
 
 const courseCurriculum = {
   items: [
     {
-      title: "Gemini",
+      title: "Gemini 學生認證路徑",
       duration: "2 小時",
       content: [
-        "介紹生成式 AI 及 Google AI 工具",
-        "Gemini 平台核心功能",
-        "引導學習、影像生成、Canvas、深度研究、Gems 等應用概覽與實作"
+        "完成 Google 指定的 Gemini 基礎學習內容",
+        "認識生成式 AI、Gemini 核心功能與負責任使用原則",
+        "重點溫習、官方考核及提交支援"
       ]
     },
     {
@@ -74,19 +73,11 @@ const courseCurriculum = {
     },
     {
       title: "AI vibe coding",
-      duration: "3 小時",
+      duration: "4 小時",
       content: [
         "以 AI 輔助規劃與實作程式邏輯",
         "建立自製五子棋",
         "延伸製作專屬主題小遊戲"
-      ]
-    },
-    {
-      title: "考取證書",
-      duration: "1 小時",
-      content: [
-        "複習 Gemini 重點與應考注意事項",
-        "在課堂內完成 Gemini 學生證書相關考核與提交"
       ]
     }
   ]
@@ -108,16 +99,21 @@ const faqItems = [
     ]
   },
   {
+    question: "小學生可以取得 Google Gemini 學生證書嗎？",
+    answer: [
+      "Google 的 K–12 Gemini Certified Student 官方考核只開放予 13–17 歲學生。未符合 Google 年齡要求的學生仍可參與按年齡調整的 Gemini AI 課程。",
+      "完成課程後，本公司會向學生發出課程證書，但不會將其表述為 Google 官方認證。"
+    ]
+  },
+  {
     question: "什麼年級與設備較適合？",
     answer: [
-      "建議初小至高小、初中學生參與；需具備基本中英文打字與網頁操作能力更佳。",
+      "Google 官方認證版本適合 13–17 歲學生；小學生可參與按年齡調整的非官方認證版本。學生具備基本中英文打字與網頁操作能力更佳。",
       "學校請準備可上網的電腦或 Chromebook／手提電腦，並讓學生使用學校核准的 Google 帳戶登入相關服務。"
     ]
   }
 ];
 
-const schoolArrangementNote =
-  '課程可配合學校節數與資訊設備調整細節，歡迎聯絡我們討論到校安排。';
 ---
 
 <Layout title={courseData.title} description={courseData.description}>
@@ -130,16 +126,48 @@ const schoolArrangementNote =
       description={courseData.detailedDescription}
       heroImage={courseData.heroImage}
       tags={courseData.tags}
+      parentSectionLabel="課程"
     />
+
+    <section class="section-padding bg-white" aria-labelledby="gemini-pathways-heading">
+      <div class="container-standard">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="text-sm font-bold tracking-[0.2em] text-brand-cyan-700">兩種課程安排</p>
+          <h2 id="gemini-pathways-heading" class="mt-3 text-3xl font-bold text-gray-900 md:text-4xl">由官方認證，延伸至真正的 AI 應用</h2>
+          <p class="mt-4 text-lg leading-8 text-gray-600">學校可選擇集中完成認證的兩小時版本，或以八小時建立更完整的 Gemini、NotebookLM 與 AI 創作能力。</p>
+        </div>
+        <div class="mx-auto mt-10 grid max-w-5xl gap-6 lg:grid-cols-2">
+          <article class="rounded-2xl border-2 border-brand-cyan-500 bg-cyan-50 p-8">
+            <p class="text-sm font-bold text-brand-cyan-700">13–17 歲學生</p>
+            <h3 class="mt-3 text-2xl font-bold text-gray-900">Gemini 學生認證｜約 2 小時</h3>
+            <p class="mt-4 leading-7 text-gray-700">導師帶領學生完成 Google 指定基礎學習內容、認識負責任使用 AI 的原則、溫習重點並完成官方考核。</p>
+            <p class="mt-5 rounded-xl bg-white p-4 font-semibold text-gray-900">通過考核後，學生可取得 Google Gemini Certified Student 證書。</p>
+          </article>
+          <article class="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+            <p class="text-sm font-bold text-brand-cyan-700">完整應用與創作</p>
+            <h3 class="mt-3 text-2xl font-bold text-gray-900">Gemini AI 進階課程｜約 8 小時</h3>
+            <p class="mt-4 leading-7 text-gray-600">包含兩小時認證路徑，再加入 NotebookLM 學習工具，以及按學生進度安排 2–4 小時 AI Vibe Coding 專題。</p>
+            <p class="mt-5 rounded-xl bg-gray-50 p-4 font-semibold text-gray-900">學生同時帶走官方認證、AI 學習方法與可實際操作的遊戲作品。</p>
+          </article>
+        </div>
+        <div class="mx-auto mt-6 max-w-5xl rounded-2xl bg-slate-900 px-7 py-6 text-white md:flex md:items-center md:justify-between md:gap-8">
+          <div>
+            <h3 class="text-xl font-bold">小學生亦可參與 Gemini AI 課程</h3>
+            <p class="mt-2 leading-7 text-slate-300">未符合 Google 年齡要求的學生會參與按年齡調整的學習任務；完成後由本公司發出課程證書，而非 Google 官方認證。</p>
+          </div>
+          <a href="#enquiry" class="mt-5 inline-flex shrink-0 rounded-lg bg-brand-cyan-500 px-6 py-3 font-bold text-white hover:bg-brand-cyan-600 md:mt-0">查詢到校安排</a>
+        </div>
+      </div>
+    </section>
 
     <section class="section-padding bg-gray-50" aria-labelledby="gemini-student-certificate-heading">
       <div class="container-standard">
         <div class="text-center mb-10">
           <h2 id="gemini-student-certificate-heading" class="text-3xl font-bold text-gray-900 mb-4">
-            官方認證證書
+            Google 官方認證成果
           </h2>
           <p class="text-gray-600 max-w-2xl mx-auto">
-            課程預留時間完成考核，學生可取得 Gemini Certified Student 認證（範例樣式如下）。
+            13–17 歲學生完成 Google 指定基礎學習並通過官方考核後，可取得 Gemini Certified Student 認證。以下為證書範例。
           </p>
         </div>
         <div class="max-w-4xl mx-auto rounded-xl overflow-hidden shadow-xl ring-1 ring-gray-100 bg-gray-50">
@@ -151,6 +179,24 @@ const schoolArrangementNote =
             sizes="(min-width: 1024px) 896px, 100vw"
             class="w-full h-auto object-contain max-h-[85vh]"
           />
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding bg-slate-950 text-white" aria-labelledby="gemini-student-evidence-heading">
+      <div class="container-standard grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+        <div>
+          <p class="text-sm font-bold tracking-[0.2em] text-cyan-300">近期學校實踐</p>
+          <h2 id="gemini-student-evidence-heading" class="mt-3 text-3xl font-bold md:text-4xl">學生在課堂內完成學習及認證流程</h2>
+          <p class="mt-5 text-lg leading-8 text-slate-300">我們已在中學課堂帶領學生完成 Gemini 指定學習、應考準備及認證程序，參與學生成功取得 Google Gemini Certified Student 證書。</p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-7">
+          <p class="text-sm font-bold text-cyan-300">實際交付重點</p>
+          <ul class="mt-5 space-y-4 text-slate-200">
+            <li class="flex gap-3"><span class="text-cyan-300">✓</span><span>導師逐步帶領 Google 基礎學習內容</span></li>
+            <li class="flex gap-3"><span class="text-cyan-300">✓</span><span>課堂內處理應考流程與技術支援</span></li>
+            <li class="flex gap-3"><span class="text-cyan-300">✓</span><span>學生完成考核並取得官方證書</span></li>
+          </ul>
         </div>
       </div>
     </section>
@@ -184,25 +230,8 @@ const schoolArrangementNote =
       hoursText="共"
       showAdjustmentNote={true}
       adjustmentText="可根據學校需要調整節數與模組比重"
-      hoursFooterNote={schoolArrangementNote}
+      hoursFooterNote="以上為八小時進階版本；學校亦可選擇約兩小時的 Gemini 學生認證版本。"
     />
-
-    <section class="section-padding bg-cyan-50" aria-labelledby="gemini-student-stem-day-heading">
-      <div class="container-standard">
-        <div class="rounded-2xl bg-white p-8 shadow-lg md:p-10">
-          <p class="text-sm font-bold tracking-[0.2em] text-brand-cyan-700">STEM DAY 活動版本</p>
-          <h2 id="gemini-student-stem-day-heading" class="mt-3 text-3xl font-bold text-gray-900">Gemini 探索與認證預備模組</h2>
-          <p class="mt-4 max-w-3xl text-lg leading-8 text-gray-600">適合高小至中學，以 2–4 小時認識 Gemini、NotebookLM、負責任使用 AI 及指定實作任務。此版本是探索或認證預備活動；學生須完成完整八小時課程及相關考核，才可取得 Gemini 學生證書。</p>
-          <div class="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <div class="rounded-xl bg-gray-50 p-5"><strong class="block text-gray-900">建議時數</strong><span class="mt-2 block text-gray-600">2–4 小時</span></div>
-            <div class="rounded-xl bg-gray-50 p-5"><strong class="block text-gray-900">設備與帳戶</strong><span class="mt-2 block text-gray-600">學生電腦、穩定網絡及學校核准的 Google 帳戶</span></div>
-            <div class="rounded-xl bg-gray-50 p-5"><strong class="block text-gray-900">平行課堂</strong><span class="mt-2 block text-gray-600">可按導師及課室數量安排</span></div>
-            <div class="rounded-xl bg-gray-50 p-5"><strong class="block text-gray-900">學生成果</strong><span class="mt-2 block text-gray-600">AI 學習任務與認證預備紀錄，不等同取得證書</span></div>
-          </div>
-          <a href="/stemday/#contact-form" class="mt-7 inline-flex rounded-lg bg-brand-cyan-600 px-6 py-3 font-bold text-white hover:bg-brand-cyan-700">規劃 STEM Day 活動</a>
-        </div>
-      </div>
-    </section>
 
     <QnASection
       faqs={faqItems.map((item) => ({
@@ -220,6 +249,11 @@ const schoolArrangementNote =
 
     <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
 
-    <ContactSection subtitle="想了解更多關於 Gemini 學生證書課程的資訊？歡迎聯絡我們，我們會為您提供詳細的課程安排與到校方案。" />
+    <div id="enquiry" class="scroll-mt-20">
+      <ContactSection
+        interest="Gemini 學生認證到校課程"
+        subtitle="告訴我們學生年級、人數、可用課時及 Google 帳戶安排，我們會建議兩小時認證版本或八小時進階課程，並提供方案及報價。"
+      />
+    </div>
   </main>
 </Layout>
