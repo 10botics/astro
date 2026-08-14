@@ -89,6 +89,7 @@ const whatsappUrl = `https://wa.me/${finalPhoneNumber}?text=${encodedMessage}`;
 
 <script>
   import { formatUrlForWhatsAppMessage } from '../utils/formatUrlForWhatsApp';
+  import { cleanPublicPageUrl, getMarketingAttribution } from '../utils/marketingAttribution';
   
   // Access gtag function from window
   const gtag = (window as any).gtag;
@@ -98,7 +99,7 @@ const whatsappUrl = `https://wa.me/${finalPhoneNumber}?text=${encodedMessage}`;
   const urlParams = new URLSearchParams(window.location.search);
   // searchParams.get() is already decoded; do not decodeURIComponent again (breaks titles with "%")
   const title = urlParams.get('title') || '課程查詢';
-  const pageUrl = urlParams.get('url') || '';
+  const pageUrl = cleanPublicPageUrl(urlParams.get('url') || '');
   const linkForMessage = formatUrlForWhatsAppMessage(pageUrl);
   let message = linkForMessage
     ? `我想查詢 ${title}\n\n頁面連結：${linkForMessage}`
@@ -106,7 +107,7 @@ const whatsappUrl = `https://wa.me/${finalPhoneNumber}?text=${encodedMessage}`;
   let whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
   const apiBase = (import.meta.env.PUBLIC_FREEDOM_API_BASE || 'https://freedom.10botics.com');
-  const params = new URLSearchParams(window.location.search);
+  const attribution = getMarketingAttribution();
   const controller = new AbortController();
   const attributionTimeout = window.setTimeout(() => controller.abort(), 800);
   try {
@@ -115,12 +116,12 @@ const whatsappUrl = `https://wa.me/${finalPhoneNumber}?text=${encodedMessage}`;
       headers: { 'Content-Type': 'application/json' },
       signal: controller.signal,
       body: JSON.stringify({
-        landing_page: pageUrl || document.referrer,
-        referrer: document.referrer,
-        utm_source: params.get('utm_source') || '', utm_medium: params.get('utm_medium') || '',
-        utm_campaign: params.get('utm_campaign') || '', utm_term: params.get('utm_term') || '',
-        utm_content: params.get('utm_content') || '', gclid: params.get('gclid') || '',
-        gbraid: params.get('gbraid') || '', wbraid: params.get('wbraid') || '',
+        landing_page: attribution.landing_page || pageUrl || document.referrer,
+        referrer: attribution.referrer,
+        utm_source: attribution.utm_source, utm_medium: attribution.utm_medium,
+        utm_campaign: attribution.utm_campaign, utm_term: attribution.utm_term,
+        utm_content: attribution.utm_content, gclid: attribution.gclid,
+        gbraid: attribution.gbraid, wbraid: attribution.wbraid,
       }),
     });
     if (response.ok) {

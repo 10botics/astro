@@ -42,6 +42,8 @@ const isTeacherTraining = variant === 'teacher-training';
 </form>
 
 <script>
+  import { getMarketingAttribution } from '../utils/marketingAttribution';
+
   for (const form of document.querySelectorAll<HTMLFormElement>('.enquiry-form')) {
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
@@ -54,6 +56,7 @@ const isTeacherTraining = variant === 'teacher-training';
         return;
       }
       const params = new URLSearchParams(window.location.search);
+      const attribution = getMarketingAttribution();
       const submissionId = form.dataset.submissionId || crypto.randomUUID();
       form.dataset.submissionId = submissionId;
       const participantCount = String(values.participant_count || '').trim();
@@ -69,16 +72,16 @@ const isTeacherTraining = variant === 'teacher-training';
         ...submittedValues,
         interest: values.interest || form.dataset.interest || document.title,
         message: form.dataset.variant === 'teacher-training' ? messageParts.join('\n') : originalMessage,
-        landing_page: window.location.href,
-        referrer: document.referrer,
-        utm_source: params.get('utm_source') || '',
-        utm_medium: params.get('utm_medium') || '',
-        utm_campaign: params.get('utm_campaign') || '',
-        utm_term: params.get('utm_term') || '',
-        utm_content: params.get('utm_content') || '',
-        gclid: params.get('gclid') || '',
-        gbraid: params.get('gbraid') || '',
-        wbraid: params.get('wbraid') || '',
+        landing_page: attribution.landing_page,
+        referrer: attribution.referrer,
+        utm_source: attribution.utm_source,
+        utm_medium: attribution.utm_medium,
+        utm_campaign: attribution.utm_campaign,
+        utm_term: attribution.utm_term,
+        utm_content: attribution.utm_content,
+        gclid: attribution.gclid,
+        gbraid: attribution.gbraid,
+        wbraid: attribution.wbraid,
         attribution_reference: params.get('ref') || '',
         client_submission_id: submissionId,
       };

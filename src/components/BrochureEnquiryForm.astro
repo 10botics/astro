@@ -17,6 +17,8 @@ const apiBase = import.meta.env.PUBLIC_FREEDOM_API_BASE || "https://freedom.10bo
 </form>
 
 <script>
+  import { getMarketingAttribution } from '../utils/marketingAttribution';
+
   declare global {
     interface Window {
       dataLayer: Array<Record<string, unknown>>;
@@ -31,22 +33,23 @@ const apiBase = import.meta.env.PUBLIC_FREEDOM_API_BASE || "https://freedom.10bo
       const success = form.querySelector<HTMLElement>('.form-success');
       const values = Object.fromEntries(new FormData(form).entries());
       const params = new URLSearchParams(window.location.search);
+      const attribution = getMarketingAttribution();
       const submissionId = form.dataset.submissionId || crypto.randomUUID();
       form.dataset.submissionId = submissionId;
       const payload = {
         ...values,
         enquiry_type: 'course_brochure',
         interest: 'Course brochure request',
-        landing_page: window.location.href,
-        referrer: document.referrer,
-        utm_source: params.get('utm_source') || '',
-        utm_medium: params.get('utm_medium') || '',
-        utm_campaign: params.get('utm_campaign') || '',
-        utm_term: params.get('utm_term') || '',
-        utm_content: params.get('utm_content') || '',
-        gclid: params.get('gclid') || '',
-        gbraid: params.get('gbraid') || '',
-        wbraid: params.get('wbraid') || '',
+        landing_page: attribution.landing_page,
+        referrer: attribution.referrer,
+        utm_source: attribution.utm_source,
+        utm_medium: attribution.utm_medium,
+        utm_campaign: attribution.utm_campaign,
+        utm_term: attribution.utm_term,
+        utm_content: attribution.utm_content,
+        gclid: attribution.gclid,
+        gbraid: attribution.gbraid,
+        wbraid: attribution.wbraid,
         attribution_reference: params.get('ref') || '',
         client_submission_id: submissionId,
       };

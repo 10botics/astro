@@ -107,6 +107,11 @@ const organizationSchema = {
 		
 		<!-- Google Tag (gtag.js) -->
 		{googleTagEnabled && <GoogleTag id={googleTagId} />}
+
+		<script>
+			import { captureMarketingAttribution } from '../utils/marketingAttribution';
+			captureMarketingAttribution();
+		</script>
 		
 		<!-- DNS Prefetch for Performance -->
 		<link rel="dns-prefetch" href="//fonts.googleapis.com" />
