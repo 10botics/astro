@@ -1,0 +1,130 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const steps = [
+  ['01', '下載應用程式', 'Freedom Tutor 是你查看教學機會、課堂安排、簽到及提交課堂意見的主要工具。'],
+  ['02', '使用 Google 帳戶登入', '請使用申請或受邀時登記的電郵地址登入，讓系統連結正確的導師紀錄。'],
+  ['03', '完成導師資料', '填寫聯絡、學歷、居住地區及收款資料，並上載所需文件。'],
+  ['04', '閱讀並接受自由工作導師協議', '請細閱合作模式、教學要求、收款安排及資料使用方式。'],
+  ['05', '等待核實', '完成資料後須通過核實，才可查看及申請教學機會。'],
+  ['06', '申請合適的教學機會', '你可按時間、地點、內容及報酬選擇工作；獲接納後才代表教學安排正式確認。'],
+];
+
+const expectations = [
+  ['準時與簽到', '每堂應於開始前至少 15 分鐘到達，並由你主動在 Freedom Tutor 完成簽到。'],
+  ['課堂意見', '每堂完結後提交課堂意見，包括進度、掌握程度、參與、秩序及學生當日完成的內容；可附最多 5 張相片。'],
+  ['教材與專業操守', '使用公司或學校核准的教材，保持專業儀容，不私下聯絡學生，並妥善保護學生及學校資料。'],
+  ['事故與設備', '如遇遲到、缺席、設備、學生安全或其他突發情況，應盡快通知課程負責人；不可自行安排代課。'],
+];
+
+const faqs = [
+  ['我與 10教育是甚麼合作關係？', '你以自由工作導師身份按個別工作安排提供教學服務，並非 10教育僱員。你可自行決定是否申請教學機會；實際條款以最新自由工作導師協議及獲接納的工作安排為準。'],
+  ['完成資料及核實後是否一定有工作？', '不是。自由工作導師可自行選擇合適機會，而每次申請仍須按課程需要確認。'],
+  ['導師費如何計算及何時發放？', '導師費每月結算一次，按上一個月已完成的課堂、獲接納時確認的時薪、交通費、全勤獎金及其他適用款項計算，一般於下一個月 20 日前以銀行轉帳發放。'],
+  ['是否需要性罪行定罪紀錄查核（SCRC）？', '需要。所有到校導師均須提供有效的性罪行定罪紀錄查核。你可以先完成其他導師資料，稍後再補交查核紀錄。'],
+  ['獲接納後不能出席怎麼辦？', '請立即聯絡課程負責人，不要自行找人代課。臨時退出可能影響課程及日後工作安排。'],
+  ['為甚麼要開啟通知和定位？', '通知用於課堂提醒、簽到及教學安排；定位只會在你主動簽到時使用，不會持續追蹤。'],
+];
+---
+
+<Layout
+  title="10教育導師合作指南"
+  description="受邀與 10教育合作的導師，可在此了解 Freedom Tutor、教學工作申請、簽到、課堂意見及全勤獎金安排。"
+  robots="noindex, nofollow"
+  showFloatingWhatsApp={false}
+>
+  <section class="hero">
+    <div class="shell hero-grid">
+      <div>
+        <span class="eyebrow">10教育導師合作</span>
+        <h1>10教育導師<br />合作指南</h1>
+        <p class="lead">下載 Freedom Tutor，完成導師資料及身份核實；通過後即可查看教學機會、申請合適工作及跟進每堂安排。</p>
+        <div class="store-actions">
+          <a class="store-button" href="https://apps.apple.com/app/id6793054994" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-apple" aria-hidden="true"></i><span><small>下載自</small>App Store</span>
+          </a>
+          <a class="store-button" href="https://play.google.com/store/apps/details?id=com.tenbotics.tutor" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-google-play" aria-hidden="true"></i><span><small>下載自</small>Google Play</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section shell">
+    <div class="section-heading"><span>開始合作</span><h2>六步開始導師合作</h2></div>
+    <div class="steps">
+      {steps.map(([number, title, body]) => (
+        <article class="step"><span class="step-number">{number}</span><div><h3>{title}</h3><p>{body}</p></div></article>
+      ))}
+    </div>
+    <p class="process-note">完成導師資料及通過核實後，你可自行申請合適的教學機會；每項工作仍會按課程需要另行確認。</p>
+  </section>
+
+  <section class="section soft">
+    <div class="shell two-column">
+      <div>
+        <div class="section-heading left"><span>填寫前準備</span><h2>一次準備好所需資料</h2></div>
+        <ul class="check-list">
+          <li>香港身份證副本及近期個人相片</li><li>銀行帳戶資料</li><li>緊急聯絡人資料</li>
+          <li>教育程度及相關教學經驗</li><li>現居地區</li><li>按教學需要提供的其他證明</li>
+        </ul>
+      </div>
+      <div class="flow-card">
+        <span class="mini-label">日常流程</span>
+        <ol><li>查看教學機會與完整課堂時間</li><li>選擇可出席的課堂並提交申請</li><li>收到接納通知後確認工作安排</li><li>按時到校、簽到及完成教學</li><li>每堂提交課堂意見</li></ol>
+        <p>時薪、交通費及全勤獎金（如有）會在工作安排中列明。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section shell">
+    <div class="section-heading"><span>申請教學工作</span><h2>由查看機會，到確認安排</h2></div>
+    <div class="application-grid">
+      <article><span>01</span><i class="fa-solid fa-magnifying-glass"></i><h3>查看完整資料</h3><p>在「教學機會」查看課程內容、地點、所有課堂日期、時薪、預計教學費及全勤獎金（如有）。</p></article>
+      <article><span>02</span><i class="fa-solid fa-calendar-check"></i><h3>選擇可出席課堂</h3><p>逐一確認你能出席的課堂。部分工作要求全程參與；未選全部課堂時，申請內不會計算全勤獎金。</p></article>
+      <article><span>03</span><i class="fa-solid fa-route"></i><h3>填寫交通費</h3><p>申請時直接填寫你需要的每堂交通費，毋須上載車票或收據。請按實際交通需要合理填寫。</p></article>
+      <article><span>04</span><i class="fa-solid fa-paper-plane"></i><h3>提交並等待結果</h3><p>提交申請不代表已獲安排。我們會按課程需要、可出席時間、相關經驗及整體費用選擇合適導師。</p></article>
+      <article><span>05</span><i class="fa-solid fa-envelope-circle-check"></i><h3>收到接納通知</h3><p>獲接納後，電郵及 Freedom Tutor 會列出已確認課堂、時薪、交通費，以及是否包括全勤獎金。</p></article>
+      <article><span>06</span><i class="fa-solid fa-clipboard-list"></i><h3>在應用程式跟進</h3><p>已確認課堂會出現在「課堂」。如申請尚未處理或不再合適，可在「我的申請」查看或撤回。</p></article>
+    </div>
+    <div class="travel-note"><i class="fa-solid fa-circle-info"></i><div><strong>交通費毋須提交證明</strong><p>申請工作時填寫每堂所需的交通費即可，課後毋須提交車票或收據。接納通知所列金額就是該次工作的確認交通費。</p></div></div>
+  </section>
+
+  <section class="section shell">
+    <div class="section-heading"><span>每堂都重要</span><h2>我們對導師的基本期望</h2></div>
+    <div class="expectations">
+      {expectations.map(([title, body], index) => (
+        <article><i class={`fa-solid ${['fa-clock','fa-clipboard-check','fa-shield-halved','fa-triangle-exclamation'][index]}`} aria-hidden="true"></i><h3>{title}</h3><p>{body}</p></article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="shell bonus-grid">
+      <div><span class="eyebrow light">全勤獎金</span><h2>完成整個教學安排，可獲額外獎金</h2><p>部分教學工作會提供全勤獎金，按獲接納課堂的基本教學費及工作所列百分比計算。它是基本教學費以外的額外獎金，並非每個工作都包括。</p><p>申請及接納通知會清楚顯示「包括」或「不包括」、獎金百分比及預計金額，避免在完成課程後才發現安排不同。</p></div>
+      <div class="criteria">
+        <h3>要符合獎金條件，你需要：</h3>
+        <div><i class="fa-solid fa-calendar-check"></i><span>完成獎金安排內的所有獲接納課堂</span></div>
+        <div><i class="fa-solid fa-location-dot"></i><span>每堂開始前至少 15 分鐘到達並完成簽到</span></div>
+        <div><i class="fa-solid fa-message"></i><span>每堂完結後提交完整課堂意見</span></div>
+        <small>如有特殊情況，請盡早通知課程管理員，以實際紀錄作個別處理。</small>
+      </div>
+    </div>
+    <div class="shell bonus-tracking"><div><i class="fa-solid fa-mobile-screen-button"></i><div><strong>如何查看進度？</strong><p>在 Freedom Tutor 的「全勤獎金」查看進行中及過往安排。每項安排會列出包括的課堂、簽到狀態、課堂意見狀態、預計獎金及最終審批結果。</p></div></div><div><i class="fa-solid fa-bell"></i><div><strong>不要等到最後一堂才檢查</strong><p>每堂完成後即時確認簽到及課堂意見紀錄；如資料有誤，請及早聯絡課程管理員。</p></div></div></div>
+  </section>
+
+  <section class="section shell">
+    <div class="section-heading"><span>常見問題</span><h2>開始前，你可能想知道</h2></div>
+    <div class="faq-list">{faqs.map(([question, answer]) => <details><summary>{question}<i class="fa-solid fa-plus"></i></summary><p>{answer}</p></details>)}</div>
+  </section>
+
+  <section class="section final-cta">
+    <div class="shell final-inner"><div><span class="eyebrow">準備好了？</span><h2>下載 Freedom Tutor，完成你的導師資料</h2><p>如登入或帳戶連結遇到問題，請電郵 <a href="mailto:info@10botics.com">info@10botics.com</a>。</p></div><div class="store-actions compact"><a class="store-button" href="https://apps.apple.com/app/id6793054994" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-apple"></i><span><small>下載自</small>App Store</span></a><a class="store-button" href="https://play.google.com/store/apps/details?id=com.tenbotics.tutor" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-google-play"></i><span><small>下載自</small>Google Play</span></a></div></div>
+    <div class="shell legal-links"><a href="/tutor-app/privacy/">私隱政策</a><a href="/tutor-app/account-closure/">帳戶刪除</a><span>實際合作條款以你在 Freedom Tutor 接受的最新自由工作導師協議及每次工作確認為準。</span></div>
+  </section>
+</Layout>
+
+<style>
+  :global(body){color:#17202a}.shell{width:min(1120px,calc(100% - 40px));margin:0 auto}.hero{padding:92px 0 72px;background:linear-gradient(135deg,#effcff 0%,#fff 52%,#eef5ff 100%);overflow:hidden}.hero-grid{max-width:850px}.eyebrow,.mini-label,.section-heading span{display:inline-block;color:#008aa8;font-size:.76rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.hero h1{margin:16px 0 20px;font-size:clamp(2.8rem,6vw,5.4rem);line-height:.98;letter-spacing:-.055em}.lead{max-width:760px;font-size:1.16rem;line-height:1.85;color:#4b5966}.store-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.store-button{display:flex;align-items:center;gap:12px;min-width:180px;padding:11px 18px;border-radius:12px;background:#111827;color:#fff;text-decoration:none;box-shadow:0 8px 24px #102a3b1c}.store-button i{font-size:1.8rem}.store-button span{font-size:1.02rem;font-weight:700;line-height:1.1}.store-button small{display:block;font-size:.64rem;font-weight:500;opacity:.75;margin-bottom:3px}.section{padding:88px 0}.section-heading{text-align:center;margin-bottom:38px}.section-heading.left{text-align:left}.section-heading h2{font-size:clamp(2rem,4vw,3rem);margin:8px 0;letter-spacing:-.035em}.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.step{display:flex;gap:18px;padding:24px;border:1px solid #e5ecef;border-radius:16px}.step-number{font-size:.82rem;font-weight:800;color:#00a6c8}.step h3{margin:0 0 7px;font-size:1.05rem}.step p,.expectations p{margin:0;color:#586773;line-height:1.7}.process-note{max-width:780px;margin:26px auto 0;padding:15px 18px;border-radius:12px;background:#f2fafc;color:#4e626a;text-align:center;font-size:.92rem}.soft{background:#f5f9fa}.two-column{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}.check-list{display:grid;grid-template-columns:1fr 1fr;gap:14px;list-style:none;padding:0}.check-list li:before{content:'✓';color:#00a2c2;font-weight:900;margin-right:9px}.flow-card{background:#fff;border-radius:22px;padding:34px;box-shadow:0 16px 50px #152e3710}.flow-card ol{padding-left:22px;line-height:2}.flow-card p{color:#59707a;font-size:.9rem}.application-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.application-grid article{position:relative;padding:28px 24px;border:1px solid #e1eaed;border-radius:18px;background:#fff}.application-grid article>span{position:absolute;right:18px;top:16px;color:#b5c4c9;font-size:.75rem;font-weight:800}.application-grid i{font-size:1.3rem;color:#009bb9}.application-grid h3{margin:18px 0 8px}.application-grid p{margin:0;color:#586773;line-height:1.7}.travel-note{display:flex;gap:16px;max-width:870px;margin:26px auto 0;padding:20px 22px;border-radius:15px;background:#eaf9fc;color:#335761}.travel-note>i{margin-top:4px;color:#009bb9}.travel-note p{margin:5px 0 0;line-height:1.65}.expectations{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.expectations article{padding:26px 22px;border-radius:18px;background:#f7fafb}.expectations i{font-size:1.35rem;color:#009ab9}.expectations h3{margin:18px 0 9px}.dark{background:#111c2e;color:#fff}.bonus-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:70px;align-items:center}.eyebrow.light{color:#6fe2f7}.bonus-grid h2{font-size:clamp(2rem,4vw,3rem);line-height:1.15;margin:12px 0}.bonus-grid p{color:#c8d1dc;line-height:1.8}.criteria{display:grid;gap:13px}.criteria h3{margin:0 0 4px}.criteria div{display:flex;gap:14px;align-items:center;padding:17px 19px;background:#ffffff10;border:1px solid #ffffff18;border-radius:13px}.criteria i{color:#65dcf3}.criteria small{color:#9eacba;margin:5px 4px}.bonus-tracking{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:42px}.bonus-tracking>div{display:flex;gap:16px;padding:22px;background:#ffffff0b;border:1px solid #ffffff15;border-radius:15px}.bonus-tracking i{color:#65dcf3;margin-top:4px}.bonus-tracking p{margin:6px 0 0;color:#b9c5d0;line-height:1.65}.faq-list{max-width:850px;margin:auto}.faq-list details{border-bottom:1px solid #dde5e8}.faq-list summary{display:flex;justify-content:space-between;gap:20px;padding:22px 4px;cursor:pointer;font-weight:750;list-style:none}.faq-list summary::-webkit-details-marker{display:none}.faq-list p{margin:0;padding:0 34px 24px 4px;color:#586773;line-height:1.75}.faq-list details[open] i{transform:rotate(45deg)}.faq-list i{transition:transform .2s}.final-cta{padding-bottom:52px;background:#eafaff}.final-inner{display:flex;align-items:center;justify-content:space-between;gap:40px}.final-inner h2{font-size:clamp(1.8rem,4vw,2.8rem);margin:9px 0}.final-inner a{color:#007f99}.compact{margin-top:0;flex-shrink:0}.legal-links{display:flex;gap:18px;flex-wrap:wrap;margin-top:44px;padding-top:22px;border-top:1px solid #cae5eb;color:#61747b;font-size:.82rem}.legal-links a{color:#176b7b}.legal-links span{margin-left:auto;max-width:620px;text-align:right}@media(max-width:800px){.hero{padding:64px 0 54px}.two-column,.bonus-grid{grid-template-columns:1fr;gap:38px}.hero h1{font-size:3.3rem}.steps{grid-template-columns:1fr}.application-grid{grid-template-columns:1fr 1fr}.expectations{grid-template-columns:1fr 1fr}.section{padding:64px 0}.final-inner{align-items:flex-start;flex-direction:column}.legal-links span{margin-left:0;text-align:left}}@media(max-width:500px){.shell{width:min(100% - 28px,1120px)}.hero h1{font-size:2.75rem}.check-list,.application-grid,.expectations,.bonus-tracking{grid-template-columns:1fr}.store-button{min-width:0;flex:1;padding:10px 13px}.store-button span{font-size:.9rem}.section-heading{text-align:left}.process-note{text-align:left}.step{padding:20px}.final-cta .store-actions{width:100%}}
+</style>

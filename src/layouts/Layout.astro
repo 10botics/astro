@@ -6,6 +6,7 @@ export interface Props {
 	keywords?: string;
 	robots?: string;
 	showCompanyInfo?: boolean;
+	showFloatingWhatsApp?: boolean;
 }
 
 const { 
@@ -14,7 +15,8 @@ const {
 	ogImage = "/images/og-default.jpg",
 	keywords = "STEM教育, AI課程, 人工智能, 10教育, 編程課程",
 	robots = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
-	showCompanyInfo = true
+	showCompanyInfo = true,
+	showFloatingWhatsApp = true
 } = Astro.props;
 
 import Header from '../components/Header.astro';
@@ -137,7 +139,7 @@ const organizationSchema = {
 			<slot />
 		</main>
 		<Footer showCompanyInfo={showCompanyInfo} />
-		<FloatingWhatsApp title={title} />
+		{showFloatingWhatsApp && <FloatingWhatsApp title={title} />}
 		
 		<!-- Speed Insights with beforeSend function -->
 		<script is:inline>

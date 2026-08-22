@@ -452,6 +452,11 @@ export default defineConfig({
         const path = url.pathname;
         // Decode the path to handle URL-encoded characters (spaces, special chars)
         const decodedPath = decodeURIComponent(path);
+
+        // Private operational guide shared directly with invited tutors.
+        if (path === '/tutor/onboarding/' || path === '/tutor/onboarding') {
+          return false;
+        }
         
         // Exclude /course/ prefix entirely - /school-courses/ is the canonical prefix
         if (path.startsWith('/course/') || path === '/course') {
