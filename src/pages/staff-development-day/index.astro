@@ -6,33 +6,37 @@ import dbsAuditorium from '../../assets/images/staff-development-day/ai-teacher-
 import dbsWorkshop from '../../assets/images/staff-development-day/ai-teacher-training/dbs-gemini-workshop.jpg';
 import goodHopeWorkshop from '../../assets/images/staff-development-day/ai-teacher-training/good-hope-gemini-workshop.jpg';
 
-const pageTitle = 'AI教師培訓及教師發展日｜Gemini Educator教師認證培訓｜10教育';
+const pageTitle = 'AI教師培訓及教師發展日｜校本教師專業發展｜10教育';
 const pageDescription =
-  '為香港學校提供AI教師培訓及教師發展日方案，涵蓋Gemini Educator認證、AI備課、教材製作、個人化學習、資訊素養、私隱及負責任使用AI。';
+  '為香港學校提供實作為本的AI教師培訓、教師發展日及教師專業發展方案，涵蓋AI備課、簡報及教材製作、AI出題與評估、校本知識應用、資訊素養及Gemini Educator認證。';
 const pageKeywords =
-  'AI教師培訓, 教師發展日, SDD, Gemini Educator, Gemini教師認證, 生成式AI, 資訊素養, 香港學校, 教師工作坊';
+  'AI教師培訓, 教師發展日, 教師專業發展, 學校AI教學, SDD, Gemini Educator, Gemini教師認證, AI備課, AI教材製作, AI出題, 資訊素養, 香港學校, 教師工作坊';
 const whatsappHref = `/whatsapp?title=${encodeURIComponent('AI教師培訓及教師發展日')}&url=${encodeURIComponent(Astro.url.href)}`;
 
 const outcomes = [
   {
     number: '01',
-    title: '提升備課及日常工作效率',
-    description: '運用Gemini整理資料、摘要、改寫、建立教材初稿、規劃活動及進行Deep Research。',
+    title: 'AI備課、簡報、教材及圖像製作',
+    description: '運用Gemini及生成式AI整理資料、規劃課堂、製作簡報與教材初稿，並建立切合學科需要的教學圖像。',
   },
   {
     number: '02',
-    title: '設計互動及個人化學習',
-    description: '透過Canvas、Guided Learning、Storybook及Gems，設計切合學生需要的學習內容。',
+    title: 'AI出題、評估及自主學習',
+    description: '教師實作由教材生成題目、檢視AI答案、設計分層練習及延伸自主學習；亦可按需要以Hoppy示範完整流程。',
+    linkHref: 'https://www.hoppy.day/tc/schools/ai-question-creation/',
+    linkLabel: '了解Hoppy學校方案',
   },
   {
     number: '03',
-    title: '建立AI及資訊素養',
-    description: '辨識AI幻覺、核實資料來源、保護私隱，並建立師生負責任使用AI的原則。',
+    title: 'AI研究及校本知識應用',
+    description: '運用Deep Research及NotebookLM整理可靠來源、校本文件與教學材料；需要託管存取時，可認識Magic Door學校方案。',
+    linkHref: 'https://www.magicdoor.cc/notebooklm-for-schools',
+    linkLabel: '了解Magic Door學校方案',
   },
   {
     number: '04',
-    title: '準備Gemini Educator評核',
-    description: '掌握認證所需的主要知識和實際應用，為Google的Gemini Certified Educator評核作好準備。',
+    title: 'AI及資訊素養',
+    description: '辨識AI幻覺、核實資料與來源、保護私隱，並協助學校建立師生負責任使用AI的實務原則。',
   },
 ];
 
@@ -45,9 +49,9 @@ const formats = [
 
 const topics = [
   'Gemini Educator教師認證培訓',
-  'AI備課及教材製作',
-  'AI教學及個人化學習',
-  'AI研究及資料整理',
+  'AI備課、簡報、教材及圖像製作',
+  'AI出題、評估及自主學習',
+  'AI研究及校本知識應用',
   '資訊素養與負責任使用AI',
   'AI校務及行政效率',
 ];
@@ -109,7 +113,7 @@ const faqSchema = {
             AI教師培訓<br />及教師發展日
           </h1>
           <p class="mt-7 max-w-2xl text-lg leading-8 text-slate-100 md:text-xl">
-            協助教師把Gemini及生成式AI真正應用於備課、教材製作、資料研究和個人化學習，同時建立資訊核實、私隱保障及負責任使用AI的能力。
+            為香港學校度身設計實作為本的教師專業發展方案，協助教師把AI真正應用於備課、簡報、教材、出題、評估及校本知識整理，同時建立資訊素養及負責任使用AI的能力。
           </p>
           <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a href="#enquiry" class="rounded-lg bg-cyan-400 px-7 py-4 text-center text-lg font-bold text-slate-950 shadow-lg transition hover:bg-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-200">
@@ -149,6 +153,16 @@ const faqSchema = {
               <span class="text-sm font-bold text-cyan-700">{outcome.number}</span>
               <h3 class="mt-3 text-2xl font-bold">{outcome.title}</h3>
               <p class="mt-3 leading-7 text-slate-600">{outcome.description}</p>
+              {outcome.linkHref && (
+                <a
+                  href={outcome.linkHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="mt-5 inline-flex text-sm font-bold text-cyan-800 underline decoration-cyan-300 underline-offset-4 transition hover:text-cyan-950"
+                >
+                  {outcome.linkLabel}<span class="ml-1" aria-hidden="true">↗</span>
+                </a>
+              )}
             </article>
           ))}
         </div>
