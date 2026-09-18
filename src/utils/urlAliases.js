@@ -408,19 +408,12 @@ export const urlAliases = {
     },
     "main": "3d-microbit-robot-creation"
   },
-  "AI 動畫製作課程.astro": {
+  "AI 影片製作課程.astro": {
     "tags": {
       "school-courses": ["ai-video-production"],
       "course": ["ai-video-production"]
     },
     "main": "ai-video-production"
-  },
-  "AI 影片製作課程入門.astro": {
-    "tags": {
-      "school-courses": ["ai-video-creation-intro"],
-      "course": ["ai-video-creation-intro"]
-    },
-    "main": "ai-video-creation-intro"
   },
   "Gemini 學生證書課程.astro": {
     "tags": {

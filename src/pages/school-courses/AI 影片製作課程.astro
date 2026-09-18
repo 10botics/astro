@@ -1,0 +1,82 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSection from '../../components/course/HeroSection.astro';
+import QnASection from '../../components/course/QnASection.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import RelatedNews from '../../components/course/RelatedNews.astro';
+import RelatedCourses from '../../components/course/RelatedCourses.astro';
+import VideoSchema from '../../components/seo/VideoSchema.astro';
+
+export const courseData = {
+  title: 'AI 影片製作課程',
+  subtitle: '設基礎及進階程度，由故事與分鏡開始，完成 AI 微電影',
+  tags: ['AI 人工智能', 'Video 影片製作', 'Animation 動畫', 'Creative 創意', '高小', '初中', '高中'],
+  description: '香港學校 AI 影片製作到校課程，涵蓋角色創作、故事分鏡、AI 動畫、配音、音樂音效及剪輯。設基礎與進階程度，學生完成約 1 分鐘初稿及約 2 分鐘 AI 微電影。',
+  detailedDescription: '學生將由故事構思及分鏡開始，運用 AI 完成人物與場景創作、動畫、配音、音樂及剪輯，最後製作屬於自己的 AI 微電影。課程設有基礎及進階程度，可按學生年級、經驗及學校課時安排合適內容。'
+};
+
+const pathways = [
+  { label: '基礎課程', title: '圖像生成與視覺敘事', audience: '小四至中三', duration: '建議 8–10 小時', tools: 'Gemini、Canva 或同類型工具', description: '以易於上手的生成及剪輯工具，逐步完成角色、分鏡、動畫、配音、配樂與成片。適合初次接觸 AI 影片創作的學生。' },
+  { label: '進階課程', title: '進階生成與製作流程', audience: '以中學生為主', duration: '建議 12–18 小時', tools: 'Cursor 及較進階的 AI 媒體工具', description: '加強角色一致性、鏡頭規劃、素材管理、版本控制及音畫整合，讓學生體驗更完整的 AI 媒體製作流程。' }
+];
+
+const heroTags = ['AI 人工智能', '影片製作', '動畫創作', '高小', '初中', '高中'];
+
+const modules = [
+  { icon: 'fas fa-user-astronaut', title: '人物及角色創作', description: '運用 AI 工具生成角色造型、場景及視覺風格，並盡量保持角色一致性。' },
+  { icon: 'fas fa-table-columns', title: '故事及分鏡設計', description: '協助學生完成故事大綱、分場、分鏡及拍攝／生成規劃。' },
+  { icon: 'fas fa-film', title: 'AI 動畫製作', description: '運用 AI 將靜態圖片轉化為動畫或短片片段，並加入基本運鏡或動態效果。' },
+  { icon: 'fas fa-microphone-lines', title: 'AI 配音', description: '運用 AI 文字轉語音、角色配音，或結合學生錄音進行聲音處理。' },
+  { icon: 'fas fa-music', title: 'AI 音樂及音效', description: '運用 AI 生成背景音樂、氛圍聲效或片頭片尾音效。' },
+  { icon: 'fas fa-clapperboard', title: '剪輯及微電影製作', description: '整合角色、動畫、配音、配樂、字幕及轉場，完成具故事性的 AI 微電影作品。' }
+];
+
+const outcomes = [
+  { stage: '中期成果', length: '約 1 分鐘', description: '短片初稿，可為預告、片段節選或故事第一部分。' },
+  { stage: '最終成果', length: '約 2 分鐘', description: '完整 AI 微電影作品，整合畫面、聲音、字幕及剪輯。' }
+];
+
+const faqItems = [
+  { question: '基礎與進階課程應該怎樣選？', answer: ['基礎課程適合小四至中三，以 Gemini、Canva 或同類型工具降低入門門檻。', '進階課程以中學生為主，會加入 Cursor 及較完整的素材管理、版本控制與製作流程。', '我們會按學生年級、已有經驗、課時及設備提供建議。'] },
+  { question: '學生最後會完成甚麼作品？', answer: ['課程設兩個成果階段：中段完成約 1 分鐘短片初稿；課程完結時完成約 2 分鐘完整 AI 微電影。', '作品長度及複雜程度可按實際課時與學生能力調整。'] },
+  { question: '學校需要準備甚麼？', answer: ['學生需使用可上網的電腦或平板、穩定網絡，以及能使用相關 AI 工具的學校帳戶。', '工具及帳戶要求會因基礎或進階版本而異，我們可在報價前先檢視學校環境。'] },
+  { question: '可以安排短時數活動版本嗎？', answer: ['可以。完整課程以完成兩階段作品為目標；如課時較短，我們可把內容聚焦於故事、分鏡、AI 畫面生成及短片組合，設計 2–4 小時體驗活動。'] }
+];
+---
+
+<Layout title={courseData.title} description={courseData.description}>
+  <VideoSchema videoId="SgQGUkxAvvA" title="AI影片製作課程｜學生作品示例《海洋保育 大家有責》｜10教育" description="AI 影片製作基礎課程學生作品示例，展示以生成圖像、短片、字幕及配樂組成具主題的 AI 影片。" thumbnailUrl="https://i.ytimg.com/vi/SgQGUkxAvvA/maxresdefault.jpg" uploadDate="2026-09-07" duration="PT35S" contentUrl="https://www.youtube.com/watch?v=SgQGUkxAvvA" />
+  <VideoSchema videoId="nFluRYOnPzk" title="AI影片製作課程｜進階課程作品示例｜10教育" description="AI 影片製作進階課程作品示例，展示較細緻的角色、鏡頭、動態及音畫整合方向。" thumbnailUrl="https://i.ytimg.com/vi/nFluRYOnPzk/maxresdefault.jpg" uploadDate="2026-09-07" duration="PT51S" contentUrl="https://www.youtube.com/watch?v=nFluRYOnPzk" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <main class="overflow-x-hidden">
+    <HeroSection title={courseData.title} subtitle={courseData.subtitle} description={courseData.detailedDescription} videoId="SgQGUkxAvvA" tags={heroTags} parentSectionLabel="課程" />
+
+    <section class="section-padding bg-white" aria-labelledby="pathways-heading"><div class="container-standard">
+      <div class="mx-auto mb-12 max-w-3xl text-center"><h2 id="pathways-heading" class="text-3xl font-bold text-gray-900">基礎與進階兩種程度</h2><p class="mt-4 text-lg leading-8 text-gray-600">實際工具會按帳戶可用性及課程目標調整，重點是學生能掌握完整工作流程並完成作品。</p></div>
+      <div class="grid gap-8 lg:grid-cols-2">{pathways.map((pathway) => (<article class="rounded-2xl border border-gray-200 bg-white p-7 shadow-sm md:p-9"><p class="text-sm font-bold tracking-[0.18em] text-brand-cyan-700">{pathway.label}</p><h3 class="mt-3 text-2xl font-bold text-gray-900">{pathway.title}</h3><p class="mt-4 leading-7 text-gray-600">{pathway.description}</p><dl class="mt-6 grid gap-3 rounded-xl bg-gray-50 p-5 sm:grid-cols-3"><div><dt class="text-sm font-bold text-gray-900">適合對象</dt><dd class="mt-1 text-sm text-gray-600">{pathway.audience}</dd></div><div><dt class="text-sm font-bold text-gray-900">建議時數</dt><dd class="mt-1 text-sm text-gray-600">{pathway.duration}</dd></div><div><dt class="text-sm font-bold text-gray-900">工具例子</dt><dd class="mt-1 text-sm text-gray-600">{pathway.tools}</dd></div></dl></article>))}</div>
+    </div></section>
+
+    <section class="section-padding bg-gray-50" aria-labelledby="modules-heading"><div class="container-standard">
+      <div class="mx-auto mb-12 max-w-3xl text-center"><h2 id="modules-heading" class="text-3xl font-bold text-gray-900">六大課程內容</h2><p class="mt-4 text-lg text-gray-600">由前期創作到後期製作，讓學生理解每一環如何組合成完整影片。</p></div>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">{modules.map((module, index) => (<article class="card-base card-hover p-7"><div class="flex items-center gap-4"><span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-cyan-600 text-white"><i class={module.icon}></i></span><span class="text-sm font-bold text-brand-cyan-700">0{index + 1}</span></div><h3 class="mt-5 text-xl font-bold text-gray-900">{module.title}</h3><p class="mt-3 leading-7 text-gray-600">{module.description}</p></article>))}</div>
+    </div></section>
+
+    <section class="section-padding bg-slate-950 text-white" aria-labelledby="outcomes-heading"><div class="container-standard">
+      <div class="mx-auto max-w-3xl text-center"><p class="text-sm font-bold tracking-[0.2em] text-cyan-300">作品導向</p><h2 id="outcomes-heading" class="mt-3 text-3xl font-bold md:text-4xl">兩個清晰的成果階段</h2></div>
+      <div class="mx-auto mt-10 grid max-w-4xl gap-6 md:grid-cols-2">{outcomes.map((outcome) => (<article class="rounded-2xl border border-white/10 bg-white/5 p-8"><p class="font-bold text-cyan-300">{outcome.stage}</p><h3 class="mt-3 text-3xl font-bold">{outcome.length}</h3><p class="mt-4 leading-7 text-slate-300">{outcome.description}</p></article>))}</div>
+    </div></section>
+
+    <section class="section-padding bg-white" aria-labelledby="examples-heading"><div class="container-standard">
+      <div class="mx-auto mb-10 max-w-3xl text-center"><h2 id="examples-heading" class="text-3xl font-bold text-gray-900">課程作品示例</h2><p class="mt-4 text-lg leading-8 text-gray-600">以下示例展示不同程度可採用的視覺與製作方向；實際作品會因學生程度、課時及所用工具而異。</p></div>
+      <div class="grid gap-8 lg:grid-cols-2">
+        <article class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm"><iframe class="aspect-video w-full" src="https://www.youtube-nocookie.com/embed/SgQGUkxAvvA" title="AI影片製作課程學生作品示例：海洋保育 大家有責" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="p-6"><p class="text-sm font-bold text-brand-cyan-700">基礎課程作品示例</p><h3 class="mt-2 text-xl font-bold text-gray-900">《海洋保育 大家有責》</h3><p class="mt-3 leading-7 text-gray-600">示範以生成圖像、短片、字幕及配樂組成具主題的 AI 影片。</p></div></article>
+        <article class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm"><iframe class="aspect-video w-full" src="https://www.youtube-nocookie.com/embed/nFluRYOnPzk" title="AI影片製作進階課程作品示例" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><div class="p-6"><p class="text-sm font-bold text-brand-cyan-700">進階課程作品示例</p><h3 class="mt-2 text-xl font-bold text-gray-900">進階 AI 影片創作</h3><p class="mt-3 leading-7 text-gray-600">示範更細緻的角色、鏡頭、動態及音畫整合方向；此片為課程示例，並非固定的最終作品規格。</p></div></article>
+      </div>
+    </div></section>
+
+    <QnASection faqs={faqItems.map((item) => ({ question: item.question, answer: item.answer.join('\n') }))} />
+    <RelatedCourses courseTags={courseData.tags} courseTitle={courseData.title} currentCourseSlug="ai-video-production" context="course" />
+    <RelatedNews courseTags={courseData.tags} courseTitle={courseData.title} />
+    <div id="enquiry" class="scroll-mt-20"><ContactSection interest="AI影片製作到校課程" subtitle="告訴我們學生年級、預計人數、課時與設備安排，我們會建議基礎或進階課程，並提供方案及報價。" /></div>
+  </main>
+</Layout>
